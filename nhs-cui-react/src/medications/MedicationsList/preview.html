@@ -1,0 +1,38 @@
+<!-- @dsCard group="Medications" width=1200 height=1700 subtitle="Medications list: current and past, look-ahead, grouping, filter, levels of detail; AU and NZ" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MedicationsList, ClinicalLocaleProvider, DEFAULT_MEDICATION_DETAIL_LEVELS } = window.ClinicalCUI;
+const now = '2026-10-27T10:00:00';
+const m = (id, line, status, start, extra) => Object.assign({ id: id, line: line, status: status, startDate: start }, extra || {});
+const meds = [
+  m('1', { genericName: 'amoxicillin', form: 'capsule', dose: { value: 500, unit: 'mg' }, route: 'oral', frequency: 'three times a day' }, 'Started', '2026-10-26', { statusSupplement: 'Verified' }),
+  m('2', { genericName: 'paracetamol', form: 'tablet', dose: { value: 1, unit: 'g' }, route: 'oral', frequency: 'every 6 hours as required', qualifiers: ['maximum 4 doses in 24 hours'] }, 'Started', '2026-10-25'),
+  m('3', { genericName: 'enoxaparin', strength: { kind: 'inFluid', values: [40], unit: 'mg', fluidQuantity: 0.4, fluidUnit: 'mL' }, form: 'solution for injection', dose: { value: 40, unit: 'mg' }, route: 'subcutaneous', frequency: 'once a day' }, 'Not Started', '2026-10-28', { statusSupplement: 'Not Verified' }),
+  m('4', { genericName: 'ramipril', form: 'capsule', dose: { value: 5, unit: 'mg' }, route: 'oral', frequency: 'once a day' }, 'Suspended', '2026-10-20', { suspendedOn: '2026-10-26', hasAlert: true, alertLabel: 'Interaction alert: High Priority' }),
+  m('5', { genericName: 'atorvastatin', form: 'tablet', dose: { value: 40, unit: 'mg' }, route: 'oral', frequency: 'at night' }, 'Started', '2026-10-19'),
+  m('6', { genericName: 'metformin', brandName: 'Glucomet SR', form: 'modified-release tablet', dose: { value: 500, unit: 'mg' }, route: 'oral', frequency: 'twice a day', qualifiers: ['with food'] }, 'Started', '2026-10-18'),
+  m('7', { genericName: 'omeprazole', form: 'gastro-resistant capsule', dose: { value: 20, unit: 'mg' }, route: 'oral', frequency: 'once a day' }, 'Started', '2026-10-17'),
+  m('8', { genericName: 'salbutamol', strength: { kind: 'perUnit', values: [100], unit: 'micrograms', fluidUnit: 'dose' }, form: 'metered dose inhaler', dose: { value: 2, unit: 'puffs' }, route: 'inhaled', frequency: 'every 4 hours as required' }, 'Started', '2026-10-15'),
+  m('9', { genericName: 'bisoprolol', form: 'tablet', dose: { value: 2.5, unit: 'mg' }, route: 'oral', frequency: 'once a day' }, 'Started', '2026-10-14', { hasAlert: true }),
+  m('10', { genericName: 'sodium chloride', strength: { kind: 'percentage', values: [0.9] }, form: 'infusion', doseEquivalent: { label: 'VOLUME', quantity: { value: 1000, unit: 'mL' } }, rate: '83 mL per hour', doseDuration: 'over 12 hours', route: 'intravenous', frequency: 'once only' }, 'Started', '2026-10-13'),
+  m('11', { genericName: 'senna', form: 'tablet', dose: { value: 15, unit: 'mg' }, route: 'oral', frequency: 'at night' }, 'Started', '2026-10-12'),
+  m('12', { genericName: 'clopidogrel', form: 'tablet', dose: { value: 75, unit: 'mg' }, route: 'oral', frequency: 'once a day' }, 'Started', '2026-10-10'),
+  m('13', { genericName: 'fluticasone + salmeterol', strength: { kind: 'combination', values: [250, 50], unit: 'micrograms', fluidUnit: 'dose' }, form: 'dry powder inhaler', dose: { value: 1, unit: 'puff' }, route: 'inhaled', frequency: 'twice a day' }, 'Started', '2026-10-08'),
+  m('p1', { genericName: 'co-amoxiclav', strength: { kind: 'combination', values: [500, 125], unit: 'mg' }, form: 'tablet', dose: { value: 1, unit: 'tablet' }, route: 'oral', frequency: 'three times a day' }, 'Completed', '2026-10-19', { endDate: '2026-10-26T14:00:00' }),
+  m('p2', { genericName: 'morphine', strength: { kind: 'inFluid', values: [10], unit: 'mg', fluidQuantity: 5, fluidUnit: 'mL' }, form: 'oral solution', dose: { value: 5, unit: 'mg' }, route: 'oral', frequency: 'every 4 hours as required' }, 'Discontinued', '2026-10-20', { endDate: '2026-10-26T09:00:00' }),
+  m('p3', { genericName: 'gentamicin', form: 'solution for injection', dose: { value: 400, unit: 'mg' }, route: 'intravenous', frequency: 'once a day' }, 'Completed', '2026-09-01', { endDate: '2026-09-05' }),
+  m('p4', { genericName: 'ibuprofen', form: 'tablet', dose: { value: 400, unit: 'mg' }, route: 'oral', frequency: 'three times a day' }, 'Discontinued', '2026-03-02', { endDate: '2026-03-09' })
+];
+const block = (title, el) => h('div', { style: { marginBottom: 20 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    block('Current medications (default sort, look-ahead strips show names out of view)', h(MedicationsList, { medications: meds, now: now, maxHeight: 400, defaultSelectedIds: ['5'] })),
+    block('Current medications grouped by route, groups expanded by default', h(MedicationsList, { medications: meds.slice(0, 9).concat(meds.slice(13)), now: now, maxHeight: 300, defaultGroupBy: 'route' })),
+    block('Past medications, filtered to the past month (counts only in look-ahead)', h(MedicationsList, { medications: meds, now: now, defaultView: 'past', defaultPastFilterId: 'month', maxHeight: 220 })),
+    block('AU: ACSQHC line order and mixed-case lettering, with the Detail control set to Full', h(ClinicalLocaleProvider, { region: 'AU' }, h(MedicationsList, { medications: meds.slice(0, 6), now: now, maxHeight: 320, detailLevels: DEFAULT_MEDICATION_DETAIL_LEVELS, defaultDetailLevel: 'full', lookAhead: false }))),
+    block('NZ: HQSC Tall Man lettering and units, two rows selected for an action', h(ClinicalLocaleProvider, { region: 'NZ' }, h(MedicationsList, { medications: meds.slice(1, 9), now: now, maxHeight: 260, defaultSelectedIds: ['4', '9'], contextActions: [{ id: 'suspend', label: 'Suspend', group: 'direct' }] }))),
+    block('Empty current list', h(MedicationsList, { medications: [], now: now, maxHeight: 160 }))
+  )
+);
+</script>

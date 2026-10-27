@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuickList · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Medications</p>
+<h1 style="margin:0 0 4px;font-size:20px">QuickList</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Quick List on its own: description, shortcuts, change notice; AU and NZ names · Guidelines: <code>src/medications/QuickList/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { QuickList, ClinicalLocaleProvider } = window.ClinicalCUI;
+const g = (id, genericName, extra) => Object.assign({ id: id, genericName: genericName }, extra || {});
+const general = [g('para', 'paracetamol'), g('amox', 'amoxicillin'), g('coam', 'co-amoxiclav', { ingredients: 'amoxicillin + clavulanic acid' }), g('amlo', 'amlodipine'),
+  g('aten', 'atenolol'), g('furo', 'furosemide'), g('metf', 'metformin'), g('pred', 'prednisone'), g('oxy', 'oxycodone', { brandName: 'Oxycontin', misSelectionRisk: true }), g('enox', 'enoxaparin')];
+const lists = [
+  { id: 'gen', name: 'General Medicine', description: '10 commonly prescribed medications', items: general },
+  { id: 'resp', name: 'Respiratory', description: '2 respiratory medications', items: [g('salb', 'salbutamol'), g('pred2', 'prednisolone')] }
+];
+const block = (title, el) => h('div', { style: { marginBottom: 20 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' } },
+    block('GB: two lists, change notice beside the list (shortcuts off until closed)', h(QuickList, { lists: lists, selectedId: 'amox', changedOn: '2026-10-20', onSelect: () => {} })),
+    h('div', null,
+      block('AU: mixed-case lettering, brand in Title Case italic', h(ClinicalLocaleProvider, { region: 'AU' }, h(QuickList, { lists: lists.slice(0, 1), onSelect: () => {} }))),
+      block('NZ: HQSC Tall Man lettering', h(ClinicalLocaleProvider, { region: 'NZ' }, h(QuickList, { lists: lists.slice(1), onSelect: () => {} }))))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

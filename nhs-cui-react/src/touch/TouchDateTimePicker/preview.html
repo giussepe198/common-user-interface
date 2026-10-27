@@ -1,0 +1,34 @@
+<!-- @dsCard group="Mobile touch inputs" height=2700 width=390 subtitle="Touch date and time (P1): NZ day-first read-back, AU repeated hour, GB future-time guard" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TouchDateTimePicker, ClinicalLocaleProvider } = window.ClinicalCUI;
+const cap = t => h('p', { className: 'cui-label', style: { margin: '16px 0 4px' } }, t);
+const frame = c => h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } }, c);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    cap('NZ: typed "5/4" read back day first, yesterday approx 21:30 chosen'),
+    frame(h(ClinicalLocaleProvider, { region: 'NZ' },
+      h(TouchDateTimePicker, {
+        now: new Date('2026-10-26T08:45:00Z'),
+        defaultDateText: '5/4',
+        defaultValue: { date: { year: 2026, month: 10, day: 25 }, time: { hours: 21, minutes: 30 }, approximate: true, timeNotKnown: false },
+        onConfirm: () => undefined, stickyActions: false
+      }))),
+    cap('AU (Sydney): 02:30 on the day clocks go back, which one?'),
+    frame(h(ClinicalLocaleProvider, { region: 'AU' },
+      h(TouchDateTimePicker, {
+        now: new Date('2026-04-05T03:00:00Z'),
+        defaultValue: { date: { year: 2026, month: 4, day: 5 }, time: { hours: 2, minutes: 30 }, approximate: false, timeNotKnown: false },
+        onConfirm: () => undefined, stickyActions: false
+      }))),
+    cap('GB: a time in the future is refused; time not known offered'),
+    frame(h(TouchDateTimePicker, {
+      region: 'GB',
+      now: new Date('2026-10-27T14:00:00Z'),
+      defaultValue: { date: { year: 2026, month: 10, day: 27 }, time: { hours: 16, minutes: 0 }, approximate: false, timeNotKnown: false },
+      onConfirm: () => undefined, stickyActions: false
+    }))
+  )
+);
+</script>

@@ -1,0 +1,11 @@
+/* Reopen template prescriptions (MSP-1260 to MSP-1290) */
+.cui-template-reopen { display: inline-flex; }
+.cui-template-reopen__button {
+  display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 14px; line-height: 20px;
+  padding: 5px 8px; background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md); cursor: pointer;
+}
+.cui-template-reopen__button:hover { background: var(--hover); }
+.cui-template-reopen.is-active .cui-template-reopen__button { border-color: var(--accent); background: var(--accent-surface); }
+.cui-template-reopen__applied { font-size: 12px; font-style: italic; color: var(--ink-muted); }
+/* Fields a template defines, highlighted while the control is active (MSP-1280/1290). Used by the forms. */
+.cui-template-defined { outline: 2px dashed var(--accent); outline-offset: 2px; border-radius: var(--radius-md); }

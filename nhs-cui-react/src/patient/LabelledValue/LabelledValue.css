@@ -1,0 +1,14 @@
+.cui-labelled-value { display: inline-flex; align-items: baseline; gap: var(--space-1); min-width: 0; }
+.cui-labelled-value--stacked { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 0; }
+.cui-labelled-value--nowrap { white-space: nowrap; }
+.cui-labelled-value__label { font-size: 12px; line-height: 16px; font-weight: 400; color: var(--ink-muted); }
+.cui-labelled-value__value { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.cui-labelled-value__value--unknown { font-weight: 400; font-style: italic; color: var(--ink-muted); }
+.cui-labelled-value__open { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; border-radius: var(--radius-sm); }
+.cui-labelled-value__open:hover { text-decoration-thickness: 2px; }
+
+/* Definition tooltip (internal) */
+.cui-deftip { position: relative; display: inline-block; }
+.cui-deftip__term { cursor: help; text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-offset: 3px; border-radius: var(--radius-sm); }
+.cui-deftip__tip { display: none; position: absolute; left: 0; top: calc(100% + var(--space-1)); z-index: 30; width: max-content; max-width: 320px; white-space: normal; padding: var(--space-2) var(--space-3); background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); font-size: 12px; line-height: 16px; font-weight: 400; font-style: normal; text-align: left; }
+.cui-deftip__tip--open { display: block; }

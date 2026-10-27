@@ -1,0 +1,5 @@
+.cui-time-range { display: inline; font-variant-numeric: tabular-nums; }
+.cui-time-range__label { color: var(--ink-muted); }
+.cui-time-range__duration { color: var(--ink-muted); white-space: nowrap; }
+.cui-time-range__problem { display: inline-flex; align-items: center; gap: var(--space-1); margin-left: var(--space-2); color: var(--warning); white-space: nowrap; }
+.cui-time-range__problem .cui-icon { flex: none; }

@@ -1,0 +1,6 @@
+/* Update marker (PAL-0880): corner triangle, top right, never over the content. */
+.cui-update-marker { position: absolute; top: 0; right: 0; width: 14px; height: 14px; padding: 0; border: none; background: var(--accent); clip-path: polygon(0 0, 100% 0, 100% 100%); cursor: pointer; }
+.cui-update-marker:hover { background: var(--accent-hover); }
+.cui-update-marker:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; clip-path: none; }
+.cui-update-marked { position: relative; background: var(--info-surface); padding: var(--space-2) 20px var(--space-2) var(--space-3); color: var(--ink); }
+.cui-update-marked__removed { font-style: italic; color: var(--ink-muted); }

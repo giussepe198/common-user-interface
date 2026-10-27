@@ -1,0 +1,10 @@
+/* Preference icon (2.3) */
+.cui-ds-pref { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: var(--radius-sm); cursor: help; }
+.cui-ds-pref__bar { fill: var(--surface); stroke: var(--border-strong); stroke-width: 0.75; }
+.cui-ds-pref__bar--on { fill: var(--accent); stroke: var(--accent); }
+.cui-ds-pref__tip { display: none; position: absolute; left: 0; bottom: calc(100% + 4px); z-index: 50; width: 240px; padding: var(--space-2); background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); box-shadow: var(--shadow-popover); font-size: 12px; line-height: 16px; flex-direction: column; gap: 2px; }
+.cui-ds-pref__tip ul { margin: 0; padding-left: var(--space-4); }
+.cui-ds-pref:hover .cui-ds-pref__tip, .cui-ds-pref:focus .cui-ds-pref__tip { display: flex; }
+.cui-ds-pref--button { border: 1px solid transparent; background: none; padding: 0; cursor: pointer; color: inherit; }
+.cui-ds-pref--button:hover { background: var(--hover); border-color: var(--border-strong); }
+.cui-ds-pref--button[aria-expanded="true"] { border-color: var(--accent); background: var(--accent-surface); }

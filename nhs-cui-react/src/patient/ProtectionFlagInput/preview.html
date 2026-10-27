@@ -1,0 +1,15 @@
+<!-- @dsCard group="Patient identification" width=1000 height=170 subtitle="HISO 10046 protection flags (NZ): name, address, contact" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ProtectionFlagInput, ClinicalLocaleProvider } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(ClinicalLocaleProvider, { region: 'NZ' },
+    h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+      h(ProtectionFlagInput, { kind: 'name' }),
+      h(ProtectionFlagInput, { kind: 'address', defaultChecked: true }),
+      h(ProtectionFlagInput, { kind: 'contact', defaultChecked: true, hint: '' })
+    )
+  )
+);
+</script>

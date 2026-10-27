@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Patient summary</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/clinicalcui/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+.scr *{box-sizing:border-box}
+.ibtn{width:48px;height:48px;border-radius:4px;border:1px solid var(--banner-divider);background:transparent;color:var(--on-banner);display:flex;align-items:center;justify-content:center;flex:none;padding:0}
+.btn{min-height:48px;padding:0 16px;border-radius:4px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn-p{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.tab{flex:1;min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px;line-height:16px;color:var(--ink-muted);text-decoration:none;border:0;background:transparent;font-family:inherit;padding:0}
+.tab-on{color:var(--accent);font-weight:600}
+.z-or{background:#ffe0ba;color:#1a2330}
+.z-ye{background:#ffff99;color:#1a2330}
+[data-theme="dark"] .z-or{background:#57381a;color:#e8edf2}
+[data-theme="dark"] .z-ye{background:#4a4712;color:#e8edf2}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div class="scr" data-theme="{{theme}}" style="width: 390px; height: 844px; display: flex; flex-direction: column; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; overflow: hidden">
+
+  <header aria-label="Patient" style="background: var(--banner); color: var(--on-banner); padding: 12px 16px; display: flex; flex-direction: column; gap: 8px">
+    <div style="display: flex; align-items: flex-start; gap: 12px">
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 4px; min-width: 0">
+        <div style="font-size: 20px; line-height: 26px; font-weight: 600">Ngata, Mereana (Ms)</div>
+        <div style="display: flex; flex-wrap: wrap; column-gap: 14px; row-gap: 2px; font-size: 14px; line-height: 20px">
+          <span><span style="color: var(--on-banner-muted)">Born </span><strong>14-Mar-1958 (68y)</strong></span>
+          <span><span style="color: var(--on-banner-muted)">Gender </span><strong>Female</strong></span>
+          <span><span style="color: var(--on-banner-muted)">NHI </span><strong style="letter-spacing: 0.04em">ZZZ0016</strong></span>
+        </div>
+      </div>
+      <button class="ibtn" type="button" aria-label="Show all patient details" aria-expanded="false">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6l6-6"/></svg>
+      </button>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+      <span style="display: inline-flex; align-items: center; gap: 6px; background: var(--banner-alert); color: var(--banner); border-radius: 4px; padding: 4px 8px; font-size: 14px; line-height: 20px; font-weight: 600">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M12 4.5l8.5 15h-17zM12 10v4.5M12 17v.4"/></svg>
+        Allergies: penicillin, latex
+      </span>
+      <span style="font-size: 14px; color: var(--on-banner-muted)">Ward 24, bed 7</span>
+    </div>
+  </header>
+
+  <main style="flex: 1; overflow: hidden; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+
+    <section aria-labelledby="ews-h" style="background: var(--surface); border: 1px solid var(--border); border-radius: 4px; display: flex; flex-direction: column">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px 8px">
+        <h2 id="ews-h" style="margin: 0; font-size: 15px; line-height: 20px; font-weight: 600">Early warning score</h2>
+        <span style="font-size: 13px; color: var(--ink-muted)">Last 13:40</span>
+      </div>
+      <div class="z-or" style="margin: 0 16px; border-radius: 4px; padding: 10px 12px; display: flex; align-items: center; gap: 12px">
+        <span style="font-size: 32px; line-height: 36px; font-weight: 700; font-variant-numeric: tabular-nums">7</span>
+        <span style="display: flex; flex-direction: column">
+          <strong>Orange zone</strong>
+          <span style="font-size: 14px; line-height: 18px">Follow your orange zone response</span>
+        </span>
+      </div>
+      <div style="padding: 8px 16px 12px; display: flex; flex-direction: column; gap: 10px">
+        <span style="font-size: 14px; color: var(--ink-muted)">Next observations due <strong style="color: var(--ink)">14:40</strong></span>
+        <button class="btn btn-p" type="button">Record observations</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="due-h" style="background: var(--surface); border: 1px solid var(--border); border-radius: 4px; display: flex; flex-direction: column">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px 4px">
+        <h2 id="due-h" style="margin: 0; font-size: 15px; line-height: 20px; font-weight: 600">Medicines due</h2>
+        <a href="A3-Medications.dc.html" style="color: var(--accent); font-size: 14px; min-height: 44px; display: inline-flex; align-items: center">All medicines</a>
+      </div>
+      <a href="B2-Administer.dc.html" style="display: flex; gap: 12px; padding: 10px 16px; border-top: 1px solid var(--border); color: var(--ink); text-decoration: none; align-items: flex-start">
+        <span style="flex: none; width: 76px; display: flex; flex-direction: column; gap: 2px">
+          <span style="display: inline-flex; align-items: center; gap: 4px; color: var(--danger); font-weight: 700; font-size: 14px">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M12 4a8 8 0 1 1 0 16a8 8 0 0 1 0-16zM12 8v4.5M12 15.5v.4"/></svg>Overdue
+          </span>
+          <span style="font-size: 14px; font-variant-numeric: tabular-nums">13:00</span>
+        </span>
+        <span style="flex: 1; font-size: 15px; line-height: 21px"><strong>paracetamol</strong> – 500 mg – tablet – <span style="font-size: 12px; letter-spacing: 0.05em">DOSE</span> <strong>1 g</strong> – oral – four times a day</span>
+      </a>
+      <a href="B2-Administer.dc.html" style="display: flex; gap: 12px; padding: 10px 16px 12px; border-top: 1px solid var(--border); color: var(--ink); text-decoration: none; align-items: flex-start">
+        <span style="flex: none; width: 76px; display: flex; flex-direction: column; gap: 2px">
+          <span style="display: inline-flex; align-items: center; gap: 4px; color: var(--accent); font-weight: 700; font-size: 14px">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M12 4a8 8 0 1 1 0 16a8 8 0 0 1 0-16zM12 8v4.5l3 2"/></svg>Due
+          </span>
+          <span style="font-size: 14px; font-variant-numeric: tabular-nums">14:00</span>
+        </span>
+        <span style="flex: 1; font-size: 15px; line-height: 21px"><strong>flucloxacillin</strong> – 500 mg – capsule – <span style="font-size: 12px; letter-spacing: 0.05em">DOSE</span> <strong>500 mg</strong> – oral – four times a day</span>
+      </a>
+    </section>
+
+    <section aria-labelledby="al-h" style="background: var(--danger-surface); border: 1px solid var(--danger); border-radius: 4px; padding: 12px 16px; display: flex; gap: 12px; align-items: flex-start">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--danger); margin-top: 1px"><path d="M12 4a8 8 0 1 1 0 16a8 8 0 0 1 0-16zM9 9l6 6M15 9l-6 6"/></svg>
+      <div style="display: flex; flex-direction: column; gap: 2px; flex: 1">
+        <h2 id="al-h" style="margin: 0; font-size: 15px; line-height: 20px; font-weight: 600">High priority alert</h2>
+        <span style="font-size: 15px; line-height: 21px">flucloxacillin is a penicillin. This patient has a recorded penicillin allergy.</span>
+        <button class="btn" type="button" style="margin-top: 8px; align-self: flex-start">Review alert</button>
+      </div>
+    </section>
+  </main>
+
+  <nav aria-label="Patient record" style="display: flex; background: var(--surface); border-top: 1px solid var(--border)">
+    <a class="tab tab-on" href="Main.dc.html" aria-current="page">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5a3.5 3.5 0 1 1 0 7a3.5 3.5 0 0 1 0-7zM5 19.5c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>Summary</a>
+    <a class="tab" href="A3-Medications.dc.html">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 15.4l6.8-6.8M5.8 18.2a3.9 3.9 0 0 1 0-5.5l6.9-6.9a3.9 3.9 0 0 1 5.5 5.5l-6.9 6.9a3.9 3.9 0 0 1-5.5 0z"/></svg>Medicines</a>
+    <a class="tab" href="P2-ObsEntry.dc.html">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2.5-6l4 12l2.5-6h5"/></svg>Obs</a>
+    <a class="tab" href="C3-Note.dc.html">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 10h14M5 14h9M5 18h6"/></svg>Notes</a>
+    <a class="tab" href="A2-Identity.dc.html">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h.01M12 12h.01M18 12h.01"/></svg>More</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'light' };
+  }
+}
+</script>
+</body>
+</html>

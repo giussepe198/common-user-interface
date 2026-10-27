@@ -1,0 +1,17 @@
+.cui-subset-filter { position: relative; display: inline-block; font-size: 14px; line-height: 20px; color: var(--ink); }
+.cui-subset-filter__button { display: inline-flex; align-items: center; gap: var(--space-1); font: inherit; font-size: 13px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: 3px var(--space-2); cursor: pointer; white-space: nowrap; }
+.cui-subset-filter__button:hover { background: var(--hover); }
+.cui-subset-filter__panel { top: calc(100% + 4px); left: 0; width: 320px; max-width: calc(100vw - 32px); }
+.cui-subset-filter__panel p { margin: 0; }
+.cui-subset-filter__choice { margin: 0; padding: var(--space-2) 0 0; border: 0; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 2px; }
+.cui-subset-filter__legend { padding: 0; font-weight: 600; }
+.cui-subset-filter__description { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-subset-filter__radios { display: flex; gap: var(--space-4); }
+.cui-subset-filter__radios label { display: inline-flex; align-items: center; gap: var(--space-1); cursor: pointer; }
+.cui-subset-filter__radios input, .cui-subset-filter__slider input { accent-color: var(--accent); margin: 0; }
+.cui-subset-filter__slider input { width: 100%; }
+.cui-subset-filter__ticks { list-style: none; margin: var(--space-1) 0 0; padding: 0; display: flex; justify-content: space-between; gap: var(--space-2); font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-subset-filter__ticks li { flex: 1 1 0; text-align: center; }
+.cui-subset-filter__ticks li:first-child { text-align: left; }
+.cui-subset-filter__ticks li:last-child { text-align: right; }
+.cui-subset-filter__tick--on { color: var(--ink); font-weight: 600; }

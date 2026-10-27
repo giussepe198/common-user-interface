@@ -1,0 +1,24 @@
+<!-- @dsCard group="Clinical noting" height=420 subtitle="Calculated scores: complete, partial and cannot be calculated, with details" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { CalculatedValue, OutOfRangeMarker } = window.ClinicalCUI;
+const contributors = [
+  { label: 'Respiration rate', value: 24, unit: '/min', section: 'Observations', fieldId: 'rr', outOfRange: 'high' },
+  { label: 'Oxygen saturation', value: 93, unit: '%', section: 'Observations', fieldId: 'spo2', outOfRange: 'low' },
+  { label: 'Systolic blood pressure', value: 118, unit: 'mmHg', section: 'Observations', fieldId: 'sbp' },
+  { label: 'Level of consciousness', value: 'Alert', source: 'record' },
+  { label: 'Temperature', section: 'Observations', fieldId: 'temp' },
+];
+function Demo() {
+  React.useEffect(() => { setTimeout(() => { const b = document.querySelector('#first .cui-calculated-value__label'); if (b) b.click(); }, 30); }, []);
+  const row = (child) => h('div', { style: { marginBottom: 12 } }, child);
+  return h('div', null,
+    row(h('span', null, 'Respiration rate ', h('strong', null, '24'), ' /min ', h(OutOfRangeMarker, { direction: 'high', showText: true }))),
+    row(h(CalculatedValue, { label: 'Body mass index', value: 31.2, decimals: 1, unit: 'kg/m²', meaning: 'Obese', normalRange: { low: 18.5, high: 24.9 }, scoringSystem: 'Weight (kg) divided by height (m) squared' })),
+    row(h(CalculatedValue, { label: 'Wells score', status: 'cannotCalculate', contributors: [{ label: 'Clinical signs of DVT', section: 'Examination', fieldId: 'dvt' }] })),
+    h('div', { id: 'first', style: { marginBottom: 12 } }, h(CalculatedValue, { label: 'Early warning score', value: 5, status: 'partial', meaning: 'Medium risk: urgent review', scoringSystem: 'National Early Warning Score 2', contributors: contributors, onOpenDetails: function () {}, onNavigateToField: function () {} }))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

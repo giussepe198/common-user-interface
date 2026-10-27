@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Give a dose</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/clinicalcui/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+.scr *{box-sizing:border-box}
+.btn{min-height:56px;padding:0 16px;border-radius:4px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:17px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn-p{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.step{display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:12px;padding:12px 16px;border-top:1px solid var(--border);background:var(--surface)}
+.dot{width:28px;height:28px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:var(--success);color:var(--surface)}
+.sl{font-size:13px;line-height:18px;color:var(--ink-muted);font-weight:600;letter-spacing:0.02em}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div class="scr" data-theme="{{theme}}" style="width: 390px; height: 844px; display: flex; flex-direction: column; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; overflow: hidden">
+
+  <header aria-label="Patient" style="background: var(--banner); color: var(--on-banner); padding: 10px 16px 12px; display: flex; flex-direction: column; gap: 6px">
+    <div style="display: flex; align-items: center; gap: 8px">
+      <a href="B1-Worklist.dc.html" aria-label="Back to worklist" style="width: 44px; height: 44px; margin-left: -8px; display: flex; align-items: center; justify-content: center; color: var(--on-banner)">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6l-6 6l6 6"/></svg></a>
+      <div style="flex: 1; font-size: 20px; line-height: 26px; font-weight: 600">CHEN, Wei</div>
+      <span style="font-size: 14px; color: var(--on-banner-muted)">Bed 12</span>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; column-gap: 14px; row-gap: 2px; font-size: 14px; line-height: 20px">
+      <span><span style="color: var(--on-banner-muted)">Born </span><strong>02-Sep-1949 (77y)</strong></span>
+      <span><span style="color: var(--on-banner-muted)">Gender </span><strong>Male</strong></span>
+      <span><span style="color: var(--on-banner-muted)">IHI </span><strong>8003 6012 3456 7894</strong></span>
+      <span><span style="color: var(--on-banner-muted)">URN </span><strong>0412345</strong></span>
+    </div>
+    <span style="font-size: 14px"><span style="color: var(--on-banner-muted)">Allergies </span><strong>Nil known</strong><span style="color: var(--on-banner-muted)"> (checked 26-Oct-2026)</span></span>
+  </header>
+
+  <div role="status" style="background: var(--success-surface); color: var(--ink); padding: 10px 16px; display: flex; gap: 10px; align-items: center; border-bottom: 1px solid var(--border)">
+    <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--success)"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    <span style="font-size: 15px"><strong>Wristband scanned 14:06.</strong> Identity matches.</span>
+  </div>
+
+  <main style="flex: 1; overflow: hidden; display: flex; flex-direction: column">
+    <div style="padding: 14px 16px 10px; display: flex; flex-direction: column; gap: 4px">
+      <h1 style="margin: 0; font-size: 18px; line-height: 24px; font-weight: 600">Give paracetamol</h1>
+      <span style="font-size: 15px; line-height: 21px"><strong>paracetamol</strong> 500 mg tablet – <em>Panadol</em> – oral – <span style="font-size: 12px; letter-spacing: 0.05em">DOSE</span> <strong>1 g</strong> – four times a day</span>
+      <span style="font-size: 14px; color: var(--danger); font-weight: 700">Overdue: scheduled 13:00</span>
+    </div>
+
+    <ol style="list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--border)">
+      <li class="step">
+        <span class="dot" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" style="width: 16px; height: 16px"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <span style="display: flex; flex-direction: column"><span class="sl">MEDICINE</span><span>Scanned <em>Panadol</em> 500 mg tablet. Matches the order.</span></span>
+      </li>
+      <li class="step">
+        <span class="dot" aria-hidden="true" style="background: var(--accent)"><svg class="i" viewBox="0 0 24 24" style="width: 16px; height: 16px"><path d="M8.6 15.4l6.8-6.8M5.8 18.2a3.9 3.9 0 0 1 0-5.5l6.9-6.9a3.9 3.9 0 0 1 5.5 5.5l-6.9 6.9a3.9 3.9 0 0 1-5.5 0z"/></svg></span>
+        <span style="display: flex; flex-direction: column; gap: 4px">
+          <span class="sl">DOSE TO GIVE</span>
+          <span style="font-size: 28px; line-height: 34px; font-weight: 700">2 tablets = 1 g</span>
+          <span style="font-size: 14px; color: var(--ink-muted)">500 mg each</span>
+        </span>
+      </li>
+      <li class="step">
+        <span class="dot" aria-hidden="true" style="background: var(--surface-muted); color: var(--ink)"><svg class="i" viewBox="0 0 24 24" style="width: 16px; height: 16px"><path d="M12 4a8 8 0 1 1 0 16a8 8 0 0 1 0-16zM12 11v5.5M12 7.8v.4"/></svg></span>
+        <span style="display: flex; flex-direction: column; gap: 2px">
+          <span class="sl">BEFORE YOU GIVE</span>
+          <span>Last given 09:02 (5 hours ago)</span>
+          <span>Given today: 2 g of 4 g maximum in 24 hours</span>
+        </span>
+      </li>
+      <li class="step">
+        <span class="dot" aria-hidden="true" style="background: var(--surface-muted); color: var(--ink)"><svg class="i" viewBox="0 0 24 24" style="width: 16px; height: 16px"><path d="M12 4a8 8 0 1 1 0 16a8 8 0 0 1 0-16zM12 8v4.5l3 2"/></svg></span>
+        <span style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+          <span style="display: flex; flex-direction: column"><span class="sl">TIME GIVEN</span><span><strong>14:06</strong> today (now)</span></span>
+          <a href="P1-DateTime.dc.html" style="color: var(--accent); min-height: 44px; display: inline-flex; align-items: center; font-weight: 600">Change</a>
+        </span>
+      </li>
+    </ol>
+  </main>
+
+  <div style="padding: 12px 16px 16px; background: var(--surface); border-top: 1px solid var(--border); display: flex; gap: 10px">
+    <a class="btn" href="B3-NotGiven.dc.html" style="flex: 1">Not given</a>
+    <button class="btn btn-p" type="button" style="flex: 1.6">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Record as given</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'light' };
+  }
+}
+</script>
+</body>
+</html>

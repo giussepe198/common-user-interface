@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PrescriptionPreview · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Medications</p>
+<h1 style="margin:0 0 4px;font-size:20px">PrescriptionPreview</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Prescription preview before authorising · Guidelines: <code>src/medications/PrescriptionPreview/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { PrescriptionPreview, ClinicalLocaleProvider } = window.ClinicalCUI;
+const block = (title, el) => h('div', { style: { marginBottom: 20 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    block('Regular medication: times listed with the first dose in bold', h(PrescriptionPreview, {
+      autoFocus: false,
+      medication: { genericName: 'diltiazem', brandName: 'Dilzem SR', form: 'modified-release capsule', dose: { value: 60, unit: 'mg' }, route: 'oral', frequency: 'twice a day' },
+      administrationTimes: ['08:00', '20:00'], firstDose: 'Today 20:00', duration: 'ongoing',
+      details: [{ label: 'Reason for prescribing', value: 'hypertension' }],
+      onClose: () => {}, onAuthorise: () => {}
+    })),
+    block('Incomplete: Authorise disabled', h(PrescriptionPreview, {
+      autoFocus: false,
+      medication: { genericName: 'amoxicillin', form: 'capsule', dose: { value: 500, unit: 'mg' }, route: 'oral', frequency: 'three times a day' },
+      administrationTimes: ['08:00', '14:00', '20:00'], firstDose: 'Today 14:00',
+      canAuthorise: false, onClose: () => {}, onAuthorise: () => {}
+    })),
+    block('AU: on-screen order with route before DOSE, Title Case brand, SUPPLY', h(ClinicalLocaleProvider, { region: 'AU' }, h(PrescriptionPreview, {
+      autoFocus: false, scheduleInLine: false,
+      medication: { genericName: 'warfarin sodium', brandName: 'Marevan', strength: { kind: 'simple', values: [5], unit: 'mg' }, form: 'tablet', route: 'oral', dose: { value: 5, unit: 'mg' }, frequency: 'once a day', qualifiers: ['at 16:00'], supply: { value: 50, unit: 'tablets' } },
+      administrationTimes: ['16:00'], firstDose: 'Today 16:00', duration: 'ongoing',
+      onClose: () => {}, onAuthorise: () => {}
+    }))),
+    block('NZ: Tall Man lettering, microgram in full', h(ClinicalLocaleProvider, { region: 'NZ' }, h(PrescriptionPreview, {
+      autoFocus: false,
+      medication: { genericName: 'clonidine', form: 'tablet', dose: { value: 0.075, unit: 'mg' }, route: 'po', frequency: 'BD' },
+      administrationTimes: ['08:00', '20:00'], firstDose: 'Today 20:00',
+      onClose: () => {}, onAuthorise: () => {}
+    })))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

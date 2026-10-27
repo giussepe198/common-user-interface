@@ -1,0 +1,4 @@
+.cui-icon-toolbar { display: inline-flex; align-self: flex-start; align-items: stretch; flex-wrap: wrap; gap: var(--space-2); padding: var(--space-1); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); max-width: 100%; }
+.cui-icon-toolbar__group { display: inline-flex; align-items: center; gap: 2px; padding: 2px; background: var(--surface-sunken); border-radius: var(--radius-md); }
+.cui-icon-toolbar__separator { width: 1px; align-self: stretch; margin: var(--space-1) 0; background: var(--border); }
+.cui-icon-toolbar--below .cui-icon-toolbar__group { align-items: stretch; }

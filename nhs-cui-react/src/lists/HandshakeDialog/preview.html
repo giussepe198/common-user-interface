@@ -1,0 +1,13 @@
+<!-- @dsCard group="Handover" height=1260 subtitle="Handshake: accept or refuse, and a retrospective unsatisfactory record" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { HandshakeDialog } = window.ClinicalCUI;
+const items = [{ id: 'p1', label: 'SMITH, John (Mr), Elkington Ward bed 1' }, { id: 'p2', label: 'SMITH, John (Mr), Elkington Ward bed 4' }];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gap: 16, justifyItems: 'start' } },
+    h(HandshakeDialog, { modal: false, items, giver: 'Dr A Mensah (FY1, day)', receiver: 'Dr L Brennan (FY1, night)', place: 'Elkington Ward office', dateTime: '2026-10-27T20:05', othersPresent: 'Nurse R Kelly', onSubmit: () => {}, onCancel: () => {} }),
+    h(HandshakeDialog, { modal: false, retrospective: true, items: items.slice(0, 1), giver: 'Dr A Mensah (FY1, day)', receiver: 'Dr L Brennan (FY1, night)', place: 'Telephone', dateTime: '2026-10-27T20:05', onSubmit: () => {}, onCancel: () => {} })
+  )
+);
+</script>

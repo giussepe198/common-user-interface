@@ -1,0 +1,11 @@
+<!-- @dsCard group="Terminology" height=280 subtitle="Spelling suggestions with OK, Ignore and Cancel; nothing pre-selected; macrons kept" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SpellCheckPopover } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    h(SpellCheckPopover, { word: 'pnuemonia', suggestions: [{ text: 'pneumonia', source: 'terminology' }, { text: 'pneumonic', source: 'dictionary' }], onAccept: function () {}, onIgnore: function () {}, onCancel: function () {} }),
+    h(SpellCheckPopover, { word: 'whanau', title: 'Check spelling (NZ)', suggestions: [{ text: 'whānau', source: 'dictionary' }], onAccept: function () {}, onIgnore: function () {}, onCancel: function () {} }))
+);
+</script>

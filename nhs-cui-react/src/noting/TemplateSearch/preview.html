@@ -1,0 +1,27 @@
+<!-- @dsCard group="Clinical noting" width=1200 height=480 subtitle="Template search (experimental): context filter, suggested and additional templates, metadata fly-out, section matches" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TemplateSearch } = window.ClinicalCUI;
+const T = [
+  { id: 'adm', title: 'General medical admission', generic: true, suggested: true, metadata: [{ label: 'Version', value: '3.2' }, { label: 'Sections', value: 'Presenting complaint, Past medical history, Chest examination' }, { label: 'Last used', value: '21-Oct-2026 for this patient' }],
+    sections: [{ id: 'pc', title: 'Presenting complaint' }, { id: 'obs', title: 'Observations and findings', synonyms: ['o/e', 'examination'], children: [{ id: 'chest', title: 'Chest examination' }, { id: 'vs', title: 'Vital signs' }] }] },
+  { id: 'cp', title: 'Chest pain assessment with risk stratification for acute coronary syndrome', contexts: ['Cardiology'], metadata: [{ label: 'Version', value: '1.4' }] },
+  { id: 'chf', title: 'Chest physiotherapy referral', contexts: ['Respiratory'] },
+  { id: 'wells', title: "Wells' score for pulmonary embolism", additional: true, contexts: ['Cardiology', 'Acute medicine'] },
+  { id: 'pmh', title: 'Past medical history', abbreviations: ['PMH'], generic: true },
+];
+function Demo() {
+  React.useEffect(() => {
+    setTimeout(() => {
+      const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
+      [['#a input[type=text]', 'chest'], ['#b input[type=text]', 'physio']].forEach(([sel, v]) => { const i = document.querySelector(sel); if (i) { set.call(i, v); i.dispatchEvent(new Event('input', { bubbles: true })); } });
+      setTimeout(() => { const t = document.querySelector('#a .cui-template-search__title'); if (t) t.focus(); const e = document.querySelector('#a .cui-template-search__expand'); if (e) e.click(); }, 30);
+    }, 60);
+  }, []);
+  return h('div', { style: { display: 'flex', gap: 48, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    h('div', { id: 'a', style: { width: 720 } }, h(TemplateSearch, { templates: T, context: 'Cardiology', onSelect: function () {} })),
+    h('div', { id: 'b' }, h(TemplateSearch, { templates: T, context: 'Cardiology', onSelect: function () {}, label: 'No matches with the filter on' })));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

@@ -1,0 +1,4 @@
+.cui-required-indicator { display: inline; }
+.cui-required-indicator__mark { color: var(--danger); font-weight: 600; margin-left: 2px; }
+.cui-required-key { margin: 0; font-size: 12px; line-height: 16px; color: var(--ink-muted); display: flex; align-items: baseline; gap: var(--space-1); }
+.cui-required-key .cui-required-indicator__mark { margin-left: 0; font-size: 14px; }

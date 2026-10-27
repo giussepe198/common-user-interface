@@ -1,0 +1,13 @@
+<!-- @dsCard group="Lists and filtering" height=300 width=1000 subtitle="Historical view banner: word Historical, emphasised time, return to current; tag in a heading; unknown time" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { HistoricalSnapshotBanner } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gap: 16 } },
+    h(HistoricalSnapshotBanner, { asAt: new Date(2026, 9, 26, 7, 30), subject: 'Ward 3 patient list', onReturnToCurrent: () => {} }),
+    h('h2', { style: { margin: 0, fontSize: 18, display: 'flex', gap: 8, alignItems: 'center' } }, h(HistoricalSnapshotBanner, { variant: 'tag' }), 'Patient list for: Dr Okafor'),
+    h(HistoricalSnapshotBanner, {})
+  )
+);
+</script>

@@ -1,0 +1,35 @@
+<!-- @dsCard group="Patient identification" width=1000 height=1165 subtitle="Patient name input, InForm and InLine layouts" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ClinicalLocaleProvider } = window.ClinicalCUI;
+const regionCaption = (t) => h('div', { style: { font: '600 12px/16px var(--font-sans)', color: 'var(--ink-muted)', margin: '12px 0 4px' } }, t);
+const inRegion = (region, child, extra) => h(ClinicalLocaleProvider, Object.assign({ region }, extra || {}), child);
+const { PatientNameInput } = window.ClinicalCUI;
+const panel = (t, child) => h('div', { style: { padding: 16, background: 'var(--surface)', border: '1px solid var(--border)' } },
+  h('div', { style: { font: '600 15px/20px var(--font-sans)', marginBottom: 12 } }, t), child);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    regionCaption('GB (NHS CUI)'),
+  h('div', { style: { display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    panel('InForm (default)', h(PatientNameInput, {
+      defaultValue: { title: 'Mr', familyName: 'SMITH', givenName: 'John', middleNames: '', suffix: '', preferredName: '' },
+    })),
+    panel('InLine, with an error', h(PatientNameInput, {
+      layout: 'inline', fields: ['title', 'familyName', 'givenName', 'preferredName'],
+      defaultValue: { title: 'Professor', familyName: '', givenName: 'Catherine' },
+      errors: { familyName: 'Enter the family name' },
+    }))
+  ),
+    regionCaption('AU and NZ: regional labels and lengths, single-name option, case kept as given'),
+    h('div', { style: { display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' } },
+      inRegion('AU', panel('AU', h(PatientNameInput, {
+        defaultValue: { title: '', familyName: "O'Brien", givenName: 'Mia', middleNames: 'Rose', suffix: '', preferredName: 'Mimi' },
+      }))),
+      inRegion('NZ', panel('NZ, single name', h(PatientNameInput, {
+        fields: ['title', 'familyName', 'givenName', 'middleNames', 'preferredName'],
+        defaultValue: { familyName: 'Ngāwai', givenName: '', singleName: true },
+      }))))
+  )
+);
+</script>

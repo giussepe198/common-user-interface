@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PatientList · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Lists and filtering</p>
+<h1 style="margin:0 0 4px;font-size:20px">PatientList</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Ward patient list with identical names, sublists, updates, filter and grouping; AU and NZ identification · Guidelines: <code>src/lists/PatientList/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { PatientList, DataToolbar, ClinicalLocaleProvider } = window.ClinicalCUI;
+const rows = [
+  { bed: 'Bed 1', patient: { familyName: 'Smith', givenName: 'John', title: 'Mr', dateOfBirth: '1948-03-12', nhsNumber: '9990000018' }, consultant: 'Dr Okafor', age: 78, news: 5, admitted: '2026-10-21', tasks: ['Repeat U&E at 16:00', 'Review chest X-ray'], problem: 'Community-acquired pneumonia' },
+  { bed: 'Bed 2', patient: { familyName: 'Patel', givenName: 'Asha', title: 'Mrs', preferredName: 'Ash', dateOfBirth: '1962-11-02', nhsNumber: '9990000026' }, consultant: 'Dr Lindqvist', age: 63, news: 1, admitted: '2026-10-25', tasks: ['Physiotherapy review'], problem: 'Exacerbation of COPD' },
+  { bed: 'Bed 3', patient: null, consultant: '', age: null, news: null, admitted: null, tasks: [], problem: '' },
+  { bed: 'Bed 4', patient: { familyName: 'Smith', givenName: 'John', title: 'Mr', dateOfBirth: '1971-07-30', nhsNumber: '9990000034' }, consultant: 'Dr Okafor', age: 55, news: 3, admitted: '2026-10-26', tasks: ['Sputum culture result', 'Start oral antibiotics', 'Discharge letter'], problem: 'Asthma, acute severe' },
+  { bed: 'Bed 5', patient: { givenName: 'Ben', gender: 'Male', temporaryNumber: 'T-20481' }, consultant: 'Dr Lindqvist', age: null, news: 7, admitted: '2026-10-27', tasks: ['Identify patient', 'Arterial blood gas'], problem: 'Unknown, found collapsed' },
+  { bed: 'Bed 6', patient: { familyName: 'Nguyen', givenName: 'Thi', title: 'Ms', dateOfBirth: '1990-01-15', nhsNumber: '9990000042' }, consultant: 'Dr Okafor', age: 36, news: 0, admitted: '2026-10-24', tasks: [], problem: 'Pleural effusion, drained' },
+];
+const columns = [
+  { id: 'bed', title: 'Location', kind: 'location', align: 'center', width: 96 },
+  { id: 'patient', title: 'Patient', kind: 'patient', width: 230 },
+  { id: 'consultant', title: 'Consultant', dataType: 'unorderedSymbol', width: 130 },
+  { id: 'age', title: 'Age', unit: 'years', dataType: 'integer', align: 'right', width: 90 },
+  { id: 'news', title: 'NEWS2 score', dataType: 'integer', align: 'right', width: 100 },
+  { id: 'admitted', title: 'Admitted', dataType: 'date', width: 120 },
+  { id: 'problem', title: 'Working diagnosis', width: 190 },
+  { id: 'tasks', title: 'Outstanding tasks', sublist: r => r.tasks, getValue: r => r.tasks.length, dataType: 'integer', width: 210 },
+];
+function Demo() {
+  const [updates, setUpdates] = React.useState([
+    { id: 'u1', rowKey: 'Bed 4', columnId: 'tasks', sublistIndex: 1 },
+    { id: 'u2', rowKey: 'Bed 1', columnId: 'news' },
+    { id: 'u3', rowKey: 'Bed 5' },
+    { id: 'u4', rowKey: 'Bed 2', columnId: 'tasks', removedCount: 2 },
+  ]);
+  const [groupBy, setGroupBy] = React.useState('consultant');
+  const [filter, setFilter] = React.useState({ combine: 'or', criteria: [{ attributeId: 'news', operator: 'greaterThanOrEqual', value: '3' }] });
+  const common = { columns, getRowKey: r => r.bed, getPatient: r => r.patient, locations: ['Elkington Ward, North wing'], service: 'Respiratory medicine' };
+  return h('div', { style: { display: 'grid', gap: 24 } },
+    h(PatientList, Object.assign({}, common, {
+      rows, listFor: 'Dr Okafor', timestamp: '2026-10-27T14:32', timestampKind: 'lastUpdated', inclusionCriteria: 'All inpatients on Elkington Ward',
+      updates, onUnmark: ids => setUpdates(u => u.filter(x => !ids.includes(x.id))),
+      realTime: false, lastRefreshed: '2026-10-27T14:27', now: '2026-10-27T14:32', refreshIntervalLabel: 'every 5 minutes', onRefresh: () => {},
+      maxHeight: 640,
+    })),
+    h(PatientList, Object.assign({}, common, {
+      rows, listFor: 'Respiratory team', timestamp: '2026-10-27T14:32', timestampKind: 'current',
+      filter, onFilterChange: setFilter, groupBy,
+      toolbar: h(DataToolbar, { label: 'Patient list tools', keyboardShortcuts: false, onFilter: () => {}, onSort: () => {}, groupOptions: [{ id: 'consultant', label: 'Consultant' }, { id: 'news', label: 'NEWS2 score' }], groupBy, onGroupByChange: setGroupBy, filterActive: !!filter, onRemoveAllFilters: () => setFilter(null) }),
+      onHeaderCommand: () => {}, defaultSort: [{ attributeId: 'news', direction: 'desc' }], maxHeight: 420,
+    })),
+    h('div', { style: { maxWidth: 640 } },
+      h(PatientList, Object.assign({}, common, {
+        rows: rows.slice(0, 3), historical: true, listFor: 'Dr Okafor', timestamp: '2026-10-20T08:00',
+      }))
+    )
+  );
+}
+const auRows = [
+  { bed: 'Bed 1', patient: { familyName: 'Nguyen', givenName: 'Minh', dateOfBirth: '1951-06-07', ihi: '8003601234567894', ihiStatus: { record: 'Unverified' }, mrn: '00412377' }, news: 5, problem: 'Sepsis, urinary source' },
+  { bed: 'Bed 2', patient: { familyName: 'Nguyen', givenName: 'Minh', dateOfBirth: '1979-02-11', mrn: '00398812' }, news: 1, problem: 'Cellulitis, left leg' },
+  { bed: 'Bed 3', patient: { familyName: 'Jupurrurla', dateOfBirth: '1966-09-30', mrn: '00377101' }, news: 2, problem: 'Community-acquired pneumonia' },
+];
+const nzRows = [
+  { bed: 'Bed 1', patient: { familyName: 'Te Huia', givenName: 'Kāhu', title: 'Mr', dateOfBirth: '1958-04-19', nhi: 'ZAC5361' }, news: 6, problem: 'Exacerbation of COPD' },
+  { bed: 'Bed 2', patient: { familyName: 'Te Huia', givenName: 'Kahu', title: 'Mr', dateOfBirth: '1990-12-02', nhi: 'ZBN77VL' }, news: 0, problem: 'Asthma' },
+  { bed: 'Bed 3', patient: { familyName: 'Ngāwai', dateOfBirth: '1944-01-05', nhi: 'zaa0067' }, news: 3, problem: 'Fall, fractured neck of femur' },
+];
+const smallCols = [
+  { id: 'bed', title: 'Location', kind: 'location', align: 'center' },
+  { id: 'patient', title: 'Patient', kind: 'patient' },
+  { id: 'news', title: 'EWS', dataType: 'integer', align: 'right' },
+  { id: 'problem', title: 'Working diagnosis' },
+];
+function Regional() {
+  const [f, setF] = React.useState(null);
+  const small = { columns: smallCols, getRowKey: r => r.bed, getPatient: r => r.patient, timestamp: '2026-10-27T14:32', timestampKind: 'current' };
+  return h('div', { style: { display: 'grid', gap: 24, marginTop: 24 } },
+    h('h3', { style: { margin: 0, fontSize: 15 } }, 'AU: IHI then URN, unverified IHI qualified, single name alone, header-cell filter'),
+    h(ClinicalLocaleProvider, { region: 'AU' }, h(PatientList, Object.assign({}, small, { rows: auRows, listFor: 'General medicine', locations: ['Ward 7B, Royal Example Hospital'], headerFilter: true, filter: f, onFilterChange: setF }))),
+    h('h3', { style: { margin: 0, fontSize: 15 } }, 'NZ: NHI, family name as recorded with macrons, Kāhu and Kahu flagged as similar'),
+    h(ClinicalLocaleProvider, { region: 'NZ' }, h(PatientList, Object.assign({}, small, { rows: nzRows, listFor: 'Ward 22 respiratory', locations: ['Ward 22, Example Hospital'] })))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null, h(Demo), h(Regional)));
+</script>
+
+</div>
+</body>
+</html>

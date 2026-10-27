@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SectionSearch · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Clinical noting</p>
+<h1 style="margin:0 0 4px;font-size:20px">SectionSearch</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Section search (experimental): button or Ctrl+Shift+H, breadcrumb labels, already-open sections · Guidelines: <code>src/noting/SectionSearch/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SectionSearch } = window.ClinicalCUI;
+const S = [
+  { id: 'vs', title: 'Vital signs', path: ['Observations and findings'] },
+  { id: 'bp', title: 'Blood pressure', path: ['Observations and findings', 'Vital signs'] },
+  { id: 'cvs', title: 'Cardiovascular examination', path: ['Observations and findings'], synonyms: ['heart examination'] },
+  { id: 'news', title: 'NEWS2 score', path: [], additional: true },
+  { id: 'pmh', title: 'Past medical history', path: [], abbreviations: ['PMH'] },
+];
+function Demo() {
+  React.useEffect(() => { setTimeout(() => { const i = document.querySelector('#open input'); if (i) { const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set; set.call(i, 'v'); i.dispatchEvent(new Event('input', { bubbles: true })); set.call(i, 'blood'); i.dispatchEvent(new Event('input', { bubbles: true })); } }, 60); }, []);
+  return h('div', { style: { display: 'flex', gap: 48, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    h(SectionSearch, { sections: S, onInsert: function () {} }),
+    h('div', { id: 'open' }, h(SectionSearch, { sections: S, openIds: ['bp'], defaultOpen: true, shortcut: null, onInsert: function () {} })));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

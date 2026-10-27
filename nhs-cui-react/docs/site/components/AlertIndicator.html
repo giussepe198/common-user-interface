@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AlertIndicator · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1148px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Decision support</p>
+<h1 style="margin:0 0 4px;font-size:20px">AlertIndicator</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Alert indicator: the five states · Guidelines: <code>src/administration/AlertIndicator/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AlertIndicator } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' } },
+    h(AlertIndicator, { state: 'none' }),
+    h(AlertIndicator, { state: 'priorityUnviewed', count: 2 }),
+    h(AlertIndicator, { state: 'priorityViewed', count: 2 }),
+    h(AlertIndicator, { state: 'highUnviewed', count: 3 }),
+    h(AlertIndicator, { state: 'highViewed', count: 3 }),
+    h(AlertIndicator, { state: 'highUnviewed', count: 3, showLabel: false })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

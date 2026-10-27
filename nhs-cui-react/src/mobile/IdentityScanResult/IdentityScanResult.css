@@ -1,0 +1,13 @@
+.cui-identity-scan { display: flex; gap: 10px; align-items: flex-start; padding: 10px var(--space-4); border-bottom: 1px solid var(--border); background: var(--info-surface); color: var(--ink); font-size: 15px; line-height: 21px; }
+.cui-identity-scan__icon { flex: none; display: inline-flex; margin-top: 1px; color: var(--info); }
+.cui-identity-scan__body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.cui-identity-scan__detail { font-size: 14px; color: var(--ink-muted); }
+.cui-identity-scan--match { background: var(--success-surface); }
+.cui-identity-scan--match .cui-identity-scan__icon { color: var(--success); }
+.cui-identity-scan--mismatch { background: var(--danger-surface); border: 2px solid var(--danger); }
+.cui-identity-scan--mismatch .cui-identity-scan__icon { color: var(--danger); }
+.cui-identity-scan--insufficient, .cui-identity-scan--unreadable { background: var(--warning-surface); }
+.cui-identity-scan--insufficient .cui-identity-scan__icon, .cui-identity-scan--unreadable .cui-identity-scan__icon { color: var(--warning); }
+.cui-identity-scan__differences { margin: 0; padding-left: 20px; font-weight: 600; }
+.cui-identity-scan__scanned { display: flex; flex-direction: column; gap: var(--space-1); margin-top: var(--space-1); padding: var(--space-2) var(--space-3); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-identity-scan__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-1); }

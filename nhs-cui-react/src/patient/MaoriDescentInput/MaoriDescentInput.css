@@ -1,0 +1,2 @@
+.cui-patient-question__options--row { flex-direction: row; flex-wrap: wrap; column-gap: var(--space-6); }
+.cui-maori-descent-input__te-reo, .cui-iwi-input__te-reo { display: block; margin-top: 2px; }

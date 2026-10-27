@@ -1,0 +1,8 @@
+/* Quick List (MSP-0060 to MSP-0270); rows share the drug search styles */
+.cui-quick-list { display: inline-flex; flex-direction: column; gap: var(--space-2); max-width: 100%; color: var(--ink); }
+.cui-quick-list__select { display: inline-flex; align-items: center; gap: var(--space-2); }
+.cui-quick-list__label { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-quick-list__select select { font: inherit; font-size: 14px; padding: 3px 6px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); }
+/* Notice beside the list, never over it (MSP-0210) */
+.cui-quick-list__area { display: flex; align-items: flex-start; gap: var(--space-3); flex-wrap: wrap; }
+.cui-quick-list__box { min-width: 320px; width: max-content; max-width: 100%; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); overflow: hidden; }

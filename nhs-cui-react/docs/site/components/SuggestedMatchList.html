@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SuggestedMatchList · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Terminology</p>
+<h1 style="margin:0 0 4px;font-size:20px">SuggestedMatchList</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Suggested matches with confirm check boxes, indented attributes and free text; AU and NZ preferred terms · Guidelines: <code>src/noting/SuggestedMatchList/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SuggestedMatchList, SNOMED_EDITIONS } = window.ClinicalCUI;
+const AU = SNOMED_EDITIONS.AU.clinicianRefset.id;
+const NZ = SNOMED_EDITIONS.NZ.clinicianRefset.id;
+const para = [{ term: 'Paracetamol poisoning', type: 'synonym', acceptability: { [AU]: 'preferred' } }, { term: 'Paracetamol overdose', type: 'synonym', acceptability: { [NZ]: 'preferred' } }];
+const label = (t, el) => h('div', null, h('p', { style: { margin: '0 0 6px', fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' } }, t), el);
+function Demo() {
+  const [items, setItems] = React.useState([
+    { id: 's1', sourceText: 'painful swollen left knee since fall', label: 'Swelling of knee joint', confirmed: true,
+      attributes: [{ id: 'a1', label: 'Left', friendlyName: 'side', mandatory: true, confirmed: true }, { id: 'a2', label: 'Painful', confirmed: false }],
+      freeText: ['since fall'] },
+    { id: 's2', sourceText: 'no gastroenteritis', label: 'Gastroenteritis', modifier: 'knownAbsent', confirmed: false },
+    { id: 's3', sourceText: 'fracture radius', label: 'Fracture of radius', unresolvedMandatory: 'Laterality', warnings: ['More specific matches are available'] },
+    { id: 's4', sourceText: 'SLE', label: 'SLE - Systemic lupus erythematosus', sameSpellingAlternatives: true },
+  ]);
+  const setConfirm = (id, on) => setItems(items.map((s) => s.id === id ? Object.assign({}, s, { confirmed: on, attributes: (s.attributes || []).map((a) => Object.assign({}, a, { confirmed: on ? true : a.confirmed })) }) : s));
+  const setAttr = (id, aid, on) => setItems(items.map((s) => s.id === id ? Object.assign({}, s, { attributes: s.attributes.map((a) => a.id === aid ? Object.assign({}, a, { confirmed: on }) : a) }) : s));
+  return h('div', { style: { display: 'flex', gap: 32, alignItems: 'flex-start', flexWrap: 'wrap' } },
+    h(SuggestedMatchList, { suggestions: items, focusedId: 's2', onConfirmChange: setConfirm, onAttributeConfirmChange: setAttr, onOpenAlternatives: function () {} }),
+    h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16 } },
+      h(SuggestedMatchList, { suggestions: [] }),
+      label('AU: Australian English preferred term', h(SuggestedMatchList, { region: 'AU', showEdition: true, suggestions: [{ id: 'p1', sourceText: 'took 40 panadol', label: 'Paracetamol poisoning', descriptions: para }] })),
+      label('NZ: NZ English preferred term', h(SuggestedMatchList, { region: 'NZ', showEdition: true, suggestions: [{ id: 'p1', sourceText: 'took 40 pamol', label: 'Paracetamol poisoning', descriptions: para }] })))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

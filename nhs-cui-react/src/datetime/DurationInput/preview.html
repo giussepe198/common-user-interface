@@ -1,0 +1,19 @@
+<!-- @dsCard group="Dates and times" height=560 width=900 subtitle="Duration entry with unit checks and daylight saving notices (GB, AU, NZ)" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DurationInput, ClinicalLocaleProvider } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 24, alignItems: 'start' } },
+    h(DurationInput, { label: 'Duration of infusion', defaultValue: { hours: 2, minutes: 40 }, allowApproximate: true }),
+    h(DurationInput, { label: 'Duration', defaultValue: { hours: 2 }, startDateTime: new Date(Date.UTC(2010, 2, 27, 23, 30)), hideInstructions: true }),
+    h(DurationInput, { label: 'Length of stay', error: '"1.5d" contains a decimal or fraction. Durations use whole numbers only, e.g. 1hr 30min rather than 1.5hr.' }),
+    h(ClinicalLocaleProvider, { region: 'AU' },
+      h(DurationInput, { label: 'AU (Sydney): Infusion from 00:00 on 04-Oct-2026', defaultValue: { hours: 4 }, startDateTime: new Date(Date.UTC(2026, 9, 3, 14, 0)), hideInstructions: true })),
+    h(ClinicalLocaleProvider, { region: 'NZ' },
+      h(DurationInput, { label: 'NZ: Infusion from 01:00 on 05-Apr-2026', defaultValue: { hours: 3 }, startDateTime: new Date(Date.UTC(2026, 3, 4, 12, 0)), hideInstructions: true })),
+    h(ClinicalLocaleProvider, { region: 'AU', timeZone: 'Australia/Brisbane' },
+      h(DurationInput, { label: 'AU (Brisbane): no daylight saving, no notice', defaultValue: { hours: 4 }, startDateTime: new Date(Date.UTC(2026, 9, 3, 14, 0)), hideInstructions: true }))
+  )
+);
+</script>

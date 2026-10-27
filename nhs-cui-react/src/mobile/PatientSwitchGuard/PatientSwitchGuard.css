@@ -1,0 +1,19 @@
+.cui-patient-switch { display: flex; flex-direction: column; min-height: 0; }
+.cui-patient-switch--fill { flex: 1 1 auto; height: 100%; }
+.cui-patient-switch__live { flex: none; }
+.cui-patient-switch__live:empty { display: none; }
+.cui-patient-switch__screen { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; overflow-y: auto; }
+.cui-patient-switch__screen > :only-child { flex: 1 1 auto; min-height: 0; }
+.cui-patient-switch__flash { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: var(--space-2); row-gap: var(--space-2); padding: var(--space-2) var(--space-2) var(--space-3) var(--space-4); background: var(--accent-surface); border: 3px solid var(--accent); color: var(--ink); animation: cui-patient-switch-in 240ms ease-out 2; }
+.cui-patient-switch__flash-head { grid-column: 1; grid-row: 1; display: flex; align-items: center; gap: var(--space-2); font-size: 15px; line-height: 20px; color: var(--accent); }
+.cui-patient-switch__flash > .cui-mobile-identity { grid-column: 1 / -1; grid-row: 2; padding-right: var(--space-2); }
+.cui-patient-switch__flash .cui-mobile-identity__name { font-size: 20px; line-height: 26px; }
+.cui-patient-switch__dismiss { grid-column: 2; grid-row: 1; min-width: 88px; min-height: 48px; padding: 0 var(--space-3); border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); font: inherit; font-size: 16px; font-weight: 600; cursor: pointer; touch-action: manipulation; }
+.cui-patient-switch__dismiss:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-patient-switch__compare { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-2) var(--space-4) var(--space-4); }
+.cui-patient-switch__card { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-3); border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); }
+.cui-patient-switch__card--new { border: 2px solid var(--danger); background: var(--danger-surface); }
+.cui-patient-switch__differences { display: flex; gap: var(--space-2); align-items: flex-start; color: var(--warning); background: var(--warning-surface); border: 1px solid var(--warning); border-radius: var(--radius-md); padding: var(--space-2) var(--space-3); font-weight: 700; font-size: 15px; line-height: 21px; }
+.cui-patient-switch__differences .cui-icon { flex: none; margin-top: 3px; }
+@keyframes cui-patient-switch-in { from { background: var(--accent); } to { background: var(--accent-surface); } }
+@media (prefers-reduced-motion: reduce) { .cui-patient-switch__flash { animation: none; } }

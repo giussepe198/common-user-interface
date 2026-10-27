@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SpeechEngine · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile voice</p>
+<h1 style="margin:0 0 4px;font-size:20px">SpeechEngine</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Speech engine adapter: a scripted engine driving the dictation hook (listening with results), an unavailable engine, and a permission error · Guidelines: <code>src/voice/SpeechEngine/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ScriptedSpeechEngine, useSpeechDictation, MicButton, LiveTranscript, ClinicalLocaleProvider } = window.ClinicalCUI;
+function Demo({ engine, autoStart, title }) {
+  const d = useSpeechDictation(engine);
+  React.useEffect(() => { if (autoStart) d.start(); }, []);
+  return h('section', { style: { display: 'flex', flexDirection: 'column', gap: 8, padding: 12, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 4, marginBottom: 12 } },
+    h('h2', { style: { margin: 0, fontSize: 15, lineHeight: '20px' } }, title),
+    h('div', { style: { display: 'flex', gap: 12, alignItems: 'center' } },
+      h(MicButton, { status: d.status, onPress: d.toggle, errorMessage: d.error && d.error.message }),
+      h('dl', { style: { margin: 0, fontSize: 14, lineHeight: '20px' } },
+        h('dt', { style: { color: 'var(--ink-muted)' } }, 'Status'), h('dd', { style: { margin: 0, fontWeight: 600 } }, d.status),
+        h('dt', { style: { color: 'var(--ink-muted)' } }, 'Language'), h('dd', { style: { margin: 0, fontWeight: 600 } }, engine && engine.lastStartOptions ? engine.lastStartOptions.language : 'not started'))),
+    d.transcript || d.interim ? h(LiveTranscript, { text: d.transcript, interim: d.interim }) : null);
+}
+const scripted = new ScriptedSpeechEngine([{ final: 'Resp rate twenty two' }, { final: 'sats ninety three' }, { interim: ['BP one ten'] }], { playOnStart: true, endAfterScript: false });
+const off = new ScriptedSpeechEngine([], { available: false });
+const denied = new ScriptedSpeechEngine([{ error: 'not-allowed' }], { playOnStart: true });
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 390 } },
+    h(ClinicalLocaleProvider, { region: 'NZ' }, h(Demo, { engine: scripted, autoStart: true, title: 'NZ: scripted engine, listening (en-NZ)' })),
+    h(Demo, { engine: off, title: 'No engine available: touch only' }),
+    h(ClinicalLocaleProvider, { region: 'AU' }, h(Demo, { engine: denied, autoStart: true, title: 'AU: microphone permission refused' }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

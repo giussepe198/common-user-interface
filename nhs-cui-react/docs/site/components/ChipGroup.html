@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChipGroup · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile touch inputs</p>
+<h1 style="margin:0 0 4px;font-size:20px">ChipGroup</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Chips: quick pick, multi-select filters that scroll with an overflow cue, action chips · Guidelines: <code>src/touch/ChipGroup/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ChipGroup } = window.ClinicalCUI;
+const cap = t => h('p', { className: 'cui-label', style: { margin: '12px 0 4px' } }, t);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 390 } },
+    cap('Single select quick pick'),
+    h(ChipGroup, { label: 'Quick dates', defaultValue: ['yesterday'], options: [
+      { value: 'today', label: 'Today' }, { value: 'yesterday', label: 'Yesterday' }, { value: 'cal', label: 'Calendar', icon: 'calendar' }
+    ] }),
+    cap('Multi-select filters, one line that scrolls sideways'),
+    h(ChipGroup, { label: 'Show', labelVisible: true, selectionMode: 'multi', defaultValue: ['overdue'], options: [
+      { value: 'overdue', label: 'Overdue', count: 3 },
+      { value: 'due', label: 'Due now', count: 5 },
+      { value: 'prn', label: 'When required', count: 2 },
+      { value: 'iv', label: 'IV and infusions', count: 1 },
+      { value: 'high', label: 'High risk', count: 4 }
+    ] }),
+    cap('Action chips, centred'),
+    h(ChipGroup, { label: 'Quick times', selectionMode: 'none', align: 'center', options: [
+      { value: '0', label: 'Now' }, { value: '15', label: '−15 min', ariaLabel: '15 minutes ago' }, { value: '60', label: '−1 hr', ariaLabel: '1 hour ago' }
+    ] }),
+    cap('Disabled chip'),
+    h(ChipGroup, { label: 'Route', overflow: 'wrap', defaultValue: ['oral'], options: [
+      { value: 'oral', label: 'Oral' }, { value: 'iv', label: 'IV' }, { value: 'sc', label: 'Subcutaneous', disabled: true }
+    ] })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

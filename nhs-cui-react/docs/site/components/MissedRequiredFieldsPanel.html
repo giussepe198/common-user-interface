@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MissedRequiredFieldsPanel · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Clinical noting</p>
+<h1 style="margin:0 0 4px;font-size:20px">MissedRequiredFieldsPanel</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Missed required fields tracked as focus moves on, listed in a side panel · Guidelines: <code>src/noting/MissedRequiredFieldsPanel/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { FormField, ClinicalRadioGroup, MissedRequiredFieldsPanel, useRequiredFieldTracking, RequiredKey } = window.ClinicalCUI;
+function Demo() {
+  const [v, setV] = React.useState({ complaint: '', rr: '', spo2: '96', avpu: null, notes: '' });
+  const set = (k) => (e) => setV({ ...v, [k]: e && e.target ? e.target.value : e });
+  const t = useRequiredFieldTracking([
+    { id: 'f-complaint', label: 'Presenting complaint', section: 'History', empty: !v.complaint },
+    { id: 'f-rr', label: 'Respiration rate', section: 'Observations', empty: !v.rr },
+    { id: 'f-spo2', label: 'Oxygen saturation', section: 'Observations', empty: !v.spo2 },
+    { id: 'f-avpu', label: 'Level of consciousness', section: 'Observations', empty: !v.avpu },
+    { id: 'f-notes', label: 'Plan', section: 'Plan', required: false, empty: !v.notes },
+  ]);
+  React.useEffect(() => { const el = document.getElementById('f-notes'); setTimeout(() => el && el.focus(), 20); }, []);
+  return h('div', { style: { display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 24, alignItems: 'start' } },
+    h('form', Object.assign({ onSubmit: (e) => e.preventDefault() }, t.formProps),
+      h('h3', { style: { margin: '0 0 8px', fontSize: 15 } }, 'History'),
+      h(FormField, { id: 'f-complaint', label: 'Presenting complaint', labelPosition: 'left', required: true, missed: t.isMissed('f-complaint') }, h('input', { value: v.complaint, onChange: set('complaint'), style: { width: '20em' } })),
+      h('h3', { style: { margin: '0 0 8px', fontSize: 15 } }, 'Observations'),
+      h(FormField, { id: 'f-rr', label: 'Respiration rate', labelPosition: 'left', required: true, missed: t.isMissed('f-rr'), prompt: 'Breaths per minute', promptPlacement: 'right' }, h('input', { value: v.rr, onChange: set('rr'), style: { width: '6em' } })),
+      h(FormField, { id: 'f-spo2', label: 'Oxygen saturation', labelPosition: 'left', required: true, missed: t.isMissed('f-spo2'), prompt: '%', promptPlacement: 'right' }, h('input', { value: v.spo2, onChange: set('spo2'), style: { width: '6em' } })),
+      h(ClinicalRadioGroup, { id: 'f-avpu', legend: 'Level of consciousness', orientation: 'horizontal', required: true, missed: t.isMissed('f-avpu'), value: v.avpu, onChange: set('avpu'), options: [
+        { value: 'a', label: 'Alert' }, { value: 'v', label: 'Voice' }, { value: 'p', label: 'Pain' }, { value: 'u', label: 'Unresponsive' }] }),
+      h(FormField, { id: 'f-notes', label: 'Plan', labelPosition: 'left' }, h('textarea', { rows: 2, value: v.notes, onChange: set('notes'), style: { width: '20em' } })),
+      h(RequiredKey)
+    ),
+    h(MissedRequiredFieldsPanel, { items: t.missedItems })
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

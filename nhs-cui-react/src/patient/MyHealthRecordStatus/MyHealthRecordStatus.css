@@ -1,0 +1,52 @@
+/* My Health Record access state (G12 2). Text and icon carry the state; colour only supports it (MHR-01). */
+.cui-mhr { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); font-size: 14px; line-height: 20px; color: var(--ink); }
+.cui-mhr--full { max-width: 64ch; padding: var(--space-3) var(--space-4); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); }
+.cui-mhr__heading { margin: 0; font-size: 15px; line-height: 20px; font-weight: 600; }
+.cui-mhr__status { display: inline-flex; align-items: center; flex-wrap: wrap; gap: var(--space-1) var(--space-2); }
+.cui-mhr__status .cui-icon { flex: none; }
+.cui-mhr__label { font-weight: 400; color: var(--ink-muted); }
+.cui-mhr__state { font-weight: 600; }
+.cui-mhr__until { font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cui-mhr__status--success .cui-icon { color: var(--success); }
+.cui-mhr__status--warning .cui-icon { color: var(--warning); }
+.cui-mhr__status--warning .cui-mhr__state { color: var(--warning); }
+.cui-mhr__status--info .cui-icon, .cui-mhr__status--neutral .cui-icon { color: var(--ink-muted); }
+/* Emergency access: persistent, outlined, danger surface (AU-PV-02, MHR-04). */
+.cui-mhr--emergency-access .cui-mhr__status { padding: 1px var(--space-2); color: var(--danger); background: var(--danger-surface); border: 1.5px solid var(--danger); border-radius: var(--radius-md); }
+.cui-mhr--emergency-access .cui-mhr__label { color: var(--danger); }
+.cui-mhr__detail, .cui-mhr__checked { margin: 0; font-size: 12px; line-height: 16px; color: var(--ink-muted); max-width: 60ch; }
+.cui-mhr__notice { display: flex; gap: var(--space-1); align-items: flex-start; margin: 0; font-size: 12px; line-height: 16px; color: var(--ink-muted); max-width: 60ch; }
+.cui-mhr__notice--upload { font-weight: 600; color: var(--warning); }
+.cui-mhr__notice .cui-icon { flex: none; }
+.cui-mhr__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.cui-mhr__code { display: flex; flex-direction: column; gap: var(--space-1); }
+.cui-mhr__code-label { font-size: 12px; line-height: 16px; font-weight: 600; color: var(--ink); }
+.cui-mhr__code-row { display: flex; align-items: center; gap: var(--space-2); }
+.cui-mhr__code-box { box-sizing: content-box; width: 9ch; font: inherit; font-size: 14px; line-height: 20px; letter-spacing: 0.04em; padding: 5px 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-mhr__code-box[aria-invalid="true"] { border-color: var(--danger); box-shadow: inset 0 0 0 1px var(--danger); }
+.cui-mhr__hint { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-mhr__error { display: flex; gap: var(--space-1); align-items: flex-start; font-size: 12px; line-height: 16px; font-weight: 600; color: var(--danger); }
+.cui-mhr__error .cui-icon { flex: none; }
+.cui-mhr__emergency { display: flex; flex-direction: column; gap: var(--space-2); width: 100%; max-width: 60ch; box-sizing: border-box; padding: var(--space-3); color: var(--ink); background: var(--surface); border: 1.5px solid var(--danger); border-radius: var(--radius-md); }
+.cui-mhr__emergency:focus { outline: none; }
+.cui-mhr__emergency:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-mhr__emergency-title { display: flex; align-items: center; gap: var(--space-1); margin: 0; font-size: 15px; line-height: 20px; font-weight: 600; color: var(--danger); }
+.cui-mhr__declaration { margin: 0; font-size: 14px; line-height: 20px; font-weight: 600; }
+.cui-mhr__conditions { font-size: 12px; line-height: 16px; color: var(--ink); }
+.cui-mhr__conditions-title { font-weight: 600; }
+.cui-mhr__conditions ul { margin: var(--space-1) 0 0; padding-left: var(--space-4); display: flex; flex-direction: column; gap: 2px; }
+.cui-mhr__grounds { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.cui-mhr__grounds legend { padding: 0; margin-bottom: var(--space-1); font-size: 12px; line-height: 16px; font-weight: 600; }
+.cui-mhr__option { display: flex; align-items: flex-start; gap: var(--space-2); font-size: 14px; line-height: 20px; }
+.cui-mhr__option input { margin: 2px 0 0; width: 16px; height: 16px; flex: none; accent-color: var(--accent); }
+.cui-mhr__option--ack { font-size: 12px; line-height: 16px; }
+.cui-mhr__option--ack input { margin-top: 0; }
+.cui-mhr__reason { box-sizing: border-box; width: 100%; font: inherit; font-size: 14px; line-height: 20px; padding: 5px 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); resize: vertical; }
+/* Compact (banner). */
+.cui-mhr--compact { gap: var(--space-1); }
+.cui-mhr__line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); }
+.cui-mhr__flag { display: inline-flex; align-items: center; gap: var(--space-1); font-size: 12px; line-height: 16px; font-weight: 600; color: var(--warning); }
+.cui-mhr__options-toggle { display: inline-flex; align-items: center; gap: 2px; font: inherit; font-size: 12px; line-height: 16px; padding: 2px var(--space-2); color: var(--accent); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); cursor: pointer; }
+.cui-mhr__options-toggle:hover { background: var(--hover); }
+.cui-mhr__panel { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); padding: var(--space-2) var(--space-3); color: var(--ink); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); max-width: 64ch; }
+.cui-mhr__panel[hidden] { display: none; }

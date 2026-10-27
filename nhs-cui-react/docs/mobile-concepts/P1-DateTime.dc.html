@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Date and time entry</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/clinicalcui/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+.scr *{box-sizing:border-box}
+.btn{min-height:52px;padding:0 16px;border-radius:4px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn-p{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.chip{min-height:44px;padding:0 14px;border-radius:22px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.chip-on{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.step{width:64px;height:48px;border-radius:4px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);display:flex;align-items:center;justify-content:center;padding:0}
+.seg{display:flex;flex-direction:column;align-items:center;gap:6px}
+.big{font-size:36px;line-height:44px;font-weight:700;font-variant-numeric:tabular-nums}
+.sl{font-size:13px;line-height:18px;color:var(--ink-muted);font-weight:600;letter-spacing:0.02em}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div class="scr" data-theme="{{theme}}" style="width: 390px; height: 844px; display: flex; flex-direction: column; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; overflow: hidden">
+
+  <header style="background: var(--surface); border-bottom: 1px solid var(--border); padding: 8px 8px 8px 16px; display: flex; align-items: center; gap: 8px">
+    <h1 style="margin: 0; flex: 1; font-size: 18px; line-height: 24px; font-weight: 600">When did the fall happen?</h1>
+    <a href="B2-Administer.dc.html" style="min-height: 48px; padding: 0 12px; display: inline-flex; align-items: center; color: var(--accent); font-weight: 600">Cancel</a>
+  </header>
+
+  <main style="flex: 1; overflow: hidden; padding: 16px; display: flex; flex-direction: column; gap: 16px">
+
+    <section aria-labelledby="d-h" style="background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 12px 14px; display: flex; flex-direction: column; gap: 12px">
+      <h2 id="d-h" class="sl" style="margin: 0">DATE</h2>
+      <div aria-live="polite" style="font-size: 24px; line-height: 30px; font-weight: 700">Mon 26-Oct-2026</div>
+      <div role="group" aria-label="Quick dates" style="display: flex; gap: 8px; flex-wrap: wrap">
+        <button class="chip" type="button" aria-pressed="false">Today</button>
+        <button class="chip chip-on" type="button" aria-pressed="true">Yesterday</button>
+        <button class="chip" type="button" aria-pressed="false"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M4.5 6.5h15v13h-15zM4.5 10.5h15M8.5 4v4M15.5 4v4"/></svg>Calendar</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <label for="dt" style="font-size: 14px; color: var(--ink-muted)">Or type or say a date</label>
+        <input id="dt" value="5/4" inputmode="text" style="min-height: 52px; font: inherit; font-size: 18px; padding: 0 12px; border: 2px solid var(--accent); border-radius: 4px; background: var(--surface); color: var(--ink)">
+        <div role="status" style="display: flex; gap: 8px; align-items: flex-start; font-size: 15px; line-height: 21px; background: var(--info-surface); padding: 8px 10px; border-radius: 4px">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--info)"><path d="M12 4a8 8 0 1 1 0 16a8 8 0 0 1 0-16zM12 11v5.5M12 7.8v.4"/></svg>
+          <span>Read as <strong>Sun 05-Apr-2026</strong> (day first). <button type="button" style="border: 0; background: none; color: var(--accent); font: inherit; font-weight: 600; padding: 0; text-decoration: underline">Use this date</button></span>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="t-h" style="background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 12px 14px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; justify-content: space-between; align-items: center">
+        <h2 id="t-h" class="sl" style="margin: 0">TIME (24-HOUR)</h2>
+      </div>
+      <div style="display: flex; gap: 16px">
+        <label style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 15px"><input type="checkbox" checked style="width: 22px; height: 22px; accent-color: var(--accent); margin: 0">Approximate</label>
+        <label style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 15px"><input type="checkbox" style="width: 22px; height: 22px; accent-color: var(--accent); margin: 0">Time not known</label>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 12px">
+        <div class="seg">
+          <button class="step" type="button" aria-label="Hour later"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+          <span class="big" aria-label="Hour 21">21</span>
+          <button class="step" type="button" aria-label="Hour earlier"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+        </div>
+        <span class="big" aria-hidden="true">:</span>
+        <div class="seg">
+          <button class="step" type="button" aria-label="Minutes later"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+          <span class="big" aria-label="Minutes 30">30</span>
+          <button class="step" type="button" aria-label="Minutes earlier"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+        </div>
+      </div>
+      <div role="group" aria-label="Quick times" style="display: flex; gap: 8px; justify-content: center">
+        <button class="chip" type="button">Now</button>
+        <button class="chip" type="button">−15 min</button>
+        <button class="chip" type="button">−1 hr</button>
+      </div>
+    </section>
+  </main>
+
+  <div style="padding: 12px 16px 16px; background: var(--surface); border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 6px">
+    <span style="text-align: center; font-size: 15px">Mon 26-Oct-2026 <strong>Approx 21:30</strong></span>
+    <button class="btn btn-p" type="button">Use this date and time</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'light' };
+  }
+}
+</script>
+</body>
+</html>

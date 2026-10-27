@@ -1,0 +1,42 @@
+/* Adverse drug reaction risks */
+.cui-adr { color: var(--ink); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-3); }
+.cui-adr__title { margin: 0 0 var(--space-2); font-size: 15px; line-height: 20px; font-weight: 600; }
+.cui-adr__table { width: 100%; border-collapse: collapse; }
+/* ADR-0033: agent column at least 44 characters, wraps at spaces only, two lines */
+.cui-adr__col-agent { width: 46ch; }
+.cui-adr__table > thead th { text-align: left; font-size: 12px; line-height: 16px; font-weight: 400; color: var(--ink-muted); padding: 4px var(--space-2); border-bottom: 1px solid var(--border-strong); }
+.cui-adr__row td { padding: 6px var(--space-2); vertical-align: top; border-bottom: 1px solid var(--border); }
+/* ADR-0039: faint banding; ADR-0040: hover and selected highlight */
+.cui-adr__risk.is-shaded .cui-adr__row td { background: var(--surface-muted); }
+.cui-adr__row { cursor: pointer; }
+.cui-adr__row:hover td { background: var(--hover); }
+.cui-adr__risk.is-selected .cui-adr__row td { background: var(--accent-surface); }
+.cui-adr__agent-cell { overflow-wrap: normal; word-break: normal; hyphens: none; }
+.cui-adr__disclose { display: inline-flex; align-items: flex-start; gap: var(--space-1); font: inherit; font-size: 14px; line-height: 20px; padding: 0; background: none; border: 0; color: var(--ink); cursor: pointer; text-align: left; }
+.cui-adr__disclose .cui-icon { margin-top: 2px; color: var(--ink-muted); flex: none; }
+.cui-adr__nodisclose { display: inline-block; padding-left: 20px; }
+.cui-adr__agent--coded { font-weight: 700; }
+.cui-adr__agent--free { font-weight: 400; }
+.cui-adr__nodss { display: flex; align-items: center; gap: var(--space-1); padding-left: 20px; font-size: 12px; line-height: 16px; font-style: italic; color: var(--ink-muted); }
+.cui-adr__nodss .cui-icon { color: var(--info); }
+.cui-adr__reactions.is-unknown { color: var(--ink-muted); font-style: italic; }
+.cui-adr__events-row > td { padding: var(--space-2) var(--space-2) var(--space-3) 28px; background: var(--surface-sunken); border-bottom: 1px solid var(--border); }
+.cui-adr__events { width: 100%; border-collapse: collapse; font-size: 14px; }
+.cui-adr__events th { text-align: left; font-size: 12px; font-weight: 400; color: var(--ink-muted); padding: 2px var(--space-2); border-bottom: 1px solid var(--border); }
+.cui-adr__events td { padding: 4px var(--space-2); vertical-align: top; border-bottom: 1px solid var(--border); }
+.cui-adr__events tbody tr:nth-child(even) td { background: var(--surface-muted); }
+.cui-adr__date { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cui-adr__event--coded { font-weight: 600; }
+.cui-adr__meta { color: var(--ink-muted); }
+.cui-adr__back { display: inline-flex; align-items: center; gap: var(--space-1); margin-top: var(--space-2); font: inherit; font-size: 12px; color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; }
+/* ADR-0051 to 0054: explicit absence states */
+.cui-adr__absence { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); }
+.cui-adr__absence-text { font-weight: 700; }
+.cui-adr__absence-meta { flex-basis: 100%; padding-left: 24px; font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-adr__absence--none { background: var(--surface-sunken); }
+.cui-adr__absence--none .cui-icon { color: var(--success); }
+.cui-adr__absence--unknown { background: var(--warning-surface); color: var(--warning); }
+.cui-adr--narrative { border: 0; padding: 0; background: transparent; }
+.cui-adr__narrative-heading { margin: 0 0 var(--space-1); }
+.cui-adr__narrative { margin: 0; padding-left: var(--space-6); }
+.cui-adr__narrative li { line-height: 1.4; }

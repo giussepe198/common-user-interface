@@ -1,0 +1,34 @@
+.cui-mobile-meds { display: flex; flex-direction: column; min-height: 0; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; }
+.cui-mobile-meds--fill { flex: 1 1 auto; height: 100%; }
+.cui-mobile-meds__controls { display: flex; flex-direction: column; gap: 10px; padding: var(--space-3) var(--space-4) var(--space-2); }
+.cui-mobile-meds__title { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; }
+.cui-mobile-meds__tools { display: flex; gap: var(--space-2); }
+.cui-mobile-meds__tools > * { flex: 1 1 0; min-width: 0; padding-left: var(--space-2); padding-right: var(--space-2); }
+.cui-mobile-meds__list { border-bottom: 1px solid var(--border); background: var(--surface); }
+.cui-mobile-meds__list--scroll { overflow-y: auto; overscroll-behavior: contain; }
+.cui-mobile-meds--fill .cui-mobile-meds__list--scroll { flex: 1 1 auto; min-height: 0; }
+.cui-mobile-meds__list:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.cui-mobile-meds__items { list-style: none; margin: 0; padding: 0; }
+.cui-mobile-meds__item { border-top: 1px solid var(--border); }
+.cui-mobile-meds__card { display: flex; flex-direction: column; gap: 6px; width: 100%; box-sizing: border-box; min-height: 56px; padding: var(--space-3) var(--space-4); border: 0; background: var(--surface); color: var(--ink); font: inherit; text-align: left; }
+button.cui-mobile-meds__card { cursor: pointer; touch-action: manipulation; }
+button.cui-mobile-meds__card:active { background: var(--hover); }
+button.cui-mobile-meds__card:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.cui-mobile-meds__line { font-size: 15px; line-height: 21px; overflow-wrap: anywhere; }
+.cui-mobile-meds__status { display: flex; flex-wrap: wrap; column-gap: var(--space-4); row-gap: 2px; font-size: 14px; line-height: 20px; }
+.cui-mobile-meds__part { display: inline-flex; align-items: center; gap: var(--space-1); }
+.cui-mobile-meds__part--danger { color: var(--danger); font-weight: 700; }
+.cui-mobile-meds__part--accent { color: var(--accent); font-weight: 700; }
+.cui-mobile-meds__part--success { color: var(--success); font-weight: 600; }
+.cui-mobile-meds__part--muted { color: var(--ink-muted); }
+.cui-mobile-meds__part--warning { color: var(--warning); background: var(--warning-surface); font-weight: 700; padding: 2px var(--space-2); border-radius: var(--radius-sm); }
+.cui-mobile-meds__group-title { margin: 0; padding: var(--space-2) var(--space-4) var(--space-1); background: var(--surface-muted); border-top: 1px solid var(--border); font-size: 15px; line-height: 20px; font-weight: 600; }
+.cui-mobile-meds__empty { margin: 0; padding: var(--space-6) var(--space-4); text-align: center; color: var(--ink-muted); }
+.cui-mobile-meds__lookahead { display: flex; align-items: center; gap: var(--space-2); width: 100%; min-height: 48px; padding: var(--space-2) var(--space-4); border: 0; border-bottom: 1px solid var(--border); background: var(--surface-muted); color: var(--ink); font: inherit; font-size: 14px; line-height: 20px; text-align: left; cursor: pointer; }
+.cui-mobile-meds__lookahead .cui-icon { flex: none; }
+.cui-mobile-meds__lookahead:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.cui-mobile-meds__lookahead-alert { color: var(--danger); font-weight: 700; }
+.cui-mobile-meds__choices { border: 0; margin: 0; padding: 0 0 var(--space-2); }
+.cui-mobile-meds__choice { display: flex; align-items: center; gap: var(--space-3); min-height: 52px; padding: var(--space-1) var(--space-4); border-top: 1px solid var(--border); cursor: pointer; }
+.cui-mobile-meds__choice input { width: 22px; height: 22px; margin: 0; accent-color: var(--accent); }
+.cui-mobile-meds__choice--on { background: var(--accent-surface); font-weight: 600; }

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StatementList · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Clinical noting</p>
+<h1 style="margin:0 0 4px;font-size:20px">StatementList</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Statement list (experimental): grouped by heading or in date order · Guidelines: <code>src/noting/StatementList/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { StatementList } = window.ClinicalCUI;
+const S = [
+  { id: '1', pattern: 'PMH', observationTime: { year: 2008, month: 3 }, segments: [{ type: 'coded', text: 'Fracture of radius' }, { type: 'free', text: 'left, fell off ladder' }], sessionTime: '2024-05-02T10:15:00', author: 'Dr B Sample' },
+  { id: '2', pattern: 'PMH', findingContext: 'knownAbsent', segments: [{ type: 'coded', text: 'Diabetes mellitus' }], sessionTime: '2024-05-02T10:15:00', author: 'Dr B Sample' },
+  { id: '3', pattern: 'FH', observationTime: { year: 1995, approximate: true }, segments: [{ type: 'coded', text: 'Myocardial infarction' }, { type: 'free', text: 'father, died aged 55' }], sessionTime: '2023-11-20T09:00:00', author: 'Nurse C Test' },
+  { id: '4', pattern: 'AAR', observationTime: { year: 2019, month: 6, day: 14 }, segments: [{ type: 'coded', text: 'Penicillin' }, { type: 'free', text: 'widespread rash' }], sessionTime: '2024-05-02T10:15:00', author: 'Dr B Sample' },
+  { id: '5', pattern: 'HCC', segments: [{ type: 'free', text: 'Decreasing exercise tolerance over 3 months' }], sessionTime: '2024-05-02T10:20:00', author: 'Dr B Sample' },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' } },
+    h(StatementList, { statements: S, session: { author: 'Dr B Sample', sessionTime: '2024-05-02T10:15:00', location: 'Acute medical unit' }, onAddEncoding: function () {} }),
+    h(StatementList, { statements: S, grouping: 'chronological' })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

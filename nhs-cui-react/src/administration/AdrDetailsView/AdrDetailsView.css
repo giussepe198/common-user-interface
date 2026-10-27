@@ -1,0 +1,16 @@
+.cui-adr-det__list { margin: 0; display: grid; grid-template-columns: minmax(140px, max-content) minmax(0, 1fr); gap: var(--space-1) var(--space-4); }
+.cui-adr-det__row { display: contents; }
+.cui-adr-det__dt { font-size: 12px; line-height: 20px; font-weight: 600; color: var(--ink-muted); }
+.cui-adr-det__dd { margin: 0; min-width: 0; }
+.cui-adr-det__agent { font-weight: 700; }
+.cui-adr-det__agent--free { font-weight: 400; font-style: italic; }
+.cui-adr-det__uncoded { font-size: 12px; font-style: normal; color: var(--ink-muted); }
+.cui-adr-det__rx { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
+.cui-adr-det__rx-term { font-weight: 700; }
+.cui-adr-det__rx-term--free { font-weight: 400; font-style: italic; }
+.cui-adr-det__rx-detail { color: var(--ink-muted); }
+.cui-adr-det__history { border-top: 1px solid var(--border); padding-top: var(--space-2); }
+.cui-adr-det__toggle { display: inline-flex; align-items: center; gap: var(--space-1); font: inherit; color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; }
+.cui-adr-det__hist-list { margin: var(--space-2) 0 0; padding-left: var(--space-6); display: flex; flex-direction: column; gap: 2px; font-size: 12px; line-height: 16px; }
+.cui-adr-det__hist-when { font-variant-numeric: tabular-nums; color: var(--ink-muted); }
+@media (max-width: 520px) { .cui-adr-det__list { grid-template-columns: 1fr; } }

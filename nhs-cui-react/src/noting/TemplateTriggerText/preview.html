@@ -1,0 +1,22 @@
+<!-- @dsCard group="Clinical noting" width=900 height=420 subtitle="In-text template tags (experimental): muted tags over whole phrases, floating drop-down of optional templates, switch off" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TemplateTriggerText } = window.ClinicalCUI;
+const TRIGGERS = [
+  { id: 'bp', term: 'Blood pressure', phrases: ['blood pressure', 'BP'], templates: [{ id: 'vitals', title: 'Vital signs' }, { id: 'abpm', title: 'Ambulatory BP monitoring', additional: true }] },
+  { id: 'smoking', term: 'Smoking', templates: [{ id: 'smk', title: 'Smoking history' }, { id: 'cess', title: 'Smoking cessation referral' }] },
+  { id: 'dvt', term: 'Deep vein thrombosis', phrases: ['deep vein thrombosis', 'DVT'], templates: [{ id: 'wells', title: "Wells' score", additional: true }] },
+];
+const TEXT = 'Seen in clinic. Blood pressure raised at 168/94, repeat BP 162/90. Smokes 10 a day since age 18. Calf swelling on the left; query DVT.';
+const label = (t) => h('p', { className: 'cui-label', style: { margin: '0 0 4px' } }, t);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 640 } },
+    h('div', { id: 'open' }, label('Tags with the drop-down open'), h(TemplateTriggerText, { text: TEXT, triggers: TRIGGERS, onOpenTemplate: function () {} })),
+    h('div', { style: { marginTop: 70 } }, label('Free-text triggering switched off'), h(TemplateTriggerText, { text: TEXT, triggers: TRIGGERS, defaultEnabled: false, onOpenTemplate: function () {} })))
+);
+setTimeout(function () {
+  const tag = document.querySelector('#open .cui-template-tags__tag');
+  if (tag) tag.click();
+}, 30);
+</script>

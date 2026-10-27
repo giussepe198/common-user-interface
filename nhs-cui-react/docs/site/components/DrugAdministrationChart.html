@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DrugAdministrationChart · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Drug administration</p>
+<h1 style="margin:0 0 4px;font-size:20px">DrugAdministrationChart</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Drug administration chart: status bar, day navigation, Nil by Mouth, events, infusion, look-ahead, and AU and NZ code sets · Guidelines: <code>src/administration/DrugAdministrationChart/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DrugAdministrationChart, ClinicalLocaleProvider } = window.ClinicalCUI;
+const at = (d, hh, mm) => new Date(2026, 4, d, hh, mm || 0);
+const NOW = at(27, 10, 20);
+const given = (id, d, hh, extra) => Object.assign({ id: id, scheduledTime: at(d, hh), status: 'given', administeredAt: at(d, hh, 5), recordedBy: 'Staff Nurse A Example' }, extra || {});
+
+const meds = [
+  { id: 'amox', name: 'Amoxicillin', details: '500 mg capsules, oral, three times a day', kind: 'regular', route: 'oral', prescriber: 'Dr J Fictional', startDate: at(24, 8), startIsActual: true, reviewDate: at(30, 0), scheduledTimes: ['08:00', '14:00', '22:00'], verification: 'verified', verifiedBy: 'P Pharmacist', verifiedAt: at(24, 11, 2),
+    events: [given('a1', 25, 8), given('a2', 25, 14), given('a3', 25, 22), given('a4', 26, 8), given('a5', 26, 14, { status: 'givenLate', administeredAt: at(26, 15, 40), timePrecision: 'exact' }), given('a6', 26, 22), { id: 'a7', scheduledTime: at(27, 8) }, { id: 'a8', scheduledTime: at(27, 14) }, { id: 'a9', scheduledTime: at(27, 22) }, { id: 'a10', scheduledTime: at(28, 8) }, { id: 'a11', scheduledTime: at(28, 14) }, { id: 'a12', scheduledTime: at(28, 22) }] },
+  { id: 'metoc', name: 'Metoclopramide', details: '10 mg, intravenous, three times a day', kind: 'regular', route: 'intravenous', prescriber: 'Dr J Fictional', startDate: at(26, 10), startIsActual: true, scheduledTimes: ['10:00', '16:00', '22:00'], verification: 'awaiting', instructions: 'Give by slow intravenous injection over at least 3 minutes.',
+    events: [given('m1', 26, 10, { status: 'patientRefused', notes: 'Feels better' }), given('m2', 26, 16, { edited: true }), given('m3', 26, 22), { id: 'm4', scheduledTime: at(27, 10) }, { id: 'm5', scheduledTime: at(27, 16) }, { id: 'm6', scheduledTime: at(27, 22) }, { id: 'm7', scheduledTime: at(28, 10) }] },
+  { id: 'sodchl', name: 'Sodium chloride 0.9%', details: '1000 mL, intravenous infusion over 8 hours', kind: 'significantDuration', prescriber: 'Dr K Sample', startDate: at(27, 6), startIsActual: true, events: [],
+    infusion: { scheduledStart: at(27, 6), expectedDurationMinutes: 480, actualStart: at(27, 6, 10), interruptions: [{ start: at(27, 8, 10), end: at(27, 8, 40), reason: 'cannula resited' }] } },
+  { id: 'ond', name: 'Ondansetron', details: '4 mg, intravenous, up to every 8 hours', kind: 'asRequiredUnscheduled', prescriber: 'Dr K Sample', startDate: at(25, 9), asRequired: { criteria: 'For nausea or vomiting', minIntervalMinutes: 480, maxPerDay: 3 },
+    events: [given('o1', 26, 0, { scheduledTime: undefined, administeredAt: at(26, 11, 30), timePrecision: 'exact' })] },
+  { id: 'para', name: 'Paracetamol', details: '1 g, oral, up to every 4 hours, maximum 4 doses in 24 hours', kind: 'asRequiredUnscheduled', route: 'oral', prescriber: 'Dr J Fictional', startDate: at(24, 9), asRequired: { criteria: 'For pain', minIntervalMinutes: 240, maxPerDay: 4 },
+    events: [given('p1', 26, 0, { scheduledTime: undefined, administeredAt: at(26, 21, 0), timePrecision: 'approx' }), given('p2', 27, 0, { scheduledTime: undefined, administeredAt: at(27, 7, 30), timePrecision: 'exact' })] },
+  { id: 'gent', name: 'Gentamicin', details: 'dose by weight and levels, intravenous, once only', kind: 'onceOnly', route: 'intravenous', prescriber: 'Dr K Sample', startDate: at(27, 16), doseVariation: 'conditional', doseCriteria: 'Check level before dose',
+    events: [{ id: 'g1', scheduledTime: at(27, 16), requiresWitness: true, precondition: 'Trough level below 1 mg/L' }] },
+  { id: 'enox', name: 'Enoxaparin', details: '40 mg, subcutaneous, once a day', kind: 'regular', route: 'subcutaneous', prescriber: 'Dr J Fictional', startDate: at(20, 18), startIsActual: true, scheduledTimes: ['18:00'], verification: 'verified', verifiedBy: 'P Pharmacist', verifiedAt: at(20, 19),
+    events: [given('e1', 25, 18), given('e2', 26, 18, { status: 'nilByMouth' }), { id: 'e3', scheduledTime: at(27, 18), intendedDose: '40 mg' }, { id: 'e4', scheduledTime: at(28, 18), intendedDose: '40 mg' }] },
+  { id: 'coam', name: 'Co-amoxiclav', details: '625 mg tablets, oral, three times a day', kind: 'regular', route: 'oral', prescriber: 'Dr J Fictional', startDate: at(22, 8), startIsActual: true, endDate: at(25, 16), pastState: 'discontinued', scheduledTimes: ['08:00', '14:00', '22:00'],
+    events: [given('c1', 25, 8), given('c2', 25, 14)] },
+];
+
+const auMeds = [
+  { id: 'au1', name: 'amLODIPine', kind: 'regular', route: 'oral', prescriber: 'Dr J Fictional', startDate: at(24, 8), startIsActual: true, scheduledTimes: ['08:00'],
+    line: { genericName: 'amLODIPine', strength: '5 mg', form: 'tablet', route: 'oral', dose: '5 mg', frequency: 'once a day', qualifiers: ['in the morning'] },
+    events: [given('u1', 25, 8), given('u2', 26, 8, { status: 'withheld', reasonCode: 'W', reasonText: 'Systolic 88 mmHg' }), { id: 'u3', scheduledTime: at(27, 8) }, { id: 'u4', scheduledTime: at(28, 8) }] },
+  { id: 'au2', name: 'Ceftriaxone', details: '1 g, intravenous, every 6 hours', kind: 'regular', route: 'intravenous', prescriber: 'Dr K Sample', startDate: at(25, 6), startIsActual: true, scheduledTimes: ['06:00', '12:00', '18:00', '24:00'],
+    events: [given('c1', 26, 6), given('c2', 26, 12, { status: 'patientAbsent', reasonCode: 'L' }), given('c3', 26, 18), given('c4', 27, 0, { scheduledTime: at(27, 0), administeredAt: at(27, 0, 5) }), given('c5', 27, 6, { status: 'nilByMouth', reasonCode: 'F' }), { id: 'c6', scheduledTime: at(27, 12) }, { id: 'c7', scheduledTime: at(27, 18) }] },
+  { id: 'au3', name: 'Paracetamol', details: '1 g, oral, every 4 to 6 hours when required, maximum 4 g in 24 hours', kind: 'asRequiredUnscheduled', route: 'oral', prescriber: 'Dr J Fictional', startDate: at(24, 9), asRequired: { criteria: 'For pain', minIntervalMinutes: 240 },
+    events: [given('pp1', 26, 0, { scheduledTime: undefined, administeredAt: at(26, 21, 0), timePrecision: 'exact', status: 'selfAdministered', reasonCode: 'S' })] },
+];
+const nzMeds = [
+  { id: 'nz1', name: 'Metoprolol', details: '23.75 mg modified-release tablet, oral, once a day', kind: 'regular', route: 'oral', prescriber: 'Dr T Kaimahi', startDate: at(24, 8), startIsActual: true, scheduledTimes: ['08:00'],
+    events: [given('n1', 25, 8, { status: 'withheld', reasonCode: 'D', reasonText: 'Pre-operative' }), given('n2', 26, 8, { status: 'withheld', reasonCode: 'RV', reasonText: 'Review heart rate 48' }), { id: 'n3', scheduledTime: at(27, 8) }, { id: 'n4', scheduledTime: at(28, 8) }] },
+  { id: 'nz2', name: 'Salbutamol', details: '100 microgram inhaler, 2 puffs, inhaled, four times a day', kind: 'regular', route: 'inhaled', prescriber: 'Dr T Kaimahi', startDate: at(24, 8), startIsActual: true, scheduledTimes: ['08:00', '12:00', '18:00', '22:00'],
+    events: [given('s1', 26, 8, { status: 'selfAdministered', reasonCode: 'SM' }), given('s2', 26, 12, { status: 'patientRefused', reasonCode: 'R' }), given('s3', 26, 18, { status: 'carerAdministered', reasonCode: 'CP' }), given('s4', 26, 22, { status: 'patientAbsent', reasonCode: 'U' }), given('s5', 27, 8), { id: 's6', scheduledTime: at(27, 12) }] },
+];
+
+function App() {
+  const [list, setList] = React.useState(meds);
+  return h('div', { style: { display: 'flex', flexDirection: 'column', gap: 24 } },
+    h(DrugAdministrationChart, {
+      medications: list,
+      now: NOW,
+      currentUser: 'Staff Nurse A Example',
+      nilByMouth: { since: at(27, 6), reason: 'For theatre this afternoon' },
+      maxListHeight: 820,
+      sites: ['Left arm', 'Right arm', 'Abdomen left', 'Abdomen right'],
+      onRecord: function (m, ev, p) {
+        setList(list.map(function (x) {
+          if (x.id !== m.id) return x;
+          if (!ev) return Object.assign({}, x, { events: x.events.concat([{ id: 'new' + Date.now(), status: p.status, administeredAt: p.administeredAt, timePrecision: p.timePrecision, dose: p.dose, recordedBy: p.recordedBy, notes: p.notes }]) });
+          return Object.assign({}, x, { events: x.events.map(function (e) { return e.id === ev.id ? Object.assign({}, e, { status: p.status, administeredAt: p.administeredAt, timePrecision: p.timePrecision, dose: p.dose, recordedBy: p.recordedBy, notes: p.notes, edited: !!e.status }) : e; }) });
+        }));
+      },
+      onOpenSignificantDurationDetail: function () {},
+    }),
+    h('div', { className: 'cui-label' }, 'Grouped by type, read-only, with a prescription change waiting to be acknowledged'),
+    h(DrugAdministrationChart, {
+      medications: meds.slice(0, 5),
+      now: NOW,
+      defaultGrouping: 'type',
+      maxListHeight: 420,
+      pendingUpdates: [{ change: 'edited', medicationName: 'Amoxicillin', details: 'dose changed to 1 g three times a day' }],
+    }),
+    h('div', { className: 'cui-label' }, 'AU: NIMC reason codes with meanings, "When required", legend, midnight time flagged; structured medication line'),
+    h(ClinicalLocaleProvider, { region: 'AU' },
+      h(DrugAdministrationChart, {
+        medications: auMeds, now: NOW, maxListHeight: 640, currentUser: 'RN A Example', onRecord: function () {},
+      })),
+    h('div', { className: 'cui-label' }, 'NZ: HQSC non-administration codes'),
+    h(ClinicalLocaleProvider, { region: 'NZ' },
+      h(DrugAdministrationChart, { medications: nzMeds, now: NOW, maxListHeight: 420 }))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+
+</div>
+</body>
+</html>

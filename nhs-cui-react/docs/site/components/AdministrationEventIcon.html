@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdministrationEventIcon · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Drug administration</p>
+<h1 style="margin:0 0 4px;font-size:20px">AdministrationEventIcon</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Administration event symbols: schedule states, recorded statuses, once only, markers, and AU and NZ reason codes · Guidelines: <code>src/administration/AdministrationEventIcon/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AdministrationEventIcon, ClinicalLocaleProvider } = window.ClinicalCUI;
+const t = new Date(2026, 4, 27, 8, 0);
+const cell = function (props, note) {
+  return h('div', { style: { display: 'flex', flexDirection: 'column', gap: 2, padding: 6, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 2 } },
+    h(AdministrationEventIcon, props),
+    note ? h('span', { className: 'cui-label' }, note) : null);
+};
+const row = function (title, items) {
+  return h('div', { style: { display: 'flex', flexDirection: 'column', gap: 6 } },
+    h('div', { style: { fontWeight: 600 } }, title),
+    h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', gap: 6 } }, items));
+};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16 } },
+    row('Schedule states (not yet recorded)', [
+      cell({ state: 'future', time: t }, 'Dotted border'),
+      cell({ state: 'next', time: t }),
+      cell({ state: 'due', time: t, onActivate: function () {} }, 'Active, opens the form'),
+      cell({ state: 'overdue', time: t, onActivate: function () {} }, 'White on red label'),
+      cell({ state: 'unscheduled', time: t, detail: 'For pain', onActivate: function () {} }, 'As Required, now'),
+    ]),
+    row('Recorded: filled when given', [
+      cell({ state: 'recorded', status: 'given', detail: '500 mg' }),
+      cell({ state: 'recorded', status: 'givenLate', detail: '15:40' }),
+      cell({ state: 'recorded', status: 'givenEarly', detail: 'Approx 07:45' }),
+      cell({ state: 'recorded', status: 'selfAdministered', markers: ['selfAdministered'] }),
+      cell({ state: 'recorded', status: 'given', edited: true }, 'Edited marker always shown'),
+    ]),
+    row('Recorded: unfilled with solid border when not given', [
+      cell({ state: 'recorded', status: 'patientRefused' }),
+      cell({ state: 'recorded', status: 'nilByMouth' }),
+      cell({ state: 'recorded', status: 'drugUnavailable' }),
+      cell({ state: 'recorded', status: 'deferred' }),
+      cell({ state: 'recorded', status: 'unknown' }, 'Never "Missed" or a cross'),
+    ]),
+    row('Once Only (round) and supplementary markers', [
+      cell({ state: 'due', kind: 'onceOnly', time: t, onActivate: function () {} }),
+      cell({ state: 'recorded', status: 'givenOnceOnly', kind: 'onceOnly' }),
+      cell({ state: 'next', time: t, markers: ['firstDose', 'witnessRequired'] }),
+      cell({ state: 'due', time: t, markers: ['timeCritical', 'precondition'], onActivate: function () {} }),
+      cell({ state: 'unscheduled', showLabel: true, markers: ['lockout'], detail: 'Until 11:30' }),
+    ]),
+    h(ClinicalLocaleProvider, { region: 'AU' },
+      row('AU: NIMC reason codes, code and meaning together (late dose shows a tick, as L means On leave)', [
+        cell({ state: 'recorded', status: 'withheld', reasonCode: 'W' }, 'Withheld – enter reason'),
+        cell({ state: 'recorded', status: 'patientAbsent', reasonCode: 'L' }),
+        cell({ state: 'recorded', status: 'nilByMouth', reasonCode: 'F' }),
+        cell({ state: 'recorded', status: 'selfAdministered', reasonCode: 'S' }, 'Filled: dose taken'),
+        cell({ state: 'recorded', status: 'givenLate' }),
+      ])),
+    h(ClinicalLocaleProvider, { region: 'NZ' },
+      row('NZ: HQSC non-administration codes', [
+        cell({ state: 'recorded', status: 'withheld', reasonCode: 'W' }),
+        cell({ state: 'recorded', status: 'withheld', reasonCode: 'RV' }, 'Used with W'),
+        cell({ state: 'recorded', status: 'carerAdministered', reasonCode: 'CP' }),
+        cell({ state: 'recorded', status: 'selfAdministered', reasonCode: 'SM' }),
+        cell({ state: 'recorded', status: 'patientAbsent', reasonCode: 'U' }),
+      ]))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

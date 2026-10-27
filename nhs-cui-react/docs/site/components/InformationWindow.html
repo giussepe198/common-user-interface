@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InformationWindow · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Decision support</p>
+<h1 style="margin:0 0 4px;font-size:20px">InformationWindow</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Information window: explanation with two summaries and actions, Details tab, and alert header · Guidelines: <code>src/administration/InformationWindow/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { InformationWindow } = window.ClinicalCUI;
+const link = function (t) { return h('a', { href: '#', onClick: function (e) { e.preventDefault(); } }, t); };
+const noop = function () {};
+const summaries = [
+  { text: h('span', null, 'There are potential additive hypotensive effects with Lisinopril and ', link('Furosemide'), ', a current medication for this patient.'), source: 'Drug Interaction Checking' },
+  { text: 'The proposed dose is above the usual starting dose for a patient over 75.', source: 'Dose Checking' },
+];
+const actions = [
+  { id: 'a1', label: 'Start at 2.5 mg once a day', preference: 5, reasons: ['Usual starting dose over 75'] },
+  { id: 'a2', label: 'Monitor blood pressure', preference: 3, reasons: ['Low recent blood pressure'], subOptions: [{ id: 's1', label: 'Every 4 hours' }, { id: 's2', label: 'Daily' }], subOptionMode: 'or' },
+  { id: 'a3', label: 'Prescribe as entered', preference: 1, reasons: ['Interaction risk remains', 'Dose above usual range'] },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 20, alignItems: 'flex-start', flexWrap: 'wrap' } },
+    h(InformationWindow, { autoFocus: false, summaries: summaries, actions: actions, defaultActionsExpanded: true, onRecordResponse: noop, onDismiss: noop,
+      details: { patientSpecific: 'Last blood pressure 98/60 mmHg at 09:30.', rationale: 'Both drugs lower blood pressure.', references: 'Fictional formulary, section 2.5' } }),
+    h('div', { id: 'det' }, h(InformationWindow, { autoFocus: false, variant: 'alert', status: 'High Priority', occurredAt: new Date(2026, 4, 27, 10, 47), width: 380,
+      summaries: [{ text: h('span', null, 'The ', link('potassium level'), ' is 7.7 mmol/L.'), source: 'Results Monitoring' }],
+      details: { patientSpecific: 'Previous result 5.1 mmol/L on 25-May-2026.', rationale: 'Severe hyperkalaemia can cause arrhythmia.' }, onRecordResponse: noop, onDismiss: noop })),
+    h('div', { id: 'kbd' },
+      h('p', { className: 'cui-label', style: { margin: '0 0 4px' } }, 'Resized with the arrow keys on the grip (bottom right)'),
+      h(InformationWindow, { autoFocus: false, width: 340, height: 240, summaries: [summaries[1]], onRecordResponse: noop, onDismiss: noop }))
+  )
+);
+setTimeout(function () {
+  const tab = Array.prototype.find.call(document.querySelectorAll('#det [role="tab"]'), function (x) { return x.textContent === 'Details'; });
+  if (tab) tab.click();
+}, 30);
+setTimeout(function () {
+  const grip = document.querySelector('#kbd .cui-ds-info__grip');
+  if (!grip) return;
+  ['ArrowRight', 'ArrowRight', 'ArrowDown'].forEach(function (k, i) { setTimeout(function () { grip.dispatchEvent(new KeyboardEvent('keydown', { key: k, shiftKey: true, bubbles: true })); }, 20 * i); });
+}, 30);
+</script>
+
+</div>
+</body>
+</html>

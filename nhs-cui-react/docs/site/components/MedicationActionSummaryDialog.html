@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MedicationActionSummaryDialog · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Medications</p>
+<h1 style="margin:0 0 4px;font-size:20px">MedicationActionSummaryDialog</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Summary of selected medications before an action on more than one (MEDv-203) · Guidelines: <code>src/medications/MedicationActionSummaryDialog/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MedicationActionSummaryDialog, ClinicalLocaleProvider } = window.ClinicalCUI;
+const meds = [
+  { id: '1', line: { genericName: 'amlodipine', form: 'tablet', dose: { value: 5, unit: 'mg' }, route: 'oral', frequency: 'once a day' }, status: 'Started', statusSupplement: 'Verified' },
+  { id: '2', line: { genericName: 'metformin', brandName: 'Glucomet SR', form: 'modified-release tablet', dose: { value: 500, unit: 'mg' }, route: 'oral', frequency: 'twice a day', qualifiers: ['with food'] }, status: 'Started' },
+  { id: '3', line: { genericName: 'prednisone', form: 'tablet', dose: { value: 40, unit: 'mg' }, route: 'oral', frequency: 'once a day', qualifiers: ['in the morning'] }, status: 'Suspended', suspendedOn: '2026-10-26' }
+];
+const block = (title, el) => h('div', { style: { marginBottom: 20 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' } },
+    block('GB: suspend three medications (shown inline; normally a modal dialog)', h(MedicationActionSummaryDialog, { inline: true, actionLabel: 'Suspend', medications: meds, onConfirm: () => {}, onCancel: () => {} })),
+    h('div', null,
+      block('AU: discontinue, danger style, mixed-case lettering', h(ClinicalLocaleProvider, { region: 'AU' }, h(MedicationActionSummaryDialog, { inline: true, actionLabel: 'Discontinue', confirmVariant: 'danger', medications: meds.slice(0, 2), onConfirm: () => {}, onCancel: () => {} }))),
+      block('NZ: verify', h(ClinicalLocaleProvider, { region: 'NZ' }, h(MedicationActionSummaryDialog, { inline: true, actionLabel: 'Verify', medications: meds.slice(1), onConfirm: () => {}, onCancel: () => {} }))))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

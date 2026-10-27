@@ -1,0 +1,39 @@
+<!-- @dsCard group="Mobile screens" height=900 width=390 subtitle="Mobile patient header: full and condensed, NZ, AU and GB wording, similar-name warning" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MobilePatientHeader, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27, 14, 6);
+const label = (t) => h('p', { style: { margin: '16px 0 6px', fontSize: 12, lineHeight: '16px', color: 'var(--ink-muted)' } }, t);
+const frame = (child) => h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } }, child);
+const ngata = {
+  id: 'ngata', name: { familyName: 'Ngata', givenName: 'Mereana', title: 'Ms' }, preferredName: 'Mere', dateOfBirth: '1958-03-14', gender: 'F',
+  identifiers: [{ type: 'nhi', value: 'ZZZ0016' }], location: 'Ward 24, bed 7',
+  allergies: { status: 'known', items: [{ name: 'penicillin', reaction: 'Anaphylaxis, 2019', lastUpdated: '2024-02-02' }, { name: 'latex', reaction: 'Contact dermatitis', lastUpdated: '2024-02-02' }] },
+};
+const chen = {
+  id: 'chen', name: { familyName: 'Chen', givenName: 'Wei' }, dateOfBirth: '1949-09-02', gender: 'M',
+  identifiers: [{ type: 'ihi', value: '8003608166690503' }, { type: 'mrn', value: '0412345' }], location: 'Bed 12',
+  allergies: { status: 'none-known', recordedAt: '2026-10-26' }, myHealthRecord: 'access-code-required',
+};
+const smith = {
+  id: 'smithjon', name: { familyName: 'Smith', givenName: 'Jon', title: 'Mr' }, dateOfBirth: '1985-01-30', gender: 'Male',
+  identifiers: [{ type: 'nhs', value: '9990000026' }], location: 'Bed 9', allergies: { status: 'not-recorded' },
+  similarNames: [{ name: 'SMITH, John', location: 'bed 3' }],
+};
+const opts = { now, detailsSheetProps: { portal: true, closeOnBrowserBack: false } };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    label('NZ, full: name as recorded, NHI unbroken, allergies listed'),
+    frame(h(ClinicalLocaleProvider, { region: 'NZ' }, h(MobilePatientHeader, Object.assign({ patient: ngata }, opts)))),
+    label('AU, full with back button: IHI then URN, "Allergies: Nil known", My Health Record state'),
+    frame(h(ClinicalLocaleProvider, { region: 'AU' }, h(MobilePatientHeader, Object.assign({ patient: chen, onBack: () => {}, backLabel: 'Back to worklist' }, opts)))),
+    label('GB, full: similar name on the ward, allergies not recorded'),
+    frame(h(MobilePatientHeader, Object.assign({ patient: smith }, opts))),
+    label('NZ, condensed (list screens)'),
+    frame(h(ClinicalLocaleProvider, { region: 'NZ' }, h(MobilePatientHeader, Object.assign({ patient: ngata, variant: 'condensed' }, opts)))),
+    label('NZ, partial date of birth and protected name'),
+    frame(h(ClinicalLocaleProvider, { region: 'NZ' }, h(MobilePatientHeader, Object.assign({ variant: 'condensed', patient: { name: { familyName: 'Te Whare-Rangiātea', givenName: 'Hinewai Aroha Kahurangi' }, partialDateOfBirth: '1975', identifiers: [{ type: 'nhi', value: 'ZZZ0024' }], protection: { name: true }, allergies: { status: 'unknown' }, location: 'ED cubicle 4' } }, opts))))
+  )
+);
+</script>

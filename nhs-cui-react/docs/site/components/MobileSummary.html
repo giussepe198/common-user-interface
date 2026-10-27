@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MobileSummary · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile screens</p>
+<h1 style="margin:0 0 4px;font-size:20px">MobileSummary</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Patient summary (A1): header, early warning card, medicines due, high-priority alert, tab bar · Guidelines: <code>src/mobile/MobileSummary/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MobileSummary, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27, 14, 6);
+const at = (hh, mm) => new Date(2026, 9, 27, hh, mm || 0);
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 12, lineHeight: '16px', color: 'var(--ink-muted)' } }, t);
+const frame = (c) => h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } }, c);
+const patient = {
+  name: { familyName: 'Ngata', givenName: 'Mereana', title: 'Ms' }, dateOfBirth: '1958-03-14', gender: 'F', identifiers: [{ type: 'nhi', value: 'ZZZ0016' }], location: 'Ward 24, bed 7',
+  allergies: { status: 'known', items: [{ name: 'penicillin', lastUpdated: '2024-02-02' }, { name: 'latex', lastUpdated: '2024-02-02' }] },
+};
+const s = (v) => ({ kind: 'simple', values: [v], unit: 'mg' });
+const due = [
+  { id: 'para', state: 'overdue', at: at(13), line: { genericName: 'paracetamol', strength: s(500), form: 'tablet', route: 'oral', dose: { value: 1, unit: 'g' }, frequency: 'four times a day' } },
+  { id: 'fluc', state: 'due', at: at(14), line: { genericName: 'flucloxacillin', strength: s(500), form: 'capsule', route: 'oral', dose: { value: 500, unit: 'mg' }, frequency: 'four times a day' } },
+];
+const obs = { time: at(13, 40), values: { respiratoryRate: 22, oxygenSaturation: 94, supplementalOxygen: 'oxygen', heartRate: 112, systolicBloodPressure: 120, temperature: 37.2, consciousness: 'A' } };
+const alerts = [{ id: 'a1', message: 'flucloxacillin is a penicillin. This patient has a recorded penicillin allergy.', onAction: () => {} }];
+function Demo() {
+  const [tab, setTab] = React.useState('summary');
+  return frame(h(ClinicalLocaleProvider, { region: 'NZ' }, h(MobileSummary, {
+    patient, now, medicinesDue: due, alerts, onOpenMedicine: () => {}, onAllMedicines: () => {},
+    earlyWarning: { observation: obs, nextDueAt: at(14, 40), onRecord: () => {} },
+    currentTab: tab, onTabSelect: setTab, headerProps: { detailsSheetProps: { closeOnBrowserBack: false } },
+  })));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    label('NZ: NZEWS orange zone, two medicines due, allergy alert'), h(Demo),
+    label('GB: NEWS2 total 5, shown with the chart response "Medium (score 5–6)"'),
+    frame(h(MobileSummary, { now, region: 'GB', patient: { name: { familyName: 'Evans', givenName: 'Gareth', title: 'Mr' }, dateOfBirth: '1951-04-22', gender: 'Male', identifiers: [{ type: 'nhs', value: '9990000026' }], location: 'Bay 1, bed 2', allergies: { status: 'none-known' } },
+      earlyWarning: { observation: { time: new Date(2026, 9, 27, 13, 40), values: { respiratoryRate: 22, oxygenSaturation: 95, supplementalOxygen: 'air', systolicBloodPressure: 105, heartRate: 95, consciousness: 'A', temperature: 37 } }, nextDueAt: new Date(2026, 9, 27, 14, 40), onRecord: () => {} }, medicinesDue: [] })),
+    label('GB: no observations yet, nothing due'),
+    frame(h(MobileSummary, { now, patient: { name: { familyName: 'Jones', givenName: 'Alys', title: 'Mrs' }, dateOfBirth: '1940-12-01', gender: 'Female', identifiers: [{ type: 'nhs', value: '9990000018' }], location: 'Bay 2, bed 4', allergies: { status: 'none-known' } }, earlyWarning: { onRecord: () => {} }, medicinesDue: [] }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

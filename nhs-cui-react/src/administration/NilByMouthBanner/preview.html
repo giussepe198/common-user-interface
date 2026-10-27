@@ -1,0 +1,15 @@
+<!-- @dsCard group="Drug administration" height=200 width=1000 subtitle="Nil by Mouth notification; takes no space when not active" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { NilByMouthBanner, Button } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 12 } },
+    h(NilByMouthBanner, { since: new Date(2026, 4, 27, 6, 0), until: new Date(2026, 4, 27, 18, 0), reason: 'For theatre this afternoon' }),
+    h(NilByMouthBanner, { since: new Date(2026, 4, 27, 6, 0), actions: h(Button, { size: 'sm' }, 'View instruction') }),
+    h('div', { className: 'cui-label' }, 'When active is false the banner renders nothing:'),
+    h(NilByMouthBanner, { active: false }),
+    h('div', { style: { padding: 8, border: '1px dashed var(--border-strong)', color: 'var(--ink-muted)' } }, 'Medication lines start here')
+  )
+);
+</script>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AlertSymbol · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Display standards</p>
+<h1 style="margin:0 0 4px;font-size:20px">AlertSymbol</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Prohibition, mandatory, warning and information symbols · Guidelines: <code>src/datetime/AlertSymbol/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AlertSymbol } = window.ClinicalCUI;
+const kinds = [['prohibition', 'Do not exceed 4 g in 24 hours'], ['mandatory', 'Mandatory: weigh patient before prescribing'], ['warning', 'Warning: above recommended dose'], ['information', 'Information: renal dose adjustment available']];
+const phone = h('path', { d: 'M7 4h3l1.5 4-2 1.5a10 10 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 5 6a2 2 0 0 1 2-2z' });
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 14 } },
+    h('div', { style: { display: 'flex', gap: 20, alignItems: 'center' } },
+      [16, 24, 32, 48].map(size => h('div', { key: size, style: { display: 'flex', gap: 8, alignItems: 'center' } },
+        kinds.map(([k, l]) => h(AlertSymbol, { key: k, kind: k, label: l, size }))))),
+    h('div', { style: { display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'center' } },
+      h(AlertSymbol, { kind: 'warning', label: 'Warning: above recommended dose', showLabel: true }),
+      h(AlertSymbol, { kind: 'prohibition', label: 'Do not use: patient refused', showLabel: true, pictogram: h('path', { d: 'M12 4a3.5 3.5 0 1 1 0 7a3.5 3.5 0 0 1 0-7zM5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5' }) }),
+      h(AlertSymbol, { kind: 'information', label: '3 telephone messages', pictogram: phone, modifier: 3, size: 24 })
+    )
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

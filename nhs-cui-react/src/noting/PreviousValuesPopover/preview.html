@@ -1,0 +1,19 @@
+<!-- @dsCard group="Clinical noting" height=230 subtitle="Previous values shown above a numeric field while it has focus" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { PreviousValuesPopover, FormField } = window.ClinicalCUI;
+const now = new Date(); const d = (days, hh, mm) => { const x = new Date(now); x.setDate(x.getDate() - days); x.setHours(hh, mm, 0, 0); return x; };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 64, flexWrap: 'wrap', paddingTop: 96 } },
+    h(FormField, { label: 'Systolic BP', labelPosition: 'left', labelWidth: '6em', prompt: 'mmHg', promptPlacement: 'right' },
+      h(PreviousValuesPopover, { forceOpen: true, unit: 'mmHg', values: [{ value: 152, recordedAt: d(0, 8, 10) }, { value: 138, recordedAt: d(0, 14, 45) }, { value: 147, recordedAt: d(2, 9, 0) }, { value: 160, recordedAt: d(9, 9, 0) }] },
+        h('input', { type: 'text', inputMode: 'numeric', style: { width: '6em' } }))),
+    h(FormField, { label: 'Temperature', prompt: '°C', promptPlacement: 'right' },
+      h(PreviousValuesPopover, { forceOpen: true, unit: '°C', decimals: 1, placement: 'beside', onOpenHistory: function () {}, values: [{ value: 37, recordedAt: d(1, 8, 0) }, { value: 38.4, recordedAt: d(3, 20, 0) }] },
+        h('input', { type: 'text', inputMode: 'decimal', defaultValue: '37.9', style: { width: '6em' } }))),
+    h(FormField, { label: 'Weight (no previous values)', prompt: 'kg', promptPlacement: 'right' },
+      h(PreviousValuesPopover, { forceOpen: true, unit: 'kg', values: [] }, h('input', { type: 'text', style: { width: '6em' } })))
+  )
+);
+</script>

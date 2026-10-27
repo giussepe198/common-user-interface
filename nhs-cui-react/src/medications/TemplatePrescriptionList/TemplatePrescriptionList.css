@@ -1,0 +1,21 @@
+/* Template prescriptions (MSP-1030 to MSP-1240) */
+.cui-templates { display: flex; flex-direction: column; gap: var(--space-1); color: var(--ink); max-width: 100%; }
+.cui-templates--below { flex-basis: 100%; }
+.cui-templates__caption { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+/* No column headings, no horizontal scroll: rows wrap (MSP-1110, MSP-1150) */
+.cui-templates__list { list-style: none; margin: 0; padding: var(--space-1) 0; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); overflow-x: hidden; }
+.cui-templates__option { display: flex; flex-wrap: wrap; justify-content: space-between; column-gap: var(--space-6); padding: 5px var(--space-3); line-height: 20px; cursor: pointer; }
+.cui-templates__option.is-shaded { background: var(--surface-muted); }
+.cui-templates__option:hover { background: var(--hover); }
+.cui-templates__option:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.cui-templates__option.is-selected { background: var(--accent-surface); box-shadow: inset 3px 0 0 var(--accent); }
+/* "other..." last, separated by a line (MSP-1240) */
+.cui-templates__option--other { border-top: 1px solid var(--border-strong); margin-top: var(--space-1); color: var(--ink-muted); }
+.cui-templates__text { white-space: pre-wrap; }
+/* Label and dose stay together (MEDi-008) */
+.cui-templates__dose { white-space: nowrap; }
+.cui-templates__label { font-size: 0.8em; letter-spacing: 0.04em; font-weight: 600; color: var(--ink-muted); }
+.cui-templates__brand { font-weight: 400; }
+.cui-templates--au .cui-templates__brand { font-style: italic; }
+/* Supplementary information in grey italics (MSP-1210) */
+.cui-templates__supp { font-style: italic; color: var(--ink-muted); font-size: 12px; }

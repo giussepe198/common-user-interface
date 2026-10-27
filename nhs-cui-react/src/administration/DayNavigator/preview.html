@@ -1,0 +1,16 @@
+<!-- @dsCard group="Drug administration" height=440 width=1000 subtitle="Day navigation: today selected, an earlier day selected with today still marked, calendar open" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DayNavigator } = window.ClinicalCUI;
+const TODAY = new Date(2026, 4, 27, 10, 20);
+const label = function (t) { return h('div', { className: 'cui-label', style: { margin: '0 0 6px' } }, t); };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 20 } },
+    h('div', null, label('Today selected (third, widest column)'), h(DayNavigator, { today: TODAY })),
+    h('div', null, label('Tomorrow selected: today keeps its heading style'), h(DayNavigator, { today: TODAY, defaultSelectedDate: new Date(2026, 4, 28) })),
+    h('div', { id: 'cal' }, label('Calendar open, with Go to today'), h(DayNavigator, { today: TODAY, defaultSelectedDate: new Date(2026, 4, 24) }))
+  )
+);
+setTimeout(function () { const b = document.querySelector('#cal button[aria-haspopup="dialog"]'); if (b) b.click(); }, 30);
+</script>

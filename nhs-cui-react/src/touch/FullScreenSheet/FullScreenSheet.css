@@ -1,0 +1,5 @@
+.cui-sheet-layer--full { justify-content: stretch; }
+.cui-sheet--full { flex: 1 1 auto; height: 100%; background: var(--surface-sunken); padding-top: env(safe-area-inset-top, 0px); }
+.cui-sheet--full > .cui-sheet__top { background: var(--surface); border-bottom: 1px solid var(--border); padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4); }
+.cui-sheet--full .cui-sheet__title { font-size: 18px; line-height: 24px; }
+.cui-sheet--full > .cui-sheet__blocked { margin-top: var(--space-3); }

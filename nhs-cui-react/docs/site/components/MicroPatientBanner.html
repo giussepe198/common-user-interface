@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MicroPatientBanner · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1148px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Patient identification</p>
+<h1 style="margin:0 0 4px;font-size:20px">MicroPatientBanner</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Micro patient banner for hand-held screens · Guidelines: <code>src/patient/MicroPatientBanner/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MicroPatientBanner, ClinicalLocaleProvider } = window.ClinicalCUI;
+const caption = (t) => h('div', { style: { font: '600 12px/16px var(--font-sans)', color: 'var(--ink-muted)', margin: '16px 0 4px', flexBasis: '100%' } }, t);
+const now = new Date(2026, 9, 27, 10, 0);
+const frame = (label, child, minH) => h('div', { style: { width: 320, flex: 'none' } },
+  h('div', { style: { font: '12px/16px var(--font-sans)', color: 'var(--ink-muted)', marginBottom: 4 } }, label),
+  h('div', { style: { position: 'relative', minHeight: minH, background: 'var(--surface)', border: '1px solid var(--border)' } },
+    child,
+    h('div', { style: { padding: 12, color: 'var(--ink-muted)', fontSize: 12 } }, 'Ward round notes and other screen content.')));
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    frame('Living, Zone 2 collapsed', h(MicroPatientBanner, {
+      now, name: { familyName: 'Treetawtchaiwong', givenName: 'Lertchai', title: 'Sir' }, preferredName: 'Lek',
+      dateOfBirth: '1972-03-09', nhsNumber: '9990000018', gender: 'Male',
+      address: { lines: ['18 Orchard Cottage', "King's Road"], town: 'Ipswich', postcode: 'NS338KR' },
+    }), 180),
+    frame('Zone 2 expanded over content', h(MicroPatientBanner, {
+      now, defaultZone2Expanded: true, showTitle: false, onViewAllAddresses: () => {},
+      name: { familyName: 'Ruth', givenName: 'Anne', title: 'Mrs' },
+      dateOfBirth: '2026-10-01', nhsNumber: '9990000026', gender: 'Other Specific',
+      address: { type: 'Usual address', lines: ['340 Gloucester Road', 'Walton'], town: 'Tewkesbury', postcode: 'GL20 4RT' },
+    }), 370),
+    frame('Deceased, NHS number unknown', h(MicroPatientBanner, {
+      now, name: { familyName: 'Oliver', givenName: 'James', title: 'Mr' },
+      dateOfBirth: '1945-07-14', dateOfDeath: '2006-12-06', nhsNumber: null,
+    }), 180),
+    caption('AU (IHI and URN, no title, gender from METeOR code) and NZ (NHI, family name as recorded, te reo gender label)'),
+    frame('AU, Zone 2 expanded', h(ClinicalLocaleProvider, { region: 'AU' }, h(MicroPatientBanner, {
+      now, defaultZone2Expanded: true,
+      name: { familyName: "O'Brien", givenName: 'Liam', title: 'Mr' }, dateOfBirth: '1972-11-30', gender: '1',
+      identifiers: [{ type: 'ihi', value: '8003601234567894' }, { type: 'mrn', value: '0042137' }],
+      address: { lines: ['54 Stockton Rd'], unit: 'Unit 2', town: 'Bunbury', state: 'WA', postcode: '6230' },
+    })), 360),
+    frame('NZ, test NHI flagged', h(ClinicalLocaleProvider, { region: 'NZ', teReoLabels: true }, h(MicroPatientBanner, {
+      now, defaultZone2Expanded: true,
+      name: { familyName: 'Te Huia', givenName: 'Kāhu' }, dateOfBirth: '1990-05-01', gender: 'F',
+      identifiers: [{ type: 'nhi', value: 'ZBN77VL' }],
+      address: { lines: ['123 Rural Road'], suburb: 'RD 2', town: 'Rangiora', postcode: '7472' },
+    })), 360)
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

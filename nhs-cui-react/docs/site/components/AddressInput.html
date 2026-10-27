@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AddressInput · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Patient identification</p>
+<h1 style="margin:0 0 4px;font-size:20px">AddressInput</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">UK address input with postcode lookup, and non-UK form · Guidelines: <code>src/patient/AddressInput/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ClinicalLocaleProvider } = window.ClinicalCUI;
+const regionCaption = (t) => h('div', { style: { font: '600 12px/16px var(--font-sans)', color: 'var(--ink-muted)', margin: '12px 0 4px' } }, t);
+const inRegion = (region, child, extra) => h(ClinicalLocaleProvider, Object.assign({ region }, extra || {}), child);
+const { AddressInput } = window.ClinicalCUI;
+// Consumer-supplied lookup (fictional data, no network).
+const lookup = () => Promise.resolve([
+  { address: { line1: '18 Orchard Cottage', line2: "King's Road", town: 'Ipswich', county: 'Northshire', postcode: 'NS33 8KR' } },
+  { address: { line1: '20 Orchard Cottage', line2: "King's Road", town: 'Ipswich', county: 'Northshire', postcode: 'NS33 8KR' } },
+]);
+const panel = (child) => h('div', { style: { padding: 16, background: 'var(--surface)', border: '1px solid var(--border)' } }, child);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    regionCaption('GB (NHS CUI)'),
+  h('div', { style: { display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    panel(h(AddressInput, {
+      legend: 'Usual address', onFindPostcode: lookup, onFindAddress: lookup,
+      defaultValue: { line1: '18 Orchard Cottage', line2: "King's Road", line3: '', town: 'Ipswich', county: 'Northshire', postcode: '' },
+      placeholders: { town: 'e.g. Ipswich', county: 'e.g. Northshire' },
+      tooltips: { line1: 'Enter the first line of the address' },
+    })),
+    panel(h(AddressInput, {
+      legend: 'Temporary address',
+      defaultValue: { line1: '12 Rue de la Paix', line2: '', line3: '', line4: '', town: 'Paris', postcode: '75002', country: 'France' },
+    }))
+  ),
+    regionCaption('AU: lookup hook (G-NAF), state select, postcode and state check'),
+    h('div', { style: { display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' } },
+      inRegion('AU', panel(h(AddressInput, {
+        id: 'preview-au', legend: 'Usual address', onSearchAddress: () => Promise.resolve([
+          { address: { unit: 'Unit 2', line1: '54 Stockton Rd', town: 'Bunbury', state: 'WA', postcode: '6230', addressId: 'GAWA_000000001' } },
+        ]),
+        defaultValue: { unit: 'Unit 2', line1: '54 Stockton Rd', line2: '', line3: '', town: 'Bunbury', state: 'VIC', postcode: '6230' },
+      }))),
+      inRegion('NZ', panel(h(AddressInput, {
+        legend: 'Usual address (NZ)', onSearchAddress: () => Promise.resolve([]),
+        defaultValue: { buildingName: '', line1: '123 Rural Road', line2: '', line3: '', suburb: 'RD 2', town: 'Rangiora', postcode: '7472' },
+      }))))
+  )
+);
+// Leave the AU postcode once so the postcode and state check is visible (VIC chosen for a WA postcode).
+setTimeout(() => { const el = document.getElementById('preview-au-postcode'); if (el) { el.focus(); el.blur(); } }, 30);
+</script>
+
+</div>
+</body>
+</html>

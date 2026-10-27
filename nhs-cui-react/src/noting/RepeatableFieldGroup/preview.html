@@ -1,0 +1,16 @@
+<!-- @dsCard group="Clinical noting" width=1200 height=260 subtitle="Repeatable fields (experimental): sets labelled with time of entry, Add another beside the latest" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { RepeatableFieldGroup, FormField } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27, 15, 0);
+function Demo() {
+  const [sets, setSets] = React.useState([{ id: 'a', recordedAt: new Date(2026, 9, 26, 22, 10), pulse: '96', rr: '18' }, { id: 'b', recordedAt: new Date(2026, 9, 27, 8, 5), pulse: '88', rr: '16' }, { id: 'c', recordedAt: new Date(2026, 9, 27, 14, 32), pulse: '', rr: '' }]);
+  return h(RepeatableFieldGroup, { label: 'Vital signs', now: now, instances: sets,
+    onAdd: () => setSets(sets.concat([{ id: String(sets.length + 1), recordedAt: new Date(), pulse: '', rr: '' }])),
+    renderInstance: (s) => h('div', { style: { display: 'flex', gap: 12 } },
+      h(FormField, { label: 'Pulse', prompt: 'beats/min' }, h('input', { className: 'cui-noting-input', style: { width: 80 }, defaultValue: s.pulse })),
+      h(FormField, { label: 'Resp rate', prompt: 'breaths/min' }, h('input', { className: 'cui-noting-input', style: { width: 80 }, defaultValue: s.rr }))) });
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

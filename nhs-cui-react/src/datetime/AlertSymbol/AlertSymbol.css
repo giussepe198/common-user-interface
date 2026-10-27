@@ -1,0 +1,14 @@
+.cui-alert-symbol { display: inline-flex; align-items: center; gap: var(--space-1); vertical-align: middle; }
+.cui-alert-symbol__graphic { position: relative; display: inline-flex; flex: none; }
+.cui-alert-symbol__svg { display: block; overflow: visible; }
+.cui-alert-symbol__prohibition-fill { fill: var(--surface); stroke: var(--danger); }
+.cui-alert-symbol__prohibition-bar { stroke: var(--danger); stroke-linecap: butt; }
+.cui-alert-symbol__picto--prohibition { color: var(--ink); }
+.cui-alert-symbol__mandatory-fill { fill: var(--mandatory-symbol); }
+.cui-alert-symbol__picto--mandatory { color: #ffffff; }
+.cui-alert-symbol__picto--warning { color: #000000; }
+.cui-alert-symbol__information-fill { fill: var(--surface); stroke: var(--info); }
+.cui-alert-symbol__picto--information { color: var(--info); }
+.cui-alert-symbol__modifier { position: absolute; right: -6px; bottom: -4px; min-width: 14px; height: 14px; padding: 0 3px; font-size: 10px; line-height: 12px; font-weight: 600; text-align: center; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: 7px; font-variant-numeric: tabular-nums; }
+.cui-alert-symbol--32 .cui-alert-symbol__modifier, .cui-alert-symbol--48 .cui-alert-symbol__modifier { min-width: 18px; height: 18px; font-size: 12px; line-height: 16px; border-radius: 9px; }
+.cui-alert-symbol__label { font-size: 14px; line-height: 20px; color: var(--ink); }

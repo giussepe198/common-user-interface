@@ -1,0 +1,21 @@
+<!-- @dsCard group="Clinical noting" height=260 subtitle="Check boxes: independent, labelled, no mixed state" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ClinicalCheckboxGroup } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 48, flexWrap: 'wrap' } },
+    h(ClinicalCheckboxGroup, { legend: 'Associated symptoms', prompt: 'Tick all that apply', defaultValue: ['breathless', 'cough'], options: [
+      { value: 'breathless', label: 'Breathlessness' },
+      { value: 'cough', label: 'Cough' },
+      { value: 'chest-pain', label: 'Chest pain', reveals: true, prompt: 'Opens chest pain details' },
+      { value: 'palpitations', label: 'Palpitations' },
+    ] }),
+    h(ClinicalCheckboxGroup, { legend: 'Information given to patient', required: true, missed: true, options: [
+      { value: 'leaflet', label: 'Written leaflet' },
+      { value: 'verbal', label: 'Verbal explanation' },
+      { value: 'carer', label: 'Carer informed' },
+    ] })
+  )
+);
+</script>

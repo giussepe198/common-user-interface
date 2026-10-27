@@ -1,0 +1,65 @@
+<!-- @dsCard group="Drug administration" height=1500 width=1400 subtitle="Recording form: default, Nil by Mouth reminder, validation errors, changing a recorded event, AU and NZ reason codes" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AdministrationRecordingForm, ClinicalLocaleProvider } = window.ClinicalCUI;
+const at = function (d, hh, mm) { return new Date(2026, 4, d, hh, mm || 0); };
+const NOW = at(27, 10, 20);
+const noop = function () {};
+const amox = { name: 'Amoxicillin', details: '500 mg capsules, oral, three times a day', kind: 'regular', route: 'oral' };
+const col = function (title, el) {
+  return h('div', { style: { display: 'flex', flexDirection: 'column', gap: 6 } }, h('div', { className: 'cui-label' }, title), el);
+};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 24 } },
+  h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 16, alignItems: 'start' } },
+    col('Due event, mandatory fields first', h(AdministrationRecordingForm, {
+      id: 'f1',
+      medication: { name: 'Morphine sulfate', details: '2 to 5 mg, subcutaneous, up to every 4 hours', kind: 'asRequiredScheduled', route: 'subcutaneous', doseVariation: 'range', doseRange: '2 to 5 mg' },
+      event: { id: 'e1', scheduledTime: at(27, 10), requiresWitness: true },
+      now: NOW, currentUser: 'Staff Nurse A Example', sites: ['Left arm', 'Right arm'], onSubmit: noop, onCancel: noop })),
+    h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16 } },
+      col('Oral drug while Nil by Mouth', h(AdministrationRecordingForm, {
+        id: 'f2', medication: amox, event: { id: 'e2', scheduledTime: at(27, 8) }, now: NOW, nilByMouth: true, currentUser: 'Staff Nurse A Example', onSubmit: noop, onCancel: noop })),
+      col('Changing a recorded event', h(AdministrationRecordingForm, {
+        id: 'f4', medication: amox, event: { id: 'e4', scheduledTime: at(26, 14), status: 'givenLate', administeredAt: at(26, 15, 40), dose: '500 mg', recordedBy: 'Staff Nurse B Sample' },
+        now: NOW, onSubmit: noop, onCancel: noop, onClear: noop }))),
+    col('Submitted with errors; another event outstanding', h(AdministrationRecordingForm, {
+      id: 'f3', medication: amox, event: { id: 'e3', scheduledTime: at(27, 14) }, now: NOW,
+      outstandingEvents: [{ id: 'e0', scheduledTime: at(27, 8) }], onSubmit: noop, onCancel: noop }))
+  ),
+  h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 16, alignItems: 'start' } },
+    h(ClinicalLocaleProvider, { region: 'AU' },
+      col('AU: W Withheld needs a reason (NIMC codes)', h('div', { id: 'au-w' }, h(AdministrationRecordingForm, {
+        id: 'f5', medication: amox, event: { id: 'e5', scheduledTime: at(27, 8) }, now: NOW, currentUser: 'RN A Example', onSubmit: noop, onCancel: noop }))),
+      col('AU: R Refused prompts to notify the prescriber', h('div', { id: 'au-r' }, h(AdministrationRecordingForm, {
+        id: 'f6', medication: amox, event: { id: 'e6', scheduledTime: at(27, 8) }, now: NOW, currentUser: 'RN A Example', onSubmit: noop, onCancel: noop })))),
+    h(ClinicalLocaleProvider, { region: 'NZ' },
+      col('NZ: CP Carer/parent administered records the dose', h('div', { id: 'nz-cp' }, h(AdministrationRecordingForm, {
+        id: 'f7', medication: amox, event: { id: 'e7', scheduledTime: at(27, 8), intendedDose: '500 mg' }, now: NOW, currentUser: 'RN A Example', onSubmit: noop, onCancel: noop }))))
+  )
+  )
+);
+function chooseCode(rootId, code) {
+  const root = document.getElementById(rootId);
+  if (!root) return;
+  const radios = root.querySelectorAll('input[type="radio"]');
+  radios[1].click();
+  setTimeout(function () {
+    const sel = root.querySelector('select[id$="-reason"]');
+    const setter = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set;
+    setter.call(sel, code);
+    sel.dispatchEvent(new Event('change', { bubbles: true }));
+  }, 10);
+}
+setTimeout(function () { chooseCode('au-w', 'W'); chooseCode('au-r', 'R'); chooseCode('nz-cp', 'CP'); }, 40);
+setTimeout(function () {
+  const form = document.querySelectorAll('.cui-admin-form')[3];
+  if (!form) return;
+  const time = form.querySelector('input[placeholder="HH:mm"]');
+  const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
+  setter.call(time, '23:50');
+  time.dispatchEvent(new Event('input', { bubbles: true }));
+  setTimeout(function () { form.querySelector('button[type="submit"]').click(); }, 10);
+}, 30);
+</script>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Drug chart, one day</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/clinicalcui/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+.scr *{box-sizing:border-box}
+.day{min-height:48px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:14px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:0 8px}
+.slot{display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:10px;padding:8px 16px 8px 12px;border-top:1px solid var(--border);background:var(--surface);align-items:start}
+.tm{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;padding-top:12px}
+.ev{display:flex;gap:10px;align-items:center;min-height:52px;color:var(--ink);text-decoration:none}
+.shape{width:30px;height:30px;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.nm{font-size:15px;line-height:20px;flex:1;min-width:0}
+.stx{font-size:13px;line-height:17px;font-weight:600}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div class="scr" data-theme="{{theme}}" style="width: 390px; height: 844px; display: flex; flex-direction: column; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; overflow: hidden">
+
+  <header aria-label="Patient" style="background: var(--banner); color: var(--on-banner); padding: 10px 16px; display: flex; flex-direction: column; gap: 2px">
+    <div style="font-size: 17px; line-height: 22px; font-weight: 600">Ngata, Mereana (Ms)</div>
+    <div style="display: flex; flex-wrap: wrap; column-gap: 10px; font-size: 13px; line-height: 18px">
+      <span><span style="color: var(--on-banner-muted)">Born </span>14-Mar-1958 (68y)</span>
+      <span><span style="color: var(--on-banner-muted)">NHI </span>ZZZ0016</span>
+      <span style="background: var(--banner-alert); color: var(--banner); border-radius: 3px; padding: 0 6px; font-weight: 600">Allergies 2</span>
+    </div>
+  </header>
+
+  <nav aria-label="Chart day" style="display: flex; padding: 10px 12px; gap: 0; background: var(--surface-sunken)">
+    <button class="day" type="button" style="border-radius: 4px 0 0 4px"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M14.5 6l-6 6l6 6"/></svg>Mon 26</button>
+    <button class="day" type="button" aria-current="date" style="flex: 1; border-left: 0; border-right: 0; background: var(--accent-surface); border-color: var(--accent); flex-direction: column; gap: 0; line-height: 18px"><span style="font-size: 12px; font-weight: 600; color: var(--ink-muted)">TODAY</span>Tue 27-Oct-2026</button>
+    <button class="day" type="button" style="border-radius: 0 4px 4px 0">Wed 28<svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M9.5 6l6 6l-6 6"/></svg></button>
+  </nav>
+
+  <main style="flex: 1; overflow: hidden; display: flex; flex-direction: column">
+    <div class="slot" style="background: var(--surface-muted)">
+      <span class="tm">06:00</span>
+      <div class="ev"><span class="shape" style="border: 2px solid var(--ink); border-radius: 4px">R</span><span class="nm"><strong>enoxaparin</strong> 40 mg subcutaneous<br><span class="stx">R: Refused · prescriber told 06:20</span></span></div>
+    </div>
+    <div class="slot" style="background: var(--surface-muted)">
+      <span class="tm">08:00</span>
+      <div style="display: flex; flex-direction: column">
+        <div class="ev"><span class="shape" style="background: var(--success); color: var(--surface); border-radius: 4px"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="nm"><strong>metoPROLOL</strong> 47.5 mg oral<br><span class="stx" style="color: var(--success)">Given 08:05</span></span></div>
+        <div class="ev"><span class="shape" style="background: var(--success); color: var(--surface); border-radius: 4px"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 18px; height: 18px"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="nm"><strong>flucloxacillin</strong> 500 mg oral<br><span class="stx" style="color: var(--success)">Given 08:10</span></span></div>
+      </div>
+    </div>
+    <div class="slot">
+      <span class="tm" style="color: var(--danger)">13:00</span>
+      <a class="ev" href="B2-Administer.dc.html"><span class="shape" style="background: var(--danger); color: var(--on-danger); border-radius: 15px">!</span><span class="nm"><strong>paracetamol</strong> 1 g oral<br><span class="stx" style="color: var(--danger)">Overdue by 1 hr 6 min</span></span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6l-6 6"/></svg></a>
+    </div>
+
+    <div role="separator" aria-label="Now 14:06" style="display: flex; align-items: center; gap: 8px; padding: 0 16px 0 12px; height: 26px; background: var(--surface)">
+      <span style="font-size: 12px; font-weight: 700; color: var(--accent); width: 52px">NOW 14:06</span>
+      <span style="flex: 1; height: 2px; background: var(--accent)"></span>
+    </div>
+
+    <div class="slot">
+      <span class="tm" style="color: var(--accent)">14:00</span>
+      <a class="ev" href="B2-Administer.dc.html"><span class="shape" style="border: 2px solid var(--accent); background: var(--accent-surface); color: var(--accent); border-radius: 4px"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M12 4a8 8 0 1 1 0 16a8 8 0 0 1 0-16zM12 8v4.5l3 2"/></svg></span><span class="nm"><strong>flucloxacillin</strong> 500 mg oral<br><span class="stx" style="color: var(--accent)">Due now · allergy alert</span></span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6l-6 6"/></svg></a>
+    </div>
+    <div class="slot">
+      <span class="tm" style="color: var(--ink-muted)">18:00</span>
+      <div style="display: flex; flex-direction: column">
+        <div class="ev"><span class="shape" style="border: 2px dashed var(--border-strong); border-radius: 4px"></span><span class="nm"><strong>paracetamol</strong> 1 g oral<br><span class="stx" style="color: var(--ink-muted)">Scheduled</span></span></div>
+        <div class="ev"><span class="shape" style="border: 2px dashed var(--border-strong); border-radius: 4px"></span><span class="nm"><strong>flucloxacillin</strong> 500 mg oral<br><span class="stx" style="color: var(--ink-muted)">Scheduled</span></span></div>
+      </div>
+    </div>
+
+    <h2 style="margin: 0; padding: 10px 16px 6px; font-size: 13px; font-weight: 600; color: var(--ink-muted); letter-spacing: 0.02em; border-top: 1px solid var(--border)">WHEN REQUIRED</h2>
+    <div class="slot" style="grid-template-columns: minmax(0, 1fr)">
+      <div class="ev"><span class="shape" style="border: 2px solid var(--success); color: var(--success); border-radius: 15px"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M12 5v14M5 12h14"/></svg></span><span class="nm"><strong>tRAMadol</strong> 50 to 100 mg oral, every 6 hours<br><span class="stx" style="color: var(--success)">Available now · last 06:30</span></span></div>
+    </div>
+  </main>
+
+  <div style="padding: 10px 16px 14px; background: var(--surface); border-top: 1px solid var(--border); display: flex; gap: 10px; align-items: center; font-size: 14px; color: var(--ink-muted)">
+    <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14v8H5zM8 5l-3 3l3 3"/></svg>
+    Turn the phone sideways for the 4-day chart.
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'light' };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Dictated note</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/clinicalcui/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+.scr *{box-sizing:border-box}
+.btn{min-height:52px;padding:0 16px;border-radius:4px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn-p{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.enc{background:var(--encodable);border-radius:2px;padding:1px 2px}
+.cf{background:var(--confirmed);font-weight:700;border-radius:2px;padding:1px 2px}
+.sug{display:flex;align-items:center;gap:12px;min-height:52px;padding:6px 12px;border:1px solid var(--border-strong);border-radius:4px;background:var(--encodable);cursor:pointer}
+.sug input{width:24px;height:24px;margin:0;accent-color:var(--accent);flex:none}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div class="scr" data-theme="{{theme}}" style="width: 390px; height: 844px; display: flex; flex-direction: column; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; overflow: hidden">
+
+  <header aria-label="Patient" style="background: var(--banner); color: var(--on-banner); padding: 10px 16px; display: flex; flex-direction: column; gap: 2px">
+    <div style="font-size: 17px; line-height: 22px; font-weight: 600">Ngata, Mereana (Ms)</div>
+    <div style="display: flex; flex-wrap: wrap; column-gap: 10px; font-size: 13px; line-height: 18px">
+      <span><span style="color: var(--on-banner-muted)">Born </span>14-Mar-1958 (68y)</span>
+      <span><span style="color: var(--on-banner-muted)">NHI </span>ZZZ0016</span>
+      <span style="background: var(--banner-alert); color: var(--banner); border-radius: 3px; padding: 0 6px; font-weight: 600">Allergies 2</span>
+    </div>
+  </header>
+
+  <main style="flex: 1; overflow: hidden; padding: 12px 16px; display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; align-items: baseline; justify-content: space-between">
+      <h1 style="margin: 0; font-size: 18px; line-height: 24px; font-weight: 600">Ward round note</h1>
+      <span style="font-size: 14px; color: var(--ink-muted)">Draft, 14:10</span>
+    </div>
+
+    <section aria-label="Note text" style="background: var(--surface); border: 1px solid var(--border-strong); border-radius: 4px; padding: 12px 14px; font-size: 17px; line-height: 27px">
+      Day 2 of <span class="cf">cellulitis of left lower leg</span>. Erythema now 2 cm beyond the marked margin, worse since yesterday. <span class="enc">Fever</span> 38.4. Plan: continue flucloxacillin <span style="background: var(--warning-surface); border-bottom: 2px dashed var(--warning); padding: 1px 2px">five hundred micrograms</span> four times a day, review bloods tomorrow.
+    </section>
+
+    <section aria-labelledby="chk-h" style="background: var(--warning-surface); border: 2px solid var(--warning); border-radius: 4px; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px">
+      <h2 id="chk-h" style="margin: 0; font-size: 16px; line-height: 22px; font-weight: 700; display: flex; gap: 8px; align-items: flex-start">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="margin-top: 1px"><path d="M12 4.5l8.5 15h-17zM12 10v4.5M12 17v.4"/></svg>Check this dose</h2>
+      <span style="font-size: 15px; line-height: 21px">Heard "five hundred micrograms". The prescribed dose is 500 mg (1,000 times larger).</span>
+      <div style="display: flex; gap: 8px">
+        <button class="btn" type="button" style="flex: 1">Use 500 mg</button>
+        <button class="btn" type="button" style="flex: 1">Keep as heard</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="sg-h" style="display: flex; flex-direction: column; gap: 8px">
+      <h2 id="sg-h" style="margin: 0; font-size: 13px; font-weight: 600; color: var(--ink-muted); letter-spacing: 0.02em">SUGGESTED CODES (TAP TO CONFIRM)</h2>
+      <label class="sug" style="background: var(--confirmed)"><input type="checkbox" checked><span style="font-weight: 700">Cellulitis of lower leg</span></label>
+      <label class="sug" style="margin-left: 36px; background: var(--confirmed)"><input type="checkbox" checked><span>Left</span></label>
+      <label class="sug"><input type="checkbox"><span>Fever</span></label>
+      <div style="display: flex; gap: 10px; align-items: center; padding: 6px 12px; margin-left: 36px; color: var(--ink-muted); font-size: 15px">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 10h14M5 14h9M5 18h6"/></svg>worse since yesterday <span style="font-size: 13px">(kept as text)</span></div>
+    </section>
+  </main>
+
+  <div style="padding: 12px 16px 16px; background: var(--surface); border-top: 1px solid var(--border); display: flex; gap: 10px; align-items: center">
+    <button type="button" aria-label="Dictate more" style="width: 56px; height: 56px; border-radius: 28px; border: 1px solid var(--border-strong); background: var(--surface); color: var(--ink); display: flex; align-items: center; justify-content: center; flex: none; padding: 0">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 24px; height: 24px"><path d="M9 4.5h6v9a3 3 0 0 1-6 0zM5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v2.5"/></svg></button>
+    <button class="btn" type="button" style="flex: 1">Save draft</button>
+    <button class="btn btn-p" type="button" disabled aria-describedby="chk-h" style="flex: 1.2; background: var(--surface-muted); border-color: var(--border); color: var(--ink-disabled)">Sign note</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'light' };
+  }
+}
+</script>
+</body>
+</html>

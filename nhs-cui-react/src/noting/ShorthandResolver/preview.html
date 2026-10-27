@@ -1,0 +1,9 @@
+<!-- @dsCard group="Terminology" height=260 subtitle="Shorthand resolver: possible meanings, none pre-selected" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ShorthandResolver } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(ShorthandResolver, { shorthand: 'MI', resolutions: [{ id: '1', label: 'Myocardial infarction' }, { id: '2', label: 'Mitral incompetence', description: 'Used in cardiology' }, { id: '3', label: 'Mental illness', description: 'Used in mental health' }], onResolve: function () {}, onDismiss: function () {} })
+);
+</script>

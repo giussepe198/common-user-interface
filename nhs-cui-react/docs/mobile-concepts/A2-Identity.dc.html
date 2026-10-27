@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Patient details</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/clinicalcui/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+.scr *{box-sizing:border-box}
+.btn{min-height:48px;padding:0 16px;border-radius:4px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn-p{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.row{display:grid;grid-template-columns:112px minmax(0,1fr);column-gap:12px;padding:10px 16px;border-top:1px solid var(--border);font-size:16px;line-height:22px}
+.row dt{color:var(--ink-muted);font-size:14px}
+.row dd{margin:0;font-weight:600}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div class="scr" data-theme="{{theme}}" style="width: 390px; height: 844px; display: flex; flex-direction: column; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; overflow: hidden">
+
+  <header style="background: var(--banner); color: var(--on-banner); padding: 8px 8px 8px 16px; display: flex; align-items: center; gap: 12px">
+    <h1 style="margin: 0; flex: 1; font-size: 18px; line-height: 24px; font-weight: 600">Patient details</h1>
+    <a href="Main.dc.html" style="min-height: 48px; padding: 0 16px; display: inline-flex; align-items: center; gap: 6px; color: var(--on-banner); border: 1px solid var(--banner-divider); border-radius: 4px; text-decoration: none; font-weight: 600">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 14.5l6-6l6 6"/></svg>Close</a>
+  </header>
+
+  <main style="flex: 1; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 12px 0">
+
+    <section aria-labelledby="id-h" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border)">
+      <h2 id="id-h" style="margin: 0; padding: 10px 16px 6px; font-size: 13px; line-height: 18px; font-weight: 600; color: var(--ink-muted); letter-spacing: 0.02em">IDENTITY</h2>
+      <dl style="margin: 0">
+        <div class="row"><dt>Name</dt><dd>Ngata, Mereana (Ms)</dd></div>
+        <div class="row"><dt>Preferred name</dt><dd>Mere</dd></div>
+        <div class="row"><dt>Born</dt><dd>14-Mar-1958 (68y)</dd></div>
+        <div class="row"><dt>Gender</dt><dd>Female</dd></div>
+        <div class="row"><dt>NHI</dt><dd style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap"><span style="letter-spacing: 0.04em">ZZZ0016</span><span style="display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 600; color: var(--success)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Live NHI</span></dd></div>
+        <div class="row"><dt>Ethnicity</dt><dd>Māori; Samoan</dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="ct-h" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border)">
+      <h2 id="ct-h" style="margin: 0; padding: 10px 16px 6px; font-size: 13px; line-height: 18px; font-weight: 600; color: var(--ink-muted); letter-spacing: 0.02em">CONTACT</h2>
+      <div style="padding: 10px 16px 12px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; align-items: center; gap: 8px; font-weight: 600">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11h10v8.5H7zM9 11V8a3 3 0 0 1 6 0v3"/></svg>
+          Address protected
+        </div>
+        <p style="margin: 0; font-size: 14px; line-height: 20px; color: var(--ink-muted)">This patient asked for their address to be kept confidential. Viewing it is recorded.</p>
+        <button class="btn" type="button" style="align-self: flex-start">Show address with a reason</button>
+      </div>
+      <dl style="margin: 0">
+        <div class="row"><dt>Mobile</dt><dd><a href="tel:+64270001234" style="color: var(--accent)">027 000 1234</a></dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="al-h" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border)">
+      <h2 id="al-h" style="margin: 0; padding: 10px 16px 6px; font-size: 13px; line-height: 18px; font-weight: 600; color: var(--danger); letter-spacing: 0.02em">ALLERGIES AND ADVERSE REACTIONS (2)</h2>
+      <div style="padding: 10px 16px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 2px">
+        <strong>penicillin</strong>
+        <span style="font-size: 15px">Anaphylaxis, 2019</span>
+        <span style="font-size: 13px; color: var(--ink-muted)">Recorded 02-Feb-2024 by Dr A Moana</span>
+      </div>
+      <div style="padding: 10px 16px 12px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 2px">
+        <strong>latex</strong>
+        <span style="font-size: 15px">Contact dermatitis</span>
+        <span style="font-size: 13px; color: var(--ink-muted)">Recorded 02-Feb-2024 by Dr A Moana</span>
+      </div>
+    </section>
+  </main>
+
+  <div style="padding: 12px 16px 16px; background: var(--surface); border-top: 1px solid var(--border); display: flex">
+    <a class="btn btn-p" href="Main.dc.html" style="flex: 1; text-decoration: none">Done</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'light' };
+  }
+}
+</script>
+</body>
+</html>

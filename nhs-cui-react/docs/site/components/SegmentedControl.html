@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SegmentedControl · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile touch inputs</p>
+<h1 style="margin:0 0 4px;font-size:20px">SegmentedControl</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Segmented control: two views, three modes, visible label, disabled option · Guidelines: <code>src/touch/SegmentedControl/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SegmentedControl } = window.ClinicalCUI;
+const cap = t => h('p', { className: 'cui-label', style: { margin: '12px 0 4px' } }, t);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 390 } },
+    cap('Two views (A3)'),
+    h(SegmentedControl, { label: 'Show', defaultValue: 'current', options: [{ value: 'current', label: 'Current', count: 7 }, { value: 'past', label: 'Past' }] }),
+    cap('Three modes with a visible label'),
+    h(SegmentedControl, { label: 'Entry mode', labelVisible: true, defaultValue: 'type', size: 56, options: [
+      { value: 'touch', label: 'Keypad' }, { value: 'type', label: 'Type' }, { value: 'voice', label: 'Speak' }
+    ] }),
+    cap('Disabled option'),
+    h(SegmentedControl, { label: 'Which 02:30', defaultValue: 'first', options: [
+      { value: 'first', label: 'First (AEDT)' }, { value: 'second', label: 'Second (AEST)', disabled: true }
+    ] })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

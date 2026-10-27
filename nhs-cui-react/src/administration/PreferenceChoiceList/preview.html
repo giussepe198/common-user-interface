@@ -1,0 +1,21 @@
+<!-- @dsCard group="Decision support" height=520 width=1000 subtitle="Choice list with preference ratings and the explanation window open" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { PreferenceChoiceList } = window.ClinicalCUI;
+const link = function (t) { return h('a', { href: '#', onClick: function (e) { e.preventDefault(); } }, t); };
+const options = [
+  { id: 'aml', label: 'Amlodipine 5 mg tablets', preference: { level: 5, reasons: ['First line for this patient'] } },
+  { id: 'lis', label: 'Lisinopril 2.5 mg tablets', preference: { level: 3, reasons: ['Check renal function first'] } },
+  { id: 'aten', label: 'Atenolol 25 mg tablets', preference: { level: 1, reasons: ['Potential drug-drug interaction with Verapamil', 'Asthma recorded'],
+    explanation: { summaries: [
+      { text: h('span', null, 'Atenolol with ', link('Verapamil'), ' may cause bradycardia and heart block.'), source: 'Drug Interaction Checking' },
+      { text: h('span', null, 'Beta-blockers can cause bronchospasm. ', link('Asthma'), ' is recorded for this patient.'), source: 'Drug to Disease Contraindications Checking' },
+    ], actions: [{ id: 'x', label: 'Choose an alternative', preference: 5 }, { id: 'y', label: 'Continue with atenolol', preference: 1 }], details: { rationale: 'Both summaries apply to this option.' } } } },
+  { id: 'oth', label: 'Other (search the formulary)' },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(PreferenceChoiceList, { label: 'Antihypertensive', options: options, defaultValue: 'aml', onRecordResponse: function () {} })
+);
+setTimeout(function () { const b = document.querySelectorAll('.cui-ds-pref--button')[0]; if (b) b.click(); }, 30);
+</script>

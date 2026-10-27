@@ -1,0 +1,4 @@
+/* Partial date of birth display. */
+.cui-partial-dob-display__qualifier { margin-left: var(--space-1); font-size: 12px; line-height: 16px; font-weight: 400; font-style: italic; color: var(--ink-muted); }
+.cui-partial-dob-display__age { font-weight: 600; }
+.cui-partial-dob-display__source { margin-left: var(--space-1); font-size: 12px; line-height: 16px; font-weight: 400; color: var(--ink-muted); }

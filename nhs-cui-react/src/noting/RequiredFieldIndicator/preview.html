@@ -1,0 +1,14 @@
+<!-- @dsCard group="Clinical noting" height=150 subtitle="Required field asterisk and key" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { FormField, RequiredFieldIndicator, RequiredKey } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 520 } },
+    h(FormField, { label: 'Reason for admission', labelPosition: 'left', required: true }, h('input', { type: 'text', defaultValue: 'Shortness of breath', style: { width: '18em' } })),
+    h(FormField, { label: 'Referring clinician', labelPosition: 'left' }, h('input', { type: 'text', style: { width: '18em' } })),
+    h('p', { style: { margin: '0 0 8px' } }, 'Inline use: Consultant', h(RequiredFieldIndicator)),
+    h(RequiredKey)
+  )
+);
+</script>

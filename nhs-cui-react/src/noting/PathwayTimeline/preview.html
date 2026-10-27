@@ -1,0 +1,33 @@
+<!-- @dsCard group="Clinical noting" width=1200 height=900 subtitle="Pathway timeline (experimental): stages left to right, current and focus, strips and groups, status symbols, boundary of care, sub-pathways in a resizable split" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { PathwayTimeline } = window.ClinicalCUI;
+const st = (id, title, state, extra) => Object.assign({ id: id, title: title, state: state, bundles: [] }, extra || {});
+const HIP = { id: 'hip', title: 'Elective hip replacement', status: 'active', nationalGuidance: 'NICE NG157', precursor: 'GP referral, Oxford hip score 14', goal: 'Walking unaided at 6 weeks',
+  boundaries: [{ afterStageId: 'h3', label: 'Handover to ward' }],
+  stages: [
+    st('h1', 'Referral triage', 'completed', { status: 'success', bundles: [{ id: 'b1', title: 'Triage', state: 'completed', isKeyDecision: true, decision: 'Refer to surgery' }] }),
+    st('h2', 'Pre-operative assessment', 'completed', { status: 'failed', team: 'Pre-op clinic', bundles: [{ id: 'b2', title: 'Bloods', state: 'completed' }, { id: 'b3', title: 'ECG', state: 'failed' }] }),
+    st('h3', 'Surgery', 'completed', { status: 'success', groupLabel: 'Day of operation', team: 'Orthopaedics', bundles: [{ id: 'b4', title: 'Consent', state: 'completed' }, { id: 'b5', title: 'Arthroplasty', state: 'completed' }] }),
+    st('h4', 'Ward recovery', 'current', { status: 'warning', groupLabel: 'Day of operation', team: 'Ward 7', targetTime: '3 days', actualTime: '4 days', targetMissed: true, bundles: [{ id: 'b6', title: 'Mobilise', state: 'active' }, { id: 'b7', title: 'Pain control', state: 'completed' }, { id: 'b8', title: 'Discharge planning', state: 'future' }] }),
+    st('h5', 'Discharge', 'future', { bundles: [{ id: 'b9', title: 'Medicines reconciliation', state: 'future' }] }),
+    st('h6', 'Physiotherapy', 'future'),
+    st('h7', 'Six-week review', 'future'),
+    st('h8', 'One-year review', 'future'),
+  ] };
+const DIAB = { id: 'diab', title: 'Type 2 diabetes', status: 'paused', statusReason: 'Hospitalisation', stages: [st('d1', 'Diagnosis', 'completed', { status: 'success' }), st('d2', 'Structured education', 'completed', { status: 'success' }), st('d3', 'Annual review', 'current'), st('d4', 'Retinal screening', 'future')] };
+const COPD = { id: 'copd', title: 'COPD', status: 'abnormal', statusReason: 'Pulmonary rehabilitation target missed', stages: [st('c1', 'Diagnosis', 'completed', { status: 'success' }), st('c2', 'Pulmonary rehabilitation', 'current', { status: 'failed', targetMissed: true, targetTime: '12 weeks', actualTime: '20 weeks' }), st('c3', 'Review', 'future')] };
+const HIP_SUBS = Object.assign({}, HIP, { id: 'hip2', subPathways: [
+  { id: 'rehab', title: 'Community rehabilitation', fromStageId: 'h4', route: 'current', boundaryLabel: 'Handover to community physiotherapy', goal: 'Independent on stairs',
+    stages: [st('r1', 'Home assessment', 'completed', { status: 'success' }), st('r2', 'Physiotherapy', 'current', { team: 'Community physiotherapy' }), st('r3', 'Discharge from rehabilitation', 'future')] },
+  { id: 'revision', title: 'Revision surgery', fromStageId: 'h4', route: 'unattempted', stages: [st('v1', 'Revision assessment', 'future'), st('v2', 'Revision surgery', 'future')] },
+] });
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 24 } },
+    h(PathwayTimeline, { pathway: HIP }),
+    h(PathwayTimeline, { pathway: HIP, capacity: 6, focusId: 'h8', showBundles: false }),
+    h('p', { className: 'cui-label', style: { margin: 0 } }, 'Sub-pathways beside the pathway (drag the dotted boundary or use the arrow keys)'),
+    h(PathwayTimeline, { pathway: HIP_SUBS, capacity: 6, showBundles: false }))
+);
+</script>

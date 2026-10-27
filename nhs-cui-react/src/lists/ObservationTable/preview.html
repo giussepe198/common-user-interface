@@ -1,0 +1,23 @@
+<!-- @dsCard group="Timeline and graphs" height=1440 width=1000 subtitle="Observations table: newest at top, aligned decimals, transposed view, NZEWS annotations, critical thresholds" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ObservationTable, ewsObservationAnnotator, EWS_NZEWS } = window.ClinicalCUI;
+const base = new Date(2026, 9, 26, 18, 0).getTime();
+const at = hrs => new Date(base + hrs * 3600000);
+const temp = { id: 'temp', label: 'Temperature', unit: '°C', unitDefinition: 'degrees Celsius', points: [[0, '37.4'], [2, '37.95'], [4, '38.4'], [6, '38'], [10, '37.6'], [14, '37.2'], [18, '37.0']].map(([t, v], i) => ({ time: at(t), value: Number(v), display: v, source: i % 3 === 0 ? 'manual' : 'machine' })), roundTo: 1 };
+const pulse = { id: 'pulse', label: 'Pulse rate', unit: 'beats/min', unitDefinition: 'beats per minute', points: [[0, 82], [2, 88], [4, 101], [6, 96], [10, 90], [14, 86], [18, 84]].map(([t, v]) => ({ time: at(t), value: v, source: 'machine' })) };
+const spo2 = { id: 'spo2', label: 'Oxygen saturation', unit: '%', unitDefinition: 'per cent', points: [[0, 96], [4, 93], [10, 95], [18, 97]].map(([t, v]) => ({ time: at(t), value: v, source: 'machine' })) };
+const bp = { points: [[0, 128, 82], [4, 112, 70], [10, 118, 74], [18, 126, 80]].map(([t, s, d]) => ({ time: at(t), systolic: s, diastolic: d, source: 'machine' })) };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gap: 16, justifyItems: 'start' } },
+    h(ObservationTable, { caption: 'Vital signs, last 24 hours', series: [temp, pulse, spo2], bloodPressure: bp }),
+    h(ObservationTable, { caption: 'Vital signs (time across)', series: [temp, pulse], bloodPressure: bp, defaultOrientation: 'timeHorizontal', maxHeight: 220 }),
+    h(ObservationTable, { caption: 'NZ: annotated with NZEWS score and zone', series: [temp, pulse, spo2], maxHeight: 260,
+      annotate: ewsObservationAnnotator(EWS_NZEWS, { temp: 'temperature', pulse: 'heartRate', spo2: 'oxygenSaturation' }) }),
+    h(ObservationTable, { caption: 'Critical thresholds: temperature 38.4 and over, systolic 115 and under', series: [temp, pulse], bloodPressure: bp, maxHeight: 240,
+      criticalThresholds: [{ direction: 'high', value: 38.4, appliesTo: 'temp', setBy: 'Dr Okafor' }, { direction: 'low', value: 115, appliesTo: 'systolic' }] }),
+    h(ObservationTable, { caption: 'Respiratory rate', series: [{ id: 'rr', label: 'Respiratory rate', unit: 'breaths/min', points: [] }] })
+  )
+);
+</script>

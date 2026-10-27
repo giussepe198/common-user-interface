@@ -1,0 +1,15 @@
+.cui-measured-value { margin: 0; padding: var(--space-2) var(--space-3) var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; flex-direction: column; gap: var(--space-2); font-size: 14px; line-height: 20px; color: var(--ink); max-width: 100%; }
+.cui-measured-value__legend { padding: 0 var(--space-1); font-weight: 600; }
+.cui-measured-value__fields { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-4); }
+.cui-measured-value__field { display: flex; flex-direction: column; gap: 2px; }
+.cui-measured-value__label { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-measured-value__row { display: inline-flex; align-items: center; gap: var(--space-2); }
+.cui-measured-value__input { width: 7em; font-variant-numeric: tabular-nums; }
+.cui-measured-value__unit { width: auto; }
+.cui-measured-value__unit-text { color: var(--ink-muted); }
+.cui-measured-value__field--error .cui-measured-value__input { border-color: var(--danger); }
+.cui-measured-value__error { max-width: 26em; font-size: 12px; line-height: 16px; color: var(--danger); }
+.cui-measured-value__confirm { display: inline-flex; align-items: center; gap: var(--space-2); cursor: pointer; }
+.cui-measured-value__confirm input { margin: 0; accent-color: var(--accent); }
+.cui-measured-value__warning { margin: 0; padding: var(--space-1) var(--space-2); color: var(--warning); background: var(--warning-surface); border-radius: var(--radius-sm); }
+.cui-measured-value__summary { margin: 0; }

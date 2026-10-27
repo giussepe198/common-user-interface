@@ -1,0 +1,21 @@
+.cui-touch-button { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-width: 48px; min-height: 56px; padding: var(--space-2) var(--space-4); font-family: var(--font-sans); font-size: 16px; line-height: 22px; font-weight: 600; text-align: center; border-radius: var(--radius-md); border: 1px solid var(--border-strong); background: var(--surface); color: var(--ink); cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+.cui-touch-button__label { overflow-wrap: break-word; }
+.cui-touch-button:active { background: var(--surface-muted); }
+.cui-touch-button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-touch-button--h48 { min-height: 48px; }
+.cui-touch-button--h64 { min-height: 64px; font-size: 17px; }
+.cui-touch-button--full { display: flex; width: 100%; }
+.cui-touch-button--icon-only { padding: var(--space-2); min-width: 48px; }
+.cui-touch-button--primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.cui-touch-button--primary:active { background: var(--accent-hover); border-color: var(--accent-hover); }
+.cui-touch-button--quiet { background: transparent; border-color: transparent; color: var(--accent); }
+.cui-touch-button--quiet:active { background: var(--surface-muted); }
+.cui-touch-button--danger { color: var(--danger); border-color: var(--danger); }
+.cui-touch-button--danger:active { background: var(--danger-surface); }
+.cui-touch-button:disabled, .cui-touch-button:disabled:active { color: var(--ink-disabled); background: var(--surface-muted); border-color: var(--border); cursor: not-allowed; }
+.cui-touch-button--bottom { margin-bottom: env(safe-area-inset-bottom, 0px); }
+@media (hover: hover) {
+  .cui-touch-button--secondary:hover:not(:disabled), .cui-touch-button--quiet:hover:not(:disabled) { background: var(--hover); }
+  .cui-touch-button--primary:hover:not(:disabled) { background: var(--accent-hover); border-color: var(--accent-hover); }
+  .cui-touch-button--danger:hover:not(:disabled) { background: var(--danger-surface); }
+}

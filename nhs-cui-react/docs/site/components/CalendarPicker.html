@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CalendarPicker · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Dates and times</p>
+<h1 style="margin:0 0 4px;font-size:20px">CalendarPicker</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Calendar with independent month and year navigation; AU day headings · Guidelines: <code>src/datetime/CalendarPicker/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { CalendarPicker, DateDisplay, formatDateInputValue, ClinicalLocaleProvider } = window.ClinicalCUI;
+function Demo() {
+  const [v, setV] = React.useState({ kind: 'full', year: 2007, month: 9, day: 14 });
+  return h('div', { style: { display: 'flex', gap: 24, alignItems: 'flex-start', flexWrap: 'wrap' } },
+    h(CalendarPicker, { value: v, onSelect: setV, onClose: () => {}, today: new Date(2007, 8, 20), allowMonthYear: true, allowYear: true, autoFocus: false }),
+    h('div', { className: 'cui-label', style: { width: 160 } }, 'Selected: ', h('strong', null, formatDateInputValue(v))),
+    h('div', null,
+      h('div', { className: 'cui-label', style: { marginBottom: 4 } }, 'AU (Thur in the headings)'),
+      h(ClinicalLocaleProvider, { region: 'AU' }, h(CalendarPicker, { value: { kind: 'full', year: 2026, month: 10, day: 4 }, onSelect: () => {}, onClose: () => {}, today: new Date(2026, 9, 27), autoFocus: false })))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

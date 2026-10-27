@@ -1,0 +1,6 @@
+.cui-medicare-input { display: inline-flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-1) var(--space-4); }
+.cui-medicare-input__irn { display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); }
+.cui-medicare-input__irn .cui-id-input__error { max-width: 24ch; }
+.cui-medicare-input__valid-to { display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); }
+.cui-medicare-input__valid-to .cui-id-input__box::placeholder { color: var(--ink-subtle); font-style: italic; opacity: 1; }
+.cui-medicare-input__valid-to .cui-id-input__error, .cui-medicare-input__valid-to .cui-id-input__warning { max-width: 30ch; }

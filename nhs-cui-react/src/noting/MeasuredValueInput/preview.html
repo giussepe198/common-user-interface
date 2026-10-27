@@ -1,0 +1,18 @@
+<!-- @dsCard group="Terminology" width=1200 height=420 subtitle="Measured values: default unit without default value, validation on leaving the field, auto-confirm" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MeasuredValueInput } = window.ClinicalCUI;
+const temp = [{ name: 't', label: 'Temperature value', units: [{ unit: '°C', aliases: ['c'], min: 25, max: 45 }, { unit: '°F', aliases: ['f'], min: 77, max: 113 }] }];
+const bp = [{ name: 'sys', label: 'Systolic', units: [{ unit: 'mmHg', min: 40, max: 300 }] }, { name: 'dia', label: 'Diastolic', units: [{ unit: 'mmHg', min: 20, max: 200 }] }];
+function Demo() {
+  React.useEffect(() => { setTimeout(() => { const i = document.querySelector('#bad input'); if (i) { i.focus(); i.blur(); } }, 60); }, []);
+  return h('div', { style: { display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    h(MeasuredValueInput, { conceptLabel: 'Body temperature', fields: temp, defaultValues: { t: { text: '39.8', unit: '°C' } }, defaultConfirmed: true }),
+    h('div', { id: 'bad' }, h(MeasuredValueInput, { conceptLabel: 'Body temperature', fields: temp, defaultValues: { t: { text: '398', unit: '°C' } }, defaultConfirmed: true })),
+    h(MeasuredValueInput, { conceptLabel: 'Blood pressure', fields: bp }),
+    h(MeasuredValueInput, { conceptLabel: 'Blood pressure', fields: bp, defaultConfirmed: true })
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

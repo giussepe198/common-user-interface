@@ -1,0 +1,18 @@
+.cui-ews-summary { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3) var(--space-4); background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-ews-summary--zoned { border-top: 6px solid var(--border-strong); box-shadow: inset 0 6px 0 var(--cui-ews-zone); }
+.cui-ews-summary__head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); }
+.cui-ews-summary__title { margin: 0; font-size: 15px; line-height: 20px; font-weight: 600; }
+.cui-ews-summary__total { font-size: 26px; line-height: 32px; font-weight: 700; }
+.cui-ews-summary__time { margin-left: auto; color: var(--ink-muted); font-size: 12px; }
+.cui-ews-zone-chip { display: inline-flex; align-items: center; padding: 2px var(--space-2); font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); background: var(--surface-muted); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); }
+.cui-ews-zone-chip--filled { background: var(--cui-ews-zone); border-color: var(--ink); }
+.cui-ews-summary p { margin: 0; }
+.cui-ews-summary__descriptor { font-weight: 600; }
+.cui-ews-summary__frequency { font-size: 12px; color: var(--ink-muted); }
+.cui-ews-summary__incomplete, .cui-ews-summary__placeholder { display: flex; gap: var(--space-2); align-items: flex-start; padding: var(--space-1) var(--space-2); background: var(--warning-surface); color: var(--ink); border: 1px solid var(--warning); border-radius: var(--radius-sm); font-size: 14px; }
+.cui-ews-summary__placeholder { font-weight: 600; }
+.cui-ews-summary__label { display: block; font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-ews-summary__triggers ul, .cui-ews-summary__mods ul { margin: 2px 0 0; padding-left: var(--space-6); }
+.cui-ews-summary__mods--ignored li { color: var(--warning); }
+.cui-ews-summary__mandatory { display: flex; gap: var(--space-2); align-items: flex-start; padding: var(--space-2) var(--space-3); background: var(--surface-muted); color: var(--ink); border: 2px solid var(--ink); border-radius: var(--radius-sm); font-weight: 700; font-size: 14px; line-height: 20px; }
+.cui-ews-summary__empty { color: var(--ink-muted); }

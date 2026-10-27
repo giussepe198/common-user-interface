@@ -1,0 +1,28 @@
+<!-- @dsCard group="Mobile voice" height=2200 width=390 subtitle="Dictated observations (C1): NZ listening with oxygen not heard yet, AU ADDS with oxygen flow, GB with no speech engine" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DictatedObservationsCapture, ClinicalLocaleProvider } = window.ClinicalCUI;
+const banner = (name, born, idLabel, id) => h('header', { 'aria-label': 'Patient', style: { background: 'var(--banner)', color: 'var(--on-banner)', padding: '10px 16px', display: 'flex', flexDirection: 'column', gap: 2 } },
+  h('div', { style: { fontSize: 17, lineHeight: '22px', fontWeight: 600 } }, name),
+  h('div', { style: { display: 'flex', flexWrap: 'wrap', columnGap: 10, fontSize: 13, lineHeight: '18px' } },
+    h('span', null, h('span', { style: { color: 'var(--on-banner-muted)' } }, 'Born '), born),
+    h('span', null, h('span', { style: { color: 'var(--on-banner-muted)' } }, idLabel + ' '), id)));
+const cap = t => h('p', { className: 'cui-label', style: { margin: '16px 0 4px', fontSize: 12, color: 'var(--ink-muted)' } }, t);
+const frame = c => h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } }, c);
+const C1 = "Resp rate twenty two, sats ninety three, BP one ten on seventy, heart rate one hundred and twelve, temp thirty eight point four, she's alert";
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    cap('NZ (NZEWS): listening, oxygen not heard yet'),
+    frame(h(ClinicalLocaleProvider, { region: 'NZ' }, h(DictatedObservationsCapture, {
+      banner: banner('Ngata, Mereana (Ms)', '14-Mar-1958 (68y)', 'NHI', 'ZZZ0016'), transcript: C1, interim: '', status: 'listening', stickyActions: false }))),
+    cap('AU (ADDS placeholder chart): oxygen flow heard, a number to check'),
+    frame(h(ClinicalLocaleProvider, { region: 'AU' }, h(DictatedObservationsCapture, {
+      banner: banner('CHEN, Wei', '02-Feb-1949 (77y)', 'IHI', '8003 6012 3456 7894'),
+      transcript: 'Resp rate fifteen, sats ninety four on four litres, pulse ninety eight, BP one forty on eighty, temp thirty seven point one, alert', status: 'idle', stickyActions: false }))),
+    cap('GB (NEWS2): no speech engine on this device, Type instead'),
+    frame(h(ClinicalLocaleProvider, { region: 'GB' }, h(DictatedObservationsCapture, {
+      banner: banner('JONES, Sarah (Mrs)', '09-Aug-1971 (55y)', 'NHS No.', '999 000 0018'), stickyActions: false })))
+  )
+);
+</script>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Medicines</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/clinicalcui/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+.scr *{box-sizing:border-box}
+.ibtn{width:48px;height:48px;border-radius:4px;border:1px solid var(--banner-divider);background:transparent;color:var(--on-banner);display:flex;align-items:center;justify-content:center;flex:none;padding:0}
+.btn{min-height:48px;padding:0 16px;border-radius:4px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.seg{flex:1;min-height:48px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.seg-on{background:var(--accent-surface);border-color:var(--accent);color:var(--ink)}
+.med{display:flex;flex-direction:column;gap:6px;padding:12px 16px;border-top:1px solid var(--border);background:var(--surface);color:var(--ink);text-decoration:none}
+.line{font-size:16px;line-height:23px}
+.dose{font-size:12px;letter-spacing:0.05em}
+.st{font-size:14px;line-height:20px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.tab{flex:1;min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px;line-height:16px;color:var(--ink-muted);text-decoration:none}
+.tab-on{color:var(--accent);font-weight:600}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div class="scr" data-theme="{{theme}}" style="width: 390px; height: 844px; display: flex; flex-direction: column; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; overflow: hidden">
+
+  <header aria-label="Patient" style="background: var(--banner); color: var(--on-banner); padding: 8px 8px 8px 16px; display: flex; align-items: center; gap: 12px">
+    <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+      <div style="font-size: 17px; line-height: 22px; font-weight: 600">Ngata, Mereana (Ms)</div>
+      <div style="display: flex; flex-wrap: wrap; column-gap: 10px; font-size: 13px; line-height: 18px">
+        <span><span style="color: var(--on-banner-muted)">Born </span>14-Mar-1958 (68y)</span>
+        <span><span style="color: var(--on-banner-muted)">NHI </span>ZZZ0016</span>
+        <span style="background: var(--banner-alert); color: var(--banner); border-radius: 3px; padding: 0 6px; font-weight: 600">Allergies 2</span>
+      </div>
+    </div>
+    <a class="ibtn" href="A2-Identity.dc.html" aria-label="Show all patient details" style="text-decoration: none">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6l6-6"/></svg>
+    </a>
+  </header>
+
+  <div style="padding: 12px 16px 8px; display: flex; flex-direction: column; gap: 10px; background: var(--surface-sunken)">
+    <h1 style="margin: 0; font-size: 18px; line-height: 24px; font-weight: 600">Medicines</h1>
+    <div role="group" aria-label="Show" style="display: flex">
+      <button class="seg seg-on" type="button" aria-pressed="true" style="border-radius: 4px 0 0 4px">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Current (7)</button>
+      <button class="seg" type="button" aria-pressed="false" style="border-radius: 0 4px 4px 0; border-left: 0">Past</button>
+    </div>
+    <div style="display: flex; gap: 8px">
+      <button class="btn" type="button" style="flex: 1"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 10h10M4 15h10M4 20h16"/></svg>Group: none</button>
+      <button class="btn" type="button" style="flex: 1"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M4.5 15.5L8 19l3.5-3.5M16 19V5M12.5 8.5L16 5l3.5 3.5"/></svg>Sort: due first</button>
+    </div>
+  </div>
+
+  <main style="flex: 1; overflow: hidden; display: flex; flex-direction: column; border-bottom: 1px solid var(--border)">
+    <a class="med" href="B2-Administer.dc.html">
+      <span class="line"><strong>paracetamol</strong> – 500 mg – tablet – <span class="dose">DOSE</span> <strong>1 g</strong> – oral – four times a day</span>
+      <span class="st"><span style="display: inline-flex; align-items: center; gap: 4px; color: var(--danger); font-weight: 700"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M12 4a8 8 0 1 1 0 16a8 8 0 0 1 0-16zM12 8v4.5M12 15.5v.4"/></svg>Overdue 13:00</span><span style="color: var(--ink-muted)">Started 24-Oct-2026</span></span>
+    </a>
+    <a class="med" href="B2-Administer.dc.html">
+      <span class="line"><strong>flucloxacillin</strong> – 500 mg – capsule – <span class="dose">DOSE</span> <strong>500 mg</strong> – oral – four times a day</span>
+      <span class="st"><span style="display: inline-flex; align-items: center; gap: 4px; color: var(--accent); font-weight: 700"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M12 4a8 8 0 1 1 0 16a8 8 0 0 1 0-16zM12 8v4.5l3 2"/></svg>Due 14:00</span><span style="display: inline-flex; align-items: center; gap: 4px; color: var(--danger); font-weight: 600"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M12 4a8 8 0 1 1 0 16a8 8 0 0 1 0-16zM9 9l6 6M15 9l-6 6"/></svg>Allergy alert</span></span>
+    </a>
+    <a class="med" href="A3-Medications.dc.html">
+      <span class="line"><strong>metoPROLOL</strong> – 47.5 mg – modified-release tablet – <span class="dose">DOSE</span> <strong>47.5 mg</strong> – oral – once a day – in the morning</span>
+      <span class="st"><span style="color: var(--ink-muted)">Given 08:05</span><span style="color: var(--ink-muted)">Next 08:00 tomorrow</span></span>
+    </a>
+    <a class="med" href="A3-Medications.dc.html">
+      <span class="line"><strong>amLODIPIne</strong> – 5 mg – tablet – <span class="dose">DOSE</span> <strong>5 mg</strong> – oral – once a day</span>
+      <span class="st"><span style="background: var(--warning-surface); color: var(--warning); font-weight: 700; padding: 2px 8px; border-radius: 3px; display: inline-flex; align-items: center; gap: 4px"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M9 6v12M15 6v12"/></svg>Suspended on 26-Oct-2026</span></span>
+    </a>
+    <a class="med" href="A3-Medications.dc.html">
+      <span class="line"><strong>tRAMadol</strong> – 50 mg – capsule – <span class="dose">DOSE</span> <strong>50 to 100 mg</strong> – oral – every 6 hours when required – maximum 400 mg in 24 hours</span>
+      <span class="st"><span style="color: var(--ink-muted)">Last given 06:30</span><span style="color: var(--success); font-weight: 600">Available now</span></span>
+    </a>
+  </main>
+
+  <div aria-label="More medicines below" style="padding: 8px 16px; background: var(--surface-muted); display: flex; align-items: center; gap: 8px; font-size: 14px">
+    <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M12 5v14M6.5 13.5L12 19l5.5-5.5"/></svg>
+    <span><strong>2 more:</strong> enoxaparin, insulin glargine</span>
+  </div>
+
+  <nav aria-label="Patient record" style="display: flex; background: var(--surface); border-top: 1px solid var(--border)">
+    <a class="tab" href="Main.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5a3.5 3.5 0 1 1 0 7a3.5 3.5 0 0 1 0-7zM5 19.5c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg>Summary</a>
+    <a class="tab tab-on" href="A3-Medications.dc.html" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.6 15.4l6.8-6.8M5.8 18.2a3.9 3.9 0 0 1 0-5.5l6.9-6.9a3.9 3.9 0 0 1 5.5 5.5l-6.9 6.9a3.9 3.9 0 0 1-5.5 0z"/></svg>Medicines</a>
+    <a class="tab" href="P2-ObsEntry.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2.5-6l4 12l2.5-6h5"/></svg>Obs</a>
+    <a class="tab" href="C3-Note.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 10h14M5 14h9M5 18h6"/></svg>Notes</a>
+    <a class="tab" href="A2-Identity.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h.01M12 12h.01M18 12h.01"/></svg>More</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'light' };
+  }
+}
+</script>
+</body>
+</html>

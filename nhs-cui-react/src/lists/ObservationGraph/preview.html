@@ -1,0 +1,30 @@
+<!-- @dsCard group="Timeline and graphs" height=1900 width=1000 subtitle="Pulse with normal range, NZEWS zones with a thumbnail, overlaid temperatures, blood pressure T-bars, critical thresholds, empty period" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ObservationGraph, SeriesStyleAllocator, defaultYRange, ewsGraphZones, EWS_NZEWS } = window.ClinicalCUI;
+const alloc = new SeriesStyleAllocator();
+const base = new Date(2026, 9, 26, 14, 0).getTime();
+const at = hrs => new Date(base + hrs * 3600000);
+const pulse = { id: 'pulse', label: 'Pulse rate', unit: 'beats/min', unitDefinition: 'beats per minute', points: [
+  [1, 82], [4, 88], [8, 94], [12, 101], [14, 108], [18, 96], [21, 90], [23.5, 86]].map(([t, v], i) => ({ time: at(t), value: v, source: i === 3 ? 'manual' : 'machine' })) };
+const tempOral = { id: 'temp-oral', label: 'Oral temperature', unit: '°C', unitDefinition: 'degrees Celsius', points: [[2, '37.4'], [6, '37.9'], [10, '38.4'], [16, '38.1'], [22, '37.6']].map(([t, v]) => ({ time: at(t), value: Number(v), display: v, source: 'manual' })) };
+const tempTymp = { id: 'temp-tymp', label: 'Tympanic temperature', unit: '°C', unitDefinition: 'degrees Celsius', points: [[3, '37.6'], [9, '38.6'], [15, '38.0'], [20, '37.5']].map(([t, v]) => ({ time: at(t), value: Number(v), display: v, source: 'machine' })) };
+const bp = { points: [[1, 128, 82], [5, 122, 78], [9, 112, 70], [13, 104, 64], [17, 118, 74], [22, 126, 80]].map(([t, s, d]) => ({ time: at(t), systolic: s, diastolic: d, source: 'machine' })),
+  systolicRange: { low: 100, high: 140, population: 'adult' }, diastolicRange: { low: 60, high: 90, population: 'adult' } };
+const common = { start: at(0), end: at(24), rangeLabel: 'Last 24 hours', styleAllocator: alloc, now: at(23.75), height: 180 };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gap: 16 } },
+    h(ObservationGraph, Object.assign({}, common, { series: [pulse], normalRange: { low: 60, high: 100, population: 'adult' }, yRange: defaultYRange({ min: 40, max: 160 }, { low: 60, high: 100 }) })),
+    h(ObservationGraph, Object.assign({}, common, { title: 'Heart rate with NZEWS zones (values off the scale: thumbnail)', series: [{ id: 'hr', label: 'Heart rate', unit: 'beats/min', unitDefinition: 'beats per minute',
+      points: [[1, 92], [4, 104], [8, 118], [12, 134], [14, 152], [18, 168], [21, 128], [23.5, 112]].map(([t, v]) => ({ time: at(t), value: v, source: 'machine' })) }],
+      yRange: { min: 40, max: 160 }, zones: ewsGraphZones(EWS_NZEWS, 'heartRate') })),
+    h(ObservationGraph, Object.assign({}, common, { title: 'Temperature', series: [tempOral, tempTymp], yRange: { min: 35, max: 40 }, normalRange: { low: 36.1, high: 37.8, population: 'adult' } })),
+    h(ObservationGraph, Object.assign({}, common, { bloodPressure: bp, yRange: { min: 40, max: 180 } })),
+    h(ObservationGraph, Object.assign({}, common, { title: 'Pulse rate with critical thresholds', series: [pulse], yRange: { min: 40, max: 160 }, normalRange: { low: 60, high: 100, population: 'adult' },
+      criticalThresholds: [{ direction: 'high', value: 105, appliesTo: 'pulse', setBy: 'Dr Okafor' }, { direction: 'low', value: 45, appliesTo: 'pulse' }] })),
+    h(ObservationGraph, Object.assign({}, common, { title: 'Blood pressure with a systolic critical low', bloodPressure: bp, yRange: { min: 40, max: 180 }, criticalThresholds: [{ direction: 'low', value: 105, appliesTo: 'systolic' }] })),
+    h(ObservationGraph, Object.assign({}, common, { title: 'Respiratory rate', series: [{ id: 'rr', label: 'Respiratory rate', unit: 'breaths/min', unitDefinition: 'breaths per minute', points: [] }], yRange: { min: 0, max: 40 }, height: 120 }))
+  )
+);
+</script>

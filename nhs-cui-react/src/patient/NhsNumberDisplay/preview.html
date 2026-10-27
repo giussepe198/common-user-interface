@@ -1,0 +1,15 @@
+<!-- @dsCard group="Patient identification" height=154 subtitle="NHS Number display in 3-3-4 groups" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { NhsNumberDisplay } = window.ClinicalCUI;
+const row = (child) => h('div', { style: { padding: '4px 0' } }, child);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { padding: 12, background: 'var(--surface)' } },
+    row(h(NhsNumberDisplay, { value: '9990000018' })),
+    row(h(NhsNumberDisplay, { label: 'NHS No.', value: '999 000 0026', definition: 'A ten-digit number used to identify a person uniquely within the NHS in England and Wales' })),
+    row(h(NhsNumberDisplay, { label: 'NHS No.', value: '999000019' })),
+    row(h(NhsNumberDisplay, { label: 'NHS No.', value: null }))
+  )
+);
+</script>

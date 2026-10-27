@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EncodableTextEditor · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Display standards</p>
+<h1 style="margin:0 0 4px;font-size:20px">EncodableTextEditor</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Noting area with encodable highlights, expression marquees with draggable handles, and confirmed terms · Guidelines: <code>src/datetime/EncodableTextEditor/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { EncodableTextEditor, adjustMatchesForEdit } = window.ClinicalCUI;
+function find(text, phrase, from) { const i = text.indexOf(phrase, from || 0); return [i, i + phrase.length]; }
+function Demo({ initial, label, focused, confirmedIds, dragged }) {
+  const [text, setText] = React.useState(initial);
+  const make = (id, phrase, status, expr, lbl) => { const [s, e] = find(initial, phrase); return { id, start: s, end: e, status, expressionId: expr, label: lbl }; };
+  const [matches, setMatches] = React.useState([
+    make('mild', 'mild', 'elaboration', 'e1', 'Mild'),
+    dragged ? make('fever', 'fever for three days', 'encodable', 'e1', 'Fever') : make('fever', 'fever', confirmedIds.includes('fever') ? 'confirmed' : 'encodable', 'e1', 'Fever'),
+  ].concat(dragged ? [] : [make('days', 'three days', 'encodable', 'e1', '3 days')]).concat([
+    make('cough', 'productive cough', confirmedIds.includes('cough') ? 'confirmed' : 'encodable', 'e2', 'Productive cough'),
+    make('sob', 'short of breath', 'encodable', 'e3', 'Dyspnoea'),
+  ]));
+  const [focus, setFocus] = React.useState(focused);
+  return h(EncodableTextEditor, {
+    label, value: text, matches, focusedExpressionId: focus, onFocusExpression: id => id && setFocus(id), rows: 3,
+    onChange: (t, edit) => { setText(t); setMatches(m => adjustMatchesForEdit(m, edit)); },
+    onConfirm: id => setMatches(m => m.map(x => x.id === id ? Object.assign({}, x, { status: 'confirmed' }) : x)),
+    onUnconfirm: id => setMatches(m => m.map(x => x.id === id ? Object.assign({}, x, { status: 'encodable' }) : x)),
+    onBoundaryChange: (id, s, e) => setMatches(m => m.map(x => x.id === id ? Object.assign({}, x, { start: s, end: e }) : x)),
+  });
+}
+const note = 'Presented with mild fever for three days and a productive cough. Now short of breath on exertion.';
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 20 } },
+    h(Demo, { initial: note, label: 'History of presenting complaint', focused: 'e1', confirmedIds: [] }),
+    h(Demo, { initial: note, label: 'After confirming fever and cough', focused: 'e3', confirmedIds: ['fever', 'cough'] }),
+    h(Demo, { initial: note, label: 'End handle dragged with the mouse to include "for three days"', focused: 'e1', confirmedIds: [], dragged: true })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MobileTabBar · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile screens</p>
+<h1 style="margin:0 0 4px;font-size:20px">MobileTabBar</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Patient record tab bar: 64 px tabs with labels, current tab marked, count badge · Guidelines: <code>src/mobile/MobileTabBar/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MobileTabBar } = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 12, lineHeight: '16px', color: 'var(--ink-muted)' } }, t);
+const items = [
+  { id: 'summary', label: 'Summary', icon: 'summary' },
+  { id: 'medicines', label: 'Medicines', icon: 'medicines', badge: 2, badgeLabel: '2 due' },
+  { id: 'obs', label: 'Obs', icon: 'obs' },
+  { id: 'notes', label: 'Notes', icon: 'notes' },
+  { id: 'more', label: 'More', icon: 'dots' },
+];
+function Demo({ start }) {
+  const [cur, setCur] = React.useState(start);
+  return h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } }, h(MobileTabBar, { items, current: cur, onSelect: setCur, sticky: false }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    label('Summary current (A1)'), h(Demo, { start: 'summary' }),
+    label('Medicines current, with 2 due'), h(Demo, { start: 'medicines' }),
+    label('Three tabs'), h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } }, h(MobileTabBar, { sticky: false, current: 'a', items: [{ id: 'a', label: 'Current', icon: 'pill' }, { id: 'b', label: 'History', icon: 'history' }, { id: 'c', label: 'Alerts', icon: 'bell' }] }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RevealSection · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Clinical noting</p>
+<h1 style="margin:0 0 4px;font-size:20px">RevealSection</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Reveal and hide optional fields; locked while they contain data · Guidelines: <code>src/noting/RevealSection/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { RevealSection, ClinicalRadioGroup, FormField } = window.ClinicalCUI;
+function Demo() {
+  const [cvsNormal, setCvsNormal] = React.useState('no');
+  const [murmur, setMurmur] = React.useState('Soft systolic murmur at apex');
+  const [jvp, setJvp] = React.useState('');
+  return h('div', { style: { maxWidth: 640 } },
+    h(ClinicalRadioGroup, { legend: 'CVS normal on examination', orientation: 'horizontal', value: cvsNormal, onChange: setCvsNormal, options: [
+      { value: 'yes', label: 'Yes' }, { value: 'no', label: 'No', prompt: 'Opens further details', reveals: true }] }),
+    h(RevealSection, { label: 'Further details: CVS examination', trigger: cvsNormal === 'no', values: [murmur, jvp] },
+      h(FormField, { label: 'Heart sounds' }, h('input', { value: murmur, onChange: (e) => setMurmur(e.target.value), style: { width: '22em' } })),
+      h(FormField, { label: 'JVP' }, h('input', { value: jvp, onChange: (e) => setJvp(e.target.value), style: { width: '10em' } })),
+      h(RevealSection, { label: 'Further details: peripheral pulses', level: 0 },
+        h(FormField, { label: 'Radial pulse' }, h('input', { style: { width: '10em' } })))
+    ),
+    h(RevealSection, { label: 'Further details: respiratory examination', prompt: 'Select to record findings' },
+      h(FormField, { label: 'Breath sounds' }, h('input', { style: { width: '18em' } })))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

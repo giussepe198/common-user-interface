@@ -1,0 +1,2 @@
+/* NotGivenSheet is BottomSheet + ReasonCodePicker; only spacing is added here. */
+.cui-not-given .cui-reason-code { padding-bottom: var(--space-2); }

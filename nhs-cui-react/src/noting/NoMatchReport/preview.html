@@ -1,0 +1,13 @@
+<!-- @dsCard group="Terminology" width=1200 height=320 subtitle="Report a missing term: describe, then check and send" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { NoMatchReport } = window.ClinicalCUI;
+function Demo() {
+  React.useEffect(() => { setTimeout(() => { const b = Array.from(document.querySelectorAll('#second button')).find((x) => x.textContent === 'Next'); if (b) b.click(); }, 60); }, []);
+  return h('div', { style: { display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    h(NoMatchReport, { text: 'post covid brain fog', context: 'Problem list; no filter', onSubmit: function () {}, onCancel: function () {} }),
+    h('div', { id: 'second' }, h(NoMatchReport, { text: 'ACL graft re-rupture', context: 'Past surgical history', onSubmit: function () {}, onCancel: function () {} })));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

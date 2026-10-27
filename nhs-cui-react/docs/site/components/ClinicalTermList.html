@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClinicalTermList · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Display standards</p>
+<h1 style="margin:0 0 4px;font-size:20px">ClinicalTermList</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Clinical term list: full terms, end truncation with symbols, identical truncations shown in full · Guidelines: <code>src/datetime/ClinicalTermList/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ClinicalTermList } = window.ClinicalCUI;
+const terms = [
+  { id: '1', term: 'Asthma' },
+  { id: '2', term: 'Chronic obstructive pulmonary disease with acute lower respiratory infection' },
+  { id: '3', term: 'Fracture of neck of femur' },
+  { id: '4', term: 'Type 2 diabetes mellitus with persistent microalbuminuria' },
+  { id: '5', term: 'Hypertension' },
+  { id: '6', term: 'Adverse reaction to 100 milligrams of aspirin taken within 1-24 hours' },
+];
+const twins = [
+  { id: 'a', term: 'Closed fracture of shaft of left femur with displacement' },
+  { id: 'b', term: 'Closed fracture of shaft of left femur without displacement' },
+  { id: 'c', term: 'Sprain of ankle' },
+];
+const col = (node, w) => h('div', { style: { width: w, flex: 'none' } }, node);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 24, alignItems: 'flex-start', flexWrap: 'wrap' } },
+    col(h(ClinicalTermList, { label: 'Problems (full terms, default)', items: terms, defaultValue: '2', maxHeight: 260 }), 300),
+    col(h(ClinicalTermList, { label: 'Problems (truncated)', items: terms, truncation: 'end', defaultValue: '4' }), 300),
+    col(h(ClinicalTermList, { label: 'Look-alike terms', items: twins, truncation: 'end' }), 280)
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

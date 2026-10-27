@@ -1,0 +1,17 @@
+<!-- @dsCard group="Lists and filtering" height=520 width=900 subtitle="Sublist in a list cell: every item shown, one updated entry marked, removed items counted, empty" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SubList } = window.ClinicalCUI;
+const cell = (title, child) => h('div', { style: { border: '1px solid var(--border-strong)', background: 'var(--surface)', width: 280 } },
+  h('div', { style: { padding: '6px 12px', fontWeight: 600, background: 'var(--surface-muted)', borderBottom: '1px solid var(--border-strong)' } }, title), child);
+function Demo() {
+  const [updated, setUpdated] = React.useState([1]);
+  return h('div', { style: { display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    cell('Outstanding tasks (bed 4)', h(SubList, { 'aria-label': 'Outstanding tasks for bed 4', items: ['Chest X-ray', 'Bloods: FBC, U&E, CRP', 'Physiotherapy review', 'Repeat lactate at 16:00', 'Fluid balance chart'], updatedIndexes: updated, onUnmarkItem: i => setUpdated(updated.filter(x => x !== i)), itemLabel: 'task' })),
+    cell('Results (bed 5)', h(SubList, { items: ['Urinary antigens negative', 'Blood cultures: no growth at 48 hours'], removedCount: 3, itemLabel: 'result' })),
+    cell('Alerts (bed 6)', h(SubList, { items: [] }))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

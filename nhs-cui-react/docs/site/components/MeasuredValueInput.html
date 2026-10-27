@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MeasuredValueInput · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Terminology</p>
+<h1 style="margin:0 0 4px;font-size:20px">MeasuredValueInput</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Measured values: default unit without default value, validation on leaving the field, auto-confirm · Guidelines: <code>src/noting/MeasuredValueInput/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MeasuredValueInput } = window.ClinicalCUI;
+const temp = [{ name: 't', label: 'Temperature value', units: [{ unit: '°C', aliases: ['c'], min: 25, max: 45 }, { unit: '°F', aliases: ['f'], min: 77, max: 113 }] }];
+const bp = [{ name: 'sys', label: 'Systolic', units: [{ unit: 'mmHg', min: 40, max: 300 }] }, { name: 'dia', label: 'Diastolic', units: [{ unit: 'mmHg', min: 20, max: 200 }] }];
+function Demo() {
+  React.useEffect(() => { setTimeout(() => { const i = document.querySelector('#bad input'); if (i) { i.focus(); i.blur(); } }, 60); }, []);
+  return h('div', { style: { display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    h(MeasuredValueInput, { conceptLabel: 'Body temperature', fields: temp, defaultValues: { t: { text: '39.8', unit: '°C' } }, defaultConfirmed: true }),
+    h('div', { id: 'bad' }, h(MeasuredValueInput, { conceptLabel: 'Body temperature', fields: temp, defaultValues: { t: { text: '398', unit: '°C' } }, defaultConfirmed: true })),
+    h(MeasuredValueInput, { conceptLabel: 'Blood pressure', fields: bp }),
+    h(MeasuredValueInput, { conceptLabel: 'Blood pressure', fields: bp, defaultConfirmed: true })
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

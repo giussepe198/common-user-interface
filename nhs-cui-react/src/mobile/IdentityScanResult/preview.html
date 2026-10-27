@@ -1,0 +1,22 @@
+<!-- @dsCard group="Mobile screens" height=640 width=390 subtitle="Wristband scan result: match, mismatch with the band's patient, not scanned, nothing comparable" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { IdentityScanResult, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27, 14, 6);
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 12, lineHeight: '16px', color: 'var(--ink-muted)' } }, t);
+const frame = (child) => h('div', { style: { maxWidth: 390, border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+const other = { name: { familyName: 'Smith', givenName: 'John' }, dateOfBirth: '1962-06-11', identifiers: [{ type: 'mrn', value: '0398812' }], location: 'Bed 3' };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(ClinicalLocaleProvider, { region: 'AU' },
+    label('Match (B2)'),
+    frame(h(IdentityScanResult, { status: 'match', scannedAt: new Date(2026, 9, 27, 14, 6), matched: ['URN'] })),
+    label('Mismatch: what differs and who the band belongs to'),
+    frame(h(IdentityScanResult, { status: 'mismatch', scannedAt: now, differences: ['URN differs', 'Date of birth differs'], scannedPatient: other, now, onScan: () => {}, onSwitchToScanned: () => {} })),
+    label('Not scanned yet'),
+    frame(h(IdentityScanResult, { status: 'notScanned', onScan: () => {} })),
+    label('Scanned, but nothing on the band could be compared'),
+    frame(h(IdentityScanResult, { status: 'insufficient', scannedAt: now, onScan: () => {} }))
+  )
+);
+</script>

@@ -1,0 +1,23 @@
+.cui-tel-input { display: inline-flex; flex-wrap: wrap; align-items: flex-end; column-gap: var(--space-2); row-gap: var(--space-1); }
+.cui-tel-input__field { display: flex; flex-direction: column; gap: var(--space-1); }
+.cui-tel-input__label { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); }
+.cui-tel-input__hint { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+/* Default width fits "020 1234 5678 x1234", minimum fits "01234 567890" (TID sizing). */
+.cui-tel-input__box { box-sizing: content-box; width: 19ch; min-width: 12ch; font: inherit; font-size: 14px; line-height: 20px; font-variant-numeric: tabular-nums; padding: 5px 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-tel-input--separate .cui-tel-input__box { width: 14ch; }
+.cui-tel-input__box--ext { width: 6ch !important; min-width: 6ch; }
+.cui-tel-input__box::placeholder { color: var(--ink-subtle); font-style: italic; opacity: 1; }
+.cui-tel-input__box:disabled { color: var(--ink-disabled); background: var(--surface-muted); border-color: var(--border); }
+.cui-tel-input--error .cui-tel-input__field--number .cui-tel-input__box { border-color: var(--danger); box-shadow: inset 0 0 0 1px var(--danger); }
+/* Country selector: closed state shows "+44 (UK)"; width fits "+376 (AD)" (TID-0020, TID-0025). */
+.cui-tel-input__country { position: relative; display: inline-block; }
+.cui-tel-input__country-value { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--space-1); box-sizing: content-box; min-width: 10ch; padding: 5px 8px; font-size: 14px; line-height: 20px; font-variant-numeric: tabular-nums; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); white-space: nowrap; }
+.cui-tel-input__country-select { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; font: inherit; font-size: 14px; }
+.cui-tel-input__country:focus-within .cui-tel-input__country-value { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-tel-input__error { flex-basis: 100%; display: flex; gap: var(--space-1); align-items: flex-start; font-size: 12px; line-height: 16px; font-weight: 600; color: var(--danger); }
+.cui-tel-input__error .cui-icon { flex: none; }
+/* Stop fonts turning the extension "x" between digits into a multiplication sign. */
+.cui-tel-input__box, .cui-patient-banner .cui-telephone { font-variant-ligatures: no-contextual; font-feature-settings: "calt" 0; }
+.cui-tel-input__warning { flex-basis: 100%; display: flex; gap: var(--space-1); align-items: flex-start; font-size: 12px; line-height: 16px; font-weight: 600; color: var(--warning); }
+.cui-tel-input__warning span { max-width: 48ch; }
+.cui-tel-input__warning .cui-icon { flex: none; }

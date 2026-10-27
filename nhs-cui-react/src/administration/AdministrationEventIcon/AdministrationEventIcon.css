@@ -1,0 +1,46 @@
+.cui-admin-event-icon { display: inline-flex; align-items: center; gap: var(--space-1); min-height: 24px; max-width: 100%; font: inherit; font-size: 12px; line-height: 16px; color: var(--ink); background: transparent; border: 0; padding: 2px; border-radius: var(--radius-sm); text-align: left; vertical-align: middle; }
+.cui-admin-event-icon--active { cursor: pointer; }
+.cui-admin-event-icon--active:hover { background: var(--hover); }
+.cui-admin-event-icon__symbol { flex: none; width: 20px; height: 20px; overflow: visible; }
+.cui-admin-event-icon__shape { fill: var(--surface); stroke: var(--ink-muted); stroke-width: 1.5; }
+.cui-admin-event-icon__glyph-line { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.cui-admin-event-icon__glyph-fill { fill: currentColor; stroke: none; }
+.cui-admin-event-icon__glyph-text { fill: currentColor; font-family: var(--font-sans); font-size: 11px; font-weight: 700; }
+.cui-admin-event-icon__text { display: inline-flex; align-items: baseline; gap: var(--space-1); min-width: 0; overflow: hidden; }
+.cui-admin-event-icon__label { white-space: nowrap; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cui-admin-event-icon__detail { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink-muted); font-variant-numeric: tabular-nums; min-width: 0; }
+.cui-admin-event-icon__markers { display: inline-flex; align-items: center; gap: 2px; flex: none; color: var(--ink-muted); }
+.cui-admin-event-icon__marker { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; }
+.cui-admin-event-icon__marker-letter { display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border: 1px solid currentColor; border-radius: var(--radius-sm); font-size: 10px; line-height: 1; font-weight: 700; }
+.cui-admin-event-icon__marker--edited { color: var(--ink); }
+
+/* Future: simple icon with dotted border (MEDa-0118) */
+.cui-admin-event-icon--future .cui-admin-event-icon__shape { stroke-dasharray: 2 2; }
+.cui-admin-event-icon--future .cui-admin-event-icon__label { font-weight: 400; color: var(--ink-muted); }
+/* Next */
+.cui-admin-event-icon--next .cui-admin-event-icon__shape { stroke: var(--accent); stroke-dasharray: 2 2; stroke-width: 2; }
+.cui-admin-event-icon--next .cui-admin-event-icon__label { color: var(--accent); }
+/* Due: active, reverse video label (MEDa-0086, 0091) */
+.cui-admin-event-icon--due { color: var(--accent); }
+.cui-admin-event-icon--due .cui-admin-event-icon__shape { stroke: var(--accent); stroke-width: 2.5; }
+.cui-admin-event-icon--due .cui-admin-event-icon__label { background: var(--accent); color: var(--on-accent); padding: 0 var(--space-1); border-radius: var(--radius-sm); }
+/* Overdue: white on red (MEDa-0090, 0122) */
+.cui-admin-event-icon--overdue { color: var(--danger); }
+.cui-admin-event-icon--overdue .cui-admin-event-icon__shape { stroke: var(--danger); stroke-width: 2.5; fill: var(--danger-surface); }
+.cui-admin-event-icon--overdue .cui-admin-event-icon__label { background: var(--danger); color: var(--on-danger); padding: 0 var(--space-1); border-radius: var(--radius-sm); }
+/* Unscheduled As Required available now */
+.cui-admin-event-icon--unscheduled { color: var(--accent); }
+.cui-admin-event-icon--unscheduled .cui-admin-event-icon__shape { stroke: var(--accent); stroke-width: 2; }
+.cui-admin-event-icon--unscheduled .cui-admin-event-icon__label { color: var(--accent); }
+/* Begun */
+.cui-admin-event-icon--begun { color: var(--success); }
+.cui-admin-event-icon--begun .cui-admin-event-icon__shape { stroke: var(--success); stroke-width: 2; }
+/* Recorded: filled = given, unfilled solid border = not given (MEDa-0117) */
+.cui-admin-event-icon--given { color: var(--surface); }
+.cui-admin-event-icon--given .cui-admin-event-icon__shape { fill: var(--success); stroke: var(--success); }
+.cui-admin-event-icon--given .cui-admin-event-icon__label { color: var(--success); }
+.cui-admin-event-icon--not-given { color: var(--ink); }
+.cui-admin-event-icon--not-given .cui-admin-event-icon__shape { fill: var(--surface); stroke: var(--ink); stroke-width: 1.75; }
+.cui-admin-event-icon--not-given .cui-admin-event-icon__label { color: var(--ink); }
+.cui-admin-event-icon--given .cui-admin-event-icon__text, .cui-admin-event-icon--not-given .cui-admin-event-icon__text { color: var(--ink); }
+.cui-admin-event-icon__glyph-text--pair { font-size: 8px; letter-spacing: -0.2px; }

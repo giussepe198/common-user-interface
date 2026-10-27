@@ -1,0 +1,12 @@
+.cui-button { display: inline-flex; align-items: center; gap: var(--space-1); font: inherit; font-family: var(--font-sans); font-size: 14px; line-height: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-strong); background: var(--surface); color: var(--ink); padding: 5px 12px; cursor: pointer; white-space: nowrap; }
+.cui-button:hover { background: var(--hover); }
+.cui-button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-button:disabled { color: var(--ink-disabled); cursor: not-allowed; background: var(--surface-muted); border-color: var(--border); }
+.cui-button--primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
+.cui-button--primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+.cui-button--quiet { border-color: transparent; background: transparent; }
+.cui-button--danger { color: var(--danger); border-color: var(--danger); }
+.cui-button--danger:hover { background: var(--danger-surface); }
+.cui-button--sm { padding: 2px 8px; font-size: 12px; line-height: 18px; }
+.cui-button--icon-only { padding: 5px; }
+.cui-button--sm.cui-button--icon-only { padding: 3px; }

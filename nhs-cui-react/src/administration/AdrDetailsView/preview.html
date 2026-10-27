@@ -1,0 +1,36 @@
+<!-- @dsCard group="Drug administration" height=1150 width=900 subtitle="Adverse drug reaction details: Edit, Remove from list with confirmation, edit history, AU and NZ fields" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AdrDetailsView, ClinicalLocaleProvider } = window.ClinicalCUI;
+const at = function (d, hh, mm) { return new Date(2026, 4, d, hh, mm || 0); };
+const noop = function () {};
+const label = function (t) { return h('div', { className: 'cui-label', style: { margin: '0 0 6px' } }, t); };
+const entry = {
+  id: 'e1', agent: { code: '764146007', term: 'Penicillin', isClass: true },
+  reactions: [{ concept: { code: '271807003', term: 'Rash' }, elaboration: 'widespread, within an hour' }, { concept: { code: '56018004', term: 'Wheezing' } }],
+  source: 'Patient testimony', clinicianWitnessed: false, details: 'Reaction after amoxicillin in 2019, treated in the emergency department.',
+  recordedBy: 'Dr K Sample', recordedAt: at(20, 14, 10), reactionType: 'allergy', reactionDate: '2019', newThisAdmission: false,
+};
+const history = [
+  { at: at(20, 14, 10), by: 'Dr K Sample', description: 'Added' },
+  { at: at(22, 9, 0), by: 'Pharmacist P Example', description: 'Reaction added: wheezing' },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 20 } },
+    h('div', { id: 'gb' }, label('GB: details with edit history open'),
+      h(AdrDetailsView, { entry: entry, history: history, onEdit: noop, onRemove: noop, onBack: noop })),
+    h('div', null, label('AU: type and date of reaction'),
+      h(ClinicalLocaleProvider, { region: 'AU' }, h(AdrDetailsView, { entry: entry, onEdit: noop, onRemove: noop, onBack: noop }))),
+    h('div', null, label('NZ: "New this admission"'),
+      h(ClinicalLocaleProvider, { region: 'NZ' }, h(AdrDetailsView, { entry: Object.assign({}, entry, { newThisAdmission: true }), onEdit: noop, onRemove: noop, onBack: noop }))),
+    h('div', { id: 'rm' }, label('After "Remove from list"'),
+      h(AdrDetailsView, { entry: entry, onEdit: noop, onRemove: noop, onBack: noop }))
+  )
+);
+setTimeout(function () {
+  const t = document.querySelector('#gb .cui-adr-det__toggle'); if (t) t.click();
+  const b = Array.prototype.find.call(document.querySelectorAll('#rm button'), function (x) { return x.textContent.indexOf('Remove from list') >= 0; });
+  if (b) b.click();
+}, 30);
+</script>

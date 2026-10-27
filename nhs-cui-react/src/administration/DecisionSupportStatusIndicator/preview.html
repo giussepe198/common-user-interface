@@ -1,0 +1,30 @@
+<!-- @dsCard group="Decision support" height=520 width=1000 subtitle="Decision support capability: running fully, not fully running, changed since viewed with the service list" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DecisionSupportStatusIndicator } = window.ClinicalCUI;
+const at = function (hh, mm) { return new Date(2026, 4, 27, hh, mm); };
+const services = [
+  { id: 's1', name: 'Licensed use of Drug Checking', state: 'running', since: at(7, 0) },
+  { id: 's2', name: 'Drug to Disease Contraindications Checking', state: 'running', since: at(7, 0) },
+  { id: 's3', name: 'Dose Calculations', state: 'notRunning', since: at(10, 42) },
+  { id: 's4', name: 'Formulary Management', state: 'notRunning', since: at(10, 42) },
+  { id: 's5', name: 'Allergy Checking', state: 'running', since: at(7, 0) },
+  { id: 's6', name: 'Duplicate Therapy Checking', state: 'unavailable', since: new Date(2026, 0, 12, 10, 42) },
+];
+const noop = function () {};
+const item = function (title, el) {
+  return h('div', { style: { display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'flex-start' } }, h('span', { className: 'cui-label' }, title), el);
+};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 20, minHeight: 440 } },
+    h('div', { style: { display: 'flex', gap: 32 } },
+      item('Running fully', h(DecisionSupportStatusIndicator, { services: services.map(function (s) { return Object.assign({}, s, { state: s.state === 'notRunning' ? 'running' : s.state }); }) })),
+      item('Not fully running', h(DecisionSupportStatusIndicator, { services: services }))),
+    item('Changed since last viewed, list open, change pop-up beside the title', h(DecisionSupportStatusIndicator, {
+      services: services, changedSinceViewed: true, defaultExpanded: true, onOpenHelp: noop, onConfigure: noop,
+      notification: { dateTime: at(10, 42), message: 'Dose Calculations and Formulary Management are not running' },
+    }))
+  )
+);
+</script>

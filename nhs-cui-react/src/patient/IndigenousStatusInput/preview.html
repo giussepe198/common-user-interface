@@ -1,0 +1,14 @@
+<!-- @dsCard group="Patient identification" width=1000 height=760 subtitle="Indigenous status question (AU, METeOR 602543)" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { IndigenousStatusInput } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 48, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+    h(IndigenousStatusInput, { purpose: 'Asked of everyone, to plan culturally safe care and services.' }),
+    h(IndigenousStatusInput, { defaultValue: '3', showBothInstruction: false }),
+    h(IndigenousStatusInput, { variant: 'interviewer', defaultValue: '1' }),
+    h(IndigenousStatusInput, { variant: 'interviewer', personName: 'the person', includeBoth: false })
+  )
+);
+</script>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyHealthRecordStatus · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Patient identification</p>
+<h1 style="margin:0 0 4px;font-size:20px">MyHealthRecordStatus</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">My Health Record access states (AU): access code, emergency access, suspended · Guidelines: <code>src/patient/MyHealthRecordStatus/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MyHealthRecordStatus, ClinicalLocaleProvider } = window.ClinicalCUI;
+const noop = () => {};
+const col = (...kids) => h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16, flex: '1 1 480px', minWidth: 0 } }, ...kids);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(ClinicalLocaleProvider, { region: 'AU' },
+    h('div', { style: { display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface-sunken)' } },
+      col(
+        h(MyHealthRecordStatus, { state: 'access-code-required', onSubmitAccessCode: noop, onEmergencyAccess: noop, doNotUpload: true }),
+        h(MyHealthRecordStatus, { id: 'preview-mhr-emergency', state: 'restricted-documents', onSubmitAccessCode: noop, onEmergencyAccess: noop, onOpen: noop })
+      ),
+      col(
+        h(MyHealthRecordStatus, { state: 'emergency-access', emergencyAccessFrom: new Date(2026, 9, 27, 14, 30), emergencyReason: 'Unconscious on arrival, no family present', onOpen: noop }),
+        h(MyHealthRecordStatus, { state: 'suspended', onEmergencyAccess: noop }),
+        h(MyHealthRecordStatus, { state: 'available', onOpen: noop, checkedAt: new Date(2026, 9, 27, 9, 12) }),
+        h(MyHealthRecordStatus, { state: 'unavailable', onCheck: noop }),
+        h(MyHealthRecordStatus, { state: 'cancelled' }),
+        h('div', { style: { padding: 8, background: 'var(--surface)' } },
+          h(MyHealthRecordStatus, { variant: 'compact', state: 'access-code-required', onEmergencyAccess: noop }),
+          h(MyHealthRecordStatus, { variant: 'compact', state: 'no-record' }),
+          h(MyHealthRecordStatus, { variant: 'compact', state: 'not-connected' }))
+      )
+    )
+  )
+);
+setTimeout(() => {
+  const root = document.getElementById('preview-mhr-emergency');
+  const b = root && Array.from(root.querySelectorAll('button')).find((x) => x.textContent.trim() === 'Emergency access');
+  if (b) b.click();
+}, 30);
+</script>
+
+</div>
+</body>
+</html>

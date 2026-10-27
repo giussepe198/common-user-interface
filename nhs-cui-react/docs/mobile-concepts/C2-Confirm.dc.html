@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Confirm observations</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/clinicalcui/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+.scr *{box-sizing:border-box}
+.btn{min-height:52px;padding:0 16px;border-radius:4px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn-p{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn[disabled]{background:var(--surface-muted);border-color:var(--border);color:var(--ink-disabled)}
+.ob{display:grid;grid-template-columns:minmax(0,1fr) auto 44px;column-gap:10px;align-items:center;padding:4px 8px 4px 14px;border-top:1px solid var(--border);min-height:52px}
+.ob .v{font-size:19px;font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.sc{font-size:12px;font-weight:700;padding:1px 6px;border-radius:3px;justify-self:start;margin-top:2px}
+.ed{width:44px;height:44px;border:1px solid var(--border-strong);border-radius:4px;background:var(--surface);color:var(--ink);display:flex;align-items:center;justify-content:center;padding:0}
+.z-or{background:#ffe0ba;color:#1a2330}
+.z-ye{background:#ffff99;color:#1a2330}
+.z-no{background:var(--surface-muted);color:var(--ink)}
+[data-theme="dark"] .z-or{background:#57381a;color:#e8edf2}
+[data-theme="dark"] .z-ye{background:#4a4712;color:#e8edf2}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div class="scr" data-theme="{{theme}}" style="width: 390px; height: 844px; display: flex; flex-direction: column; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; overflow: hidden">
+
+  <header aria-label="Patient" style="background: var(--banner); color: var(--on-banner); padding: 10px 16px; display: flex; flex-direction: column; gap: 2px">
+    <div style="font-size: 17px; line-height: 22px; font-weight: 600">Ngata, Mereana (Ms)</div>
+    <div style="display: flex; flex-wrap: wrap; column-gap: 10px; font-size: 13px; line-height: 18px">
+      <span><span style="color: var(--on-banner-muted)">Born </span>14-Mar-1958 (68y)</span>
+      <span><span style="color: var(--on-banner-muted)">NHI </span>ZZZ0016</span>
+      <span style="background: var(--banner-alert); color: var(--banner); border-radius: 3px; padding: 0 6px; font-weight: 600">Allergies 2</span>
+    </div>
+  </header>
+
+  <main style="flex: 1; overflow: hidden; padding: 12px 16px; display: flex; flex-direction: column; gap: 10px">
+    <h1 style="margin: 0; font-size: 18px; line-height: 24px; font-weight: 600">Check before saving <span style="font-weight: 400; color: var(--ink-muted); font-size: 15px">14:08</span></h1>
+
+    <section aria-labelledby="q-h" style="background: var(--warning-surface); border: 2px solid var(--warning); border-radius: 4px; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px">
+      <h2 id="q-h" style="margin: 0; font-size: 16px; line-height: 22px; font-weight: 700; display: flex; gap: 8px; align-items: flex-start">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="margin-top: 1px"><path d="M12 4.5l8.5 15h-17zM12 10v4.5M12 17v.4"/></svg>Oxygen was not heard. Is she on room air?</h2>
+      <div style="display: flex; gap: 8px">
+        <button class="btn" type="button" style="flex: 1">Room air</button>
+        <button class="btn" type="button" style="flex: 1">On oxygen…</button>
+      </div>
+    </section>
+
+    <section aria-label="Observations heard" style="background: var(--surface); border: 1px solid var(--border); border-radius: 4px">
+      <div class="ob"><span style="display: flex; flex-direction: column"><span>Respiratory rate</span><span class="sc z-or">2 Orange</span></span><span class="v">22 <span style="font-size: 13px; font-weight: 400">/min</span></span><button class="ed" type="button" aria-label="Edit respiratory rate"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5.5l3 3L9 18H6v-3zM13.5 7.5l3 3"/></svg></button></div>
+      <div class="ob"><span style="display: flex; flex-direction: column"><span>Oxygen saturation</span><span class="sc z-or">2 Orange</span></span><span class="v">93 <span style="font-size: 13px; font-weight: 400">%</span></span><button class="ed" type="button" aria-label="Edit oxygen saturation"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5.5l3 3L9 18H6v-3zM13.5 7.5l3 3"/></svg></button></div>
+      <div class="ob" style="background: var(--warning-surface)"><span style="display: flex; flex-direction: column"><span>Oxygen</span><span class="sc" style="border: 1px dashed var(--warning); color: var(--warning)">Needed</span></span><span class="v" style="font-size: 16px; color: var(--warning)">Not heard</span><span></span></div>
+      <div class="ob"><span style="display: flex; flex-direction: column"><span>Blood pressure</span><span class="sc z-no">0</span></span><span class="v">110/70 <span style="font-size: 13px; font-weight: 400">mmHg</span></span><button class="ed" type="button" aria-label="Edit blood pressure"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5.5l3 3L9 18H6v-3zM13.5 7.5l3 3"/></svg></button></div>
+      <div class="ob"><span style="display: flex; flex-direction: column"><span>Heart rate</span><span class="sc z-or">2 Orange</span></span><span class="v">112 <span style="font-size: 13px; font-weight: 400">/min</span></span><button class="ed" type="button" aria-label="Edit heart rate"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5.5l3 3L9 18H6v-3zM13.5 7.5l3 3"/></svg></button></div>
+      <div class="ob"><span style="display: flex; flex-direction: column"><span>Temperature</span><span class="sc z-ye">1 Yellow</span></span><span class="v">38.4 <span style="font-size: 13px; font-weight: 400">°C</span></span><button class="ed" type="button" aria-label="Edit temperature"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5.5l3 3L9 18H6v-3zM13.5 7.5l3 3"/></svg></button></div>
+      <div class="ob"><span style="display: flex; flex-direction: column"><span>Consciousness</span><span class="sc z-no">0</span></span><span class="v">Alert</span><button class="ed" type="button" aria-label="Edit consciousness"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5.5l3 3L9 18H6v-3zM13.5 7.5l3 3"/></svg></button></div>
+    </section>
+
+    <section aria-label="Early warning score" class="z-or" style="border-radius: 4px; padding: 10px 12px; display: flex; gap: 12px; align-items: center">
+      <span style="font-size: 30px; line-height: 34px; font-weight: 700">7+</span>
+      <span style="display: flex; flex-direction: column; font-size: 14px; line-height: 19px"><strong style="font-size: 16px">Orange zone so far</strong><span>Incomplete until oxygen is answered</span></span>
+    </section>
+    <p style="margin: 0; font-size: 14px; line-height: 20px; font-weight: 600">If you are worried about this patient, escalate whatever the score.</p>
+  </main>
+
+  <div style="padding: 12px 16px 16px; background: var(--surface); border-top: 1px solid var(--border); display: flex; gap: 10px">
+    <a class="btn" href="C1-Dictate.dc.html" style="flex: 1">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4.5h6v9a3 3 0 0 1-6 0zM5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v2.5"/></svg>Speak again</a>
+    <button class="btn btn-p" type="button" disabled aria-describedby="q-h" style="flex: 1.4">Save observations</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'light' };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HierarchyBrowserDialog · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Terminology</p>
+<h1 style="margin:0 0 4px;font-size:20px">HierarchyBrowserDialog</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Hierarchy browser: less specific, similar and more specific concepts; NZ sorting with macrons; defining attribute tabs with a refined finding site · Guidelines: <code>src/noting/HierarchyBrowserDialog/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { HierarchyBrowserDialog } = window.ClinicalCUI;
+const c = (id, term) => ({ id: id, term: term });
+const P = { asthma: [c('l', 'Disorder of lower respiratory system'), c('cd', 'Chronic disease of respiratory system')], fa: [c('ul', 'Bone structure of upper limb')], f: [c('inj', 'Traumatic abnormality')], r: [c('fa', 'Bone structure of forearm')] };
+const S = { asthma: [c('copd', 'Chronic obstructive lung disease'), c('bronch', 'Chronic bronchitis'), c('bx', 'Bronchiectasis')], fa: [c('arm', 'Bone structure of arm'), c('hand', 'Bone structure of hand')], f: [c('disl', 'Dislocation')], r: [c('u', 'Bone structure of ulna')] };
+const K = { asthma: [c('aa', 'Allergic asthma'), c('ea', 'Exercise-induced asthma'), c('oa', 'Occupational asthma'), c('sa', 'Severe asthma'), c('ca', 'Childhood asthma'), c('na', 'Non-allergic asthma')], fa: [c('r', 'Bone structure of radius'), c('u', 'Bone structure of ulna')], f: [c('cf', 'Closed fracture'), c('of', 'Open fracture')], r: [c('rh', 'Bone structure of radial head'), c('rs', 'Bone structure of radial shaft'), c('dr', 'Bone structure of distal radius')] };
+const lookups = { getParents: (id) => P[id] || [], getSiblings: (id) => S[id] || [], getChildren: (id) => K[id] || [] };
+const attrs = () => [
+  { id: 'morph', label: 'Associated morphology', lead: true, value: c('f', 'Fracture') },
+  { id: 'site', label: 'Finding site', phrase: 'site of', value: c('fa', 'Bone structure of forearm') },
+];
+const label = (t) => h('p', { className: 'cui-label', style: { margin: '0 0 4px' } }, t);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 24 } },
+    h('div', null, label('NZ: three lists, macrons sorted with their base letter'),
+      h(HierarchyBrowserDialog, Object.assign({ inline: true, region: 'NZ', concept: c('asthma', 'Asthma'), onOk: function () {}, onCancel: function () {} }, lookups))),
+    h('div', { id: 'refined' }, label('Defining attribute tabs: finding site refined to radius'),
+      h(HierarchyBrowserDialog, Object.assign({ inline: true, concept: c('ff', 'Fracture of forearm'), getAttributes: attrs, onOk: function () {}, onCancel: function () {} }, lookups))))
+);
+setTimeout(function () {
+  const tab = Array.prototype.find.call(document.querySelectorAll('#refined [role="tab"]'), function (x) { return /Finding site/.test(x.textContent); });
+  if (tab) tab.click();
+  setTimeout(function () {
+    const r = Array.prototype.find.call(document.querySelectorAll('#refined .cui-hierarchy__item'), function (x) { return x.textContent === 'Bone structure of radius'; });
+    if (r) r.click();
+  }, 30);
+}, 30);
+</script>
+
+</div>
+</body>
+</html>

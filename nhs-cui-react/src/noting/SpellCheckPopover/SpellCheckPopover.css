@@ -1,0 +1,10 @@
+.cui-spell-check { position: relative; width: 300px; max-width: 100%; }
+.cui-spell-check__word { margin: 0; }
+.cui-spell-check__choices { margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 2px; }
+.cui-spell-check__legend { padding: 0; margin-bottom: 2px; font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-spell-check__choice { display: flex; align-items: center; gap: var(--space-2); padding: 2px var(--space-1); border-radius: var(--radius-sm); cursor: pointer; }
+.cui-spell-check__choice:hover { background: var(--hover); }
+.cui-spell-check__choice input { margin: 0; accent-color: var(--accent); }
+.cui-spell-check__source { margin-left: auto; font-size: 12px; color: var(--ink-muted); }
+.cui-spell-check__none { margin: 0; color: var(--ink-muted); }
+.cui-spell-check__actions { display: flex; gap: var(--space-2); justify-content: flex-end; }

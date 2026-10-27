@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MandatoryQualifierSelect · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Terminology</p>
+<h1 style="margin:0 0 4px;font-size:20px">MandatoryQualifierSelect</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Mandatory qualifier: yellow until chosen, asterisk and reason, locked after confirmation · Guidelines: <code>src/noting/MandatoryQualifierSelect/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MandatoryQualifierSelect, RequiredKey } = window.ClinicalCUI;
+const opts = [{ value: 'L', label: 'Left' }, { value: 'R', label: 'Right' }, { value: 'B', label: 'Both' }, { value: 'N', label: 'Not specified' }];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16 } },
+    h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap' } },
+      h(MandatoryQualifierSelect, { label: 'Laterality', options: opts, conceptName: 'Fracture of radius' }),
+      h(MandatoryQualifierSelect, { label: 'Laterality', options: opts, conceptName: 'Cataract', defaultValue: 'R' }),
+      h(MandatoryQualifierSelect, { label: 'Laterality', options: opts, conceptName: 'Otitis media', value: 'L', locked: true })),
+    h(RequiredKey, null, 'Mandatory: you must select a value to encode the term'))
+);
+</script>
+
+</div>
+</body>
+</html>

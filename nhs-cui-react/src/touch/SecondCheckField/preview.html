@@ -1,0 +1,16 @@
+<!-- @dsCard group="Mobile touch inputs" height=470 width=390 subtitle="Second check (P4): done by badge scan, empty with scan and staff ID, required" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SecondCheckField } = window.ClinicalCUI;
+const card = c => h('div', { style: { maxWidth: 390, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 4, padding: '12px 14px', marginBottom: 12 } }, c);
+const staff = { B204: { id: 'B204', name: 'Kiran Patel', role: 'RN' } };
+const now = () => new Date(2026, 9, 27, 14, 12);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    card(h(SecondCheckField, { now, defaultValue: { id: 'B204', name: 'Kiran Patel', role: 'RN', method: 'scanned', at: new Date(2026, 9, 27, 14, 9) }, onScanRequest: () => staff.B204 })),
+    card(h(SecondCheckField, { now, onScanRequest: () => staff.B204, resolveChecker: t => staff[t.toUpperCase()] || null, currentUserId: 'N101' })),
+    card(h(SecondCheckField, { now, resolveChecker: t => staff[t.toUpperCase()] || null, required: true, showValidation: true }))
+  )
+);
+</script>

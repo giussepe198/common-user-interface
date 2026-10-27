@@ -1,0 +1,108 @@
+/* Clinical CUI — generated from tokens.json */
+:root, [data-theme="light"] {
+  --surface: #ffffff;
+  --surface-sunken: #f2f4f7;
+  --surface-muted: #e6eaef;
+  --surface-reveal: #ebebeb;
+  --ink: #1a2330;
+  --ink-muted: #4a5665;
+  --ink-subtle: #5b6776;
+  --ink-disabled: #8a94a0;
+  --border: #cfd6de;
+  --border-strong: #6f7c8a;
+  --accent: #0a5aa8;
+  --accent-hover: #084684;
+  --on-accent: #ffffff;
+  --accent-surface: #e6f0fa;
+  --focus: #0a5aa8;
+  --hover: #fff4cc;
+  --banner: #1f2b38;
+  --on-banner: #ffffff;
+  --on-banner-muted: #c3cdd8;
+  --banner-divider: #3b4a5a;
+  --banner-alert: #ffa094;
+  --danger: #b3261e;
+  --danger-surface: #fdecea;
+  --on-danger: #ffffff;
+  --warning: #7a4f00;
+  --warning-fill: #ffcc33;
+  --warning-surface: #fff6db;
+  --success: #1d6b3a;
+  --success-surface: #e5f4ea;
+  --info: #0a5aa8;
+  --info-surface: #e6f0fa;
+  --encodable: #d6e6fa;
+  --confirmed: #e3e5e8;
+  --mandatory-symbol: #0b5fa5;
+  --series-1: #0a5aa8;
+  --series-2: #c0392b;
+  --series-3: #b38600;
+  --series-4: #2e7d32;
+  --normal-range: #e5f4ea;
+  --shadow-popover: 0 4px 12px rgba(16,24,40,0.18);
+  --shadow-dialog: 0 12px 32px rgba(16,24,40,0.24);
+}
+[data-theme="dark"] {
+  --surface: #161b22;
+  --surface-sunken: #0d1117;
+  --surface-muted: #222a33;
+  --surface-reveal: #262c33;
+  --ink: #e8edf2;
+  --ink-muted: #b4bec9;
+  --ink-subtle: #9aa5b1;
+  --ink-disabled: #6b7682;
+  --border: #323b46;
+  --border-strong: #7d8996;
+  --accent: #6cb0f5;
+  --accent-hover: #9ccaf8;
+  --on-accent: #0d1117;
+  --accent-surface: #14273b;
+  --focus: #8cc2fa;
+  --hover: #3a3320;
+  --banner: #0a0f15;
+  --on-banner: #f0f4f8;
+  --on-banner-muted: #a9b5c2;
+  --banner-divider: #26323f;
+  --banner-alert: #ff8a80;
+  --danger: #ff8a80;
+  --danger-surface: #3b1714;
+  --on-danger: #1a0907;
+  --warning: #ffd166;
+  --warning-fill: #ffcc33;
+  --warning-surface: #352a0c;
+  --success: #7bd69a;
+  --success-surface: #12301d;
+  --info: #6cb0f5;
+  --info-surface: #14273b;
+  --encodable: #1d3756;
+  --confirmed: #2b3139;
+  --mandatory-symbol: #4a9ae8;
+  --series-1: #6cb0f5;
+  --series-2: #ff8a80;
+  --series-3: #ffd166;
+  --series-4: #7bd69a;
+  --normal-range: #12301d;
+  --shadow-popover: 0 4px 12px rgba(0,0,0,0.6);
+  --shadow-dialog: 0 12px 32px rgba(0,0,0,0.7);
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --font-sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+}
+.patient-name { font-family: var(--font-sans); font-size: 20px; line-height: 26px; font-weight: 600; }
+.heading { font-family: var(--font-sans); font-size: 18px; line-height: 24px; font-weight: 600; }
+.subheading { font-family: var(--font-sans); font-size: 15px; line-height: 20px; font-weight: 600; }
+.body { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 400; }
+.body-strong { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 600; }
+.label { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 400; }
+.prompt { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 400; font-style: italic; }
+.numeric { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 400; }

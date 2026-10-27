@@ -1,0 +1,9 @@
+<!-- @dsCard group="Terminology" height=250 subtitle="Axis modifier warning: plain explanation and exactly two resolutions" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AxisModifierWarning } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(AxisModifierWarning, { inline: true, conceptLabel: 'Breast cancer', modifierText: 'Mother', onConfirmModifier: function () {}, onLeaveAsIs: function () {} })
+);
+</script>

@@ -1,0 +1,13 @@
+.cui-graph-thumb { margin: 0; flex: none; display: flex; flex-direction: column; align-items: stretch; gap: 2px; }
+.cui-graph-thumb__svg { display: block; overflow: visible; font-family: var(--font-sans); }
+.cui-graph-thumb__area { fill: var(--surface-sunken); stroke: var(--border-strong); stroke-width: 1; }
+.cui-graph-thumb__band { fill: var(--normal-range); }
+.cui-graph-thumb__zone { fill: var(--surface-muted); opacity: 0.8; }
+.cui-graph-thumb__tick { stroke: var(--ink); stroke-width: 1.5; }
+.cui-graph-thumb__label { font-size: 10px; fill: var(--ink); font-variant-numeric: tabular-nums; }
+.cui-graph-thumb__pt { fill: var(--series-1); stroke: var(--ink); stroke-width: 0.5; }
+.cui-graph-thumb__pt--out { fill: var(--ink); }
+.cui-graph-thumb__line { fill: none; stroke: var(--series-1); stroke-width: 1.5; }
+.cui-graph-thumb__bp { stroke: var(--ink); stroke-width: 1.5; }
+.cui-graph-thumb__view { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+.cui-graph-thumb__caption { font-size: 11px; line-height: 14px; color: var(--ink); font-weight: 600; text-align: center; }

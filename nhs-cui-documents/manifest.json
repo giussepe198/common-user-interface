@@ -1,0 +1,366 @@
+[
+  {
+    "title": "patient identification documents zip file (ZIP, 16.7MB)",
+    "file": "patident.zip",
+    "bytes": 17487550,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/patident.zip"
+  },
+  {
+    "title": "Telephone Number Input and display (PDF, 827.4kB)",
+    "file": "tele.pdf",
+    "bytes": 847235,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/tele.pdf"
+  },
+  {
+    "title": "NHS Number input and display (PDF, 628.1kB)",
+    "file": "inputdisplay.pdf",
+    "bytes": 643162,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/inputdisplay.pdf"
+  },
+  {
+    "title": "Sex and current Gender Input and Display (PDF, 1.3MB)",
+    "file": "sex.pdf",
+    "bytes": 1360454,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/sex.pdf"
+  },
+  {
+    "title": "Address Input and display (PDF, 1.4MB)",
+    "file": "address.pdf",
+    "bytes": 1484290,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/address.pdf"
+  },
+  {
+    "title": "Date and Time Input (PDF, 879.3kB)",
+    "file": "datetime.pdf",
+    "bytes": 900360,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/datetime.pdf"
+  },
+  {
+    "title": "Date display (PDF, 639.7kB)",
+    "file": "datedisplay.pdf",
+    "bytes": 655007,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/datedisplay.pdf"
+  },
+  {
+    "title": "Time display (PDF, 698.7kB)",
+    "file": "timedisplay.pdf",
+    "bytes": 715455,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/timedisplay.pdf"
+  },
+  {
+    "title": "Patient Name Input and Display (PDF, 1.3MB)",
+    "file": "patnamedisp.pdf",
+    "bytes": 1360260,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/patnamedisp.pdf"
+  },
+  {
+    "title": "Patient Banner (PDF, 1.5MB)",
+    "file": "patben.pdf",
+    "bytes": 1564629,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/patben.pdf"
+  },
+  {
+    "title": "Telephone Number Input and display - QIG (PDF, 523.6kB)",
+    "file": "teleqig.pdf",
+    "bytes": 536215,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/teleqig.pdf"
+  },
+  {
+    "title": "NHS Number input and display - QIG (PDF, 301.9kB)",
+    "file": "inputdisplayqig.pdf",
+    "bytes": 309124,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/inputdisplayqig.pdf"
+  },
+  {
+    "title": "Sex and current Gender Input and Display- QIG (PDF, 347.1kB)",
+    "file": "sexqig.pdf",
+    "bytes": 355391,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/sexqig.pdf"
+  },
+  {
+    "title": "Address Input and display - QIG (PDF, 418.3kB)",
+    "file": "addressqig.pdf",
+    "bytes": 428317,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/addressqig.pdf"
+  },
+  {
+    "title": "Date and Time Input - QIG (PDF, 410.0kB)",
+    "file": "datetimeqig.pdf",
+    "bytes": 419837,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/datetimeqig.pdf"
+  },
+  {
+    "title": "Date and time display - QIG (PDF, 321.9kB)",
+    "file": "datetimedispqig.pdf",
+    "bytes": 329615,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/datetimedispqig.pdf"
+  },
+  {
+    "title": "Patient Name Input and Display - QIG (PDF, 427.9kB)",
+    "file": "patnamedispqig.pdf",
+    "bytes": 438173,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/patnamedispqig.pdf"
+  },
+  {
+    "title": "Micro patient banner (PDF, 1.3MB)",
+    "file": "micropatban.pdf",
+    "bytes": 1412636,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/micropatban.pdf"
+  },
+  {
+    "title": "Patient list view (PDF, 5.2MB)",
+    "file": "patlistview.pdf",
+    "bytes": 5450830,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/patlistview.pdf"
+  },
+  {
+    "title": "Drug administration (PDF, 5.4MB)",
+    "file": "drugadmin.pdf",
+    "bytes": 5612151,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/drugadmin.pdf"
+  },
+  {
+    "title": "Medications list (PDF, 1.8MB)",
+    "file": "medlist.pdf",
+    "bytes": 1898564,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/medlist.pdf"
+  },
+  {
+    "title": "Medications line (PDF, 1.0MB)",
+    "file": "medline.pdf",
+    "bytes": 1086055,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/medline.pdf"
+  },
+  {
+    "title": "Search and prescribe (PDF, 4.0MB)",
+    "file": "searchpres.pdf",
+    "bytes": 4152253,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/searchpres.pdf"
+  },
+  {
+    "title": "Timeline view (PDF, 6.0MB)",
+    "file": "timelineview.pdf",
+    "bytes": 6239584,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/timelineview.pdf"
+  },
+  {
+    "title": "Medication line quick implementation guide (PDF, 431.3kB)",
+    "file": "medlineqig.pdf",
+    "bytes": 441666,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/medlineqig.pdf"
+  },
+  {
+    "title": "Medication list quick implementation guide (PDF, 702.1kB)",
+    "file": "medlistqig.pdf",
+    "bytes": 718936,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/medlistqig.pdf"
+  },
+  {
+    "title": "Display of adverse drug reactions (PDF, 1.6MB)",
+    "file": "advdrugrisks.pdf",
+    "bytes": 1710522,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/advdrugrisks.pdf"
+  },
+  {
+    "title": "Recording adverse drug reaction risks (PDF, 4.2MB)",
+    "file": "recdrugrisk.pdf",
+    "bytes": 4399664,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/recdrugrisk.pdf"
+  },
+  {
+    "title": "Displaying graphs and tables (PDF, 3.0MB)",
+    "file": "dispgraphs.pdf",
+    "bytes": 3171647,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/dispgraphs.pdf"
+  },
+  {
+    "title": "Noting with graphics (PDF, 1.1MB)",
+    "file": "notinggraphics.pdf",
+    "bytes": 1135831,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/notinggraphics.pdf"
+  },
+  {
+    "title": "Terminology – Display standards for coded information (PDF, 1.1MB)",
+    "file": "displaystandards.pdf",
+    "bytes": 1141737,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/displaystandards.pdf"
+  },
+  {
+    "title": "Terminology – Elaboration (PDF, 1.2MB)",
+    "file": "termelab.pdf",
+    "bytes": 1267609,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/termelab.pdf"
+  },
+  {
+    "title": "Terminology – Disambiguation and error correction (PDF, 294.7kB)",
+    "file": "disambig.pdf",
+    "bytes": 301755,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/disambig.pdf"
+  },
+  {
+    "title": "Terminology – Matching (PDF, 2.1MB)",
+    "file": "termmatching.pdf",
+    "bytes": 2194798,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/termmatching.pdf"
+  },
+  {
+    "title": "Terminology – Post coordination (PDF, 1.4MB)",
+    "file": "termpostcoord.pdf",
+    "bytes": 1518937,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/termpostcoord.pdf"
+  },
+  {
+    "title": "Display of clinical statements consultation document (PDF, 2.2MB)",
+    "file": "clinicalstatements.pdf",
+    "bytes": 2315887,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/clinicalstatements.pdf"
+  },
+  {
+    "title": "Noting using templates consultation document (PDF, 4.6MB)",
+    "file": "usingtemplates.pdf",
+    "bytes": 4777038,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/usingtemplates.pdf"
+  },
+  {
+    "title": "Truncation of clinical terms consultation document (PDF, 2.6MB)",
+    "file": "truncation.pdf",
+    "bytes": 2684441,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/truncation.pdf"
+  },
+  {
+    "title": "Clinical noting in forms – admissions clerking (PDF, 4.5MB)",
+    "file": "clinicalnoting.pdf",
+    "bytes": 4694776,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/clinicalnoting.pdf"
+  },
+  {
+    "title": "Handover requirements spreadsheet (PDF, 607.6kB)",
+    "file": "cuidesignguide.pdf",
+    "bytes": 622138,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/cuidesignguide.pdf"
+  },
+  {
+    "title": "Introduction to handover presentation (PDF, 339.9kB)",
+    "file": "handpresintro.pdf",
+    "bytes": 348023,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/handpresintro.pdf"
+  },
+  {
+    "title": "Introduction to handover (PDF, 673.0kB)",
+    "file": "handoverintro.pdf",
+    "bytes": 689185,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/handoverintro.pdf"
+  },
+  {
+    "title": "Filtering, sorting and grouping (PDF, 3.9MB)",
+    "file": "filtering.pdf",
+    "bytes": 4133644,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/filtering.pdf"
+  },
+  {
+    "title": "Icons and symbology (PDF, 967.0kB)",
+    "file": "iconssymb.pdf",
+    "bytes": 990189,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/iconssymb.pdf"
+  },
+  {
+    "title": "Keyboard shortcuts (PDF, 1.0MB)",
+    "file": "keyshorts.pdf",
+    "bytes": 1057659,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/keyshorts.pdf"
+  },
+  {
+    "title": "Alert symbol design (PDF, 1.3MB)",
+    "file": "alertsymbdes.pdf",
+    "bytes": 1415427,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/alertsymbdes.pdf"
+  },
+  {
+    "title": "Abbreviations and accronyms in free text (PDF, 390.8kB)",
+    "file": "abbracsfree.pdf",
+    "bytes": 400129,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/abbracsfree.pdf"
+  },
+  {
+    "title": "Abbreviations and accronyms (PDF, 565.7kB)",
+    "file": "abbracs.pdf",
+    "bytes": 579322,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/abbracs.pdf"
+  },
+  {
+    "title": "Care pathways conceptual modelling (PDF, 873.1kB)",
+    "file": "carepathways.pdf",
+    "bytes": 894031,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/carepathways.pdf"
+  },
+  {
+    "title": "Decision support summary (PPT, 1.4MB)",
+    "file": "decsupportsumm.ppt",
+    "bytes": 1475584,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/decsupportsumm.ppt"
+  },
+  {
+    "title": "Decision support (PDF, 1.5MB)",
+    "file": "decsupport.pdf",
+    "bytes": 1592002,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/decsupport.pdf"
+  },
+  {
+    "title": "Suggestions for Implementing SNOMED CT into the User Interface of an Electronic Healthcare System (PDF, 811.4kB)",
+    "file": "cd_impsnomd_ehs.pdf",
+    "bytes": 830923,
+    "valid": true,
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150548mp_/http://systems.digital.nhs.uk/data/cui/snomedctcui/cd_impsnomd_ehs.pdf"
+  }
+]

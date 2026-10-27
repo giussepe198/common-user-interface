@@ -1,0 +1,17 @@
+/* Cascading lists (MSP-0850 to MSP-1020): side by side, never overlapping (MSP-0910) */
+.cui-cascade { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-3); color: var(--ink); }
+.cui-cascade__level { display: flex; flex-direction: column; gap: var(--space-1); min-width: 160px; }
+.cui-cascade__heading { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+/* Width fits the longest entry, no truncation (MSP-0870) */
+.cui-cascade__list { list-style: none; margin: 0; padding: var(--space-1) 0; width: max-content; max-width: 100%; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-cascade__option { display: flex; justify-content: space-between; gap: var(--space-4); padding: 5px var(--space-3); cursor: pointer; line-height: 20px; }
+.cui-cascade__option:hover { background: var(--hover); }
+.cui-cascade__option:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+/* The selection stays visibly selected in its list (MSP-0920) */
+.cui-cascade__option.is-selected { background: var(--accent-surface); box-shadow: inset 3px 0 0 var(--accent); font-weight: 600; }
+.cui-cascade__option.has-divider { border-top: 1px solid var(--border-strong); margin-top: var(--space-1); }
+.cui-cascade__option--other { color: var(--ink-muted); }
+.cui-cascade__generic { font-weight: 700; }
+.cui-cascade__brand { font-weight: 400; }
+.cui-cascade__level--au .cui-cascade__brand { font-style: italic; }
+.cui-cascade__supp { font-style: italic; font-size: 12px; color: var(--ink-muted); white-space: nowrap; }

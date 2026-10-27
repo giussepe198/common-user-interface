@@ -1,0 +1,20 @@
+/* Multi-medication action summary (MEDv-203) */
+.cui-med-summary-layer { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: var(--space-6); }
+.cui-med-summary-layer__backdrop { position: absolute; inset: 0; background: var(--ink); opacity: 0.35; }
+.cui-med-summary {
+  position: relative; display: flex; flex-direction: column; gap: var(--space-3);
+  width: min(720px, 100%); max-height: 100%; padding: var(--space-4);
+  background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); box-shadow: var(--shadow-dialog);
+}
+.cui-med-summary--inline { box-shadow: none; border-radius: var(--radius-md); }
+.cui-med-summary__title { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; }
+.cui-med-summary__desc { margin: 0; font-size: 14px; line-height: 20px; color: var(--ink); }
+/* Every selected medication in full; the list scrolls, never truncates (MEDi-012) */
+.cui-med-summary__list { list-style: none; margin: 0; padding: 0; overflow-y: auto; min-height: 0; border: 1px solid var(--border); border-radius: var(--radius-md); }
+.cui-med-summary__list:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.cui-med-summary__item { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-4); padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--border); }
+.cui-med-summary__item:last-child { border-bottom: 0; }
+.cui-med-summary__item.is-shaded { background: var(--surface-muted); }
+.cui-med-summary__item .cui-medication-line { flex: 1; min-width: 0; }
+.cui-med-summary__status { flex: none; text-align: right; }
+.cui-med-summary__commands { display: flex; justify-content: flex-end; gap: var(--space-2); }

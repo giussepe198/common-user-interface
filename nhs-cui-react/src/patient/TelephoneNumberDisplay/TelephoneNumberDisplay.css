@@ -1,0 +1,5 @@
+.cui-telephone { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cui-telephone--unknown { font-style: italic; color: var(--ink-muted); }
+.cui-telephone__link { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+/* Stop fonts turning the extension "x" between digits into a multiplication sign. */
+.cui-telephone, .cui-patient-banner .cui-telephone { font-variant-ligatures: no-contextual; font-feature-settings: "calt" 0; }

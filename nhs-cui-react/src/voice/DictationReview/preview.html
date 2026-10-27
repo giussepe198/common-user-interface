@@ -1,0 +1,31 @@
+<!-- @dsCard group="Mobile voice" height=2900 width=390 subtitle="Dictation review (C2): NZ oxygen question with 7+ incomplete and the escalate text, AU ambiguous number and critical value, GB complete and ready to save" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DictationReview, ClinicalLocaleProvider } = window.ClinicalCUI;
+const banner = (name, born, idLabel, id) => h('header', { 'aria-label': 'Patient', style: { background: 'var(--banner)', color: 'var(--on-banner)', padding: '10px 16px', display: 'flex', flexDirection: 'column', gap: 2 } },
+  h('div', { style: { fontSize: 17, lineHeight: '22px', fontWeight: 600 } }, name),
+  h('div', { style: { display: 'flex', flexWrap: 'wrap', columnGap: 10, fontSize: 13, lineHeight: '18px' } },
+    h('span', null, h('span', { style: { color: 'var(--on-banner-muted)' } }, 'Born '), born),
+    h('span', null, h('span', { style: { color: 'var(--on-banner-muted)' } }, idLabel + ' '), id)));
+const cap = t => h('p', { className: 'cui-label', style: { margin: '16px 0 4px', fontSize: 12, color: 'var(--ink-muted)' } }, t);
+const frame = c => h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } }, c);
+const C1 = "Resp rate twenty two, sats ninety three, BP one ten on seventy, heart rate one hundred and twelve, temp thirty eight point four, she's alert";
+const taken = new Date(2026, 9, 27, 14, 8);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    cap('NZ (NZEWS): oxygen not heard, total 7+ until answered'),
+    frame(h(ClinicalLocaleProvider, { region: 'NZ' }, h(DictationReview, {
+      banner: banner('Ngata, Mereana (Ms)', '14-Mar-1958 (68y)', 'NHI', 'ZZZ0016'), transcript: C1, subject: 'she', takenAt: taken, stickyActions: false }))),
+    cap('AU: "fifteen" could be 15 or 50, and SpO2 84 % is below the critical limit'),
+    frame(h(ClinicalLocaleProvider, { region: 'AU' }, h(DictationReview, {
+      banner: banner('CHEN, Wei', '02-Feb-1949 (77y)', 'IHI', '8003 6012 3456 7894'),
+      transcript: 'Resp rate fifteen, sats eighty four on two litres, pulse ninety eight, BP one forty on eighty, temp thirty seven point one, alert',
+      criticalThresholds: [{ direction: 'low', value: 85, appliesTo: 'oxygenSaturation' }], subject: 'he', takenAt: taken, stickyActions: false }))),
+    cap('GB (NEWS2): everything heard, ready to save'),
+    frame(h(ClinicalLocaleProvider, { region: 'GB' }, h(DictationReview, {
+      banner: banner('JONES, Sarah (Mrs)', '09-Aug-1971 (55y)', 'NHS No.', '999 000 0018'),
+      transcript: 'RR 18, sats 97 on air, pulse 64, BP 128 over 82, temp 36.9, alert', takenAt: taken, stickyActions: false })))
+  )
+);
+</script>

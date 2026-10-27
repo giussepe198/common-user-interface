@@ -1,0 +1,17 @@
+<!-- @dsCard group="Dates and times" height=330 width=1000 subtitle="Calendar with independent month and year navigation; AU day headings" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { CalendarPicker, DateDisplay, formatDateInputValue, ClinicalLocaleProvider } = window.ClinicalCUI;
+function Demo() {
+  const [v, setV] = React.useState({ kind: 'full', year: 2007, month: 9, day: 14 });
+  return h('div', { style: { display: 'flex', gap: 24, alignItems: 'flex-start', flexWrap: 'wrap' } },
+    h(CalendarPicker, { value: v, onSelect: setV, onClose: () => {}, today: new Date(2007, 8, 20), allowMonthYear: true, allowYear: true, autoFocus: false }),
+    h('div', { className: 'cui-label', style: { width: 160 } }, 'Selected: ', h('strong', null, formatDateInputValue(v))),
+    h('div', null,
+      h('div', { className: 'cui-label', style: { marginBottom: 4 } }, 'AU (Thur in the headings)'),
+      h(ClinicalLocaleProvider, { region: 'AU' }, h(CalendarPicker, { value: { kind: 'full', year: 2026, month: 10, day: 4 }, onSelect: () => {}, onClose: () => {}, today: new Date(2026, 9, 27), autoFocus: false })))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

@@ -1,0 +1,30 @@
+<!-- @dsCard group="Mobile screens" height=1100 width=390 subtitle="Worklist (B1): cross-patient tasks, overdue first, filter chips with counts, similar-name flags" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { Worklist, MobileNavBar, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27, 14, 5);
+const at = (hh, mm) => new Date(2026, 9, 27, hh, mm || 0);
+const pt = (id, fam, giv, dob, urn, bed) => ({ id, name: { familyName: fam, givenName: giv }, dateOfBirth: dob, identifiers: [{ type: 'mrn', value: urn }], location: bed });
+const chen = pt('chen', 'Chen', 'Wei', '1949-09-02', '0412345', 'Bed 12');
+const john = pt('john', 'Smith', 'John', '1962-06-11', '0398812', 'Bed 3');
+const jon = pt('jon', 'Smith', 'Jon', '1985-01-30', '0420017', 'Bed 9');
+const ngaio = pt('ngaio', 'Parata', 'Ngaio', '1971-04-18', '0433310', 'Bed 14');
+const tasks = [
+  { id: 't2', kind: 'observations', patient: john, dueAt: at(14), title: 'Observations (ADDS)', detail: 'Last score 2 at 10:00' },
+  { id: 't1', kind: 'medication', patient: chen, dueAt: at(13), medication: { genericName: 'paracetamol', strength: { kind: 'simple', values: [500], unit: 'mg' }, form: 'tablet', brandName: 'Panadol', route: 'oral', dose: { value: 1, unit: 'g' }, frequency: 'four times a day' } },
+  { id: 't3', kind: 'medication', patient: jon, dueAt: at(14), highRisk: true, medication: { genericName: 'insulin aspart', strength: { kind: 'perUnit', values: [100], unit: 'units', fluidUnit: 'mL' }, form: 'injection', brandName: 'NovoRapid', route: 'subcutaneous', dose: { value: 6, unit: 'units' }, qualifiers: ['with lunch'] } },
+  { id: 't4', kind: 'other', patient: ngaio, dueAt: at(14, 45), title: 'Wound dressing', detail: 'Left leg, change and photograph' },
+  { id: 't5', kind: 'medication', patient: ngaio, dueAt: at(15), medication: { genericName: 'metoprolol', strength: { kind: 'simple', values: [47.5], unit: 'mg' }, form: 'modified-release tablet', route: 'oral', dose: { value: 47.5, unit: 'mg' }, frequency: 'once a day' } },
+  { id: 't6', kind: 'observations', patient: chen, dueAt: at(12), completedAt: at(12, 10), title: 'Observations (ADDS)' },
+];
+function Demo() {
+  const [filter, setFilter] = React.useState('dueNow');
+  const [msg, setMsg] = React.useState('');
+  return h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } },
+    h(Worklist, { tasks, now, filter, onFilterChange: setFilter, context: 'Ward 5B', onStart: t => setMsg('Start: ' + t.id) }),
+    msg ? h('p', { role: 'status', style: { margin: 0, padding: '8px 16px', fontSize: 14 } }, msg) : null,
+    h(MobileNavBar, { sticky: false, current: 'worklist', onScan: () => {}, items: [{ id: 'worklist', label: 'Worklist', icon: 'tick' }, { id: 'patients', label: 'Patients', icon: 'summary' }, { id: 'dictate', label: 'Dictate', icon: 'dictate' }, { id: 'handover', label: 'Handover', icon: 'handover' }] }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(ClinicalLocaleProvider, { region: 'AU' }, h(Demo)));
+</script>

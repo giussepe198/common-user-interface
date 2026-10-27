@@ -1,0 +1,15 @@
+<!-- @dsCard group="Patient identification" width=1000 height=289 subtitle="IHI input (AU): 16 digits, 800360 prefix, Luhn check" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { IhiInput } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+    h(IhiInput, { label: 'IHI' }),
+    h(IhiInput, { label: 'IHI', defaultValue: '8003601234567894', hint: '' }),
+    h(IhiInput, { id: 'preview-ihi-bad', label: 'IHI', defaultValue: '8003601234567895' }),
+    h(IhiInput, { label: 'IHI', required: true, error: 'No IHI found for these details in the HI Service' })
+  )
+);
+setTimeout(() => { const el = document.getElementById('preview-ihi-bad'); if (el) { el.focus(); el.blur(); } }, 30);
+</script>

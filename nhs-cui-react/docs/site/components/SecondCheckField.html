@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SecondCheckField · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile touch inputs</p>
+<h1 style="margin:0 0 4px;font-size:20px">SecondCheckField</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Second check (P4): done by badge scan, empty with scan and staff ID, required · Guidelines: <code>src/touch/SecondCheckField/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SecondCheckField } = window.ClinicalCUI;
+const card = c => h('div', { style: { maxWidth: 390, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 4, padding: '12px 14px', marginBottom: 12 } }, c);
+const staff = { B204: { id: 'B204', name: 'Kiran Patel', role: 'RN' } };
+const now = () => new Date(2026, 9, 27, 14, 12);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    card(h(SecondCheckField, { now, defaultValue: { id: 'B204', name: 'Kiran Patel', role: 'RN', method: 'scanned', at: new Date(2026, 9, 27, 14, 9) }, onScanRequest: () => staff.B204 })),
+    card(h(SecondCheckField, { now, onScanRequest: () => staff.B204, resolveChecker: t => staff[t.toUpperCase()] || null, currentUserId: 'N101' })),
+    card(h(SecondCheckField, { now, resolveChecker: t => staff[t.toUpperCase()] || null, required: true, showValidation: true }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

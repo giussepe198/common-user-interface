@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PatientNameDisplay · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Patient identification</p>
+<h1 style="margin:0 0 4px;font-size:20px">PatientNameDisplay</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">FAMILY, Given (Title) name format · Guidelines: <code>src/patient/PatientNameDisplay/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ClinicalLocaleProvider } = window.ClinicalCUI;
+const regionCaption = (t) => h('div', { style: { font: '600 12px/16px var(--font-sans)', color: 'var(--ink-muted)', margin: '12px 0 4px' } }, t);
+const inRegion = (region, child, extra) => h(ClinicalLocaleProvider, Object.assign({ region }, extra || {}), child);
+const { PatientNameDisplay } = window.ClinicalCUI;
+const row = (child) => h('div', { style: { padding: '4px 0' } }, child);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    regionCaption('GB (NHS CUI)'),
+  h('div', { style: { padding: 12, background: 'var(--surface)' } },
+    row(h(PatientNameDisplay, { familyName: 'chandrasekhar', givenName: 'subramanyan', title: 'MR.', emphasis: true })),
+    row(h(PatientNameDisplay, { familyName: 'Lidman-Sun-Dewar', givenName: 'Nis Bank', title: 'Dr' })),
+    row(h(PatientNameDisplay, { familyName: 'Ruth', givenName: 'Anne', title: 'Mrs', showTitle: false })),
+    h('div', { style: { width: 170, padding: '4px 0', borderTop: '1px solid var(--border)' } },
+      h(PatientNameDisplay, { familyName: 'Treetawtchaiwong', givenName: 'Lertchai', title: 'Sir' })),
+    row(h(PatientNameDisplay, { familyName: 'Smith', givenName: '' }))
+  ),
+    regionCaption('AU: family name upper case, no title, single name alone'),
+    inRegion('AU', h('div', { style: { padding: 12, background: 'var(--surface)', display: 'flex', flexDirection: 'column', gap: 4 } },
+      h(PatientNameDisplay, { familyName: "O'Brien", givenName: 'liam patrick', title: 'Mr', emphasis: true }),
+      h(PatientNameDisplay, { familyName: 'Ngapanji', givenName: '' }),
+      h(PatientNameDisplay, { familyName: 'Unknown', givenName: 'Male 3', unidentified: true }))),
+    regionCaption('NZ: family name as recorded, macrons kept'),
+    inRegion('NZ', h('div', { style: { padding: 12, background: 'var(--surface)', display: 'flex', flexDirection: 'column', gap: 4 } },
+      h(PatientNameDisplay, { familyName: 'Te Huia', givenName: 'Kāhu', title: 'Ms', emphasis: true }),
+      h(PatientNameDisplay, { familyName: 'Ngāwai', givenName: '' }),
+      h(PatientNameDisplay, { familyName: 'Ngāwai', givenName: 'Aroha', familyNameCase: 'upper' }),
+      h(PatientNameDisplay, { familyName: 'Parata', givenName: 'Hine', nameProtected: true }),
+      h(PatientNameDisplay, { familyName: 'Parata', givenName: 'Hine', nameProtected: true, protectedDisplay: 'masked', onRevealProtected: () => {} })))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

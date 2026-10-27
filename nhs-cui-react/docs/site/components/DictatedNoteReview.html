@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DictatedNoteReview · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile voice</p>
+<h1 style="margin:0 0 4px;font-size:20px">DictatedNoteReview</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Dictated note review (C3): NZ dose heard in micrograms against 500 mg prescribed, AU dangerous abbreviation, GB ready to sign · Guidelines: <code>src/voice/DictatedNoteReview/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DictatedNoteReview, ClinicalLocaleProvider } = window.ClinicalCUI;
+const banner = (name, born, idLabel, id) => h('header', { 'aria-label': 'Patient', style: { background: 'var(--banner)', color: 'var(--on-banner)', padding: '10px 16px', display: 'flex', flexDirection: 'column', gap: 2 } },
+  h('div', { style: { fontSize: 17, lineHeight: '22px', fontWeight: 600 } }, name),
+  h('div', { style: { display: 'flex', flexWrap: 'wrap', columnGap: 10, fontSize: 13, lineHeight: '18px' } },
+    h('span', null, h('span', { style: { color: 'var(--on-banner-muted)' } }, 'Born '), born),
+    h('span', null, h('span', { style: { color: 'var(--on-banner-muted)' } }, idLabel + ' '), id)));
+const cap = t => h('p', { className: 'cui-label', style: { margin: '16px 0 4px', fontSize: 12, color: 'var(--ink-muted)' } }, t);
+const frame = c => h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } }, c);
+// Fictional matcher: a real one calls the consumer's terminology service.
+const matcher = text => {
+  const out = [];
+  const a = text.indexOf('cellulitis of left lower leg');
+  if (a >= 0) out.push({ start: a, end: a + 28, suggestion: { id: 'cel', label: 'Cellulitis of lower leg', confirmed: true, attributes: [{ id: 'left', label: 'Left', mandatory: true, confirmed: true }], freeText: ['worse since yesterday'] } });
+  const f = text.indexOf('Fever');
+  if (f >= 0) out.push({ start: f, end: f + 5, suggestion: { id: 'fev', label: 'Fever' } });
+  return out;
+};
+const C3 = 'Day 2 of cellulitis of left lower leg. Erythema now 2 cm beyond the marked margin, worse since yesterday. Fever 38.4. Plan: continue flucloxacillin five hundred micrograms four times a day, review bloods tomorrow.';
+const fluclox = [{ medicine: 'flucloxacillin', dose: { value: 500, unit: 'mg' } }];
+const draft = new Date(2026, 9, 27, 14, 10);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    cap('NZ: dose heard in micrograms, prescribed 500 mg'),
+    frame(h(ClinicalLocaleProvider, { region: 'NZ' }, h(DictatedNoteReview, {
+      banner: banner('Ngata, Mereana (Ms)', '14-Mar-1958 (68y)', 'NHI', 'ZZZ0016'), heading: 'Ward round note', draftAt: draft,
+      defaultText: C3, matchCodes: matcher, prescribed: fluclox, onDictateMore: () => {}, stickyActions: false }))),
+    cap('AU: "QDS" must be written in full (ACSQHC 2024)'),
+    frame(h(ClinicalLocaleProvider, { region: 'AU' }, h(DictatedNoteReview, {
+      banner: banner('CHEN, Wei', '02-Feb-1949 (77y)', 'IHI', '8003 6012 3456 7894'), heading: 'Ward round note', draftAt: draft,
+      defaultText: 'Fever settling. Continue flucloxacillin 500 mg QDS.', matchCodes: matcher, prescribed: fluclox, onDictateMore: () => {}, stickyActions: false }))),
+    cap('GB: nothing to resolve, ready to sign'),
+    frame(h(ClinicalLocaleProvider, { region: 'GB' }, h(DictatedNoteReview, {
+      banner: banner('JONES, Sarah (Mrs)', '09-Aug-1971 (55y)', 'NHS No.', '999 000 0018'), heading: 'Ward round note', draftAt: draft,
+      defaultText: 'Day 2 of cellulitis of left lower leg. Continue flucloxacillin 500 mg four times a day.', matchCodes: matcher, prescribed: fluclox, stickyActions: false })))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

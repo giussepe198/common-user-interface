@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SingleConceptEncoder · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Terminology</p>
+<h1 style="margin:0 0 4px;font-size:20px">SingleConceptEncoder</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Single concept encoder: subset filter, search, selected label, mandatory laterality, OK disabled; AU NCTS edition · Guidelines: <code>src/noting/SingleConceptEncoder/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SingleConceptEncoder, ClinicalLocaleProvider, matchesDescription } = window.ClinicalCUI;
+const TERMS = [{ id: 'fr', term: 'Fracture of radius', fsn: 'Fracture of radius (disorder)' }, { id: 'frd', term: 'Fracture of distal end of radius', fsn: 'Fracture of distal end of radius (disorder)' }, { id: 'bc', term: 'Breast cancer' }, { id: 'pa', term: 'Peanut allergy', isCommon: true }];
+const search = (q) => Promise.resolve(TERMS.filter((t) => matchesDescription(q, t.term)));
+const lat = (r) => r.id.startsWith('fr') ? [{ id: 'lat', label: 'Laterality', options: [{ value: 'L', label: 'Left' }, { value: 'R', label: 'Right' }, { value: 'B', label: 'Both' }] }] : [];
+const cell = (t, el) => h('div', { style: { display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 } }, h('p', { style: { margin: 0, fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' } }, t), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' } },
+    cell('Concept chosen, laterality still needed', h(SingleConceptEncoder, { search: search, getMandatoryQualifiers: lat, onOk: function () {}, onCancel: function () {},
+      initialValue: { concept: TERMS[0], qualifiers: {}, additionalText: 'Fell on outstretched hand', lastQuery: 'frac rad', subsetIds: [] } })),
+    cell('AU: NCTS value sets offered as subsets', h(ClinicalLocaleProvider, { region: 'AU' }, h(SingleConceptEncoder, { search: search, useRegionSubsets: true, defaultSubsetIds: [], showEdition: true, title: 'Record an allergy', onOk: function () {}, onCancel: function () {} })))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

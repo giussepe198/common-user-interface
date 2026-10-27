@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LiveTranscript · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile voice</p>
+<h1 style="margin:0 0 4px;font-size:20px">LiveTranscript</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Live transcript: recognised values highlighted, a teen or ty number to check, interim text while listening, and the empty state · Guidelines: <code>src/voice/LiveTranscript/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { LiveTranscript } = window.ClinicalCUI;
+const mark = (text, words, kind) => words.map(w => { const s = text.indexOf(w); return { start: s, end: s + w.length, kind: kind || 'value' }; });
+const t1 = "Resp rate twenty two, sats ninety three, BP one ten on seventy, heart rate one hundred and twelve, temp thirty eight point four, she's alert";
+const t2 = 'Resp rate fifteen, sats ninety six on air';
+const cap = t => h('p', { className: 'cui-label', style: { margin: '12px 0 4px', fontSize: 12, color: 'var(--ink-muted)' } }, t);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 390 } },
+    cap('Listening: values highlighted, interim text muted'),
+    h(LiveTranscript, { text: t1, interim: 'on two', highlights: mark(t1, ['twenty two', 'ninety three', 'one ten on seventy', 'one hundred and twelve', 'thirty eight point four', 'alert']) }),
+    cap('A number that could be fifteen or fifty is marked to check'),
+    h(LiveTranscript, { text: t2, highlights: mark(t2, ['fifteen'], 'check').concat(mark(t2, ['ninety six', 'on air'])) }),
+    cap('Nothing heard yet'),
+    h(LiveTranscript, { text: '' })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

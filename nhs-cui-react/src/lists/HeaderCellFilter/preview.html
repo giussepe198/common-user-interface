@@ -1,0 +1,14 @@
+<!-- @dsCard group="Lists and filtering" height=300 subtitle="Header-cell filter: integer column, date column with Custom, replacing a filter" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { HeaderCellFilter } = window.ClinicalCUI;
+const cell = (title, el) => h('div', { style: { width: 340, minHeight: 260 } },
+  h('div', { style: { position: 'relative', padding: '8px 12px', background: 'var(--surface-muted)', border: '1px solid var(--border-strong)', fontWeight: 600 } }, title, el));
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap' } },
+    cell('NEWS2 score', h(HeaderCellFilter, { attribute: { id: 'news', label: 'NEWS2 score', dataType: 'integer' }, initial: { attributeId: 'news', operator: 'greaterThanOrEqual', value: '5' }, onApply: () => {}, onRemove: () => {}, onCancel: () => {}, showOperatorSymbols: true })),
+    cell('Admitted', h(HeaderCellFilter, { attribute: { id: 'admitted', label: 'Admitted', dataType: 'date' }, initial: { attributeId: 'admitted', operator: 'between', value: '2026-10-20', value2: '2026-10-27' }, onApply: () => {}, onCancel: () => {}, onCustom: () => {}, replacesFilter: true }))
+  )
+);
+</script>

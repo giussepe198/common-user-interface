@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FreeTextAnnotation · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Clinical noting</p>
+<h1 style="margin:0 0 4px;font-size:20px">FreeTextAnnotation</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Free text added to fixed-choice selections: add control, marquee display, editor, contingent field · Guidelines: <code>src/noting/FreeTextAnnotation/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { FreeTextAnnotation, ClinicalRadioGroup } = window.ClinicalCUI;
+const cell = (t, el) => h('div', { style: { display: 'flex', flexDirection: 'column', gap: 6 } }, h('p', { style: { margin: 0, fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' } }, t), el);
+const smoking = [{ value: 'never', label: 'Never smoked' }, { value: 'ex', label: 'Ex-smoker' }, { value: 'current', label: 'Current smoker' }];
+function Demo() {
+  const [v, setV] = React.useState('ex');
+  React.useEffect(() => { setTimeout(() => { const b = document.querySelector('#editing .cui-free-text__text'); if (b) b.click(); }, 60); }, []);
+  return h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, alignItems: 'start' } },
+    cell('Text added: shown beside the control in a faint marquee', h(FreeTextAnnotation, { defaultValue: 'Stopped March 2019 after 20 pack-years', label: 'Smoking details' },
+      h(ClinicalRadioGroup, { legend: 'Smoking status', options: smoking, value: v, onChange: setV }))),
+    h('div', { id: 'editing' }, cell('Editing (pop-up field with clear and done)', h(FreeTextAnnotation, { defaultValue: 'Occasional cigar', label: 'Smoking details' },
+      h(ClinicalRadioGroup, { legend: 'Smoking status', options: smoking, defaultValue: 'current' })))),
+    cell('Contingent free text: Other, please specify', h(FreeTextAnnotation, { revealWhen: true, label: 'Other route, please specify', placement: 'below' },
+      h('label', { style: { display: 'inline-flex', gap: 8 } }, h('select', { className: 'cui-noting-input', defaultValue: 'other' }, h('option', { value: 'oral' }, 'Oral'), h('option', { value: 'other' }, 'Other')), 'Route'))),
+    cell('Saved: read-only', h(FreeTextAnnotation, { readOnly: true, defaultValue: 'Vapes daily' }, h('span', null, h('strong', null, 'Smoking status: '), 'Current smoker')))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

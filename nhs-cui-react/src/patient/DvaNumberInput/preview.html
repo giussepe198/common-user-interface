@@ -1,0 +1,14 @@
+<!-- @dsCard group="Patient identification" width=1000 height=145 subtitle="DVA file number (AU) with card type; format check is advisory" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DvaNumberInput } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 40, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+    h(DvaNumberInput, { defaultValue: 'nbur9080', defaultCardType: 'Gold' }),
+    h(DvaNumberInput, { id: 'preview-dva-warn', defaultValue: 'ABUR9080', hint: '' }),
+    h(DvaNumberInput, { showCardType: false, required: true, error: 'Enter the DVA file number' })
+  )
+);
+setTimeout(() => { const el = document.getElementById('preview-dva-warn'); if (el) { el.focus(); el.blur(); } }, 30);
+</script>

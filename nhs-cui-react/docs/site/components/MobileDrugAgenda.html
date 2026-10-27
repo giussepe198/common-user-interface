@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MobileDrugAgenda · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile screens</p>
+<h1 style="margin:0 0 4px;font-size:20px">MobileDrugAgenda</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">One-day drug agenda (P3): now line, day switcher, shapes with words, region codes, when-required availability · Guidelines: <code>src/mobile/MobileDrugAgenda/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MobileDrugAgenda, MobilePatientHeader, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27, 14, 6);
+const d = (hh, mm, day) => new Date(2026, 9, day || 27, hh, mm || 0);
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 12, lineHeight: '16px', color: 'var(--ink-muted)' } }, t);
+const meds = (refusedCode) => [
+  { id: 'enox', name: 'enoxaparin', details: '40 mg subcutaneous', kind: 'regular', startDate: d(6, 0, 20), events: [{ id: 'e1', scheduledTime: d(6), status: 'patientRefused', reasonCode: refusedCode, reasonText: 'prescriber told 06:20' }, { id: 'e2', scheduledTime: d(6, 0, 28) }] },
+  { id: 'meto', name: 'metoprolol', details: '47.5 mg oral', kind: 'regular', startDate: d(8, 0, 20), events: [{ id: 'm1', scheduledTime: d(8), status: 'given', administeredAt: d(8, 5) }, { id: 'm2', scheduledTime: d(8, 0, 28) }] },
+  { id: 'fluc', name: 'flucloxacillin', details: '500 mg oral', kind: 'regular', startDate: d(8, 0, 25), events: [{ id: 'f1', scheduledTime: d(8), status: 'given', administeredAt: d(8, 10) }, { id: 'f2', scheduledTime: d(14) }, { id: 'f3', scheduledTime: d(18) }] },
+  { id: 'para', name: 'paracetamol', details: '1 g oral', kind: 'regular', startDate: d(8, 0, 24), events: [{ id: 'p1', scheduledTime: d(13) }, { id: 'p2', scheduledTime: d(18) }] },
+  { id: 'tram', name: 'tramadol', details: '50 to 100 mg oral, every 6 hours', kind: 'asRequiredUnscheduled', startDate: d(0, 0, 24), asRequired: { minIntervalMinutes: 360 }, events: [{ id: 't1', status: 'given', administeredAt: d(6, 30) }] },
+  { id: 'ond', name: 'ondansetron', details: '4 mg oral, every 8 hours', kind: 'asRequiredUnscheduled', startDate: d(0, 0, 24), asRequired: { minIntervalMinutes: 480 }, events: [{ id: 'o1', status: 'given', administeredAt: d(12, 15) }] },
+];
+const header = h(MobilePatientHeader, { variant: 'condensed', now, showDetailsButton: false, patient: { name: { familyName: 'Ngata', givenName: 'Mereana', title: 'Ms' }, dateOfBirth: '1958-03-14', identifiers: [{ type: 'nhi', value: 'ZZZ0016' }], allergies: { status: 'known', items: [{ name: 'penicillin', lastUpdated: '2024-02-02' }, { name: 'latex', lastUpdated: '2024-02-02' }] } } });
+function Demo({ region, code, withHeader }) {
+  const [msg, setMsg] = React.useState('');
+  return h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } },
+    h(ClinicalLocaleProvider, { region },
+      withHeader ? header : null,
+      h(MobileDrugAgenda, { medications: meds(code), now, medicationAlerts: { fluc: ['allergy alert'] },
+        onOpenEvent: (m, e) => setMsg('Open ' + m.name + ' ' + e.id), onOpenAsRequired: m => setMsg('Give ' + m.name), onOpenChart: () => setMsg('Open 4-day chart') })),
+    msg ? h('p', { role: 'status', style: { margin: 0, padding: '8px 16px', fontSize: 14 } }, msg) : null);
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    label('NZ (NMC codes): today with the now line'), h(Demo, { region: 'NZ', code: 'R', withHeader: true }),
+    label('GB: statuses in words, "As Required"'), h(Demo, { region: 'GB', code: 'R' })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

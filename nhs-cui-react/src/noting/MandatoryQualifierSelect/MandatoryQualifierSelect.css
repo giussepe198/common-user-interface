@@ -1,0 +1,6 @@
+.cui-mandatory-qualifier { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); font-size: 14px; line-height: 20px; color: var(--ink); }
+.cui-mandatory-qualifier__label { font-weight: 600; }
+.cui-mandatory-qualifier__select { min-width: 12em; }
+.cui-mandatory-qualifier--unresolved .cui-mandatory-qualifier__select { background: var(--warning-surface); border-color: var(--warning); }
+.cui-mandatory-qualifier__message { font-size: 12px; line-height: 16px; color: var(--ink-muted); max-width: 28em; }
+.cui-mandatory-qualifier__locked { font-size: 12px; line-height: 16px; color: var(--ink-muted); }

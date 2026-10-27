@@ -1,0 +1,45 @@
+/* Medication Line v2.0.0.0 */
+.cui-medication-line {
+  line-height: 1.3; /* MEDi-036: 120% to 140% */
+  color: var(--ink);
+  hyphens: none; /* MEDi-021: never hyphenate */
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.cui-medication-line--multiline .cui-medication-line__line { display: block; }
+/* MEDi-010/011: each attribute wraps as a unit; the dash travels with the preceding attribute. */
+.cui-medication-line__chunk { display: inline-block; max-width: 100%; vertical-align: top; }
+/* MEDi-008: a label never separates from its value. */
+.cui-medication-line__labelled { white-space: nowrap; }
+.cui-medication-line__generic { font-weight: 700; }
+.cui-medication-line__brand { font-weight: 400; }
+/* AU on-screen 6.1.3: brand Title Case and italic after an en dash */
+.cui-medication-line--au .cui-medication-line__brand { font-style: italic; }
+/* AU 4 or more ingredients: brand only, ingredients on hover */
+.cui-medication-line__chunk--has-ingredients { text-decoration: underline dotted var(--ink-muted); text-underline-offset: 3px; cursor: help; }
+.cui-medication-line__dose { font-weight: 700; }
+/* MEDi-009/033: labels use a different font treatment and colour from values. */
+.cui-medication-line__label {
+  font-size: 0.8em;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+/* MEDi-047: smaller "and" for combination strengths, used nowhere else in the line. */
+.cui-medication-line__and { font-size: 0.8em; }
+/* MEDi-019/020: double space is kept. */
+.cui-medication-line__gap, .cui-medication-line__plus { white-space: pre; }
+.cui-medication-line__icons { display: inline-flex; align-items: center; gap: var(--space-1); vertical-align: middle; }
+.cui-medication-line__status { margin-left: var(--space-2); }
+
+/* Status text, shared with MedicationsList (MEDv-042, MEDv-024, MEDv-025) */
+.cui-medication-status { display: inline-flex; flex-direction: column; line-height: 1.3; }
+.cui-medication-status__value { font-weight: 700; }
+.cui-medication-status__supplement { font-weight: 400; font-size: 12px; color: var(--ink-muted); }
+.cui-medication-status--suspended .cui-medication-status__value {
+  color: var(--warning);
+  background: var(--warning-surface);
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-sm);
+}
+.cui-medication-status--past .cui-medication-status__value { font-style: italic; color: var(--ink-muted); }

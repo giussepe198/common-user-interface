@@ -1,0 +1,10 @@
+.cui-truncated { position: relative; display: block; min-width: 0; max-width: 100%; white-space: nowrap; overflow: visible; hyphens: none; }
+.cui-truncated__text { display: inline-block; max-width: 100%; overflow: hidden; vertical-align: top; white-space: nowrap; }
+.cui-truncated--truncated .cui-truncated__text { max-width: calc(100% - 26px); }
+.cui-truncated--wrap { white-space: normal; hyphens: none; overflow-wrap: normal; word-break: normal; }
+.cui-truncated__toggle, .cui-truncated__symbol { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 20px; margin-left: 4px; padding: 0; vertical-align: top; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink-muted); }
+.cui-truncated__toggle { cursor: pointer; }
+.cui-truncated__toggle:hover { background: var(--hover); color: var(--ink); }
+.cui-truncated__symbol { border-color: transparent; background: transparent; }
+.cui-truncated[tabindex]:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-truncated__flyout { position: absolute; z-index: 30; top: calc(100% + 4px); left: 0; min-width: 100%; max-width: 480px; width: max-content; padding: var(--space-2) var(--space-3); white-space: normal; background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); font-size: 14px; line-height: 20px; }

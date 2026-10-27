@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClinicalRadioGroup · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Clinical noting</p>
+<h1 style="margin:0 0 4px;font-size:20px">ClinicalRadioGroup</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Radio group: no default selection, revealing option prompt, missed state · Guidelines: <code>src/noting/ClinicalRadioGroup/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ClinicalRadioGroup } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 48, flexWrap: 'wrap' } },
+    h('div', null,
+      h(ClinicalRadioGroup, { legend: 'CVS normal on examination', required: true, options: [
+        { value: 'yes', label: 'Yes' },
+        { value: 'no', label: 'No', prompt: 'Opens further details: CVS examination', reveals: true },
+      ] }),
+      h(ClinicalRadioGroup, { legend: 'Smoking status', required: true, missed: true, options: [
+        { value: 'never', label: 'Never smoked' },
+        { value: 'ex', label: 'Ex-smoker' },
+        { value: 'current', label: 'Current smoker' },
+      ] })
+    ),
+    h('div', null,
+      h(ClinicalRadioGroup, { legend: 'Laterality', orientation: 'horizontal', defaultValue: 'left', prompt: 'Required to code this finding', options: [
+        { value: 'left', label: 'Left' }, { value: 'right', label: 'Right' }, { value: 'both', label: 'Both' }, { value: 'ns', label: 'Not specified' },
+      ] }),
+      h(ClinicalRadioGroup, { legend: 'Mobility before admission', error: 'Select an option to continue.', options: [
+        { value: 'none', label: 'None of these', pinFirst: true },
+        { value: 'indep', label: 'Independent' },
+        { value: 'aid', label: 'Walks with aid' },
+        { value: 'chair', label: 'Wheelchair user' },
+      ] })
+    )
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

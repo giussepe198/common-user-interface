@@ -1,0 +1,16 @@
+<!-- @dsCard group="Dates and times" height=150 subtitle="Durations with the minimal unit set y m w d hr min sec" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DurationDisplay } = window.ClinicalCUI;
+const row = (label, node) => h('div', { style: { display: 'flex', gap: 16, alignItems: 'baseline', padding: '4px 0' } }, h('span', { className: 'cui-label', style: { width: 190, flex: 'none' } }, label), node);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    row('Hours and minutes', h(DurationDisplay, { value: { hours: 2, minutes: 40 } })),
+    row('Mixed units', h(DurationDisplay, { value: { months: 1, days: 2, hours: 3, minutes: 17 } })),
+    row('Zero units omitted', h(DurationDisplay, { value: { hours: 8, minutes: 0, seconds: 10 } })),
+    row('Approximate', h(DurationDisplay, { value: { hours: 2, minutes: 40 }, approximate: true })),
+    row('Missing', h(DurationDisplay, { value: null }))
+  )
+);
+</script>

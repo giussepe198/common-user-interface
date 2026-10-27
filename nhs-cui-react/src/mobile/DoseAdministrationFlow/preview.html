@@ -1,0 +1,76 @@
+<!-- @dsCard group="Mobile screens" height=3320 width=390 subtitle="Dose administration (B2, P4): scans, dose in large text, checks, time given, record with undo; high-risk second check, read-back and hold" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DoseAdministrationFlow, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27, 14, 6);
+const at = (hh, mm) => new Date(2026, 9, 27, hh, mm || 0);
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 12, lineHeight: '16px', color: 'var(--ink-muted)' } }, t);
+function Frame({ scrollTo, children }) {
+  const ref = React.useRef(null);
+  React.useEffect(() => { if (scrollTo && ref.current) ref.current.scrollTop = scrollTo === 'end' ? ref.current.scrollHeight : scrollTo; }, []);
+  return h('div', { ref, style: { position: 'relative', height: 780, overflow: 'auto', maxWidth: 390, transform: 'translateZ(0)', border: '1px solid var(--border)' } }, children);
+}
+const frame = (c, scrollTo) => h(Frame, { scrollTo }, c);
+const chen = { id: 'chen', name: { familyName: 'Chen', givenName: 'Wei' }, dateOfBirth: '1949-09-02', gender: 'M', identifiers: [{ type: 'ihi', value: '8003608166690503' }, { type: 'mrn', value: '0412345' }], location: 'Bed 12', allergies: { status: 'none-known', recordedAt: '2026-10-26' } };
+const jon = { id: 'jon', name: { familyName: 'Smith', givenName: 'Jon' }, dateOfBirth: '1985-01-30', gender: 'M', identifiers: [{ type: 'mrn', value: '0420017' }], location: 'Bed 9', allergies: { status: 'none-known' }, similarNames: [{ name: 'SMITH, John', location: 'bed 3' }] };
+function Normal() {
+  const [log, setLog] = React.useState('');
+  return h('div', null, frame(h(DoseAdministrationFlow, {
+    patient: chen, now, portal: false, closeOnBrowserBack: false,
+    medication: { genericName: 'paracetamol', strength: { kind: 'simple', values: [500], unit: 'mg' }, form: 'tablet', brandName: 'Panadol', route: 'oral', dose: { value: 1, unit: 'g' }, frequency: 'four times a day' },
+    dose: { value: 1, unit: 'g' }, unitDose: { value: 500, unit: 'mg', form: 'tablet' }, scheduledAt: at(13),
+    wristband: { status: 'match', scannedAt: at(14, 6), matched: ['URN'] },
+    productScan: { status: 'match', productText: h('span', null, h('em', null, 'Panadol'), ' 500 mg tablet') },
+    lastGivenAt: at(9, 2), givenIn24Hours: { value: 2, unit: 'g' }, maximumIn24Hours: { value: 4, unit: 'g' },
+    onBack: () => {}, onRecordGiven: r => setLog('Recorded ' + r.status), onNotGiven: (v, c) => setLog('Not given: ' + c.code), onUndo: () => setLog('Undone'),
+    notGivenSheetProps: { reasonHint: 'Tap the field and speak, or type' },
+  })), log ? h('p', { role: 'status', style: { fontSize: 14 } }, log) : null);
+}
+function HighRisk() {
+  const [log, setLog] = React.useState('');
+  const card = h('section', { className: 'cui-mobile-card', style: { padding: 12 } },
+    h('h3', { className: 'cui-mobile-step-label' }, 'Blood glucose'),
+    h('span', null, h('strong', { style: { fontSize: 20 } }, '9.8 mmol/L'), ' at 13:55 ', h('span', { style: { color: 'var(--ink-muted)' } }, '(meter)')));
+  return h('div', null, frame(h(DoseAdministrationFlow, {
+    patient: jon, now, portal: false, closeOnBrowserBack: false, highRisk: 'insulin',
+    medication: { genericName: 'insulin aspart', strength: { kind: 'perUnit', values: [100], unit: 'units', fluidUnit: 'mL' }, form: 'injection', brandName: 'NovoRapid', route: 'subcutaneous', dose: { value: 6, unit: 'units' }, qualifiers: ['with lunch'] },
+    dose: { value: 6, unit: 'units' }, scheduledAt: at(14),
+    wristband: { status: 'match', scannedAt: at(14, 8), matched: ['URN'] },
+    checks: card, currentUserId: 'RN100',
+    onScanSecondChecker: () => ({ id: 'RN204', name: 'Kiran Patel', role: 'RN' }),
+    resolveSecondChecker: t => (t.trim().toUpperCase() === 'RN204' ? { id: 'RN204', name: 'Kiran Patel', role: 'RN' } : null),
+    onRecordGiven: () => setLog('Recorded'), onNotGiven: () => setLog('Not given'), onNotNow: () => setLog('Not now'),
+  }), 'end'), log ? h('p', { role: 'status', style: { fontSize: 14 } }, log) : null);
+}
+function Mismatch() {
+  return frame(h(DoseAdministrationFlow, {
+    patient: chen, now, portal: false, closeOnBrowserBack: false,
+    medication: { genericName: 'paracetamol', strength: { kind: 'simple', values: [500], unit: 'mg' }, form: 'tablet', route: 'oral', dose: { value: 1, unit: 'g' }, frequency: 'four times a day' },
+    dose: { value: 1, unit: 'g' }, unitDose: { value: 500, unit: 'mg', form: 'tablet' }, scheduledAt: at(14),
+    wristband: { status: 'mismatch', scannedAt: at(14, 6), differences: ['URN differs', 'Date of birth differs'], scannedPatient: { name: { familyName: 'Smith', givenName: 'John' }, dateOfBirth: '1962-06-11', identifiers: [{ type: 'mrn', value: '0398812' }], location: 'Bed 3' } },
+    onScanWristband: () => {}, onSwitchToScannedPatient: () => {},
+    productScan: { status: 'mismatch', productText: 'paracetamol 665 mg modified-release tablet', differences: ['Different strength: 665 mg'] },
+    lastGivenAt: at(12, 0), minIntervalMinutes: 240,
+    onRecordGiven: () => {}, onNotGiven: () => {},
+  }), 300);
+}
+function NotGivenOpen() {
+  return frame(h(DoseAdministrationFlow, {
+    patient: chen, now, portal: false, closeOnBrowserBack: false, showUndoToast: false,
+    defaultNotGivenOpen: true, notGivenSheetProps: { autoFocus: false, reasonHint: 'Tap the field and speak, or type' },
+    medication: { genericName: 'paracetamol', strength: { kind: 'simple', values: [500], unit: 'mg' }, form: 'tablet', route: 'oral', dose: { value: 1, unit: 'g' }, frequency: 'four times a day' },
+    dose: { value: 1, unit: 'g' }, unitDose: { value: 500, unit: 'mg', form: 'tablet' }, scheduledAt: at(13),
+    wristband: { status: 'match', scannedAt: at(14, 6), matched: ['URN'] },
+    onRecordGiven: () => {}, onNotGiven: () => {},
+  }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(ClinicalLocaleProvider, { region: 'AU' },
+    label('B2: wristband and medicine match, dose to give, checks, time given'), h(Normal),
+    label('P4: high-risk insulin, second check, typed dose and hold to record'), h(HighRisk),
+    label('Wristband and medicine do not match; too soon since the last dose'), h(Mismatch),
+    label('B3: Not given sheet open from the start (defaultNotGivenOpen), host shows its own undo toast'), h(NotGivenOpen)
+  )
+);
+</script>

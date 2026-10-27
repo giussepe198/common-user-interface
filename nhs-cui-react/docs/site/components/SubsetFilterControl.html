@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SubsetFilterControl · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Terminology</p>
+<h1 style="margin:0 0 4px;font-size:20px">SubsetFilterControl</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Subset filter: truncated button label, slider for nested subsets, Filter/No filter choices; AU and NZ defaults · Guidelines: <code>src/noting/SubsetFilterControl/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SubsetFilterControl, ClinicalLocaleProvider } = window.ClinicalCUI;
+const nested = [{ id: 'all-clin', label: 'Clinical findings' }, { id: 'resp', label: 'Respiratory findings' }, { id: 'asthma', label: 'Asthma clinic common findings' }];
+const cell = (t, el, id) => h('div', { id: id, style: { display: 'flex', flexDirection: 'column', gap: 6, minHeight: 300 } }, h('p', { style: { margin: 0, fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' } }, t), el);
+function Demo() {
+  React.useEffect(() => { setTimeout(() => { ['#a button', '#c button'].forEach((s) => { const b = document.querySelector(s); if (b) b.click(); }); }, 60); }, []);
+  return h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 } },
+    cell('Nested subsets: slider', h(SubsetFilterControl, { levels: nested, nested: true, defaultValue: ['resp'], instruction: 'Move the slider to narrow or widen the matches.' }), 'a'),
+    cell('Closed: label truncated after 20 characters', h(SubsetFilterControl, { levels: nested, defaultValue: ['asthma'] }), 'b'),
+    cell('AU: NCTS value sets (default subsets)', h(ClinicalLocaleProvider, { region: 'AU' }, h(SubsetFilterControl, null)), 'c'),
+    cell('NZ: NZ Edition reference sets', h(ClinicalLocaleProvider, { region: 'NZ' }, h(SubsetFilterControl, { defaultValue: ['nz-adverse-reaction-manifestation'] })), 'd')
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

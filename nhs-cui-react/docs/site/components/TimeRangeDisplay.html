@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TimeRangeDisplay · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Dates and times</p>
+<h1 style="margin:0 0 4px;font-size:20px">TimeRangeDisplay</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Time range with contextual labels, elapsed time and zones · Guidelines: <code>src/datetime/TimeRangeDisplay/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TimeRangeDisplay, ClinicalLocaleProvider } = window.ClinicalCUI;
+const row = (label, node) => h('div', { style: { display: 'flex', gap: 16, alignItems: 'baseline', padding: '4px 0' } }, h('span', { className: 'cui-label', style: { width: 230, flex: 'none' } }, label), node);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { background: 'var(--surface)', padding: 12, borderRadius: 4 } },
+    row('Times of day', h(TimeRangeDisplay, { from: '06:23', to: '08:23' })),
+    row('With elapsed time', h(TimeRangeDisplay, { from: '22:00', to: '01:30', showDuration: true, fromLabel: 'Start', toLabel: 'end' })),
+    row('Across two days', h(TimeRangeDisplay, { from: '2026-01-01T22:00:00', to: '2026-01-02T06:15:00', showDuration: true })),
+    row('End not recorded', h(TimeRangeDisplay, { from: '06:23', to: null, nullText: 'Not recorded' })),
+    h(ClinicalLocaleProvider, { region: 'AU', timeZone: 'Australia/Sydney' },
+      row('AU: across AEST to AEDT', h(TimeRangeDisplay, { from: new Date('2026-10-03T14:00:00Z'), to: new Date('2026-10-03T18:00:00Z'), showZone: true, showDuration: true }))),
+    h(ClinicalLocaleProvider, { region: 'NZ' },
+      row('NZ: across NZDT to NZST', h(TimeRangeDisplay, { from: new Date('2026-04-04T12:00:00Z'), to: new Date('2026-04-04T15:00:00Z'), showZone: true, showDuration: true })))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

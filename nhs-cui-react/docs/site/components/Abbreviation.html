@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abbreviation · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Display standards</p>
+<h1 style="margin:0 0 4px;font-size:20px">Abbreviation</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Abbreviation with a discoverable meaning · Guidelines: <code>src/datetime/Abbreviation/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { Abbreviation, ClinicalLocaleProvider } = window.ClinicalCUI;
+function Demo() {
+  return h('div', { style: { display: 'flex', flexDirection: 'column', gap: 12 } },
+    h('p', { style: { margin: 0 } }, 'Referred to ', h(Abbreviation, { short: 'ENT', expansion: 'Ears Nose and Throat', glossaryHref: '#glossary' }), ' clinic for review.'),
+    h('p', { style: { margin: 0 } }, 'Weakness of ', h(Abbreviation, { short: 'Tib.Ant.', expansion: 'Tibialis Anterior' }), ' on the left.'),
+    h(ClinicalLocaleProvider, { region: 'AU' }, h('p', { style: { margin: 0 } }, 'AU: verified against the ', h(Abbreviation, { short: 'IHI', expansion: 'Individual Healthcare Identifier' }), ' service.')),
+    h('p', { style: { margin: 0, minHeight: 60 } }, 'Column header style: ', h(AbbrOpen))
+  );
+}
+function AbbrOpen() {
+  const ref = React.useRef(null);
+  React.useEffect(() => { const b = ref.current && ref.current.querySelector('button'); if (b) b.click(); }, []);
+  return h('span', { ref }, h(Abbreviation, { short: 'BMI', expansion: 'Body mass index', glossaryHref: '#glossary' }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

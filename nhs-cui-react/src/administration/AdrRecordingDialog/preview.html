@@ -1,0 +1,51 @@
+<!-- @dsCard group="Drug administration" height=2900 width=1000 subtitle="Recording adverse drug reactions: new entry, warnings while entering, removal confirmation, AU and NZ wording" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AdrRecordingDialog, ClinicalLocaleProvider } = window.ClinicalCUI;
+const concepts = [
+  { code: '764146007', term: 'Penicillin', isClass: true, definition: 'Class of beta-lactam antibacterial drugs.' },
+  { code: '372687004', term: 'Amoxicillin', definition: 'Aminopenicillin antibacterial drug.' },
+  { code: '387458008', term: 'Aspirin', definition: 'Salicylate analgesic and antiplatelet drug.' },
+  { code: '256349002', term: 'Peanut', isDrug: false },
+];
+const reactions = [
+  { code: '271807003', term: 'Rash' }, { code: '39579001', term: 'Anaphylaxis' }, { code: '56018004', term: 'Wheezing' }, { code: '422587007', term: 'Nausea' },
+];
+const search = function (text, field) {
+  const list = field === 'agent' ? concepts : reactions;
+  return list.filter(function (c) { return c.term.toLowerCase().indexOf(text.toLowerCase()) === 0; });
+};
+const existing = [
+  { id: 'x1', agent: concepts[0], reactions: [{ concept: reactions[0] }] },
+  { id: 'x2', agent: { term: 'Elastoplast dressing' }, reactions: [{ concept: { term: 'Blistering' } }] },
+];
+const sources = ['Patient testimony', 'Third party, for example a relative', 'Clinical documentation', 'Clinician witnessed reaction'];
+const noop = function () {};
+const label = function (t) { return h('div', { className: 'cui-label', style: { margin: '0 0 6px' } }, t); };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 24 } },
+    h('div', null, label('New entry: only the causative agent is available until it is entered'),
+      h(AdrRecordingDialog, { existingEntries: existing, sources: sources, searchConcepts: search, onFinish: noop, onCancel: noop })),
+    h('div', null, label('Entered from notes: duplicate agent, wording that changes meaning, reaction words in details'),
+      h(AdrRecordingDialog, {
+        existingEntries: existing, sources: sources, searchConcepts: search, onFinish: noop, onCancel: noop,
+        initial: { agent: concepts[0], reactions: [{ concept: reactions[0], elaboration: 'mild, mother had the same' }], details: 'Developed a rash and wheeze after the second dose in 2019.' },
+      })),
+    h('div', { id: 'edit' }, label('Editing an entry, after choosing Remove from list'),
+      h(AdrRecordingDialog, { mode: 'edit', entryId: 'x2', initial: existing[1], existingEntries: existing, sources: sources, searchConcepts: search, onFinish: noop, onCancel: noop, onRemove: noop })),
+    h('div', null, label('AU: NIMC wording, with type (allergy or intolerance) and date of reaction'),
+      h(ClinicalLocaleProvider, { region: 'AU' },
+        h(AdrRecordingDialog, { existingEntries: existing, sources: sources, searchConcepts: search, onFinish: noop, onCancel: noop,
+          initial: { agent: concepts[1], reactions: [{ concept: reactions[1], elaboration: '' }], reactionType: 'allergy', reactionDate: '2021' } }))),
+    h('div', null, label('NZ: HQSC wording, allergy guidance and "New this admission"'),
+      h(ClinicalLocaleProvider, { region: 'NZ' },
+        h(AdrRecordingDialog, { existingEntries: existing, sources: sources, searchConcepts: search, onFinish: noop, onCancel: noop,
+          initial: { agent: concepts[3], reactions: [{ concept: { term: 'Throat swelling' }, elaboration: 'two years ago' }], newThisAdmission: true } })))
+  )
+);
+setTimeout(function () {
+  const b = Array.prototype.find.call(document.querySelectorAll('#edit button'), function (x) { return x.textContent.indexOf('Remove from list') >= 0; });
+  if (b) b.click();
+}, 30);
+</script>

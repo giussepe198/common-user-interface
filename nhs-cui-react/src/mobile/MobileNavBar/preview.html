@@ -1,0 +1,24 @@
+<!-- @dsCard group="Mobile screens" height=240 width=390 subtitle="App navigation bar with a prominent centre Scan action" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MobileNavBar } = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 12, lineHeight: '16px', color: 'var(--ink-muted)' } }, t);
+const items = [
+  { id: 'worklist', label: 'Worklist', icon: 'tick', badge: 3, badgeLabel: '3 due now' },
+  { id: 'patients', label: 'Patients', icon: 'summary' },
+  { id: 'dictate', label: 'Dictate', icon: 'dictate' },
+  { id: 'handover', label: 'Handover', icon: 'handover' },
+];
+function Demo() {
+  const [cur, setCur] = React.useState('worklist');
+  const [n, setN] = React.useState(0);
+  return h('div', null,
+    h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } }, h(MobileNavBar, { items, current: cur, onSelect: setCur, onScan: () => setN(n + 1), sticky: false })),
+    h('p', { role: 'status', style: { fontSize: 14, color: 'var(--ink-muted)' } }, n ? 'Scan started ' + n + ' time(s)' : 'Tap Scan to start a scan'));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null, label('Worklist current (B1)'), h(Demo),
+    label('Two destinations'), h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } }, h(MobileNavBar, { sticky: false, current: 'w', onScan: () => {}, items: [{ id: 'w', label: 'Worklist', icon: 'tick' }, { id: 'p', label: 'Patients', icon: 'summary' }] })))
+);
+</script>

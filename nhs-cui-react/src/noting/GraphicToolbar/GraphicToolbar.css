@@ -1,0 +1,11 @@
+.cui-graphic-toolbar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-2) var(--space-3); padding: var(--space-2); background: var(--surface-sunken); border: 1px solid var(--border); border-radius: var(--radius-md); font-size: 13px; line-height: 16px; color: var(--ink); }
+.cui-graphic-toolbar__group { display: flex; flex-direction: column; gap: 2px; padding-right: var(--space-3); border-right: 1px solid var(--border); }
+.cui-graphic-toolbar__group:last-child { border-right: 0; padding-right: 0; }
+.cui-graphic-toolbar__group-label { font-size: 11px; line-height: 14px; color: var(--ink-muted); text-transform: none; }
+.cui-graphic-toolbar__buttons { display: flex; flex-wrap: wrap; gap: 2px; }
+.cui-graphic-toolbar__button { display: inline-flex; align-items: center; gap: 4px; min-height: 30px; padding: 3px 8px; font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap; }
+.cui-graphic-toolbar__button:hover:not(:disabled) { background: var(--hover); }
+.cui-graphic-toolbar__button--on { background: var(--accent-surface); border-color: var(--accent); font-weight: 600; }
+.cui-graphic-toolbar__button--danger { color: var(--danger); }
+.cui-graphic-toolbar__button:disabled { color: var(--ink-disabled); cursor: not-allowed; }
+.cui-graphic-toolbar__glyph { flex: none; }

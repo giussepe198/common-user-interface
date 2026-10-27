@@ -1,0 +1,7 @@
+.cui-abbreviation { position: relative; display: inline-flex; align-items: baseline; gap: 2px; white-space: nowrap; }
+.cui-abbreviation__abbr { text-decoration: underline dotted; text-underline-offset: 3px; cursor: help; }
+.cui-abbreviation__button { align-self: center; display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; padding: 0; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--accent); cursor: pointer; }
+.cui-abbreviation__button .cui-icon { width: 14px; height: 14px; }
+.cui-abbreviation__button:hover { background: var(--hover); }
+.cui-abbreviation__panel { position: absolute; z-index: 30; top: calc(100% + 4px); left: 0; width: max-content; max-width: 320px; padding: var(--space-2) var(--space-3); white-space: normal; font-size: 14px; line-height: 20px; font-weight: 400; background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); }
+.cui-abbreviation__link { color: var(--accent); }

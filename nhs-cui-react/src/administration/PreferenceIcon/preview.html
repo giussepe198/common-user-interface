@@ -1,0 +1,20 @@
+<!-- @dsCard group="Decision support" height=200 width=800 subtitle="Preference icon: five levels, tooltip of reasons, clickable variant" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { PreferenceIcon } = window.ClinicalCUI;
+const item = function (level, text) {
+  return h('div', { style: { display: 'flex', alignItems: 'center', gap: 8, padding: 6, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 2 } },
+    h(PreferenceIcon, { level: level, reasons: [text] }), h('span', null, text));
+};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 8, paddingTop: 70 } },
+    h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', gap: 6 } },
+      item(1, 'Lowest'), item(2, 'Low'), item(3, 'Medium'), item(4, 'High'), item(5, 'Highest')),
+    h('div', { style: { display: 'flex', alignItems: 'center', gap: 8 } },
+      h(PreferenceIcon, { level: 2, reasons: ['Potential drug-drug interaction with Furosemide', 'Asthma recorded'], onClick: function () {}, optionLabel: 'Atenolol', expanded: false }),
+      h('span', null, 'Clickable: opens the explanation (tooltip shown on hover or focus, with several reasons as a bulleted list)'))
+  )
+);
+setTimeout(function () { const b = document.querySelector('.cui-ds-pref--button'); if (b) b.focus(); }, 30);
+</script>

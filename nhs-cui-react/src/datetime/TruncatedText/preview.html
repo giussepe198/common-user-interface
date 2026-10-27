@@ -1,0 +1,18 @@
+<!-- @dsCard group="Display standards" height=260 subtitle="Clinical term truncation between whole words, with access to full text" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TruncatedText } = window.ClinicalCUI;
+const term = 'Emergency replacement of aneurysmal segment of aorta by anastomosis of aorta to superficial femoral artery';
+const box = (label, node, w) => h('div', { style: { marginBottom: 12 } },
+  h('div', { className: 'cui-label', style: { marginBottom: 2 } }, label),
+  h('div', { style: { width: w || 320, padding: '4px 8px', border: '1px solid var(--border)', background: 'var(--surface)' } }, node));
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    box('End truncation, inline reveal button', h(TruncatedText, { text: term })),
+    box('Never splits a number from its unit', h(TruncatedText, { text: 'Chest pain with 1-24 hours of onset and radiation to left arm' }), 250),
+    box('Middle truncation (single line), flyout on hover or focus', h(TruncatedText, { text: term, mode: 'middle', reveal: 'flyout' }), 420),
+    box('Wrap (preferred: no truncation)', h(TruncatedText, { text: term, mode: 'wrap' }))
+  )
+);
+</script>

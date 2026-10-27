@@ -1,0 +1,15 @@
+.cui-icon-button { display: inline-flex; align-items: center; gap: var(--space-1); min-height: 28px; padding: 3px var(--space-2); border: 1px solid transparent; border-radius: var(--radius-md); background: transparent; color: var(--ink); font: inherit; font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 400; cursor: pointer; white-space: nowrap; vertical-align: middle; }
+.cui-icon-button--below { flex-direction: column; gap: 2px; padding: var(--space-1) var(--space-2); font-size: 12px; line-height: 16px; }
+.cui-icon-button--icon-only { padding: 3px; }
+button.cui-icon-button:hover { background: var(--hover); border-color: var(--border); }
+button.cui-icon-button:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.cui-icon-button--pressed, button.cui-icon-button--pressed:hover { background: var(--accent-surface); border-color: var(--border-strong); }
+button.cui-icon-button:disabled, button.cui-icon-button[aria-disabled="true"] { color: var(--ink-disabled); cursor: not-allowed; background: transparent; border-color: transparent; }
+span.cui-icon-button { cursor: default; padding-left: 0; padding-right: 0; }
+.cui-icon-button--error .cui-icon { color: var(--danger); }
+.cui-icon-button--caution .cui-icon { color: var(--warning); }
+.cui-icon-button--ok .cui-icon { color: var(--success); }
+.cui-icon-button--advisory .cui-icon { color: var(--info); }
+button.cui-icon-button:disabled .cui-icon, button.cui-icon-button[aria-disabled="true"] .cui-icon { color: var(--ink-disabled); }
+.cui-icon-button--high { border: 2px solid var(--border-strong); padding: var(--space-1) var(--space-3); margin: 0 var(--space-1); }
+.cui-icon-button__label { font-weight: 400; font-style: normal; text-decoration: none; }

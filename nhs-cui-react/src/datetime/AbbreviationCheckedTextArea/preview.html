@@ -1,0 +1,24 @@
+<!-- @dsCard group="Display standards" height=1280 width=900 subtitle="Free text that flags dangerous abbreviations and blocks saving" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AbbreviationCheckedTextArea, Button, ClinicalLocaleProvider, FormField } = window.ClinicalCUI;
+function Demo() {
+  const [text, setText] = React.useState('Warfarin 1.0 mg qd. Known AE at left base. Refer to ENT.');
+  const [valid, setValid] = React.useState(true);
+  return h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16 } },
+    h(AbbreviationCheckedTextArea, { label: 'Clinical note', value: text, onChange: setText, onValidityChange: v => setValid(v), knownAbbreviations: { ENT: ['Ears Nose and Throat'] }, showAlerts: true, rows: 3 }),
+    h('div', { style: { display: 'flex', gap: 8, alignItems: 'center' } },
+      h(Button, { variant: 'primary', disabled: !valid }, 'Save note'),
+      h('span', { className: 'cui-label' }, valid ? 'Ready to save' : 'Saving is blocked until dangerous items are resolved')),
+    h(FormField, { label: 'Summary and plan, in a form field (missed)', id: 'pv-summary', required: true, missed: true, prompt: 'What happened and what happens next' },
+      h(AbbreviationCheckedTextArea, { value: '', rows: 2 })),
+    h(AbbreviationCheckedTextArea, { label: 'Handover note (read only)', defaultValue: 'Pt with PE, on LDH. Review PV results.', readOnly: true, rows: 2 }),
+    h(ClinicalLocaleProvider, { region: 'AU' },
+      h(AbbreviationCheckedTextArea, { label: 'AU: Medication instructions (ACSQHC 2024)', defaultValue: 'Fentanyl 50 mcg Q4H prn, KCl 10 mmol', showAlerts: true, rows: 2 })),
+    h(ClinicalLocaleProvider, { region: 'NZ' },
+      h(AbbreviationCheckedTextArea, { label: 'NZ: Medication instructions (HQSC; q4h, BD, subcut allowed)', defaultValue: 'Morphine 2.5 mg subcut q4h prn; insulin 4 U SC BD', showAlerts: true, rows: 2 }))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

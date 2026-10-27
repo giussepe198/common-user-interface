@@ -1,0 +1,36 @@
+.cui-abbr-text { display: flex; flex-direction: column; gap: var(--space-1); max-width: 640px; width: 100%; min-width: 0; }
+.cui-abbr-text__field { position: relative; display: flex; }
+.cui-abbr-text__label { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); }
+.cui-abbr-text__area { width: 100%; font: inherit; font-family: var(--font-sans); font-size: 14px; line-height: 21px; padding: 6px 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); resize: vertical; }
+.cui-abbr-text__area--invalid { border-color: var(--danger); box-shadow: inset 0 0 0 1px var(--danger); }
+.cui-abbr-text__area[readonly] { background: var(--surface-sunken); }
+.cui-abbr-text__alert { border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); }
+.cui-abbr-text__alert--danger { border-color: var(--danger); }
+.cui-abbr-text__summary { display: flex; gap: var(--space-2); align-items: flex-start; padding: var(--space-2) var(--space-3); font-weight: 600; background: var(--info-surface); color: var(--ink); border-radius: var(--radius-md) var(--radius-md) 0 0; }
+.cui-abbr-text__alert--danger .cui-abbr-text__summary { background: var(--danger-surface); color: var(--danger); }
+.cui-abbr-text__summary .cui-icon { flex: none; margin-top: 2px; }
+.cui-abbr-text__list { list-style: none; margin: 0; padding: 0; }
+.cui-abbr-text__item { padding: var(--space-2) var(--space-3); border-top: 1px solid var(--border); }
+.cui-abbr-text__item-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); font-size: 14px; line-height: 20px; }
+.cui-abbr-text__item--dangerous .cui-abbr-text__item-head > .cui-icon { color: var(--danger); }
+.cui-abbr-text__item--unexpanded .cui-abbr-text__item-head > .cui-icon { color: var(--info); }
+.cui-abbr-text__kind { font-size: 12px; line-height: 16px; font-weight: 600; text-transform: none; color: var(--ink-muted); }
+.cui-abbr-text__item--dangerous .cui-abbr-text__kind { color: var(--danger); }
+.cui-abbr-text__term { font: inherit; font-family: var(--font-sans); font-weight: 600; padding: 0 6px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--surface-muted); color: var(--ink); cursor: pointer; }
+.cui-abbr-text__term:hover { background: var(--hover); }
+.cui-abbr-text__reason { color: var(--ink-muted); flex: 1 1 220px; }
+.cui-abbr-text__options { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); margin-top: var(--space-1); padding-left: 24px; }
+.cui-abbr-text__options-label { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-abbr-text__footer { padding: var(--space-1) var(--space-2); border-top: 1px solid var(--border); }
+.cui-abbr-text__reader-warning { display: flex; gap: var(--space-2); align-items: flex-start; padding: var(--space-2) var(--space-3); background: var(--warning-surface); color: var(--warning); border: 1px solid var(--border-strong); border-radius: var(--radius-md); font-size: 14px; line-height: 20px; }
+.cui-abbr-text__reader-warning .cui-icon { flex: none; margin-top: 2px; }
+
+/* Required and missed (CNA-1080, CNA-1160..1180), as FormField. */
+.cui-abbr-text__required { color: var(--danger); font-weight: 600; margin-left: 2px; }
+.cui-abbr-text--missed .cui-abbr-text__area { background: var(--warning-surface); border-color: var(--warning); padding-right: 32px; }
+.cui-abbr-text__missed-icon { position: absolute; right: 8px; top: 8px; display: inline-flex; color: var(--warning); pointer-events: none; }
+.cui-abbr-text__area::placeholder { color: var(--ink-subtle); font-style: italic; opacity: 1; }
+
+/* Inside FormField (noting): take the full width of the field and keep FormField's missed icon at the top. */
+.cui-form-field__control:has(> .cui-abbr-text) { display: flex; width: 100%; max-width: 680px; align-items: flex-start; }
+.cui-form-field__control:has(> .cui-abbr-text) > .cui-form-field__missed-icon { margin-top: 8px; }

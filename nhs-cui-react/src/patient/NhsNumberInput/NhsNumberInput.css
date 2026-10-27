@@ -1,0 +1,13 @@
+.cui-nhs-input { display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); }
+.cui-nhs-input__label { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); }
+.cui-nhs-input__required { font-size: 12px; font-weight: 400; color: var(--ink-muted); }
+.cui-nhs-input__hint { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+/* Box no bigger and no smaller than the full number (NUM-0012), one line high (NUM-0013). */
+.cui-nhs-input__box { box-sizing: content-box; width: 12.5ch; font: inherit; font-size: 14px; line-height: 20px; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; padding: 5px 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-nhs-input__box::placeholder { color: var(--ink-subtle); font-style: italic; opacity: 1; }
+.cui-nhs-input__box:disabled { color: var(--ink-disabled); background: var(--surface-muted); border-color: var(--border); }
+.cui-nhs-input--error .cui-nhs-input__box { border-color: var(--danger); box-shadow: inset 0 0 0 1px var(--danger); }
+.cui-nhs-input__note:empty { display: none; }
+.cui-nhs-input__note { font-size: 12px; line-height: 16px; color: var(--ink-muted); max-width: 36ch; }
+.cui-nhs-input__error { display: flex; align-items: flex-start; gap: var(--space-1); font-size: 12px; line-height: 16px; font-weight: 600; color: var(--danger); max-width: 36ch; }
+.cui-nhs-input__error .cui-icon { flex: none; margin-top: 0; }

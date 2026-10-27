@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TemplatePrescriptionList · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Medications</p>
+<h1 style="margin:0 0 4px;font-size:20px">TemplatePrescriptionList</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Template prescriptions: DOSE first, no headings, other... last · Guidelines: <code>src/medications/TemplatePrescriptionList/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TemplatePrescriptionList, ClinicalLocaleProvider } = window.ClinicalCUI;
+const clari = [
+  { id: 't1', dose: { value: 250, unit: 'mg' }, attributes: ['twice a day', 'for 7 days'] },
+  { id: 't2', dose: { value: 500, unit: 'mg' }, attributes: ['twice a day', 'for 14 days'], supplementary: 'for community-acquired pneumonia' },
+  { id: 't3', dose: { value: 0.5, unit: 'g' }, attributes: ['twice a day', 'ongoing'], supplementary: 'for prophylaxis' }
+];
+const dilz = [
+  { id: 'd1', brandName: 'Dilzem SR', dose: { value: 60, unit: 'mg' }, attributes: ['three times a day'] },
+  { id: 'd2', brandName: 'Dilzem SR', dose: { value: 90, unit: 'mg' }, attributes: ['twice a day'], supplementary: '12-hourly preparation' }
+];
+const salb = [{ id: 's1', dose: { value: 2, unit: 'puffs' }, attributes: ['100 micrograms per puff', 'four times a day', 'as required'], supplementary: 'for breathlessness' }];
+const block = (title, el) => h('div', { style: { marginBottom: 20 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' } },
+    h('div', null,
+      block('GB list layout, second template selected', h(TemplatePrescriptionList, { templates: clari, value: 't2', onSelect: () => {}, onSkipToForm: () => {} })),
+      block('GB with brand (MSP-1200) and strength in the attributes', h(TemplatePrescriptionList, { templates: dilz.concat(salb), onSelect: () => {}, onSkipToForm: () => {} }))),
+    h('div', null,
+      block('AU: whole numbers ("0.5 g" given), Title Case italic brand, medication line layout', h(ClinicalLocaleProvider, { region: 'AU' }, h('div', { style: { display: 'flex', flexDirection: 'column', gap: 12 } },
+        h(TemplatePrescriptionList, { templates: clari, onSelect: () => {}, onSkipToForm: () => {} }),
+        h(TemplatePrescriptionList, { templates: dilz, layout: 'medicationLine', onSelect: () => {}, onSkipToForm: () => {} })))),
+      block('NZ: microgram in full', h(ClinicalLocaleProvider, { region: 'NZ' }, h(TemplatePrescriptionList, { templates: [{ id: 'n1', dose: { value: 0.0625, unit: 'mg' }, attributes: ['daily'] }], onSelect: () => {}, onSkipToForm: () => {} }))))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

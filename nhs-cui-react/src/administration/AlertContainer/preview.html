@@ -1,0 +1,22 @@
+<!-- @dsCard group="Decision support" height=560 width=900 subtitle="Alert container: High Priority group first, newest first, resizable" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AlertContainer } = window.ClinicalCUI;
+const at = function (hh, mm) { return new Date(2026, 4, 27, hh, mm); };
+const link = function (t) { return h('a', { href: '#', onClick: function (e) { e.preventDefault(); } }, t); };
+const alerts = [
+  { id: 'p1', status: 'Priority', occurredAt: at(8, 5), summary: 'Weight has not been recorded this admission.', source: 'Dose Calculations' },
+  { id: 'h1', status: 'High Priority', occurredAt: at(10, 47), source: 'Results Monitoring', summary: h('span', null, 'The ', link('potassium level'), ' is 7.7 mmol/L.'),
+    details: { rationale: 'Severe hyperkalaemia can cause cardiac arrhythmias.' },
+    actions: [{ id: 'x1', label: 'Repeat potassium urgently', preference: 5, reasons: ['Result much higher than previous'] }, { id: 'x2', label: 'Record an ECG', preference: 4 }] },
+  { id: 'p2', status: 'Priority', occurredAt: at(9, 15), summary: 'Creatinine has risen since the last result.', source: 'Results Monitoring' },
+  { id: 'h2', status: 'High Priority', occurredAt: at(9, 2), source: 'Drug Interaction Checking', summary: 'Possible interaction between Clarithromycin and Simvastatin.' },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 24, alignItems: 'flex-start' } },
+    h(AlertContainer, { alerts: alerts, height: 520, onRecordResponse: function () {}, onDismiss: function () {} }),
+    h(AlertContainer, { alerts: [], height: 200, heading: 'Alerts (empty)', resizable: false })
+  )
+);
+</script>

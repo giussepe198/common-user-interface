@@ -1,0 +1,4 @@
+.cui-time-display { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cui-time-display--null { color: var(--ink-muted); }
+.cui-time-display__clock { margin-left: var(--space-2); font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-zone-label abbr { text-decoration: none; font-size: 12px; line-height: 16px; font-weight: 600; color: var(--ink-muted); letter-spacing: 0.02em; cursor: help; }

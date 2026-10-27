@@ -1,0 +1,18 @@
+<!-- @dsCard group="Lists and filtering" height=180 subtitle="Filter, Sort and Group by commands" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DataToolbar } = window.ClinicalCUI;
+const opts = [{ id: 'ward', label: 'Ward' }, { id: 'consultant', label: 'Consultant' }, { id: 'news', label: 'NEWS2 score' }];
+function Demo() {
+  const [g, setG] = React.useState('consultant');
+  const [msg, setMsg] = React.useState('Press Alt+Shift+F, S or G');
+  const box = c => h('div', { style: { padding: 8, background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 4 } }, c);
+  return h('div', { style: { display: 'grid', gap: 12 } },
+    box(h(DataToolbar, { label: 'Patient list tools', onFilter: () => setMsg('Filter dialog opened'), onSort: () => setMsg('Sort dialog opened'), groupOptions: opts, groupBy: g, onGroupByChange: setG, filterActive: true, onRemoveAllFilters: () => setMsg('Filters removed') })),
+    box(h(DataToolbar, { label: 'Results tools', onFilter: () => {}, onSort: () => {}, groupOptions: opts, defaultGroupBy: null, keyboardShortcuts: false })),
+    h('div', { className: 'cui-prompt', role: 'status' }, msg)
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

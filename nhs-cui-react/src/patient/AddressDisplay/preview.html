@@ -1,0 +1,35 @@
+<!-- @dsCard group="Patient identification" height=560 subtitle="Address display, vertical, horizontal and truncated" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ClinicalLocaleProvider } = window.ClinicalCUI;
+const regionCaption = (t) => h('div', { style: { font: '600 12px/16px var(--font-sans)', color: 'var(--ink-muted)', margin: '12px 0 4px' } }, t);
+const inRegion = (region, child, extra) => h(ClinicalLocaleProvider, Object.assign({ region }, extra || {}), child);
+const { AddressDisplay } = window.ClinicalCUI;
+const addr = { lines: ['18 Orchard Cottage', '', "King's Road"], town: 'Ipswich', county: 'Northshire', postcode: 'ns338kr' };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    regionCaption('GB (NHS CUI)'),
+  h('div', { style: { display: 'flex', gap: 40, flexWrap: 'wrap', alignItems: 'flex-start', padding: 12, background: 'var(--surface)' } },
+    h(AddressDisplay, { address: addr, typeLabel: 'Usual address', onViewAll: () => {} }),
+    h('div', { style: { display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 360 } },
+      h(AddressDisplay, { address: addr, orientation: 'horizontal' }),
+      h(AddressDisplay, { address: addr, orientation: 'horizontal', maxLength: 30 }),
+      h(AddressDisplay, { address: null }))
+  ),
+    regionCaption('AU: Australia Post format, last line upper case'),
+    inRegion('AU', h('div', { style: { display: 'flex', gap: 40, flexWrap: 'wrap', alignItems: 'flex-start', padding: 12, background: 'var(--surface)' } },
+      h(AddressDisplay, { typeLabel: 'Usual address', address: { unit: 'Unit 2', lines: ['54 Stockton Rd'], town: 'Bunbury', state: 'WA', postcode: '6230' } }),
+      h(AddressDisplay, { orientation: 'horizontal', address: { lines: ['PO Box 37'], town: 'Alice Springs', state: 'NT', postcode: '0871' } }),
+      h(AddressDisplay, { address: null, noFixedAddress: true }))),
+    regionCaption('NZ: NZ Post format with RD and town with postcode'),
+    inRegion('NZ', h('div', { style: { display: 'flex', gap: 40, flexWrap: 'wrap', alignItems: 'flex-start', padding: 12, background: 'var(--surface)' } },
+      h(AddressDisplay, { typeLabel: 'Usual address', address: { lines: ['123 Rural Road'], suburb: 'RD 2', town: 'Rangiora', postcode: '7472' } }),
+      h(AddressDisplay, { address: { buildingName: 'Te Puna Building', lines: ['1/23 Main Street'], suburb: 'Riccarton', town: 'Ōtautahi Christchurch', postcode: '8041' } }))),
+    regionCaption('NZ: address protected flag (HISO 10046): masked with reveal, and indicator mode'),
+    inRegion('NZ', h('div', { style: { display: 'flex', gap: 40, flexWrap: 'wrap', alignItems: 'flex-start', padding: 12, background: 'var(--surface)' } },
+      h(AddressDisplay, { typeLabel: 'Usual address', addressProtected: true, onRevealProtected: () => {}, address: { lines: ['12 Kōwhai Street'], suburb: 'Riccarton', town: 'Christchurch', postcode: '8011' } }),
+      h(AddressDisplay, { typeLabel: 'Usual address', addressProtected: true, protectedDisplay: 'indicator', address: { lines: ['12 Kōwhai Street'], suburb: 'Riccarton', town: 'Christchurch', postcode: '8011' } })))
+  )
+);
+</script>

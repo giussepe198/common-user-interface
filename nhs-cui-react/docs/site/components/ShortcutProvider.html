@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShortcutProvider · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Display standards</p>
+<h1 style="margin:0 0 4px;font-size:20px">ShortcutProvider</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Shortcut registry with conflict checks and feedback · Guidelines: <code>src/datetime/ShortcutProvider/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ShortcutProvider, useShortcut, KeyboardShortcutList, Button } = window.ClinicalCUI;
+function Actions({ log }) {
+  useShortcut({ keys: 'Ctrl+S', action: 'Save', handler: () => log('Saved (Ctrl+S)') });
+  useShortcut({ keys: 'Alt+F7', action: 'Prescribe controlled drug', clinicallySignificant: true, handler: () => log('Prescribe dialog opened (Alt+F7)') });
+  useShortcut({ keys: 'Ctrl+D', action: 'Discharge', deprecated: true, replacement: 'Alt+F9' });
+  useShortcut({ keys: 'Alt+F9', action: 'Discharge', handler: () => log('Discharge (Alt+F9)') });
+  useShortcut({ keys: 'Ctrl+P', action: 'Prescribe', handler: () => log('Prescribe') });
+  return null;
+}
+function Demo() {
+  const [last, setLast] = React.useState('Press Ctrl+S, Alt+F7, Alt+F9 or Ctrl+D');
+  return h(ShortcutProvider, { onConflict: () => {} },
+    h(Actions, { log: setLast }),
+    h('p', { className: 'cui-label', role: 'status', style: { margin: '0 0 8px' } }, last),
+    h(KeyboardShortcutList, { caption: 'Shortcuts in this view' })
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InfusionDetailView · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1148px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Drug administration</p>
+<h1 style="margin:0 0 4px;font-size:20px">InfusionDetailView</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Infusion detail view: estimated stop, markers for checks, notes and issues, outstanding issue actions, record and recording form · Guidelines: <code>src/administration/InfusionDetailView/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { InfusionDetailView } = window.ClinicalCUI;
+const at = function (hh, mm) { return new Date(2026, 4, 27, hh, mm || 0); };
+const NOW = at(10, 20);
+const med = {
+  id: 'sod', name: 'Sodium chloride 0.9%', details: '1000 mL, intravenous infusion over 8 hours', kind: 'significantDuration', startDate: at(6), startIsActual: true, events: [],
+  infusion: {
+    scheduledStart: at(6), expectedDurationMinutes: 480, actualStart: at(6, 10),
+    interruptions: [{ start: at(8, 10), end: at(8, 40), reason: 'cannula resited' }],
+    log: [
+      { id: 'l1', kind: 'start', at: at(6, 10), rate: '125 mL/hour', by: 'Staff Nurse A Example' },
+      { id: 'l2', kind: 'pumpSetting', at: at(6, 12), pumpSetting: 'Volume to be infused 1000 mL', by: 'Staff Nurse A Example' },
+      { id: 'l3', kind: 'check', at: at(7, 10), volume: '120 mL', volumeApprox: true, by: 'Staff Nurse A Example' },
+      { id: 'l4', kind: 'interruption', at: at(8, 10), text: 'Cannula tissued, infusion stopped', by: 'Staff Nurse A Example' },
+      { id: 'l5', kind: 'issue', at: at(8, 12), category: 'Cannula or line problem', text: 'Cannula tissued in left forearm', instruction: 'Resite the cannula. Inform the prescriber if more than 1 hour of infusion is lost.', actions: [{ id: 'contact', label: 'Contact prescriber' }, { id: 'plan', label: 'Open care plan' }], by: 'Staff Nurse A Example' },
+      { id: 'l6', kind: 'resume', at: at(8, 40), rate: '125 mL/hour', by: 'Staff Nurse B Sample' },
+      { id: 'l7', kind: 'note', at: at(9, 0), category: 'Observation', text: 'Patient comfortable, site clean', by: 'Staff Nurse B Sample' },
+      { id: 'l8', kind: 'check', at: at(10, 0), volume: '400 mL', by: 'Staff Nurse B Sample' },
+    ],
+  },
+};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(InfusionDetailView, { medication: med, now: NOW, currentUser: 'Staff Nurse B Sample', onRecord: function () {}, onIssueAction: function () {}, onResolveIssue: function () {}, onClose: function () {} })
+);
+</script>
+
+</div>
+</body>
+</html>

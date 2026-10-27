@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HandoverTaskList · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Handover</p>
+<h1 style="margin:0 0 4px;font-size:20px">HandoverTaskList</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Shift handover list with task states, responsibility, read-back and provenance; AU and NZ identifiers · Guidelines: <code>src/lists/HandoverTaskList/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { HandoverTaskList, ClinicalLocaleProvider } = window.ClinicalCUI;
+const patients = [
+  { id: 'p1', familyName: 'Smith', givenName: 'John', title: 'Mr', dateOfBirth: '1948-03-12', nhsNumber: '9990000018', location: 'Elkington Ward, bed 1', responsible: { name: 'Dr A Mensah', role: 'FY1' }, consultant: 'Dr Okafor', handoverState: 'toHandOver', readBackReasons: ['Resuscitation status: DNACPR'], updatedAt: '2026-10-27T19:40', updatedBy: 'Dr A Mensah' },
+  { id: 'p2', familyName: 'Smith', givenName: 'John', title: 'Mr', dateOfBirth: '1971-07-30', nhsNumber: '9990000034', location: 'Elkington Ward, bed 4', responsible: { name: 'Dr A Mensah', role: 'FY1' }, consultant: 'Dr Okafor', handoverState: 'toHandOver', readBackConfirmed: true },
+  { id: 'p3', familyName: 'Patel', givenName: 'Asha', title: 'Mrs', dateOfBirth: '1962-11-02', nhsNumber: '9990000026', location: 'En route from A&E', consultant: 'Dr Lindqvist', handoverState: 'handedOver' },
+];
+function Demo() {
+  const [tasks, setTasks] = React.useState([
+    { id: 't1', patientId: 'p1', description: 'Repeat U&E and review potassium', status: 'incomplete', due: '2026-10-27T18:00', allocatedTo: 'Night FY1', forHandover: true },
+    { id: 't2', patientId: 'p1', description: 'Chase chest X-ray report', status: 'partial', dueText: 'Before morning ward round', updatedAt: '2026-10-27T17:15', updatedBy: 'Nurse R Kelly' },
+    { id: 't3', patientId: 'p2', description: 'Start oral antibiotics', status: 'complete', completedBy: 'Dr A Mensah', vouchedBy: 'Nurse R Kelly' },
+    { id: 't4', patientId: 'p2', description: 'Sputum culture result', status: 'incomplete', due: '2026-10-28T09:00', addedAfterHandover: true },
+    { id: 't5', description: 'Check the resuscitation trolley', status: 'incomplete', allocatedTo: 'Nurse in charge', due: '2026-10-27T22:00' },
+  ]);
+  const [pts, setPts] = React.useState(patients);
+  return h(HandoverTaskList, {
+    patients: pts, tasks, now: '2026-10-27T20:00',
+    onStatusChange: (id, s) => setTasks(ts => ts.map(t => t.id === id ? Object.assign({}, t, { status: s }) : t)),
+    onRemoveTask: id => setTasks(ts => ts.filter(t => t.id !== id)),
+    onReadBackConfirm: id => setPts(ps => ps.map(p => p.id === id ? Object.assign({}, p, { readBackConfirmed: true }) : p)),
+    onRecordHandover: () => {}, onOpenPatient: () => {},
+  });
+}
+// Consumer-supplied similar-name test (PAL-0560); here a crude "John"/"Jon" match for the demo.
+const similarNames = (a, b) => (a.familyName || '').toLowerCase() === (b.familyName || '').toLowerCase() &&
+  (a.givenName || '').toLowerCase().replace(/h/g, '') === (b.givenName || '').toLowerCase().replace(/h/g, '');
+const regional = (region, title, patients, extra) => h('div', { style: { marginTop: 24 } },
+  h('h3', { style: { margin: '0 0 8px', fontSize: 15 } }, title),
+  h(ClinicalLocaleProvider, { region }, h(HandoverTaskList, { title: 'Handover tasks', now: '2026-10-27T20:00', patients, similarNames: extra && extra.similarNames, tasks: [{ id: 'x1', patientId: patients[0].id, description: 'Repeat lactate at 22:00', status: 'incomplete', due: '2026-10-27T22:00' }] })));
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null, h(Demo),
+  regional('AU', 'AU: IHI and URN; SMITH John and SMITH Jon flagged by the similarNames test', [
+    { id: 'a1', familyName: 'Smith', givenName: 'John', dateOfBirth: '1951-06-07', ihi: '8003601234567894', mrn: '00412377', location: 'Ward 7B, bed 4', responsible: { name: 'Dr L Chen', role: 'Registrar' }, handoverState: 'toHandOver' },
+    { id: 'a2', familyName: 'Smith', givenName: 'Jon', dateOfBirth: '1979-02-21', ihi: '8003608833357361', mrn: '00412391', location: 'Ward 7B, bed 6', responsible: { name: 'Dr L Chen', role: 'Registrar' }, handoverState: 'toHandOver' }], { similarNames }),
+  regional('NZ', 'NZ: NHI, names as recorded, similar names flagged', [
+    { id: 'n1', familyName: 'Te Huia', givenName: 'Kāhu', dateOfBirth: '1958-04-19', nhi: 'ZAC5361', location: 'Ward 22, bed 1', responsible: { name: 'Dr M Tane', role: 'House officer' }, handoverState: 'toHandOver' },
+    { id: 'n2', familyName: 'Te Huia', givenName: 'Kahu', dateOfBirth: '1990-12-02', nhi: 'ZBN77VL', location: 'Ward 22, bed 2', responsible: { name: 'Dr M Tane', role: 'House officer' }, handoverState: 'handedOver' },
+  ])));
+</script>
+
+</div>
+</body>
+</html>

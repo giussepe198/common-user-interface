@@ -1,0 +1,19 @@
+<!-- @dsCard group="Dates and times" height=210 width=900 subtitle="Time range with contextual labels, elapsed time and zones" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TimeRangeDisplay, ClinicalLocaleProvider } = window.ClinicalCUI;
+const row = (label, node) => h('div', { style: { display: 'flex', gap: 16, alignItems: 'baseline', padding: '4px 0' } }, h('span', { className: 'cui-label', style: { width: 230, flex: 'none' } }, label), node);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { background: 'var(--surface)', padding: 12, borderRadius: 4 } },
+    row('Times of day', h(TimeRangeDisplay, { from: '06:23', to: '08:23' })),
+    row('With elapsed time', h(TimeRangeDisplay, { from: '22:00', to: '01:30', showDuration: true, fromLabel: 'Start', toLabel: 'end' })),
+    row('Across two days', h(TimeRangeDisplay, { from: '2026-01-01T22:00:00', to: '2026-01-02T06:15:00', showDuration: true })),
+    row('End not recorded', h(TimeRangeDisplay, { from: '06:23', to: null, nullText: 'Not recorded' })),
+    h(ClinicalLocaleProvider, { region: 'AU', timeZone: 'Australia/Sydney' },
+      row('AU: across AEST to AEDT', h(TimeRangeDisplay, { from: new Date('2026-10-03T14:00:00Z'), to: new Date('2026-10-03T18:00:00Z'), showZone: true, showDuration: true }))),
+    h(ClinicalLocaleProvider, { region: 'NZ' },
+      row('NZ: across NZDT to NZST', h(TimeRangeDisplay, { from: new Date('2026-04-04T12:00:00Z'), to: new Date('2026-04-04T15:00:00Z'), showZone: true, showDuration: true })))
+  )
+);
+</script>

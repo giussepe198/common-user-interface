@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Dictate observations</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/clinicalcui/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+.scr *{box-sizing:border-box}
+.btn{min-height:52px;padding:0 16px;border-radius:4px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.heard{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;align-items:baseline;padding:9px 14px;border-top:1px solid var(--border)}
+.heard dt{font-size:15px;color:var(--ink-muted)}
+.heard dd{margin:0;font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+.hl{background:var(--encodable);border-radius:2px;padding:0 2px}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div class="scr" data-theme="{{theme}}" style="width: 390px; height: 844px; display: flex; flex-direction: column; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; overflow: hidden">
+
+  <header aria-label="Patient" style="background: var(--banner); color: var(--on-banner); padding: 10px 16px; display: flex; flex-direction: column; gap: 2px">
+    <div style="font-size: 17px; line-height: 22px; font-weight: 600">Ngata, Mereana (Ms)</div>
+    <div style="display: flex; flex-wrap: wrap; column-gap: 10px; font-size: 13px; line-height: 18px">
+      <span><span style="color: var(--on-banner-muted)">Born </span>14-Mar-1958 (68y)</span>
+      <span><span style="color: var(--on-banner-muted)">NHI </span>ZZZ0016</span>
+      <span style="background: var(--banner-alert); color: var(--banner); border-radius: 3px; padding: 0 6px; font-weight: 600">Allergies 2</span>
+    </div>
+  </header>
+
+  <main style="flex: 1; overflow: hidden; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <h1 style="margin: 0; font-size: 18px; line-height: 24px; font-weight: 600">Observations by voice</h1>
+      <span style="font-size: 14px; line-height: 20px; color: var(--ink-muted)">Nothing is saved until you review and confirm.</span>
+    </div>
+
+    <section aria-labelledby="tx-h" style="background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px">
+      <h2 id="tx-h" style="margin: 0; font-size: 13px; font-weight: 600; color: var(--ink-muted); letter-spacing: 0.02em">WHAT I HEARD</h2>
+      <p aria-live="polite" style="margin: 0; font-size: 17px; line-height: 26px">Resp rate <span class="hl">twenty two</span>, sats <span class="hl">ninety three</span>, BP <span class="hl">one ten on seventy</span>, heart rate <span class="hl">one hundred and twelve</span>, temp <span class="hl">thirty eight point four</span>, she's <span class="hl">alert</span><span style="color: var(--ink-muted)">…</span></p>
+    </section>
+
+    <section aria-labelledby="pv-h" style="background: var(--surface); border: 1px solid var(--border); border-radius: 4px; display: flex; flex-direction: column">
+      <h2 id="pv-h" style="margin: 0; padding: 10px 14px 6px; font-size: 13px; font-weight: 600; color: var(--ink-muted); letter-spacing: 0.02em">READ BACK</h2>
+      <dl style="margin: 0">
+        <div class="heard"><dt>Respiratory rate</dt><dd>22 /min</dd></div>
+        <div class="heard"><dt>Oxygen saturation</dt><dd>93 %</dd></div>
+        <div class="heard"><dt>Oxygen</dt><dd style="font-size: 15px; font-weight: 600; color: var(--warning)">Not heard yet</dd></div>
+        <div class="heard"><dt>Blood pressure</dt><dd>110/70 mmHg</dd></div>
+        <div class="heard"><dt>Heart rate</dt><dd>112 /min</dd></div>
+        <div class="heard"><dt>Temperature</dt><dd>38.4 °C</dd></div>
+        <div class="heard"><dt>Consciousness</dt><dd>Alert</dd></div>
+      </dl>
+    </section>
+    <span style="font-size: 14px; line-height: 20px; color: var(--ink-muted)">Say the name, then the value. For oxygen, say "on air" or the flow, for example "two litres".</span>
+  </main>
+
+  <div style="padding: 12px 16px 16px; background: var(--surface); border-top: 1px solid var(--border); display: flex; align-items: center; gap: 12px">
+    <a class="btn" href="P2-ObsEntry.dc.html" style="flex: 1">Type instead</a>
+    <button type="button" aria-label="Stop listening" aria-pressed="true" style="width: 76px; height: 76px; border-radius: 38px; border: 4px solid var(--accent-surface); background: var(--accent); color: var(--on-accent); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-family: inherit; font-size: 11px; font-weight: 700; flex: none; box-shadow: 0 0 0 4px var(--accent)">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 26px; height: 26px"><path d="M7 7h10v10H7z"/></svg>STOP</button>
+    <a class="btn" href="C2-Confirm.dc.html" style="flex: 1">Review</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"dark"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'dark' };
+  }
+}
+</script>
+</body>
+</html>

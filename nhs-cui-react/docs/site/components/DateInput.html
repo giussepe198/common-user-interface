@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DateInput · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Dates and times</p>
+<h1 style="margin:0 0 4px;font-size:20px">DateInput</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Free text date entry with calendar, shortcuts, partial dates and Unknown · Guidelines: <code>src/datetime/DateInput/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DateInput, ClinicalLocaleProvider } = window.ClinicalCUI;
+const today = new Date(2026, 9, 27);
+function Demo() {
+  const [dob, setDob] = React.useState({ kind: 'full', year: 1980, month: 8, day: 14 });
+  return h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 24, alignItems: 'start' } },
+    h(DateInput, { label: 'Start date', today, defaultDisplay: 'today' }),
+    h(DateInput, { label: 'Date of birth', value: dob, onChange: setDob, today, max: today, required: true }),
+    h(DateInput, { label: 'Date of onset', today, allowMonthYear: true, allowYear: true, defaultValue: { kind: 'monthYear', year: 2005, month: 8 } }),
+    h(DateInput, { label: 'Date of last smear', today, defaultValue: { kind: 'unknown' } }),
+    h(DateInput, { label: 'Finish date', today, defaultValue: { kind: 'full', year: 2026, month: 9, day: 1 }, error: 'The Finish date is before the Start date. Please enter a date after the Start date.' }),
+    h(DateInput, { label: 'Date recorded', today, defaultValue: { kind: 'full', year: 2026, month: 10, day: 20 }, disabled: true }),
+    h(ClinicalLocaleProvider, { region: 'AU' }, h(DateInput, { label: 'AU: Date of birth (05/04/2009 is 05-Apr-2009)', today, defaultValue: { kind: 'full', year: 2009, month: 4, day: 5 } })),
+    h(ClinicalLocaleProvider, { region: 'NZ' }, h(DateInput, { label: 'NZ: Date prescribed', today, defaultValue: { kind: 'full', year: 2026, month: 5, day: 1 }, error: '"05/13/2026" is not a real date. Dates are entered day first (DD/MM/YYYY), so 13 would be the month. Enter the date with the month as a word, e.g. 05-Apr-2009.' }))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

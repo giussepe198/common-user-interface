@@ -1,0 +1,50 @@
+.cui-touch-dtp { display: flex; flex-direction: column; min-width: 0; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; }
+.cui-touch-dtp__main { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-4); min-width: 0; }
+.cui-touch-dtp__card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 14px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.cui-touch-dtp__heading { margin: 0; font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: 0.02em; color: var(--ink-muted); }
+.cui-touch-dtp__date { font-size: 24px; line-height: 30px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.cui-touch-dtp__date--empty { font-size: 18px; font-weight: 600; color: var(--ink-muted); }
+.cui-touch-dtp__quick { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: flex-start; }
+.cui-touch-dtp__quick > .cui-chip-group { flex: 0 1 auto; }
+.cui-touch-dtp__text { display: flex; flex-direction: column; gap: 6px; }
+.cui-touch-dtp__text-label { font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+.cui-touch-dtp__input { min-height: 52px; font-family: inherit; font-size: 18px; line-height: 24px; padding: 0 12px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); width: 100%; }
+.cui-touch-dtp__input:focus { border: 2px solid var(--accent); padding: 0 11px; }
+.cui-touch-dtp__input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-touch-dtp__readback { display: flex; gap: var(--space-2); align-items: flex-start; font-size: 15px; line-height: 21px; background: var(--info-surface); color: var(--ink); padding: 8px 10px; border-radius: var(--radius-md); }
+.cui-touch-dtp__readback > .cui-icon { flex: none; color: var(--info); margin-top: 1px; }
+.cui-touch-dtp__readback--problem { background: var(--warning-surface); }
+.cui-touch-dtp__readback--problem > .cui-icon { color: var(--warning); }
+.cui-touch-dtp__link { border: 0; background: none; color: var(--accent); font: inherit; font-weight: 600; padding: 0; text-decoration: underline; cursor: pointer; min-height: 0; display: inline; }
+.cui-touch-dtp__readback .cui-touch-dtp__link { padding: 12px 0; margin: -12px 0; }
+.cui-touch-dtp__ambiguous { display: flex; flex-direction: column; gap: var(--space-2); }
+.cui-touch-dtp__choices { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.cui-touch-dtp__checks { display: flex; flex-wrap: wrap; gap: 0 var(--space-4); }
+.cui-touch-dtp__check { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; font-size: 15px; cursor: pointer; }
+.cui-touch-dtp__check input { width: 22px; height: 22px; margin: 0; accent-color: var(--accent); }
+.cui-touch-dtp__clock { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.cui-touch-dtp__clock--off { opacity: 0.5; }
+.cui-touch-dtp__seg { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.cui-touch-dtp__step { width: 64px; height: 48px; border-radius: var(--radius-md); border: 1px solid var(--border-strong); background: var(--surface); color: var(--ink); display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; touch-action: manipulation; }
+.cui-touch-dtp__step:active { background: var(--surface-muted); }
+.cui-touch-dtp__step:disabled { color: var(--ink-disabled); background: var(--surface-muted); border-color: var(--border); cursor: not-allowed; }
+.cui-touch-dtp__big { width: 72px; height: 52px; padding: 0; border: 1px solid transparent; border-radius: var(--radius-md); background: transparent; color: var(--ink); font-family: inherit; font-size: 36px; line-height: 44px; font-weight: 700; font-variant-numeric: tabular-nums; text-align: center; }
+.cui-touch-dtp__big:focus { border-color: var(--accent); background: var(--surface); }
+.cui-touch-dtp__big::placeholder { color: var(--ink-muted); }
+.cui-touch-dtp__colon { font-size: 36px; line-height: 44px; font-weight: 700; }
+.cui-touch-dtp__repeat { display: flex; flex-direction: column; gap: var(--space-2); }
+.cui-touch-dtp__note { margin: 0; display: flex; gap: var(--space-2); align-items: flex-start; font-size: 14px; line-height: 20px; padding: 8px 10px; border-radius: var(--radius-md); background: var(--info-surface); color: var(--ink); }
+.cui-touch-dtp__note > .cui-icon { flex: none; color: var(--info); }
+.cui-touch-dtp__problems { display: flex; flex-direction: column; gap: var(--space-2); outline: none; }
+.cui-touch-dtp__problems:empty { display: none; }
+.cui-touch-dtp__problems:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-touch-dtp__problem { margin: 0; display: flex; gap: var(--space-2); align-items: flex-start; padding: 8px 10px; border-radius: var(--radius-md); background: var(--danger-surface); color: var(--danger); font-size: 15px; line-height: 21px; font-weight: 600; }
+.cui-touch-dtp__problem > .cui-icon { flex: none; }
+.cui-touch-dtp__summary { font-weight: 600; }
+.cui-touch-dtp__summary--empty { color: var(--ink-muted); }
+.cui-touch-dtp__calendar { padding: 0 var(--space-4) var(--space-4); }
+.cui-touch-dtp__calendar .cui-calendar { width: 100%; border: 0; box-shadow: none; padding: 0; }
+.cui-touch-dtp__calendar .cui-calendar__nav { width: 44px; height: 44px; }
+.cui-touch-dtp__calendar .cui-calendar__title { font-size: 16px; padding: 10px 8px; }
+.cui-touch-dtp__calendar .cui-calendar__day { height: 44px; font-size: 16px; }
+.cui-touch-dtp__calendar .cui-calendar__footer .cui-button { min-height: 44px; padding: 0 16px; font-size: 16px; }

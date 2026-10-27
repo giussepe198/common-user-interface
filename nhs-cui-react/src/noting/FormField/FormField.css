@@ -1,0 +1,27 @@
+.cui-form-field { display: flex; flex-direction: column; gap: var(--space-1); margin-bottom: var(--space-3); }
+.cui-form-field--label-left { display: grid; grid-template-columns: var(--cui-form-field-label-width, 12em) minmax(0, 1fr); column-gap: var(--space-3); align-items: start; }
+.cui-form-field__label { font-size: 14px; line-height: 20px; color: var(--ink); font-weight: 600; }
+.cui-form-field--label-left .cui-form-field__label { text-align: right; padding-top: 6px; font-weight: 400; color: var(--ink-muted); }
+.cui-form-field__body { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
+.cui-form-field__row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.cui-form-field__control { position: relative; display: inline-flex; align-items: center; gap: var(--space-2); max-width: 100%; border-radius: var(--radius-md); }
+.cui-form-field__prompt { display: block; }
+.cui-form-field__error { display: inline-flex; align-items: flex-start; gap: var(--space-1); color: var(--danger); font-size: 12px; line-height: 16px; }
+
+/* Text-like controls inside a field (consumers may use their own). */
+.cui-form-field__control :where(input:not([type="checkbox"]):not([type="radio"]), select, textarea),
+:where(.cui-noting-input) {
+  font: inherit; font-size: 14px; line-height: 20px; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: 5px 8px; min-height: 32px; max-width: 100%;
+}
+.cui-form-field__control :where(textarea), :where(textarea.cui-noting-input) { min-height: 48px; resize: vertical; overflow-x: hidden; overflow-y: auto; }
+.cui-form-field__control input::placeholder, .cui-form-field__control textarea::placeholder, .cui-noting-input::placeholder { color: var(--ink-subtle); font-style: italic; opacity: 1; }
+.cui-form-field--error .cui-form-field__control input,
+.cui-form-field--error .cui-form-field__control select,
+.cui-form-field--error .cui-form-field__control textarea { border-color: var(--danger); }
+
+/* Missed required field: yellow shading plus icon (CNA-1160/1170). */
+.cui-form-field--missed .cui-form-field__control input,
+.cui-form-field--missed .cui-form-field__control select,
+.cui-form-field--missed .cui-form-field__control textarea { background: var(--warning-surface); border-color: var(--warning); }
+.cui-form-field__missed-icon { color: var(--warning); display: inline-flex; }

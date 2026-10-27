@@ -1,0 +1,7 @@
+/* Sublist (PAL-0390/0400): one item per sub-row, dotted dividers lighter than row dividers. */
+.cui-sub-list { list-style: none; margin: 0; padding: 0; }
+.cui-sub-list__item { position: relative; padding: 6px var(--space-3); border-top: 1px dotted var(--border-strong); }
+.cui-sub-list__item:first-child { border-top: none; }
+.cui-sub-list__item--updated { background: var(--info-surface); padding-right: 20px; }
+.cui-sub-list__removed { font-style: italic; color: var(--ink-muted); }
+.cui-sub-list__none { color: var(--ink-muted); }

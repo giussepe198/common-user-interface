@@ -1,0 +1,16 @@
+.cui-numpad { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; color: var(--ink); font-family: var(--font-sans); }
+.cui-numpad__display { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.cui-numpad__previous { font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+.cui-numpad__label { font-size: 16px; line-height: 22px; font-weight: 600; }
+.cui-numpad__label--large { font-size: 20px; line-height: 26px; }
+.cui-numpad__readout { display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-2); min-width: 0; }
+.cui-numpad__value { font-size: 52px; line-height: 58px; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 1ch; }
+.cui-numpad__value--empty { color: var(--ink-muted); }
+.cui-numpad__unit { font-size: 22px; line-height: 28px; color: var(--ink-muted); }
+.cui-numpad__aside { margin-left: auto; align-self: center; }
+.cui-numpad__keys { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2); }
+.cui-numpad__key { min-height: 60px; display: flex; align-items: center; justify-content: center; padding: 0; border-radius: 6px; border: 1px solid var(--border-strong); background: var(--surface); color: var(--ink); font-family: inherit; font-size: 26px; line-height: 32px; font-weight: 600; font-variant-numeric: tabular-nums; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+.cui-numpad__key:active { background: var(--surface-muted); }
+.cui-numpad__key:disabled { color: var(--ink-disabled); background: var(--surface-muted); border-color: var(--border); cursor: not-allowed; }
+.cui-numpad__key:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (hover: hover) { .cui-numpad__key:hover:not(:disabled) { background: var(--hover); } }

@@ -1,0 +1,42 @@
+<!-- @dsCard group="Clinical noting" width=1200 height=1480 subtitle="Noting with graphics: body diagram with symbols, shading, arrows and text-boxes; keyboard pen drawing; edit and view modes" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AnnotatedGraphicCanvas } = window.ClinicalCUI;
+const bodyPath = (dx) => {
+  const pts = [[63,38],[40,48],[28,120],[24,150],[32,153],[40,122],[44,82],[46,140],[48,260],[44,272],[64,272],[66,170],[70,160],[74,170],[76,272],[96,272],[92,260],[94,140],[96,82],[100,122],[108,153],[116,150],[112,120],[100,48],[77,38]];
+  return 'M' + pts.map((p) => (p[0] + dx) + ' ' + p[1]).join(' L') + ' Z';
+};
+const head = (dx) => 'M' + (70 + dx) + ' 6a16 16 0 1 0 0.01 0Z';
+const BODY = { id: 'body-adult', title: 'Adult body, front and back', width: 300, height: 280, ageGroup: 'adult', keywords: ['whole body', 'skin', 'injury'],
+  images: [{ label: 'Front view', x: 0, y: 0, width: 140, height: 280, paths: [head(0), bodyPath(0)] }, { label: 'Back view', x: 160, y: 0, width: 140, height: 280, paths: [head(160), bodyPath(160), 'M230 42 V150'] }] };
+const findings = [
+  { id: 'f1', mark: { kind: 'symbol', symbolId: 'x', x: 70, y: 100 }, box: { x: -190, y: 70, width: 170 }, text: 'Stab wound 2 cm, clean edges' },
+  { id: 'f2', mark: { kind: 'region', points: [{ x: 196, y: 70 }, { x: 226, y: 62 }, { x: 250, y: 74 }, { x: 246, y: 112 }, { x: 214, y: 118 }, { x: 198, y: 96 }] }, box: { x: 330, y: 60, width: 170 }, text: 'Bruising across upper back, yellow-green', emphasis: { bold: true } },
+  { id: 'f3', mark: { kind: 'symbol', symbolId: 'circle', x: 86, y: 230 }, box: { x: -190, y: 210, width: 170 }, text: '' },
+  { id: 'f4', box: { x: 330, y: 200, width: 170 }, text: 'Patient reports fall from ladder' },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 24 } },
+    h(AnnotatedGraphicCanvas, { graphic: BODY, defaultFindings: findings, onRemoveModule: function () {} }),
+    h('div', { id: 'kbd', style: { borderTop: '1px solid var(--border)', paddingTop: 16 } },
+      h('p', { style: { margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' } }, 'Keyboard pen: a line drawn with Enter, arrow keys and Enter'),
+      h(AnnotatedGraphicCanvas, { graphic: BODY })),
+    h('div', { style: { borderTop: '1px solid var(--border)', paddingTop: 16 } },
+      h('p', { style: { margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' } }, 'View mode: no toolbar, read-only, same positions'),
+      h(AnnotatedGraphicCanvas, { graphic: BODY, mode: 'view', defaultFindings: findings.filter((f) => f.text) })))
+);
+setTimeout(function () {
+  const root = document.getElementById('kbd');
+  const pen = Array.prototype.find.call(root.querySelectorAll('button'), function (b) { return b.getAttribute('aria-label') === 'Pen' || b.textContent === 'Pen'; });
+  if (pen) pen.click();
+  setTimeout(function () {
+    const svg = root.querySelector('svg[role="application"]');
+    if (!svg) return;
+    const key = function (k, shift) { svg.dispatchEvent(new KeyboardEvent('keydown', { key: k, shiftKey: !!shift, bubbles: true })); };
+    key('Enter');
+    ['ArrowRight', 'ArrowRight', 'PageDown', 'PageDown', 'ArrowDown', 'ArrowDown', 'End', 'ArrowDown', 'ArrowLeft'].forEach(function (k, i) { setTimeout(function () { key(k, true); }, 10 * (i + 1)); });
+    setTimeout(function () { key('Enter'); }, 140);
+  }, 30);
+}, 30);
+</script>

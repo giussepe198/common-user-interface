@@ -1,0 +1,21 @@
+<!-- @dsCard group="Display standards" height=2360 width=900 subtitle="Standard Windows shortcuts from the keyboard shortcuts guidance" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { KeyboardShortcutList } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 24 } },
+    h(KeyboardShortcutList, {
+      caption: 'Application shortcuts (with conflicts)',
+      shortcuts: [
+        { keys: 'F1', action: 'Help' },
+        { keys: 'Alt+F2', action: 'Add allergy', context: 'patient record' },
+        { keys: 'Alt+F2', action: 'Add alert', context: 'general' },
+        { keys: 'Ctrl+X', action: 'Administer dose', clinicallySignificant: true },
+        { keys: 'Alt+F4', action: 'Close record' },
+      ],
+    }),
+    h(KeyboardShortcutList, { caption: 'Standard Windows shortcuts', shortcuts: [], showStandard: true })
+  )
+);
+</script>

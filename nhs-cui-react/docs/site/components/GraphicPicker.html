@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GraphicPicker · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Clinical noting</p>
+<h1 style="margin:0 0 4px;font-size:20px">GraphicPicker</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Graphic picker: common diagrams first, separate keyword search · Guidelines: <code>src/noting/GraphicPicker/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { GraphicPicker } = window.ClinicalCUI;
+const bodyPath = (dx) => {
+  const pts = [[63,38],[40,48],[28,120],[24,150],[32,153],[40,122],[44,82],[46,140],[48,260],[44,272],[64,272],[66,170],[70,160],[74,170],[76,272],[96,272],[92,260],[94,140],[96,82],[100,122],[108,153],[116,150],[112,120],[100,48],[77,38]];
+  return 'M' + pts.map((p) => (p[0] + dx) + ' ' + p[1]).join(' L') + ' Z';
+};
+const head = (dx) => 'M' + (70 + dx) + ' 6a16 16 0 1 0 0.01 0Z';
+const BODY = { id: 'body-adult', title: 'Adult body, front and back', width: 300, height: 280, ageGroup: 'adult', keywords: ['whole body', 'skin', 'injury'],
+  images: [{ label: 'Front view', x: 0, y: 0, width: 140, height: 280, paths: [head(0), bodyPath(0)] }, { label: 'Back view', x: 160, y: 0, width: 140, height: 280, paths: [head(160), bodyPath(160), 'M230 42 V150'] }] };
+const G = [BODY,
+  { id: 'hand-l', title: 'Left hand', width: 140, height: 200, ageGroup: 'adult', keywords: ['hand', 'fingers', 'palm'], images: [{ label: 'Palm view', x: 0, y: 0, width: 140, height: 200 }] },
+  { id: 'hand-r', title: 'Right hand', width: 140, height: 200, ageGroup: 'adult', keywords: ['hand', 'fingers', 'palm'], images: [{ label: 'Palm view', x: 0, y: 0, width: 140, height: 200 }] },
+  { id: 'lungs', title: 'Lungs', width: 200, height: 200, keywords: ['chest', 'respiratory'], images: [{ label: 'Front view', x: 0, y: 0, width: 200, height: 200 }] },
+  { id: 'child', title: 'Child body, front and back', width: 240, height: 220, ageGroup: 'child', images: [{ label: 'Front view', x: 0, y: 0, width: 110, height: 220 }, { label: 'Back view', x: 130, y: 0, width: 110, height: 220 }] },
+];
+function Demo() {
+  React.useEffect(() => { setTimeout(() => { const i = document.querySelector('#s input'); if (i) { const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set; set.call(i, 'hand'); i.dispatchEvent(new Event('input', { bubbles: true })); } }, 60); }, []);
+  return h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    h(GraphicPicker, { graphics: G, commonIds: ['body-adult', 'lungs', 'child'], loadedId: 'body-adult', onLoad: function () {} }),
+    h('div', { id: 's' }, h(GraphicPicker, { graphics: G, commonIds: ['body-adult', 'lungs'], onLoad: function () {}, title: 'Searching' })));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

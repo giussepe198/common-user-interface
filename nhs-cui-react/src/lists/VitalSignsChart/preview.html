@@ -1,0 +1,33 @@
+<!-- @dsCard group="Timeline and graphs" height=3400 width=1200 subtitle="Early warning observation chart: NZ NZEWS, GB NEWS2 compact with critical thresholds, AU ADDS placeholder, NSW Between the Flags" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { VitalSignsChart, ClinicalLocaleProvider, EWS_NSW_BTF } = window.ClinicalCUI;
+const t = (d, hh, mm) => new Date(2026, 9, d, hh, mm || 0);
+const nz = [
+  { time: t(26, 8), values: { respiratoryRate: 16, oxygenSaturation: 97, supplementalOxygen: 'air', heartRate: 78, systolicBloodPressure: 132, temperature: { value: 36.9, display: '36.9' }, consciousness: 'A' } },
+  { time: t(26, 14), values: { respiratoryRate: 18, oxygenSaturation: 96, supplementalOxygen: 'air', heartRate: 88, systolicBloodPressure: 124, temperature: 37.4, consciousness: 'A' } },
+  { time: t(26, 20), values: { respiratoryRate: 22, oxygenSaturation: 94, supplementalOxygen: 'air', heartRate: 102, systolicBloodPressure: 112, temperature: 38.2, consciousness: 'A' } },
+  { time: t(27, 0), values: { respiratoryRate: 24, oxygenSaturation: 93, supplementalOxygen: { value: 'oxygen', display: '2 L/min' }, heartRate: 114, systolicBloodPressure: 104, temperature: 38.6, consciousness: 'A' } },
+  { time: t(27, 2), values: { respiratoryRate: 27, oxygenSaturation: 92, supplementalOxygen: { value: 'oxygen', display: '4 L/min' }, heartRate: 122, systolicBloodPressure: 96, temperature: 38.9, consciousness: 'V' } },
+];
+const mods = [{ id: 'm1', parameterId: 'heartRate', from: 90, to: 110, score: 0, label: 'HR 90–109', reason: 'Known AF, rate controlled', authorisedBy: 'Dr H. Te Huia, 027 555 0101', startedAt: t(25, 9), durationHours: 72, signed: true }];
+const gb = nz.map(o => ({ time: o.time, values: Object.assign({}, o.values, { consciousness: o.values.consciousness === 'V' ? 'C' : 'A' }) }));
+const au = nz.map((o, i) => ({ time: o.time, values: { respiratoryRate: o.values.respiratoryRate, oxygenSaturation: o.values.oxygenSaturation, oxygenFlow: i > 2 ? i : 0, systolicBloodPressure: o.values.systolicBloodPressure, heartRate: o.values.heartRate, temperature: o.values.temperature, consciousness: o.values.consciousness }, notes: i === 4 ? { newConfusion: 'Yes', concern: 'Son worried' } : undefined }));
+const o2 = ['none', 'none', 'none', 'increasing', 'increasingToKeepAbove90'];
+const btf = nz.map((o, i) => ({ time: o.time, values: Object.assign({}, o.values, { supplementalOxygen: o2[i], consciousness: i === 4 ? 'C' : 'A' }), notes: i === 4 ? { concern: 'Daughter worried' } : undefined }));
+const label = (text) => h('h3', { style: { margin: '24px 0 8px', fontSize: 15 } }, text);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    label('NZ: NZEWS with a modified heart rate trigger'),
+    h(ClinicalLocaleProvider, { region: 'NZ' }, h(VitalSignsChart, { observations: nz, modifications: mods, caption: 'NZEWS vital signs, last 24 hours' })),
+    label('GB: NEWS2, compact table, critical thresholds for heart rate and temperature'),
+    h(VitalSignsChart, { observations: gb, defaultLayout: 'compact', caption: 'NEWS2, last 24 hours',
+      criticalThresholds: [{ direction: 'high', value: 120, appliesTo: 'heartRate' }, { direction: 'high', value: 38.8, appliesTo: 'temperature', setBy: 'Dr Okafor' }] }),
+    label('AU: ADDS (placeholder scores)'),
+    h(ClinicalLocaleProvider, { region: 'AU' }, h(VitalSignsChart, { observations: au.slice(0, 3).concat([au[4]]), defaultLayout: 'compact', showSummary: true })),
+    label('AU NSW: Between the Flags (SAGO calling criteria), zones not scores, verify locally'),
+    h(ClinicalLocaleProvider, { region: 'AU' }, h(VitalSignsChart, { definition: EWS_NSW_BTF, observations: btf, caption: 'Between the Flags, last 24 hours' }))
+  )
+);
+</script>

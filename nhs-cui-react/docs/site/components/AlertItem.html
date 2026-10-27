@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AlertItem · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Decision support</p>
+<h1 style="margin:0 0 4px;font-size:20px">AlertItem</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Decision support alert: High Priority expanded with actions, Priority collapsed · Guidelines: <code>src/administration/AlertItem/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AlertItem } = window.ClinicalCUI;
+const at = function (hh, mm) { return new Date(2026, 4, 27, hh, mm); };
+const link = function (t) { return h('a', { href: '#', onClick: function (e) { e.preventDefault(); } }, t); };
+const high = {
+  id: 'a1', status: 'High Priority', occurredAt: at(10, 47), source: 'Drug Interaction Checking',
+  summary: h('span', null, 'There are potential additive hypotensive effects with Lisinopril and ', link('Furosemide'), ', a current medication for this patient.'),
+  details: { patientSpecific: h('span', null, 'Last blood pressure 98/60 mmHg at 09:30.'), rationale: 'Both drugs lower blood pressure; combined use may cause hypotension.', references: 'Fictional formulary, section 2.5' },
+  actions: [
+    { id: 'r1', label: 'Reduce Furosemide dose', preference: 5, reasons: ['Potential drug-drug interaction with Furosemide'] },
+    { id: 'r2', label: 'Monitor blood pressure', preference: 4, reasons: ['Low recent blood pressure', 'Age over 75'], subOptions: [{ id: 's1', label: 'Every 4 hours' }, { id: 's2', label: 'Every hour' }], subOptionMode: 'or' },
+    { id: 'r3', label: 'Continue as prescribed', preference: 1, reasons: ['Interaction risk remains'] },
+  ],
+};
+const pri = { id: 'a2', status: 'Priority', occurredAt: at(9, 15), source: 'Results Monitoring', summary: 'Creatinine has risen since the last result.' };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 8, maxWidth: 560 } },
+    h(AlertItem, { alert: high, onRecordResponse: function () {}, onDismiss: function () {} }),
+    h(AlertItem, { alert: pri })
+  )
+);
+setTimeout(function () {
+  const t = document.querySelector('.cui-ds-alert__actions-toggle');
+  if (t) t.click();
+}, 30);
+</script>
+
+</div>
+</body>
+</html>

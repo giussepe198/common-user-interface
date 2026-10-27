@@ -1,0 +1,7 @@
+/* Historical view (PAL-1010/1020): the word "Historical" plus the warning colour scheme, time emphasised. */
+.cui-historical-snapshot__tag { font-size: 12px; line-height: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 8px; border: 1px solid var(--warning); color: var(--warning); background: var(--surface); border-radius: var(--radius-sm); }
+.cui-historical-snapshot { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); padding: var(--space-2) var(--space-4); background: var(--warning-surface); border: 1px solid var(--warning); border-radius: var(--radius-md); color: var(--ink); }
+.cui-historical-snapshot > .cui-icon { color: var(--warning); flex: none; }
+.cui-historical-snapshot__text { font-size: 14px; line-height: 20px; }
+.cui-historical-snapshot__time { font-size: 15px; font-weight: 600; color: var(--warning); }
+.cui-historical-snapshot__return { margin-left: auto; }

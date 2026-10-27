@@ -1,0 +1,20 @@
+<!-- @dsCard group="Patient identification" width=1200 height=700 subtitle="Sensitive questions (opt-in): variations of sex characteristics, sexual orientation (AU ABS 2020, NZ Stats NZ)" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SensitiveCharacteristicInput, ClinicalLocaleProvider } = window.ClinicalCUI;
+const caption = (t) => h('div', { style: { font: '600 12px/16px var(--font-sans)', color: 'var(--ink-muted)', margin: '0 0 6px' } }, t);
+const box = (...kids) => h('div', { style: { flex: '1 1 360px', minWidth: 0 } }, ...kids);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+    box(caption('AU: variations of sex characteristics (ABS 2020)'),
+      h(ClinicalLocaleProvider, { region: 'AU' }, h(SensitiveCharacteristicInput, { enabled: true, topic: 'variations-of-sex-characteristics', purpose: 'Asked only to plan specialist care. You do not have to answer.' }))),
+    box(caption('AU: sexual orientation, different term chosen'),
+      h(ClinicalLocaleProvider, { region: 'AU' }, h(SensitiveCharacteristicInput, { enabled: true, topic: 'sexual-orientation', defaultValue: { code: '4', detail: 'Queer' } }))),
+    box(caption('NZ: variations of sex characteristics (Stats NZ VSC)'),
+      h(ClinicalLocaleProvider, { region: 'NZ' }, h(SensitiveCharacteristicInput, { enabled: true, topic: 'variations-of-sex-characteristics' }))),
+    box(caption('NZ: sexual identity (Stats NZ SCSI)'),
+      h(ClinicalLocaleProvider, { region: 'NZ' }, h(SensitiveCharacteristicInput, { enabled: true, topic: 'sexual-orientation', defaultValue: { code: '55' } })))
+  )
+);
+</script>

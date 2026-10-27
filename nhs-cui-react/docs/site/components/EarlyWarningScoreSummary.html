@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EarlyWarningScoreSummary · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Timeline and graphs</p>
+<h1 style="margin:0 0 4px;font-size:20px">EarlyWarningScoreSummary</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Early warning score summary: NZ red zone, GB NEWS2 incomplete, AU ADDS placeholder, NSW Between the Flags yellow zone · Guidelines: <code>src/lists/EarlyWarningScoreSummary/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { EarlyWarningScoreSummary, ClinicalLocaleProvider, EWS_NSW_BTF } = window.ClinicalCUI;
+const time = new Date(2026, 9, 27, 2, 0);
+const label = text => h('h3', { style: { margin: '16px 0 8px', fontSize: 15 } }, text);
+const mods = [{ id: 'm1', parameterId: 'oxygenSaturation', from: 88, to: 93, score: 0, label: 'SpO2 88–92%', reason: 'COPD, target range agreed', authorisedBy: 'Dr R. Pōmare, ext 4410', startedAt: new Date(2026, 9, 26, 9), durationHours: 72, signed: true }];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    label('NZ: NZEWS, a single red parameter triggers the red zone'),
+    h(ClinicalLocaleProvider, { region: 'NZ' }, h(EarlyWarningScoreSummary, { modifications: mods, observation: { time, values: { respiratoryRate: 26, oxygenSaturation: 90, supplementalOxygen: 'air', heartRate: 96, systolicBloodPressure: 124, temperature: 37.6, consciousness: 'A' } } })),
+    label('GB: NEWS2, incomplete set'),
+    h(EarlyWarningScoreSummary, { observation: { time, values: { respiratoryRate: 22, heartRate: 112, temperature: 38.4, systolicBloodPressure: 104 } } }),
+    label('AU: ADDS with placeholder scores'),
+    h(ClinicalLocaleProvider, { region: 'AU' }, h(EarlyWarningScoreSummary, { observation: { time, values: { respiratoryRate: 26, oxygenSaturation: 94, oxygenFlow: 2, systolicBloodPressure: 118, heartRate: 104, temperature: 37.9, consciousness: 'A' } } })),
+    label('AU NSW: Between the Flags (SAGO), Yellow Zone, verify locally'),
+    h(ClinicalLocaleProvider, { region: 'AU' }, h(EarlyWarningScoreSummary, { definition: EWS_NSW_BTF, observation: { time, values: { respiratoryRate: 26, oxygenSaturation: 94, supplementalOxygen: 'none', systolicBloodPressure: 118, heartRate: 104, temperature: 37.9, consciousness: 'A' } } }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

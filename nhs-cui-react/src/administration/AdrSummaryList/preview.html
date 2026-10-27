@@ -1,0 +1,41 @@
+<!-- @dsCard group="Drug administration" height=1500 width=1000 subtitle="Adverse drug reaction summary: entries, not recorded, no known flow, deactivated summaries, AU and NZ status wording" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AdrSummaryList, ClinicalLocaleProvider } = window.ClinicalCUI;
+const at = function (d, hh, mm) { return new Date(2026, 4, d, hh, mm || 0); };
+const NOW = at(27, 10, 20);
+const noop = function () {};
+const label = function (t) { return h('div', { className: 'cui-label', style: { margin: '0 0 6px' } }, t); };
+const entries = [
+  { id: 'e1', agent: { code: '764146007', term: 'Penicillin', isClass: true }, reactions: [{ concept: { code: '271807003', term: 'Rash' }, elaboration: 'widespread' }, { concept: { code: '56018004', term: 'Wheezing' } }], reactionType: 'allergy', reactionDate: '2019' },
+  { id: 'e2', agent: { code: '387458008', term: 'Aspirin' }, reactions: [{ concept: { code: '422587007', term: 'Nausea' } }], reactionType: 'intolerance', newThisAdmission: true },
+  { id: 'e3', agent: { term: 'Elastoplast dressing' }, reactions: [{ concept: { term: 'Blistering' } }], removed: true, removedAt: at(20, 9, 30), removedBy: 'Dr K Sample', removedReason: 'Tolerated a plaster since' },
+];
+const sources = ['Patient testimony', 'Third party, for example a relative', 'Clinical documentation'];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 20 } },
+    h('div', null, label('Entries, with a new one highlighted and deactivated summaries displayed'),
+      h(AdrSummaryList, { entries: entries, highlight: { e2: 'New' }, defaultShowDeactivated: true, currentUser: 'Staff Nurse A Example', now: NOW, onAdd: noop, onOpenDetails: noop, onClose: noop })),
+    h('div', null, label('Nothing recorded: a warning, never "no known"'),
+      h(AdrSummaryList, { entries: [], currentUser: 'Staff Nurse A Example', now: NOW, sources: sources, onAdd: noop, onRecordStatus: noop, onClose: noop })),
+    h('div', { id: 'nk' }, label('After choosing "No known adverse drug reaction risks": author, date, source and details; Close becomes Finish'),
+      h(AdrSummaryList, { entries: [], currentUser: 'Staff Nurse A Example', now: NOW, sources: sources, onAdd: noop, onRecordStatus: noop, onClose: noop })),
+    h('div', null, label('AU: "Nil known" recorded, with who and when'),
+      h(ClinicalLocaleProvider, { region: 'AU' },
+        h(AdrSummaryList, { entries: [], statusRecord: { status: 'noKnown', recordedAt: at(26, 15, 5), recordedBy: 'RN B Sample', source: 'Patient testimony' }, currentUser: 'RN A Example', onAdd: noop, onRecordStatus: noop }))),
+    h('div', null, label('AU: not recorded offers Nil known and Unknown'),
+      h(ClinicalLocaleProvider, { region: 'AU' },
+        h(AdrSummaryList, { entries: [], currentUser: 'RN A Example', onAdd: noop, onRecordStatus: noop }))),
+    h('div', null, label('NZ: "Unknown" recorded with the reason; entries show "New this admission"'),
+      h(ClinicalLocaleProvider, { region: 'NZ' },
+        h('div', { style: { display: 'flex', flexDirection: 'column', gap: 12 } },
+          h(AdrSummaryList, { entries: [], statusRecord: { status: 'unknown', recordedAt: at(27, 2, 40), recordedBy: 'RN T Kaimahi', details: 'Unconscious on arrival, no records available' }, currentUser: 'RN A Example', onAdd: noop, onRecordStatus: noop }),
+          h(AdrSummaryList, { entries: entries.slice(1, 2), currentUser: 'RN A Example', onAdd: noop, onOpenDetails: noop }))))
+  )
+);
+setTimeout(function () {
+  const b = Array.prototype.find.call(document.querySelectorAll('#nk button'), function (x) { return x.textContent === 'No known adverse drug reaction risks'; });
+  if (b) b.click();
+}, 30);
+</script>

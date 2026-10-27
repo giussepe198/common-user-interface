@@ -1,0 +1,15 @@
+<!-- @dsCard group="Display standards" height=190 width=900 subtitle="Icon commands and status icons with function labels" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { IconButton } = window.ClinicalCUI;
+const row = (label, ...nodes) => h('div', { style: { display: 'flex', gap: 12, alignItems: 'center', padding: '4px 0', flexWrap: 'wrap' } }, h('span', { className: 'cui-label', style: { width: 170, flex: 'none' } }, label), ...nodes);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { background: 'var(--surface)', padding: 12, borderRadius: 4 } },
+    row('Labelled (default)', h(IconButton, { icon: 'search', label: 'Search', shortcut: 'Ctrl+F' }), h(IconButton, { icon: 'plus', label: 'Add patient' }), h(IconButton, { icon: 'pencil', label: 'Edit patient', disabled: true })),
+    row('Icon only, sizes', h(IconButton, { icon: 'refresh', label: 'Refresh', showLabel: false, shortcut: 'F5' }), h(IconButton, { icon: 'refresh', label: 'Refresh', showLabel: false, size: 24 }), h(IconButton, { icon: 'filter', label: 'Filter', pressed: true, size: 24, labelPosition: 'below' })),
+    row('Meaning and importance', h(IconButton, { icon: 'error', label: 'Stop infusion', meaning: 'error', importance: 'high' }), h(IconButton, { icon: 'warning', label: 'Check dose', meaning: 'caution' }), h(IconButton, { icon: 'check', label: 'Checked', meaning: 'ok' })),
+    row('Status (not clickable)', h(IconButton, { icon: 'lock', label: 'Sealed record', variant: 'inline-status' }), h(IconButton, { icon: 'history', label: 'Repeat medication', variant: 'information', showLabel: false }))
+  )
+);
+</script>

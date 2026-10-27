@@ -1,0 +1,49 @@
+<!-- @dsCard group="Clinical noting" width=1200 height=760 subtitle="Past medical history entry list: natural-language dates, laterality, reordering, edit and delete; NZ and AU date reading" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { NoteEntryList, ClinicalLocaleProvider, matchesDescription } = window.ClinicalCUI;
+const TERMS = [
+  { id: 'c1', term: 'Asthma', isCommon: true }, { id: 'c2', term: 'Type 2 diabetes mellitus', isCommon: true },
+  { id: 'c3', term: 'Hypertension', isCommon: true }, { id: 'c4', term: 'Appendicectomy' },
+  { id: 'c5', term: 'Chronic obstructive pulmonary disease' }, { id: 'c6', term: 'Myocardial infarction' },
+  { id: 'c7', term: 'Atrial fibrillation' }, { id: 'c8', term: 'Hypothyroidism' }, { id: 'c9', term: 'Fracture of radius' }, { id: 'c10', term: 'Cataract' },
+];
+const ref = new Date(2026, 9, 27);
+const paired = (e) => !!e.concept && ['c9', 'c10'].includes(e.concept.id);
+const label = (t) => h('p', { style: { margin: '0 0 6px', fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' } }, t);
+const search = (q) => Promise.resolve(TERMS.filter((t) => matchesDescription(q, t.term)));
+function Demo() {
+  const [entries, setEntries] = React.useState([
+    { id: 'e1', text: 'diab 2', concept: { id: 'c2', term: 'Type 2 diabetes mellitus' }, dateText: 'past 10 years', additionalText: 'Diet controlled until 2019, now on metformin', qualifiers: [] },
+    { id: 'e2', text: 'append', concept: { id: 'c4', term: 'Appendicectomy' }, dateText: '20 years ago' },
+    { id: 'e3', text: 'Fell from horse, back injury', additionalText: 'No ongoing symptoms' },
+    { id: 'e4', text: 'asth', concept: { id: 'c1', term: 'Asthma' } },
+    { id: 'e5', text: 'frac rad', concept: { id: 'c9', term: 'Fracture of radius' }, laterality: 'left', dateText: 'summer 2019', currentProblem: false },
+  ]);
+  const [nz, setNz] = React.useState([
+    { id: 'n1', text: 'cat', concept: { id: 'c10', term: 'Cataract' }, laterality: 'right', dateText: '05/04/2021', currentProblem: true },
+    { id: 'n2', text: 'htn', concept: { id: 'c3', term: 'Hypertension' }, dateText: 'summer 2019' },
+  ]);
+  React.useEffect(() => { setTimeout(() => { const b = document.querySelector('[data-entry-id="e2"] .cui-note-entry__delete'); if (b) b.click(); }, 40); }, []);
+  return h('div', { style: { display: 'flex', gap: 40, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    h('div', { style: { flex: '1 1 640px', minWidth: 0 } },
+      h(NoteEntryList, { heading: 'Past medical history', entries: entries, onEntriesChange: setEntries, search: search, referenceDate: ref, showLaterality: paired, showCurrentProblem: true, reorderable: true, showDateMenu: true,
+        instructionText: 'Add a condition or procedure. Fields for dates and details appear once a term is selected.',
+        helpText: 'Type part of each word, for example "diab 2"',
+        suggestQualifiers: (e) => (e.additionalText || '').match(/severe/i) ? [{ id: 'q1', label: 'Severe' }] : [] })),
+    h('div', { style: { flex: '0 1 360px' } },
+      h(NoteEntryList, { heading: 'Problem list (saved)', readOnly: true, search: search, instructionText: 'Search', defaultEntries: [
+        { id: 'r1', text: 'af', concept: { id: 'c7', term: 'Atrial fibrillation' }, dateText: 'since 2016', additionalText: 'Anticoagulated' },
+        { id: 'r2', text: 'htn', concept: { id: 'c3', term: 'Hypertension' } }], referenceDate: ref })),
+    h('div', { style: { flex: '1 1 100%', display: 'flex', gap: 40, flexWrap: 'wrap', borderTop: '1px solid var(--border)', paddingTop: 16 } },
+      h('div', { style: { flex: '1 1 480px' } }, label('NZ: 05/04/2021 read as 5 April (day first); summer is December to February'),
+        h(ClinicalLocaleProvider, { region: 'NZ' }, h(NoteEntryList, { heading: 'Problem list', entries: nz, onEntriesChange: setNz, search: search, referenceDate: ref, showLaterality: paired, showCurrentProblem: true, instructionText: 'Add a problem' }))),
+      h('div', { style: { flex: '1 1 380px' } }, label('AU: same rules, saved list'),
+        h(ClinicalLocaleProvider, { region: 'AU' }, h(NoteEntryList, { heading: 'Problem list (saved)', readOnly: true, search: search, instructionText: 'Search', referenceDate: ref, defaultEntries: [
+          { id: 'a1', text: 'af', concept: { id: 'c7', term: 'Atrial fibrillation' }, dateText: 'winter 2018', additionalText: 'Anticoagulated' },
+          { id: 'a2', text: 'htn', concept: { id: 'c3', term: 'Hypertension' }, dateText: '03/11/2015' }] }))))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

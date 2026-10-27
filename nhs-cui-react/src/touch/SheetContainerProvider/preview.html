@@ -1,0 +1,38 @@
+<!-- @dsCard group="Mobile touch inputs" height=1050 width=390 subtitle="Sheet container provider: every sheet below it renders inside a phone frame, without moving focus on load" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SheetContainerProvider, BottomSheet, ActionBar, HoldToConfirmButton, ChipGroup } = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 12, lineHeight: '16px', color: 'var(--ink-muted)' } }, t);
+function Phone({ height, children }) {
+  const [layer, setLayer] = React.useState(null);
+  return h('div', { style: { position: 'relative', height, maxWidth: 390, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface-sunken)' } },
+    h('div', { ref: setLayer, className: 'cui-root' }),
+    layer ? h(SheetContainerProvider, { container: layer, autoFocus: false }, children) : null);
+}
+function SortSheet() {
+  const [open, setOpen] = React.useState(true);
+  const [sort, setSort] = React.useState('due');
+  return h(React.Fragment, null,
+    h('div', { style: { padding: 16 } }, h('button', { type: 'button', className: 'cui-touch-button cui-touch-button--secondary cui-touch-button--h48', onClick: () => setOpen(true) }, 'Sort medicines')),
+    h(BottomSheet, { open, title: 'Sort medicines', closeOnBrowserBack: false, onClose: () => setOpen(false),
+      footer: h(ActionBar, { sticky: false, actions: [{ label: 'Done', variant: 'primary', onClick: () => setOpen(false) }] }) },
+      h('div', { style: { padding: '0 16px 16px' } },
+        h(ChipGroup, { label: 'Sort by', labelVisible: true, overflow: 'wrap', value: [sort], onChange: v => v[0] && setSort(v[0]), options: [{ value: 'due', label: 'Due time' }, { value: 'name', label: 'Name' }, { value: 'start', label: 'Start date' }] }))));
+}
+function Hold() {
+  const [done, setDone] = React.useState('');
+  return h('div', { style: { padding: 16, display: 'flex', flexDirection: 'column', gap: 12 } },
+    h('p', { style: { margin: 0 } }, 'Tap the button: the confirmation dialog opens inside this frame and takes focus.'),
+    h(HoldToConfirmButton, { actionLabel: 'Record 6 units given', confirmDescription: 'SMITH, Jon. insulin aspart 6 units at 14:08.', onConfirm: () => setDone('Recorded') }),
+    done ? h('p', { role: 'status', style: { margin: 0 } }, done) : null);
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    label('Sheet open on load: rendered into the frame, focus left on the page'),
+    h(Phone, { height: 560 }, h(SortSheet)),
+    label('Opened by the user: the hold-to-confirm dialog stays in the frame'),
+    h(Phone, { height: 380 }, h(Hold))
+  )
+);
+</script>

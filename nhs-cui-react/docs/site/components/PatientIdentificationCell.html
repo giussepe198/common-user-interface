@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PatientIdentificationCell · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Lists and filtering</p>
+<h1 style="margin:0 0 4px;font-size:20px">PatientIdentificationCell</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Patient identification cell: GB, AU and NZ, identical names, unknown values · Guidelines: <code>src/lists/PatientIdentificationCell/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { PatientIdentificationCell } = window.ClinicalCUI;
+const card = (title, el) => h('div', { style: { border: '1px solid var(--border-strong)', background: 'var(--surface)', padding: 12, width: 280 } },
+  h('div', { style: { fontSize: 12, color: 'var(--ink-muted)', marginBottom: 6 } }, title), el);
+const match = { kind: 'identical', differentiator: 'dateOfBirth', matches: ['x'] };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 16, flexWrap: 'wrap' } },
+    card('GB', h(PatientIdentificationCell, { region: 'GB', patient: { familyName: 'Smith', givenName: 'John', title: 'Mr', preferredName: 'Jack', dateOfBirth: '1948-03-12', nhsNumber: '9990000018' } })),
+    card('GB: identical name, date of birth differs', h(PatientIdentificationCell, { region: 'GB', match, patient: { familyName: 'Smith', givenName: 'John', title: 'Mr', dateOfBirth: '1971-07-30', nhsNumber: '9990000034' } })),
+    card('GB: unknown family name, temporary number', h(PatientIdentificationCell, { region: 'GB', patient: { givenName: 'Ben', gender: 'Male', temporaryNumber: 'T-20481' } })),
+    card('AU: IHI unverified, URN, DD/MM/YYYY', h(PatientIdentificationCell, { region: 'AU', dateOfBirthFormat: 'numeric', patient: { familyName: 'Nguyen', givenName: 'Minh', title: 'Mr', dateOfBirth: '1951-06-07', ihi: '8003601234567894', ihiStatus: { record: 'Unverified' }, mrn: '00412377' } })),
+    card('AU: single name, unidentified', h(PatientIdentificationCell, { region: 'AU', patient: { familyName: 'Unknown', givenName: 'Male 3', unidentified: true, mrn: '00399001' } })),
+    card('NZ: as recorded, macrons, NHI', h(PatientIdentificationCell, { region: 'NZ', patient: { familyName: 'Te Huia', givenName: 'Kāhu', title: 'Mr', dateOfBirth: '1958-04-19', nhi: 'ZAC5361' } })),
+    card('Unoccupied location', h(PatientIdentificationCell, { patient: null }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

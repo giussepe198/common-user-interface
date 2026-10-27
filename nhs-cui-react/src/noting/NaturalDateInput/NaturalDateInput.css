@@ -1,0 +1,20 @@
+.cui-natural-date { display: flex; flex-direction: column; gap: var(--space-1); font-size: 14px; line-height: 20px; color: var(--ink); max-width: 100%; }
+.cui-natural-date__label { font-weight: 600; }
+.cui-natural-date__row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-2) var(--space-3); }
+.cui-natural-date__field { position: relative; width: 18em; max-width: 100%; }
+.cui-natural-date__input { width: 100%; }
+.cui-natural-date__list { position: absolute; z-index: 20; top: calc(100% + 2px); left: 0; min-width: 100%; width: max-content; max-width: 28em; list-style: none; margin: 0; padding: 0; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); }
+.cui-natural-date__list[hidden] { display: none; }
+.cui-natural-date__option { display: flex; flex-direction: column; padding: 4px var(--space-2); border-bottom: 1px solid var(--border); cursor: pointer; }
+.cui-natural-date__option:last-child { border-bottom: 0; }
+.cui-natural-date__option--active { background: var(--hover); outline: 2px solid var(--focus); outline-offset: -2px; }
+.cui-natural-date__reading { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-natural-date__confirm { flex: 1 1 14em; display: flex; flex-wrap: wrap; align-items: center; gap: 2px var(--space-3); padding-top: 6px; min-width: 0; }
+.cui-natural-date__choose { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); margin-top: -4px; }
+.cui-natural-date__part { white-space: nowrap; }
+.cui-natural-date__part-label { color: var(--ink-muted); }
+.cui-natural-date__hint { font-size: 12px; line-height: 16px; color: var(--ink-muted); font-style: italic; }
+.cui-natural-date__menu-wrap { position: relative; padding-top: 2px; }
+.cui-natural-date__menu { position: absolute; z-index: 21; top: calc(100% + 2px); left: 0; min-width: 12em; display: flex; flex-direction: column; padding: var(--space-1) 0; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); }
+.cui-natural-date__menu-item { font: inherit; text-align: left; background: transparent; border: 0; padding: 4px var(--space-3); color: var(--ink); cursor: pointer; }
+.cui-natural-date__menu-item:hover, .cui-natural-date__menu-item:focus-visible { background: var(--hover); }

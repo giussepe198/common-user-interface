@@ -1,0 +1,27 @@
+<!-- @dsCard group="Mobile touch inputs" height=420 width=390 subtitle="Touch buttons: 48, 56 and 64 px, variants, full width" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TouchButton } = window.ClinicalCUI;
+const cap = t => h('p', { className: 'cui-label', style: { margin: '8px 0 4px' } }, t);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 390, display: 'flex', flexDirection: 'column', gap: 8 } },
+    cap('Variants, 56 px (commit size)'),
+    h('div', { style: { display: 'flex', gap: 8, flexWrap: 'wrap' } },
+      h(TouchButton, { variant: 'primary' }, 'Record dose'),
+      h(TouchButton, null, 'Not now'),
+      h(TouchButton, { variant: 'danger', icon: 'trash' }, 'Remove')
+    ),
+    cap('48 px secondary actions, quiet, icon only'),
+    h('div', { style: { display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' } },
+      h(TouchButton, { size: 48, icon: 'chevron-left' }, 'Resp rate'),
+      h(TouchButton, { size: 48, icon: 'chevron-right', iconPosition: 'end' }, 'Next: oxygen'),
+      h(TouchButton, { size: 48, variant: 'quiet' }, 'Change'),
+      h(TouchButton, { size: 48, iconOnly: true, icon: 'close' }, 'Close')
+    ),
+    cap('64 px full width, and disabled'),
+    h(TouchButton, { size: 64, variant: 'primary', fullWidth: true }, 'Record 6 units given'),
+    h(TouchButton, { fullWidth: true, disabled: true }, 'Record (complete the second check first)')
+  )
+);
+</script>

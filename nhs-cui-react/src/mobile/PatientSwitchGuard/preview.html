@@ -1,0 +1,35 @@
+<!-- @dsCard group="Mobile screens" height=1260 width=390 subtitle="Patient switch guard: identity flash after a switch, and confirm after a wristband scan mismatch" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { PatientSwitchGuard, MobilePatientHeader, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27, 14, 6);
+const chen = { id: 'chen', name: { familyName: 'Chen', givenName: 'Wei' }, dateOfBirth: '1949-09-02', gender: 'M', identifiers: [{ type: 'mrn', value: '0412345' }], location: 'Bed 12', allergies: { status: 'none-known' } };
+const jon = { id: 'jon', name: { familyName: 'Smith', givenName: 'Jon' }, dateOfBirth: '1985-01-30', gender: 'M', identifiers: [{ type: 'mrn', value: '0420017' }, { type: 'ihi', value: '8003608166690503' }, { type: 'medicare', value: '2950 01234 1' }], location: 'Bed 9', allergies: { status: 'none-known' } };
+const john = { id: 'john', name: { familyName: 'Smith', givenName: 'John' }, dateOfBirth: '1962-06-11', gender: 'M', identifiers: [{ type: 'mrn', value: '0398812' }], location: 'Bed 3', allergies: { status: 'none-known' } };
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 12, lineHeight: '16px', color: 'var(--ink-muted)' } }, t);
+const body = h('p', { style: { margin: 0, padding: 16, color: 'var(--ink-muted)' } }, 'Patient screen content');
+function Flash() {
+  const [p, setP] = React.useState(chen);
+  React.useEffect(() => { setP(jon); }, []);
+  return h('div', { style: { maxWidth: 390, border: '1px solid var(--border)', background: 'var(--surface-sunken)' } },
+    h(PatientSwitchGuard, { patient: p, now, flashDuration: 0 },
+      h(MobilePatientHeader, { patient: p, now, variant: 'condensed', showDetailsButton: false }), body));
+}
+function Pending() {
+  const [pending, setPending] = React.useState(john);
+  // A fixed-height phone screen: `fill` lets the guard take the height; the sheet is open on load, so autoFocus is off.
+  return h('div', { style: { position: 'relative', display: 'flex', flexDirection: 'column', height: 740, maxWidth: 390, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface-sunken)' } },
+    h(PatientSwitchGuard, { patient: jon, pendingPatient: pending, now, fill: true, portal: false, autoFocus: false, onCancelSwitch: () => setPending(null), onConfirmSwitch: () => setPending(null) },
+      h(MobilePatientHeader, { patient: jon, now, variant: 'condensed', showDetailsButton: false }), body,
+      h('div', { style: { padding: 16 } }, h('button', { type: 'button', className: 'cui-touch-button cui-touch-button--secondary cui-touch-button--h48', onClick: () => setPending(john) }, 'Simulate scan of bed 3 wristband'))));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(ClinicalLocaleProvider, { region: 'AU' },
+    label('After a switch: the new identity is flashed and announced'),
+    h(Flash),
+    label('Scan mismatch: both identities and what differs; an explicit choice'),
+    h(Pending)
+  )
+);
+</script>

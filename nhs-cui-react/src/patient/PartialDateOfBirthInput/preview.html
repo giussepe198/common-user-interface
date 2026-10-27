@@ -1,0 +1,26 @@
+<!-- @dsCard group="Patient identification" width=1000 height=330 subtitle="Date of birth with partial dates (NZ, HISO 10046 YYYY[MM[DD]])" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { PartialDateOfBirthInput, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27);
+const caption = (t) => h('div', { style: { font: '600 12px/16px var(--font-sans)', color: 'var(--ink-muted)', marginBottom: 6 } }, t);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(ClinicalLocaleProvider, { region: 'NZ' },
+    h('div', { style: { display: 'flex', gap: 40, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+      h('div', null, caption('Year only'), h(PartialDateOfBirthInput, { defaultValue: '1975', now })),
+      h('div', null, caption('Month and year, with source'), h(PartialDateOfBirthInput, { defaultValue: '197503', showSource: true, defaultSource: 'NPRF', now })),
+      h('div', { id: 'preview-dob-bad' }, caption('Day without month (error)'), h(PartialDateOfBirthInput, { id: 'preview-dob-bad-input', now, error: 'A day can only be entered when the month is known' }))
+    )
+  )
+);
+setTimeout(() => {
+  const d = document.getElementById('preview-dob-bad-input-day');
+  if (d) {
+    const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
+    set.call(d, '4'); d.dispatchEvent(new Event('input', { bubbles: true }));
+    const y = document.getElementById('preview-dob-bad-input-year');
+    set.call(y, '1975'); y.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+}, 30);
+</script>

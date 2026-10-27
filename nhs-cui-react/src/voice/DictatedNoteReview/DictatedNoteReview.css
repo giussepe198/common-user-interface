@@ -1,0 +1,34 @@
+.cui-dictated-note { display: flex; flex-direction: column; min-width: 0; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; }
+.cui-dictated-note__main { flex: 1; display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-3) var(--space-4); min-width: 0; }
+.cui-dictated-note__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--space-2); }
+.cui-dictated-note__heading { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; }
+.cui-dictated-note__draft { font-size: 14px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-dictated-note__icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex: none; margin-top: 1px; color: var(--warning); }
+
+.cui-dictated-note__text { display: flex; flex-direction: column; gap: var(--space-1); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: var(--space-3) 14px var(--space-1); }
+.cui-dictated-note__para { margin: 0; font-size: 17px; line-height: 27px; overflow-wrap: anywhere; white-space: pre-wrap; }
+.cui-dictated-note__empty { color: var(--ink-muted); }
+.cui-dictated-note__edit-btn { align-self: flex-end; }
+.cui-dictated-note__encodable { background: var(--encodable); border-radius: var(--radius-sm); padding: 1px 2px; }
+.cui-dictated-note__confirmed { background: var(--confirmed); font-weight: 700; border-radius: var(--radius-sm); padding: 1px 2px; }
+.cui-dictated-note__check { background: var(--warning-surface); border-bottom: 2px dashed var(--warning); padding: 1px 2px; }
+.cui-dictated-note__edit { display: flex; flex-direction: column; gap: var(--space-2); }
+.cui-dictated-note__label { font-size: 14px; line-height: 20px; font-weight: 600; }
+.cui-dictated-note__textarea { width: 100%; box-sizing: border-box; min-height: 160px; padding: var(--space-3); font-family: var(--font-sans); font-size: 17px; line-height: 26px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); resize: vertical; }
+
+.cui-dictated-note__question { display: flex; flex-direction: column; gap: var(--space-2); padding: 10px var(--space-3); background: var(--warning-surface); border: 2px solid var(--warning); border-radius: var(--radius-md); }
+.cui-dictated-note__question:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-dictated-note__check-title { margin: 0; display: flex; gap: var(--space-2); align-items: flex-start; font-size: 16px; line-height: 22px; font-weight: 700; overflow-wrap: anywhere; }
+.cui-dictated-note__check-text { margin: 0; font-size: 15px; line-height: 21px; overflow-wrap: anywhere; }
+.cui-dictated-note__answers { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.cui-dictated-note__answers > .cui-touch-button { flex: 1 1 0; min-width: 120px; }
+.cui-dictated-note__notes { margin: 0; padding: 0 0 0 var(--space-4); font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+
+/* Suggested codes at touch size: rows at least 52 px, check boxes 24 px (C3). */
+.cui-dictated-note__codes .cui-suggested-matches__item { min-height: 52px; }
+.cui-dictated-note__codes input[type="checkbox"] { width: 24px; height: 24px; }
+.cui-dictated-note__codes label { min-height: 48px; display: flex; align-items: center; }
+
+.cui-dictated-note__bar { display: flex; gap: 10px; align-items: center; }
+.cui-dictated-note__draft-btn { flex: 1 1 0; min-width: 0; }
+.cui-dictated-note__sign { flex: 1.2 1 0; min-width: 0; }

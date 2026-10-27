@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TelephoneNumberInput · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Patient identification</p>
+<h1 style="margin:0 0 4px;font-size:20px">TelephoneNumberInput</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Telephone number input: free text, separate extension, country code · Guidelines: <code>src/patient/TelephoneNumberInput/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ClinicalLocaleProvider } = window.ClinicalCUI;
+const regionCaption = (t) => h('div', { style: { font: '600 12px/16px var(--font-sans)', color: 'var(--ink-muted)', margin: '12px 0 4px' } }, t);
+const inRegion = (region, child, extra) => h(ClinicalLocaleProvider, Object.assign({ region }, extra || {}), child);
+const { TelephoneNumberInput } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    regionCaption('GB (NHS CUI)'),
+  h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+    h(TelephoneNumberInput, { label: 'Home', defaultValue: '0118 123 4567', tooltip: "Enter the 'home' telephone number" }),
+    h(TelephoneNumberInput, { label: 'Work', extensionMode: 'separate', placeholder: 'e.g. 020 1234 5678', defaultValue: '020 7946 0472', defaultExtension: '1234' }),
+    h(TelephoneNumberInput, { label: 'Telephone Number', assisted: true, defaultCountry: 'US', defaultValue: '212 555 2368' }),
+    h(TelephoneNumberInput, { label: 'Mobile', error: 'Enter a mobile number' })
+  ),
+    regionCaption('AU and NZ: regional formats and a warning for a number that is not valid'),
+    h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+      inRegion('AU', h(TelephoneNumberInput, { label: 'Mobile (AU)', defaultValue: '0491 570 159' })),
+      inRegion('AU', h(TelephoneNumberInput, { id: 'preview-au-home', label: 'Home (AU)', defaultValue: '02 5550 43' })),
+      inRegion('NZ', h(TelephoneNumberInput, { label: 'Mobile (NZ)', assisted: true, defaultValue: '021 123 4567' })))
+  )
+);
+// Leave the short AU number's field once so its warning is visible.
+setTimeout(() => { const el = document.getElementById('preview-au-home'); if (el) { el.focus(); el.blur(); } }, 30);
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!-- @dsCard group="Medications" width=900 height=260 subtitle="Selection trail: each selection in its own control, any one reopens the lists" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SelectionTrail, MedicationLine, ClinicalLocaleProvider } = window.ClinicalCUI;
+const block = (title, el) => h('div', { style: { marginBottom: 20 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    block('GB: drug, route and form chosen', h(SelectionTrail, { onReopen: () => {}, items: [
+      { id: 'drug', kind: 'Drug', label: h(MedicationLine, { genericName: 'diltiazem', brandName: 'Dilzem SR' }), text: 'diltiazem, DILZEM SR' },
+      { id: 'route', kind: 'Route', label: 'oral – modified-release' },
+      { id: 'form', kind: 'Form', label: 'modified-release capsule' }] })),
+    block('AU: drug name follows the regional rules', h(ClinicalLocaleProvider, { region: 'AU' }, h(SelectionTrail, { onReopen: () => {}, items: [
+      { id: 'drug', kind: 'Drug', label: h(MedicationLine, { genericName: 'clarithromycin' }), text: 'clarithromycin' },
+      { id: 'route', kind: 'Route', label: 'oral' }] }))),
+    block('NZ', h(ClinicalLocaleProvider, { region: 'NZ' }, h(SelectionTrail, { onReopen: () => {}, items: [
+      { id: 'drug', kind: 'Drug', label: h(MedicationLine, { genericName: 'carbamazepine' }), text: 'carbamazepine' },
+      { id: 'route', kind: 'Route', label: 'oral' }] })))
+  )
+);
+</script>

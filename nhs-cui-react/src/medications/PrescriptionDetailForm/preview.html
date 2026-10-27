@@ -1,0 +1,42 @@
+<!-- @dsCard group="Medications" width=1200 height=1500 subtitle="Full prescription form: tabs, column layout, strength and dose conflicts cleared, preview before authorise" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { PrescriptionDetailForm, ClinicalLocaleProvider } = window.ClinicalCUI;
+const o = (value, supplementary) => ({ value: value, supplementary: supplementary });
+const options = {
+  route: [o('oral'), o('intravenous')],
+  strength: [{ value: '250 mg', doses: ['250 mg', '500 mg'] }, { value: '500 mg', doses: ['500 mg', '1 g'] }],
+  form: [o('tablet'), o('oral suspension')],
+  dose: [o('250 mg'), o('500 mg'), o('1 g')],
+  frequency: [o('twice a day'), o('three times a day'), o('every 6 hours as required')],
+  giveWhen: [o('for pain')],
+  administrationTimes: [o('08:00; 20:00', 'Standard times'), o('08:00; 14:00; 20:00', 'Standard times')],
+  firstDose: [o('Today 20:00'), o('Tomorrow 08:00')],
+  duration: [o('7 days'), o('14 days'), o('ongoing')]
+};
+const optionalFields = [
+  { id: 'reason', addLabel: 'Add a Reason for Prescribing', label: 'Reason', prompt: 'Select or enter a reason for prescribing', options: [o('community-acquired pneumonia')], allowOther: true, promoted: true },
+  { id: 'review', addLabel: 'Add a Review Date', label: 'Review Date', prompt: 'Select a review date', options: [o('29-Oct-2026')], tab: 'schedule' },
+  { id: 'instructions', addLabel: 'Add Special Instructions', label: 'Instructions', prompt: 'Select special instructions', options: [o('take with food')] }
+];
+const block = (title, el) => h('div', { style: { marginBottom: 20 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    block('GB: Drug Details tab after a template was applied (changing the strength to one that does not fit the dose clears the dose)', h(PrescriptionDetailForm, {
+      drug: { genericName: 'clarithromycin' }, options: options, optionalFields: optionalFields,
+      defaultValues: { route: 'oral', strength: '250 mg', dose: '250 mg', frequency: 'twice a day', administrationTimes: '08:00; 20:00', firstDose: 'Today 20:00', duration: '7 days' },
+      templateFieldIds: ['dose', 'frequency', 'duration'], appliedTemplate: 'DOSE 250 mg twice a day', onOpenTemplates: () => {},
+      onEditDrugAndRoute: () => {}, onGoBack: () => {}, onCancel: () => {}, onAuthorise: () => {}
+    })),
+    block('AU: Administration Schedule tab, route entered as "PO" shown in full, mixed-case lettering', h(ClinicalLocaleProvider, { region: 'AU' }, h(PrescriptionDetailForm, {
+      title: 'Full prescription form (AU)', drug: { genericName: 'clarithromycin' }, options: options, optionalFields: optionalFields, defaultTab: 'schedule',
+      defaultValues: { route: 'PO', dose: '500 mg', frequency: 'twice a day', administrationTimes: '08:00; 20:00', firstDose: 'Today 20:00' },
+      onEditDrugAndRoute: () => {}, onCancel: () => {}, onAuthorise: () => {}
+    }))),
+    block('NZ: route not yet chosen, so only drug and route are shown', h(ClinicalLocaleProvider, { region: 'NZ' }, h(PrescriptionDetailForm, {
+      title: 'Full prescription form (NZ)', drug: { genericName: 'carbamazepine' }, options: options, onCancel: () => {}
+    })))
+  )
+);
+</script>

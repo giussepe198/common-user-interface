@@ -1,0 +1,21 @@
+<!-- @dsCard group="Dates and times" height=560 width=900 subtitle="24-hour time entry with spin control, shortcuts and Approx" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TimeInput, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27, 13, 54);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 24, alignItems: 'start' } },
+    h(TimeInput, { label: 'Start time', now }),
+    h(TimeInput, { label: 'Time of birth', now, defaultValue: { hours: 23, minutes: 35, seconds: 1 }, showSeconds: true }),
+    h(TimeInput, { label: 'Time of fall', now, defaultValue: { hours: 3, minutes: 0 }, allowApproximate: true, defaultApproximate: true }),
+    h(TimeInput, { label: 'Time last seen', now, defaultValue: 'unknown', error: 'Enter the time using the 24-hour clock, e.g. 2pm is 14:00.' }),
+    h(ClinicalLocaleProvider, { region: 'AU' },
+      h(TimeInput, { label: 'AU: Dose time (midnight warning)', now, defaultValue: { hours: 0, minutes: 0 }, warnAtMidnight: true })),
+    h(ClinicalLocaleProvider, { region: 'AU' },
+      h(TimeInput, { label: 'AU: Dose time on 04-Oct-2026', now, defaultValue: { hours: 2, minutes: 30 }, date: '2026-10-04' })),
+    h(ClinicalLocaleProvider, { region: 'NZ' },
+      h(TimeInput, { label: 'NZ: Observation time on 05-Apr-2026', now, defaultValue: { hours: 2, minutes: 30 }, date: '2026-04-05' }))
+  )
+);
+</script>

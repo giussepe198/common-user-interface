@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CarePathwayStack · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Clinical noting</p>
+<h1 style="margin:0 0 4px;font-size:20px">CarePathwayStack</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Care pathway stack (experimental): number of pathways, status and reason always visible, minimise, compact and maximise · Guidelines: <code>src/noting/CarePathwayStack/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { CarePathwayStack } = window.ClinicalCUI;
+const st = (id, title, state, extra) => Object.assign({ id: id, title: title, state: state, bundles: [] }, extra || {});
+const HIP = { id: 'hip', title: 'Elective hip replacement', status: 'active', nationalGuidance: 'NICE NG157', precursor: 'GP referral, Oxford hip score 14', goal: 'Walking unaided at 6 weeks',
+  boundaries: [{ afterStageId: 'h3', label: 'Handover to ward' }],
+  stages: [
+    st('h1', 'Referral triage', 'completed', { status: 'success', bundles: [{ id: 'b1', title: 'Triage', state: 'completed', isKeyDecision: true, decision: 'Refer to surgery' }] }),
+    st('h2', 'Pre-operative assessment', 'completed', { status: 'failed', team: 'Pre-op clinic', bundles: [{ id: 'b2', title: 'Bloods', state: 'completed' }, { id: 'b3', title: 'ECG', state: 'failed' }] }),
+    st('h3', 'Surgery', 'completed', { status: 'success', groupLabel: 'Day of operation', team: 'Orthopaedics', bundles: [{ id: 'b4', title: 'Consent', state: 'completed' }, { id: 'b5', title: 'Arthroplasty', state: 'completed' }] }),
+    st('h4', 'Ward recovery', 'current', { status: 'warning', groupLabel: 'Day of operation', team: 'Ward 7', targetTime: '3 days', actualTime: '4 days', targetMissed: true, bundles: [{ id: 'b6', title: 'Mobilise', state: 'active' }, { id: 'b7', title: 'Pain control', state: 'completed' }, { id: 'b8', title: 'Discharge planning', state: 'future' }] }),
+    st('h5', 'Discharge', 'future', { bundles: [{ id: 'b9', title: 'Medicines reconciliation', state: 'future' }] }),
+    st('h6', 'Physiotherapy', 'future'),
+    st('h7', 'Six-week review', 'future'),
+    st('h8', 'One-year review', 'future'),
+  ] };
+const DIAB = { id: 'diab', title: 'Type 2 diabetes', status: 'paused', statusReason: 'Hospitalisation', stages: [st('d1', 'Diagnosis', 'completed', { status: 'success' }), st('d2', 'Structured education', 'completed', { status: 'success' }), st('d3', 'Annual review', 'current'), st('d4', 'Retinal screening', 'future')] };
+const COPD = { id: 'copd', title: 'COPD', status: 'abnormal', statusReason: 'Pulmonary rehabilitation target missed', stages: [st('c1', 'Diagnosis', 'completed', { status: 'success' }), st('c2', 'Pulmonary rehabilitation', 'current', { status: 'failed', targetMissed: true, targetTime: '12 weeks', actualTime: '20 weeks' }), st('c3', 'Review', 'future')] };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(CarePathwayStack, { pathways: [HIP, COPD, DIAB], defaultSizes: { hip: 'expanded', copd: 'medium', diab: 'collapsed' } })
+);
+</script>
+
+</div>
+</body>
+</html>

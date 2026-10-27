@@ -1,0 +1,23 @@
+<!-- @dsCard group="Clinical noting" width=1200 height=760 subtitle="Care pathway cycle (experimental): phase rings, cycle stages, repeats arrow, spinners, paused state and mini diagram" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { CarePathwayCycle } = window.ClinicalCUI;
+const s = (id, title, kind, state, extra) => Object.assign({ id: id, title: title, kind: kind, state: state }, extra || {});
+const PHASES = [
+  { id: 'maint', title: 'Maintenance', state: 'visited', periodicity: 'every 12 months', cycles: [
+    { id: 'm1', label: '2022', stages: [s('m1a', 'Annual review', 'review', 'completed'), s('m1b', 'Medication review', 'care', 'completed'), s('m1c', 'Exercise programme', 'care', 'completed')] },
+    { id: 'm2', label: '2023', stages: [s('m2a', 'Annual review', 'review', 'completed'), s('m2b', 'Medication review', 'care', 'completed'), s('m2c', 'Move to complex phase', 'milestone', 'completed')] }] },
+  { id: 'complex', title: 'Complex', state: 'active', periodicity: 'every 6 months', cycles: [
+    { id: 'c1', label: 'Jul-2025', stages: [s('c1a', 'Specialist review', 'review', 'completed'), s('c1b', 'Medication adjustment', 'care', 'completed'), s('c1c', 'Physiotherapy', 'care', 'failed'), s('c1d', 'Falls assessment', 'care', 'completed')] },
+    { id: 'c2', label: 'Jan-2026', stages: [s('c2a', 'Specialist review', 'review', 'completed', { when: '05-Jan-2026', team: 'Neurology clinic' }), s('c2b', 'Medication adjustment', 'care', 'current', { team: 'Movement disorders nurse' }), s('c2c', 'Physiotherapy', 'care', 'future'), s('c2d', 'Falls assessment', 'care', 'future'), s('c2e', 'Speech and language therapy', 'care', 'future')] }] },
+  { id: 'pall', title: 'Palliative', state: 'unvisited', cycles: [] },
+];
+const label = (t) => h('p', { className: 'cui-label', style: { margin: '0 0 4px' } }, t);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 720 } },
+    h('div', null, label('Active phase, latest cycle'), h(CarePathwayCycle, { title: "Parkinson's disease", phases: PHASES })),
+    h('div', null, label('Paused with an event marker, collapsed to the mini diagram'),
+      h(CarePathwayCycle, { title: "Parkinson's disease", phases: PHASES, status: 'paused', statusReason: 'Hospitalisation', event: { label: 'Hospital admission 02-Mar-2026', onOpen: function () {} }, defaultCollapsed: true })))
+);
+</script>

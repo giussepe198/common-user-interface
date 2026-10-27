@@ -1,0 +1,61 @@
+<!-- @dsCard group="Terminology" width=1200 height=1020 subtitle="Terminology search: common matches first, count, details flyout, no matches, busy; AU and NZ editions" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TerminologySearch, FormField, matchesDescription, ClinicalLocaleProvider, SNOMED_EDITIONS } = window.ClinicalCUI;
+const TERMS = [
+  { id: 't1', term: 'Asthma', fsn: 'Asthma (disorder)', isCommon: true, parents: ['Disorder of lower respiratory system', 'Chronic disease of respiratory system'] },
+  { id: 't2', term: 'Allergic asthma', fsn: 'Allergic asthma (disorder)', parents: ['Asthma'] },
+  { id: 't3', term: 'Acute severe exacerbation of asthma co-occurrent with respiratory infection', fsn: 'Acute severe exacerbation of asthma co-occurrent with respiratory infection (disorder)', parents: ['Asthma attack'] },
+  { id: 't4', term: 'Asthma attack', fsn: 'Asthma attack (disorder)', isCommon: true, parents: ['Asthma'] },
+  { id: 't5', term: 'Exercise-induced asthma', fsn: 'Exercise-induced asthma (disorder)', parents: ['Asthma'] },
+  { id: 't6', term: 'Bronchial asthma', fsn: 'Asthma (disorder)', isSynonym: true, preferredTerm: 'Asthma', parents: ['Disorder of lower respiratory system'] },
+  { id: 't7', term: 'Occupational asthma', fsn: 'Occupational asthma (disorder)', parents: ['Asthma'] },
+];
+const fake = (q, opts) => new Promise((res) => setTimeout(() => res(TERMS.filter((t) => matchesDescription(q, t.term))), 10));
+const never = () => new Promise(() => {});
+const AU = SNOMED_EDITIONS.AU.clinicianRefset.id;
+const NZ = SNOMED_EDITIONS.NZ.clinicianRefset.id;
+const MI = SNOMED_EDITIONS.NZ.consumerRefsets[0].id;
+const REGIONAL = [
+  { id: 'r1', term: 'Paracetamol poisoning', fsn: 'Poisoning caused by paracetamol (disorder)', isCommon: true, descriptions: [
+    { term: 'Paracetamol poisoning', type: 'synonym', acceptability: { [AU]: 'preferred' } },
+    { term: 'Paracetamol overdose', type: 'synonym', acceptability: { [NZ]: 'preferred' } }] },
+  { id: 'r2', term: 'Māori health assessment', fsn: 'Māori health assessment (procedure)' },
+  { id: 'r3', term: 'Whānau ora assessment', fsn: 'Whānau ora assessment (procedure)' },
+  { id: 'r4', term: 'Diabetes mellitus', fsn: 'Diabetes mellitus (disorder)', isCommon: true, parents: ['Disorder of glucose metabolism'], descriptions: [
+    { term: 'Diabetes mellitus', type: 'synonym', acceptability: { [NZ]: 'preferred', [AU]: 'preferred' } },
+    { term: 'Mate huka', type: 'synonym', lang: 'mi', acceptability: { [MI]: 'preferred' } }] },
+];
+const regional = (q) => Promise.resolve(REGIONAL.filter((t) => matchesDescription(q, t.term) || (t.descriptions || []).some((d) => matchesDescription(q, d.term))));
+const caption = (t) => h('p', { style: { margin: '0 0 8px', fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' } }, t);
+function Demo() {
+  React.useEffect(() => {
+    setTimeout(() => {
+      const input = document.querySelector('#demo-a input');
+      if (input) { input.focus(); input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true })); input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true })); }
+    }, 60);
+  }, []);
+  return h('div', null, h('div', { style: { display: 'grid', gridTemplateColumns: 'auto minmax(0, 1fr)', gap: 24, alignItems: 'start' } },
+    h('div', { id: 'demo-a' }, h(TerminologySearch, { search: fake, label: 'Search for a condition', placeholder: 'Type a term', helpText: 'Type part of each word, for example "ast exe"', defaultQuery: 'asth', searchOnMount: true, labelMode: 'wrap', onBrowseRelated: function () {} })),
+    h('div', { style: { display: 'flex', flexDirection: 'column', gap: 32 } },
+      h(TerminologySearch, { search: () => Promise.resolve([]), label: 'Search for a condition', defaultQuery: 'cardiomyopathy xyz', searchOnMount: true, onKeepText: function () {} }),
+      h(TerminologySearch, { search: never, label: 'Search for a procedure', defaultQuery: 'appendic', searchOnMount: true, busyDelayMs: 0 }),
+      h(TerminologySearch, { search: fake, label: 'Coded diagnosis', defaultSelected: TERMS[1], helpText: 'Selected term shown in bold' }),
+      h('div', null, caption('Required, passed over while empty (missed)'),
+        h(TerminologySearch, { search: fake, label: 'Working diagnosis', required: true, missed: true })),
+      h('div', null, caption('Wrapped in FormField (label, asterisk and prompt from FormField)'),
+        h(FormField, { label: 'Reason for admission', required: true, prompt: 'Type part of each word' }, h(TerminologySearch, { search: fake })))
+    )
+  ),
+  h('div', { style: { display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 40, alignItems: 'start', marginTop: 24, paddingTop: 16, borderTop: '1px solid var(--border)' } },
+    h('div', null, caption('AU: SNOMED CT-AU via NCTS, Australian English preferred terms'),
+      h(ClinicalLocaleProvider, { region: 'AU' }, h(TerminologySearch, { search: regional, label: 'Search for a condition', defaultQuery: 'parac', searchOnMount: true, showEdition: true }))),
+    h('div', { id: 'demo-nz' }, caption('NZ: NZ Edition; "whanau" finds "Whānau" (macron-insensitive), macrons always displayed'),
+      h(ClinicalLocaleProvider, { region: 'NZ', teReoLabels: true }, h(TerminologySearch, { search: regional, label: 'Search for an assessment', defaultQuery: 'whanau', searchOnMount: true, showEdition: true })),
+      h('div', { style: { height: 12 } }),
+      h(ClinicalLocaleProvider, { region: 'NZ' }, h(TerminologySearch, { search: regional, label: 'Coded assessment', defaultSelected: REGIONAL[2], helpText: 'Selected term keeps its macrons' })))
+  ));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

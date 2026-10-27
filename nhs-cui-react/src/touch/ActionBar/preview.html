@@ -1,0 +1,26 @@
+<!-- @dsCard group="Mobile touch inputs" height=430 width=390 subtitle="Bottom action bar: row with primary on the right, stack with summary, three actions" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ActionBar } = window.ClinicalCUI;
+const cap = t => h('p', { className: 'cui-label', style: { margin: '12px 0 4px' } }, t);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 390 } },
+    cap('Row: Cancel and the primary action on the right (B3)'),
+    h(ActionBar, { sticky: false, actions: [
+      { label: 'Record W: Withheld', variant: 'primary' },
+      { label: 'Cancel' }
+    ] }),
+    cap('Stack with summary line (P1)'),
+    h(ActionBar, { sticky: false, layout: 'stack', summary: h('span', null, 'Mon 26-Oct-2026 ', h('strong', null, 'Approx 21:30')), actions: [
+      { label: 'Use this date and time', variant: 'primary' }
+    ] }),
+    cap('Three actions'),
+    h(ActionBar, { sticky: false, size: 48, actions: [
+      { label: 'Previous', icon: 'chevron-left' },
+      { label: 'Skip' },
+      { label: 'Save', variant: 'primary' }
+    ] })
+  )
+);
+</script>

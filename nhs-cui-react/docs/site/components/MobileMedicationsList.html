@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MobileMedicationsList · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile screens</p>
+<h1 style="margin:0 0 4px;font-size:20px">MobileMedicationsList</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Medicines list (A3): current and past, group and sort, status lines, look-ahead strip · Guidelines: <code>src/mobile/MobileMedicationsList/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MobileMedicationsList, MobilePatientHeader, MobileTabBar, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27, 14, 6);
+const at = (hh, mm, d) => new Date(2026, 9, d || 27, hh, mm || 0);
+const s = (v, u) => ({ kind: 'simple', values: [v], unit: u || 'mg' });
+const meds = [
+  { id: 'para', status: 'Started', startDate: at(8, 0, 24), line: { genericName: 'paracetamol', strength: s(500), form: 'tablet', route: 'oral', dose: { value: 1, unit: 'g' }, frequency: 'four times a day' }, schedule: { state: 'overdue', at: at(13) } },
+  { id: 'fluc', status: 'Started', startDate: at(8, 0, 25), line: { genericName: 'flucloxacillin', strength: s(500), form: 'capsule', route: 'oral', dose: { value: 500, unit: 'mg' }, frequency: 'four times a day' }, schedule: { state: 'due', at: at(14) }, alerts: ['Allergy alert'] },
+  { id: 'meto', status: 'Started', startDate: at(8, 0, 20), line: { genericName: 'metoprolol', strength: s(47.5), form: 'modified-release tablet', route: 'oral', dose: { value: 47.5, unit: 'mg' }, frequency: 'once a day', qualifiers: ['in the morning'] }, schedule: { state: 'given', lastGivenAt: at(8, 5), nextAt: at(8, 0, 28) } },
+  { id: 'aml', status: 'Suspended', suspendedOn: at(9, 0, 26), startDate: at(8, 0, 10), line: { genericName: 'amlodipine', strength: s(5), form: 'tablet', route: 'oral', dose: { value: 5, unit: 'mg' }, frequency: 'once a day' } },
+  { id: 'tram', status: 'Started', startDate: at(8, 0, 24), line: { genericName: 'tramadol', strength: s(50), form: 'capsule', route: 'oral', dose: { value: [50, 100], unit: 'mg' }, frequency: 'every 6 hours when required', qualifiers: ['maximum 400 mg in 24 hours'] }, schedule: { state: 'available', lastGivenAt: at(6, 30) } },
+  { id: 'enox', status: 'Started', startDate: at(6, 0, 24), line: { genericName: 'enoxaparin', strength: { kind: 'inFluid', values: [40], unit: 'mg', fluidQuantity: 0.4, fluidUnit: 'mL' }, form: 'injection', route: 'subcutaneous', dose: { value: 40, unit: 'mg' }, frequency: 'once a day' }, schedule: { state: 'next', at: at(6, 0, 28) } },
+  { id: 'ins', status: 'Started', startDate: at(21, 0, 24), line: { genericName: 'insulin glargine', strength: { kind: 'perUnit', values: [100], unit: 'units', fluidUnit: 'mL' }, form: 'injection', route: 'subcutaneous', dose: { value: 18, unit: 'units' }, frequency: 'once a day', qualifiers: ['at night'] }, schedule: { state: 'next', at: at(21) } },
+  { id: 'amox', status: 'Completed', startDate: at(8, 0, 15), endDate: at(20, 0, 22), line: { genericName: 'amoxicillin', strength: s(500), form: 'capsule', route: 'oral', dose: { value: 500, unit: 'mg' }, frequency: 'three times a day' } },
+  { id: 'ome', status: 'Discontinued', startDate: at(8, 0, 12), endDate: at(10, 0, 25), line: { genericName: 'omeprazole', strength: s(20), form: 'capsule', route: 'oral', dose: { value: 20, unit: 'mg' }, frequency: 'once a day' } },
+];
+const patient = { name: { familyName: 'Ngata', givenName: 'Mereana', title: 'Ms' }, dateOfBirth: '1958-03-14', identifiers: [{ type: 'nhi', value: 'ZZZ0016' }], allergies: { status: 'known', items: [{ name: 'penicillin', lastUpdated: '2024-02-02' }, { name: 'latex', lastUpdated: '2024-02-02' }] } };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(ClinicalLocaleProvider, { region: 'NZ' },
+    h('div', { style: { maxWidth: 390, border: '1px solid var(--border)', display: 'flex', flexDirection: 'column' } },
+      h(MobilePatientHeader, { patient, variant: 'condensed', now, detailsSheetProps: { closeOnBrowserBack: false } }),
+      h(MobileMedicationsList, { medications: meds, now, listHeight: 480, onOpen: () => {} }),
+      h(MobileTabBar, { sticky: false, current: 'medicines', items: [{ id: 'summary', label: 'Summary', icon: 'summary' }, { id: 'medicines', label: 'Medicines', icon: 'medicines' }, { id: 'obs', label: 'Obs', icon: 'obs' }, { id: 'notes', label: 'Notes', icon: 'notes' }, { id: 'more', label: 'More', icon: 'dots' }] })
+    )
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

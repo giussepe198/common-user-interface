@@ -1,0 +1,118 @@
+<!-- @dsCard group="Patient identification" width=1200 height=2180 subtitle="Patient banner: living, expanded, deceased, unknown values" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { PatientBanner, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27, 10, 0);
+const caption = (t) => h('div', { style: { font: '12px/16px var(--font-sans)', color: 'var(--ink-muted)', margin: '12px 0 4px' } }, t);
+const open = () => {};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    caption('Living patient, Zone 2 collapsed, known allergies'),
+    h(PatientBanner, {
+      sticky: false, now,
+      name: { familyName: 'Chandrasekhar', givenName: 'Subramanyan', title: 'Mr' },
+      preferredName: 'Rama',
+      dateOfBirth: '1945-07-14', gender: 'Male', nhsNumber: '9990000018',
+      address: { type: 'Usual address', lines: ['340 Gloucester Road', 'Walton'], town: 'Tewkesbury', postcode: 'gl204rt' },
+      contacts: { home: '02081234567', work: '01184960823', mobile: '07700900555', email: 'rama@example.com' },
+      allergies: { status: 'known', items: [{ name: 'Latex', lastUpdated: '1961-11-14' }, { name: 'Peanuts', lastUpdated: '1997-08-15' }, { name: 'Penicillin', lastUpdated: '2003-10-02' }] },
+      section3: { title: 'Risks: none recorded' },
+    }),
+    caption('Zone 2 expanded, record links on'),
+    h(PatientBanner, {
+      sticky: false, now, onOpenRecord: open, defaultZone2Expanded: true,
+      name: { familyName: 'evans-west', givenName: 'anne-jorun', title: 'Dr' },
+      dateOfBirth: '2025-08-01', gender: 'Female', nhsNumber: '999 000 0026',
+      address: { type: 'Temporary address', lines: ['Flat 2', '18 Orchard Cottage', "King's Road"], town: 'Ipswich', county: 'Northshire', postcode: 'NS33 8KR' },
+      contacts: { home: '01632 960326', mobile: '+1 212 555 2368' },
+      allergies: { status: 'none-known' },
+    }),
+    caption('Deceased patient'),
+    h(PatientBanner, {
+      sticky: false, now,
+      name: { familyName: 'Oliver', givenName: 'James', title: 'Sir' },
+      dateOfBirth: '1945-07-14', dateOfDeath: '2006-12-06', gender: 'Male', nhsNumber: '9990000034',
+      address: { lines: ['3 Mill Lane'], town: 'Ipswich', postcode: 'NS3 1AB' },
+      allergies: { status: 'not-recorded' },
+    }),
+    caption('Unknown and unavailable values'),
+    h(PatientBanner, {
+      sticky: false, now,
+      name: { familyName: 'Smith', givenName: 'John' },
+      dateOfBirth: null, gender: null, nhsNumber: null,
+    }),
+    caption('AU: IHI (unverified), URN, Medicare with IRN; "Nil known" with who and when; similar-name warning'),
+    h(ClinicalLocaleProvider, { region: 'AU' }, h(PatientBanner, {
+      sticky: false, now, defaultZone2Expanded: true,
+      name: { familyName: 'Nguyen', givenName: 'Mia Rose', title: 'Ms' }, preferredName: 'Mimi',
+      similarNameWarning: 'Similar name on this ward: NGUYEN, My',
+      dateOfBirth: '1988-03-02', gender: '2',
+      identifiers: [
+        { type: 'ihi', value: '8003601234567894', ihiRecordStatus: 'Unverified' },
+        { type: 'mrn', value: '0042137' },
+        { type: 'medicare', value: '2123456701', irn: '1' },
+      ],
+      address: { type: 'Usual address', unit: 'Unit 2', lines: ['54 Stockton Rd'], town: 'Bunbury', state: 'WA', postcode: '6230' },
+      contacts: { home: '+61255504321', mobile: '0491570156' },
+      allergies: { status: 'none-known', recordedBy: 'RN Kate Lee', recordedAt: '2026-10-20' },
+    })),
+    caption('AU: single name, DD/MM/YYYY option, allergies not recorded (warning)'),
+    h(ClinicalLocaleProvider, { region: 'AU' }, h(PatientBanner, {
+      sticky: false, now, dateFormat: 'dd/mm/yyyy',
+      name: { familyName: 'Ngapanji', givenName: '' }, dateOfBirth: '1959-08-21', gender: '1',
+      identifiers: [{ type: 'mrn', value: '0051882' }, { type: 'dva', value: 'NBUR9080', dvaCardType: 'Gold' }],
+      allergies: { status: 'not-recorded' },
+    })),
+    caption('NZ: NHI, family name as recorded with macrons, te reo gender label, allergy list'),
+    h(ClinicalLocaleProvider, { region: 'NZ', teReoLabels: true }, h(PatientBanner, {
+      sticky: false, now, defaultZone2Expanded: true, flagTestIdentifiers: false,
+      name: { familyName: 'Te Huia', givenName: 'Kāhu', title: 'Ms' }, preferredName: 'Mere',
+      dateOfBirth: '1990-05-01', gender: 'F',
+      identifiers: [{ type: 'nhi', value: 'ZBN77VL' }],
+      address: { type: 'Usual address', lines: ['123 Rural Road'], suburb: 'RD 2', town: 'Rangiora', postcode: '7472' },
+      contacts: { home: '+6433123456', mobile: '0211234567' },
+      allergies: { status: 'known', items: [{ name: 'Penicillin', reaction: 'rash', lastUpdated: '2024-02-11' }, { name: 'Peanuts', reaction: 'throat swelling', lastUpdated: '2026-10-25', newThisAdmission: true }] },
+    })),
+    caption('NZ: unidentified patient, test NHI flagged, allergy status unknown'),
+    h(ClinicalLocaleProvider, { region: 'NZ' }, h(PatientBanner, {
+      sticky: false, now, unidentified: true,
+      name: { familyName: 'Unknown', givenName: 'Female 2' }, gender: 'U',
+      identifiers: [{ type: 'nhi', value: 'ZAC5361' }],
+      allergies: { status: 'unknown' },
+    })),
+    caption('AU (G12): Medicare valid to expired; My Health Record access code required (access options open)'),
+    h(ClinicalLocaleProvider, { region: 'AU' }, h(PatientBanner, {
+      sticky: false, now,
+      name: { familyName: 'Walker', givenName: 'Tom' }, dateOfBirth: '1971-02-11', gender: '1',
+      identifiers: [{ type: 'mrn', value: '0063391' }, { type: 'medicare', value: '2123456701', irn: '2', medicareValidTo: '09/2026' }],
+      myHealthRecord: { state: 'access-code-required', onSubmitAccessCode: () => {}, onEmergencyAccess: () => {} },
+      allergies: { status: 'none-known' },
+    })),
+    h('div', { style: { height: 150 } }),
+    caption('AU (G12): emergency access indicator'),
+    h(ClinicalLocaleProvider, { region: 'AU' }, h(PatientBanner, {
+      sticky: false, now,
+      name: { familyName: 'Walker', givenName: 'Tom' }, dateOfBirth: '1971-02-11', gender: '1',
+      identifiers: [{ type: 'ihi', value: '8003601234567894' }, { type: 'mrn', value: '0063391' }],
+      myHealthRecord: { state: 'emergency-access', emergencyAccessFrom: now, emergencyReason: 'Unconscious on arrival' },
+      allergies: { status: 'not-recorded' },
+    })),
+    caption('NZ (G12): partial date of birth, name protected, address and contacts protected, dormant NHI'),
+    h(ClinicalLocaleProvider, { region: 'NZ' }, h(PatientBanner, {
+      sticky: false, now, defaultZone2Expanded: true, flagTestIdentifiers: false,
+      name: { familyName: 'Parata', givenName: 'Hine' }, nameProtected: true,
+      partialDateOfBirth: '1975', gender: 'F',
+      identifiers: [{ type: 'nhi', value: 'ZAC5361', nhiStatus: 'dormant', liveNhi: 'ZBN77VL' }],
+      onUseLiveNhi: () => {}, onRevealProtected: () => {},
+      address: { type: 'Usual address', lines: ['12 Kōwhai Street'], suburb: 'Riccarton', town: 'Christchurch', postcode: '8011', protected: true },
+      contacts: { mobile: '0211234567', protected: true },
+      allergies: { status: 'none-known' },
+    }))
+  )
+);
+setTimeout(() => {
+  const t = document.querySelector('.cui-patient-banner__mhr .cui-mhr__options-toggle');
+  if (t) t.click();
+}, 30);
+</script>

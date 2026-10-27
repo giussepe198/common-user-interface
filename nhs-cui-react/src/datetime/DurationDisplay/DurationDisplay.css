@@ -1,0 +1,2 @@
+.cui-duration-display { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cui-duration-display--null { color: var(--ink-muted); }

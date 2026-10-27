@@ -1,0 +1,8 @@
+.cui-worklist { display: flex; flex-direction: column; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; }
+.cui-worklist__header { display: flex; flex-direction: column; gap: 10px; padding: var(--space-3) var(--space-4) var(--space-2); background: var(--surface); border-bottom: 1px solid var(--border); }
+.cui-worklist__title-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; column-gap: var(--space-2); }
+.cui-worklist__title { margin: 0; font-size: 20px; line-height: 26px; font-weight: 600; }
+.cui-worklist__context { font-size: 14px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-worklist__result { margin: 0; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+.cui-worklist__list { list-style: none; margin: 0; padding: var(--space-3); display: flex; flex-direction: column; gap: 10px; }
+.cui-worklist__empty { margin: 0; padding: var(--space-6) var(--space-4); text-align: center; color: var(--ink-muted); }

@@ -1,0 +1,20 @@
+<!-- @dsCard group="Terminology" width=1200 height=640 subtitle="Concept details: full name, synonym, parents, more specific concepts; AU edition, NZ te reo consumer term" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ConceptFlyout, ClinicalLocaleProvider, SNOMED_EDITIONS } = window.ClinicalCUI;
+const MI = SNOMED_EDITIONS.NZ.consumerRefsets[0].id;
+const NZC = SNOMED_EDITIONS.NZ.consumerRefsets[1].id;
+const label = (t, el) => h('div', null, h('p', { style: { margin: '0 0 6px', fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' } }, t), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    h(ConceptFlyout, { concept: { term: 'Heart attack', fsn: 'Myocardial infarction (disorder)', isSynonym: true, preferredTerm: 'Myocardial infarction', parents: ['Ischaemic heart disease', 'Myocardial necrosis'], moreSpecific: ['Acute myocardial infarction', 'Old myocardial infarction', 'Silent myocardial infarction'] }, onBrowseRelated: function () {} }),
+    h(ConceptFlyout, { modifier: 'knownAbsent', concept: { term: 'Gastroenteritis', fsn: 'Gastroenteritis (disorder)', parents: ['Disorder of digestive system'] }, onBrowseRelated: function () {} }),
+    h(ConceptFlyout, { concept: { term: 'SLE - Systemic lupus erythematosus', fsn: 'Systemic lupus erythematosus (disorder)', parents: ['Autoimmune disease'] } }),
+    label('AU: edition shown', h(ClinicalLocaleProvider, { region: 'AU' }, h(ConceptFlyout, { edition: SNOMED_EDITIONS.AU.label, concept: { term: 'Paracetamol poisoning', fsn: 'Poisoning caused by paracetamol (disorder)', parents: ['Poisoning caused by analgesic'] } }))),
+    label('NZ with te reo labels: consumer terms', h(ClinicalLocaleProvider, { region: 'NZ', teReoLabels: true }, h(ConceptFlyout, { edition: SNOMED_EDITIONS.NZ.label, concept: { term: 'Diabetes mellitus', fsn: 'Diabetes mellitus (disorder)', parents: ['Disorder of glucose metabolism'], descriptions: [
+      { term: 'Diabetes', type: 'synonym', acceptability: { [NZC]: 'preferred' } },
+      { term: 'Mate huka', type: 'synonym', lang: 'mi', acceptability: { [MI]: 'preferred' } }] } })))
+  )
+);
+</script>

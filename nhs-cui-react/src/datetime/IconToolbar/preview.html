@@ -1,0 +1,24 @@
+<!-- @dsCard group="Display standards" height=190 width=1000 subtitle="Icon toolbar grouped by task, with selection-dependent commands" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { IconToolbar } = window.ClinicalCUI;
+const groups = [
+  { id: 'find', label: 'Find', items: [{ id: 'search', icon: 'search', label: 'Search', shortcut: 'Ctrl+F' }, { id: 'filter', icon: 'filter', label: 'Filter', pressed: true }] },
+  { id: 'record', label: 'Patient record', items: [
+    { id: 'add', icon: 'plus', label: 'Add patient', shortcut: 'Ctrl+N' },
+    { id: 'edit', icon: 'pencil', label: 'Edit patient', requiresSelection: true },
+    { id: 'delete', icon: 'trash', label: 'Delete patient', requiresSelection: true, meaning: 'error' },
+  ] },
+  { id: 'view', label: 'View', items: [{ id: 'refresh', icon: 'refresh', label: 'Refresh', shortcut: 'F5' }, { id: 'history', icon: 'history', label: 'History' }] },
+];
+function Demo() {
+  const [sel, setSel] = React.useState(false);
+  return h('div', { style: { display: 'flex', flexDirection: 'column', gap: 12 } },
+    h(IconToolbar, { label: 'Patient list tools', groups, hasSelection: true }),
+    h(IconToolbar, { label: 'Patient list tools, nothing selected', groups, hasSelection: sel, labels: 'hidden' }),
+    h('div', { className: 'cui-label' }, 'Second toolbar: no patient selected, so Edit patient and Delete patient are unavailable (labels hidden, names in tooltips).')
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

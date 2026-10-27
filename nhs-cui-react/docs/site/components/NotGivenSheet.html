@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NotGivenSheet · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile screens</p>
+<h1 style="margin:0 0 4px;font-size:20px">NotGivenSheet</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Not given sheet (B3): region codes, required reason, prescriber prompt, commit names the code · Guidelines: <code>src/mobile/NotGivenSheet/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { NotGivenSheet, ClinicalLocaleProvider } = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 12, lineHeight: '16px', color: 'var(--ink-muted)' } }, t);
+function Demo({ region, initial, description }) {
+  const [open, setOpen] = React.useState(true);
+  const [value, setValue] = React.useState(initial);
+  const [done, setDone] = React.useState('');
+  return h('div', { style: { position: 'relative', height: 640, maxWidth: 390, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--banner)' } },
+    h('div', { style: { padding: 16, display: 'flex', flexDirection: 'column', gap: 8, color: 'var(--on-banner)' } },
+      h('button', { type: 'button', className: 'cui-touch-button cui-touch-button--secondary cui-touch-button--h48', onClick: () => setOpen(true) }, 'Not given'),
+      done ? h('p', { role: 'status', style: { margin: 0 } }, done) : null),
+    h(ClinicalLocaleProvider, { region },
+      h(NotGivenSheet, { open, portal: false, autoFocus: false, closeOnBrowserBack: false, value, onChange: setValue, description, reasonHint: 'Tap the field and speak, or type',
+        onClose: () => setOpen(false), onRecord: (v, c) => { setOpen(false); setDone('Recorded ' + c.code + ': ' + c.label); } })));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    label('AU: NIMC codes, W chosen with its required reason'),
+    h(Demo, { region: 'AU', description: 'CHEN, Wei · paracetamol 1 g, due 13:00', initial: { code: 'W', reason: 'Temperature 36.9, patient comfortable. Will review at 16:00.', prompts: {} } }),
+    label('NZ: NMC codes, nothing chosen yet'),
+    h(Demo, { region: 'NZ', description: 'Ngata, Mereana · flucloxacillin 500 mg, due 14:00', initial: { code: null, reason: '', prompts: {} } })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

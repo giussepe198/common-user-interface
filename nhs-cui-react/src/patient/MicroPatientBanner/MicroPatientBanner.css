@@ -1,0 +1,46 @@
+/* Micro patient banner (MPB): top, horizontal, full width, distinct background (MPB-0009..0014). Sizes in rem so user font settings apply (MPB-0047). */
+.cui-micro-banner { position: relative; width: 100%; background: var(--banner); color: var(--on-banner); border: 1px solid var(--border-strong); border-bottom: 3px solid var(--border-strong); font-size: 0.875rem; line-height: 1.25rem; }
+.cui-micro-banner :focus-visible { outline: 2px solid var(--on-banner); outline-offset: 2px; }
+.cui-micro-banner .cui-labelled-value__label { color: var(--on-banner-muted); font-size: 0.75rem; }
+.cui-micro-banner .cui-labelled-value__value { color: var(--on-banner); font-size: 0.875rem; }
+.cui-micro-banner .cui-labelled-value__value--unknown { color: var(--on-banner-muted); }
+.cui-micro-banner .cui-nhs-number__flag { color: var(--on-banner); }
+.cui-micro-banner .cui-deftip__term { text-decoration-color: var(--on-banner-muted); }
+.cui-micro-banner__zone1 { display: flex; flex-direction: column; gap: 2px; padding: var(--space-2) var(--space-3); }
+.cui-micro-banner__name { font-size: 1.0625rem; line-height: 1.375rem; font-weight: 600; color: var(--on-banner); }
+.cui-micro-banner__name-button { font: inherit; color: inherit; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; }
+.cui-micro-banner__ids { display: flex; flex-wrap: wrap; column-gap: var(--space-4); row-gap: 2px; align-items: flex-start; }
+.cui-micro-banner__dates { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.cui-micro-banner__death { display: flex; flex-wrap: wrap; column-gap: var(--space-3); }
+
+/* Deceased: colour and pattern (MPB-0055, MPB-0056). */
+.cui-micro-banner--deceased .cui-micro-banner__zone1 {
+  background-color: var(--on-banner-muted);
+  background-image: repeating-linear-gradient(135deg, var(--on-banner) 0 3px, transparent 3px 11px);
+  color: var(--banner);
+}
+.cui-micro-banner--deceased .cui-micro-banner__zone1 .cui-micro-banner__name,
+.cui-micro-banner--deceased .cui-micro-banner__zone1 .cui-labelled-value__label,
+.cui-micro-banner--deceased .cui-micro-banner__zone1 .cui-labelled-value__value { color: var(--banner); }
+.cui-micro-banner--deceased .cui-micro-banner__zone1 :focus-visible { outline-color: var(--banner); }
+@media (forced-colors: active) { .cui-micro-banner--deceased .cui-micro-banner__zone1 { border: 4px dashed CanvasText; } }
+
+/* Zone 2 */
+.cui-micro-banner__zone2 { border-top: 1px solid var(--banner-divider); }
+.cui-micro-banner__toggle { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: var(--space-2); padding: var(--space-1) var(--space-3); font: inherit; font-size: 0.75rem; line-height: 1rem; color: var(--on-banner-muted); background: none; border: 0; cursor: pointer; text-align: left; }
+.cui-micro-banner__toggle .cui-icon { color: var(--on-banner); }
+/* Expanded Zone 2 overlays the screen; a translucent fill and a note show that content is occluded (MPB-0007). */
+.cui-micro-banner__overlay { position: absolute; left: 0; right: 0; top: 100%; z-index: 25; background: color-mix(in srgb, var(--banner) 95%, transparent); color: var(--on-banner); border-bottom: 3px solid var(--banner-divider); box-shadow: var(--shadow-popover); }
+.cui-micro-banner__overlay[hidden] { display: none; }
+.cui-micro-banner__overlay-body { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-2) var(--space-3); }
+.cui-micro-banner__overlay .cui-address__type { color: var(--on-banner-muted); }
+.cui-micro-banner__overlay .cui-address__view-all { color: var(--on-banner); }
+.cui-micro-banner__overlay .cui-address__unknown { color: var(--on-banner-muted); }
+.cui-micro-banner__caution { display: flex; gap: var(--space-1); align-items: flex-start; margin: 0; font-size: 0.75rem; line-height: 1rem; color: var(--on-banner-muted); }
+.cui-micro-banner__caution .cui-icon { flex: none; }
+.cui-micro-banner__occlusion { display: flex; gap: var(--space-1); align-items: center; padding: var(--space-1) var(--space-3); font-size: 0.75rem; line-height: 1rem; font-style: italic; color: var(--on-banner-muted); border-top: 1px dashed var(--banner-divider); }
+.cui-micro-banner__occlusion .cui-icon { flex: none; }
+.cui-micro-banner .cui-identifier__flag, .cui-micro-banner .cui-patient-name__unidentified { color: var(--on-banner); }
+.cui-micro-banner .cui-identifier--unknown { color: var(--on-banner-muted); }
+.cui-micro-banner--deceased .cui-micro-banner__zone1 .cui-identifier__flag,
+.cui-micro-banner--deceased .cui-micro-banner__zone1 .cui-patient-name__unidentified { color: var(--banner); }

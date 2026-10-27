@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PrescriptionForm · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Medications</p>
+<h1 style="margin:0 0 4px;font-size:20px">PrescriptionForm</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Prescription form: sentence layout, pre-fill highlight, Authorise disabled until complete · Guidelines: <code>src/medications/PrescriptionForm/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { PrescriptionForm, ClinicalLocaleProvider } = window.ClinicalCUI;
+const o = (value, supplementary) => ({ value: value, supplementary: supplementary });
+const options = {
+  route: [o('oral'), o('intravenous')],
+  dose: [o('250 mg'), o('500 mg'), o('1 g')],
+  frequency: [o('twice a day'), o('three times a day'), o('four times a day'), o('every 6 hours as required')],
+  giveWhen: [o('for pain'), o('for fever')],
+  administrationTimes: [o('08:00; 20:00', 'Standard times'), o('10:00; 22:00', 'Non-standard times'), o('08:00; 14:00; 20:00', 'Standard times'), o('06:00; 12:00; 18:00; 22:00', 'Standard times')],
+  firstDose: [o('Today 14:00'), o('Today 20:00'), o('Tomorrow 08:00')],
+  duration: [o('5 days'), o('7 days'), o('ongoing')]
+};
+const timesFor = { 'twice a day': ['08:00; 20:00', 'Today 20:00'], 'three times a day': ['08:00; 14:00; 20:00', 'Today 14:00'], 'four times a day': ['06:00; 12:00; 18:00; 22:00', 'Today 12:00'] };
+const getPrefill = (field, v) => {
+  if (field === 'frequency' && timesFor[v.frequency]) return { administrationTimes: timesFor[v.frequency][0], firstDose: timesFor[v.frequency][1] };
+  return {};
+};
+const optionalFields = [
+  { id: 'reason', addLabel: 'Add a reason for prescribing', inlineLabel: 'for', label: 'Reason for prescribing', prompt: 'Select or enter a reason for prescribing', options: [o('community-acquired pneumonia'), o('urinary tract infection')], allowOther: true },
+  { id: 'review', addLabel: 'Add a review date', inlineLabel: 'review on', label: 'Review date', prompt: 'Select a review date', options: [o('29-Oct-2026'), o('31-Oct-2026')] }
+];
+const drug = { genericName: 'amoxicillin', form: 'capsule' };
+const block = (title, el) => h('div', { style: { marginBottom: 20 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    block('Drug selected, route not yet chosen: nothing else is shown', h(PrescriptionForm, { drug: drug, options: options, optionalFields: optionalFields, onCancel: () => {} })),
+    block('Frequency chosen: administration times and first dose pre-filled and highlighted, duration still needed', h(PrescriptionForm, { drug: drug, options: options, optionalFields: optionalFields, getPrefill: getPrefill, defaultValues: { route: 'oral', dose: '500 mg', frequency: 'three times a day', administrationTimes: '08:00; 14:00; 20:00', firstDose: 'Today 14:00' }, allowOther: ['dose', 'duration'], onCancel: () => {} })),
+    block('Complete, with a promoted reason field set to None (leave blank)', h(PrescriptionForm, { drug: { genericName: 'paracetamol', form: 'tablet' }, options: options, optionalFields: [Object.assign({}, optionalFields[0], { promoted: true })], defaultValues: { route: 'oral', dose: '1 g', frequency: 'every 6 hours as required', giveWhen: 'for pain', firstDose: 'Today 14:00', duration: 'ongoing', reason: null }, onAuthorise: () => {}, onCancel: () => {} })),
+    block('Complete but held: a High Priority alert is still unanswered (authoriseBlockedReason)', h(PrescriptionForm, { drug: drug, options: options, defaultValues: { route: 'oral', dose: '500 mg', frequency: 'three times a day', administrationTimes: '08:00; 14:00; 20:00', firstDose: 'Today 14:00', duration: '7 days' }, authoriseBlockedReason: 'Answer the High Priority interaction alert before authorising', onAuthorise: () => {}, onCancel: () => {} })),
+    block('AU and NZ: the drug line follows the regional rules (mixed-case lettering)', h('div', { style: { display: 'flex', flexDirection: 'column', gap: 12 } },
+      h(ClinicalLocaleProvider, { region: 'AU' }, h(PrescriptionForm, { title: 'New prescription (AU)', drug: { genericName: 'amiodarone', form: 'tablet' }, options: options, defaultValues: { route: 'oral' } })),
+      h(ClinicalLocaleProvider, { region: 'NZ' }, h(PrescriptionForm, { title: 'New prescription (NZ)', drug: { genericName: 'methotrexate', form: 'tablet' }, options: options, defaultValues: { route: 'oral' } }))))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

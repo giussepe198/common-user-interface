@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WorklistTaskCard · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile screens</p>
+<h1 style="margin:0 0 4px;font-size:20px">WorklistTaskCard</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Worklist task card: identity strip, status by shape and word, high-risk tag, similar-name flag (AU, NZ, GB) · Guidelines: <code>src/mobile/WorklistTaskCard/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { WorklistTaskCard, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = new Date(2026, 9, 27, 14, 5);
+const at = (hh, mm) => new Date(2026, 9, 27, hh, mm || 0);
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 12, lineHeight: '16px', color: 'var(--ink-muted)' } }, t);
+const box = (c) => h('div', { style: { maxWidth: 390 } }, c);
+const onStart = () => {};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    label('AU: overdue medicine'),
+    box(h(ClinicalLocaleProvider, { region: 'AU' }, h(WorklistTaskCard, { now, onStart, task: { id: 'a', kind: 'medication', dueAt: at(13), patient: { name: { familyName: 'Chen', givenName: 'Wei' }, dateOfBirth: '1949-09-02', identifiers: [{ type: 'mrn', value: '0412345' }], location: 'Bed 12' }, medication: { genericName: 'paracetamol', strength: { kind: 'simple', values: [500], unit: 'mg' }, form: 'tablet', brandName: 'Panadol', route: 'oral', dose: { value: 1, unit: 'g' }, frequency: 'four times a day' } } }))),
+    label('AU: high-risk medicine, similar name on the ward'),
+    box(h(ClinicalLocaleProvider, { region: 'AU' }, h(WorklistTaskCard, { now, onStart, task: { id: 'b', kind: 'medication', dueAt: at(14), highRisk: true, patient: { name: { familyName: 'Smith', givenName: 'Jon' }, dateOfBirth: '1985-01-30', identifiers: [{ type: 'mrn', value: '0420017' }], location: 'Bed 9', similarNames: [{ name: 'SMITH, John', location: 'bed 3' }] }, medication: { genericName: 'insulin aspart', strength: { kind: 'perUnit', values: [100], unit: 'units', fluidUnit: 'mL' }, form: 'injection', brandName: 'NovoRapid', route: 'subcutaneous', dose: { value: 6, unit: 'units' }, qualifiers: ['with lunch'] } } }))),
+    label('NZ: observations due, name as recorded, NHI'),
+    box(h(ClinicalLocaleProvider, { region: 'NZ' }, h(WorklistTaskCard, { now, onStart, task: { id: 'c', kind: 'observations', dueAt: at(14, 15), title: 'Observations (NZEWS)', detail: 'Last EWS 3 at 10:00', patient: { name: { familyName: 'Ngata', givenName: 'Mereana' }, dateOfBirth: '1958-03-14', identifiers: [{ type: 'nhi', value: 'ZZZ0016' }], location: 'Bed 7' } } }))),
+    label('GB: next task, and a completed one'),
+    box(h(WorklistTaskCard, { now, onStart, task: { id: 'd', kind: 'other', dueAt: at(15, 30), title: 'Fluid balance review', patient: { name: { familyName: 'Jones', givenName: 'Alys', title: 'Mrs' }, dateOfBirth: '1940-12-01', identifiers: [{ type: 'nhs', value: '9990000018' }], location: 'Bay 2, bed 4' } } })),
+    h('div', { style: { height: 8 } }),
+    box(h(WorklistTaskCard, { now, onStart, task: { id: 'e', kind: 'other', dueAt: at(12), completedAt: at(12, 12), title: 'Pressure area check', patient: { name: { familyName: 'Jones', givenName: 'Alys', title: 'Mrs' }, dateOfBirth: '1940-12-01', identifiers: [{ type: 'nhs', value: '9990000018' }], location: 'Bay 2, bed 4' } } }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

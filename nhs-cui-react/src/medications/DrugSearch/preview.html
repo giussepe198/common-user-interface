@@ -1,0 +1,72 @@
+<!-- @dsCard group="Medications" width=1200 height=1500 subtitle="Drug search: Quick List, prioritised and standard matches, feedback, spelling, synonyms, groups, busy; AU and NZ" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DrugSearch, ClinicalLocaleProvider } = window.ClinicalCUI;
+const g = (id, genericName, extra) => Object.assign({ id: id, genericName: genericName }, extra || {});
+const catalogue = [
+  g('amox', 'amoxicillin', { prioritised: true }),
+  g('amlo', 'amlodipine', { prioritised: true }),
+  g('aten', 'atenolol', { prioritised: true }),
+  g('aten-b', 'atenolol', { brandName: 'Atenix' }),
+  g('asp', 'aspirin', { prioritised: true }),
+  g('para', 'paracetamol', { prioritised: true }),
+  g('para-asp', 'paracetamol + aspirin'),
+  g('coam', 'co-amoxiclav', { ingredients: 'amoxicillin + clavulanic acid', prioritised: true }),
+  g('cocod', 'co-codamol', { ingredients: 'codeine + paracetamol' }),
+  g('codyd', 'co-dydramol', { ingredients: 'dihydrocodeine + paracetamol' }),
+  g('furo', 'furosemide', { synonyms: ['frusemide'] }),
+  g('flsal', 'fluticasone + salmeterol'),
+  g('hydral', 'hydralazine', { misSelectionRisk: true }),
+  g('hydrox', 'hydroxyzine', { misSelectionRisk: true }),
+  g('hydrocort', 'hydrocortisone'),
+  g('hydrochl', 'hydrochlorothiazide'),
+  g('hydromorph', 'hydromorphone'),
+  g('hydroxocob', 'hydroxocobalamin'),
+  g('hydroxychl', 'hydroxychloroquine'),
+  g('hydroxycarb', 'hydroxycarbamide'),
+  g('hydrotalc', 'hydrotalcite'),
+  g('hydroxyprog', 'hydroxyprogesterone'),
+  g('hydroxyethyl', 'hydroxyethylcellulose'),
+  g('hydrogen', 'hydrogen peroxide'),
+  g('hydroc-b', 'hydrocortisone', { brandName: 'Hydrocortone' }),
+  g('clotr', 'clotrimazole'),
+  g('clotr-b', 'clotrimazole', { brandName: 'Clotrisol' }),
+  { id: 'rehyd', brandName: 'Rehydrat' },
+  g('metf', 'metformin'),
+  g('metop', 'metoprolol'),
+  g('metoc', 'metoclopramide'),
+  g('amlo-b', 'amlodipine', { brandName: 'Norvasc' }),
+  g('amiod', 'amiodarone', { misSelectionRisk: true }),
+  g('prop', 'propranolol'),
+  g('propo', 'propofol'),
+  g('par1', 'paraffin, white soft', { groupId: 'paraffin' }),
+  g('par2', 'paraffin, yellow soft', { groupId: 'paraffin' }),
+  g('par3', 'paraffin, liquid', { groupId: 'paraffin' }),
+  g('par4', 'paraffin, white soft + liquid paraffin', { groupId: 'paraffin' })
+];
+const groups = [{ id: 'paraffin', title: 'paraffin' }];
+const quickLists = [
+  { id: 'gen', name: 'General Medicine', description: '10 commonly prescribed medications', items: ['para', 'amox', 'coam', 'asp', 'aten', 'amlo', 'furo', 'metf', 'cocod', 'clotr'].map(id => catalogue.find(c => c.id === id)) },
+  { id: 'resp', name: 'Respiratory', description: '2 respiratory medications', items: [catalogue.find(c => c.id === 'flsal'), catalogue.find(c => c.id === 'hydrocort')] }
+];
+const cell = (title, el) => h('div', { style: { minWidth: 0 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' } },
+    h('div', { style: { gridColumn: '1 / -1' } }, cell('Empty box: Quick List with change notice beside it (shortcuts locked while open)', h(DrugSearch, { catalogue: catalogue, quickLists: quickLists, quickListChangedOn: '2026-10-20' }))),
+    cell('"aten": prioritised section, then brand match in standard section', h(DrugSearch, { catalogue: catalogue, quickLists: quickLists, defaultQuery: 'aten' })),
+    cell('"hyd": height limited with count and Show all; mis-selection warnings', h(DrugSearch, { catalogue: catalogue, defaultQuery: 'hyd', maxVisibleRows: 8 })),
+    cell('"h": fewer than 2 characters', h(DrugSearch, { catalogue: catalogue, defaultQuery: 'h' })),
+    cell('"asprin" and "fru": spelling and synonym matches inline', h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16 } },
+      h(DrugSearch, { catalogue: catalogue, defaultQuery: 'asprin' }),
+      h(DrugSearch, { catalogue: catalogue, defaultQuery: 'fru' }))),
+    cell('"xyzq": no matches; "para": prioritised and standard sections with a group row "paraffin (4)"', h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16 } },
+      h(DrugSearch, { catalogue: catalogue, defaultQuery: 'xyzq' }),
+      h(DrugSearch, { catalogue: catalogue, groups: groups, defaultQuery: 'para' }))),
+    cell('Busy: an asynchronous search is still running', h(DrugSearch, { catalogue: catalogue, defaultQuery: 'amlo', busy: true })),
+    cell('AU: active ingredient first, brand in Title Case italic, mixed-case lettering ("am")', h(ClinicalLocaleProvider, { region: 'AU' }, h(DrugSearch, { catalogue: catalogue, defaultQuery: 'am' }))),
+    cell('NZ: HQSC Tall Man list ("prop")', h(ClinicalLocaleProvider, { region: 'NZ' }, h(DrugSearch, { catalogue: catalogue, defaultQuery: 'prop' }))),
+    cell('GB: no mixed case ("prop")', h(DrugSearch, { catalogue: catalogue, defaultQuery: 'prop' }))
+  )
+);
+</script>

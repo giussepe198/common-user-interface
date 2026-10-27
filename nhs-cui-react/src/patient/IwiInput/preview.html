@@ -1,0 +1,14 @@
+<!-- @dsCard group="Patient identification" width=1000 height=345 subtitle="Iwi affiliation (NZ, HISO 10094): macron-insensitive look-up, many iwi" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { IwiInput } = window.ClinicalCUI;
+// Consumer-supplied reference list (two entries from the HISO 10094 examples; a real system supplies the full classification).
+const iwiList = [{ code: '0101', name: 'Te Aupōuri' }, { code: '0104', name: 'Ngāpuhi' }];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 48, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+    h(IwiInput, { iwiList, defaultValue: { knows: 'yes', iwi: [{ code: '0104', name: 'Ngāpuhi', rohe: 'Te Tai Tokerau' }, { name: 'Te Rarawa' }] } }),
+    h(IwiInput, { iwiList })
+  )
+);
+</script>

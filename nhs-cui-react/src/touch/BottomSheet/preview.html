@@ -1,0 +1,27 @@
+<!-- @dsCard group="Mobile touch inputs" height=640 width=390 subtitle="Bottom sheet: modal, labelled, scrolls inside, unsaved data blocks swipe and backdrop" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { BottomSheet, ActionBar } = window.ClinicalCUI;
+function Demo() {
+  const [open, setOpen] = React.useState(true);
+  const [reason, setReason] = React.useState('Temperature 36.9, patient comfortable.');
+  const opt = (code, text, on) => h('label', { key: code, style: { display: 'flex', alignItems: 'center', gap: 12, minHeight: 52, padding: '4px 16px', borderTop: '1px solid var(--border)', background: on ? 'var(--accent-surface)' : undefined } },
+    h('input', { type: 'radio', name: 'r', defaultChecked: on, style: { width: 22, height: 22, margin: 0 } }), h('span', { style: { fontWeight: on ? 600 : 400 } }, code + ': ' + text));
+  return h('div', { style: { position: 'relative', height: 600, maxWidth: 390, overflow: 'hidden', transform: 'translateZ(0)', background: 'var(--surface-sunken)', border: '1px solid var(--border)' } },
+    h('div', { style: { padding: 16 } }, h('button', { type: 'button', className: 'cui-touch-button cui-touch-button--secondary cui-touch-button--h48', onClick: () => setOpen(true) }, 'Open sheet')),
+    h(BottomSheet, {
+      open, portal: false, autoFocus: false, closeOnBrowserBack: false, hasUnsavedData: reason !== '',
+      title: 'Why was it not given?', description: 'CHEN, Wei · paracetamol 1 g, due 13:00',
+      onClose: () => setOpen(false),
+      footer: h(ActionBar, { sticky: false, actions: [{ label: 'Record W: Withheld', variant: 'primary', onClick: () => setOpen(false) }, { label: 'Cancel', onClick: () => setOpen(false) }] })
+    },
+      h('div', null, opt('A', 'Absent'), opt('F', 'Fasting'), opt('R', 'Refused'), opt('V', 'Vomiting'), opt('W', 'Withheld', true), opt('S', 'Self administered')),
+      h('div', { style: { padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 6 } },
+        h('label', { htmlFor: 'bs-why', style: { fontWeight: 600 } }, 'Reason'),
+        h('textarea', { id: 'bs-why', rows: 2, value: reason, onChange: e => setReason(e.target.value), style: { font: 'inherit', fontSize: 16, padding: '10px 12px', border: '1px solid var(--border-strong)', borderRadius: 4, background: 'var(--surface)', color: 'var(--ink)' } }))
+    )
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

@@ -1,0 +1,30 @@
+<!-- @dsCard group="Patient identification" height=456 subtitle="Current Gender and Sex display" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ClinicalLocaleProvider } = window.ClinicalCUI;
+const regionCaption = (t) => h('div', { style: { font: '600 12px/16px var(--font-sans)', color: 'var(--ink-muted)', margin: '12px 0 4px' } }, t);
+const inRegion = (region, child, extra) => h(ClinicalLocaleProvider, Object.assign({ region }, extra || {}), child);
+const { GenderDisplay } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    regionCaption('GB (NHS CUI)'),
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 8, padding: 12, background: 'var(--surface)' } },
+    h(GenderDisplay, { value: 'Not Known' }),
+    h(GenderDisplay, { kind: 'sex', value: 'Female' }),
+    h(GenderDisplay, { value: 'Other Specific', layout: 'stacked' }),
+    h(GenderDisplay, { kind: 'sex', value: null })
+  ),
+    regionCaption('AU: ABS 2020 labels from METeOR codes'),
+    inRegion('AU', h('div', { style: { display: 'flex', flexDirection: 'column', gap: 8, padding: 12, background: 'var(--surface)' } },
+      h(GenderDisplay, { value: '3' }),
+      h(GenderDisplay, { value: '4', detail: 'genderqueer' }),
+      h(GenderDisplay, { kind: 'sex', value: '2' }))),
+    regionCaption('NZ: HISO 10046 codes with te reo Māori labels'),
+    inRegion('NZ', h('div', { style: { display: 'flex', flexDirection: 'column', gap: 8, padding: 12, background: 'var(--surface)' } },
+      h(GenderDisplay, { value: 'F' }),
+      h(GenderDisplay, { value: 'O', detail: 'non-binary' }),
+      h(GenderDisplay, { kind: 'sex', value: '1' })), { teReoLabels: true })
+  )
+);
+</script>

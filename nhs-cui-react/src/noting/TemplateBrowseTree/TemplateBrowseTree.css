@@ -1,0 +1,13 @@
+.cui-template-tree { display: flex; flex-direction: column; gap: var(--space-2); width: 280px; max-width: 100%; padding: var(--space-2) var(--space-3) var(--space-3); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); font-size: 14px; line-height: 20px; color: var(--ink); }
+.cui-template-tree--hidden { width: auto; padding-bottom: var(--space-2); }
+.cui-template-tree__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.cui-template-tree__title { margin: 0; font-size: 15px; line-height: 20px; font-weight: 600; }
+.cui-template-tree__body { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+.cui-template-tree__body[hidden] { display: none; }
+.cui-template-tree__list { list-style: none; margin: 0; padding: 0; align-self: stretch; }
+.cui-template-tree__row { display: flex; align-items: flex-start; gap: 2px; }
+.cui-template-tree__expand { flex: none; display: inline-flex; padding: 2px; margin-top: 1px; color: var(--ink-muted); background: transparent; border: 0; border-radius: var(--radius-sm); cursor: pointer; }
+.cui-template-tree__expand-space { flex: none; width: 20px; }
+.cui-template-tree__open { flex: 1 1 auto; min-width: 0; font: inherit; text-align: left; color: var(--ink); background: transparent; border: 0; border-radius: var(--radius-sm); padding: 1px 4px; cursor: pointer; overflow-wrap: anywhere; }
+.cui-template-tree__open:hover { background: var(--hover); }
+.cui-template-tree__done { flex: none; display: inline-flex; color: var(--success); margin-top: 2px; }

@@ -1,0 +1,12 @@
+<!-- @dsCard group="Foundations" height=150 subtitle="Line icons, 16 and 24px" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { Icon, ICON_PATHS } = window.ClinicalCUI;
+const names = Object.keys(ICON_PATHS);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(124px, 1fr))', gap: 8 } },
+    names.map(n => h('div', { key: n, style: { display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--ink-muted)' } },
+      h('span', { style: { color: 'var(--ink)' } }, h(Icon, { name: n, size: 24, label: n })), n)))
+);
+</script>

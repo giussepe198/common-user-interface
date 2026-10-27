@@ -1,0 +1,28 @@
+<!-- @dsCard group="Lists and filtering" height=480 subtitle="Column chooser with locked key columns and role-based sets" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ColumnChooser } = window.ClinicalCUI;
+const columns = [
+  { id: 'bed', title: 'Location', locked: true },
+  { id: 'patient', title: 'Patient', locked: true },
+  { id: 'consultant', title: 'Consultant' },
+  { id: 'age', title: 'Age' },
+  { id: 'news', title: 'NEWS2 score' },
+  { id: 'admitted', title: 'Admitted' },
+  { id: 'problem', title: 'Working diagnosis' },
+  { id: 'tasks', title: 'Outstanding tasks' },
+];
+const presets = [
+  { id: 'fy1', label: 'Junior doctor', columnIds: ['consultant', 'news', 'problem', 'tasks'] },
+  { id: 'nurse', label: 'Ward nurse', columnIds: ['news', 'tasks', 'admitted'] },
+];
+function Demo() {
+  const [v, setV] = React.useState(['bed', 'patient', 'consultant', 'news', 'problem', 'tasks']);
+  return h('div', { style: { display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    h(ColumnChooser, { columns, presets, value: v, onChange: setV }),
+    h(ColumnChooser, { columns, presets, defaultValue: ['news', 'admitted', 'consultant'], title: 'Columns (custom)' })
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

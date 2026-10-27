@@ -1,0 +1,12 @@
+<!-- @dsCard group="Patient identification" width=1000 height=316 subtitle="Māori descent question (NZ, HISO 10094)" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MaoriDescentInput } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 48, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+    h(MaoriDescentInput, { purpose: 'Asked to plan services with and for Māori. Your answer is kept private.' }),
+    h(MaoriDescentInput, { defaultValue: 'yes' })
+  )
+);
+</script>

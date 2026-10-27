@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ObservationKeypadEntry · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile touch inputs</p>
+<h1 style="margin:0 0 4px;font-size:20px">ObservationKeypadEntry</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Observation keypad entry (P2): NZEWS critical SpO2, GB NEWS2 temperature, AU ADDS placeholder with categorical oxygen · Guidelines: <code>src/touch/ObservationKeypadEntry/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ObservationKeypadEntry, ClinicalLocaleProvider, EWS_NZEWS, EWS_NEWS2 } = window.ClinicalCUI;
+const cap = t => h('p', { className: 'cui-label', style: { margin: '16px 0 4px' } }, t);
+const frame = c => h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } }, c);
+const now = new Date(2026, 9, 27, 14, 0);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    cap('NZ NZEWS: 84 % below the critical limit, needs re-measure or confirm'),
+    frame(h(ClinicalLocaleProvider, { region: 'NZ' },
+      h(ObservationKeypadEntry, {
+        definition: EWS_NZEWS, chartLabel: 'NZEWS', now,
+        defaultParameterId: 'oxygenSaturation',
+        defaultValues: { respiratoryRate: '22', oxygenSaturation: '84' },
+        previous: { oxygenSaturation: { value: 93, time: new Date(2026, 9, 27, 13, 40) } },
+        criticalThresholds: [{ direction: 'low', value: 85, appliesTo: 'oxygenSaturation' }], stickyNavigation: false
+      }))),
+    cap('GB NEWS2: temperature with a decimal point'),
+    frame(h(ObservationKeypadEntry, {
+      definition: EWS_NEWS2, region: 'GB', now,
+      defaultParameterId: 'temperature',
+      defaultValues: { temperature: '38.4' },
+      previous: { temperature: { value: 37.6, time: new Date(2026, 9, 27, 10, 5) } }, stickyNavigation: false
+    })),
+    cap('AU default chart (ADDS placeholder scores): oxygen as chips'),
+    frame(h(ClinicalLocaleProvider, { region: 'AU' },
+      h(ObservationKeypadEntry, { now, defaultParameterId: 'supplementalOxygen', defaultValues: { supplementalOxygen: 'oxygen' }, stickyNavigation: false })))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

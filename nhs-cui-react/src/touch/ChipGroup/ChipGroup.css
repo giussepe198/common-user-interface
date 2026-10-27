@@ -1,0 +1,19 @@
+.cui-chip-group { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
+.cui-chip-group__label { font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: 0.02em; color: var(--ink-muted); }
+.cui-chip-group__viewport { position: relative; min-width: 0; }
+.cui-chip-group__chips { display: flex; gap: var(--space-2); }
+.cui-chip-group__chips--center { justify-content: center; }
+.cui-chip-group--wrap .cui-chip-group__chips { flex-wrap: wrap; }
+.cui-chip-group--scroll .cui-chip-group__chips { overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; padding: 3px 2px; margin: -3px -2px; scroll-padding-inline: 48px; }
+.cui-chip-group--scroll .cui-chip-group__chips::-webkit-scrollbar { display: none; }
+.cui-chip { flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; min-width: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid var(--border-strong); background: var(--surface); color: var(--ink); font-family: var(--font-sans); font-size: 15px; line-height: 20px; font-weight: 600; white-space: nowrap; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.cui-chip--h48 { min-height: 48px; border-radius: 24px; font-size: 16px; }
+.cui-chip:active { background: var(--surface-muted); }
+.cui-chip--pressed, .cui-chip--pressed:active { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+.cui-chip:disabled { color: var(--ink-disabled); border-color: var(--border); background: var(--surface-muted); cursor: not-allowed; }
+.cui-chip__count { font-variant-numeric: tabular-nums; font-weight: 700; }
+.cui-chip:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (hover: hover) { .cui-chip:hover:not(:disabled):not(.cui-chip--pressed) { background: var(--hover); } }
+.cui-chip-group__cue { position: absolute; top: 0; bottom: 0; width: 40px; display: flex; align-items: center; justify-content: center; background: var(--surface); color: var(--ink); cursor: pointer; }
+.cui-chip-group__cue--end { right: -2px; border-left: 1px solid var(--border-strong); }
+.cui-chip-group__cue--start { left: -2px; border-right: 1px solid var(--border-strong); }

@@ -1,0 +1,15 @@
+<!-- @dsCard group="Terminology" height=270 subtitle="Mandatory qualifier: yellow until chosen, asterisk and reason, locked after confirmation" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MandatoryQualifierSelect, RequiredKey } = window.ClinicalCUI;
+const opts = [{ value: 'L', label: 'Left' }, { value: 'R', label: 'Right' }, { value: 'B', label: 'Both' }, { value: 'N', label: 'Not specified' }];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16 } },
+    h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap' } },
+      h(MandatoryQualifierSelect, { label: 'Laterality', options: opts, conceptName: 'Fracture of radius' }),
+      h(MandatoryQualifierSelect, { label: 'Laterality', options: opts, conceptName: 'Cataract', defaultValue: 'R' }),
+      h(MandatoryQualifierSelect, { label: 'Laterality', options: opts, conceptName: 'Otitis media', value: 'L', locked: true })),
+    h(RequiredKey, null, 'Mandatory: you must select a value to encode the term'))
+);
+</script>

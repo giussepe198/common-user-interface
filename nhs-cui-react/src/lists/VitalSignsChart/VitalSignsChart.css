@@ -1,0 +1,74 @@
+/*
+ * Early warning zone fills. Light theme: the published NZEWS fills (HQSC user guide 2017, Table 2: yellow 255 255 153,
+ * orange 255 224 186, red 255 192 216, blue 209 232 255). Purple (ADDS emergency) is not published: library choice
+ * [suggested]. Dark theme: darker shades of the same hues so --ink keeps at least 4.5:1 (8.1:1 or more).
+ * Override any of these on .cui-root or an ancestor to match a local chart.
+ */
+:root, [data-theme="light"] {
+  --ews-zone-yellow: #ffff99;
+  --ews-zone-orange: #ffe0ba;
+  --ews-zone-red: #ffc0d8;
+  --ews-zone-blue: #d1e8ff;
+  --ews-zone-purple: #e6d5ff;
+}
+[data-theme="dark"] {
+  --ews-zone-yellow: #4a4712;
+  --ews-zone-orange: #57381a;
+  --ews-zone-red: #5a2236;
+  --ews-zone-blue: #1b3756;
+  --ews-zone-purple: #3d2a5e;
+}
+
+.cui-vsc { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; color: var(--ink); }
+.cui-vsc__placeholder { margin: 0; display: flex; align-items: flex-start; gap: var(--space-2); padding: var(--space-2) var(--space-3); background: var(--warning-surface); color: var(--ink); border: 1px solid var(--warning); border-radius: var(--radius-md); font-weight: 600; }
+.cui-vsc__bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); }
+.cui-vsc__caption { font-size: 15px; line-height: 20px; font-weight: 600; }
+.cui-vsc__legend { display: inline-flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); font-size: 12px; line-height: 16px; color: var(--ink); }
+.cui-vsc__legend-item { display: inline-flex; align-items: center; gap: var(--space-1); }
+.cui-vsc__swatch { width: 14px; height: 14px; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--surface); }
+.cui-vsc__spacer { flex: 1 1 auto; }
+.cui-vsc__scroll { overflow: auto; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); }
+.cui-vsc__empty { margin: 0; padding: var(--space-4); color: var(--ink-muted); }
+.cui-vsc__table { border-collapse: separate; border-spacing: 0; font-size: 13px; line-height: 18px; }
+.cui-vsc__zoned { background: var(--cui-ews-zone, var(--surface)) !important; }
+.cui-vsc__corner, .cui-vsc__colh { position: sticky; top: 0; z-index: 2; background: var(--surface-muted); font-weight: 600; text-align: left; padding: 2px var(--space-2); border-bottom: 1px solid var(--border-strong); white-space: nowrap; }
+.cui-vsc__corner { left: 0; z-index: 4; min-width: 128px; font-size: 12px; color: var(--ink); }
+.cui-vsc__corner--row2, .cui-vsc__colh--time { top: 23px; border-bottom: 2px solid var(--border-strong); }
+.cui-vsc__colh { min-width: 52px; text-align: center; border-left: 1px solid var(--border); font-size: 12px; }
+.cui-vsc__date--repeat { color: var(--ink-muted); font-weight: 400; }
+.cui-vsc__param-title { text-align: left; padding: var(--space-1) var(--space-2); background: var(--surface-muted); border-top: 2px solid var(--border-strong); border-bottom: 1px solid var(--border-strong); font-size: 14px; font-weight: 600; }
+.cui-vsc__param-sticky { position: sticky; left: var(--space-2); }
+.cui-vsc__unit { font-weight: 400; color: var(--ink-muted); text-decoration: none; font-size: 12px; }
+.cui-vsc__band-label { position: sticky; left: 0; z-index: 1; background: var(--surface); text-align: right; font-weight: 400; padding: 0 var(--space-2); white-space: nowrap; min-width: 84px; border-bottom: 1px solid var(--border); }
+.cui-vsc__band-score { position: sticky; left: 84px; z-index: 1; background: var(--surface); text-align: center; font-weight: 600; min-width: 44px; padding: 0 var(--space-1); border-right: 2px solid var(--border-strong); border-bottom: 1px solid var(--border); }
+.cui-vsc__table--compact .cui-vsc__band-label { text-align: left; min-width: 128px; padding: var(--space-1) var(--space-2); white-space: normal; border-right: 2px solid var(--border-strong); }
+.cui-vsc__cell { height: 22px; padding: 0 var(--space-1); text-align: center; border-left: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); }
+/* 60% tint of the zone in the graphing area, full colour in the side columns (HQSC user guide). */
+.cui-vsc__cell--tint { background: color-mix(in srgb, var(--cui-ews-zone) 60%, var(--surface)); }
+.cui-vsc__cell--marked { font-weight: 700; }
+.cui-vsc__cell--modified { background: var(--cui-ews-zone, var(--surface)); outline: 2px dashed var(--ink); outline-offset: -3px; }
+.cui-vsc__mark { display: inline-flex; align-items: center; justify-content: center; gap: 2px; min-width: 32px; padding: 0 3px; border: 1.5px solid var(--ink); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); font-variant-numeric: tabular-nums; }
+.cui-vsc__mod-flag { font-size: 10px; line-height: 12px; font-weight: 700; padding: 0 2px; border: 1px solid var(--ink); border-radius: 2px; }
+.cui-vsc__cell--compact { padding: 2px var(--space-1); }
+.cui-vsc__cell--compact .cui-vsc__mark { border-width: 1px; }
+.cui-vsc__compact-score { display: inline-block; margin-left: 4px; min-width: 14px; font-size: 11px; font-weight: 700; }
+.cui-vsc__score-row th, .cui-vsc__score-row td, .cui-vsc__note-row th, .cui-vsc__note-row td { background: var(--surface-sunken); }
+.cui-vsc__score-label { position: sticky; left: 0; z-index: 1; text-align: right; font-weight: 400; font-size: 12px; color: var(--ink-muted); padding: 0 var(--space-2); border-right: 2px solid var(--border-strong); border-bottom: 1px solid var(--border-strong); white-space: nowrap; }
+.cui-vsc__score { text-align: center; font-weight: 600; font-size: 12px; border-left: 1px solid var(--border); border-bottom: 1px solid var(--border-strong); }
+.cui-vsc__missing { color: var(--ink-muted); }
+.cui-vsc__modrow td { background: var(--surface); }
+.cui-vsc__mod { padding: 2px var(--space-2); font-size: 12px; line-height: 16px; border-bottom: 1px solid var(--border); }
+.cui-vsc__mod-text { position: sticky; left: var(--space-2); display: inline-flex; gap: var(--space-1); align-items: flex-start; }
+.cui-vsc__mod--ignored { color: var(--warning); text-decoration: line-through; text-decoration-thickness: 1px; }
+.cui-vsc__mod--ignored .cui-vsc__mod-text { text-decoration: line-through; }
+.cui-vsc__total-label { position: sticky; left: 0; z-index: 1; background: var(--surface-muted); text-align: right; font-size: 14px; font-weight: 700; padding: var(--space-1) var(--space-2); border-top: 2px solid var(--border-strong); border-right: 2px solid var(--border-strong); }
+.cui-vsc__total { text-align: center; padding: 2px var(--space-1); border-top: 2px solid var(--border-strong); border-left: 1px solid var(--border); background: var(--surface); vertical-align: top; }
+.cui-vsc__total-num { display: block; font-size: 15px; font-weight: 700; }
+.cui-vsc__total-zone, .cui-vsc__incomplete { display: block; font-size: 11px; line-height: 14px; font-weight: 600; }
+.cui-vsc__incomplete { font-style: italic; font-weight: 400; }
+.cui-vsc__note { font-size: 12px; text-align: center; border-left: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0 var(--space-1); }
+.cui-vsc__total-num--zone { font-size: 12px; }
+/* Critical value (GTAB-177): heavy double border and an arrow, plus words for screen readers and in the note. */
+.cui-vsc__mark.cui-vsc__mark--critical, .cui-vsc__cell--compact .cui-vsc__mark--critical { border: 3px double var(--danger); color: var(--danger); font-weight: 700; }
+.cui-vsc__crit-note { margin: 0; display: flex; align-items: center; gap: var(--space-2); font-size: 12px; line-height: 16px; color: var(--ink); }
+.cui-vsc__mark--critical .cui-icon { width: 12px; height: 12px; flex: none; }

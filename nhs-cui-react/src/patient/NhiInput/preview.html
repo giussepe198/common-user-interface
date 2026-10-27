@@ -1,0 +1,18 @@
+<!-- @dsCard group="Patient identification" width=1000 height=330 subtitle="NHI input (NZ): legacy and new formats, test-range warning, dormant NHI lookup" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { NhiInput } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+    h(NhiInput, { defaultValue: 'zbn77vl', flagTestNumbers: false }),
+    h(NhiInput, { id: 'preview-nhi-test', defaultValue: 'ZAC5361', hint: '' }),
+    h(NhiInput, { id: 'preview-nhi-io', defaultValue: 'ZAI5361', hint: '' }),
+    h(NhiInput, { id: 'preview-nhi-bad', defaultValue: 'ZBN77VM', hint: '' }),
+    h(NhiInput, { label: 'NHI number (with lookup)', defaultValue: 'ZAC5361', flagTestNumbers: false, lookupNhi: (n) => (n === 'ZAC5361' ? { status: 'dormant', liveNhi: 'ZBN77VL' } : { status: 'live' }) })
+  )
+);
+setTimeout(() => {
+  ['preview-nhi-test', 'preview-nhi-io', 'preview-nhi-bad'].forEach((id) => { const el = document.getElementById(id); if (el) { el.focus(); el.blur(); } });
+}, 30);
+</script>

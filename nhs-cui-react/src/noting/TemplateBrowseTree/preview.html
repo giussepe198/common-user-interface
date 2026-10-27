@@ -1,0 +1,19 @@
+<!-- @dsCard group="Clinical noting" width=1200 height=360 subtitle="Template browse tree (experimental): top-level sections, expand, addressed marks, open full form, hidden state" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TemplateBrowseTree } = window.ClinicalCUI;
+const S = [
+  { id: 'pc', title: 'Presenting complaint' },
+  { id: 'pmh', title: 'Past medical history' },
+  { id: 'obs', title: 'Observations and findings', children: [{ id: 'vs', title: 'Vital signs', children: [{ id: 'bp', title: 'Blood pressure' }] }, { id: 'cvs', title: 'Cardiovascular examination' }] },
+  { id: 'plan', title: 'Plan' },
+];
+function Demo() {
+  React.useEffect(() => { setTimeout(() => { const b = document.querySelector('#a .cui-template-tree__expand'); if (b) b.click(); }, 60); }, []);
+  return h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    h('div', { id: 'a' }, h(TemplateBrowseTree, { sections: S, addressedIds: ['pc', 'pmh'], onOpenSection: function () {}, onOpenFullForm: function () {} })),
+    h(TemplateBrowseTree, { sections: S, defaultOpen: false, onOpenSection: function () {} }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

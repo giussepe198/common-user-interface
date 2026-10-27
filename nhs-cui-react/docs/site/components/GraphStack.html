@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GraphStack · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Timeline and graphs</p>
+<h1 style="margin:0 0 4px;font-size:20px">GraphStack</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Stacked vital signs graphs sharing one time axis and one focus line, with critical thresholds and a scrolling stack · Guidelines: <code>src/lists/GraphStack/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { GraphStack, SeriesStyleAllocator, graphStackConventionalOrder } = window.ClinicalCUI;
+const base = new Date(2026, 9, 26, 14, 0).getTime();
+const at = hrs => new Date(base + hrs * 3600000);
+const series = (id, label, unit, unitDefinition, rows, src) => ({ id, label, unit, unitDefinition, points: rows.map(([t, v, d]) => ({ time: at(t), value: v, display: d, source: src || 'machine' })) });
+const temp = series('temp', 'Temperature', '°C', 'degrees Celsius', [[2, 37.4, '37.4'], [6, 37.9, '37.9'], [10, 38.6, '38.6'], [14, 39.6, '39.6'], [18, 38.9, '38.9'], [22, 38.1, '38.1']], 'manual');
+const pulse = series('pulse', 'Pulse rate', 'beats/min', 'beats per minute', [[2, 84], [6, 92], [10, 104], [14, 118], [18, 108], [22, 96]]);
+const rr = series('rr', 'Respiratory rate', 'breaths/min', 'breaths per minute', [[2, 16], [10, 20], [14, 24], [22, 20]], 'manual');
+const spo2 = series('spo2', 'Oxygen saturation', '%', 'per cent', [[2, 97], [6, 96], [10, 94], [14, 92], [18, 93], [22, 95]]);
+const bp = { points: [[2, 128, 82], [6, 122, 78], [10, 112, 70], [14, 98, 60], [18, 108, 66], [22, 118, 74]].map(([t, s, d]) => ({ time: at(t), systolic: s, diastolic: d, source: 'machine' })) };
+const graphs = [
+  { id: 'pulse', series: [pulse], yRange: { min: 40, max: 160 }, normalRange: { low: 60, high: 100, population: 'adult' }, criticalThresholds: [{ direction: 'high', value: 130 }] },
+  { id: 'rr', series: [rr], yRange: { min: 0, max: 40 } },
+  { id: 'temp', series: [temp], yRange: { min: 35, max: 41 }, criticalThresholds: [{ direction: 'high', value: 39.5, setBy: 'Dr Okafor' }] },
+  { id: 'bp', bloodPressure: bp, yRange: { min: 40, max: 200 }, criticalThresholds: [{ direction: 'low', value: 100, appliesTo: 'systolic' }] },
+  { id: 'spo2', series: [spo2], yRange: { min: 80, max: 100 } },
+];
+const label = text => h('h3', { style: { margin: '20px 0 8px', fontSize: 15 } }, text);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    label('Conventional order, focus line at 04:00 (controlled), critical values ringed'),
+    h(GraphStack, { title: 'Vital signs', graphs, defaultOrder: graphStackConventionalOrder(graphs), start: at(0), end: at(24), rangeLabel: 'Last 24 hours', now: at(23.5), styleAllocator: new SeriesStyleAllocator(), focusTime: at(14), graphHeight: 110 }),
+    label('Order added, scrolling stack with graphs out of view named above it'),
+    h(GraphStack, { title: 'Vital signs', graphs, start: at(0), end: at(24), rangeLabel: 'Last 24 hours', styleAllocator: new SeriesStyleAllocator(), graphHeight: 110, maxHeight: 340 })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

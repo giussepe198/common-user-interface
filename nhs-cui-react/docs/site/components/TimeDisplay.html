@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TimeDisplay · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Dates and times</p>
+<h1 style="margin:0 0 4px;font-size:20px">TimeDisplay</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">24-hour times, seconds, approximate, unknown and time zones · Guidelines: <code>src/datetime/TimeDisplay/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TimeDisplay, ClinicalLocaleProvider } = window.ClinicalCUI;
+const row = (label, node) => h('div', { style: { display: 'flex', gap: 16, alignItems: 'baseline', padding: '4px 0' } }, h('span', { className: 'cui-label', style: { width: 190, flex: 'none' } }, label), node);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    row('Exact', h(TimeDisplay, { value: '04:28', clockIndicator: 'visible' })),
+    row('With seconds', h(TimeDisplay, { value: { hours: 23, minutes: 35, seconds: 1 }, showSeconds: true })),
+    row('Approximate', h(TimeDisplay, { value: '03:56', approximate: true })),
+    row('Midnight', h(TimeDisplay, { value: '00:00' })),
+    row('Missing time', h(TimeDisplay, { value: null, nullText: 'Not recorded' })),
+    h(ClinicalLocaleProvider, { region: 'AU', timeZone: 'Australia/Sydney' },
+      row('AU: Perth time, Sydney facility', h(TimeDisplay, { value: new Date('2026-01-15T03:30:00Z'), timeZone: 'Australia/Perth', showZone: 'auto' })),
+      row('AU: same zone (no label)', h(TimeDisplay, { value: new Date('2026-01-15T03:30:00Z'), timeZone: 'Australia/Melbourne', showZone: 'auto' })),
+      row('AU: Lord Howe Island', h(TimeDisplay, { value: new Date('2026-01-15T03:30:00Z'), timeZone: 'Australia/Lord_Howe', showZone: true }))),
+    h(ClinicalLocaleProvider, { region: 'NZ' },
+      row('NZ: repeated hour, first', h(TimeDisplay, { value: new Date('2026-04-04T13:30:00Z'), showZone: 'auto' })),
+      row('NZ: repeated hour, second', h(TimeDisplay, { value: new Date('2026-04-04T14:30:00Z'), showZone: 'auto' })))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!-- @dsCard group="Terminology" width=1200 height=460 subtitle="Single concept encoder: subset filter, search, selected label, mandatory laterality, OK disabled; AU NCTS edition" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SingleConceptEncoder, ClinicalLocaleProvider, matchesDescription } = window.ClinicalCUI;
+const TERMS = [{ id: 'fr', term: 'Fracture of radius', fsn: 'Fracture of radius (disorder)' }, { id: 'frd', term: 'Fracture of distal end of radius', fsn: 'Fracture of distal end of radius (disorder)' }, { id: 'bc', term: 'Breast cancer' }, { id: 'pa', term: 'Peanut allergy', isCommon: true }];
+const search = (q) => Promise.resolve(TERMS.filter((t) => matchesDescription(q, t.term)));
+const lat = (r) => r.id.startsWith('fr') ? [{ id: 'lat', label: 'Laterality', options: [{ value: 'L', label: 'Left' }, { value: 'R', label: 'Right' }, { value: 'B', label: 'Both' }] }] : [];
+const cell = (t, el) => h('div', { style: { display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 } }, h('p', { style: { margin: 0, fontSize: 12, fontWeight: 600, color: 'var(--ink-muted)' } }, t), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' } },
+    cell('Concept chosen, laterality still needed', h(SingleConceptEncoder, { search: search, getMandatoryQualifiers: lat, onOk: function () {}, onCancel: function () {},
+      initialValue: { concept: TERMS[0], qualifiers: {}, additionalText: 'Fell on outstretched hand', lastQuery: 'frac rad', subsetIds: [] } })),
+    cell('AU: NCTS value sets offered as subsets', h(ClinicalLocaleProvider, { region: 'AU' }, h(SingleConceptEncoder, { search: search, useRegionSubsets: true, defaultSubsetIds: [], showEdition: true, title: 'Record an allergy', onOk: function () {}, onCancel: function () {} })))
+  )
+);
+</script>

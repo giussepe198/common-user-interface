@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TouchDateTimePicker · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:438px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mobile touch inputs</p>
+<h1 style="margin:0 0 4px;font-size:20px">TouchDateTimePicker</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Touch date and time (P1): NZ day-first read-back, AU repeated hour, GB future-time guard · Guidelines: <code>src/touch/TouchDateTimePicker/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TouchDateTimePicker, ClinicalLocaleProvider } = window.ClinicalCUI;
+const cap = t => h('p', { className: 'cui-label', style: { margin: '16px 0 4px' } }, t);
+const frame = c => h('div', { style: { maxWidth: 390, border: '1px solid var(--border)' } }, c);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    cap('NZ: typed "5/4" read back day first, yesterday approx 21:30 chosen'),
+    frame(h(ClinicalLocaleProvider, { region: 'NZ' },
+      h(TouchDateTimePicker, {
+        now: new Date('2026-10-26T08:45:00Z'),
+        defaultDateText: '5/4',
+        defaultValue: { date: { year: 2026, month: 10, day: 25 }, time: { hours: 21, minutes: 30 }, approximate: true, timeNotKnown: false },
+        onConfirm: () => undefined, stickyActions: false
+      }))),
+    cap('AU (Sydney): 02:30 on the day clocks go back, which one?'),
+    frame(h(ClinicalLocaleProvider, { region: 'AU' },
+      h(TouchDateTimePicker, {
+        now: new Date('2026-04-05T03:00:00Z'),
+        defaultValue: { date: { year: 2026, month: 4, day: 5 }, time: { hours: 2, minutes: 30 }, approximate: false, timeNotKnown: false },
+        onConfirm: () => undefined, stickyActions: false
+      }))),
+    cap('GB: a time in the future is refused; time not known offered'),
+    frame(h(TouchDateTimePicker, {
+      region: 'GB',
+      now: new Date('2026-10-27T14:00:00Z'),
+      defaultValue: { date: { year: 2026, month: 10, day: 27 }, time: { hours: 16, minutes: 0 }, approximate: false, timeNotKnown: false },
+      onConfirm: () => undefined, stickyActions: false
+    }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

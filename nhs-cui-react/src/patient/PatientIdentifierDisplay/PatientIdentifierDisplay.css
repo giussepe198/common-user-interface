@@ -1,0 +1,17 @@
+/* Shared identifier display (IhiDisplay, MedicareNumberDisplay, NhiDisplay, HpiNumberDisplay, PatientIdentifierDisplay). */
+.cui-identifier { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cui-identifier--unknown { font-style: italic; color: var(--ink-muted); }
+.cui-identifier__value { white-space: nowrap; }
+.cui-identifier__digits { user-select: text; }
+.cui-identifier__suffix { margin-left: var(--space-1); }
+.cui-identifier__flag { display: inline-flex; align-items: center; gap: 2px; margin-left: var(--space-1); font-size: 12px; line-height: 16px; vertical-align: 1px; }
+.cui-identifier__flag--warning { font-weight: 600; color: var(--warning); }
+.cui-identifier__flag--info { font-weight: 600; color: var(--ink); }
+.cui-identifier__flag .cui-icon { flex: none; }
+/* Identifier with a following link or action (dormant NHI, G12 4). */
+.cui-identifier__group { display: inline-flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-2); row-gap: 2px; }
+.cui-identifier__link { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin-left: var(--space-1); font-size: 12px; line-height: 16px; white-space: nowrap; }
+.cui-identifier__live { display: inline-flex; align-items: center; gap: 2px; font-weight: 600; }
+.cui-identifier__live .cui-icon { flex: none; }
+.cui-identifier__action { font: inherit; font-size: 12px; line-height: 16px; padding: 1px var(--space-2); color: var(--accent); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); cursor: pointer; }
+.cui-identifier__action:hover { background: var(--hover); }

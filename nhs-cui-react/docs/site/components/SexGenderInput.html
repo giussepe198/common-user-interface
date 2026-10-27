@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SexGenderInput · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Patient identification</p>
+<h1 style="margin:0 0 4px;font-size:20px">SexGenderInput</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Current Gender and Sex input · Guidelines: <code>src/patient/SexGenderInput/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ClinicalLocaleProvider } = window.ClinicalCUI;
+const regionCaption = (t) => h('div', { style: { font: '600 12px/16px var(--font-sans)', color: 'var(--ink-muted)', margin: '12px 0 4px' } }, t);
+const inRegion = (region, child, extra) => h(ClinicalLocaleProvider, Object.assign({ region }, extra || {}), child);
+const { SexGenderInput } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', null,
+    regionCaption('GB (NHS CUI)'),
+  h('div', { style: { display: 'flex', gap: 40, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+    h(SexGenderInput, { kind: 'currentGender' }),
+    h(SexGenderInput, { kind: 'sex', orientation: 'horizontal', error: "Select the patient's sex" }),
+    h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16 } },
+      h(SexGenderInput, { kind: 'currentGender', variant: 'select', showDefinitions: false }),
+      h(SexGenderInput, { kind: 'sex', variant: 'select', showDefinitions: false }))
+  ),
+    regionCaption('AU: ABS 2020 questions, codes and "please specify"'),
+    inRegion('AU', h('div', { style: { display: 'flex', gap: 40, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+      h(SexGenderInput, { kind: 'sex', purpose: 'Asked because some reference ranges depend on it.' }),
+      h(SexGenderInput, { defaultValue: '4', defaultDetail: 'genderqueer' }))),
+    regionCaption('NZ: HISO 10046 gender with te reo Māori labels; Stats NZ sex at birth'),
+    inRegion('NZ', h('div', { style: { display: 'flex', gap: 40, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+      h(SexGenderInput, { defaultValue: 'O', defaultDetail: 'non-binary' }),
+      h(SexGenderInput, { kind: 'sex', variant: 'select' })), { teReoLabels: true })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!-- @dsCard group="Medications" height=900 subtitle="Medication line: order, bold generic, brand, labelled dose, wrapping; GB, AU and NZ rules" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MedicationLine, ClinicalLocaleProvider } = window.ClinicalCUI;
+const au = el => h(ClinicalLocaleProvider, { region: 'AU' }, el);
+const nz = el => h(ClinicalLocaleProvider, { region: 'NZ' }, el);
+const row = (title, el, width) => h('div', { style: { padding: '10px 12px', borderBottom: '1px solid var(--border)', background: 'var(--surface)' } },
+  h('div', { className: 'cui-label', style: { marginBottom: 4 } }, title),
+  h('div', { style: width ? { width: width, border: '1px dashed var(--border-strong)', padding: 6 } : null }, el));
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { border: '1px solid var(--border)', borderRadius: 4, overflow: 'hidden' } },
+    row('Generic and brand, form, dose, route, frequency', h(MedicationLine, { genericName: 'Diltiazem', brandName: 'Calcicard CR', form: 'modified-release tablet', dose: { value: 120, unit: 'mg' }, route: 'oral', frequency: 'three times a day' })),
+    row('Strength in fluid, thousands separator', h(MedicationLine, { genericName: 'heparin', strength: { kind: 'perUnit', values: [5000], unit: 'units', fluidUnit: 'mL' }, form: 'solution for injection', dose: { value: 5000, unit: 'units' }, route: 'subcutaneous injection', frequency: 'once only' })),
+    row('Combination strength with smaller "and", decimal dose', h(MedicationLine, { genericName: 'co-amoxiclav', strength: { kind: 'combination', values: [400, 57], unit: 'mg', fluidQuantity: 5, fluidUnit: 'mL' }, form: 'suspension', dose: { value: '1.20', unit: 'mL' }, route: 'oral', frequency: 'every 12 hours' })),
+    row('Two drugs, qualifiers after frequency', h(MedicationLine, { ingredients: [{ name: 'paracetamol', strength: { kind: 'simple', values: [500], unit: 'mg' } }, { name: 'metoclopramide', strength: { kind: 'simple', values: [5], unit: 'mg' } }], form: 'sachet', dose: { value: 2, unit: 'sachets' }, route: 'oral', frequency: 'every 4 hours as required', qualifiers: ['maximum 6 doses in 24 hours'] })),
+    row('Percentage strength, VOLUME as dose equivalent', h(MedicationLine, { genericName: 'sodium chloride', strength: { kind: 'percentage', values: [0.9] }, form: 'infusion', doseEquivalent: { label: 'VOLUME', quantity: { value: 1000, unit: 'mL' } }, rate: '40 mL per hour', doseDuration: 'over 12 hours', route: 'intravenous', frequency: 'once only' })),
+    row('Multi-line layout with labels after hard breaks', h(MedicationLine, { layout: 'multiline', genericName: 'salbutamol', form: 'metered dose inhaler', strength: { kind: 'perUnit', values: [100], unit: 'micrograms', fluidUnit: 'dose' }, dose: { value: 2, unit: 'puffs' }, route: 'inhaled', frequency: 'every 4 hours as required', qualifiers: ['maximum 8 puffs in 24 hours'], order: ['form', 'strength', 'dose', 'route', 'frequency'], lineBreaks: ['strength', 'dose', 'route', 'frequency'] })),
+    row('Narrow column: wraps between attributes, dash stays at line end, never truncated', h(MedicationLine, { genericName: 'oxycodone', brandName: 'Oxylong', form: 'modified-release tablet', dose: { value: 10, unit: 'mg' }, route: 'oral', frequency: 'every 12 hours', status: 'Suspended', suspendedOn: '2026-10-25' }), 230),
+    row('AU: ACSQHC order, mixed-case lettering, abbreviations written in full (data entered as "PO", "mane")', au(h(MedicationLine, { genericName: 'amlodipine', strength: { kind: 'simple', values: [5], unit: 'mg' }, form: 'tablet', route: 'PO', dose: { value: 5, unit: 'mg' }, frequency: 'once a day', qualifiers: ['mane'] }))),
+    row('AU: brand in Title Case italic after an en dash, SUPPLY for pack-based prescribing, half a tablet in words', au(h(MedicationLine, { genericName: 'warfarin sodium', brandName: 'MAREVAN', strength: { kind: 'simple', values: [5], unit: 'mg' }, form: 'tablet', route: 'oral', dose: { value: 0.5, unit: 'tablet' }, frequency: 'once a day', qualifiers: ['at 16:00'], supply: { value: 50, unit: 'tablets' } }))),
+    row('AU: high-risk medicine with brand, units in full, units/mL strength', au(h(MedicationLine, { genericName: 'insulin aspart', brandName: 'NovoRapid', strength: { kind: 'perUnit', values: [100], unit: 'U', fluidUnit: 'mL' }, form: 'injection', route: 'SC', dose: { value: 6, unit: 'IU' }, frequency: 'three times a day', qualifiers: ['with meals'] }))),
+    row('NZ: HQSC Tall Man list, whole numbers (0.125 mg given), DO NOT USE terms in full (OD, po)', nz(h(MedicationLine, { genericName: 'digoxin', strength: { kind: 'simple', values: [0.125], unit: 'mg' }, form: 'tablet', route: 'po', dose: { value: 0.125, unit: 'mg' }, frequency: 'OD' }))),
+    row('NZ: with permitted NMC abbreviations as a compact form', nz(h(MedicationLine, { genericName: 'prednisone', form: 'tablet', dose: { value: 40, unit: 'mg' }, route: 'oral', frequency: 'in the morning', permittedAbbreviations: true })))
+  )
+);
+</script>

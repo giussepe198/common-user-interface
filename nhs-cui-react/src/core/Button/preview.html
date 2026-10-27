@@ -1,0 +1,16 @@
+<!-- @dsCard group="Foundations" height=96 subtitle="Command buttons" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { Button } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 8, flexWrap: 'wrap' } },
+    h(Button, { variant: 'primary' }, 'Authorise'),
+    h(Button, { icon: 'plus' }, 'Add medication'),
+    h(Button, { variant: 'quiet', icon: 'filter' }, 'Filter'),
+    h(Button, { variant: 'danger', icon: 'trash' }, 'Remove'),
+    h(Button, { disabled: true }, 'Disabled'),
+    h(Button, { iconOnly: true, icon: 'search' }, 'Search')
+  )
+);
+</script>

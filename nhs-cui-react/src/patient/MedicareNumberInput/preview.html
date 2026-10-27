@@ -1,0 +1,18 @@
+<!-- @dsCard group="Patient identification" width=1000 height=300 subtitle="Medicare card number with IRN and valid to (AU)" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MedicareNumberInput } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', gap: 40, flexWrap: 'wrap', alignItems: 'flex-start', padding: 16, background: 'var(--surface)' } },
+    h(MedicareNumberInput, { defaultValue: '2123456701', defaultIrn: '1' }),
+    h(MedicareNumberInput, { id: 'preview-medicare-bad', defaultValue: '2123456711', hint: '' }),
+    h(MedicareNumberInput, { defaultValue: '2123456701', defaultIrn: '1', defaultValidTo: '06/2028', now: new Date(2026, 9, 27) }),
+    h(MedicareNumberInput, { defaultValue: '2123456701', defaultIrn: '2', defaultValidTo: '09/2026', now: new Date(2026, 9, 27), hint: '' }),
+    h(MedicareNumberInput, { defaultValue: '2123456701', defaultIrn: '3', defaultValidTo: '11/2026', now: new Date(2026, 9, 27), hint: '' })
+  )
+);
+setTimeout(() => {
+  ['preview-medicare-bad', 'preview-medicare-bad-irn'].forEach((id) => { const el = document.getElementById(id); if (el) { el.focus(); el.blur(); } });
+}, 30);
+</script>

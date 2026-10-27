@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DurationInput · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Dates and times</p>
+<h1 style="margin:0 0 4px;font-size:20px">DurationInput</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Duration entry with unit checks and daylight saving notices (GB, AU, NZ) · Guidelines: <code>src/datetime/DurationInput/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DurationInput, ClinicalLocaleProvider } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 24, alignItems: 'start' } },
+    h(DurationInput, { label: 'Duration of infusion', defaultValue: { hours: 2, minutes: 40 }, allowApproximate: true }),
+    h(DurationInput, { label: 'Duration', defaultValue: { hours: 2 }, startDateTime: new Date(Date.UTC(2010, 2, 27, 23, 30)), hideInstructions: true }),
+    h(DurationInput, { label: 'Length of stay', error: '"1.5d" contains a decimal or fraction. Durations use whole numbers only, e.g. 1hr 30min rather than 1.5hr.' }),
+    h(ClinicalLocaleProvider, { region: 'AU' },
+      h(DurationInput, { label: 'AU (Sydney): Infusion from 00:00 on 04-Oct-2026', defaultValue: { hours: 4 }, startDateTime: new Date(Date.UTC(2026, 9, 3, 14, 0)), hideInstructions: true })),
+    h(ClinicalLocaleProvider, { region: 'NZ' },
+      h(DurationInput, { label: 'NZ: Infusion from 01:00 on 05-Apr-2026', defaultValue: { hours: 3 }, startDateTime: new Date(Date.UTC(2026, 3, 4, 12, 0)), hideInstructions: true })),
+    h(ClinicalLocaleProvider, { region: 'AU', timeZone: 'Australia/Brisbane' },
+      h(DurationInput, { label: 'AU (Brisbane): no daylight saving, no notice', defaultValue: { hours: 4 }, startDateTime: new Date(Date.UTC(2026, 9, 3, 14, 0)), hideInstructions: true }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>High-risk confirmation</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/clinicalcui/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+.scr *{box-sizing:border-box}
+.btn{min-height:52px;padding:0 16px;border-radius:4px;border:1px solid var(--border-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.sl{font-size:13px;line-height:18px;color:var(--ink-muted);font-weight:600;letter-spacing:0.02em;margin:0}
+.ok{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:var(--success)}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
+</style>
+</helmet>
+<div class="scr" data-theme="{{theme}}" style="width: 390px; height: 844px; display: flex; flex-direction: column; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; overflow: hidden">
+
+  <header aria-label="Patient" style="background: var(--banner); color: var(--on-banner); padding: 10px 16px 12px; display: flex; flex-direction: column; gap: 4px">
+    <div style="display: flex; justify-content: space-between; gap: 8px"><span style="font-size: 20px; line-height: 26px; font-weight: 600">SMITH, Jon</span><span style="font-size: 14px; color: var(--on-banner-muted)">Bed 9</span></div>
+    <div style="display: flex; flex-wrap: wrap; column-gap: 14px; font-size: 14px; line-height: 20px">
+      <span><span style="color: var(--on-banner-muted)">Born </span><strong>30-Jan-1985 (41y)</strong></span>
+      <span><span style="color: var(--on-banner-muted)">URN </span><strong>0420017</strong></span>
+      <span><span style="color: var(--on-banner-muted)">Allergies </span><strong>Nil known</strong></span>
+    </div>
+    <span style="align-self: flex-start; margin-top: 2px; display: inline-flex; align-items: center; gap: 6px; background: var(--warning-fill); color: #000000; border-radius: 3px; padding: 2px 8px; font-size: 13px; font-weight: 700">
+      <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><path d="M12 4.5l8.5 15h-17zM12 10v4.5M12 17v.4"/></svg>Similar name on ward: SMITH, John (bed 3)</span>
+  </header>
+
+  <main style="flex: 1; overflow: hidden; padding: 12px 16px; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <h1 style="margin: 0; font-size: 19px; line-height: 25px; font-weight: 600">Give insulin aspart 6 units</h1>
+      <span style="font-size: 15px; line-height: 21px"><strong>insulin aspart</strong> 100 units/mL injection – <em>novoRAPID</em> – subcutaneous – <span style="font-size: 12px; letter-spacing: 0.05em">DOSE</span> <strong>6 units</strong> – with lunch</span>
+    </div>
+
+    <section class="card" aria-labelledby="bg-h">
+      <h2 id="bg-h" class="sl">BLOOD GLUCOSE</h2>
+      <span><strong style="font-size: 20px">9.8 mmol/L</strong> at 13:55 <span style="color: var(--ink-muted)">(meter)</span></span>
+    </section>
+
+    <section class="card" aria-labelledby="sc-h">
+      <h2 id="sc-h" class="sl">SECOND CHECK</h2>
+      <span class="ok"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>RN Kiran Patel, badge scanned 14:09</span>
+    </section>
+
+    <section class="card" aria-labelledby="ty-h">
+      <h2 id="ty-h" class="sl">TYPE THE DOSE YOU ARE GIVING</h2>
+      <div style="display: flex; align-items: center; gap: 10px">
+        <label for="dose" class="sl" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Dose in units</label>
+        <input id="dose" value="6" inputmode="numeric" style="width: 120px; min-height: 56px; font: inherit; font-size: 28px; font-weight: 700; text-align: right; padding: 0 12px; border: 2px solid var(--success); border-radius: 4px; background: var(--surface); color: var(--ink)">
+        <span style="font-size: 20px; font-weight: 600">units</span>
+      </div>
+      <span class="ok"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Matches the order</span>
+    </section>
+  </main>
+
+  <div style="padding: 12px 16px 16px; background: var(--surface); border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px">
+    <button type="button" aria-describedby="hold-hint" style="position: relative; overflow: hidden; min-height: 64px; border-radius: 4px; border: 2px solid var(--accent); background: var(--accent-surface); color: var(--ink); font-family: inherit; font-size: 17px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0">
+      <span aria-hidden="true" style="position: absolute; left: 0; top: 0; bottom: 0; width: 62%; background: var(--accent)"></span>
+      <span style="position: relative; display: inline-flex; align-items: center; gap: 8px; background: var(--surface); padding: 4px 12px; border-radius: 4px">Hold to record 6 units given</span>
+    </button>
+    <span id="hold-hint" style="font-size: 13px; line-height: 18px; color: var(--ink-muted); text-align: center">Hold for 1.5 seconds. With a screen reader, double-tap, then confirm.</span>
+    <a class="btn" href="B1-Worklist.dc.html">Not now</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["light","dark"],"default":"light"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'light' };
+  }
+}
+</script>
+</body>
+</html>

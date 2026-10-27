@@ -1,0 +1,29 @@
+<!-- @dsCard group="Medications" width=1200 height=760 subtitle="Adverse drug reaction risks: Level 1 list, supporting events, absence states, narrative" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { AdrRiskList } = window.ClinicalCUI;
+const risks = [
+  { id: 'r1', agent: { text: 'penicillin', encoded: true }, pastReactions: [['urticaria', 'nausea'], ['anaphylaxis']],
+    events: [
+      { id: 'e1', description: 'Risk identified', encoded: true, date: { year: 2019, month: 3 }, source: { who: 'Patient', encounter: 'Admissions Triage' }, author: { name: 'Sam Okafor', role: 'Nurse', location: 'Riverside General Hospital' } },
+      { id: 'e2', description: 'Anaphylaxis', encoded: true, date: { year: 2021, month: 6, day: 14 }, time: '16:20', source: { who: 'Doctor', encounter: 'Emergency Department' }, author: { name: 'Dr Priya Nair', role: 'Registrar' } },
+      { id: 'e3', description: 'Risk confirmed', encoded: true, date: '2026-10-26', time: '09:15', source: { who: 'Patient', encounter: 'Past Medical History' }, author: { name: 'Dr Tom Hale', role: 'F2' } }
+    ] },
+  { id: 'r2', agent: { text: 'Codeine', encoded: true }, pastReactions: [['vomiting']], events: [{ id: 'e4', description: 'Risk identified', date: { year: 2015 }, source: { who: 'Carer' }, author: { name: 'Lee Grant', role: 'Pharmacist' } }] },
+  { id: 'r3', agent: { text: 'sticking plaster adhesive', encoded: false, triggersDecisionSupport: false }, pastReactions: null }
+];
+const block = (title, el) => h('div', { style: { marginBottom: 20 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 24, alignItems: 'start' } },
+    h('div', null,
+      block('Risks sorted by agent; penicillin opened to show supporting events', h(AdrRiskList, { status: { kind: 'risks', risks: risks }, expandedIds: ['r1'] }))),
+    h('div', null,
+      block('Checked, none found', h(AdrRiskList, { status: { kind: 'noKnownRisks', recordedAt: '2026-10-26T09:15:00', author: { name: 'Dr Tom Hale', role: 'F2', location: 'Riverside General Hospital' } } })),
+      block('Not yet checked', h(AdrRiskList, { status: { kind: 'unknown' } })),
+      block('AU: checked, none found', h(AdrRiskList, { region: 'AU', status: { kind: 'noKnownRisks', recordedAt: '2026-10-26T09:15:00', author: { name: 'Dr Mia Tran', role: 'Resident' } } })),
+      block('NZ: nothing recorded yet', h(AdrRiskList, { region: 'NZ', status: { kind: 'risks', risks: [] } })),
+      block('Narrative, for letters and summaries', h(AdrRiskList, { variant: 'narrative', status: { kind: 'risks', risks: risks } })))
+  )
+);
+</script>

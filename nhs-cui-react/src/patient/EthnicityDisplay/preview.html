@@ -1,0 +1,16 @@
+<!-- @dsCard group="Patient identification" height=210 subtitle="Ethnicity display (NZ): all groups, recorded order, none marked main" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { EthnicityDisplay } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 8, padding: 12, background: 'var(--surface)' } },
+    h(EthnicityDisplay, { value: { entries: [{ code: '21111', label: 'Māori' }, { code: '31111', label: 'Samoan' }, { code: '11111', label: 'New Zealand European' }] } }),
+    h(EthnicityDisplay, { value: { entries: [{ code: '43100', label: 'Indian' }, { code: '12948', label: 'Dutch' }], otherText: 'Dutch' } }),
+    h(EthnicityDisplay, { value: { entries: [{ code: '94444', label: '' }] } }),
+    h(EthnicityDisplay, { value: null }),
+    h(EthnicityDisplay, { label: 'Ethnicity (level 1)', outputLevel: 1, value: { entries: [{ code: '21111', label: 'Māori' }, { code: '31111', label: 'Samoan' }, { code: '34111', label: 'Niuean' }, { code: '11111', label: 'New Zealand European' }] } }),
+    h(EthnicityDisplay, { value: { entries: ['11111', '12100', '21111', '31111', '42100', '43100', '53111'].map((code) => ({ code, label: '' })) }, codeLabels: { '12100': 'British nfd', '53111': 'African' } })
+  )
+);
+</script>

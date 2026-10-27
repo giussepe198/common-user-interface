@@ -1,0 +1,18 @@
+<!-- @dsCard group="Clinical noting" width=1200 height=320 subtitle="Template suggestions (experimental): optional, linked to a trigger term, free-text triggering switch" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { TemplateSuggestionsPanel } = window.ClinicalCUI;
+const triggers = [
+  { id: 'dvt', term: 'Deep vein thrombosis', source: 'encoded', templates: [{ id: 'wells', title: "Wells' score for DVT", additional: true }, { id: 'anticoag', title: 'Anticoagulation plan' }] },
+  { id: 'abg', term: 'Arterial blood gas', source: 'free text', templates: [{ id: 'abgf', title: 'Arterial blood gas results' }] },
+];
+function Demo() {
+  const [on, setOn] = React.useState(true);
+  return h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start' } },
+    h(TemplateSuggestionsPanel, { triggers: triggers, onOpenTemplate: function () {}, freeTextTriggering: on, onFreeTextTriggeringChange: setOn }),
+    h(TemplateSuggestionsPanel, { triggers: [{ id: 'x', term: 'Ingrown toenail', templates: [] }], onOpenTemplate: function () {} }),
+    h(TemplateSuggestionsPanel, { triggers: [], onOpenTemplate: function () {} }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
