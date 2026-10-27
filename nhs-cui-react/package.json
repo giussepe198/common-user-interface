@@ -11,8 +11,8 @@
     "screens": "node scripts/screens.mjs"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Gabe Rijpma <gabe.rijpma@outlook.com>",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.0.0",

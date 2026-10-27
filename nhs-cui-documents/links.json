@@ -109,7 +109,9 @@
   },
   {
     "title": "Display of adverse drug reactions (PDF, 1.6MB)",
-    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/advdrugrisks.pdf"
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/advdrugrisks.pdf",
+    "redistributed": false,
+    "note": "Microsoft co-owned; not included in this repository"
   },
   {
     "title": "Recording adverse drug reaction risks (PDF, 4.2MB)",
@@ -133,7 +135,9 @@
   },
   {
     "title": "Terminology – Disambiguation and error correction (PDF, 294.7kB)",
-    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/disambig.pdf"
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/disambig.pdf",
+    "redistributed": false,
+    "note": "Microsoft co-owned; not included in this repository"
   },
   {
     "title": "Terminology – Matching (PDF, 2.1MB)",
@@ -161,7 +165,9 @@
   },
   {
     "title": "Handover requirements spreadsheet (PDF, 607.6kB)",
-    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/cuidesignguide.pdf"
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/cuidesignguide.pdf",
+    "redistributed": false,
+    "note": "Microsoft co-owned; not included in this repository"
   },
   {
     "title": "Introduction to handover presentation (PDF, 339.9kB)",
@@ -197,7 +203,9 @@
   },
   {
     "title": "Care pathways conceptual modelling (PDF, 873.1kB)",
-    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/carepathways.pdf"
+    "url": "https://webarchive.nationalarchives.gov.uk/ukgwa/20160921150545mp_/http://systems.digital.nhs.uk/data/cui/uig/carepathways.pdf",
+    "redistributed": false,
+    "note": "Microsoft co-owned; not included in this repository"
   },
   {
     "title": "Decision support summary (PPT, 1.4MB)",

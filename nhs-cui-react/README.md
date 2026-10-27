@@ -87,6 +87,10 @@ The controls never fetch data: drug search, terminology search and postcode look
 
 The CUI guidance does not prescribe colours or fonts, so the palette is this library's own. It keeps the colour meanings the guidance fixes: red no-go, yellow caution, green acceptable, blue advisory only, never colour alone.
 
+## Licence and attribution
+
+Licensed under the Apache License 2.0 (see [../LICENSE](../LICENSE)). Contains public sector information licensed under the Open Government Licence v3.0. This library is an independent work based on the NHS CUI guidance and is not endorsed by the NHS or Microsoft. See [../NOTICE.md](../NOTICE.md) for the source documents' terms.
+
 ## Traceability
 
 - `docs/guidance-notes/G1..G9` are the distilled notes from all 54 NHS CUI documents, with every guideline ID and exact rule. `G10-australia.md` and `G11-new-zealand.md` are the regional specifications, with a source URL on every item.

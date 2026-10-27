@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Archives used to move files between machines
+*.tar.gz
+
+# Dependencies and build output
+node_modules/
+nhs-cui-react/dist/
+nhs-cui-react/dist-*/
+nhs-cui-react/src/.entry-*
+nhs-cui-react/examples/.entry-*
