@@ -59,7 +59,7 @@ The NHS CUI guidance was produced for NHS Connecting for Health and later mainta
 
 ## About me
 
-I'm Gabe Rijpma, based in New Zealand. I spent 20 years at Microsoft, 12 of them in healthcare across Asia, and have worked in digital health ever since. I co-founded and sold Aceso Health in New Zealand, founded GetConsent (digital informed consent for Australian and New Zealand healthcare), and I'm CEO of CardioNexus Remote Monitoring, which provides cardiac monitoring to medical practices across Australia. I've been programming since I was a child, starting with 6502 assembly on 8-bit computers.
+I'm Gabe Rijpma, based in New Zealand. I spent 20 years at Microsoft, 12 of them in healthcare across Asia, and have worked in digital health ever since. I co-founded and sold Aceso Health in New Zealand, was CEO of CardioNexus and currently building a number of digital health solutions in my spare time. I've been programming since I was a child, starting with Basic and 6502 assembly on 8-bit computers.
 
 ## Contact
 
