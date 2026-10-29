@@ -104,11 +104,17 @@ export function CommandSearch({ label = 'Search', placeholder, sources, onSelect
     const every = setInterval(measure, 250);
     window.addEventListener('resize', measure);
     window.addEventListener('scroll', measure, true);
+    // A banner that turns compact or grows does so in a transition: read the place again the moment it ends, so no strip
+    // of the page shows between the banner and the panel while the interval catches up.
+    document.addEventListener('transitionend', measure, true);
+    document.addEventListener('animationend', measure, true);
     return () => {
       cancelAnimationFrame(frame);
       clearInterval(every);
       window.removeEventListener('resize', measure);
       window.removeEventListener('scroll', measure, true);
+      document.removeEventListener('transitionend', measure, true);
+      document.removeEventListener('animationend', measure, true);
     };
   }, [getTop]);
 
