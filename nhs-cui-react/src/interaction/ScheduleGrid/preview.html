@@ -1,0 +1,42 @@
+<!-- @dsCard group="Drag and drop" width=1200 height=900 subtitle="Schedule grid: a week of appointments and a leave block in Melbourne time, a double booking side by side, moves checked before they are saved; AU" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ScheduleGrid, ClinicalLocaleProvider } = window.ClinicalCUI;
+const label = (t) => h('p', { className: 'cui-type-label', style: { margin: '12px 0 4px', color: 'var(--ink-muted)' } }, t);
+// Melbourne is UTC+11 in late October (AEDT).
+const at = (date, hhmm) => { const [hh, mm] = hhmm.split(':').map(Number); return new Date(Date.UTC(+date.slice(0, 4), +date.slice(5, 7) - 1, +date.slice(8, 10), hh - 11, mm)).toISOString(); };
+const days = ['2026-10-26', '2026-10-27', '2026-10-28', '2026-10-29', '2026-10-30'];
+const start = [
+  { id: 'a1', title: 'Review', detail: 'Interview room 2', start: at('2026-10-26', '10:00'), end: at('2026-10-26', '11:00') },
+  { id: 'a2', title: 'Home visit', detail: 'Home visit', start: at('2026-10-26', '10:30'), end: at('2026-10-26', '11:30'), status: 'Double booked' },
+  { id: 'a3', title: 'Depot clinic', detail: 'Clinic room 1', start: at('2026-10-27', '09:00'), end: at('2026-10-27', '09:30') },
+  { id: 'a4', title: 'Family meeting', detail: 'Group room', start: at('2026-10-28', '14:00'), end: at('2026-10-28', '15:30') },
+  { id: 'b1', title: 'Leave', kind: 'block', movable: false, start: at('2026-10-30', '09:00'), end: at('2026-10-30', '17:00') },
+];
+function check(e, p) {
+  return new Promise((resolve) => setTimeout(() => {
+    const s = p.span;
+    if (s.date === '2026-10-27' && s.start < 600 && s.end > 540) resolve({ stops: ['Clinic room 1 is booked 09:00 to 10:00.'] });
+    else if (s.date === '2026-10-28' && s.start < 930 && s.end > 840) resolve({ warnings: ['Alex Chen already has an appointment 14:00 to 15:30.'] });
+    else resolve({ notes: ['The person has no other appointment that day.'] });
+  }, 300));
+}
+function Demo() {
+  const [events, setEvents] = React.useState(start);
+  return h(ClinicalLocaleProvider, { region: 'AU', timeZone: 'Australia/Melbourne' }, h(ScheduleGrid, {
+    label: 'Diary, week of 26-Oct-2026', days, events, dayStart: 8 * 60, dayEnd: 18 * 60, hourHeight: 56,
+    checkMove: check,
+    onMove: (e, p) => new Promise((resolve) => setTimeout(() => { setEvents(events.map((x) => (x.id === e.id ? Object.assign({}, x, { start: p.start.toISOString(), end: p.end.toISOString() }) : x))); resolve(); }, 300)),
+  }));
+}
+function ReadOnly() {
+  return h(ClinicalLocaleProvider, { region: 'AU', timeZone: 'Australia/Melbourne' }, h(ScheduleGrid, { label: 'Diary, read only', days: days.slice(0, 2), events: start.slice(0, 3), dayStart: 9 * 60, dayEnd: 12 * 60, hourHeight: 56 }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  label('Week: drag the grip to move, the bar at the bottom to change the end, or use Move options on a block'),
+  h(Demo),
+  label('Read only: no grips, no end bars, no options'),
+  h(ReadOnly)
+));
+</script>

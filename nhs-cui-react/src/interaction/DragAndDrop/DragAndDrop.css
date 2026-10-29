@@ -1,0 +1,23 @@
+/* Drag and drop primitives (G13). Handles are buttons; touch-action stays as the page's so a swipe scrolls (DND-0120). */
+.cui-drag-handle { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 24px; min-height: 24px; align-self: stretch; padding: 0; margin: 0; border: 1px solid transparent; border-radius: var(--radius-sm); background: transparent; color: var(--ink-muted); cursor: grab; font: inherit; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.cui-drag-handle:hover { background: var(--hover); color: var(--ink); }
+.cui-drag-handle:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.cui-drag-handle--active { cursor: grabbing; background: var(--accent-surface); border-color: var(--accent); color: var(--accent); }
+.cui-drag-handle[aria-disabled='true'] { cursor: progress; color: var(--ink-disabled); }
+@media (pointer: coarse) {
+  .cui-drag-handle { width: var(--target-coarse); min-height: var(--target-coarse); }
+}
+
+.cui-drag-preview { position: fixed; top: 0; left: 0; z-index: 1000; pointer-events: none; box-sizing: border-box; background: var(--surface); border: 1px solid var(--accent); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); padding: var(--space-1) var(--space-2); opacity: 0.95; }
+.cui-drag-preview--refused { border-color: var(--danger); }
+.cui-drag-preview__refusal { display: flex; align-items: center; gap: var(--space-1); color: var(--danger); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; }
+
+.cui-drop-refusal { display: flex; align-items: center; gap: var(--space-1); margin: var(--space-1) 0 0; color: var(--danger); font-size: var(--font-size-label); line-height: var(--line-height-label); }
+
+/* The words on an insertion line or a target (DND-0210). */
+.cui-drop-label { display: inline-flex; align-items: center; gap: var(--space-1); padding: 0 var(--space-1); border-radius: var(--radius-sm); background: var(--accent); color: var(--on-accent); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; white-space: nowrap; }
+.cui-drop-label--refused { background: var(--danger); color: var(--on-danger); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cui-drag-preview { transition: none; }
+}

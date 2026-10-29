@@ -1,0 +1,69 @@
+/* The root carries no size container: the drag preview and the dialogs are fixed layers (CONVENTIONS). */
+.cui-schedule { min-width: 0; }
+.cui-schedule__zone, .cui-schedule__more { display: flex; align-items: center; gap: var(--space-1); margin: 0 0 var(--space-2); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+/* The grid's own frame: it may scroll sideways on a narrow screen and says so above (CONVENTIONS "No horizontal page scroll"). */
+.cui-schedule__frame { max-width: 100%; overflow: auto; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); }
+.cui-schedule__frame:focus { outline: none; }
+.cui-schedule__frame:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-schedule__grid { display: grid; grid-template-columns: 52px repeat(var(--cui-schedule-days, 1), minmax(132px, 1fr)); min-width: min-content; }
+.cui-schedule__corner, .cui-schedule__day-head { position: sticky; top: 0; z-index: 3; background: var(--surface-sunken); border-bottom: 1px solid var(--border-strong); }
+.cui-schedule__day-head { padding: var(--space-1) var(--space-2); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; border-left: 1px solid var(--border); white-space: nowrap; }
+.cui-schedule__gutter { position: relative; }
+.cui-schedule__hour { position: absolute; right: var(--space-1); transform: translateY(-50%); font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-schedule__hour:first-child { transform: none; }
+.cui-schedule__column { position: relative; border-left: 1px solid var(--border); }
+/* Thin, quiet hour lines; no alternating column colours (TLN-0140, DND-0640). */
+.cui-schedule__line { position: absolute; left: 0; right: 0; height: 0; border-top: 1px solid var(--border); }
+.cui-schedule__column--target { background: var(--surface-sunken); }
+.cui-schedule__events { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; }
+.cui-schedule__event { container: cui-schedule-event / inline-size; position: absolute; box-sizing: border-box; display: flex; flex-direction: column; min-height: 24px; border: 2px solid var(--surface); border-radius: var(--radius-md); background: var(--accent-surface); box-shadow: inset 0 0 0 1px var(--accent); overflow: hidden; }
+.cui-schedule__event-row { flex: 1 1 auto; display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 2px; min-height: 0; padding: 2px; overflow: hidden; }
+.cui-schedule__event--block { background: var(--surface-muted); box-shadow: inset 0 0 0 1px var(--border-strong); }
+.cui-schedule__event--lifted { opacity: 0.6; box-shadow: inset 0 0 0 2px var(--accent); }
+/* A lane too narrow for words beside the grip and the menu: they share the first line and the words go below. */
+@container cui-schedule-event (max-width: 100px) {
+  .cui-schedule__event-row { flex-wrap: wrap; }
+  .cui-schedule__menu { order: 1; margin-left: auto; }
+  .cui-schedule__event-text { order: 2; flex-basis: 100%; }
+}
+@media (pointer: coarse) {
+  @container cui-schedule-event (max-width: 160px) {
+    .cui-schedule__event-row { flex-wrap: wrap; }
+    .cui-schedule__menu { order: 1; margin-left: auto; }
+    .cui-schedule__event-text { order: 2; flex-basis: 100%; }
+  }
+}
+.cui-schedule__event-text { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; font-size: var(--font-size-label); line-height: var(--line-height-label); }
+.cui-schedule__title { font-weight: 600; overflow-wrap: anywhere; }
+.cui-schedule__title--button { padding: 0; border: 0; background: none; color: var(--accent); font: inherit; font-weight: 600; text-align: left; cursor: pointer; text-decoration: underline; }
+.cui-schedule__title--button:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.cui-schedule__when, .cui-schedule__detail { color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-schedule__status { font-weight: 600; }
+.cui-schedule__event .cui-drag-handle { width: 24px; min-height: 24px; align-self: flex-start; }
+.cui-schedule__menu { flex: none; color: var(--ink-muted); }
+.cui-schedule__resize { flex: none; display: block; width: 100%; height: 24px; margin: 0; padding: 0; border: 0; background: transparent; cursor: ns-resize; }
+.cui-schedule__resize::after { content: ''; display: block; width: 24px; height: 3px; margin: 17px auto 0; border-radius: var(--radius-sm); background: var(--accent); }
+.cui-schedule__resize:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.cui-schedule__resize--active::after { background: var(--focus); }
+.cui-schedule__ghost { position: absolute; left: 2px; right: 2px; z-index: 2; box-sizing: border-box; border: 2px solid var(--accent); border-radius: var(--radius-sm); background: var(--surface); pointer-events: none; }
+.cui-schedule__ghost .cui-drop-label { margin: 2px; }
+.cui-schedule__ghost--refused { border-color: var(--danger); }
+.cui-schedule__preview { font-weight: 600; }
+.cui-schedule__summary-title { margin: 0 0 var(--space-2); font-weight: 600; }
+.cui-schedule__facts { display: grid; grid-template-columns: auto 1fr; gap: var(--space-1) var(--space-3); margin: 0 0 var(--space-3); }
+.cui-schedule__facts dt { color: var(--ink-muted); }
+.cui-schedule__facts dd { margin: 0; font-variant-numeric: tabular-nums; }
+.cui-schedule__checks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.cui-schedule__check { display: flex; align-items: flex-start; gap: var(--space-1); }
+.cui-schedule__check--stop { color: var(--danger); font-weight: 600; }
+.cui-schedule__check--warning { color: var(--warning); }
+.cui-schedule__checking { margin: 0; color: var(--ink-muted); }
+.cui-schedule__error { display: flex; align-items: center; gap: var(--space-1); margin: var(--space-2) 0 0; color: var(--danger); font-weight: 600; }
+.cui-schedule__move-to { display: flex; flex-direction: column; gap: var(--space-3); }
+.cui-schedule__quick { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+@media (pointer: coarse) {
+  .cui-schedule__event .cui-drag-handle { width: var(--target-coarse); min-height: var(--target-coarse); }
+  .cui-schedule__grid { grid-template-columns: 52px repeat(var(--cui-schedule-days, 1), minmax(176px, 1fr)); }
+}
+/* A block holding focus lifts above a neighbour it overlaps. */
+.cui-schedule__event:focus-within { z-index: 4; }

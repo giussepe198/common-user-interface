@@ -1,0 +1,37 @@
+/* The root carries no size container: the drag preview inside it is position fixed (CONVENTIONS). */
+.cui-board { min-width: 0; }
+.cui-board__frame { container: cui-board / inline-size; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: var(--space-3); align-items: stretch; }
+.cui-board__column { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; padding: var(--space-2); background: var(--surface-sunken); border: 1px solid var(--border); border-radius: var(--radius-md); }
+.cui-board__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap; }
+.cui-board__title { margin: 0; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
+.cui-board__count { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-board__description { margin: 0; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-board__cards { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.cui-board__card { position: relative; display: flex; align-items: flex-start; gap: var(--space-1); padding: var(--space-2) var(--space-1); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-board__content { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.cui-board__menu { flex: none; }
+.cui-board__card--lifted { outline: 2px dashed var(--accent); outline-offset: -2px; background: var(--surface-muted); }
+.cui-board__card--lifted .cui-board__content, .cui-board__card--busy .cui-board__content { color: var(--ink-muted); }
+.cui-board__status { display: block; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-board__empty { margin: 0; padding: var(--space-3) var(--space-2); text-align: center; color: var(--ink-muted); border: 1px dashed var(--border-strong); border-radius: var(--radius-md); }
+/* While a card is carried every column says whether it takes it, in words (DND-0210, DND-0220). */
+.cui-board__column--dragging { border-style: dashed; border-color: var(--border-strong); }
+.cui-board__column--refuses { background: var(--surface-muted); }
+.cui-board__column--target { border: 2px solid var(--accent); background: var(--accent-surface); }
+.cui-board__column--refused { border-color: var(--danger); background: var(--danger-surface); }
+.cui-board__drop { margin: 0; }
+.cui-board__drop .cui-drop-label { white-space: normal; }
+.cui-board__line { position: relative; height: 0; list-style: none; z-index: 2; }
+.cui-board__line::before { content: ''; position: absolute; left: 0; right: 0; top: -5px; height: 3px; background: var(--accent); border-radius: var(--radius-sm); }
+.cui-board__line .cui-drop-label { position: absolute; right: var(--space-1); top: -13px; }
+.cui-board__preview { font-weight: 600; }
+.cui-board__toggle { display: inline-flex; align-items: center; gap: var(--space-1); min-height: var(--control-height); padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; text-align: left; }
+.cui-board__toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-board__column--collapsed { gap: 0; }
+@container cui-board (max-width: 599px) {
+  .cui-board__frame { grid-template-columns: 1fr; }
+}
+@media (pointer: coarse) {
+  .cui-board__toggle { min-height: var(--target-coarse); }
+  .cui-board__menu .cui-button, .cui-board__menu > button { min-height: var(--target-coarse); }
+}
