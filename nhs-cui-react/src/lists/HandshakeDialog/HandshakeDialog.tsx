@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Icon, formatDateTime, pad2, toDate, useId, type DateLike } from '../../core';
+import { Button, Icon, formatShortDate, pad2, toDate, useClinicalLocale, useId, type DateLike } from '../../core';
+import { getZonedParts } from '../../datetime/utils/timeZones';
 import { ListDialog } from '../shared/ListDialog';
 import { DateInput, TimeInput } from '../../datetime';
 import { listDateValueToIso, listIsoToDateValue, listIsoToTimeValue } from '../shared/ListFilterValueInput';
@@ -9,8 +10,10 @@ export interface HandshakeRecord {
   outcome: 'accepted' | 'refused';
   /** Who recorded it. */
   actingAs: 'giver' | 'receiver';
-  /** Local date and time of the handover, "YYYY-MM-DDTHH:mm". */
+  /** Wall date and time of the handover, "YYYY-MM-DDTHH:mm", in `timeZone` (else the device's zone). */
   dateTime: string;
+  /** The IANA zone `dateTime` is in when the locale names one (the facility's, `ClinicalLocaleProvider` `timeZone`). */
+  timeZone?: string;
   place: string;
   giver: string;
   receiver: string;
@@ -59,7 +62,12 @@ export interface HandshakeDialogProps {
   pendingReadBack?: string[];
 }
 
-const toLocalInput = (d: Date) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}T${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+/** An instant as the wall date and time in a zone (the device's when none), "YYYY-MM-DDTHH:mm". */
+const toZonedInput = (d: Date, timeZone: string | undefined) => {
+  if (!timeZone) return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}T${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+  const p = getZonedParts(d, timeZone);
+  return `${String(p.year).padStart(4, '0')}-${pad2(p.month)}-${pad2(p.day)}T${pad2(p.hour)}:${pad2(p.minute)}`;
+};
 
 /**
  * Records the handover event and the transfer of responsibility (handshake). Date, time, place, giver and
@@ -72,8 +80,10 @@ export function HandshakeDialog({
   pendingReadBack = [],
 }: HandshakeDialogProps) {
   const id = useId('cui-hs');
+  // The facility's zone (AU-DT-07): the time captured, shown and edited is the facility's, whatever the device's zone.
+  const { displayTimeZone } = useClinicalLocale();
   const captured = React.useMemo(() => toDate(dateTime ?? new Date()) ?? new Date(), [dateTime]);
-  const [when, setWhen] = React.useState(toLocalInput(captured));
+  const [when, setWhen] = React.useState(() => toZonedInput(captured, displayTimeZone));
   const [editWhen, setEditWhen] = React.useState(false);
   const [place, setPlace] = React.useState(initialPlace);
   const [others, setOthers] = React.useState(initialOthers);
@@ -86,7 +96,7 @@ export function HandshakeDialog({
   const [error, setError] = React.useState('');
 
   const record = (outcome: 'accepted' | 'refused'): HandshakeRecord => ({
-    outcome, actingAs, dateTime: when, place: place.trim(), giver, receiver, othersPresent: others.trim(), reason,
+    outcome, actingAs, dateTime: when, ...(displayTimeZone ? { timeZone: displayTimeZone } : {}), place: place.trim(), giver, receiver, othersPresent: others.trim(), reason,
     satisfactory, unsatisfactoryNote: satisfactory ? undefined : note.trim(), flagIncident: satisfactory ? undefined : incident,
     refusalReason: outcome === 'refused' ? refusal.trim() : undefined, itemIds: items.map(i => i.id),
   });
@@ -164,7 +174,7 @@ export function HandshakeDialog({
               />
             </span>
           ) : (
-            <span className="cui-handshake__value cui-tabular">{formatDateTime(when)}</span>
+            <span className="cui-handshake__value cui-tabular">{`${formatShortDate(when.slice(0, 10))} ${when.slice(11, 16)}`}</span>
           )}{' '}
           <Button size="sm" variant="quiet" icon="pencil" onClick={() => setEditWhen(e => !e)}>{editWhen ? 'Done' : 'Change'}</Button>
         </dd>

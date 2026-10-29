@@ -232,10 +232,10 @@ function elapsedText(ms: number): string {
   return `${h} hour${h === 1 ? '' : 's'} ago`;
 }
 
-function defaultCellText(v: unknown, type: ListDataType): string {
+function defaultCellText(v: unknown, type: ListDataType, timeZone?: string): string {
   if (v === null || v === undefined || v === '') return '';
-  if (type === 'date') return formatShortDate(v as DateLike);
-  if (type === 'dateTime') return formatDateTime(v as DateLike);
+  if (type === 'date') return formatShortDate(v as DateLike, { timeZone });
+  if (type === 'dateTime') return formatDateTime(v as DateLike, { timeZone });
   return String(v);
 }
 
@@ -280,7 +280,7 @@ export function PatientList<T>(props: PatientListProps<T>) {
     selectionMode = 'single', onOpenRow, onHeaderCommand, similarNames, toolbar, maxHeight = 480, className,
     dateOfBirthFormat, mrnLabel, headerFilter = false, autoWidenColumns = true, search = 'auto', searchFields,
   } = props;
-  const { region } = useClinicalLocale(props.region);
+  const { region, displayTimeZone: timeZone } = useClinicalLocale(props.region);
   const baseId = useId('cui-pl');
   const nowMs = useNow(now, !realTime);
 
@@ -636,7 +636,7 @@ export function PatientList<T>(props: PatientListProps<T>) {
   };
 
   // ---------- header ----------
-  const ts = formatDateTime(timestamp);
+  const ts = formatDateTime(timestamp, { timeZone });
   const forText = listFor ? `${title} for: ${listFor}` : title;
   const headerMeta = [service, locations && locations.length ? locations.join(', ') : undefined].filter(Boolean) as string[];
 
@@ -709,7 +709,7 @@ export function PatientList<T>(props: PatientListProps<T>) {
     else {
       const attr = attrs.find(a => a.id === col.id) as ListAttribute<T>;
       const v = attr.getValue ? attr.getValue(row) : (row as unknown as Record<string, unknown>)[col.id];
-      const text = defaultCellText(v, col.dataType ?? 'string');
+      const text = defaultCellText(v, col.dataType ?? 'string', timeZone);
       const hit = found.active && text && col.dataType !== 'date' && col.dataType !== 'dateTime' ? found.hitOf(row) : undefined;
       const m = hit?.matches.find(x => x.fieldKey === col.id && x.value === text);
       content = hit && m ? <SearchHighlight text={text} ranges={smartHitRanges(hit, col.id, m.valueIndex)} /> : text;

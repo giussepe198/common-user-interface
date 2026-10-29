@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { cx, useId, useControllableState, useClinicalLocale, Icon, MONTH_SHORT, formatShortDate, toDate } from '../../core';
 import type { ClinicalRegion } from '../../core';
 import { zonedToday } from '../utils/timeZones';
+import { usePendingText } from '../utils/pendingText';
 import { NUMERIC_DATE_ORDER } from '../utils/regions/dates';
 import { NoWrapDates } from '../DisambiguationPrompt/NoWrapDates';
 import type { DateLike } from '../../core';
@@ -78,7 +79,7 @@ export interface DateInputProps {
   /**
    * Region; otherwise read from ClinicalLocaleProvider. AU and NZ read numeric dates day first
    * without asking (05/04/2009 is 05-Apr-2009; month-first input is refused), GB asks (D+Tc-0005).
-   * AU and NZ also take "today" from the locale's time zone.
+   * AU and NZ take "today" from the locale's time zone, as does every region when the provider names a zone.
    */
   region?: ClinicalRegion;
   /** Adds a hidden input with the ISO value (2008-04-05, 2008-04, 2008, or "unknown") for forms. */
@@ -138,7 +139,8 @@ export const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(func
   const inputId = useId('cui-date-input', id);
   const [value, setValue] = useControllableState<DateInputValue | null>(valueProp, defaultValue, onChange);
   const fmt = (v: DateInputValue | null) => formatDateInputValue(v, unknownText);
-  const [text, setText] = useState(() => fmt(value));
+  // Uncommitted text survives a remount of this control (a host frame that changes with the width).
+  const [text, setText] = usePendingText(inputId, () => fmt(value), `${JSON.stringify(value)}|${unknownText}`);
   const [error, setError] = useState<string | null>(null);
   const validationCb = useRef(onValidationChange);
   validationCb.current = onValidationChange;
@@ -157,7 +159,6 @@ export const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(func
   const pendingSel = useRef<[number, number] | null>(null);
   const buffer = useRef<{ key: string; text: string }>({ key: '', text: '' });
   const mouseFocus = useRef(false);
-  const valueKey = JSON.stringify(value);
 
   const setRefs = (el: HTMLInputElement | null) => {
     inputRef.current = el;
@@ -165,10 +166,6 @@ export const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(func
     else if (ref) ref.current = el;
   };
 
-  useEffect(() => {
-    setText(fmt(value));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [valueKey, unknownText]);
 
   useLayoutEffect(() => {
     if (pendingSel.current && inputRef.current && document.activeElement === inputRef.current) {
@@ -187,7 +184,8 @@ export const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(func
     return () => document.removeEventListener('mousedown', onDown);
   }, [calendarOpen]);
 
-  const today = todayProp ?? (locale.region === 'GB' ? new Date() : zonedToday(locale.timeZone));
+  // Today is the facility's day when the locale names its zone; otherwise GB uses the device's, AU and NZ the region's.
+  const today = todayProp ?? (locale.displayTimeZone ? zonedToday(locale.displayTimeZone) : locale.region === 'GB' ? new Date() : zonedToday(locale.timeZone));
   const refDate = referenceDate ?? (value?.kind === 'full' ? makeLocalDate(value.year, value.month, value.day) : today);
   const instructionText = instructions ?? defaultInstructions({ allowMonthYear, allowYear, allowUnknown, unknownText, dayFirst: NUMERIC_DATE_ORDER[locale.region] === 'dayFirst' });
   const editable = !disabled && !readOnly;

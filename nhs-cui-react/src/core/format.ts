@@ -28,39 +28,85 @@ export function ordinalSuffix(n: number): 'st' | 'nd' | 'rd' | 'th' {
   return (['th', 'st', 'nd', 'rd'] as const)[n % 10] ?? 'th';
 }
 
-/** Short date "dd-Mmm-yyyy", e.g. 05-Apr-2008; optional day prefix "Sat 05-Apr-2008". */
-export function formatShortDate(value: DateLike, opts: { dayOfWeek?: boolean } = {}): string {
+/**
+ * Display options shared by the formatters. `timeZone` (IANA) shows an instant's wall clock in that zone rather than
+ * the device's (AU-DT-07: store UTC, render in the facility's zone); a "YYYY-MM-DD" calendar date is never shifted.
+ * Without it the device's zone is used, as before.
+ */
+export interface ZoneOption {
+  timeZone?: string;
+}
+
+interface Wall {
+  year: number;
+  /** 0 to 11 */
+  month: number;
+  day: number;
+  weekday: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+const CALENDAR_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
+const zoneFormatters = new Map<string, Intl.DateTimeFormat>();
+const WEEKDAY_INDEX: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+
+/** The wall clock of a value: a calendar date as written, an instant in `timeZone` (else the device's zone). */
+function wallOf(value: DateLike, timeZone?: string): Wall | null {
+  if (typeof value === 'string') {
+    const m = CALENDAR_DATE.exec(value);
+    if (m) {
+      const d = new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3])));
+      return { year: d.getUTCFullYear(), month: d.getUTCMonth(), day: d.getUTCDate(), weekday: d.getUTCDay(), hours: 0, minutes: 0, seconds: 0 };
+    }
+  }
   const d = toDate(value);
-  if (!d) return '';
-  const s = `${pad2(d.getDate())}-${MONTH_SHORT[d.getMonth()]}-${String(d.getFullYear()).padStart(4, '0')}`;
-  return opts.dayOfWeek ? `${DAY_SHORT[d.getDay()]} ${s}` : s;
+  if (!d) return null;
+  if (!timeZone) return { year: d.getFullYear(), month: d.getMonth(), day: d.getDate(), weekday: d.getDay(), hours: d.getHours(), minutes: d.getMinutes(), seconds: d.getSeconds() };
+  let f = zoneFormatters.get(timeZone);
+  if (!f) {
+    f = new Intl.DateTimeFormat('en-US', { timeZone, hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', weekday: 'short' });
+    zoneFormatters.set(timeZone, f);
+  }
+  const p: Record<string, string> = {};
+  for (const part of f.formatToParts(d)) p[part.type] = part.value;
+  return { year: Number(p.year), month: Number(p.month) - 1, day: Number(p.day), weekday: WEEKDAY_INDEX[p.weekday] ?? 0, hours: Number(p.hour) % 24, minutes: Number(p.minute), seconds: Number(p.second) };
+}
+
+/** Short date "dd-Mmm-yyyy", e.g. 05-Apr-2008; optional day prefix "Sat 05-Apr-2008". */
+export function formatShortDate(value: DateLike, opts: { dayOfWeek?: boolean } & ZoneOption = {}): string {
+  const w = wallOf(value, opts.timeZone);
+  if (!w) return '';
+  const s = `${pad2(w.day)}-${MONTH_SHORT[w.month]}-${String(w.year).padStart(4, '0')}`;
+  return opts.dayOfWeek ? `${DAY_SHORT[w.weekday]} ${s}` : s;
 }
 
 /** Long date "05 April 2008" (or parts for ordinal rendering, see formatLongDateParts). */
-export function formatLongDate(value: DateLike, opts: { dayOfWeek?: boolean } = {}): string {
-  const d = toDate(value);
-  if (!d) return '';
-  const s = `${pad2(d.getDate())} ${MONTH_LONG[d.getMonth()]} ${d.getFullYear()}`;
-  return opts.dayOfWeek ? `${DAY_SHORT[d.getDay()]} ${s}` : s;
+export function formatLongDate(value: DateLike, opts: { dayOfWeek?: boolean } & ZoneOption = {}): string {
+  const w = wallOf(value, opts.timeZone);
+  if (!w) return '';
+  const s = `${pad2(w.day)} ${MONTH_LONG[w.month]} ${w.year}`;
+  return opts.dayOfWeek ? `${DAY_SHORT[w.weekday]} ${s}` : s;
 }
 
 /** Parts for an ordinal long date: day has no leading zero, suffix is rendered as <sup>. */
-export function formatLongDateParts(value: DateLike): { day: string; suffix: string; rest: string } | null {
-  const d = toDate(value);
-  if (!d) return null;
-  return { day: String(d.getDate()), suffix: ordinalSuffix(d.getDate()), rest: `${MONTH_LONG[d.getMonth()]} ${d.getFullYear()}` };
+export function formatLongDateParts(value: DateLike, opts: ZoneOption = {}): { day: string; suffix: string; rest: string } | null {
+  const w = wallOf(value, opts.timeZone);
+  if (!w) return null;
+  return { day: String(w.day), suffix: ordinalSuffix(w.day), rest: `${MONTH_LONG[w.month]} ${w.year}` };
 }
 
 /** 24-hour time "HH:mm" (or "HH:mm:ss"), never 24:00, never am/pm (D+Tb). */
-export function formatTime(value: DateLike, opts: { seconds?: boolean; approx?: boolean } = {}): string {
-  const d = toDate(value);
-  if (!d) return '';
-  const s = `${pad2(d.getHours())}:${pad2(d.getMinutes())}${opts.seconds ? ':' + pad2(d.getSeconds()) : ''}`;
+export function formatTime(value: DateLike, opts: { seconds?: boolean; approx?: boolean } & ZoneOption = {}): string {
+  const w = wallOf(value, opts.timeZone);
+  if (!w) return '';
+  const s = `${pad2(w.hours)}:${pad2(w.minutes)}${opts.seconds ? ':' + pad2(w.seconds) : ''}`;
   return opts.approx ? `Approx ${s}` : s;
 }
 
 /** Date then time separated by a single space: "05-Apr-2008 14:30". */
-export function formatDateTime(value: DateLike, opts: { dayOfWeek?: boolean; seconds?: boolean } = {}): string {
+export function formatDateTime(value: DateLike, opts: { dayOfWeek?: boolean; seconds?: boolean } & ZoneOption = {}): string {
   const d = toDate(value);
   if (!d) return '';
   return `${formatShortDate(d, opts)} ${formatTime(d, opts)}`;

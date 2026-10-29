@@ -52,6 +52,10 @@ const [msg, setMsg] = useState<string | null>(null);
 - Do show seconds only when the time is accurate to the second.
 - Don't offer am/pm or a 12-hour mode.
 
+## Typed text that is not committed yet
+
+The value is committed when the person leaves the field or presses Enter. Until then the typed text survives a re-render and a remount of the control with the same `id` (a host that draws it in another frame at a new width, such as a drawer becoming a bottom sheet when a tablet is turned): the new control takes over the text the old one held a moment before [suggested]. Give the control a stable `id` when the host may remount it.
+
 ## Accessibility
 
 Visible label, instructions and "24-hour clock" linked with `aria-describedby`, errors announced with `role="alert"`. Spin buttons are not in the tab order because Up and Down do the same from the field.

@@ -20,7 +20,7 @@ When a giver hands one or more items (patients or tasks) to a receiver, face to 
 />
 ```
 
-`onSubmit` receives a `HandshakeRecord` with the outcome, time, place, people, reason, satisfaction, incident flag and refusal reason. Stamp it with the user and time on the server.
+`onSubmit` receives a `HandshakeRecord` with the outcome, time (`dateTime` as a wall time, with `timeZone` when the `ClinicalLocaleProvider` names the facility's zone; the time is captured, shown and edited in that zone, never the device's), place, people, reason, satisfaction, incident flag and refusal reason. Stamp it with the user and time on the server.
 
 ## Guidance implemented
 

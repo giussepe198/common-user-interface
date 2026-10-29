@@ -4,6 +4,7 @@ import type { ClinicalRegion, DateLike } from '../../core';
 import type { DateInputValue } from '../utils/dateInput';
 import type { WallTimeIssue} from '../utils/timeZones';
 import { checkZonedWallTime, getZonedParts } from '../utils/timeZones';
+import { usePendingText } from '../utils/pendingText';
 import { NoWrapDates } from '../DisambiguationPrompt/NoWrapDates';
 import type {
   TimeInputValue,
@@ -72,7 +73,7 @@ export interface TimeInputProps {
   onTimeZoneIssue?: (issue: WallTimeIssue | null) => void;
   /**
    * Region; otherwise read from ClinicalLocaleProvider. Its time zone is used for `date` checks and,
-   * outside GB, for "now" when spinning an empty field or applying a shortcut.
+   * outside GB (or whenever the provider names a zone), for "now" when spinning an empty field or applying a shortcut.
    */
   region?: ClinicalRegion;
   error?: string;
@@ -119,7 +120,8 @@ export const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(func
   const [value, setValue] = useControllableState<TimeInputEntry>(valueProp, defaultValue, onChange);
   const [approx, setApprox] = useControllableState<boolean>(approxProp, defaultApproximate, onApproximateChange);
   const fmt = (v: TimeInputEntry) => formatTimeInputValue(v, { showSeconds, unknownText });
-  const [text, setText] = useState(() => fmt(value));
+  // Uncommitted text survives a remount of this control (a host frame that changes with the width).
+  const [text, setText] = usePendingText(inputId, () => fmt(value), `${JSON.stringify(value)}|${showSeconds}|${unknownText}`);
   const [error, setError] = useState<string | null>(null);
   const validationCb = useRef(onValidationChange);
   validationCb.current = onValidationChange;
@@ -143,10 +145,6 @@ export const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(func
     else if (ref) ref.current = el;
   };
 
-  useEffect(() => {
-    setText(fmt(value));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [valueKey, showSeconds, unknownText]);
 
   useLayoutEffect(() => {
     if (pendingSel.current && inputRef.current && document.activeElement === inputRef.current) {
@@ -156,8 +154,9 @@ export const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(func
   });
 
   const nowValue = (): TimeInputValue => {
-    if (now || locale.region === 'GB') return timeInputValueFromDate(now ?? new Date(), showSeconds);
-    const p = getZonedParts(new Date(), locale.timeZone);
+    if (now || (locale.region === 'GB' && !locale.displayTimeZone)) return timeInputValueFromDate(now ?? new Date(), showSeconds);
+    // The facility's wall clock when the locale names its zone (and outside GB always), never the device's.
+    const p = getZonedParts(new Date(), locale.displayTimeZone ?? locale.timeZone);
     return showSeconds ? { hours: p.hour, minutes: p.minute, seconds: p.second } : { hours: p.hour, minutes: p.minute };
   };
   const base = (): TimeInputValue => (value && value !== 'unknown' ? value : referenceTime ?? nowValue());

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, cx, formatDateTime, toDate, useControllableState, useId, type DateLike } from '../../core';
+import { Button, cx, formatDateTime, toDate, useClinicalLocale, useControllableState, useId, type DateLike } from '../../core';
 import { ObservationGraph, type ObservationGraphProps } from '../ObservationGraph/ObservationGraph';
 import { SeriesStyleAllocator } from '../utils/labelsStyles';
 import {
@@ -86,6 +86,8 @@ export function GraphStack(props: GraphStackProps) {
   const [innerFocus, setInnerFocus] = React.useState<number | null>(null);
   const focusT = focusControlled ? (props.focusTime === null ? null : toDate(props.focusTime as DateLike)?.getTime() ?? null) : innerFocus;
   const [announce, setAnnounce] = React.useState('');
+  // Times in words are the facility's (the locale's zone, AU-DT-07), whatever the device's zone.
+  const { displayTimeZone: timeZone } = useClinicalLocale();
 
   const stepTimes = React.useMemo(() => graphStackDataTimes(graphs, start, end), [graphs, start, end]);
   const stepDates = React.useMemo(() => stepTimes.map(t => new Date(t)), [stepTimes]);
@@ -95,7 +97,7 @@ export function GraphStack(props: GraphStackProps) {
     if (!focusControlled) setInnerFocus(t);
     if (t !== focusT) props.onFocusTimeChange?.(d);
     // Announce every graph's values for keyboard moves and mouse moves alike (GTAB-057) [suggested].
-    setAnnounce(t === null ? '' : graphStackAnnouncement(graphStackFocusSummary(shown, new Date(t), focusToleranceMs, focusNeighbourMs), new Date(t)));
+    setAnnounce(t === null ? '' : graphStackAnnouncement(graphStackFocusSummary(shown, new Date(t), focusToleranceMs, focusNeighbourMs), new Date(t), timeZone));
   };
 
   // Thumbnails take width from the plot; reserve the same space on every graph so time stays aligned (GTAB-147).
@@ -143,7 +145,7 @@ export function GraphStack(props: GraphStackProps) {
   }, [measure, graphs]);
 
   const move = (gid: string, delta: -1 | 1) => setOrderState(graphStackMove(order, gid, delta));
-  const rangeText = rangeLabel ?? `${formatDateTime(new Date(s0))} to ${formatDateTime(new Date(s1))}`;
+  const rangeText = rangeLabel ?? `${formatDateTime(new Date(s0), { timeZone })} to ${formatDateTime(new Date(s1), { timeZone })}`;
   const helpId = `${id}-help`;
   const oovText = (names: string[], where: 'above' | 'below') =>
     `${names.length} graph${names.length === 1 ? '' : 's'} ${where} the view: ${names.join(', ')}. Scroll ${where === 'above' ? 'up' : 'down'} to see ${names.length === 1 ? 'it' : 'them'}.`;
@@ -162,7 +164,7 @@ export function GraphStack(props: GraphStackProps) {
         <h3 id={`${id}-title`} className="cui-graph-stack__title">{title}</h3>
         <span className="cui-graph-stack__range">{rangeText}</span>
         <span className="cui-graph-stack__focus cui-tabular" aria-hidden="true">
-          {focusT !== null ? `Focus ${formatDateTime(new Date(focusT))}` : ''}
+          {focusT !== null ? `Focus ${formatDateTime(new Date(focusT), { timeZone })}` : ''}
         </span>
       </div>
       <p id={helpId} className="cui-graph-stack__help">

@@ -65,6 +65,10 @@ const [msg, setMsg] = useState<string | null>(null);
 - Don't put the calendar button outside the field.
 - Don't accept a numeric date silently when day and month could be swapped.
 
+## Typed text that is not committed yet
+
+The value is committed when the person leaves the field or presses Enter. Until then the typed text survives a re-render and a remount of the control with the same `id` (a host that draws it in another frame at a new width, such as a drawer becoming a bottom sheet when a tablet is turned): the new control takes over the text the old one held a moment before [suggested]. Give the control a stable `id` when the host may remount it.
+
 ## Accessibility
 
 Real `<label>`, instructions linked with `aria-describedby` as well as the tooltip, errors announced with `role="alert"`, the prompt is an `alertdialog` that takes focus when a choice is needed, Esc closes the calendar and returns focus to the field.

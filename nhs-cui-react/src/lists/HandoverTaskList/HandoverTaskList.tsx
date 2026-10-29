@@ -151,7 +151,7 @@ export function HandoverTaskList({
   onStatusChange, onRemoveTask, onReadBackConfirm, onRecordHandover, onOpenPatient, title = 'Handover tasks', className,
   region: regionProp, similarNames, renderPatient, renderPatientDetail, nouns = { one: 'patient', other: 'patients' }, showHandoverState = true,
 }: HandoverTaskListProps) {
-  const { region } = useClinicalLocale(regionProp);
+  const { region, displayTimeZone: timeZone } = useClinicalLocale(regionProp);
   const nameOf = (p: HandoverPatient) => listRegionalPatientName(p, region);
   const id = useId('cui-htl');
   const [hide, setHide] = useControllableState(hideCompleted, defaultHideCompleted, onHideCompletedChange);
@@ -208,7 +208,7 @@ export function HandoverTaskList({
               <span className={cx(overdue && 'cui-handover__overdue')}>
                 {overdue ? <Icon name="warning" /> : null}
                 <span className="cui-handover__label">{overdue ? 'Overdue, was due' : 'Due'}</span>{' '}
-                {t.due ? formatDateTime(t.due) : null}
+                {t.due ? formatDateTime(t.due, { timeZone }) : null}
                 {t.due && t.dueText ? ', ' : null}
                 {t.dueText}
               </span>
@@ -217,7 +217,7 @@ export function HandoverTaskList({
             {t.vouchedBy ? <span><span className="cui-handover__label">Vouched by</span> {t.vouchedBy}</span> : null}
             {t.updatedAt ? (
               <span className="cui-handover__provenance">
-                <Icon name="history" /> Last updated {formatDateTime(t.updatedAt)}
+                <Icon name="history" /> Last updated {formatDateTime(t.updatedAt, { timeZone })}
                 {t.updatedBy ? ` by ${t.updatedBy}` : ''}
               </span>
             ) : null}
@@ -323,7 +323,7 @@ export function HandoverTaskList({
                 {p.consultant ? <span><span className="cui-handover__label">Consultant</span> {p.consultant}</span> : null}
                 {p.updatedAt ? (
                   <span className="cui-handover__provenance">
-                    <Icon name="history" /> Last updated {formatDateTime(p.updatedAt)}
+                    <Icon name="history" /> Last updated {formatDateTime(p.updatedAt, { timeZone })}
                     {p.updatedBy ? ` by ${p.updatedBy}` : ''}
                   </span>
                 ) : null}
