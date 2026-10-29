@@ -1,0 +1,17 @@
+/* StatTile: one number with its label as a heading, dense, tabular figures. */
+.cui-stat-tile { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: var(--space-2) var(--space-3); background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-stat-tile__label { margin: 0; font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--ink-muted); overflow-wrap: anywhere; }
+.cui-stat-tile__open { font: inherit; color: var(--accent); background: none; border: 0; padding: 0; margin: 0; text-align: left; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; border-radius: var(--radius-sm); }
+.cui-stat-tile__open:hover { text-decoration-thickness: 2px; }
+.cui-stat-tile__open::after { content: ''; position: absolute; inset: 0; }
+.cui-stat-tile--interactive { position: relative; }
+.cui-stat-tile--interactive:hover { background: var(--hover); }
+.cui-stat-tile__main { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); }
+.cui-stat-tile__value { font-size: var(--font-size-patient-name); line-height: var(--line-height-patient-name); font-weight: 600; font-variant-numeric: tabular-nums; }
+.cui-stat-tile__unit { font-size: var(--font-size-body); font-weight: 400; color: var(--ink-muted); }
+.cui-stat-tile__suppressed { font-size: var(--font-size-subheading); line-height: var(--line-height-patient-name); font-style: italic; color: var(--ink-muted); }
+.cui-stat-tile__trend { margin: 0; display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink); }
+.cui-stat-tile__note, .cui-stat-tile__as-at { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+@media (pointer: coarse) {
+  .cui-stat-tile__open { min-height: var(--target-touch, 44px); }
+}
