@@ -1,0 +1,28 @@
+/* Contact summary list. Dense table; labelled cards below 600px. */
+.cui-contact-summary { container: cui-contact-summary / inline-size; color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-contact-summary__table { width: 100%; border-collapse: collapse; }
+.cui-contact-summary__caption { text-align: start; padding-bottom: var(--space-1); display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--space-3); }
+.cui-contact-summary__caption-title { font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
+.cui-contact-summary__totals { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-contact-summary__table th, .cui-contact-summary__table td { padding: 2px var(--space-2); border-bottom: 1px solid var(--border); text-align: start; vertical-align: top; }
+.cui-contact-summary__table thead th { background: var(--surface-sunken); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--ink-muted); white-space: nowrap; }
+.cui-contact-summary__table tbody tr:hover { background: var(--hover); }
+.cui-contact-summary__when { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cui-contact-summary__num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cui-contact-summary__open { font: inherit; padding: 0; border: 0; background: none; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font-variant-numeric: tabular-nums; }
+.cui-contact-summary__note { max-width: 40ch; }
+/* The note column wraps in full, never clipped (PAL-0320): a note kind or a short summary, with its full text as a tooltip too. */
+.cui-contact-summary__note > span { overflow-wrap: anywhere; }
+.cui-contact-summary__none { color: var(--ink-muted); font-style: italic; }
+.cui-contact-summary__row--error td { color: var(--ink-muted); }
+.cui-contact-summary__row--error td:not(:first-child) { text-decoration: line-through; }
+.cui-contact-summary__error { display: flex; align-items: center; gap: var(--space-1); white-space: normal; color: var(--danger); font-weight: 600; font-size: var(--font-size-label); line-height: var(--line-height-label); }
+.cui-contact-summary__empty-row td { color: var(--ink-muted); font-style: italic; }
+@container cui-contact-summary (max-width: 600px) {
+  .cui-contact-summary__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .cui-contact-summary__table tr { display: block; padding: var(--space-1) 0; border-bottom: 1px solid var(--border); }
+  .cui-contact-summary__table td { display: flex; gap: var(--space-2); border: 0; padding: 0 var(--space-1); white-space: normal; max-width: none; }
+  .cui-contact-summary__table td[data-label]::before { content: attr(data-label); flex: 0 0 7rem; font-size: var(--font-size-label); line-height: var(--line-height-body); color: var(--ink-muted); }
+  .cui-contact-summary__when { flex-wrap: wrap; font-weight: 600; }
+}
+@media (pointer: coarse) { .cui-contact-summary__open { min-height: var(--target-coarse); } }

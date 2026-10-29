@@ -1,0 +1,19 @@
+<!-- @dsCard group="Mental health" width=1000 height=560 subtitle="Support people: carer, nominated support person, whānau group, ended guardian, what each may be told" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SupportPersonList, ClinicalLocaleProvider } = window.ClinicalCUI;
+const people = [
+  { id: 'a', name: 'Linh Nguyen', relationship: 'Sister', primary: true, roles: [{ label: 'Carer' }, { label: 'Nominated support person', legal: true }], phones: [{ label: 'Mobile', value: '0491570159' }], email: 'linh@example.org', contactPreferences: 'Text first; no voicemail', sharing: { state: 'allowed', text: 'Appointments and the plan' } },
+  { id: 'b', name: 'Dr P Shah', relationship: 'GP', roles: [{ label: 'General practitioner' }], phones: [{ label: 'Work', value: '0255504321' }], sharing: { state: 'restricted', text: 'Not the risk formulation' } },
+  { id: 'c', name: 'Father', roles: [{ label: 'Family' }], sharing: { state: 'withdrawn', text: 'Do not share' } },
+  { id: 'd', name: 'Former guardian', roles: [{ label: 'Guardian', legal: true }], ended: { date: '2026-05-01', reason: 'Order ended' } }
+];
+const nz = [{ id: 'w', name: 'Te Whare whānau', roles: [{ label: 'Whānau' }], members: ['Aroha', 'Māia'], phones: [{ label: 'Mobile', value: '0211234567' }] }];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16, padding: 16, background: 'var(--surface)' } },
+    h(SupportPersonList, { people: people, showEnded: true, region: 'AU', timeZone: 'Australia/Melbourne', onOpen: function () {}, onAdd: function () {} }),
+    h(ClinicalLocaleProvider, { region: 'NZ' }, h(SupportPersonList, { headingLevel: 3, title: 'Support people (NZ)', people: nz }))
+  )
+);
+</script>

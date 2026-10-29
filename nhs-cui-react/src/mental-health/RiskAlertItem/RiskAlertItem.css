@@ -1,0 +1,30 @@
+/* Risk alert. Words first, CUI alert symbol, never green, never a number. */
+.cui-risk-alert {
+  display: flex; flex-direction: column; gap: var(--space-1);
+  padding: var(--space-1) var(--space-2); background: var(--surface); color: var(--ink);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  font-size: var(--font-size-body); line-height: var(--line-height-body);
+}
+.cui-risk-alert--high { border-color: var(--danger); border-inline-start-width: var(--space-1); }
+.cui-risk-alert--moderate { border-color: var(--warning); border-inline-start-width: var(--space-1); }
+.cui-risk-alert--unacknowledged { background: var(--danger-surface); }
+.cui-risk-alert__read-first { margin: 0; font-weight: 600; color: var(--danger); }
+.cui-risk-alert__main { display: flex; align-items: flex-start; gap: var(--space-2); }
+.cui-risk-alert__symbol { flex: none; padding-top: 2px; }
+.cui-risk-alert__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; overflow-wrap: anywhere; }
+.cui-risk-alert__title { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-1); }
+.cui-risk-alert__severity { font-weight: 600; }
+.cui-risk-alert--high .cui-risk-alert__severity { color: var(--danger); }
+.cui-risk-alert--moderate .cui-risk-alert__severity { color: var(--warning); }
+.cui-risk-alert--unacknowledged .cui-risk-alert__severity { color: var(--danger); }
+.cui-risk-alert__category { font-weight: 600; }
+.cui-risk-alert__open { padding: 0; border: 0; background: none; font: inherit; font-weight: 600; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: start; }
+.cui-risk-alert__level { padding: 0 var(--space-1); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font-size: var(--font-size-label); line-height: var(--line-height-label); }
+.cui-risk-alert__text { color: var(--ink); }
+.cui-risk-alert__note { margin: 0; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); font-style: italic; }
+.cui-risk-alert__meta { margin: 0; display: flex; flex-wrap: wrap; column-gap: var(--space-3); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-risk-alert__overdue { display: inline-flex; align-items: center; gap: var(--space-1); font-weight: 600; color: var(--warning); }
+.cui-risk-alert--unacknowledged .cui-risk-alert__overdue { color: var(--danger); }
+.cui-risk-alert__ack { padding-inline-start: calc(var(--space-4) + var(--space-2)); }
+@media (pointer: coarse) { .cui-risk-alert__open { min-height: var(--target-coarse); } }
+@media (forced-colors: active) { .cui-risk-alert { border-color: CanvasText; } }

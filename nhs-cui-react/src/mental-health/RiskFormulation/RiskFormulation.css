@@ -1,0 +1,40 @@
+/* Risk formulation. Words only; dense; fields stacked one per line (no side-by-side fields). */
+.cui-risk-formulation { container-type: inline-size; display: flex; flex-direction: column; gap: var(--space-2); color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-risk-formulation__header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.cui-risk-formulation__heading { margin: 0; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: var(--font-weight-subheading); }
+.cui-risk-formulation__subheading { margin: 0 0 2px; font-size: var(--font-size-body-strong); line-height: var(--line-height-body-strong); font-weight: var(--font-weight-body-strong); }
+.cui-risk-formulation__meta { margin: 0; display: flex; flex-wrap: wrap; column-gap: var(--space-3); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-risk-formulation__overdue { display: inline-flex; align-items: center; gap: var(--space-1); font-weight: 600; color: var(--warning); }
+.cui-risk-formulation__empty { margin: 0; align-self: flex-start; display: inline-flex; align-items: center; gap: var(--space-1); padding: 1px var(--space-2); border: 1px dashed var(--warning); border-radius: var(--radius-sm); color: var(--warning); font-weight: 600; }
+.cui-risk-formulation__factors { display: grid; grid-template-columns: 1fr; gap: var(--space-2) var(--space-4); }
+@container (min-width: 720px) { .cui-risk-formulation__factors { grid-template-columns: repeat(var(--cui-risk-formulation-groups, 3), minmax(0, 1fr)); } }
+.cui-risk-formulation__judgements { margin: 0; display: grid; grid-template-columns: 1fr; gap: var(--space-1); }
+.cui-risk-formulation__judgement { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); gap: var(--space-1) var(--space-3); padding-block: 2px; border-bottom: 1px solid var(--border); }
+.cui-risk-formulation__judgement:last-child { border-bottom: 0; }
+@container (max-width: 480px) { .cui-risk-formulation__judgement { grid-template-columns: 1fr; } }
+.cui-risk-formulation__area { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+.cui-risk-formulation__judgement-words { margin: 0; display: flex; flex-direction: column; gap: 2px; min-width: 0; overflow-wrap: anywhere; }
+.cui-risk-formulation__judgement-level { font-weight: 600; }
+.cui-risk-formulation__rationale { white-space: pre-wrap; max-width: 80ch; }
+.cui-risk-formulation__factor-group { min-width: 0; padding: var(--space-1) var(--space-2); border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); }
+.cui-risk-formulation__list { margin: 0; padding-inline-start: var(--space-4); display: flex; flex-direction: column; gap: 2px; overflow-wrap: anywhere; }
+.cui-risk-formulation__none { margin: 0; color: var(--ink-muted); font-style: italic; }
+.cui-risk-formulation__text-block { min-width: 0; }
+.cui-risk-formulation__prose { margin: 0; max-width: 80ch; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cui-risk-formulation__fieldset { margin: 0; padding: var(--space-1) var(--space-2) var(--space-2); border: 1px solid var(--border); border-radius: var(--radius-sm); display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); min-width: 0; }
+.cui-risk-formulation__legend { padding: 0 var(--space-1); font-weight: 600; }
+.cui-risk-formulation__edit-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-1); width: 100%; }
+.cui-risk-formulation__edit-item { display: flex; flex-direction: column; gap: 2px; }
+.cui-risk-formulation__item-label, .cui-risk-formulation__field-label { font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--ink); }
+.cui-risk-formulation__item-row { display: flex; align-items: center; gap: var(--space-1); width: 100%; }
+.cui-risk-formulation__input, .cui-risk-formulation__textarea {
+  flex: 1 1 auto; min-width: 0; width: 100%; font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body);
+  padding: 0 var(--space-2); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+}
+.cui-risk-formulation__input { height: var(--control-height); }
+.cui-risk-formulation__textarea { padding: var(--space-1) var(--space-2); resize: vertical; max-width: 80ch; }
+.cui-risk-formulation__textarea[aria-invalid="true"] { border-color: var(--danger); box-shadow: inset 0 0 0 1px var(--danger); }
+.cui-risk-formulation__field { display: flex; flex-direction: column; gap: 2px; }
+.cui-risk-formulation__hint { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-risk-formulation__error { display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--danger); }
+.cui-risk-formulation__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }

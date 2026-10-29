@@ -1,0 +1,37 @@
+/* Safety plan. Seven numbered sections in the person's words; dense on screen, complete on paper. */
+.cui-safety-plan { container: cui-safety-plan / inline-size; display: flex; flex-direction: column; gap: var(--space-2); color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-safety-plan__header { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); }
+.cui-safety-plan__title { margin: 0; font-size: var(--font-size-heading); line-height: var(--line-height-heading); font-weight: 600; }
+.cui-safety-plan__shared { display: inline-flex; align-items: center; gap: var(--space-1); padding: 1px var(--space-2); border: 1px solid currentColor; border-radius: var(--radius-sm); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; }
+.cui-safety-plan__shared--yes { color: var(--success); background: var(--success-surface); }
+.cui-safety-plan__shared--no { color: var(--warning); background: var(--warning-surface); border-style: dashed; }
+.cui-safety-plan__meta { margin: 0; display: flex; flex-wrap: wrap; column-gap: var(--space-3); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-safety-plan__actions { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-inline-start: auto; }
+.cui-safety-plan__empty { margin: 0; align-self: flex-start; display: inline-flex; align-items: center; gap: var(--space-1); padding: 1px var(--space-2); border: 1px dashed var(--warning); border-radius: var(--radius-sm); color: var(--warning); font-weight: 600; }
+.cui-safety-plan__sections { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2) var(--space-4); }
+.cui-safety-plan__section { min-width: 0; padding: var(--space-1) var(--space-2); border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); break-inside: avoid; }
+.cui-safety-plan__section-title { margin: 0 0 var(--space-1); display: flex; align-items: flex-start; gap: var(--space-2); font-size: var(--font-size-body-strong); line-height: var(--line-height-body-strong); font-weight: 600; }
+.cui-safety-plan__step { flex: none; display: inline-flex; align-items: center; justify-content: center; min-width: var(--space-6); height: var(--space-6); border-radius: var(--radius-sm); background: var(--surface-sunken); border: 1px solid var(--border-strong); font-variant-numeric: tabular-nums; }
+.cui-safety-plan__list { margin: 0; padding-inline-start: var(--space-4); display: flex; flex-direction: column; gap: 2px; }
+.cui-safety-plan__list li { overflow-wrap: anywhere; }
+.cui-safety-plan__phone { margin-inline-start: var(--space-2); font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cui-safety-plan__detail { display: block; font-size: var(--font-size-detail); line-height: var(--line-height-detail); color: var(--ink-muted); }
+.cui-safety-plan__none { margin: 0; color: var(--ink-muted); font-style: italic; }
+.cui-safety-plan--edit .cui-safety-plan__sections { grid-template-columns: minmax(0, 1fr); }
+.cui-safety-plan--edit .cui-safety-plan__section { border: 0; padding: 0; }
+/* Edit mode composes noting/RepeatableFieldGroup without restyling it. Its sets are sized to their content, so each
+   entry takes a definite width from the plan's container (less the set's padding and border) and its FormRow can
+   lay out and collapse inside it. */
+.cui-safety-plan__entry { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-1); width: min(40rem, calc(100cqi - 2 * var(--space-3) - 2px)); }
+.cui-safety-plan__remove { align-self: flex-start; }
+.cui-safety-plan__input { font-variant-numeric: tabular-nums; }
+.cui-safety-plan__edit-actions { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+@container cui-safety-plan (max-width: 640px) {
+  .cui-safety-plan__sections { grid-template-columns: minmax(0, 1fr); }
+  .cui-safety-plan__actions { margin-inline-start: 0; }
+}
+@media print {
+  .cui-safety-plan__actions, .cui-safety-plan__edit-actions { display: none; }
+  .cui-safety-plan__section { border-color: CanvasText; }
+  .cui-safety-plan__sections { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

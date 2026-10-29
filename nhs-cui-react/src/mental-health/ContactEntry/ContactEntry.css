@@ -1,0 +1,17 @@
+/* Contact entry. View: one dense header line plus the note. Edit: forms controls in FormRows, so controls stay level. */
+.cui-contact-entry { container: cui-contact-entry / inline-size; display: flex; flex-direction: column; gap: var(--space-1); color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-contact-entry__header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px var(--space-3); }
+.cui-contact-entry__title { margin: 0; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
+.cui-contact-entry__line { margin: 0; display: flex; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
+.cui-contact-entry__bit + .cui-contact-entry__bit::before { content: ","; margin-inline-end: var(--space-1); }
+.cui-contact-entry__bit:first-child { font-weight: 600; }
+.cui-contact-entry__edit { margin-inline-start: auto; }
+.cui-contact-entry__meta { margin: 0; display: flex; flex-wrap: wrap; column-gap: var(--space-3); font-size: var(--font-size-detail); line-height: var(--line-height-detail); color: var(--ink-muted); }
+.cui-contact-entry__meta:empty { display: none; }
+.cui-contact-entry__note { margin: 0; max-width: 80ch; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cui-contact-entry__none { margin: 0; color: var(--ink-muted); font-style: italic; }
+.cui-contact-entry--error .cui-contact-entry__line, .cui-contact-entry--error .cui-contact-entry__note { text-decoration: line-through; color: var(--ink-muted); }
+.cui-contact-entry__error-flag { margin: 0; align-self: flex-start; display: inline-flex; align-items: flex-start; gap: var(--space-1); padding: 1px var(--space-2); border: 1px solid var(--danger); border-radius: var(--radius-sm); background: var(--danger-surface); color: var(--danger); font-weight: 600; }
+.cui-contact-entry__fields { display: flex; flex-direction: column; align-items: stretch; gap: var(--space-1); max-width: 60rem; }
+.cui-contact-entry__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); }
+@container cui-contact-entry (max-width: 480px) { .cui-contact-entry__edit { margin-inline-start: 0; } }

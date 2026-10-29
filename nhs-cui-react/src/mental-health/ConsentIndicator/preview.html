@@ -1,0 +1,15 @@
+<!-- @dsCard group="Mental health" height=120 subtitle="Consent to share: allowed, restricted, withdrawn, not recorded" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ConsentIndicator } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: 8, padding: 16, background: 'var(--surface)' } },
+    h(ConsentIndicator, { state: 'allowed', text: 'GP and carer' }),
+    h(ConsentIndicator, { state: 'restricted', text: 'Do not share with father', onOpen: function () {} }),
+    h(ConsentIndicator, { state: 'withdrawn' }),
+    h(ConsentIndicator, { state: 'not-recorded' }),
+    h(ConsentIndicator, { state: 'restricted', size: 'compact', text: 'Sharing limited' })
+  )
+);
+</script>

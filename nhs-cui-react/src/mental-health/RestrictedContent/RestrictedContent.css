@@ -1,0 +1,20 @@
+/* Restricted content (restricted hue, lock, section edge with the inline-start bar). */
+.cui-restricted {
+  display: flex; flex-direction: column; gap: var(--space-1);
+  padding: var(--space-2); background: var(--restricted-surface); color: var(--ink);
+  border: 1px solid var(--restricted); border-inline-start-width: var(--space-1); border-radius: var(--radius-sm);
+  font-size: var(--font-size-body); line-height: var(--line-height-body);
+}
+.cui-restricted__label { margin: 0; display: inline-flex; align-items: flex-start; gap: var(--space-1); font-weight: 600; color: var(--restricted); overflow-wrap: anywhere; }
+.cui-restricted__label .cui-icon { flex: none; margin-top: 2px; }
+.cui-restricted__content { min-width: 0; overflow-wrap: anywhere; }
+.cui-restricted__mask { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); padding: var(--space-1) var(--space-2); background: var(--surface); border-radius: var(--radius-sm); }
+.cui-restricted__ask { display: flex; flex-direction: column; gap: 2px; width: 100%; max-width: 60ch; }
+.cui-restricted__reason-label { font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; }
+.cui-restricted__ask-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1); }
+.cui-restricted__input { flex: 1 1 16ch; min-width: 0; height: var(--control-height); padding: 0 var(--space-2); font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-restricted__input[aria-invalid="true"] { border-color: var(--danger); box-shadow: inset 0 0 0 1px var(--danger); }
+.cui-restricted__error { display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--danger); }
+.cui-restricted__note { margin: 0; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-restricted__note--failed { color: var(--danger); font-weight: 600; }
+@media (forced-colors: active) { .cui-restricted { border-color: CanvasText; } }

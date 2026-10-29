@@ -1,0 +1,13 @@
+/* Measure trend. The CUI observation graph plus the latest band and change in words. */
+.cui-measure-trend { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-measure-trend__summary { display: flex; flex-direction: column; gap: 2px; }
+.cui-measure-trend__latest { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-2); font-variant-numeric: tabular-nums; }
+.cui-measure-trend__latest-label, .cui-measure-trend__change-label { color: var(--ink-muted); }
+.cui-measure-trend__band { padding: 0 var(--space-1); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--surface-sunken); font-size: var(--font-size-label); line-height: var(--line-height-body); }
+.cui-measure-trend__none { margin: 0; color: var(--ink-muted); font-style: italic; }
+.cui-measure-trend__changes { margin: 0; padding: 0; list-style: none; }
+.cui-measure-trend__change { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.cui-measure-trend__change-value { font-weight: 600; }
+.cui-measure-trend__source, .cui-measure-trend__invalid { margin: 0; display: flex; align-items: flex-start; gap: var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-measure-trend__source svg, .cui-measure-trend__invalid svg { flex: none; }
+.cui-measure-trend__invalid { color: var(--warning); font-weight: 600; }

@@ -1,0 +1,33 @@
+/* Care plan goals. The person's words lead; actions say what, who and by when; progress in words. */
+.cui-plan-goals { container: cui-plan-goals / inline-size; display: flex; flex-direction: column; gap: var(--space-1); color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-plan-goals__header { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); }
+.cui-plan-goals__title { margin: 0; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
+.cui-plan-goals__agreement { display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--success); font-weight: 600; }
+.cui-plan-goals__add { margin-inline-start: auto; }
+.cui-plan-goals__empty { margin: 0; color: var(--ink-muted); font-style: italic; }
+.cui-plan-goals__list { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); gap: var(--space-2); }
+.cui-plan-goals__goal { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: var(--space-1) var(--space-2); border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); }
+.cui-plan-goals__goal--achieved, .cui-plan-goals__goal--stopped { background: var(--surface-sunken); }
+.cui-plan-goals__goal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-2); }
+.cui-plan-goals__words { margin: 0; font-size: var(--font-size-body-strong); line-height: var(--line-height-body-strong); font-weight: 600; overflow-wrap: anywhere; }
+.cui-plan-goals__meta { margin: 0; display: flex; flex-wrap: wrap; column-gap: var(--space-3); font-size: var(--font-size-detail); line-height: var(--line-height-detail); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-plan-goals__meta:empty { display: none; }
+.cui-plan-goals__overdue { display: inline-flex; align-items: center; gap: var(--space-1); color: var(--warning); font-weight: 600; }
+.cui-plan-goals__strengths { margin: 0; font-size: var(--font-size-detail); line-height: var(--line-height-detail); overflow-wrap: anywhere; }
+.cui-plan-goals__actions { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 1px solid var(--border); }
+.cui-plan-goals__action { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: start; column-gap: var(--space-1); padding: 2px 0; border-bottom: 1px solid var(--border); }
+.cui-plan-goals__action svg { margin-top: 2px; color: var(--ink-muted); }
+.cui-plan-goals__action-text { overflow-wrap: anywhere; }
+.cui-plan-goals__who { font-weight: 600; text-align: end; }
+.cui-plan-goals__by { grid-column: 2 / -1; font-size: var(--font-size-detail); line-height: var(--line-height-detail); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-plan-goals__action--done .cui-plan-goals__action-text { color: var(--ink-muted); }
+.cui-plan-goals__action--done svg { color: var(--success); }
+.cui-plan-goals__none { margin: 0; color: var(--ink-muted); font-style: italic; }
+.cui-plan-goals__progress { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); margin-top: 2px; }
+.cui-plan-goals__progress-field { flex: 1 1 12rem; min-width: 0; }
+.cui-plan-goals__state { display: inline-flex; align-items: center; gap: var(--space-1); padding: 0 var(--space-1); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); font-weight: 600; }
+.cui-plan-goals__state--achieved { color: var(--success); border-color: var(--success); background: var(--success-surface); }
+.cui-plan-goals__state--some { color: var(--info); border-color: var(--info); background: var(--info-surface); }
+.cui-plan-goals__progress-note { color: var(--ink); font-style: italic; overflow-wrap: anywhere; }
+@container cui-plan-goals (max-width: 480px) { .cui-plan-goals__add { margin-inline-start: 0; } }
+@media print { .cui-plan-goals__add, .cui-plan-goals__goal-head button { display: none; } }

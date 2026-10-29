@@ -1,0 +1,37 @@
+/* Leave card. Words, icon and the inline-start bar carry the state; never colour alone. */
+.cui-leave-card {
+  container: cui-leave-card / inline-size;
+  padding: var(--space-1) var(--space-2); border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface);
+  color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body);
+}
+.cui-leave-card--overdue, .cui-leave-card--absent { border-color: var(--danger); border-inline-start-width: var(--space-1); }
+.cui-leave-card--due-back { border-color: var(--warning); border-inline-start-width: var(--space-1); }
+.cui-leave-card--returned { background: var(--surface-sunken); }
+.cui-leave-card--compact { border-radius: 0; border-width: 0 0 1px; }
+.cui-leave-card--compact.cui-leave-card--overdue, .cui-leave-card--compact.cui-leave-card--absent { border-inline-start: var(--space-1) solid var(--danger); }
+.cui-leave-card--compact.cui-leave-card--due-back { border-inline-start: var(--space-1) solid var(--warning); }
+.cui-leave-card__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-1) var(--space-3); }
+.cui-leave-card__who { min-width: 0; overflow-wrap: anywhere; }
+.cui-leave-card__sex { margin-inline-start: var(--space-1); }
+.cui-leave-card__bed { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-leave-card__body { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); min-width: 0; }
+.cui-leave-card__state { margin: 0; display: inline-flex; flex-wrap: wrap; align-items: flex-start; column-gap: var(--space-2); }
+.cui-leave-card__state-icon { display: inline-flex; padding-top: 2px; }
+.cui-leave-card__state-word { font-weight: 600; }
+.cui-leave-card__type { color: var(--ink); }
+.cui-leave-card__state--overdue, .cui-leave-card__state--absent { color: var(--danger); }
+.cui-leave-card__state--due-back { color: var(--warning); }
+.cui-leave-card__state--returned { color: var(--success); }
+.cui-leave-card__state--on-leave, .cui-leave-card__state--authorised { color: var(--info); }
+.cui-leave-card__facts { margin: 0; display: flex; flex-wrap: wrap; gap: 0 var(--space-3); }
+.cui-leave-card__facts > div { display: inline-flex; flex-wrap: wrap; column-gap: var(--space-1); min-width: 0; }
+.cui-leave-card__facts dt { font-size: var(--font-size-label); line-height: var(--line-height-body); color: var(--ink-muted); }
+.cui-leave-card__facts dd { margin: 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.cui-leave-card__escalate { margin: 0; display: inline-flex; align-items: flex-start; gap: var(--space-1); padding: 2px var(--space-2); border: 1px solid var(--danger); border-radius: var(--radius-sm); background: var(--danger-surface); color: var(--danger); font-weight: 600; }
+.cui-leave-card__escalate svg { flex: none; margin-top: 2px; }
+.cui-leave-card__actions { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.cui-leave-card__actions:empty { display: none; }
+@container cui-leave-card (min-width: 640px) {
+  .cui-leave-card__grid { grid-template-columns: minmax(14rem, 1fr) minmax(0, 2fr); }
+  .cui-leave-card__grid--no-person { grid-template-columns: minmax(0, 1fr); }
+}

@@ -1,0 +1,30 @@
+/* Measure item profile. Earlier occasion outlined, later solid; values in words beside each bar. */
+.cui-measure-profile { container: cui-measure-profile / inline-size; color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-measure-profile__table { width: 100%; border-collapse: collapse; }
+.cui-measure-profile__caption { text-align: start; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; padding-bottom: var(--space-1); }
+.cui-measure-profile__table th, .cui-measure-profile__table td { padding: 2px var(--space-2); border-bottom: 1px solid var(--border); text-align: start; vertical-align: middle; }
+.cui-measure-profile__table thead th { background: var(--surface-sunken); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--ink-muted); }
+.cui-measure-profile__item { font-weight: 400; min-width: 8rem; overflow-wrap: anywhere; }
+.cui-measure-profile__cell { min-width: 9rem; }
+.cui-measure-profile__cell > * { vertical-align: middle; }
+.cui-measure-profile__bar-frame { display: inline-block; position: relative; width: 6rem; height: var(--space-3); background: var(--surface-sunken); border: 1px solid var(--border); margin-inline-end: var(--space-2); }
+.cui-measure-profile__bar { position: absolute; inset-block: 0; inset-inline-start: 0; }
+.cui-measure-profile__bar--later { background: var(--series-1); }
+.cui-measure-profile__bar--earlier { background: var(--surface); border: 2px solid var(--series-2); }
+.cui-measure-profile__key { display: inline-block; width: var(--space-3); height: var(--space-2); margin-inline-end: var(--space-1); vertical-align: middle; }
+.cui-measure-profile__key--later { background: var(--series-1); }
+.cui-measure-profile__key--earlier { border: 2px solid var(--series-2); }
+.cui-measure-profile__value { font-variant-numeric: tabular-nums; font-weight: 600; }
+.cui-measure-profile__value--none { font-weight: 400; color: var(--ink-muted); font-style: italic; }
+.cui-measure-profile__change { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cui-measure-profile__total { font-weight: 600; font-variant-numeric: tabular-nums; }
+.cui-measure-profile__table tfoot th { font-weight: 600; }
+@container cui-measure-profile (max-width: 560px) {
+  .cui-measure-profile__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .cui-measure-profile__table tr { display: block; padding: var(--space-1) 0; border-bottom: 1px solid var(--border); }
+  .cui-measure-profile__table th, .cui-measure-profile__table td { display: flex; align-items: center; gap: var(--space-2); border: 0; padding: 0 var(--space-1); }
+  .cui-measure-profile__table th[scope="row"] { font-weight: 600; }
+  .cui-measure-profile__table td::before { content: attr(data-label); flex: 0 0 45%; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+  .cui-measure-profile__bar-frame { width: 4rem; }
+}
+@media (forced-colors: active) { .cui-measure-profile__bar--later { background: CanvasText; } }

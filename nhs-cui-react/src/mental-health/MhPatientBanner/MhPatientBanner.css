@@ -1,0 +1,43 @@
+/* Mental health patient banner: the CUI PatientBanner, one dark band, with the mental health items in
+   Zone 1, and the CUI MobilePatientHeader when the banner itself is narrow. Nothing truncates: every part wraps between
+   items. The wrapper is the sticky element so the emergency access bar and the banner stay together. */
+.cui-mh-banner { width: 100%; min-width: 0; }
+.cui-mh-banner--sticky { position: sticky; top: 0; z-index: 20; }
+.cui-mh-banner--emergency { border-top: 3px solid var(--restricted); }
+.cui-mh-banner__emergency { border-width: 0 0 1px; }
+
+/* "Known as" beside the legal name, never hidden and never truncated. */
+.cui-mh-banner__known-as { font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; color: var(--on-banner); overflow-wrap: anywhere; }
+.cui-mh-banner__name-more { margin-inline-start: var(--space-2); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 400; color: var(--on-banner-muted); overflow-wrap: anywhere; }
+.cui-mh-banner .cui-patient-banner__name-block { flex: 0 0 auto; max-width: min(28rem, 36%); }
+.cui-mh-banner .cui-patient-banner__ids--flow { column-gap: var(--space-4); }
+
+/* Compact indicators inside the dark band keep their own surface (consent) so their verified colour pairs hold. */
+.cui-mh-banner__consent .cui-consent { vertical-align: middle; }
+.cui-mh-banner__consent-title { vertical-align: middle; }
+.cui-mh-banner__section-stack { display: grid; gap: var(--space-2); justify-items: start; }
+.cui-mh-banner .cui-patient-banner__section--s4 .cui-legal-chip, .cui-mh-banner .cui-patient-banner__section--s4 { color: var(--on-banner); }
+
+/* Print: light colours on paper, no stickiness. */
+.cui-mh-banner--print { --banner: var(--surface); --on-banner: var(--ink); --on-banner-muted: var(--ink-muted); --banner-divider: var(--border); --banner-alert: var(--danger-surface); position: static; }
+@media print {
+  .cui-mh-banner { --banner: var(--surface); --on-banner: var(--ink); --on-banner-muted: var(--ink-muted); --banner-divider: var(--border); --banner-alert: var(--danger-surface); position: static; }
+}
+
+/* Phone: the CUI mobile header, then the details it expands (in place, so they stay with the identity). Capped at half
+   the screen while open and scrolls inside itself, so the page below stays in view. */
+.cui-mh-banner--phone { background: var(--banner); color: var(--on-banner); }
+.cui-mh-banner--phone.cui-mh-banner--open { max-height: 50dvh; overflow-y: auto; }
+.cui-mh-banner__phone .cui-mobile-header__name-row { flex-wrap: wrap; }
+.cui-mh-banner__phone--deceased { background-image: repeating-linear-gradient(135deg, transparent 0 10px, var(--banner-divider) 10px 12px); }
+.cui-mh-banner__phone-similar { display: flex; align-items: flex-start; gap: var(--space-1); margin: 0; padding: 0 var(--space-3) var(--space-2) var(--space-4); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; }
+.cui-mh-banner__phone-similar a { color: inherit; }
+.cui-mh-banner__phone-details { display: grid; gap: var(--space-2); padding: var(--space-2) var(--space-3) var(--space-3) var(--space-4); border-top: 1px solid var(--banner-divider); }
+.cui-mh-banner__phone-details[hidden] { display: none; }
+.cui-mh-banner__phone-details .cui-labelled-value__label { color: var(--on-banner-muted); }
+.cui-mh-banner__phone-details .cui-labelled-value__value { color: var(--on-banner); }
+.cui-mh-banner__phone-contacts { display: grid; gap: 2px; }
+.cui-mh-banner__phone-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0 var(--space-3) var(--space-2) var(--space-4); }
+.cui-mh-banner__phone-section { min-width: 0; overflow-wrap: anywhere; }
+.cui-mh-banner__phone-items { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); }
+.cui-mh-banner__symbol { display: inline-flex; }

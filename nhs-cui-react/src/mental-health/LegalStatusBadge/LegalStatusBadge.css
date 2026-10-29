@@ -1,0 +1,25 @@
+/* Legal status badge. Square corners mean legal authority; the
+   inline-start bar (space-1 wide) marks safety states; words carry the status, never colour alone. */
+.cui-legal-badge {
+  display: inline-flex; align-items: flex-start; gap: var(--space-1); max-width: 100%;
+  padding: 2px var(--space-2); border: 1px solid var(--legal); border-inline-start-width: var(--space-1); border-radius: 0;
+  background: var(--legal-surface); color: var(--legal);
+  font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); text-align: start;
+  overflow-wrap: anywhere;
+}
+.cui-legal-badge--compact { font-size: var(--font-size-label); line-height: var(--line-height-label); padding: 1px var(--space-1); }
+.cui-legal-badge__icon { display: inline-flex; flex: none; padding-top: 2px; }
+.cui-legal-badge--compact .cui-legal-badge__icon { padding-top: 0; }
+.cui-legal-badge__text { display: inline-flex; flex-wrap: wrap; column-gap: var(--space-2); min-width: 0; }
+.cui-legal-badge__label { font-weight: 600; }
+.cui-legal-badge__warning { font-weight: 600; }
+.cui-legal-badge__detail { font-weight: 400; color: var(--ink); font-variant-numeric: tabular-nums; }
+.cui-legal-badge--unconfirmed { background: var(--warning-surface); color: var(--warning); border-color: var(--warning); }
+.cui-legal-badge--ended { background: var(--danger-surface); color: var(--danger); border-color: var(--danger); }
+.cui-legal-badge--none,
+.cui-legal-badge--historic { background: var(--surface-sunken); color: var(--ink); border-color: var(--border-strong); border-inline-start-width: 1px; }
+.cui-legal-badge--none .cui-legal-badge__label { font-weight: 400; }
+.cui-legal-badge--button { cursor: pointer; }
+.cui-legal-badge--button:hover .cui-legal-badge__label { text-decoration: underline; text-underline-offset: 3px; }
+@media (pointer: coarse) { .cui-legal-badge--button { min-height: var(--target-coarse); align-items: center; } }
+@media (forced-colors: active) { .cui-legal-badge { border-color: CanvasText; } }
