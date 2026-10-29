@@ -59,7 +59,7 @@ Every region-aware control reads `ClinicalLocaleProvider` (GB, AU, NZ) or takes 
 - **NSW Between the Flags** (`EWS_NSW_BTF`) zone boundaries come from secondary SESLHD sources because the SAGO chart prints zones as colour bands only. Shared boundary values were placed in the red zone. Verify every boundary against the printed chart and local CERS changes.
 - **Critical thresholds** (GTAB-177) count the limit itself as critical unless `inclusive: false`, and never change an early warning score.
 - **AU long dates** follow the Australian Government Style Manual ("5 March 2026"); short dates stay dd-Mmm-yyyy.
-- **Drag handles** (note entries, marquee handles, canvas) are pointer-only; the same actions exist on the keyboard.
+- **Drag handles** (note entries, marquee handles, canvas) are pointer-only; the same actions exist on the keyboard. New drag controls follow the drag and drop model below (keyboard pick up and drop, touch, live announcements).
 
 ## Phase 4: mobile (touch and dictation)
 
@@ -73,6 +73,68 @@ Every region-aware control reads `ClinicalLocaleProvider` (GB, AU, NZ) or takes 
 - **Sheets** push a browser history entry so Android back closes them; turn off per sheet if it conflicts with your router. Sheets holding unsaved data refuse swipe, backdrop and back dismissal.
 - **Dates without a year** typed on mobile ("5/4", "12 Mar") take the most recent past date and the read-back says "year assumed". Future times are blocked by default.
 - **Undo window** after a commit is 10 seconds.
+
+## Drag and drop (interaction area, 29-Oct-2026)
+
+Notes: `guidance-notes/G13-drag-and-drop.md`. The NHS CUI guidance has no drag and drop document, so the model is this library's own, built on WCAG 2.2 (2.5.7 Dragging Movements, 2.1.1 Keyboard, 4.1.3 Status Messages) and the few CUI fragments that touch it. Every rule is [suggested].
+
+- **Never the only way.** Each drag has a single-pointer alternative on the item (move up and down buttons, a "Move to" menu, a "Move to..." dialog) and a keyboard model on the handle: Space or Enter picks up, arrows move, Space or Enter drops, Escape cancels. Each step is announced in plain words in a polite live region.
+- **Pointer events, not HTML drag and drop.** The browser API has no touch and no keyboard support. A mouse drag starts after 4 px; a touch drag starts with a 400 ms long press on the handle so a swipe still scrolls. Handles are 44 px on coarse pointers. The scrolling area follows the pointer near its edge. Reduced motion: nothing animates.
+- **Consequences before commit.** `canDrop` returns `true` or the reason in words, shown on the target. `onDrop`/`onMove` may be asynchronous; the item says "Moving" and goes back with the reason when refused. A time grid move always opens a confirmation that lists the consumer's warnings and stops (`checkMove`) before `onMove` runs. Optimistic display and Undo are the consumer's choice, only for reversible moves.
+- **Permission.** `canDrag` (or `disabled`) false means no handle, no move buttons and no Move menu: a read-only user sees the content only.
+- **Never drag for high-consequence moves.** Bed moves (a transfer), legal status, identity, medicine schedules, referral priority and triage category are never committed by a drop; at most a drop opens the reviewed form with the destination filled in.
+- **Privacy.** The drag preview shows the item's own fields and nothing more.
+- **Where the engine lives.** CONVENTIONS keep `src/core` for the library owner, so the engine is a new area, `src/interaction` (`useDragAndDrop`, `DragAnnouncer`, the pure geometry and keyboard functions in `utils/dragDrop.ts`, plus `SortableList`, `Board` and `ScheduleGrid`), with no runtime dependency besides React. Other areas import it from its index (`ColumnChooser` uses `SortableList`). If the owner prefers, the engine can move into core unchanged.
+- **Time grids.** `ScheduleGrid` reads and draws times in one stated zone (the locale's by default, or a `timeZone` prop), converts through the platform time zone database across daylight saving changes, snaps to the slot length (15 minutes by default) and never makes a block shorter than one slot. Gridlines are thin (TLN-0140). In AU a move to 00:00 carries a warning (AU-DT-06).
+
+### Survey of existing controls (29-Oct-2026)
+
+| Control | Drag? | Why |
+| --- | --- | --- |
+| ColumnChooser | Now (SortableList) | The user owns the column order (PAL-0710); locked key columns stay fixed (PAL-0720). Move buttons and names unchanged. |
+| GraphStack | Next | GTAB-151 lets the user reorder graphs; it has move buttons today. The plots take pointer input for the focus line, so the handle needs care. |
+| NoteEntryList | Next | It has a mouse-only HTML drag (no touch, no keyboard pick up); move it onto the engine. The move buttons and Alt+arrows stay. |
+| TimelineView, ObservationGraph | Never to move entries | Entries are dated clinical record items; their dates change through the record, not by dragging. Time navigation stays as it is. |
+| MedicationsList, MobileMedicationsList | Never | MEDa-0032: the order is kept until refresh; a medicine's schedule is never changed by a drop. |
+| PatientList, DataTable | Never | Row order is a sort the user chooses, not a stored order. |
+| Tabs, SideNav, MenuButton | Never | Commands and sections stay in a fixed order (FSG-0004). |
+| HandoverTaskList, Worklist (mobile) | No | Status changes are part of the handover read-back or a single tap with undo; swipe never commits (Phase 4). |
+| FileInput | Already | Dropping files is a shortcut beside the "Choose file" button. |
+| Day or week appointment grid | New: ScheduleGrid | No time grid existed; built with move, resize and the "Move to..." dialog. |
+| Kanban board | New: Board | Tasks by status, queues by state, with a "Move to" menu as the only route on a phone. |
+
+## Foundations: tokens, density and the responsive contract (29-Oct-2026)
+
+- **Type styles are tokens.** Sizes come from `--font-size-<style>` and `--line-height-<style>` or the classes `.cui-type-<style>`. The classes gained the `cui-type-` prefix so a generic name such as `.label` or `.heading` never collides with an application's own classes (a breaking change for anyone who used the unprefixed classes). Three styles were added: `caption` 11/14 (axis ticks, counters; never for data a decision depends on), `detail` 13/18 (second lines in dense rows) and `touch-body` 16/22 (touch controls, so iOS does not zoom). `src/core/tokens.test.ts` fails on a literal size, spacing or colour that a token covers.
+- **Control heights are tokens.** `--control-height` is 32px at the default compact density, 40px under `[data-density="standard"]` and 44px on a coarse pointer. Touch targets are `--target-coarse` 44, `--target-touch` 48 and `--target-commit` 56. One rule in `core/base.css` makes every interactive element at least 44px under a coarse pointer, so no control needs its own touch rule.
+- **Dark theme** also follows `prefers-color-scheme: dark` unless the page sets `data-theme="light"`; `.cui-root` sets font, size, ink, background and colour scheme from tokens.
+- **Responsive by container, not viewport.** Every control works from 320px to a wide desktop. Controls declare a named size container and adapt with container queries, lists become labelled cards below about 600px, banners and toolbars wrap and then reduce to the essentials, and nothing scrolls the page sideways. CONVENTIONS "Responsive" has the rules.
+- **New colour tokens**: `legal`, `restricted` and `consent` (each with `-surface` and `on-`), for the mental health extension, and `ews-zone-*` fills (the HQSC published NZEWS fills in light theme, darker shades of the same hue in dark). All pass `scripts/contrast.mjs`, which now exits non-zero on a failure. The three extension hues are locked: a theme must not change them, because each carries one meaning.
+
+## Shell, forms, data and search (29-Oct-2026)
+
+The NHS CUI guidance describes clinical content, not the application around it, so these areas are this library's own and every rule is [suggested] unless a README cites a CUI ID.
+
+- **Shell.** One application frame (`AppShell` with `TopBar`, `SideNav`, an optional patient banner slot and a skip link). Overlays (`Dialog`, `Drawer`, `MenuButton`) trap focus, return it, block global shortcuts while open and become bottom sheets on a phone; a drawer keeps its shape while open, so turning a phone never loses what was typed. `Drawer modal={false}` gives a side panel beside the page. `Tabs` never clip a tab: what does not fit moves into a "More" menu. `Stack` and `Cluster` exist so applications never need inline layout styles. `Message`, `Toast`, `EmptyState` and `Skeleton` say their state in words (a skeleton's status is named by its label).
+- **Forms.** Every field has three slots (label, control, feedback). In `FormRow` and `FormGrid` each field is a subgrid of the row, so the label track is as tall as the tallest label, all controls share one track and hints and errors sit below the control without pushing it: a label that wraps beside a one-line label leaves both controls level. Heights come from `--control-height`. The date, time and duration inputs gained a `bare` mode so they sit inside `FormField` with the host's label and error. `Combobox` follows the ARIA 1.2 pattern, takes asynchronous options with cancellation and filters again when static options arrive after typing; `MultiSelect` shows choices as removable chips.
+- **Data.** `DataTable` brings the `PatientList` interaction model (sort, filter, column chooser, list search) to lists that are not of patients, and shows cards when its columns cannot fit. Charts never fit the axis to the data alone: bands are named, a missing or suppressed value is said in words and a "Show table" view gives every value. `DiffTable` shows versions side by side with the change in words; earlier values are never struck out. `StatTile` gives one count or rate with its trend in words.
+- **Search.** One deterministic matching engine (`smartSearch`) serves list search, lookups and an application-wide `CommandSearch`. It matches words in any order at the start of words, ignores case, accents and macrons ("maori" finds "Māori"), allows a close spelling bounded by word length (one edit from 4 letters, two from 7), matches names by sound with the PAL-0560 similar-name rule, matches identifiers only exactly or by their start (never by a close spelling), reads dates in the CUI form, ISO and day first, and ranks exact, start of word, within a word, close spelling, then sounds alike. A close match always says why ("Sounds like", "Close spelling of"). No language model or network service is involved, so the same words always find the same items in the same order. A list of people never puts the query in the address or in browser storage.
+- **Cross-area imports.** A few modules import another area's module file rather than its index (`lists` and `search`, `data` and `lists`), because the index imports would form a cycle. This is the only exception to the index-only rule.
+
+## Mental health extension (29-Oct-2026)
+
+`src/mental-health` covers what mental health services need beyond the CUI documents: legal status and orders, risk, safety plans, restricted information and emergency access, consent to share, observation levels and rounds, leave, restrictive practice, outcome measures, contacts, support people and care plan goals. The CUI documents say nothing about these, so every rule is [suggested]; the controls reuse the CUI controls (patient banner, identification cell, observation graph, alert symbol) rather than forking them.
+
+- **Privacy with discoverability.** Staff screens may be seen by the person or by others. The always-visible parts show glanceable signals that a clinician needs to act safely and no more: identity, the legal status with its countdown when an expiry is near or passed, the alert count by severity without alert text, "Sharing restricted" without who it concerns, "Restricted information held" without what it is, and allergy names on one line. The detail (alert text, sharing restrictions, legal reasons, reactions, contacts) is one deliberate click away, in the banner's Zone 2 or a reveal. Badges are kept for what matters to risk (high alerts, an unconfirmed or expired order); everything else is plain words.
+- **Legal words come from the host.** Order types, statutory roles, time limits, review intervals and value sets are passed in as props in the host's words. The controls format, order and count down; they never decide a legal fact, and no Act is hard-coded.
+- **The host is authoritative.** Where the host's system of record decides a state (leave overdue after a grace period, an observation due time, a measure total), the control shows it and never works out a different one from the clock. Measure totals count only what the instrument definition counts.
+- **Status in words, an icon and the inline-start bar.** Legal, restricted and consent states use their own locked hues and never colour alone. Risk alerts show the severity word first ("High alert:") and never a number or score; high and moderate differ in symbol shape, not only hue. Alert lists cannot be dismissed.
+- **Restricted content fails closed.** The category stays visible; the content renders only after the viewer gives a reason and the host's `onReveal` returns true, so the opening is recorded before anything shows.
+- **Emergency (break-glass) access** follows the CUI My Health Record emergency access pattern (G12): a reason from a list, a written justification of at least 20 characters with a live count, a time box from the host's choices with the maximum shown, and a declaration. Every opening starts empty. While access is active `BreakGlassBar` shows the end time with its zone, the time left and "Every view is recorded", and cannot be dismissed.
+- **Times** are shown absolute first (date, 24-hour time and zone) then relative, never relative alone, in the jurisdiction's zone; nothing animates.
+- **Nothing is deleted.** A contact or entry recorded in error stays visible, struck through, with the reason in words.
+- **Person display** follows the CUI banner (FAMILY, Given) and keeps the preferred name and pronouns beside the legal name ("Known as Lan (she/her)"), with sex after the date of birth; a missing sex or date of birth says "Not Known".
+- **The person's own words.** Safety plans, care plan goals and formulations hold the person's words as given, and the safety plan has a print layout for the person's copy.
 
 ## Not built yet
 

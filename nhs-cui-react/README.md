@@ -1,6 +1,6 @@
 # Clinical CUI
 
-React 18 + TypeScript controls for clinical applications in the UK, Australia and New Zealand. Built from the NHS Common User Interface (CUI) design guidance, with Australian (ACSQHC, ADHA, ABS/METeOR) and New Zealand (HISO, HQSC, Stats NZ) standards layered on top. 179 documented controls (33 of them for mobile touch and dictation) and over 900 exports (components, hooks, pure utilities, region data), each tracing back to guideline IDs or a national source.
+React 18 + TypeScript controls for clinical applications in the UK, Australia and New Zealand. Built from the NHS Common User Interface (CUI) design guidance, with Australian (ACSQHC, ADHA, ABS/METeOR) and New Zealand (HISO, HQSC, Stats NZ) standards layered on top. 251 documented controls (33 of them for mobile touch and dictation, 26 in the mental health extension) and over 1,000 exports (components, hooks, pure utilities, region data), each tracing back to guideline IDs or a national source.
 
 ## Contents
 
@@ -13,6 +13,12 @@ React 18 + TypeScript controls for clinical applications in the UK, Australia an
 | Medications | `src/medications` | MedicationLine, MedicationsList, MedicationActionSummaryDialog, DrugSearch, QuickList, CascadeSelector, SelectionTrail, TemplatePrescriptionList, TemplateReopenControl, PrescriptionForm, PrescriptionDetailForm, PrescriptionPreview, AdrRiskList |
 | Drug administration, decision support | `src/administration` | DrugAdministrationChart, DayNavigator, AdministrationEventIcon, AdministrationRecordingForm, InfusionDetailView, NilByMouthBanner, AdrSummaryList, AdrDetailsView, AdrRecordingDialog, DecisionSupportStatusIndicator, DecisionSupportChangeToast, AlertIndicator, AlertContainer, AlertItem, InformationWindow, PreferenceIcon, PreferenceChoiceList |
 | Clinical noting, terminology | `src/noting` | FormField, ClinicalRadioGroup, ClinicalCheckboxGroup, RequiredFieldIndicator, MissedRequiredFieldsPanel, RevealSection, PreviousValuesPopover, CalculatedValue, NoteEntryList, NaturalDateInput, FreeTextAnnotation, AnnotatedGraphicCanvas, GraphicToolbar, GraphicPicker, TerminologySearch, ConceptFlyout, SuggestedMatchList, SingleConceptEncoder, MandatoryQualifierSelect, SubsetFilterControl, HierarchyBrowserDialog, MeasuredValueInput, AxisModifierWarning, SpellCheckPopover, ShorthandResolver, NoMatchReport; experimental: ClinicalStatement, StatementList, TemplateSearch, SectionSearch, TemplateBrowseTree, TemplateSuggestionsPanel, RepeatableFieldGroup, SectionOrderToggle, CarePathwayStack, CarePathwayCycle, PathwayTimeline, TemplateTriggerText |
+| Application shell, overlays, navigation, feedback | `src/shell` | AppShell, TopBar, SideNav, Breadcrumbs, PageHeader, Tabs, Panel, Stack, Cluster, Dialog, Drawer, MenuButton, Message, Toast, EmptyState, Skeleton, ProgressBar, Steps, Pagination |
+| Forms | `src/forms` | FormRow, FormGrid, Fieldset, TextInput, TextArea, SearchInput, Select, Combobox, MultiSelect, Checkbox, CheckboxGroup, RadioGroup, Switch, FileInput |
+| Data display | `src/data` | DataTable, LineChart, BarChart, StatTile, FactList, DiffTable |
+| Search | `src/search` | ListSearch, SmartLookup, CommandSearch; one matching engine (`smartSearch`) for lists, lookups and an application-wide search |
+| Drag and drop | `src/interaction` | SortableList, Board, ScheduleGrid; the engine `useDragAndDrop` with DragHandle, DragAnnouncer, DragPreview, DropRefusal (guidance `docs/guidance-notes/G13-drag-and-drop.md`) |
+| Mental health extension | `src/mental-health` | MhPatientBanner, MhPersonRow, LegalStatusBadge, LegalOrderCard, OrderCountdown, RiskAlertItem, RiskAlertList, RiskFormulation, SafetyPlan, RestrictedContent, BreakGlassDialog, BreakGlassBar, ConsentIndicator, ConsentToShare, ObservationLevel, ObservationRound, LeaveCard, LeaveTracker, RestrictivePracticeEpisode, MeasureForm, MeasureProfile, MeasureTrend, ContactEntry, ContactSummaryList, SupportPersonList, CarePlanGoals |
 | Mobile touch inputs | `src/touch` | TouchButton, ActionBar, ChipGroup, SegmentedControl, BottomSheet, FullScreenSheet, TouchDateTimePicker, NumberPad, ObservationKeypadEntry, HoldToConfirmButton, TypedReadBackConfirm, SecondCheckField, UndoToast, ReasonCodePicker |
 | Mobile screens | `src/mobile` | MobilePatientHeader, PatientDetailsSheet, PatientSwitchGuard, IdentityScanResult, MobileTabBar, MobileNavBar, Worklist, WorklistTaskCard, MobileMedicationsList, DoseAdministrationFlow, NotGivenSheet, MobileDrugAgenda, MobileSummary |
 | Mobile voice | `src/voice` | SpeechEngine (adapter, WebSpeechEngine, ScriptedSpeechEngine, useSpeechDictation), MicButton, LiveTranscript, DictatedObservationsCapture, DictationReview, DictatedNoteReview |
@@ -22,6 +28,10 @@ Each component folder holds the `.tsx`, its `.css`, a `.test.tsx`, a `README.md`
 ## Mobile
 
 The mobile controls follow the approved concepts in `docs/mobile-concepts/`: a task-first worklist for nursing, a patient-first record for review, and voice capture inside both. Touch targets are at least 48px (commit actions 56px, at the bottom), nothing depends on hover, swipe never commits or deletes, high-risk doses need a typed read-back, a second check and hold-to-confirm, and dictation never saves anything until each value has been read back and every missing or ambiguous value has been answered. The speech engine is yours to supply through the `SpeechEngine` adapter; the browser Web Speech adapter is optional (some browsers send audio to the vendor's cloud, so check this against your privacy obligations).
+
+## Mental health extension
+
+`src/mental-health` adds controls the CUI guidance does not cover: legal orders and status, risk alerts and formulation, safety plans, restricted information and emergency (break-glass) access, consent to share, observation levels and rounds, leave, restrictive practice, outcome measures, contacts, support people and care plan goals. They are built on the CUI controls (the patient banner, identification cell, observation graph, alert symbol) and follow the same rules. Legal words, order names, time limits and value sets come from the host as props: nothing in the library decides a legal fact. Screens may be seen by the person or by others, so the always-visible parts show glanceable signals (a legal status, an alert count, "Sharing restricted", "Restricted information held") and the detail is one deliberate click away. Every rule in this area is marked [suggested]; `docs/DECISIONS.md` explains the choices.
 
 ## Regions
 
@@ -63,7 +73,7 @@ Screenshots for every region and the dark theme are in `docs/screens/` (`-au`, `
 ```bash
 npm install
 npm run build      # tokens.css, dist/bundle.js (window.ClinicalCUI), dist/esm, dist/types
-npm test           # 1,567 tests: utilities and every component (jsdom)
+npm test           # 2,120 tests: utilities and every component (jsdom)
 npm run previews   # renders every preview in light and dark with Playwright, fails on console errors
 ```
 
@@ -93,7 +103,7 @@ Licensed under the Apache License 2.0 (see [../LICENSE](../LICENSE)). Contains p
 
 ## Traceability
 
-- `docs/guidance-notes/G1..G9` are the distilled notes from all 54 NHS CUI documents, with every guideline ID and exact rule. `G10-australia.md` and `G11-new-zealand.md` are the regional specifications, with a source URL on every item.
+- `docs/guidance-notes/G1..G9` are the distilled notes from all 54 NHS CUI documents, with every guideline ID and exact rule. `G10-australia.md` and `G11-new-zealand.md` are the regional specifications, with a source URL on every item. `G13-drag-and-drop.md` is this library's own drag and drop model (the CUI documents have none), built on WCAG 2.2.
 - `docs/DECISIONS.md` lists where the source documents conflict or are silent, and what was chosen.
 - `CONVENTIONS.md` is the contributor guide: folder layout, styling rules, README and preview formats, build checks.
 
