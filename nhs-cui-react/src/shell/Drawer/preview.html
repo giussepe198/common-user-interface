@@ -1,0 +1,20 @@
+<!-- @dsCard group="Overlays" height=760 subtitle="Side panel at the end, navigation drawer at the start" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+function D(props) {
+  const [open, setOpen] = React.useState(true);
+  return h(C.SheetContainerProvider, { autoFocus: false }, h(C.Button, { onClick: () => setOpen(true) }, 'Open'),
+    h(C.Drawer, Object.assign({ open, onClose: () => setOpen(false), portal: false }, props)));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  label('End drawer with footer'), frame(860, 340, h(D, { title: 'Filters', description: 'Caseload', footer: h(C.Button, { variant: 'primary' }, 'Apply filters') }, h('p', { style: { margin: 0 } }, 'Filter options.'))),
+  label('Non-modal side panel: the page beside it stays usable'), frame(860, 300, h('div', null, h('p', { style: { margin: 16 } }, 'The list stays visible and usable.'), h(D, { title: 'Contact 12-Mar-2026 14:00', description: 'Read-only detail', modal: false }, h('p', { style: { margin: 0 } }, 'Phone call, 20 minutes.')))),
+  label('Start drawer for navigation'), frame(860, 340, h(D, { title: 'Menu', side: 'start', size: 'sm', sheetOnPhone: false },
+    h(C.SideNav, { groups: [{ id: 'w', label: 'Work', items: [{ id: 'c', label: 'Caseload', href: '#c', icon: 'user' }, { id: 'd', label: 'Diary', href: '#d', icon: 'calendar' }] }], current: 'c' })))
+));
+</script>

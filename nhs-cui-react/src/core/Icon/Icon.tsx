@@ -1,6 +1,7 @@
 import React from 'react';
 import { cx } from '../cx';
-import { ICON_PATHS, IconName } from './icons';
+import type { IconName } from './icons';
+import { ICON_PATHS } from './icons';
 
 export interface IconProps {
   /** Which glyph to draw. */

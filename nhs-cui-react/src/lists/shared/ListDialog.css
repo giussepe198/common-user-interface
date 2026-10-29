@@ -1,5 +1,5 @@
 .cui-list-dialog { background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-dialog); display: flex; flex-direction: column; max-width: min(900px, calc(100vw - 32px)); max-height: calc(100vh - 32px); }
-.cui-list-dialog__title { font-size: 18px; line-height: 24px; font-weight: 600; margin: 0; padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--border); }
+.cui-list-dialog__title { font-size: var(--font-size-heading); line-height: var(--line-height-heading); font-weight: 600; margin: 0; padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--border); }
 .cui-list-dialog__body { padding: var(--space-4); overflow: auto; flex: 1 1 auto; }
 .cui-list-dialog__footer { display: flex; gap: var(--space-2); justify-content: flex-end; flex-wrap: wrap; padding: var(--space-3) var(--space-4); border-top: 1px solid var(--border); background: var(--surface-muted); border-radius: 0 0 var(--radius-md) var(--radius-md); }
 .cui-list-dialog__footer-spacer { flex: 1 1 auto; }
@@ -7,9 +7,18 @@
 .cui-list-dialog__backdrop { position: absolute; inset: 0; background: var(--ink); opacity: 0.35; }
 .cui-list-dialog--modal { position: relative; }
 /* shared form controls for the lists area */
-.cui-list-input { font: inherit; font-size: 14px; line-height: 20px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); padding: 5px 8px; min-height: 32px; }
+.cui-list-input { font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); padding: 5px var(--space-2); min-height: var(--control-height); }
 .cui-list-input:disabled { color: var(--ink-disabled); background: var(--surface-muted); border-color: var(--border); }
 .cui-list-input::placeholder { color: var(--ink-subtle); font-style: italic; }
-select.cui-list-input { padding-right: 4px; }
+select.cui-list-input { padding-right: var(--space-1); }
 .cui-list-choice { display: inline-flex; align-items: center; gap: var(--space-2); cursor: pointer; }
 .cui-list-choice input { margin: 0; accent-color: var(--accent); width: 16px; height: 16px; }
+/* Responsive (CONVENTIONS "Responsive"): the dialog body is the size container for the filter and sort lines; at
+   320px the dialog keeps a 16px gutter and its body scrolls vertically only. */
+.cui-list-dialog__body { container: cui-list-dialog / inline-size; }
+@media (max-width: 479px) {
+  .cui-list-dialog__layer { padding: var(--space-2); }
+  .cui-list-dialog { max-width: calc(100vw - var(--space-4)); max-height: calc(100vh - var(--space-4)); }
+  .cui-list-dialog__title, .cui-list-dialog__body, .cui-list-dialog__footer { padding-left: var(--space-3); padding-right: var(--space-3); }
+}
+@media (pointer: coarse) { .cui-list-choice input { width: 20px; height: 20px; } .cui-list-choice { min-height: var(--target-coarse); } }

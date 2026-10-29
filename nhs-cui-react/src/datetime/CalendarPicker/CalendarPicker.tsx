@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { cx, useId, useClinicalLocale, Button, Icon, MONTH_LONG, formatLongDate, toDate } from '../../core';
 import type { ClinicalRegion, DateLike } from '../../core';
 import { DAY_ABBREVIATIONS } from '../utils/regions/dates';
-import { DateInputValue, addToDate, fullDateValue, makeLocalDate } from '../utils/dateInput';
+import type { DateInputValue} from '../utils/dateInput';
+import { addToDate, fullDateValue, makeLocalDate } from '../utils/dateInput';
 
 const DAY_LONG = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 /** Monday first, as in the Quick Implementation Guide illustration. */

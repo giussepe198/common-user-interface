@@ -6,7 +6,7 @@ const { BottomSheet, ActionBar } = window.ClinicalCUI;
 function Demo() {
   const [open, setOpen] = React.useState(true);
   const [reason, setReason] = React.useState('Temperature 36.9, patient comfortable.');
-  const opt = (code, text, on) => h('label', { key: code, style: { display: 'flex', alignItems: 'center', gap: 12, minHeight: 52, padding: '4px 16px', borderTop: '1px solid var(--border)', background: on ? 'var(--accent-surface)' : undefined } },
+  const opt = (code, text, on) => h('label', { key: code, 'data-touch-target': '', style: { display: 'flex', alignItems: 'center', gap: 12, minHeight: 52, padding: '4px 16px', borderTop: '1px solid var(--border)', background: on ? 'var(--accent-surface)' : undefined } },
     h('input', { type: 'radio', name: 'r', defaultChecked: on, style: { width: 22, height: 22, margin: 0 } }), h('span', { style: { fontWeight: on ? 600 : 400 } }, code + ': ' + text));
   return h('div', { style: { position: 'relative', height: 600, maxWidth: 390, overflow: 'hidden', transform: 'translateZ(0)', background: 'var(--surface-sunken)', border: '1px solid var(--border)' } },
     h('div', { style: { padding: 16 } }, h('button', { type: 'button', className: 'cui-touch-button cui-touch-button--secondary cui-touch-button--h48', onClick: () => setOpen(true) }, 'Open sheet')),

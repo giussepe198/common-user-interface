@@ -1,7 +1,8 @@
 import React from 'react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
-import { AlertItem, DecisionSupportAlert } from './AlertItem';
+import type { DecisionSupportAlert } from './AlertItem';
+import { AlertItem } from './AlertItem';
 
 afterEach(cleanup);
 

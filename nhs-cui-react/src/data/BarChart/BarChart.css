@@ -1,0 +1,28 @@
+/* BarChart: counts by category, told apart by pattern and words, never colour alone. */
+.cui-bar-chart { margin: 0; min-width: 0; padding: var(--space-2); background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-bar-chart__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: var(--space-1) var(--space-3); }
+.cui-bar-chart__title { font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
+.cui-bar-chart__description { margin-top: 2px; }
+.cui-bar-chart__legend { list-style: none; margin: var(--space-1) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); font-size: var(--font-size-label); line-height: var(--line-height-label); }
+.cui-bar-chart__key { display: inline-flex; align-items: center; gap: var(--space-1); }
+.cui-bar-chart__svg { display: block; overflow: visible; margin-top: var(--space-1); font-family: var(--font-sans); }
+.cui-bar-chart__svg:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-bar-chart__bar { stroke: var(--ink); stroke-width: 1; }
+.cui-bar-chart__grid { stroke: var(--border); stroke-width: 1; shape-rendering: crispEdges; }
+.cui-bar-chart__axis { stroke: var(--border-strong); stroke-width: 1; shape-rendering: crispEdges; }
+.cui-bar-chart__tick, .cui-bar-chart__category { font-size: var(--font-size-label); fill: var(--ink); font-variant-numeric: tabular-nums; }
+.cui-bar-chart__category--focus { font-weight: 700; }
+.cui-bar-chart__axis-unit { font-size: var(--font-size-label); fill: var(--ink-muted); }
+.cui-bar-chart__value { font-size: var(--font-size-caption); font-weight: 600; fill: var(--ink); font-variant-numeric: tabular-nums; paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+.cui-bar-chart__suppressed { font-size: var(--font-size-caption); font-style: italic; fill: var(--ink-muted); }
+.cui-bar-chart__threshold { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 6 3; shape-rendering: crispEdges; }
+.cui-bar-chart__threshold-label { font-size: var(--font-size-caption); font-weight: 600; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+.cui-bar-chart__focus { fill: var(--accent-surface); }
+.cui-bar-chart__empty { font-size: var(--font-size-body); fill: var(--ink-muted); }
+.cui-bar-chart__table { width: 100%; margin-top: var(--space-2); border-collapse: collapse; }
+.cui-bar-chart__table th, .cui-bar-chart__table td { padding: var(--space-1) var(--space-2); text-align: left; vertical-align: top; border-bottom: 1px solid var(--border-strong); overflow-wrap: break-word; }
+.cui-bar-chart__table thead th { background: var(--surface-muted); font-weight: 600; border-bottom-width: 2px; }
+.cui-bar-chart__table tbody th { font-weight: 600; }
+.cui-bar-chart__table .cui-bar-chart__num { text-align: right; font-variant-numeric: tabular-nums; }
+.cui-bar-chart__none { font-style: italic; color: var(--ink-muted); }
+.cui-bar-chart__table-wrap { max-width: 100%; overflow-x: auto; }

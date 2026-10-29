@@ -10,5 +10,5 @@
 .cui-alert-symbol__information-fill { fill: var(--surface); stroke: var(--info); }
 .cui-alert-symbol__picto--information { color: var(--info); }
 .cui-alert-symbol__modifier { position: absolute; right: -6px; bottom: -4px; min-width: 14px; height: 14px; padding: 0 3px; font-size: 10px; line-height: 12px; font-weight: 600; text-align: center; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: 7px; font-variant-numeric: tabular-nums; }
-.cui-alert-symbol--32 .cui-alert-symbol__modifier, .cui-alert-symbol--48 .cui-alert-symbol__modifier { min-width: 18px; height: 18px; font-size: 12px; line-height: 16px; border-radius: 9px; }
-.cui-alert-symbol__label { font-size: 14px; line-height: 20px; color: var(--ink); }
+.cui-alert-symbol--32 .cui-alert-symbol__modifier, .cui-alert-symbol--48 .cui-alert-symbol__modifier { min-width: 18px; height: 18px; font-size: var(--font-size-label); line-height: var(--line-height-label); border-radius: 9px; }
+.cui-alert-symbol__label { font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); }

@@ -1,6 +1,6 @@
 .cui-mobile-tabbar { container-type: inline-size; display: flex; align-items: stretch; background: var(--surface); border-top: 1px solid var(--border); padding-bottom: env(safe-area-inset-bottom, 0px); font-family: var(--font-sans); }
 .cui-mobile-tabbar--sticky { position: sticky; bottom: 0; z-index: 2; }
-.cui-mobile-tab { position: relative; flex: 1 1 0; min-width: 48px; min-height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: var(--space-1) 2px; border: 0; background: transparent; color: var(--ink-muted); font: inherit; font-size: 12px; line-height: 16px; text-decoration: none; text-align: center; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.cui-mobile-tab { position: relative; flex: 1 1 0; min-width: var(--target-touch); min-height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: var(--space-1) 2px; border: 0; background: transparent; color: var(--ink-muted); font: inherit; font-size: var(--font-size-label); line-height: var(--line-height-label); text-decoration: none; text-align: center; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 .cui-mobile-tab:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 .cui-mobile-tab:active { background: var(--surface-muted); }
 .cui-mobile-tab:disabled { color: var(--ink-disabled); cursor: not-allowed; }
@@ -8,5 +8,5 @@
 .cui-mobile-tab--current::before { content: ''; position: absolute; top: 0; left: 20%; right: 20%; height: 3px; border-radius: 0 0 2px 2px; background: var(--accent); }
 .cui-mobile-tab__icon { position: relative; display: inline-flex; }
 .cui-mobile-tab__label { overflow-wrap: normal; word-break: normal; hyphens: none; }
-.cui-mobile-tab__badge { position: absolute; top: -6px; left: 14px; min-width: 18px; height: 18px; padding: 0 4px; box-sizing: border-box; border-radius: 9px; background: var(--danger); color: var(--on-danger); font-size: 11px; line-height: 18px; font-weight: 700; text-align: center; }
-@container (max-width: 340px) { .cui-mobile-tab, .cui-mobile-navbar__scan { font-size: 11px; letter-spacing: -0.01em; } .cui-mobile-navbar__scan { flex-grow: 1.1; min-width: 56px; } }
+.cui-mobile-tab__badge { position: absolute; top: -6px; left: 14px; min-width: 18px; height: 18px; padding: 0 var(--space-1); box-sizing: border-box; border-radius: 9px; background: var(--danger); color: var(--on-danger); font-size: var(--font-size-caption); line-height: 18px; font-weight: 700; text-align: center; }
+@container (max-width: 340px) { .cui-mobile-tab, .cui-mobile-navbar__scan { font-size: var(--font-size-caption); letter-spacing: -0.01em; } .cui-mobile-navbar__scan { flex-grow: 1.1; min-width: var(--target-commit); } }

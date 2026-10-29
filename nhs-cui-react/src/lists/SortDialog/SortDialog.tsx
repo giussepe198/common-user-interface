@@ -120,7 +120,7 @@ export function SortDialog<T>({ tableName, rowNoun, attributes, hiddenAttributes
               {labels ? (
                 <div role="radiogroup" aria-label={`Order for ${a?.label}`} className="cui-sort-dialog__orders">
                   {orders.map(o => (
-                    <label key={o} className="cui-list-choice">
+                    <label key={o} className="cui-list-choice" data-touch-target>
                       <input type="radio" name={`${id}-o${i}`} checked={l.direction === o} onChange={() => set(i, { direction: o })} />
                       {o === 'asc' ? labels.asc : labels.desc}
                     </label>

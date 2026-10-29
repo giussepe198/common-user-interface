@@ -81,3 +81,7 @@ Related events
 - Entries are focusable with one tab stop for the canvas: Left and Right move along a row, Up and Down to the nearest entry in the next row, Home and End to the row ends, Enter activates.
 - Each entry's accessible name gives the full label and its times ("Co-amoxiclav 625 mg oral three times a day, from 27-Oct-2026 08:00 to 29-Oct-2026 08:00").
 - Sections are labelled regions with `aria-expanded` collapse buttons; the viewed range is announced politely when it changes.
+
+## Narrow screens [suggested]
+
+The plot measures its width and the identifier column gives way (never below 96px). Below 600px the period controls and section bars wrap; nothing scrolls sideways.

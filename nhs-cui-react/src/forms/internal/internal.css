@@ -1,0 +1,79 @@
+/* Shared parts of the forms controls. */
+
+/*
+ * The bordered box of a single-line control: ONE box holds the input and its adornments (icon, unit, clear button,
+ * chevron), so adornments always sit inside the border and the focus ring goes round the whole box. Height comes
+ * from --control-height (32px compact, 40px standard, 44px on coarse pointers).
+ */
+.cui-field-box {
+  position: relative; display: flex; align-items: stretch; width: var(--cui-field-width, 100%); max-width: 100%; min-width: 0;
+  height: var(--control-height); background: var(--surface); color: var(--ink);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+}
+.cui-field-box:focus-within { outline: 2px solid var(--focus); outline-offset: 1px; }
+.cui-field-box:has(> [aria-invalid="true"]), .cui-field-box--invalid { border-color: var(--danger); box-shadow: inset 0 0 0 1px var(--danger); }
+.cui-field-box--disabled { background: var(--surface-muted); border-color: var(--border); color: var(--ink-disabled); }
+.cui-field-box--readonly { background: var(--surface-sunken); }
+.cui-field-box > .cui-field-box__input {
+  flex: 1 1 auto; min-width: 0; width: 100%; height: 100%; margin: 0; border: 0; border-radius: var(--radius-md); background: transparent;
+  color: inherit; font: inherit; font-family: var(--font-sans); font-size: var(--font-size-body); line-height: var(--line-height-body);
+  padding: 0 var(--space-2); min-height: 0; box-shadow: none;
+}
+.cui-field-box > .cui-field-box__input:focus, .cui-field-box > .cui-field-box__input:focus-visible { outline: none; }
+.cui-field-box > .cui-field-box__input::placeholder { color: var(--ink-subtle); font-style: italic; opacity: 1; }
+.cui-field-box > .cui-field-box__input:disabled { color: var(--ink-disabled); cursor: not-allowed; }
+.cui-field-box__affix {
+  flex: none; display: inline-flex; align-items: center; padding: 0 var(--space-2); color: var(--ink-muted);
+  font-size: var(--font-size-label); line-height: var(--line-height-label); white-space: nowrap;
+}
+.cui-field-box__affix--start { border-right: 1px solid var(--border); }
+.cui-field-box__affix--end { border-left: 1px solid var(--border); }
+.cui-field-box__icon { flex: none; display: inline-flex; align-items: center; padding-left: var(--space-2); color: var(--ink-muted); pointer-events: none; }
+.cui-field-box__button {
+  flex: none; display: inline-flex; align-items: center; justify-content: center; min-width: calc(var(--control-height) - 2px);
+  margin: 0; padding: 0; border: 0; border-left: 1px solid var(--border); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background: transparent; color: var(--ink); cursor: pointer; font: inherit;
+}
+.cui-field-box__button:hover { background: var(--hover); }
+.cui-field-box__button:focus-visible { outline: 2px solid var(--focus); outline-offset: -3px; }
+.cui-field-box__button:disabled { color: var(--ink-disabled); cursor: not-allowed; background: transparent; }
+.cui-field-box__button--plain { border-left: 0; border-radius: var(--radius-md); }
+
+/* Missed required field (CNA-1160): the box is shaded, not the transparent input inside it. */
+.cui-form-field--missed .cui-field-box { background: var(--warning-surface); border-color: var(--warning); }
+
+/* Popup list of options (Combobox, MultiSelect). */
+.cui-option-list {
+  position: absolute; z-index: 30; top: calc(100% + var(--space-1)); left: 0; right: 0; min-width: 12em;
+  max-height: calc(var(--cui-option-rows, 8) * (var(--line-height-body) + var(--space-2) * 2)); overflow-y: auto; overflow-x: hidden;
+  margin: 0; padding: var(--space-1) 0; list-style: none; background: var(--surface); color: var(--ink);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover);
+}
+.cui-option-list__group { padding: var(--space-1) var(--space-3) 0; font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--ink-muted); }
+.cui-option-list__option {
+  display: flex; align-items: flex-start; gap: var(--space-2); padding: var(--space-2) var(--space-3); cursor: pointer;
+  font-size: var(--font-size-body); line-height: var(--line-height-body); overflow-wrap: anywhere;
+}
+.cui-option-list__option:hover { background: var(--hover); }
+.cui-option-list__option--active { background: var(--accent-surface); box-shadow: inset 2px 0 0 var(--accent), inset -2px 0 0 var(--accent); }
+.cui-option-list__option[aria-disabled="true"] { color: var(--ink-disabled); cursor: not-allowed; background: transparent; }
+.cui-option-list__check { flex: none; display: inline-flex; width: 16px; height: var(--line-height-body); align-items: center; color: var(--accent); }
+.cui-option-list__text { display: flex; flex-direction: column; min-width: 0; }
+.cui-option-list__description { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-option-list__note { display: flex; align-items: center; gap: var(--space-1); }
+.cui-option-list__warning { display: flex; align-items: center; gap: var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--warning); font-weight: 600; }
+.cui-option-list__hit { font-weight: 600; }
+.cui-option-list__status { padding: var(--space-2) var(--space-3); font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink-muted); }
+.cui-option-list__status--error { color: var(--danger); display: flex; gap: var(--space-1); align-items: flex-start; }
+
+@media (pointer: coarse) {
+  .cui-option-list__option { min-height: var(--target-coarse); align-items: center; }
+}
+
+/* Group frames (CheckboxGroup, RadioGroup): missed shading on the options area, with the icon by the label (CNA-1160/1170). */
+.cui-field-frame.cui-form-field--missed > .cui-field-frame__control { background: var(--warning-surface); border-radius: var(--radius-md); outline: 1px solid var(--warning); padding-inline: var(--space-1); }
+.cui-field-frame > .cui-form-field__label .cui-field-frame__missed-icon { margin-left: var(--space-1); vertical-align: middle; }
+
+/* Outside a FormRow or FormGrid, FormField sizes its control to its content; forms controls fill the field instead
+   (use widthChars for a narrower box). */
+.cui-form-field__control:has(> .cui-field-box:not(.cui-text-input--sized), > .cui-combobox, > .cui-multi-select, > .cui-text-area, > .cui-file-input) { display: flex; flex: 1 1 auto; min-width: 0; }

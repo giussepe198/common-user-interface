@@ -92,7 +92,7 @@ export function RevealSection({
       aria-labelledby={`${baseId}-label`}
     >
       <div className="cui-reveal-section__control">
-        <label className="cui-reveal-section__toggle" htmlFor={`${baseId}-toggle`}>
+        <label className="cui-reveal-section__toggle" data-touch-target htmlFor={`${baseId}-toggle`}>
           <input
             id={`${baseId}-toggle`}
             type="checkbox"

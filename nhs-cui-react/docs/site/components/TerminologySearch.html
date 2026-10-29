@@ -55,7 +55,7 @@ function Demo() {
       if (input) { input.focus(); input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true })); input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true })); }
     }, 60);
   }, []);
-  return h('div', null, h('div', { style: { display: 'grid', gridTemplateColumns: 'auto minmax(0, 1fr)', gap: 24, alignItems: 'start' } },
+  return h('div', null, h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 440px), 1fr))', gap: 24, alignItems: 'start' } },
     h('div', { id: 'demo-a' }, h(TerminologySearch, { search: fake, label: 'Search for a condition', placeholder: 'Type a term', helpText: 'Type part of each word, for example "ast exe"', defaultQuery: 'asth', searchOnMount: true, labelMode: 'wrap', onBrowseRelated: function () {} })),
     h('div', { style: { display: 'flex', flexDirection: 'column', gap: 32 } },
       h(TerminologySearch, { search: () => Promise.resolve([]), label: 'Search for a condition', defaultQuery: 'cardiomyopathy xyz', searchOnMount: true, onKeepText: function () {} }),
@@ -67,7 +67,7 @@ function Demo() {
         h(FormField, { label: 'Reason for admission', required: true, prompt: 'Type part of each word' }, h(TerminologySearch, { search: fake })))
     )
   ),
-  h('div', { style: { display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 40, alignItems: 'start', marginTop: 24, paddingTop: 16, borderTop: '1px solid var(--border)' } },
+  h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 440px), 1fr))', gap: 40, alignItems: 'start', marginTop: 24, paddingTop: 16, borderTop: '1px solid var(--border)' } },
     h('div', null, caption('AU: SNOMED CT-AU via NCTS, Australian English preferred terms'),
       h(ClinicalLocaleProvider, { region: 'AU' }, h(TerminologySearch, { search: regional, label: 'Search for a condition', defaultQuery: 'parac', searchOnMount: true, showEdition: true }))),
     h('div', { id: 'demo-nz' }, caption('NZ: NZ Edition; "whanau" finds "Whānau" (macron-insensitive), macrons always displayed'),

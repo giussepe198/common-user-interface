@@ -1,0 +1,22 @@
+.cui-file-input { display: flex; flex-direction: column; gap: var(--space-1); width: 100%; min-width: 0; }
+.cui-file-input__zone {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); min-height: var(--control-height);
+  padding: 2px var(--space-2) 2px 2px; background: var(--surface); color: var(--ink);
+  border: 1px dashed var(--border-strong); border-radius: var(--radius-md);
+}
+.cui-file-input__zone--over { background: var(--accent-surface); border-style: solid; border-color: var(--accent); }
+.cui-file-input__zone--invalid { border-color: var(--danger); }
+.cui-file-input--disabled .cui-file-input__zone { background: var(--surface-muted); border-color: var(--border); color: var(--ink-disabled); }
+.cui-file-input__zone > .cui-file-input__button { height: calc(var(--control-height) - 6px); padding-top: 0; padding-bottom: 0; }
+.cui-file-input__hint { display: inline-flex; flex-wrap: wrap; column-gap: var(--space-2); color: var(--ink-muted); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-file-input__limits { font-size: var(--font-size-label); line-height: var(--line-height-body); }
+.cui-file-input__list, .cui-file-input__rejected { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.cui-file-input__file { display: flex; align-items: center; gap: var(--space-2); min-width: 0; font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-file-input__name { flex: 0 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.cui-file-input__size { flex: none; color: var(--ink-muted); font-size: var(--font-size-label); font-variant-numeric: tabular-nums; }
+.cui-file-input__rejected li { display: flex; gap: var(--space-1); align-items: flex-start; color: var(--danger); font-size: var(--font-size-label); line-height: var(--line-height-label); }
+.cui-file-input__rejected .cui-icon { flex: none; }
+@media (pointer: coarse) {
+  .cui-file-input__zone > .cui-file-input__button { height: auto; min-height: var(--target-coarse); }
+  .cui-file-input__file .cui-button { min-width: var(--target-coarse); min-height: var(--target-coarse); justify-content: center; }
+}

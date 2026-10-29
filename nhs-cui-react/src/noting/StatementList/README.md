@@ -29,3 +29,5 @@
 ## Accessibility
 - Each group is a `section` labelled by its heading; statements are list items.
 - The highlight option is a labelled check box; highlighting adds a background, it does not replace the text cues.
+
+`unboundLabel` replaces the flag on statements with no coded term ("No terms available" by default), for example "Not coded" in narrative notes where most statements are words only.

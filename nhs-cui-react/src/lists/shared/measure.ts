@@ -36,5 +36,5 @@ export function useElementWidth<T extends HTMLElement>(fallback: number): [React
     ro.observe(el);
     return () => ro.disconnect();
   }, [fallback]);
-  return [ref, w];
+  return [ref as React.RefObject<T>, w];
 }

@@ -33,6 +33,7 @@ The handover source is a requirements spreadsheet, not a visual guide: layout an
 - RID 28 [R] reason for handover.
 - RID 31 [R] unsatisfactory handover recorded, also retrospectively (`retrospective`), with a time, date and user stamp; RID 139 flag as an incident.
 - RID 36/115 [E] single-item, ad hoc handovers are allowed.
+- RID 108 [E] key facts are read back before accepting: pass `pendingReadBack` (the ids whose read-back is not confirmed) and the items are marked "Read back not confirmed"; "Accept responsibility" then shows an error naming them, while a refusal can still be recorded `[suggested]`. Enforce the same rule on the server.
 - RID 30 [E] the dialog never blocks access to patient records; it says so.
 - Uses "giver" and "receiver" (Introduction to Handover), never "incoming" or "outgoing".
 

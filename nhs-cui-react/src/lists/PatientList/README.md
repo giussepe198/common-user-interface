@@ -33,6 +33,12 @@ Ward lists, clinic lists, team lists and handover lists: one patient (or locatio
 />
 ```
 
+`renderPatient(row, { patient, match })` [suggested] lets the host draw the patient cell itself, for example `PatientIdentificationCell` with `nameHref` so the name opens the record, or with a local extension such as a preferred name. It receives the identical or similar name match the list found, so the warning is never lost; sorting, filtering and the name check still use `getPatient`.
+
+`rowNounSingular` [suggested] gives the word for one row where the plural is irregular ("person" for "people").
+
+`getPatientId(row)` [suggested] names the patient behind each row for lists where one patient can have several rows (a person under two teams): rows of the same patient are never warned against each other as identical names.
+
 Columns are generic over your row type. `dataType` (FSG Table 5) drives filter operators, sort words and cell formatting (dates use the CUI `dd-Mmm-yyyy` format).
 
 `FilterDialog`, `SortDialog` and the filter and sort utilities take attributes, not columns. Build them from the same column definitions with `patientListAttributes`, which is what `PatientList` uses internally, so the dialogs and the list agree (a patient column filters and sorts by the displayed regional name):
@@ -43,11 +49,17 @@ const attributes = patientListAttributes(columns, { getPatient: r => r.patient, 
 {sortOpen && <SortDialog tableName="Ward list" rowNoun="patients" attributes={attributes} initial={sort} onOk={applySort} onCancel={closeSort} />}
 ```
 
+- Search [suggested]: the same list search as DataTable (`search`, `searchQuery`, `onSearchQueryChange`,
+  `searchFields`). The patient column is searched as names (either order, close spellings, similar sounds), with the
+  record number and other identifiers, and the date of birth as "born:". Keep the query in component state: never put
+  a search for people in an address or in browser storage.
+
 ## Guidance implemented
 
 Header
 - PAL-0010/0020 [M] header always visible, across the full width; PAL-0030 [R] larger, bolder title.
 - PAL-0040 [M] who the list is for, service, location, and last updated time or current time; PAL-0050..0070 [R] "Patient list for: Dr Okafor"; PAL-0080/0090 locations uniquely identified and joined; PAL-0100 [M] CUI date and 24-hour time.
+- `headingLevel` (2, 3 or 4; default 2) sets the title's heading level so the list nests under a page section's own heading `[suggested]`.
 - Handover RID 144: inclusion criteria shown under the title ("Showing: All inpatients on Elkington Ward").
 
 Columns and rows
@@ -64,7 +76,7 @@ Sublists
 Patient identification
 - PAL-0450 [M] name, date of birth and NHS number (or the region's identifier) on separate lines in one column, rendered by `PatientIdentificationCell`; PAL-0520 [M] "FAMILY, Given (Title)"; PAL-0530 [R] preferred name, "Born" and "NHS No." labels as on the banner.
 - PAL-0460..0500 [R] "UNKNOWN, Unknown, Male" style unknown names, "Unknown" date of birth and NHS number; PAL-0510 [R] temporary number while the NHS number is unknown.
-- PAL-0540 [M] identical names on the list: highlighted name plus a warning triangle; PAL-0550 [M] the first differentiating element (given name, else date of birth, else NHS number) is underlined; PAL-0560/0570 [R] similar names via `similarNames`. Matches are checked across the whole list, including filtered-out rows.
+- PAL-0540 [M] identical names on the list: highlighted name plus a warning triangle; PAL-0550 [M] the first differentiating element (given name, else date of birth, else NHS number) is underlined; PAL-0560/0570 [R] similar names via `similarNames`; `listNamesSoundAlike` is a ready function (family and given names the same once folded, or sounding alike: "John"/"Jon", "Smith"/"Smyth", not "John"/"Jane") `[suggested]`. Matches are checked across the whole list, including filtered-out rows.
 
 Row key identifiers
 - PAL-0580/0590 [M] unique key per row; PAL-0600 [M] key content larger and bolder (name only in the patient cell); PAL-0610/0620 [M] key columns at the left and frozen; PAL-0640 [M] use full locations in multi-location lists.
@@ -119,3 +131,7 @@ See `PatientIdentificationCell` for the full table and sources.
 - The update count is a polite live region. Update triangles are buttons named "Updated NEWS2 score. Unmark".
 - The identical-name warning has visually hidden text naming the element to check.
 - Colours come from tokens and work in light and dark themes.
+
+## Narrow screens [suggested]
+
+The list is a size container. Below 600px each row becomes a card: key columns (location, patient) head the card and every other cell is labelled with its column title (`data-label`); the column headings wrap as a row of sort buttons, so sorting and the header menu stay in reach, and the out-of-view columns bar is not needed. Table semantics stay in the markup.

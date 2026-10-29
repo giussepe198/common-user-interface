@@ -210,7 +210,7 @@ export const InformationWindow = React.forwardRef<HTMLElement, InformationWindow
         {(['summary', 'details'] as const).map(t => (
           <button
             key={t}
-            ref={el => (tabRefs.current[t] = el)}
+            ref={(el) => { tabRefs.current[t] = el; }}
             type="button"
             role="tab"
             id={`${id}-tab-${t}`}
@@ -252,11 +252,12 @@ export const InformationWindow = React.forwardRef<HTMLElement, InformationWindow
                   Actions
                 </button>
                 {actionsOpen ? (
-                  <ul className="cui-ds-info__action-list" role="radiogroup" aria-label="Recommended actions, most preferred first">
+                  <div role="radiogroup" aria-label="Recommended actions, most preferred first">
+                  <ul className="cui-ds-info__action-list">
                     {actions.map(a => (
                       <li key={a.id} className="cui-ds-info__action">
                         <PreferenceIcon level={a.preference} reasons={a.reasons} />
-                        <label className="cui-ds-info__choice">
+                        <label className="cui-ds-info__choice" data-touch-target>
                           <input
                             type="radio"
                             name={`${id}-action`}
@@ -272,7 +273,7 @@ export const InformationWindow = React.forwardRef<HTMLElement, InformationWindow
                           <ul className="cui-ds-info__sub" aria-label="Sub options">
                             {a.subOptions.map(sub => (
                               <li key={sub.id}>
-                                <label className="cui-ds-info__choice">
+                                <label className="cui-ds-info__choice" data-touch-target>
                                   <input
                                     type={a.subOptionMode === 'or' ? 'radio' : 'checkbox'}
                                     name={`${id}-${a.id}-sub`}
@@ -292,6 +293,7 @@ export const InformationWindow = React.forwardRef<HTMLElement, InformationWindow
                       </li>
                     ))}
                   </ul>
+                  </div>
                 ) : null}
               </div>
             ) : null}

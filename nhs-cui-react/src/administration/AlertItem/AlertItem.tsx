@@ -4,7 +4,7 @@ import { formatShortDate, formatTime } from '../../core/format';
 import type { DateLike } from '../../core/format';
 import { NilByMouthWarningSymbol } from '../NilByMouthBanner/NilByMouthBanner';
 import { PreferenceIcon } from '../PreferenceIcon/PreferenceIcon';
-import { DecisionSupportAlertStatus } from '../utils/decisionSupport';
+import type { DecisionSupportAlertStatus } from '../utils/decisionSupport';
 
 /** A recommended action, listed in order of preference, most preferred first (2.2). */
 export interface DecisionSupportAlertAction {
@@ -123,7 +123,7 @@ export function AlertItem({ alert, expanded, defaultExpanded, onExpandedChange, 
             {(['summary', 'details'] as const).map(t => (
               <button
                 key={t}
-                ref={el => (tabRefs.current[t] = el)}
+                ref={(el) => { tabRefs.current[t] = el; }}
                 type="button"
                 role="tab"
                 id={`${id}-tab-${t}`}
@@ -166,11 +166,12 @@ export function AlertItem({ alert, expanded, defaultExpanded, onExpandedChange, 
                       Actions
                     </button>
                     {actionsOpen ? (
-                      <ul className="cui-ds-alert__action-list" role="radiogroup" aria-label="Recommended actions, most preferred first">
+                      <div role="radiogroup" aria-label="Recommended actions, most preferred first">
+                      <ul className="cui-ds-alert__action-list">
                         {actions.map(a => (
                           <li key={a.id} className="cui-ds-alert__action">
                             <PreferenceIcon level={a.preference} reasons={a.reasons} />
-                            <label className="cui-ds-alert__choice">
+                            <label className="cui-ds-alert__choice" data-touch-target>
                               <input
                                 type="radio"
                                 name={`${id}-action`}
@@ -186,7 +187,7 @@ export function AlertItem({ alert, expanded, defaultExpanded, onExpandedChange, 
                               <ul className="cui-ds-alert__sub" aria-label="Sub options">
                                 {a.subOptions.map(s => (
                                   <li key={s.id}>
-                                    <label className="cui-ds-alert__choice">
+                                    <label className="cui-ds-alert__choice" data-touch-target>
                                       <input
                                         type={a.subOptionMode === 'or' ? 'radio' : 'checkbox'}
                                         name={`${id}-${a.id}-sub`}
@@ -206,6 +207,7 @@ export function AlertItem({ alert, expanded, defaultExpanded, onExpandedChange, 
                           </li>
                         ))}
                       </ul>
+                      </div>
                     ) : null}
                   </div>
                 ) : null}
@@ -239,7 +241,7 @@ export function AlertItem({ alert, expanded, defaultExpanded, onExpandedChange, 
           </div>
 
           <div className="cui-ds-alert__override">
-            <label className="cui-ds-alert__choice">
+            <label className="cui-ds-alert__choice" data-touch-target>
               <input type="checkbox" checked={override} onChange={e => setOverride(e.target.checked)} />
               <span>Override this alert</span>
             </label>

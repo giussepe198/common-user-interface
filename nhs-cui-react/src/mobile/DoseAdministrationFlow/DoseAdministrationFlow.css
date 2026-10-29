@@ -1,13 +1,13 @@
-.cui-dose-flow { display: flex; flex-direction: column; min-height: 100%; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; }
+.cui-dose-flow { display: flex; flex-direction: column; min-height: 100%; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: var(--font-size-touch-body); line-height: var(--line-height-touch-body); }
 .cui-dose-flow__main { flex: 1 1 auto; display: flex; flex-direction: column; }
 .cui-dose-flow__intro { display: flex; flex-direction: column; gap: var(--space-1); padding: 14px var(--space-4) 10px; }
-.cui-dose-flow__title { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; overflow-wrap: anywhere; }
-.cui-dose-flow__line { font-size: 15px; line-height: 21px; overflow-wrap: anywhere; }
-.cui-dose-flow__due { font-size: 14px; line-height: 20px; font-weight: 700; }
+.cui-dose-flow__title { margin: 0; font-size: var(--font-size-heading); line-height: var(--line-height-heading); font-weight: 600; overflow-wrap: anywhere; }
+.cui-dose-flow__line { font-size: var(--font-size-subheading); line-height: 21px; overflow-wrap: anywhere; }
+.cui-dose-flow__due { font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 700; }
 .cui-dose-flow__due--danger { color: var(--danger); }
 .cui-dose-flow__due--accent { color: var(--accent); }
 .cui-dose-flow__due--muted { color: var(--ink-muted); font-weight: 600; }
-.cui-dose-flow__risk { align-self: flex-start; font-size: 13px; line-height: 18px; font-weight: 700; padding: 2px var(--space-2); border: 1px solid var(--ink); border-radius: var(--radius-sm); }
+.cui-dose-flow__risk { align-self: flex-start; font-size: var(--font-size-detail); line-height: var(--line-height-detail); font-weight: 700; padding: 2px var(--space-2); border: 1px solid var(--ink); border-radius: var(--radius-sm); }
 .cui-dose-flow__steps { list-style: none; margin: 0; padding: 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .cui-dose-flow__step { display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: var(--space-3); padding: var(--space-3) var(--space-4); border-top: 1px solid var(--border); }
 .cui-dose-flow__step:first-child { border-top: 0; }
@@ -18,19 +18,19 @@
 .cui-dose-flow__dot--info { background: var(--surface-muted); color: var(--ink); }
 .cui-dose-flow__dot--problem { background: var(--danger); color: var(--on-danger); }
 .cui-dose-flow__dose { font-size: 28px; line-height: 34px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.cui-dose-flow__muted { font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+.cui-dose-flow__muted { font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink-muted); }
 .cui-dose-flow__problem-text { color: var(--danger); }
 .cui-dose-flow__inline-button { align-self: flex-start; margin-top: var(--space-1); }
 .cui-dose-flow__warnings { display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-2); padding: var(--space-2) var(--space-3); background: var(--warning-surface); border: 1px solid var(--warning); border-radius: var(--radius-md); }
-.cui-dose-flow__warning { display: flex; gap: var(--space-2); align-items: flex-start; color: var(--warning); font-weight: 700; font-size: 15px; line-height: 21px; }
+.cui-dose-flow__warning { display: flex; gap: var(--space-2); align-items: flex-start; color: var(--warning); font-weight: 700; font-size: var(--font-size-subheading); line-height: 21px; }
 .cui-dose-flow__warning .cui-icon { flex: none; margin-top: 3px; }
-.cui-dose-flow__ack { display: flex; align-items: center; gap: var(--space-3); min-height: 48px; color: var(--ink); font-weight: 600; cursor: pointer; }
+.cui-dose-flow__ack { display: flex; align-items: center; gap: var(--space-3); min-height: var(--target-touch); color: var(--ink); font-weight: 600; cursor: pointer; }
 .cui-dose-flow__ack input { width: 22px; height: 22px; margin: 0; flex: none; accent-color: var(--accent); }
 .cui-dose-flow__time-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap; }
 .cui-dose-flow__checks { display: flex; flex-direction: column; gap: 10px; padding: var(--space-3) var(--space-4) 0; }
 .cui-dose-flow__confirm { display: flex; flex-direction: column; gap: 10px; padding: var(--space-3) var(--space-4) 0; }
 .cui-dose-flow__card { padding: var(--space-3); }
-.cui-dose-flow__problems { margin: var(--space-3) var(--space-4) 0; padding: var(--space-2) var(--space-3); border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); font-size: 15px; line-height: 21px; }
+.cui-dose-flow__problems { margin: var(--space-3) var(--space-4) 0; padding: var(--space-2) var(--space-3); border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); font-size: var(--font-size-subheading); line-height: 21px; }
 .cui-dose-flow__problems ul { margin: var(--space-1) 0 0; padding-left: 20px; }
 .cui-dose-flow__problems--alert { border: 2px solid var(--danger); background: var(--danger-surface); }
 .cui-dose-flow__problems:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }

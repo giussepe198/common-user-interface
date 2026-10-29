@@ -1,0 +1,20 @@
+<!-- @dsCard group="Data display" height=760 width=1200 subtitle="Line chart: outcome measure with bands, thresholds and a table" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { LineChart } = window.ClinicalCUI;
+const bands = [{ from: 10, to: 15, label: 'Low' }, { from: 16, to: 21, label: 'Moderate' }, { from: 22, to: 29, label: 'High' }, { from: 30, to: 50, label: 'Very high' }];
+const consumer = { id: 'k10c', label: 'Consumer-rated', points: [
+  { time: '2026-02-02', value: 31, occasion: 'Start' }, { time: '2026-04-06', value: 28, occasion: 'Review' },
+  { time: '2026-05-04', value: null, occasion: 'Review', note: '3 items missing' }, { time: '2026-08-03', value: 24, occasion: 'Review' },
+  { time: '2026-10-05', value: 20, occasion: 'Review' } ] };
+const clinician = { id: 'k10k', label: 'Clinician-rated', points: [
+  { time: '2026-02-02', value: 34 }, { time: '2026-05-04', value: 27 }, { time: '2026-10-05', value: 22 } ] };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gap: 16 } },
+    h(LineChart, { title: 'K10 total', unit: 'score', direction: 'Lower scores mean less distress', description: 'K10 total went from 31 to 20 between 02-Feb-2026 and 05-Oct-2026.', yRange: { min: 10, max: 50 }, bands, thresholds: [{ value: 25, label: 'Review threshold' }], series: [consumer] }),
+    h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 16, alignItems: 'start' } },
+      h(LineChart, { title: 'Narrow: two series', unit: 'score', yRange: { min: 10, max: 50 }, bands, series: [consumer, clinician] }),
+      h(LineChart, { title: 'Table view', unit: 'score', yRange: { min: 10, max: 50 }, bands, series: [consumer], defaultShowTable: true })))
+);
+</script>

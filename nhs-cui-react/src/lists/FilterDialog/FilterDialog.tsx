@@ -180,10 +180,10 @@ export function FilterDialog<T>({
       {criteria.length >= 2 ? (
         <fieldset className="cui-filter-dialog__combine">
           <legend>Show rows where</legend>
-          <label className="cui-list-choice">
+          <label className="cui-list-choice" data-touch-target>
             <input type="radio" name={`${id}-combine`} checked={combine === 'or'} onChange={() => setCombine('or')} /> {words.or}
           </label>
-          <label className="cui-list-choice">
+          <label className="cui-list-choice" data-touch-target>
             <input type="radio" name={`${id}-combine`} checked={combine === 'and'} onChange={() => setCombine('and')} /> {words.and}
           </label>
         </fieldset>

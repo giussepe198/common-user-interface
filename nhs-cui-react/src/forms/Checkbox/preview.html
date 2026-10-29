@@ -1,0 +1,13 @@
+<!-- @dsCard group="Forms" height=220 subtitle="Single check box, inline and as a field" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { Checkbox } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 420 } },
+    h(Checkbox, { label: 'Carer present', description: 'At the time of the visit' }),
+    h(Checkbox, { label: 'Person reviewed their plan', defaultChecked: true }),
+    h(Checkbox, { fieldLabel: 'Consent', label: 'Person agreed to share with their GP', required: true, error: 'Confirm consent before sharing' })
+  )
+);
+</script>

@@ -123,7 +123,7 @@ export function SuggestedMatchList({
             >
               {s.sourceText ? <span className="cui-suggested-matches__source">From: “{s.sourceText}”</span> : null}
               <div className="cui-suggested-matches__base">
-                <label className="cui-suggested-matches__check">
+                <label className="cui-suggested-matches__check" data-touch-target>
                   <input
                     type="checkbox"
                     checked={!!s.confirmed}
@@ -157,7 +157,7 @@ export function SuggestedMatchList({
                     const lockedMandatory = !!a.mandatory && !!a.confirmed && !!s.confirmed;
                     return (
                       <li key={a.id} className="cui-suggested-matches__attribute">
-                        <label className="cui-suggested-matches__check">
+                        <label className="cui-suggested-matches__check" data-touch-target>
                           <input
                             type="checkbox"
                             checked={!!a.confirmed && !!s.confirmed}

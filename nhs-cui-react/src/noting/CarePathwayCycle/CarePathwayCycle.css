@@ -1,10 +1,10 @@
-.cui-cycle { display: flex; flex-direction: column; gap: var(--space-2); max-width: 100%; padding: var(--space-2) var(--space-3) var(--space-3); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--ink); font-size: 13px; line-height: 18px; }
+.cui-cycle { display: flex; flex-direction: column; gap: var(--space-2); max-width: 100%; padding: var(--space-2) var(--space-3) var(--space-3); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--ink); font-size: var(--font-size-detail); line-height: var(--line-height-detail); }
 .cui-cycle--paused { border-color: var(--warning); }
 .cui-cycle__head { display: flex; align-items: center; gap: var(--space-2); }
-.cui-cycle__title { flex: 1 1 auto; margin: 0; font-size: 15px; line-height: 20px; font-weight: 600; }
+.cui-cycle__title { flex: 1 1 auto; margin: 0; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
 .cui-cycle__status { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
-.cui-cycle__paused { display: inline-flex; align-items: center; gap: 4px; padding: 2px var(--space-2); font-weight: 600; color: var(--warning); background: var(--warning-surface); border-radius: var(--radius-sm); }
-.cui-cycle__event { display: inline-flex; align-items: center; gap: 4px; font: inherit; color: var(--accent); background: none; border: 0; padding: 2px; text-decoration: underline; cursor: pointer; }
+.cui-cycle__paused { display: inline-flex; align-items: center; gap: var(--space-1); padding: 2px var(--space-2); font-weight: 600; color: var(--warning); background: var(--warning-surface); border-radius: var(--radius-sm); }
+.cui-cycle__event { display: inline-flex; align-items: center; gap: var(--space-1); font: inherit; color: var(--accent); background: none; border: 0; padding: 2px; text-decoration: underline; cursor: pointer; }
 .cui-cycle__event--static { color: var(--ink); text-decoration: none; cursor: default; }
 .cui-cycle__body { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: flex-start; }
 .cui-cycle__diagram { flex: none; }
@@ -25,29 +25,29 @@
 .cui-cycle__here { fill: none; stroke: var(--accent); stroke-width: 2; }
 .cui-cycle__focus { fill: none; stroke: var(--focus); stroke-width: 2; stroke-dasharray: 3 2; }
 .cui-cycle__centre { fill: var(--ink); }
-.cui-cycle__centre-title { font-size: 14px; font-weight: 600; }
+.cui-cycle__centre-title { font-size: var(--font-size-body); font-weight: 600; }
 .cui-cycle__side { flex: 1 1 240px; min-width: 0; display: flex; flex-direction: column; gap: var(--space-2); }
 .cui-cycle__spinner { display: flex; align-items: center; gap: var(--space-1); }
-.cui-cycle__spinner-label { width: 44px; flex: none; font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-cycle__spinner-label { width: 44px; flex: none; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
 .cui-cycle__spinner-value { flex: 1 1 auto; min-width: 0; font-weight: 600; text-align: center; font-variant-numeric: tabular-nums; }
 .cui-cycle__spinner-note { font-weight: 400; color: var(--ink-muted); }
 .cui-cycle__stages { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
 .cui-cycle__stages li { border-bottom: 1px solid var(--border); }
-.cui-cycle__stage-item { display: flex; align-items: flex-start; gap: var(--space-2); width: 100%; padding: 4px var(--space-1); font: inherit; text-align: left; color: var(--ink); background: transparent; border: 0; cursor: pointer; }
+.cui-cycle__stage-item { display: flex; align-items: flex-start; gap: var(--space-2); width: 100%; padding: var(--space-1) var(--space-1); font: inherit; text-align: left; color: var(--ink); background: transparent; border: 0; cursor: pointer; }
 .cui-cycle__stage-item:hover { background: var(--hover); }
 .cui-cycle__stage-item--focus { background: var(--accent-surface); }
 .cui-cycle__stage-item--future { color: var(--ink-muted); }
-.cui-cycle__kind { position: relative; flex: none; display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; font-size: 11px; font-weight: 700; }
+.cui-cycle__kind { position: relative; flex: none; display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; font-size: var(--font-size-caption); font-weight: 700; }
 .cui-cycle__kind::before { content: ''; position: absolute; inset: 0; border: 1.5px solid currentColor; border-radius: 50%; }
 .cui-cycle__kind--review::before { inset: 3px; border-radius: 1px; transform: rotate(45deg); }
 .cui-cycle__kind--milestone::before { inset: 1px; border-radius: 1px; }
 .cui-cycle__kind-num { position: relative; }
-.cui-cycle__repeats { display: flex; align-items: center; justify-content: center; gap: 4px; margin: var(--space-1) 0 0; font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-cycle__repeats { display: flex; align-items: center; justify-content: center; gap: var(--space-1); margin: var(--space-1) 0 0; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
 .cui-cycle__stage-text { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; }
 .cui-cycle__stage-title { font-weight: 600; overflow-wrap: anywhere; }
 .cui-cycle__stage-item--current .cui-cycle__stage-title { color: var(--accent); }
-.cui-cycle__stage-meta { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
-.cui-cycle__you { flex: none; font-size: 12px; font-weight: 700; color: var(--accent); }
-.cui-cycle__empty, .cui-cycle__key { margin: 0; font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-cycle__stage-meta { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-cycle__you { flex: none; font-size: var(--font-size-label); font-weight: 700; color: var(--accent); }
+.cui-cycle__empty, .cui-cycle__key { margin: 0; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
 .cui-cycle__mini-row { display: flex; align-items: center; gap: var(--space-3); }
 .cui-cycle__mini-text { margin: 0; }

@@ -1,0 +1,14 @@
+<!-- @dsCard group="Forms" height=260 subtitle="Text entry with unit, prompt, error and missed states" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { FormField, TextInput } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 420 } },
+    h(FormField, { label: 'Family name' }, h(TextInput, { defaultValue: 'CITIZEN' })),
+    h(FormField, { label: 'Weight', prompt: 'Kilograms', promptPlacement: 'right' }, h(TextInput, { type: 'number', suffix: 'kg', widthChars: 6, defaultValue: '72.5' })),
+    h(FormField, { label: 'Email', error: 'Enter an email address like name@example.org' }, h(TextInput, { type: 'email', defaultValue: 'sam@' })),
+    h(FormField, { label: 'Case number', required: true, missed: true }, h(TextInput, { widthChars: 10 }))
+  )
+);
+</script>

@@ -37,4 +37,34 @@ describe('FormField', () => {
     expect(box.getAttribute('placeholder')).toBe('kg');
     expect(box.getAttribute('aria-invalid')).toBe('true');
   });
+  it('renders exactly three slots (label, control, feedback) as direct children, for FormRow and FormGrid subgrids', () => {
+    const { container } = render(<FormField label="Weight" prompt="Kilograms" error="Enter a number"><input /></FormField>);
+    const field = container.querySelector('[data-cui-field]')!;
+    const slots = Array.from(field.children).map((c) => c.getAttribute('data-slot'));
+    expect(slots).toEqual(['label', 'control', 'feedback']);
+    const feedback = field.querySelector('[data-slot="feedback"]')!;
+    expect(feedback.textContent).toContain('Kilograms');
+    expect(feedback.textContent).toContain('Enter a number');
+    expect(field.querySelector('[data-slot="control"] input')).toBeTruthy();
+  });
+  it('keeps the feedback slot (and its live region) when there is no message, so an error that appears is announced', () => {
+    const { container, rerender } = render(<FormField label="Weight"><input /></FormField>);
+    const live = container.querySelector('[data-slot="feedback"] [aria-live="polite"]')!;
+    expect(live).toBeTruthy();
+    expect(live.textContent).toBe('');
+    rerender(<FormField label="Weight" error="Enter a number"><input /></FormField>);
+    expect(container.querySelector('[data-slot="feedback"] [aria-live="polite"]')!.textContent).toBe('Enter a number');
+    expect(screen.getByRole('textbox').getAttribute('aria-describedby')).toContain('error');
+  });
+  it('puts a right-hand prompt in the control slot and a below prompt in the feedback slot (CNA-2120)', () => {
+    const { container } = render(
+      <>
+        <FormField label="Pulse" prompt="Beats per minute" promptPlacement="right"><input /></FormField>
+        <FormField label="Weight" prompt="Kilograms"><input /></FormField>
+      </>,
+    );
+    const [right, below] = Array.from(container.querySelectorAll('[data-cui-field]'));
+    expect(right.querySelector('[data-slot="control"]')!.textContent).toContain('Beats per minute');
+    expect(below.querySelector('[data-slot="feedback"]')!.textContent).toContain('Kilograms');
+  });
 });

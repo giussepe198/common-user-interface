@@ -133,7 +133,7 @@ export function MeasuredValueInput({
           );
         })}
       </div>
-      <label className="cui-measured-value__confirm">
+      <label className="cui-measured-value__confirm" data-touch-target>
         <input type="checkbox" checked={isConfirmed} onChange={(ev) => setConfirmed(ev.target.checked)} />
         Confirm values
       </label>

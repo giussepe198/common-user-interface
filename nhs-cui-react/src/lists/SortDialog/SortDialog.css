@@ -6,3 +6,8 @@
 .cui-sort-dialog__attr { min-width: 240px; }
 .cui-sort-dialog__orders { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); margin-top: var(--space-2); padding-left: var(--space-1); }
 .cui-sort-dialog__add { margin-top: var(--space-2); }
+/* Responsive: below 480px the attribute select takes the line and the order choices wrap under it. */
+@container cui-list-dialog (max-width: 479px) {
+  .cui-sort-dialog__row { flex-wrap: wrap; }
+  .cui-sort-dialog__attr { min-width: 0; flex: 1 1 100%; }
+}

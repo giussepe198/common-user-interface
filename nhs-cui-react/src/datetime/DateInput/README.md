@@ -46,6 +46,18 @@ Any field where a clinician enters a date: date of birth, start and finish dates
 - Alt+Down opens the calendar [suggested].
 - "t" for today only with `allowTodayShortcut` [suggested: not in the guidance].
 
+## Inside FormField (bare mode)
+- `bare` [suggested] renders the field box only: no visible label, the instructions become a screen-reader description (the tooltip stays), and the host `error` is not drawn. Put it in a `FormField` (which passes `id`, `aria-describedby`, `aria-invalid` and `aria-required`) or name it with `aria-labelledby`. Keep `label`: it still names the in-field buttons.
+- The control's own validation messages go to `onValidationChange(message | null)`; show them as the FormField `error`. Without `onValidationChange` they are still drawn below the box, so a message is never lost.
+- Disambiguation prompts, calendars and notices still open from the control. In a `FormRow` they open in the control track and push only the feedback track below.
+
+```tsx
+const [msg, setMsg] = useState<string | null>(null);
+<FormField label="Date of birth" required error={msg ?? undefined}>
+  <DateInput label="Date of birth" bare onValidationChange={setMsg} />
+</FormField>
+```
+
 ## Do and don't
 
 - Do give a short descriptive label such as "Start date".
@@ -70,3 +82,4 @@ Real `<label>`, instructions linked with `aria-describedby` as well as the toolt
 | Calendar day headings | Thu | Thur (ACSQHC 2024) | Thu |
 
 The order comes from `NUMERIC_DATE_ORDER` (`utils/regions/dates.ts`); `parseDateInput` also takes `numericOrder` directly. The field still re-displays the date with the month as a word, so the user sees how it was read. Sources: G10-australia.md 8.1; G11-new-zealand.md 7.1.
+- Under a coarse pointer the calendar button is a 44px target and the box widens by as much, so the format hint still fits [suggested].

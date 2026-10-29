@@ -36,6 +36,7 @@ export type {
   PatientBannerAllergy,
   PatientBannerAllergies,
   PatientBannerSection,
+  PatientBannerItem,
   PatientRecordItem,
 } from './PatientBanner/PatientBanner';
 export { MicroPatientBanner } from './MicroPatientBanner/MicroPatientBanner';
@@ -108,6 +109,7 @@ export type { SensitiveCharacteristicInputProps, SensitiveCharacteristicValue } 
 export { SensitiveCharacteristicDisplay } from './SensitiveCharacteristicDisplay/SensitiveCharacteristicDisplay';
 export type { SensitiveCharacteristicDisplayProps } from './SensitiveCharacteristicDisplay/SensitiveCharacteristicDisplay';
 export * from './utils/patient';
+export * from './utils/telephone';
 export * from './utils/medicareCard';
 export * from './utils/partialDate';
 export * from './utils/ethnicityOutput';

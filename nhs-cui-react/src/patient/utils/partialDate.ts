@@ -5,7 +5,7 @@
  */
 import { MONTH_SHORT, pad2, toDate } from '../../core/format';
 import type { DateLike } from '../../core/format';
-import { formatAge } from './patient';
+import { formatAge } from './age';
 
 /** A full or partial date. `day` only when `month` is present. */
 export interface PartialDate {

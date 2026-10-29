@@ -1,0 +1,26 @@
+.cui-overlay-scope { display: contents; }
+.cui-dialog-layer { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: var(--space-4); font-family: var(--font-sans); font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); }
+.cui-dialog-backdrop { position: absolute; inset: 0; background: var(--banner); opacity: 0.55; animation: cui-dialog-fade 120ms ease-out; }
+.cui-dialog { position: relative; display: flex; flex-direction: column; width: 100%; max-height: calc(100vh - 32px); max-height: calc(100dvh - 32px); min-height: 0; background: var(--surface); color: var(--ink); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-dialog); outline: none; animation: cui-dialog-in 140ms ease-out; }
+.cui-dialog:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-dialog--sm { max-width: 400px; }
+.cui-dialog--md { max-width: 560px; }
+.cui-dialog--lg { max-width: 800px; }
+.cui-dialog__header { flex: none; display: flex; align-items: flex-start; gap: var(--space-2); padding: var(--space-3) var(--space-2) var(--space-2) var(--space-4); border-bottom: 1px solid var(--border); }
+.cui-dialog__titles { flex: 1; min-width: 0; display: grid; gap: 2px; padding-top: var(--space-1); }
+.cui-dialog__title { margin: 0; font-size: var(--font-size-heading); line-height: var(--line-height-heading); font-weight: var(--font-weight-heading); overflow-wrap: anywhere; }
+.cui-dialog__description { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); overflow-wrap: anywhere; }
+.cui-dialog__close { flex: none; display: inline-flex; align-items: center; justify-content: center; width: var(--control-height); height: var(--control-height); padding: 0; border: 1px solid transparent; border-radius: var(--radius-md); background: transparent; color: var(--ink); cursor: pointer; }
+.cui-dialog__close:hover { background: var(--hover); }
+.cui-dialog__close:focus-visible { outline: 2px solid var(--focus); outline-offset: 0; }
+.cui-dialog__body { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: var(--space-3) var(--space-4); }
+.cui-dialog__footer { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-2); padding: var(--space-2) var(--space-4) var(--space-3); border-top: 1px solid var(--border); }
+.cui-dialog__sheet-body { padding: var(--space-3) var(--space-4); font-size: var(--font-size-touch-body); line-height: var(--line-height-touch-body); }
+.cui-dialog__sheet-footer { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3) var(--space-4) max(16px, env(safe-area-inset-bottom)); border-top: 1px solid var(--border); }
+.cui-dialog__sheet-footer > * { width: 100%; justify-content: center; min-height: var(--target-touch); }
+@media (pointer: coarse) { .cui-dialog__close { width: var(--target-coarse); height: var(--target-coarse); } }
+@keyframes cui-dialog-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes cui-dialog-fade { from { opacity: 0; } to { opacity: 0.55; } }
+@media (prefers-reduced-motion: reduce) { .cui-dialog, .cui-dialog-backdrop { animation: none; } }
+/* Content kept across the frame change (useStableContent): the slot and its element add no box of their own. */
+.cui-overlay-content-slot, .cui-overlay-content { display: contents; }

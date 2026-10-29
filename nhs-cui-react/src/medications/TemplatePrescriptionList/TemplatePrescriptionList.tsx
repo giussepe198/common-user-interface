@@ -2,7 +2,7 @@ import React from 'react';
 import { cx, useClinicalLocale, useId } from '../../core';
 import type { ClinicalRegion } from '../../core';
 import { formatQuantity } from '../utils/numbers';
-import { TemplatePrescription } from '../utils/prescription';
+import type { TemplatePrescription } from '../utils/prescription';
 import { formatBrandNameForRegion } from '../utils/regionalText';
 import { applyTallManLettering, tallManDefaultFor } from '../utils/tallMan';
 

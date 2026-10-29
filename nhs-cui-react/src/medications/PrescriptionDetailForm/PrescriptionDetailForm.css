@@ -4,30 +4,30 @@
 /* Column layout: labels left, right-aligned; fields right, left-aligned (MSP-1560) */
 .cui-rx-detail__drug-row, .cui-rx-detail__row { display: grid; grid-template-columns: minmax(120px, 180px) minmax(0, 1fr); align-items: center; column-gap: var(--space-3); }
 .cui-rx-detail__row { padding: 3px 0; }
-.cui-rx-detail__label { text-align: right; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+.cui-rx-detail__label { text-align: right; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink-muted); }
 .cui-rx-detail__field { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); min-width: 0; }
 .cui-rx-detail__drug {
   display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); justify-self: start; max-width: 100%;
-  font: inherit; font-size: 15px; line-height: 20px; padding: 6px var(--space-2); text-align: left;
+  font: inherit; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); padding: 6px var(--space-2); text-align: left;
   background: var(--surface-sunken); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md); cursor: pointer;
 }
 .cui-rx-detail__drug:hover:not(:disabled) { background: var(--hover); }
 .cui-rx-detail__drug:disabled { cursor: default; }
-.cui-rx-detail__edit { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--accent); }
+.cui-rx-detail__edit { display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--font-size-label); color: var(--accent); }
 .cui-rx-detail__drug-pending { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
 /* Tabs to every area (MSP-1610, MSP-1620) */
 .cui-rx-detail__tabs { display: flex; gap: var(--space-1); border-bottom: 1px solid var(--border-strong); }
 .cui-rx-detail__tab {
-  display: inline-flex; align-items: center; gap: var(--space-2); font: inherit; font-size: 14px; line-height: 20px; padding: 6px var(--space-3);
+  display: inline-flex; align-items: center; gap: var(--space-2); font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); padding: 6px var(--space-3);
   margin-bottom: -1px; background: var(--surface-muted); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md) var(--radius-md) 0 0; cursor: pointer;
 }
 .cui-rx-detail__tab:hover { background: var(--hover); }
 .cui-rx-detail__tab.is-selected { background: var(--surface); border-bottom-color: var(--surface); font-weight: 600; }
-.cui-rx-detail__tab-count { font-size: 12px; line-height: 16px; font-weight: 400; padding: 0 var(--space-1); border-radius: var(--radius-sm); background: var(--warning-surface); color: var(--warning); }
+.cui-rx-detail__tab-count { font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 400; padding: 0 var(--space-1); border-radius: var(--radius-sm); background: var(--warning-surface); color: var(--warning); }
 .cui-rx-detail__panel { display: flex; flex-direction: column; gap: var(--space-3); }
 /* Sections start on a new line with a label at the top (MSP-1690, MSP-1700) */
 .cui-rx-detail__section { display: flex; flex-direction: column; }
 .cui-rx-detail__section-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2); margin-bottom: var(--space-1); }
-.cui-rx-detail__section-title { margin: 0 0 var(--space-1); font-size: 15px; line-height: 20px; font-weight: 600; }
+.cui-rx-detail__section-title { margin: 0 0 var(--space-1); font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
 .cui-rx-detail__section-head .cui-rx-detail__section-title { margin: 0; }
-.cui-rx-detail__cleared { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; line-height: 16px; color: var(--warning); }
+.cui-rx-detail__cleared { display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--warning); }

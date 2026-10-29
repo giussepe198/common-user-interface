@@ -121,6 +121,19 @@ export function matchTemplates(templates: readonly TemplateDefinition[], query: 
   return { templates: found.sort(order), sections: sections.sort(order) };
 }
 
+/**
+ * Every template offered before anything is typed (a search box that may open empty, `minChars` 0): the suggested first,
+ * then by title, filtered by context as a search would be. Nothing reads as "no matching templates" when templates exist.
+ */
+export function browseTemplates(templates: readonly TemplateDefinition[], options: Pick<TemplateSearchOptions, 'context' | 'filterEnabled'> = {}): TemplateMatch[] {
+  const { context } = options;
+  const filterOn = options.filterEnabled ?? !!context;
+  return templates
+    .filter((t) => !filterOn || !context || t.generic || (t.contexts ?? []).some((c) => c.toLowerCase() === context.toLowerCase()))
+    .map((t) => ({ template: t, via: 'title' as const, score: t.suggested ? 1 : 0 }))
+    .sort((a, b) => b.score - a.score || a.template.title.localeCompare(b.template.title));
+}
+
 /** Breadcrumb label "Observations and findings > Vital signs" (Theme 2: unique section labels). */
 export function templateBreadcrumb(path: readonly string[], title?: string): string {
   return [...path, ...(title ? [title] : [])].join(' > ');

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeaveCard · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mental health</p>
+<h1 style="margin:0 0 4px;font-size:20px">LeaveCard</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Leave card: on leave, due back soon, overdue with escalation, absent without leave, returned · Guidelines: <code>src/mental-health/LeaveCard/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { LeaveCard, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = '2026-10-28T03:00:00Z';
+const tz = 'Australia/Melbourne';
+const person = { familyName: 'Nguyen', givenName: 'Thi Lan', dateOfBirth: '1990-03-12', mrn: '004512' };
+const base = { id: 'l', person: person, sex: 'Female', bed: 'Bed 4', status: 'on-leave', leaveType: 'Day leave', authorisedBy: 'Dr A Okafor', startAt: '2026-10-27T23:00:00Z', expectedReturnAt: '2026-10-28T06:00:00Z', conditions: 'With a family member' };
+const noop = function () {};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(ClinicalLocaleProvider, { region: 'AU' },
+    h('div', { style: { display: 'flex', flexDirection: 'column', gap: 8, padding: 16, background: 'var(--surface)' } },
+      h(LeaveCard, { leave: base, now: now, timeZone: tz, onRecordReturn: noop, onExtend: noop }),
+      h(LeaveCard, { leave: Object.assign({}, base, { expectedReturnAt: '2026-10-28T03:40:00Z' }), now: now, timeZone: tz, onRecordReturn: noop, onExtend: noop }),
+      h(LeaveCard, { leave: Object.assign({}, base, { expectedReturnAt: '2026-10-28T02:00:00Z', legalBasis: 'Leave of absence under a treatment order' }), now: now, timeZone: tz, onRecordReturn: noop, onRecordAbsent: noop }),
+      h(LeaveCard, { leave: Object.assign({}, base, { status: 'absent', absentSince: '2026-10-28T00:30:00Z' }), now: now, timeZone: tz, absentAction: 'Notify police and the nominated support person (example host words).', onRecordReturn: noop }),
+      h(LeaveCard, { leave: Object.assign({}, base, { expectedReturnAt: '2026-10-28T02:50:00Z', dueState: 'on-leave', leaveType: 'Day leave, within the grace period (host state)' }), now: now, timeZone: tz, onRecordReturn: noop, onExtend: noop }),
+      h('div', { style: { maxWidth: 340 } }, h(LeaveCard, { leave: Object.assign({}, base, { status: 'returned', returnedAt: '2026-10-28T02:10:00Z' }), now: now, timeZone: tz }))
+    )
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

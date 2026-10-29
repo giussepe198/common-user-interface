@@ -2,7 +2,8 @@ import React from 'react';
 import { cx, formatLongDate, formatLongDateParts, formatShortDate, toDate, useClinicalLocale, MONTH_LONG, VisuallyHidden } from '../../core';
 import type { ClinicalRegion, DateLike } from '../../core';
 import { DAY_ABBREVIATIONS, LONG_DATE_STYLES, formatLongDateInStyle, type LongDateStyle } from '../utils/regions/dates';
-import { DateInputValue, dateInputValueToIso, formatDateInputValue, makeLocalDate } from '../utils/dateInput';
+import type { DateInputValue} from '../utils/dateInput';
+import { dateInputValueToIso, formatDateInputValue, makeLocalDate } from '../utils/dateInput';
 
 export interface DateDisplayProps {
   /**

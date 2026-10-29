@@ -1,0 +1,35 @@
+/* Restrictive practice episode. Timers absolute then relative; words carry state. */
+.cui-rpe {
+  container: cui-rpe / inline-size; display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-2); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--surface);
+  color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body);
+}
+.cui-rpe--active { border-inline-start: var(--space-1) solid var(--danger); }
+.cui-rpe__header { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); }
+.cui-rpe__title { margin: 0; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
+.cui-rpe__status { display: inline-flex; align-items: center; gap: var(--space-1); padding: 1px var(--space-2); border: 1px solid currentColor; border-radius: var(--radius-sm); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; }
+.cui-rpe__status--active { color: var(--danger); background: var(--danger-surface); }
+.cui-rpe__status--ended { color: var(--ink); background: var(--surface-sunken); }
+.cui-rpe__facts { font-variant-numeric: tabular-nums; }
+.cui-rpe__timers { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: var(--space-1) var(--space-3); }
+.cui-rpe__timer { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 0; }
+.cui-rpe__timer-label { font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--ink); }
+.cui-rpe__continuous { display: inline-flex; align-items: center; gap: var(--space-1); font-weight: 600; }
+.cui-rpe__no-interval { color: var(--ink-muted); font-style: italic; }
+.cui-rpe__missed { display: flex; align-items: flex-start; gap: var(--space-1); padding: 2px var(--space-2); border: 1px solid var(--danger); border-inline-start-width: var(--space-1); border-radius: var(--radius-sm); background: var(--danger-surface); color: var(--danger); font-variant-numeric: tabular-nums; }
+.cui-rpe__missed svg { flex: none; margin-top: 2px; }
+.cui-rpe__expired { display: inline-flex; align-items: flex-start; gap: var(--space-1); padding: 2px var(--space-2); border: 1px solid var(--danger); border-inline-start-width: var(--space-1); border-radius: var(--radius-sm); background: var(--danger-surface); color: var(--danger); font-weight: 600; }
+.cui-rpe__actions { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.cui-rpe__records { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2) var(--space-4); }
+.cui-rpe__records-title { margin: 0 0 2px; font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; }
+.cui-rpe__list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
+.cui-rpe__list li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-2); padding: 2px 0; border-bottom: 1px solid var(--border); }
+.cui-rpe__time { font-variant-numeric: tabular-nums; font-weight: 600; }
+.cui-rpe__text { overflow-wrap: anywhere; }
+.cui-rpe__by { grid-column: 2; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-rpe__none { margin: 0; color: var(--ink-muted); font-style: italic; }
+@container cui-rpe (max-width: 560px) {
+  .cui-rpe__records { grid-template-columns: minmax(0, 1fr); }
+  .cui-rpe__timers { grid-template-columns: minmax(0, 1fr); }
+}
+@media print { .cui-rpe__actions { display: none; } }

@@ -191,7 +191,7 @@ function GbSexGenderInput(props: SexGenderInputProps) {
         {options.map((o, i) => {
           const optId = `${id}-${i}`;
           return (
-            <div key={o} className="cui-sex-gender__option">
+            <div key={o} className="cui-sex-gender__option" data-touch-target>
               <input
                 type="radio"
                 id={optId}
@@ -353,7 +353,7 @@ function RegionalSexGenderInput(props: SexGenderInputProps & { region: 'AU' | 'N
         {options.map((o, i) => {
           const optId = `${id}-${i}`;
           return (
-            <div key={o.code} className="cui-sex-gender__option">
+            <div key={o.code} className="cui-sex-gender__option" data-touch-target>
               <input type="radio" id={optId} name={fieldName} value={o.code} checked={value === o.code} onChange={() => setValue(o.code)} />
               <label htmlFor={optId}>{optionLabel(o)}</label>
             </div>

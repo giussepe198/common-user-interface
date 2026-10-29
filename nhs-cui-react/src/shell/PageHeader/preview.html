@@ -1,0 +1,25 @@
+<!-- @dsCard group="Page layout" height=400 width=1200 subtitle="Dense page header with subtitle, meta and actions; the save state in words before Save and Discard; actions move under the title when narrow" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+const header = () => h(C.PageHeader, {
+  breadcrumbs: h(C.Breadcrumbs, { items: [{ id: 'w', label: 'Work', href: '#w' }, { id: 'c', label: 'Caseload' }] }),
+  title: 'Caseload', subtitle: 'Acute team',
+  meta: h(React.Fragment, null, h('span', null, '42 people'), h('span', null, 'Updated 12-Aug-2026 14:32')),
+  actions: h(React.Fragment, null, h(C.Button, null, 'Export'), h(C.Button, { variant: 'primary', icon: 'plus' }, 'Add person')),
+});
+const editing = () => h(C.PageHeader, {
+  title: 'Update patient details', subtitle: 'Check each section with the patient.',
+  status: 'Unsaved changes',
+  actions: h(React.Fragment, null, h(C.Button, null, 'Discard changes'), h(C.Button, { variant: 'primary' }, 'Save details')),
+});
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  label('Wide'), h('div', { style: { maxWidth: 1160 } }, header()),
+  label('Editing: the save state before the commands'), h('div', { style: { maxWidth: 1160 } }, editing()),
+  label('Narrow (360 px)'), h('div', { style: { maxWidth: 360 } }, header())
+));
+</script>

@@ -1,0 +1,50 @@
+<!-- @dsCard group="Application frame" height=2000 width=1200 subtitle="Frame with environment banner, side navigation, sticky patient banner; narrow drawer and phone tab bar" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, minHeight: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+const groups = [
+  { id: 'work', label: 'Work', items: [
+    { id: 'caseload', label: 'Caseload', href: '#caseload', icon: 'user' },
+    { id: 'diary', label: 'Diary', href: '#diary', icon: 'calendar' },
+    { id: 'tasks', label: 'Tasks', href: '#tasks', icon: 'check', count: 4, countLabel: '4 open' },
+    { id: 'notifications', label: 'Notifications', href: '#n', icon: 'bell', count: 12, countLabel: '12 unread' },
+  ] },
+  { id: 'gov', label: 'Governance', items: [{ id: 'reports', label: 'Reports', href: '#r', icon: 'group' }, { id: 'audit', label: 'Audit', href: '#a', icon: 'history' }] },
+];
+const banner = h('div', { style: { padding: '6px 16px', background: 'var(--banner)', color: 'var(--on-banner)', fontWeight: 600 } }, 'CHEN, Wei  Born 12-Aug-1984 (42y)  Record 000123');
+const compact = h('div', { style: { padding: '6px 8px', background: 'var(--banner)', color: 'var(--on-banner)', fontWeight: 600 } }, 'CHEN, Wei');
+const help = h(C.MenuButton, { label: 'Help', icon: 'help', iconOnly: true, variant: 'quiet', align: 'end', items: [{ id: 'g', label: 'Guide for this page' }, { id: 'k', label: 'Keyboard shortcuts', shortcut: 'Shift+?' }] });
+const account = h(C.MenuButton, { label: 'Ana Silva', variant: 'quiet', align: 'end', items: [{ id: 'p', label: 'Your profile' }, { id: 's', separator: true }, { id: 'o', label: 'Sign out' }] });
+const content = h(React.Fragment, null,
+  h(C.PageHeader, { title: 'Summary', subtitle: 'Acute team', actions: h(C.Button, { variant: 'primary', icon: 'plus' }, 'Add note') }),
+  h(C.Panel, { title: 'Recent notes', count: 2 }, h('p', { style: { margin: 0 } }, 'Two notes in the last 24 hours.')),
+  h(C.Panel, { title: 'Tasks', collapsible: true }, h('p', { style: { margin: 0 } }, 'Call GP about medication review.')));
+const mark = h('span', { 'aria-hidden': true, style: { display: 'inline-grid', placeItems: 'center', width: 'var(--control-height)', height: 'var(--control-height)', borderRadius: 'var(--radius-md)', background: 'var(--banner)', color: 'var(--on-banner)', fontSize: 'var(--font-size-label)' } }, 'RM');
+const notice = h('div', { style: { padding: '4px 16px', background: 'var(--info-surface)', borderBottom: '1px solid var(--border)' } }, 'Planned maintenance tonight 22:00 to 23:00.');
+const shell = (extra) => h(C.AppShell, Object.assign({
+  environmentBanner: 'Demo: synthetic data only. Every person and record here is invented; never enter a real person\'s information.',
+  brand: h('span', { style: { display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)' } }, mark, 'Riverside Mental Health'),
+  brandCompact: h('span', { role: 'img', 'aria-label': 'Riverside Mental Health', style: { display: 'inline-flex' } }, mark),
+  context: h('span', { style: { color: 'var(--ink-muted)' } }, 'Acute team, Clinician'),
+  help, account,
+  navigation: { groups, current: 'caseload', onSelect: (id, e) => e.preventDefault() },
+  patientBanner: banner, patientBannerCompact: compact,
+  mobileTabs: { items: [{ id: 'summary', label: 'Summary', icon: 'summary' }, { id: 'notes', label: 'Notes', icon: 'notes' }, { id: 'more', label: 'More', icon: 'dots' }], current: 'summary', label: 'Record' },
+}, extra), content);
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  label('Desktop: side navigation, environment banner, sticky patient banner'), frame(1160, 420, shell({})),
+  label('Desktop: navigation collapsed to the icon rail'), frame(1160, 360, shell({ defaultNavCollapsed: true })),
+  label('Tablet width (760 px): the menu button opens the navigation drawer'), frame(760, 340, shell({})),
+  label('Phone width (375 px): compact banner and phone tab bar'), frame(375, 420, shell({})),
+  label('Service notice above the top bar, and on phones a More tab that opens the navigation (no menu button)'), frame(375, 460, shell({
+    notices: notice,
+    mobileMoreTab: true,
+    patientBanner: undefined, patientBannerCompact: undefined,
+    mobileTabs: { items: [{ id: 'day', label: 'My day', icon: 'due' }, { id: 'caseload', label: 'Caseload', icon: 'group' }, { id: 'diary', label: 'Diary', icon: 'calendar' }, { id: 'find', label: 'Find', icon: 'search' }], current: 'caseload', label: 'Destinations', onSelect: (id, e) => e.preventDefault() },
+  }))
+));
+</script>

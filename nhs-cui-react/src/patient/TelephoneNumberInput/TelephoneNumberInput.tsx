@@ -1,7 +1,7 @@
 import React from 'react';
 import { cx, Icon, useClinicalLocale, useControllableState, useId } from '../../core';
 import type { ClinicalRegion } from '../../core';
-import { formatTelephoneNumber, validatePhoneNumber } from '../utils/patient';
+import { formatTelephoneNumber, validatePhoneNumber } from '../utils/telephone';
 import { PATIENT_COUNTRIES } from '../utils/countries';
 import type { PatientCountry } from '../utils/countries';
 

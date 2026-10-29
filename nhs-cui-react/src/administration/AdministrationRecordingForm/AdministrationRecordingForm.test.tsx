@@ -1,7 +1,8 @@
 import React from 'react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
-import { AdministrationRecordingForm, AdministrationRecordingFormProps } from './AdministrationRecordingForm';
+import type { AdministrationRecordingFormProps } from './AdministrationRecordingForm';
+import { AdministrationRecordingForm } from './AdministrationRecordingForm';
 
 afterEach(cleanup);
 

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import {
-  DrugCatalogueEntry, drugSearchCountMessage, drugSearchFeedback, drugShortcutLabel, formatDrugResultName, matchDrug,
+import type {
+  DrugCatalogueEntry} from './drugSearch';
+import { drugSearchCountMessage, drugSearchFeedback, drugShortcutLabel, formatDrugResultName, matchDrug,
   matchDrugSpelling, searchDrugCatalogue, sortDrugResults,
 } from './drugSearch';
 

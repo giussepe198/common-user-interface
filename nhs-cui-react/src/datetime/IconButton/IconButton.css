@@ -1,5 +1,5 @@
-.cui-icon-button { display: inline-flex; align-items: center; gap: var(--space-1); min-height: 28px; padding: 3px var(--space-2); border: 1px solid transparent; border-radius: var(--radius-md); background: transparent; color: var(--ink); font: inherit; font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 400; cursor: pointer; white-space: nowrap; vertical-align: middle; }
-.cui-icon-button--below { flex-direction: column; gap: 2px; padding: var(--space-1) var(--space-2); font-size: 12px; line-height: 16px; }
+.cui-icon-button { display: inline-flex; align-items: center; gap: var(--space-1); min-height: 28px; padding: 3px var(--space-2); border: 1px solid transparent; border-radius: var(--radius-md); background: transparent; color: var(--ink); font: inherit; font-family: var(--font-sans); font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 400; cursor: pointer; white-space: nowrap; vertical-align: middle; }
+.cui-icon-button--below { flex-direction: column; gap: 2px; padding: var(--space-1) var(--space-2); font-size: var(--font-size-label); line-height: var(--line-height-label); }
 .cui-icon-button--icon-only { padding: 3px; }
 button.cui-icon-button:hover { background: var(--hover); border-color: var(--border); }
 button.cui-icon-button:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }

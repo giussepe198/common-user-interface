@@ -37,10 +37,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   h('div', { style: { display: 'flex', gap: 20, alignItems: 'flex-start', flexWrap: 'wrap' } },
     h(InformationWindow, { autoFocus: false, summaries: summaries, actions: actions, defaultActionsExpanded: true, onRecordResponse: noop, onDismiss: noop,
       details: { patientSpecific: 'Last blood pressure 98/60 mmHg at 09:30.', rationale: 'Both drugs lower blood pressure.', references: 'Fictional formulary, section 2.5' } }),
-    h('div', { id: 'det' }, h(InformationWindow, { autoFocus: false, variant: 'alert', status: 'High Priority', occurredAt: new Date(2026, 4, 27, 10, 47), width: 380,
+    h('div', { id: 'det', style: { maxWidth: '100%' } }, h(InformationWindow, { autoFocus: false, variant: 'alert', status: 'High Priority', occurredAt: new Date(2026, 4, 27, 10, 47), width: 380,
       summaries: [{ text: h('span', null, 'The ', link('potassium level'), ' is 7.7 mmol/L.'), source: 'Results Monitoring' }],
       details: { patientSpecific: 'Previous result 5.1 mmol/L on 25-May-2026.', rationale: 'Severe hyperkalaemia can cause arrhythmia.' }, onRecordResponse: noop, onDismiss: noop })),
-    h('div', { id: 'kbd' },
+    h('div', { id: 'kbd', style: { maxWidth: '100%' } },
       h('p', { className: 'cui-label', style: { margin: '0 0 4px' } }, 'Resized with the arrow keys on the grip (bottom right)'),
       h(InformationWindow, { autoFocus: false, width: 340, height: 240, summaries: [summaries[1]], onRecordResponse: noop, onDismiss: noop }))
   )

@@ -1,6 +1,6 @@
 /* Sensitive demographic question and display (G12 7). Uses the shared .cui-patient-question layout. */
-.cui-sensitive-input__marker { display: flex; align-items: flex-start; gap: var(--space-1); margin: 0; padding: var(--space-1) var(--space-2); font-size: 12px; line-height: 16px; color: var(--ink); background: var(--surface-muted); border: 1px solid var(--border); border-radius: var(--radius-md); }
+.cui-sensitive-input__marker { display: flex; align-items: flex-start; gap: var(--space-1); margin: 0; padding: var(--space-1) var(--space-2); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink); background: var(--surface-muted); border: 1px solid var(--border); border-radius: var(--radius-md); }
 .cui-sensitive-input__marker .cui-icon { flex: none; }
-.cui-sensitive-input__specify { display: flex; flex-direction: column; gap: 2px; padding-left: 24px; }
-.cui-sensitive-input__specify-label { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
-.cui-sensitive-input__clear-button { font: inherit; font-size: 12px; line-height: 16px; padding: 0; color: var(--accent); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.cui-sensitive-input__specify { display: flex; flex-direction: column; gap: 2px; padding-left: var(--space-6); }
+.cui-sensitive-input__specify-label { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-sensitive-input__clear-button { font: inherit; font-size: var(--font-size-label); line-height: var(--line-height-label); padding: 0; color: var(--accent); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }

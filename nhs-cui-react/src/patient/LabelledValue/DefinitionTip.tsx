@@ -19,7 +19,7 @@ export function DefinitionTip({ definition, children, className }: DefinitionTip
       onMouseLeave={() => setOpen(false)}
     >
       <span
-        className="cui-deftip__term"
+        className="cui-deftip__term cui-touch-inline"
         tabIndex={0}
         aria-describedby={id}
         onFocus={() => setOpen(true)}

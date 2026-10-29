@@ -257,7 +257,7 @@ export function PatientNameInput({
         );
       })}
       {region !== 'GB' && shown.includes('givenName') ? (
-        <div className="cui-name-input__single">
+        <div className="cui-name-input__single" data-touch-target>
           <input
             type="checkbox"
             id={`${base}-single`}

@@ -1,0 +1,37 @@
+/* FormGrid columns (the slot and subgrid rules are in FormRow.css): 1 column below 30rem, at most 2 below 48rem,
+   at most 3 below 64rem, then the asked-for number. */
+@container cui-form (min-width: 30rem) {
+  .cui-form-grid > :not(.cui-form-layout--cols-1) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container cui-form (min-width: 48rem) {
+  .cui-form-grid > :is(.cui-form-layout--cols-3, .cui-form-layout--cols-4, .cui-form-layout--cols-5, .cui-form-layout--cols-6) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@container cui-form (min-width: 64rem) {
+  .cui-form-grid > .cui-form-layout--cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .cui-form-grid > .cui-form-layout--cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .cui-form-grid > .cui-form-layout--cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+
+/* A widened field: itself a three-track subgrid, so the field inside still lines up with its neighbours. */
+.cui-form-grid-span { display: grid; grid-template-rows: subgrid; grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.cui-form-grid-span > [data-cui-field] { grid-row: 1 / span 3; grid-column: 1; }
+.cui-form-grid-span[data-span="full"] { grid-column: 1 / -1; }
+@container cui-form (min-width: 30rem) {
+  .cui-form-grid-span:not([data-span="1"]):not([data-span="full"]) { grid-column: span 2; }
+}
+@container cui-form (min-width: 48rem) {
+  .cui-form-layout--cols-3 > .cui-form-grid-span:is([data-span="3"], [data-span="4"], [data-span="5"], [data-span="6"]),
+  .cui-form-layout--cols-4 > .cui-form-grid-span:is([data-span="3"], [data-span="4"], [data-span="5"], [data-span="6"]),
+  .cui-form-layout--cols-5 > .cui-form-grid-span:is([data-span="3"], [data-span="4"], [data-span="5"], [data-span="6"]),
+  .cui-form-layout--cols-6 > .cui-form-grid-span:is([data-span="3"], [data-span="4"], [data-span="5"], [data-span="6"]) { grid-column: span 3; }
+}
+@container cui-form (min-width: 64rem) {
+  .cui-form-layout--cols-4 > .cui-form-grid-span:is([data-span="4"], [data-span="5"], [data-span="6"]),
+  .cui-form-layout--cols-5 > .cui-form-grid-span:is([data-span="4"], [data-span="5"], [data-span="6"]),
+  .cui-form-layout--cols-6 > .cui-form-grid-span:is([data-span="4"], [data-span="5"], [data-span="6"]) { grid-column: span 4; }
+  .cui-form-layout--cols-5 > .cui-form-grid-span:is([data-span="5"], [data-span="6"]),
+  .cui-form-layout--cols-6 > .cui-form-grid-span:is([data-span="5"], [data-span="6"]) { grid-column: span 5; }
+  .cui-form-layout--cols-6 > .cui-form-grid-span[data-span="6"] { grid-column: span 6; }
+}
+/* A one-column layout never spans (a span would add an implicit column). */
+.cui-form-layout--cols-1 > .cui-form-grid-span:not([data-span="full"]) { grid-column: auto; }

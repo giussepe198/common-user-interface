@@ -1,0 +1,15 @@
+<!-- @dsCard group="Navigation" height=220 subtitle="Pages for administrative lists; Page n of m when narrow" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+function P(props) { const [p, setP] = React.useState(props.start); return h(C.Pagination, Object.assign({ label: 'Pages of audit events', page: p, pageCount: 25, onPageChange: setP }, props)); }
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  label('Wide, page 7 of 25'), h(P, { start: 7, summary: 'Events 301 to 350 of 1,240' }),
+  label('First page'), h(P, { start: 1 }),
+  label('Narrow (320 px)'), h('div', { style: { maxWidth: 320 } }, h(P, { start: 7 }))
+));
+</script>

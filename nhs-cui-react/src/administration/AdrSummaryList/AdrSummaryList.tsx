@@ -4,9 +4,10 @@ import type { ClinicalRegion } from '../../core';
 import { formatDateTime } from '../../core/format';
 import type { DateLike } from '../../core/format';
 import { NilByMouthWarningSymbol } from '../NilByMouthBanner/NilByMouthBanner';
-import {
+import type {
   AdrEntry,
-  AdrStatusRecord,
+  AdrStatusRecord} from '../utils/adr';
+import {
   adrActiveEntries,
   adrConceptLabel,
   adrDeactivatedEntries,
@@ -258,7 +259,7 @@ export function AdrSummaryList({
 
       {removed.length ? (
         <div className="cui-adr-sum__deactivated">
-          <label className="cui-adr-sum__check">
+          <label className="cui-adr-sum__check" data-touch-target>
             <input type="checkbox" checked={deactivated} onChange={e => setDeactivated(e.target.checked)} aria-controls={`${id}-deact`} />
             Display deactivated summaries ({removed.length})
           </label>

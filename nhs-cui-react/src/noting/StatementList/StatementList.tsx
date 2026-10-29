@@ -28,6 +28,8 @@ export interface StatementListProps {
   onEdit?: (statement: ClinicalStatementData) => void;
   /** Text shown when there are no statements. */
   emptyText?: string;
+  /** The flag on a statement with no coded term (clinicalstatements: "No terms available", "Not coded"). */
+  unboundLabel?: string;
   className?: string;
 }
 
@@ -52,6 +54,7 @@ export function StatementList({
   onAddEncoding,
   onEdit,
   emptyText = 'No statements recorded.',
+  unboundLabel,
   className,
 }: StatementListProps) {
   const id = useId('cui-statements');
@@ -60,7 +63,7 @@ export function StatementList({
   const sessionTime = toDate(session?.sessionTime ?? null);
   const headingFor = (p: string) => headings?.[p] ?? STATEMENT_PATTERN_HEADINGS[p] ?? p;
 
-  const common = { highlightCoded: highlight, onAddEncoding, onEdit, as: 'li' as const };
+  const common = { highlightCoded: highlight, onAddEncoding, onEdit, as: 'li' as const, ...(unboundLabel ? { unboundLabel } : {}) };
   let body: React.ReactNode;
   if (!statements.length) body = <p className="cui-statement-list__empty">{emptyText}</p>;
   else if (grouping === 'chronological') {
@@ -99,7 +102,7 @@ export function StatementList({
             </span>
           ) : <span />}
           {showHighlightToggle && statements.length ? (
-            <label className="cui-statement-list__toggle">
+            <label className="cui-statement-list__toggle" data-touch-target>
               <input type="checkbox" checked={highlight} onChange={(e) => setHighlight(e.target.checked)} />
               Highlight coded terms
             </label>

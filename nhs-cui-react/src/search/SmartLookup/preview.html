@@ -1,0 +1,18 @@
+<!-- @dsCard group="Search" height=360 subtitle="Pick one of many, ranked, with recent choices" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SmartLookup, FormField } = window.ClinicalCUI;
+const teams = [
+  { value: 'u1', label: 'North adult team', description: 'Adult community service' },
+  { value: 'u2', label: 'South adult team', description: 'Adult community service' },
+  { value: 'u3', label: 'Māori health team', description: 'Kaupapa Māori service' },
+  { value: 'u4', label: 'Youth team', description: 'Youth service' },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 420, display: 'grid', gap: 12 } },
+    h(FormField, { label: 'Team' }, h(SmartLookup, { options: teams, recentOptions: [teams[3]], placeholder: 'Team name' })),
+    h(FormField, { label: 'Team (chosen)' }, h(SmartLookup, { options: teams, defaultValue: teams[2] }))
+  )
+);
+</script>

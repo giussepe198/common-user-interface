@@ -7,16 +7,13 @@ import {
   formatFamilyName,
   formatGivenName,
   formatPatientName,
-  formatTelephoneNumber,
   isValidFourDigitPostcode,
   matchesIgnoringMacrons,
   nameSearchKey,
   normaliseRuralDelivery,
   parseAuUnitAddress,
-  telephoneHref,
-  telephoneToE164,
-  validatePhoneNumber,
 } from './patient';
+import { formatTelephoneNumber, telephoneHref, telephoneToE164, validatePhoneNumber } from './telephone';
 import { ALLERGY_STATUS_TEXT, PATIENT_NAME_RULES } from './regions/banner';
 import {
   AU_GENDER_VALUES,

@@ -2,12 +2,12 @@
 .cui-obs-graph--embedded { border: none; padding: 0; background: transparent; }
 .cui-obs-graph__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: var(--space-1) var(--space-3); padding: 0 var(--space-1); }
 .cui-obs-graph__titles { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px var(--space-3); }
-.cui-obs-graph__title { font-size: 15px; line-height: 20px; font-weight: 600; }
-.cui-obs-graph__unit { font-size: 12px; font-weight: 400; color: var(--ink-muted); text-decoration: none; cursor: help; }
-.cui-obs-graph__range { font-size: 12px; color: var(--ink-muted); }
-.cui-obs-graph__latest { font-size: 14px; }
+.cui-obs-graph__title { font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
+.cui-obs-graph__unit { font-size: var(--font-size-label); font-weight: 400; color: var(--ink-muted); text-decoration: none; cursor: help; }
+.cui-obs-graph__range { font-size: var(--font-size-label); color: var(--ink-muted); }
+.cui-obs-graph__latest { font-size: var(--font-size-body); }
 .cui-obs-graph__tools { display: flex; gap: 2px; flex-wrap: wrap; }
-.cui-obs-graph__legend { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); padding: 2px var(--space-1) 0; font-size: 12px; line-height: 16px; color: var(--ink); }
+.cui-obs-graph__legend { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); padding: 2px var(--space-1) 0; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink); }
 .cui-obs-graph__key { display: inline-flex; align-items: center; gap: var(--space-1); }
 .cui-obs-graph__swatch { width: 14px; height: 10px; background: var(--normal-range); border: 1px solid var(--border-strong); display: inline-block; }
 .cui-obs-graph__flag { font-weight: 600; color: var(--warning); }
@@ -19,24 +19,24 @@
 .cui-obs-graph__grid--major { stroke: var(--border-strong); stroke-opacity: 0.6; }
 .cui-obs-graph__axis { stroke: var(--border-strong); stroke-width: 1; shape-rendering: crispEdges; }
 .cui-obs-graph__axis--major { stroke-width: 2; }
-.cui-obs-graph__ylabel, .cui-obs-graph__xlabel { font-size: 12px; fill: var(--ink); font-variant-numeric: tabular-nums; }
+.cui-obs-graph__ylabel, .cui-obs-graph__xlabel { font-size: var(--font-size-label); fill: var(--ink); font-variant-numeric: tabular-nums; }
 .cui-obs-graph__ylabel--inside { paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
 .cui-obs-graph__xlabel--major { font-weight: 600; }
 .cui-obs-graph__xlabel--sub { fill: var(--ink-muted); font-weight: 600; }
-.cui-obs-graph__axis-unit { font-size: 12px; fill: var(--ink-muted); }
-.cui-obs-graph__value { font-size: 12px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; font-variant-numeric: tabular-nums; }
-.cui-obs-graph__value--latest { font-size: 14px; font-weight: 700; }
+.cui-obs-graph__axis-unit { font-size: var(--font-size-label); fill: var(--ink-muted); }
+.cui-obs-graph__value { font-size: var(--font-size-label); fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; font-variant-numeric: tabular-nums; }
+.cui-obs-graph__value--latest { font-size: var(--font-size-body); font-weight: 700; }
 .cui-obs-graph__bp-line { stroke: var(--ink); stroke-width: 1.5; }
 .cui-obs-graph__bp-bar { stroke: var(--ink); stroke-width: 2.5; }
 .cui-obs-graph__now { stroke: var(--accent); stroke-width: 2; }
-.cui-obs-graph__now-label { font-size: 12px; font-weight: 600; fill: var(--accent); }
-.cui-obs-graph__empty { font-size: 14px; fill: var(--ink-muted); }
+.cui-obs-graph__now-label { font-size: var(--font-size-label); font-weight: 600; fill: var(--accent); }
+.cui-obs-graph__empty { font-size: var(--font-size-body); fill: var(--ink-muted); }
 .cui-obs-graph__focus-line { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 3; }
 .cui-obs-graph__focus-bg { fill: var(--surface); stroke: var(--border-strong); }
-.cui-obs-graph__focus-text { font-size: 12px; fill: var(--ink); font-variant-numeric: tabular-nums; }
-.cui-obs-graph__focus-text--strong { font-size: 13px; font-weight: 700; }
+.cui-obs-graph__focus-text { font-size: var(--font-size-label); fill: var(--ink); font-variant-numeric: tabular-nums; }
+.cui-obs-graph__focus-text--strong { font-size: var(--font-size-detail); font-weight: 700; }
 .cui-obs-graph .cui-obs-table { margin-top: var(--space-2); display: flex; }
-.cui-obs-graph__body { display: flex; align-items: flex-start; gap: 16px; }
+.cui-obs-graph__body { display: flex; align-items: flex-start; gap: var(--space-4); }
 /* Below the minimum plot width the graph scrolls sideways inside its frame rather than widening the page. */
 .cui-obs-graph:not(.cui-obs-graph--embedded) > .cui-obs-graph__body { overflow-x: auto; }
 .cui-obs-graph__thumb { margin-top: 10px; }
@@ -44,6 +44,9 @@
 .cui-obs-graph__swatch--zone { opacity: 0.9; }
 /* Critical thresholds (GTAB-177): a line for the limit, a ring round each critical value, and words in the legend. */
 .cui-obs-graph__crit-line { stroke: var(--danger); stroke-width: 2; shape-rendering: crispEdges; }
-.cui-obs-graph__crit-label { font-size: 11px; font-weight: 600; fill: var(--danger); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+.cui-obs-graph__crit-label { font-size: var(--font-size-caption); font-weight: 600; fill: var(--danger); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
 .cui-obs-graph__crit-ring { fill: none; stroke: var(--danger); stroke-width: 2; }
 .cui-obs-graph__crit-word { font-weight: 700; color: var(--danger); }
+/* Responsive (CONVENTIONS "Responsive"): the plot measures the frame (ResizeObserver) and an automatic thumbnail gives
+   way first; the frame never grows past its container. */
+.cui-obs-graph { max-width: 100%; }

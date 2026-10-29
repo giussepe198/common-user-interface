@@ -1,7 +1,9 @@
 import React from 'react';
-import { Icon, cx, useClinicalLocale, useControllableState } from '../../core';
+import { Icon, VisuallyHidden, cx, useClinicalLocale, useControllableState } from '../../core';
 import type { ClinicalRegion, DateLike } from '../../core';
-import { MY_HEALTH_RECORD_NAME, MY_HEALTH_RECORD_STATE_TEXT, PATIENT_NAME_LABELS_BY_REGION, PROTECTED_INDICATOR_TEXT } from '../../patient';
+import { LabelledValue, MY_HEALTH_RECORD_NAME, MY_HEALTH_RECORD_STATE_TEXT, PATIENT_NAME_LABELS_BY_REGION, PROTECTED_INDICATOR_TEXT } from '../../patient';
+import type { PatientBannerItem } from '../../patient';
+import type { AllergyStatusText, RegionalAllergyStatus } from '../../patient/utils/regions/banner';
 import { MobileBornText, MobileIdentifierText, MobileNameText, MobileSimilarNameWarning } from '../internal/identity';
 import { PatientDetailsSheet, type PatientDetailsSheetProps } from '../PatientDetailsSheet/PatientDetailsSheet';
 import {
@@ -46,6 +48,25 @@ export interface MobilePatientHeaderProps {
   showLocation?: boolean;
   /** Stick to the top of the scrolling container so the patient stays visible (Phase 4 rule). Default false. */
   sticky?: boolean;
+  /** The name already rendered by the host ("FAMILY, Given"); `patient.name` is still used for keys. */
+  nameContent?: React.ReactNode;
+  /** Content straight after the name, e.g. a preferred name and pronouns in the host's words [suggested]. */
+  nameExtension?: React.ReactNode;
+  /** The Born value already formatted by the host. Overrides the patient's date of birth for display. */
+  bornDisplay?: React.ReactNode;
+  /** Show Gender. Default true. A host that shows sex in its own words adds it as an `items` entry placed "after-born". */
+  showGender?: boolean;
+  /** Show the region's primary identifier as "Not Known" when none is held. Default true (G10 1.6, AU-PI-01). */
+  requirePrimaryIdentifier?: boolean;
+  /** Further labelled items, the same shape as PatientBanner `items` (host extension [suggested]). They wrap, never truncate. */
+  items?: ReadonlyArray<PatientBannerItem>;
+  /** Override allergy wording per status, as PatientBanner `allergyLabels`. A "known" override is shown even without items. */
+  allergyLabels?: Partial<Record<RegionalAllergyStatus, string | AllergyStatusText>>;
+  /**
+   * The host shows the details itself (e.g. an expanding area below the header): the expand button calls this instead of
+   * opening PatientDetailsSheet, and `detailsOpen` sets its expanded state.
+   */
+  onShowDetails?: () => void;
   /** Accessible name of the header region. Default "Patient". */
   'aria-label'?: string;
   className?: string;
@@ -69,24 +90,58 @@ export function MobilePatientHeader(props: MobilePatientHeaderProps) {
     similarNameLabel,
     showLocation = true,
     sticky = false,
+    nameExtension,
+    nameContent,
+    bornDisplay,
+    showGender = true,
+    requirePrimaryIdentifier = true,
+    items,
+    allergyLabels,
+    onShowDetails,
     className,
   } = props;
   const { region } = useClinicalLocale(props.region);
   const [open, setOpen] = useControllableState(props.detailsOpen, props.defaultDetailsOpen ?? false, props.onDetailsOpenChange);
   const condensed = variant === 'condensed';
   const name = mobilePatientName(patient, region);
-  const ids = mobileIdentifierItems(patient.identifiers, region, { primaryOnly: condensed });
-  const allergy = mobileAllergySummary(patient.allergies, region);
+  const allIds = mobileIdentifierItems(patient.identifiers, region, { primaryOnly: condensed });
+  const ids = requirePrimaryIdentifier ? allIds : allIds.filter(it => !it.unknown);
+  const allergy = mobileAllergySummary(patient.allergies, region, allergyLabels);
+  const renderItem = (it: PatientBannerItem) => {
+    const body = (
+      <>
+        {it.symbol ? <span className="cui-mobile-header__item-symbol">{it.symbol}</span> : null}
+        {it.label ? (
+          <LabelledValue label={it.label} value={it.value} noWrap={false} />
+        ) : (
+          <strong className="cui-mobile-header__item-value">{it.value ?? 'Not Known'}</strong>
+        )}
+      </>
+    );
+    const classes = cx('cui-mobile-header__item', `cui-mobile-header__item--${it.tone ?? 'default'}`, it.className);
+    return it.onSelect ? (
+      <button key={it.id} type="button" className={cx(classes, 'cui-mobile-header__item--button')} data-banner-item={it.id} aria-label={it.selectLabel} onClick={it.onSelect}>
+        {body}
+      </button>
+    ) : (
+      <span key={it.id} className={classes} data-banner-item={it.id}>
+        {body}
+      </span>
+    );
+  };
+  const itemsAfterBorn = (items ?? []).filter(it => it.placement === 'after-born');
+  const itemsAfterIds = (items ?? []).filter(it => it.placement !== 'after-born');
+  const sheet = showDetailsButton && !onShowDetails;
   const mhr = region === 'AU' && patient.myHealthRecord ? MY_HEALTH_RECORD_STATE_TEXT[patient.myHealthRecord] : null;
   const similar = patient.similarNames ?? [];
 
   const allergyChip = (
     <span
       className={cx('cui-mobile-header__allergy', `cui-mobile-header__allergy--${allergy.tone}`)}
-      aria-label={condensed && allergy.status === 'known' ? allergy.text : undefined}
     >
       {allergy.tone === 'alert' || allergy.tone === 'warning' ? <Icon name="warning" size={16} /> : null}
       <span aria-hidden={condensed && allergy.status === 'known' ? true : undefined}>{condensed ? allergy.shortText : allergy.text}</span>
+      {condensed && allergy.status === 'known' ? <VisuallyHidden>{allergy.text}</VisuallyHidden> : null}
     </span>
   );
 
@@ -104,10 +159,11 @@ export function MobilePatientHeader(props: MobilePatientHeaderProps) {
         <div className="cui-mobile-header__who">
           <div className="cui-mobile-header__name-row">
             <span className="cui-mobile-header__name">
-              <MobileNameText text={name} />
+              {nameContent != null ? nameContent : <MobileNameText text={name} />}
             </span>
             {condensed && showLocation && patient.location ? <span className="cui-mobile-header__location-inline">{patient.location}</span> : null}
           </div>
+          {nameExtension != null ? <span className="cui-mobile-header__name-extension">{nameExtension}</span> : null}
           {!condensed && patient.preferredName ? (
             <span className="cui-mobile-header__preferred">
               <span className="cui-mobile-id__label">{PATIENT_NAME_LABELS_BY_REGION[region].preferredName} </span>
@@ -121,16 +177,25 @@ export function MobilePatientHeader(props: MobilePatientHeaderProps) {
             </span>
           ) : null}
           <div className="cui-mobile-header__facts">
-            <MobileBornText patient={patient} now={now} dateFormat={dateFormat} strong={!condensed} />
-            {!condensed ? (
+            {bornDisplay != null ? (
+              <span className="cui-mobile-born">
+                <span className="cui-mobile-id__label">Born </span>
+                {condensed ? <span className="cui-mobile-born__value">{bornDisplay}</span> : <strong className="cui-mobile-born__value">{bornDisplay}</strong>}
+              </span>
+            ) : (
+              <MobileBornText patient={patient} now={now} dateFormat={dateFormat} strong={!condensed} />
+            )}
+            {!condensed && showGender ? (
               <span className="cui-mobile-header__gender">
                 <span className="cui-mobile-id__label">Gender </span>
                 <strong>{mobileGenderText(patient.gender, region)}</strong>
               </span>
             ) : null}
+            {itemsAfterBorn.map(renderItem)}
             {ids.map((it, i) => (
               <MobileIdentifierText key={i} item={it} strong={!condensed} />
             ))}
+            {itemsAfterIds.map(renderItem)}
             {condensed ? allergyChip : null}
           </div>
         </div>
@@ -139,11 +204,11 @@ export function MobilePatientHeader(props: MobilePatientHeaderProps) {
             type="button"
             className="cui-mobile-header__icon-button"
             aria-label="Show all patient details"
-            aria-haspopup="dialog"
+            aria-haspopup={onShowDetails ? undefined : 'dialog'}
             aria-expanded={open}
-            onClick={() => setOpen(true)}
+            onClick={() => (onShowDetails ? onShowDetails() : setOpen(true))}
           >
-            <Icon name="chevron-down" size={24} />
+            <Icon name={onShowDetails && open ? 'chevron-up' : 'chevron-down'} size={24} />
           </button>
         ) : null}
       </div>
@@ -160,7 +225,7 @@ export function MobilePatientHeader(props: MobilePatientHeaderProps) {
         </div>
       ) : null}
       {similar.length ? <MobileSimilarNameWarning names={similar} label={similarNameLabel} className="cui-mobile-header__similar" /> : null}
-      {showDetailsButton ? (
+      {sheet ? (
         <PatientDetailsSheet
           {...detailsSheetProps}
           open={open}

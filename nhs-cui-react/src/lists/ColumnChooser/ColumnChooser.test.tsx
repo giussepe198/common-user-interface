@@ -1,6 +1,6 @@
 import React from 'react';
 import { afterEach, describe, it, expect, vi } from 'vitest';
-import { cleanup, render, screen, fireEvent } from '@testing-library/react';
+import { act, cleanup, render, screen, fireEvent } from '@testing-library/react';
 import { ColumnChooser } from './ColumnChooser';
 
 afterEach(cleanup);
@@ -27,5 +27,20 @@ describe('ColumnChooser', () => {
     expect(onChange).toHaveBeenLastCalledWith(['bed', 'patient', 'tasks', 'news']);
     fireEvent.change(screen.getByRole('combobox'), { target: { value: 'nurse' } });
     expect(onChange).toHaveBeenLastCalledWith(['bed', 'patient', 'tasks']);
+  });
+  it('reorders by dragging with the keyboard on the handle; locked columns have no handle (G13 DND-0020, PAL-0720)', async () => {
+    const onChange = vi.fn();
+    render(<ColumnChooser columns={columns} onChange={onChange} />);
+    expect(screen.queryByRole('button', { name: 'Move Location' })).toBeNull();
+    const handle = screen.getByRole('button', { name: 'Move Tasks' });
+    fireEvent.keyDown(handle, { key: ' ' });
+    fireEvent.keyDown(handle, { key: 'ArrowUp' });
+    fireEvent.keyDown(handle, { key: 'ArrowUp' });
+    expect(screen.getAllByRole('status').map(s => s.textContent).join(' ')).toMatch(/Cannot drop here: Patient stays where it is/);
+    fireEvent.keyDown(handle, { key: 'ArrowDown' });
+    await act(async () => {
+      fireEvent.keyDown(handle, { key: 'Enter' });
+    });
+    expect(onChange).toHaveBeenLastCalledWith(['bed', 'patient', 'tasks', 'news']);
   });
 });

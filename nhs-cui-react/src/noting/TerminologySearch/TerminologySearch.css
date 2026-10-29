@@ -1,9 +1,9 @@
-.cui-terminology-search { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); font-size: 14px; line-height: 20px; color: var(--ink); max-width: 100%; }
-.cui-terminology-search__label-text { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); }
+.cui-terminology-search { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); max-width: 100%; }
+.cui-terminology-search__label-text { font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; color: var(--ink); }
 .cui-terminology-search__field { position: relative; width: var(--cui-term-width); max-width: 100%; }
 .cui-terminology-search__icon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); display: inline-flex; color: var(--ink-muted); pointer-events: none; }
-.cui-terminology-search__input { width: 100%; font: inherit; font-size: 14px; line-height: 20px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md);
-  padding: 5px 8px 5px 32px; min-height: 32px; caret-color: var(--ink); }
+.cui-terminology-search__input { width: 100%; font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+  padding: 5px var(--space-2) 5px var(--space-8); min-height: var(--control-height); caret-color: var(--ink); }
 .cui-terminology-search__input::placeholder { color: var(--ink-subtle); font-style: italic; opacity: 1; }
 .cui-terminology-search__input--encoded { font-weight: 700; }
 .cui-terminology-search__help { display: block; max-width: var(--cui-term-width); }
@@ -13,13 +13,13 @@
 
 .cui-terminology-search__popup { display: flex; align-items: flex-start; gap: var(--space-2); max-width: 100%; }
 .cui-terminology-search__popup[hidden] { display: none; }
-.cui-terminology-search__results { min-width: var(--cui-term-width); width: max-content; max-width: 100%; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); overflow: hidden; }
-.cui-terminology-search__count { padding: 3px var(--space-2); font-size: 12px; line-height: 16px; color: var(--ink-muted); border-bottom: 1px solid var(--border); background: var(--surface-sunken); font-variant-numeric: tabular-nums; }
+.cui-terminology-search__results { min-width: min(var(--cui-term-width), 100%); width: max-content; max-width: 100%; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); overflow: hidden; }
+.cui-terminology-search__count { padding: 3px var(--space-2); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); border-bottom: 1px solid var(--border); background: var(--surface-sunken); font-variant-numeric: tabular-nums; }
 .cui-terminology-search__list { list-style: none; margin: 0; padding: 0; max-height: calc(var(--cui-term-rows, 10) * 29px + 24px); overflow-y: auto; overflow-x: hidden; }
 .cui-terminology-search__group-list { list-style: none; margin: 0; padding: 0; }
-.cui-terminology-search__group-label { display: block; padding: 4px var(--space-2) 2px; font-size: 12px; line-height: 16px; font-weight: 600; color: var(--ink-muted); background: var(--surface-sunken); border-bottom: 1px solid var(--border); }
+.cui-terminology-search__group-label { display: block; padding: var(--space-1) var(--space-2) 2px; font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--ink-muted); background: var(--surface-sunken); border-bottom: 1px solid var(--border); }
 .cui-terminology-search__group + .cui-terminology-search__group .cui-terminology-search__group-label { border-top: 2px solid var(--border-strong); }
-.cui-terminology-search__option { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-2); padding: 4px var(--space-2); border-bottom: 1px solid var(--border); cursor: pointer; }
+.cui-terminology-search__option { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-2); padding: var(--space-1) var(--space-2); border-bottom: 1px solid var(--border); cursor: pointer; }
 .cui-terminology-search__option:last-child { border-bottom: 0; }
 .cui-terminology-search__option--active { background: var(--hover); outline: 2px solid var(--focus); outline-offset: -2px; }
 .cui-terminology-search__option--selected { font-weight: 700; }
@@ -34,10 +34,10 @@
 .cui-terminology-search__none { padding: var(--space-2); max-width: var(--cui-term-width); display: flex; flex-direction: column; gap: var(--space-1); align-items: flex-start; }
 .cui-terminology-search__none p { margin: 0; }
 .cui-terminology-search__none-title { font-weight: 600; }
-.cui-terminology-search__none-help { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-terminology-search__none-help { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
 .cui-terminology-search__flyout { flex: none; }
 @media (max-width: 640px) { .cui-terminology-search__popup { flex-direction: column; } }
 
 /* Required field missed (CNA-1160..1180): yellow shading plus icon, as FormField. */
-.cui-terminology-search--missed .cui-terminology-search__input { background: var(--warning-surface); border-color: var(--warning); padding-right: 32px; }
+.cui-terminology-search--missed .cui-terminology-search__input { background: var(--warning-surface); border-color: var(--warning); padding-right: var(--space-8); }
 .cui-terminology-search__missed-icon { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); display: inline-flex; color: var(--warning); pointer-events: none; }

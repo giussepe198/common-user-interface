@@ -109,3 +109,12 @@ describe('MedicationsList', () => {
     expect(screen.queryByRole('img', { name: 'Decision support alert' })).toBeNull();
   });
 });
+
+describe('MedicationsList narrow layout (CONVENTIONS Responsive)', () => {
+  it('labels each cell with its heading for the stacked card layout', () => {
+    render(<MedicationsList medications={meds} now={now} lookAhead={false} />);
+    const row = document.querySelector('.cui-medications-list__row') as HTMLElement;
+    const labels = Array.from(row.querySelectorAll('td')).map(td => td.getAttribute('data-label'));
+    expect(labels).toEqual(['Drug Details', 'Status', 'Start Date']);
+  });
+});

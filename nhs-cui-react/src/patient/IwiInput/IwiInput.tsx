@@ -145,7 +145,7 @@ export function IwiInput({
       </legend>
       {purpose ? <p className="cui-patient-question__purpose">{purpose}</p> : null}
       <div className="cui-patient-question__options">
-        <div className="cui-patient-question__option">
+        <div className="cui-patient-question__option" data-touch-target>
           <input type="radio" id={`${id}-yes`} name={`${id}-knows`} checked={val.knows === 'yes'} onChange={() => setVal({ ...val, knows: 'yes' })} />
           <label htmlFor={`${id}-yes`}>Yes</label>
         </div>
@@ -271,7 +271,7 @@ export function IwiInput({
             ) : null}
           </div>
         ) : null}
-        <div className="cui-patient-question__option">
+        <div className="cui-patient-question__option" data-touch-target>
           <input type="radio" id={`${id}-no`} name={`${id}-knows`} checked={val.knows === 'no'} onChange={() => setVal({ knows: 'no', iwi: [] })} />
           <label htmlFor={`${id}-no`}>No</label>
         </div>

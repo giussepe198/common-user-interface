@@ -292,7 +292,7 @@ export function AddressInput({
       <fieldset className={cx('cui-address-input', `cui-address-input--${region.toLowerCase()}`, className)} disabled={disabled}>
         <legend className="cui-address-input__legend">{legend}</legend>
         {allowNoFixedAddress ? (
-          <div className="cui-address-input__outside">
+          <div className="cui-address-input__outside" data-touch-target>
             <input
               type="checkbox"
               id={fid('nfa')}
@@ -306,7 +306,7 @@ export function AddressInput({
           </div>
         ) : null}
         {allowNonUk && !nfa ? (
-          <div className="cui-address-input__outside">
+          <div className="cui-address-input__outside" data-touch-target>
             <input
               type="checkbox"
               id={fid('outside')}
@@ -445,7 +445,7 @@ export function AddressInput({
       <legend className="cui-address-input__legend">{legend}</legend>
 
       {allowNonUk ? (
-        <div className="cui-address-input__outside">
+        <div className="cui-address-input__outside" data-touch-target>
           <input
             type="checkbox"
             id={fid('outside')}

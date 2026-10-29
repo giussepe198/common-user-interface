@@ -1,0 +1,19 @@
+/* Consent to share (consent hue). Words and icon carry the state; colour supports it. */
+.cui-consent {
+  display: inline-flex; align-items: flex-start; gap: var(--space-1); max-width: 100%;
+  padding: 2px var(--space-2); border: 1px solid var(--consent); border-radius: var(--radius-md);
+  background: var(--consent-surface); color: var(--consent);
+  font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); text-align: start; overflow-wrap: anywhere;
+}
+.cui-consent--compact { font-size: var(--font-size-label); line-height: var(--line-height-label); padding: 1px var(--space-1); }
+.cui-consent__icon { display: inline-flex; flex: none; padding-top: 2px; }
+.cui-consent--compact .cui-consent__icon { padding-top: 0; }
+.cui-consent__text { display: inline-flex; flex-wrap: wrap; column-gap: var(--space-2); min-width: 0; }
+.cui-consent__state { font-weight: 600; }
+.cui-consent__detail { color: var(--ink); }
+.cui-consent--restricted, .cui-consent--withdrawn { border-inline-start-width: var(--space-1); }
+.cui-consent--not-recorded { background: var(--surface); color: var(--warning); border: 1px dashed var(--warning); }
+.cui-consent--button { cursor: pointer; }
+.cui-consent--button:hover .cui-consent__state { text-decoration: underline; text-underline-offset: 3px; }
+@media (pointer: coarse) { .cui-consent--button { min-height: var(--target-coarse); align-items: center; } }
+@media (forced-colors: active) { .cui-consent { border-color: CanvasText; } }

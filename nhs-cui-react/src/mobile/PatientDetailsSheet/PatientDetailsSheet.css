@@ -1,34 +1,34 @@
-.cui-patient-details__body { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-3) 0; font-size: 16px; line-height: 22px; }
+.cui-patient-details__body { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-3) 0; font-size: var(--font-size-touch-body); line-height: var(--line-height-touch-body); }
 .cui-patient-details__section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .cui-patient-details__heading { padding: 10px var(--space-4) 6px; }
 .cui-patient-details__heading--danger { color: var(--danger); }
 .cui-patient-details__heading--warning { color: var(--warning); }
 .cui-patient-details__list { margin: 0; }
 .cui-patient-details__row { display: grid; grid-template-columns: minmax(96px, 34%) minmax(0, 1fr); column-gap: var(--space-3); padding: 10px var(--space-4); border-top: 1px solid var(--border); }
-.cui-patient-details__row dt { color: var(--ink-muted); font-size: 14px; line-height: 22px; overflow-wrap: anywhere; }
+.cui-patient-details__row dt { color: var(--ink-muted); font-size: var(--font-size-body); line-height: 22px; overflow-wrap: anywhere; }
 .cui-patient-details__row dd { margin: 0; font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
 .cui-patient-details__row dd .cui-address-display, .cui-patient-details__row dd .cui-telephone-display { font-weight: 600; }
 .cui-patient-details__unknown { font-style: italic; font-weight: 400; }
 .cui-patient-details__qualifier { font-weight: 400; color: var(--ink-muted); }
-.cui-patient-details__flag { display: inline-flex; align-items: center; gap: var(--space-1); margin-left: var(--space-2); font-size: 14px; font-weight: 600; color: var(--ink-muted); white-space: nowrap; }
+.cui-patient-details__flag { display: inline-flex; align-items: center; gap: var(--space-1); margin-left: var(--space-2); font-size: var(--font-size-body); font-weight: 600; color: var(--ink-muted); white-space: nowrap; }
 .cui-patient-details__mhr { display: inline-flex; align-items: center; gap: var(--space-1); }
 .cui-patient-details__mhr--success { color: var(--success); }
 .cui-patient-details__mhr--warning, .cui-patient-details__mhr--danger { color: var(--warning); }
 .cui-patient-details__protected { display: flex; flex-direction: column; gap: var(--space-2); padding: 10px var(--space-4) var(--space-3); border-top: 1px solid var(--border); }
 .cui-patient-details__protected-title { display: flex; align-items: center; gap: var(--space-2); font-weight: 600; }
-.cui-patient-details__note { margin: 0; font-size: 14px; line-height: 20px; color: var(--ink-muted); font-weight: 400; }
+.cui-patient-details__note { margin: 0; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink-muted); font-weight: 400; }
 .cui-patient-details__reveal { align-self: flex-start; }
 .cui-patient-details__reason { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3); background: var(--accent-surface); border-radius: var(--radius-md); }
 .cui-patient-details__reason-label { font-weight: 600; }
-.cui-patient-details__reason textarea { font: inherit; font-size: 16px; padding: 10px 12px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); resize: vertical; }
+.cui-patient-details__reason textarea { font: inherit; font-size: var(--font-size-touch-body); padding: 10px var(--space-3); border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); resize: vertical; }
 .cui-patient-details__reason textarea[aria-invalid="true"] { border-color: var(--danger); border-width: 2px; }
 .cui-patient-details__reason-actions { display: flex; gap: var(--space-2); }
 .cui-patient-details__reason-actions > * { flex: 1; }
-.cui-patient-details__error { display: flex; align-items: center; gap: var(--space-1); color: var(--danger); font-size: 14px; line-height: 20px; font-weight: 600; }
+.cui-patient-details__error { display: flex; align-items: center; gap: var(--space-1); color: var(--danger); font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; }
 .cui-patient-details__allergies { list-style: none; margin: 0; padding: 0; }
 .cui-patient-details__allergy { display: flex; flex-direction: column; gap: 2px; padding: 10px var(--space-4); border-top: 1px solid var(--border); }
-.cui-patient-details__allergy > span:not(.cui-patient-details__note) { font-size: 15px; }
-.cui-patient-details__new { align-self: flex-start; font-size: 13px; font-weight: 700; padding: 0 var(--space-2); border: 1px solid var(--ink); border-radius: var(--radius-sm); }
+.cui-patient-details__allergy > span:not(.cui-patient-details__note) { font-size: var(--font-size-subheading); }
+.cui-patient-details__new { align-self: flex-start; font-size: var(--font-size-detail); font-weight: 700; padding: 0 var(--space-2); border: 1px solid var(--ink); border-radius: var(--radius-sm); }
 .cui-patient-details__allergy-status { display: flex; align-items: flex-start; gap: var(--space-2); padding: 10px var(--space-4) var(--space-3); border-top: 1px solid var(--border); }
 .cui-patient-details__allergy-status--warning { color: var(--warning); background: var(--warning-surface); }
 .cui-patient-details__allergy-status--warning .cui-patient-details__note { color: var(--warning); }

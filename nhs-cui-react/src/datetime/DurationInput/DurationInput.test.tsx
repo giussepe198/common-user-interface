@@ -50,3 +50,40 @@ describe('DurationInput', () => {
     expect(screen.getByRole('status').textContent).toMatch(/from NZDT to NZST/);
   });
 });
+
+describe('DurationInput bare mode (inside FormField)', () => {
+  const typeIn = (input: HTMLInputElement, text: string) => {
+    fireEvent.change(input, { target: { value: text } });
+    fireEvent.keyDown(input, { key: 'Enter' });
+  };
+  it('draws no label or host error of its own and takes the host label, description and state', () => {
+    const { container } = render(
+      <div>
+        <label htmlFor="host-field">Host label</label>
+        <span id="host-error">Host error</span>
+        <DurationInput label="Duration" id="host-field" bare error="Host error" aria-describedby="host-error" aria-required="true" />
+      </div>,
+    );
+    const input = screen.getByLabelText('Host label') as HTMLInputElement;
+    expect(container.querySelectorAll('label.cui-dt-field__label')).toHaveLength(0);
+    expect(screen.queryByRole('alert')).toBeNull();
+    expect(input.getAttribute('aria-describedby')).toContain('host-error');
+    expect(input.getAttribute('aria-invalid')).toBe('true');
+    expect(input.getAttribute('aria-required')).toBe('true');
+    expect(input.hasAttribute('data-cui-boxed')).toBe(true);
+    expect(container.querySelector('[data-cui-box]')).toBeTruthy();
+    expect(container.querySelector('.cui-dt-field__hint')!.className).toContain('cui-visually-hidden');
+  });
+  it('reports its own validation message to the host instead of drawing it', () => {
+    const onValidationChange = vi.fn();
+    render(<div><label htmlFor="f2">Host</label><DurationInput label="Duration" id="f2" bare onValidationChange={onValidationChange} /></div>);
+    typeIn(screen.getByLabelText('Host') as HTMLInputElement, '1.5hr');
+    expect(onValidationChange).toHaveBeenLastCalledWith(expect.any(String));
+    expect(screen.queryByRole('alert')).toBeNull();
+  });
+  it('still draws its own validation message when nobody listens, so it is never lost', () => {
+    render(<div><label htmlFor="f3">Host</label><DurationInput label="Duration" id="f3" bare /></div>);
+    typeIn(screen.getByLabelText('Host') as HTMLInputElement, '1.5hr');
+    expect(screen.getByRole('alert')).toBeTruthy();
+  });
+});

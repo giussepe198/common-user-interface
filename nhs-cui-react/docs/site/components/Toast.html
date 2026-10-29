@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toast · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Feedback</p>
+<h1 style="margin:0 0 4px;font-size:20px">Toast</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Toasts: success leaves by itself, warning and error stay until dismissed · Guidelines: <code>src/shell/Toast/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+ReactDOM.createRoot(document.getElementById('root')).render(h(C.Stack, { gap: 2 },
+  label('Success with action'), h(C.Toast, { tone: 'success', title: 'Task closed', action: { label: 'Undo', onAction: () => undefined }, onDismiss: () => undefined }),
+  label('Info'), h(C.Toast, { title: 'New version available', description: 'Reload when you are ready.', onDismiss: () => undefined }),
+  label('Error (never auto-dismissed)'), h(C.Toast, { tone: 'error', title: 'Letter not sent', description: 'The mail service did not answer.', onDismiss: () => undefined })
+));
+</script>
+
+</div>
+</body>
+</html>

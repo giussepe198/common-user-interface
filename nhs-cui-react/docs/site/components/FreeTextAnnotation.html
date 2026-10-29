@@ -27,7 +27,7 @@ const smoking = [{ value: 'never', label: 'Never smoked' }, { value: 'ex', label
 function Demo() {
   const [v, setV] = React.useState('ex');
   React.useEffect(() => { setTimeout(() => { const b = document.querySelector('#editing .cui-free-text__text'); if (b) b.click(); }, 60); }, []);
-  return h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32, alignItems: 'start' } },
+  return h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 32, alignItems: 'start' } },
     cell('Text added: shown beside the control in a faint marquee', h(FreeTextAnnotation, { defaultValue: 'Stopped March 2019 after 20 pack-years', label: 'Smoking details' },
       h(ClinicalRadioGroup, { legend: 'Smoking status', options: smoking, value: v, onChange: setV }))),
     h('div', { id: 'editing' }, cell('Editing (pop-up field with clear and done)', h(FreeTextAnnotation, { defaultValue: 'Occasional cigar', label: 'Smoking details' },

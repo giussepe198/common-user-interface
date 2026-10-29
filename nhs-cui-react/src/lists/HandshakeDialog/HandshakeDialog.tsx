@@ -51,6 +51,12 @@ export interface HandshakeDialogProps {
   onCancel: () => void;
   /** Modal with translucent backdrop (default) or inline. */
   modal?: boolean;
+  /**
+   * Ids of items whose read-back is not yet confirmed (RID 108), e.g. from HandoverTaskList `readBackReasons` without
+   * `readBackConfirmed`. Responsibility cannot be accepted for them: accepting shows an error naming them, while a
+   * refusal can still be recorded (an unanswered read-back is a reason to refuse, RID 87) [suggested].
+   */
+  pendingReadBack?: string[];
 }
 
 const toLocalInput = (d: Date) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}T${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
@@ -63,6 +69,7 @@ const toLocalInput = (d: Date) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-
 export function HandshakeDialog({
   items, giver, receiver, actingAs = 'receiver', place: initialPlace = '', dateTime, othersPresent: initialOthers = '',
   reasons = ['Shift change', 'Transfer of care', 'Break cover', 'Ad hoc handover'], retrospective = false, onSubmit, onCancel, modal = true,
+  pendingReadBack = [],
 }: HandshakeDialogProps) {
   const id = useId('cui-hs');
   const captured = React.useMemo(() => toDate(dateTime ?? new Date()) ?? new Date(), [dateTime]);
@@ -83,7 +90,9 @@ export function HandshakeDialog({
     satisfactory, unsatisfactoryNote: satisfactory ? undefined : note.trim(), flagIncident: satisfactory ? undefined : incident,
     refusalReason: outcome === 'refused' ? refusal.trim() : undefined, itemIds: items.map(i => i.id),
   });
+  const pending = items.filter(i => pendingReadBack.includes(i.id));
   const submit = (outcome: 'accepted' | 'refused') => {
+    if (outcome === 'accepted' && pending.length) return setError(`Read back before accepting: ${pending.map(i => i.label).join('; ')}. Confirm the read-back on the list, or refuse the handover.`);
     if (!place.trim()) return setError('Enter the place of handover.');
     if (!satisfactory && !note.trim()) return setError('Describe what was unsatisfactory.');
     if (outcome === 'refused' && !refusal.trim()) return setError('Enter the reason for refusing.');
@@ -122,7 +131,10 @@ export function HandshakeDialog({
       </p>
       <ul className="cui-handshake__items">
         {items.map(i => (
-          <li key={i.id}>{i.label}</li>
+          <li key={i.id}>
+            {i.label}
+            {pendingReadBack.includes(i.id) ? <span className="cui-handshake__pending"> <Icon name="warning" /> Read back not confirmed</span> : null}
+          </li>
         ))}
       </ul>
       <p className="cui-prompt">Date, time and place are captured automatically. Check them before you confirm.</p>
@@ -175,17 +187,17 @@ export function HandshakeDialog({
       </dl>
       <fieldset className="cui-handshake__satisfaction">
         <legend>Was the handover satisfactory?</legend>
-        <label className="cui-list-choice">
+        <label className="cui-list-choice" data-touch-target>
           <input type="radio" name={`${id}-sat`} checked={satisfactory} onChange={() => setSatisfactory(true)} /> Satisfactory
         </label>
-        <label className="cui-list-choice">
+        <label className="cui-list-choice" data-touch-target>
           <input type="radio" name={`${id}-sat`} checked={!satisfactory} onChange={() => setSatisfactory(false)} /> Not satisfactory
         </label>
         {!satisfactory ? (
           <div className="cui-handshake__unsat">
             <label htmlFor={`${id}-note`} className="cui-handshake__label">What was unsatisfactory</label>
             <textarea id={`${id}-note`} className="cui-list-input cui-handshake__text" rows={3} value={note} onChange={e => setNote(e.target.value)} />
-            <label className="cui-list-choice">
+            <label className="cui-list-choice" data-touch-target>
               <input type="checkbox" checked={incident} onChange={e => setIncident(e.target.checked)} /> Flag as an incident
             </label>
             <p className="cui-prompt">The record is stamped with your name, the date and the time.</p>

@@ -1,0 +1,125 @@
+/* DataTable: the PatientList look for general lists (PAL-0170..0350), with stacked cards in narrow containers. */
+.cui-data-table { display: flex; flex-direction: column; min-width: 0; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-data-table__header { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); padding: var(--space-2) var(--space-3); background: var(--surface-muted); border-bottom: 1px solid var(--border-strong); border-radius: var(--radius-md) var(--radius-md) 0 0; }
+.cui-data-table__header--bare { padding-top: var(--space-1); padding-bottom: var(--space-1); }
+.cui-data-table__caption { margin: 0; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
+.cui-data-table__count { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-data-table__busy { display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink); font-weight: 600; }
+.cui-data-table__toolbar { padding: var(--space-1) var(--space-2); border-bottom: 1px solid var(--border); }
+.cui-data-table__search { padding: var(--space-2) var(--space-2) var(--space-1); }
+.cui-data-table__chooser { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--border); background: var(--surface-muted); }
+.cui-data-table__chooser .cui-column-chooser { width: 100%; }
+.cui-data-table__updates { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); padding: var(--space-1) var(--space-3); background: var(--info-surface); border-bottom: 1px solid var(--border); }
+.cui-data-table__updates-count { display: inline-flex; align-items: center; gap: var(--space-1); font-weight: 600; }
+.cui-data-table__confirm { flex-basis: 100%; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); padding: var(--space-2) var(--space-3); background: var(--warning-surface); border: 1px solid var(--warning); border-radius: var(--radius-md); }
+
+/* Table */
+.cui-data-table__viewport { container: cui-data-table / inline-size; overflow: auto; position: relative; max-height: var(--cui-data-table-max-height, none); }
+.cui-data-table__table { border-collapse: separate; border-spacing: 0; width: 100%; }
+.cui-data-table__th { min-width: var(--cui-data-table-min-width, 0); position: sticky; top: 0; z-index: 2; padding: 0; text-align: left; vertical-align: bottom; font-weight: 600; background: var(--surface-muted); border-right: 1px solid var(--border); border-bottom: 2px solid var(--border-strong); }
+.cui-data-table__th:last-child { border-right: none; }
+.cui-data-table__th--center { text-align: center; }
+.cui-data-table__th--right { text-align: right; }
+.cui-data-table__th--select { width: 1%; }
+.cui-data-table__th-inner { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-2); padding: var(--space-1) var(--space-2); min-height: var(--control-height); box-sizing: border-box; cursor: pointer; }
+.cui-data-table__th-inner--static { cursor: default; }
+.cui-data-table__th--center .cui-data-table__th-inner { justify-content: center; }
+.cui-data-table__th--right .cui-data-table__th-inner { justify-content: flex-end; }
+.cui-data-table__th-inner:not(.cui-data-table__th-inner--static):hover { background: var(--hover); }
+.cui-data-table__th-inner:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.cui-data-table__th-title { overflow-wrap: break-word; }
+.cui-data-table__th-unit { font-weight: 400; color: var(--ink-muted); }
+.cui-data-table__th--active { background: var(--accent-surface); box-shadow: inset 0 -3px 0 var(--accent); }
+.cui-data-table__th .cui-header-filter { top: 100%; }
+.cui-data-table__th:last-child .cui-header-filter, .cui-data-table__th:nth-last-child(2) .cui-header-filter { left: auto; right: 0; }
+.cui-data-table__cell { position: relative; padding: var(--space-1) var(--space-2); vertical-align: top; text-align: left; font-weight: 400; background: var(--surface); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border-strong); overflow-wrap: break-word; }
+/* Identifiers, dates and numbers never break inside themselves; text columns wrap between words instead. */
+.cui-data-table__cell--nowrap { white-space: nowrap; }
+.cui-data-table__cell:last-child { border-right: none; }
+.cui-data-table__cell--center { text-align: center; }
+.cui-data-table__cell--right { text-align: right; font-variant-numeric: tabular-nums; }
+.cui-data-table__cell--key { font-weight: 600; }
+.cui-data-table__cell--select { width: 1%; }
+.cui-data-table__cell--sublist { padding: 0; }
+.cui-data-table__cell:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.cui-data-table__row--band > .cui-data-table__cell { background: var(--surface-sunken); }
+.cui-data-table__row:hover > .cui-data-table__cell { background: var(--hover); }
+.cui-data-table__row--selected > .cui-data-table__cell { background: var(--accent-surface); }
+.cui-data-table__row--focused > .cui-data-table__cell--key { box-shadow: inset 4px 0 0 var(--accent); }
+.cui-data-table__row--updated > .cui-data-table__cell, .cui-data-table__cell--updated { background: var(--info-surface); }
+.cui-data-table__cell--updated, .cui-data-table__row--updated > .cui-data-table__cell:first-child { padding-right: 20px; }
+.cui-data-table__check-hit { display: inline-flex; align-items: center; justify-content: center; vertical-align: middle; cursor: pointer; }
+.cui-data-table__check { width: 16px; height: 16px; margin: 0; accent-color: var(--accent); vertical-align: middle; }
+.cui-data-table__selected-mark { float: right; margin-left: var(--space-1); color: var(--accent); }
+.cui-data-table__group-cell { padding: 0; text-align: left; background: var(--surface-muted); border-top: 2px solid var(--border-strong); border-bottom: 1px solid var(--border-strong); }
+.cui-data-table__group-toggle { font: inherit; font-weight: 600; display: flex; align-items: center; gap: var(--space-2); width: 100%; min-height: var(--control-height); padding: var(--space-1) var(--space-2); background: transparent; border: none; color: var(--ink); text-align: left; cursor: pointer; }
+.cui-data-table__group-toggle:hover { background: var(--hover); }
+.cui-data-table__group-toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.cui-data-table__group-count { font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 400; color: var(--ink-muted); }
+.cui-data-table__empty { padding: var(--space-4) var(--space-3); text-align: center; color: var(--ink-muted); list-style: none; }
+.cui-data-table__empty--loading { font-style: italic; }
+.cui-data-table__menu { position: absolute; top: 100%; left: 0; z-index: 10; list-style: none; margin: 2px 0 0; padding: var(--space-1) 0; min-width: 140px; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); font-weight: 400; }
+.cui-data-table__menu-item { padding: var(--space-1) var(--space-3); min-height: var(--control-height); box-sizing: border-box; display: flex; align-items: center; cursor: pointer; }
+.cui-data-table__menu-item:hover, .cui-data-table__menu-item:focus { background: var(--hover); outline: none; }
+.cui-data-table__menu-item:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+
+/* Stacked cards: below 600px (layout 'auto') or always (layout 'cards') each row is a card of label and value
+   pairs; the same table markup and semantics, column headings kept as a wrapping row of sort buttons. */
+.cui-data-table--cards .cui-data-table__table, .cui-data-table--cards .cui-data-table__table > thead, .cui-data-table--cards .cui-data-table__table > tbody { display: block; }
+.cui-data-table--cards .cui-data-table__table > thead > tr { display: flex; flex-wrap: wrap; gap: var(--space-1); padding: var(--space-1) var(--space-2); border-bottom: 1px solid var(--border-strong); background: var(--surface-muted); }
+.cui-data-table--cards .cui-data-table__th { display: block; position: static; min-width: 0; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); }
+.cui-data-table--cards .cui-data-table__th-inner { align-items: center; }
+.cui-data-table--cards .cui-data-table__table > tbody { padding: var(--space-2); }
+.cui-data-table--cards .cui-data-table__row { display: grid; grid-template-columns: minmax(96px, 38%) minmax(0, 1fr); gap: 2px var(--space-3); margin-bottom: var(--space-2); padding: var(--space-2) var(--space-3); border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); }
+.cui-data-table--cards .cui-data-table__row--band { background: var(--surface); }
+.cui-data-table--cards .cui-data-table__row--selected { background: var(--accent-surface); border-color: var(--accent); }
+.cui-data-table--cards .cui-data-table__row--updated { background: var(--info-surface); }
+.cui-data-table--cards .cui-data-table__row > .cui-data-table__cell { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; padding: 0; border: none; background: transparent; text-align: left; }
+.cui-data-table--cards .cui-data-table__row > .cui-data-table__cell::before { content: attr(data-label); grid-column: 1; font-size: var(--font-size-label); line-height: var(--line-height-body); color: var(--ink-muted); }
+.cui-data-table--cards .cui-data-table__row > .cui-data-table__cell > .cui-data-table__value { grid-column: 2; min-width: 0; }
+.cui-data-table--cards .cui-data-table__row > .cui-data-table__cell--key { display: block; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); }
+.cui-data-table--cards .cui-data-table__row > .cui-data-table__cell--key::before, .cui-data-table--cards .cui-data-table__row > .cui-data-table__cell--select::before { content: none; }
+.cui-data-table--cards .cui-data-table__row > .cui-data-table__cell--select { display: block; grid-column: auto; }
+.cui-data-table--cards .cui-data-table__row > .cui-data-table__cell[data-card="off"] { display: none; }
+.cui-data-table--cards .cui-data-table__row > .cui-data-table__cell--sublist .cui-sub-list__item { padding-left: 0; padding-right: 0; }
+.cui-data-table--cards .cui-data-table__group, .cui-data-table--cards .cui-data-table__group-cell { display: block; }
+.cui-data-table--cards .cui-data-table__table > tbody > tr:not(.cui-data-table__row):not(.cui-data-table__group) { display: block; }
+.cui-data-table--cards .cui-data-table__empty { display: block; }
+.cui-data-table--cards .cui-data-table__cell--nowrap { white-space: normal; }
+@container cui-data-table (max-width: 599px) {
+  .cui-data-table--auto .cui-data-table__table, .cui-data-table--auto .cui-data-table__table > thead, .cui-data-table--auto .cui-data-table__table > tbody { display: block; }
+  .cui-data-table--auto .cui-data-table__table > thead > tr { display: flex; flex-wrap: wrap; gap: var(--space-1); padding: var(--space-1) var(--space-2); border-bottom: 1px solid var(--border-strong); background: var(--surface-muted); }
+  .cui-data-table--auto .cui-data-table__th { display: block; position: static; min-width: 0; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); }
+  .cui-data-table--auto .cui-data-table__th-inner { align-items: center; }
+  .cui-data-table--auto .cui-data-table__table > tbody { padding: var(--space-2); }
+  .cui-data-table--auto .cui-data-table__row { display: grid; grid-template-columns: minmax(96px, 38%) minmax(0, 1fr); gap: 2px var(--space-3); margin-bottom: var(--space-2); padding: var(--space-2) var(--space-3); border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); }
+  .cui-data-table--auto .cui-data-table__row--band { background: var(--surface); }
+  .cui-data-table--auto .cui-data-table__row--selected { background: var(--accent-surface); border-color: var(--accent); }
+  .cui-data-table--auto .cui-data-table__row--updated { background: var(--info-surface); }
+  .cui-data-table--auto .cui-data-table__row > .cui-data-table__cell { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; padding: 0; border: none; background: transparent; text-align: left; }
+  .cui-data-table--auto .cui-data-table__row > .cui-data-table__cell::before { content: attr(data-label); grid-column: 1; font-size: var(--font-size-label); line-height: var(--line-height-body); color: var(--ink-muted); }
+  .cui-data-table--auto .cui-data-table__row > .cui-data-table__cell > .cui-data-table__value { grid-column: 2; min-width: 0; }
+  .cui-data-table--auto .cui-data-table__row > .cui-data-table__cell--key { display: block; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); }
+  .cui-data-table--auto .cui-data-table__row > .cui-data-table__cell--key::before, .cui-data-table--auto .cui-data-table__row > .cui-data-table__cell--select::before { content: none; }
+  .cui-data-table--auto .cui-data-table__row > .cui-data-table__cell--select { display: block; grid-column: auto; }
+  .cui-data-table--auto .cui-data-table__row > .cui-data-table__cell[data-card="off"] { display: none; }
+  .cui-data-table--auto .cui-data-table__row > .cui-data-table__cell--sublist .cui-sub-list__item { padding-left: 0; padding-right: 0; }
+  .cui-data-table--auto .cui-data-table__group, .cui-data-table--auto .cui-data-table__group-cell { display: block; }
+  .cui-data-table--auto .cui-data-table__table > tbody > tr:not(.cui-data-table__row):not(.cui-data-table__group) { display: block; }
+  .cui-data-table--auto .cui-data-table__empty { display: block; }
+  .cui-data-table--auto .cui-data-table__cell--nowrap { white-space: normal; }
+}
+@container cui-data-table (max-width: 360px) {
+  .cui-data-table--cards .cui-data-table__row, .cui-data-table--auto .cui-data-table__row { grid-template-columns: minmax(0, 1fr); }
+  .cui-data-table--cards .cui-data-table__row > .cui-data-table__cell, .cui-data-table--auto .cui-data-table__row > .cui-data-table__cell { grid-template-columns: minmax(0, 1fr); }
+  .cui-data-table--cards .cui-data-table__row > .cui-data-table__cell > .cui-data-table__value, .cui-data-table--auto .cui-data-table__row > .cui-data-table__cell > .cui-data-table__value { grid-column: 1; }
+}
+@media (pointer: coarse) {
+  .cui-data-table__check { width: 24px; height: 24px; }
+  .cui-data-table__th-inner, .cui-data-table__group-toggle { min-height: var(--target-coarse); }
+  .cui-data-table__th-inner { min-width: var(--target-coarse); }
+  /* A link that is a cell's whole value (a status that opens its record) is a full touch target too. */
+  .cui-data-table__value > a[href]:only-child { display: inline-flex; align-items: center; min-height: var(--target-coarse); }
+}
+.cui-data-table__pages { padding: var(--space-2); border-top: 1px solid var(--border); }

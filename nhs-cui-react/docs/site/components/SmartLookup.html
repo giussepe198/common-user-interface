@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SmartLookup · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Search</p>
+<h1 style="margin:0 0 4px;font-size:20px">SmartLookup</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Pick one of many, ranked, with recent choices · Guidelines: <code>src/search/SmartLookup/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SmartLookup, FormField } = window.ClinicalCUI;
+const teams = [
+  { value: 'u1', label: 'North adult team', description: 'Adult community service' },
+  { value: 'u2', label: 'South adult team', description: 'Adult community service' },
+  { value: 'u3', label: 'Māori health team', description: 'Kaupapa Māori service' },
+  { value: 'u4', label: 'Youth team', description: 'Youth service' },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 420, display: 'grid', gap: 12 } },
+    h(FormField, { label: 'Team' }, h(SmartLookup, { options: teams, recentOptions: [teams[3]], placeholder: 'Team name' })),
+    h(FormField, { label: 'Team (chosen)' }, h(SmartLookup, { options: teams, defaultValue: teams[2] }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

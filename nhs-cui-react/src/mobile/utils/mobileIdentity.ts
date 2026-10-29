@@ -44,6 +44,7 @@ import type {
   RegionalAllergyStatus,
 } from '../../patient';
 import { MOBILE_ALLERGY_SHORT_LABEL } from './regions/mobileWording';
+import type { AllergyStatusText } from '../../patient/utils/regions/banner';
 
 /** Another patient with a same or similar name, shown as a warning (AU-PI-04, PAL-0540 to PAL-0570). */
 export interface MobileSimilarName {
@@ -255,13 +256,25 @@ export interface MobileAllergySummary {
  * Allergy chip wording per region (PAB-0064, AU-AL-01, G11 9.2). In AU and NZ a list is never hidden behind a "none" status
  * and an empty list is never shown as "no known allergies"; "Unknown" and "Not recorded" look like warnings.
  */
-export function mobileAllergySummary(allergies: MobileAllergies | null | undefined, region: ClinicalRegion = 'GB'): MobileAllergySummary {
+export function mobileAllergySummary(
+  allergies: MobileAllergies | null | undefined,
+  region: ClinicalRegion = 'GB',
+  labels?: Partial<Record<RegionalAllergyStatus, string | AllergyStatusText>>,
+): MobileAllergySummary {
   const items = allergies?.items ?? [];
   let status: RegionalAllergyStatus = allergies?.status ?? 'unavailable';
   if (region !== 'GB' && items.length && status !== 'unavailable') status = 'known';
-  // An empty "known" list cannot be shown as known with no names: treat as not recorded [suggested].
-  if (status === 'known' && !items.length) status = 'not-recorded';
-  const t = ALLERGY_STATUS_TEXT[region][status];
+  // An empty "known" list cannot be shown as known with no names: treat as not recorded [suggested], unless the host
+  // gave its own words for the known allergies (they are then shown as given, never as "none").
+  if (status === 'known' && !items.length && !labels?.known) status = 'not-recorded';
+  const override = labels?.[status];
+  if (typeof override === 'string') {
+    const tone: MobileAllergyTone =
+      status === 'known' ? 'alert' : status === 'none-known' ? 'plain' : status === 'unavailable' ? 'unavailable' : 'warning';
+    const names = items.map(i => i.name);
+    return { status, text: override, shortText: override, statusText: override, tone, count: names.length, names };
+  }
+  const t = override ?? ALLERGY_STATUS_TEXT[region][status];
   const statusText = t.label ? `${t.label}: ${t.text}` : t.text;
   const names = items.map(i => i.name);
   const tone: MobileAllergyTone =

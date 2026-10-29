@@ -1,7 +1,7 @@
 .cui-iwi-input__entry { display: flex; flex-direction: column; gap: var(--space-1); margin: 0 0 var(--space-2) calc(16px + var(--space-2)); }
-.cui-iwi-input__entry-label { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); }
-.cui-iwi-input__table { border-collapse: collapse; margin-top: var(--space-1); font-size: 14px; line-height: 20px; color: var(--ink); }
-.cui-iwi-input__table th { padding: var(--space-1) var(--space-3) var(--space-1) 0; text-align: left; font-size: 12px; line-height: 16px; font-weight: 400; color: var(--ink-muted); border-bottom: 1px solid var(--border); }
+.cui-iwi-input__entry-label { font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; color: var(--ink); }
+.cui-iwi-input__table { border-collapse: collapse; margin-top: var(--space-1); font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); }
+.cui-iwi-input__table th { padding: var(--space-1) var(--space-3) var(--space-1) 0; text-align: left; font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 400; color: var(--ink-muted); border-bottom: 1px solid var(--border); }
 .cui-iwi-input__table td { padding: var(--space-1) var(--space-3) var(--space-1) 0; vertical-align: middle; border-bottom: 1px solid var(--border); }
 .cui-iwi-input__rohe { width: 20ch; }
-.cui-iwi-input__free { font-size: 12px; color: var(--ink-muted); }
+.cui-iwi-input__free { font-size: var(--font-size-label); color: var(--ink-muted); }

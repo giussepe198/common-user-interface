@@ -3,8 +3,10 @@
  * explicitly and defaulting to GB.
  */
 import type { ClinicalRegion } from '../../core/locale';
-import { ADMIN_STATUS_LABELS, AdminMedicationKind, AdminStatus, adminIsAsRequired, adminIsGivenStatus } from './adminEvents';
-import { ADMIN_AVOID_MIDNIGHT, ADMIN_CHART_WORDING, ADMIN_REASON_CODES, AdminReasonCode } from './regions/administration';
+import type { AdminMedicationKind, AdminStatus} from './adminEvents';
+import { ADMIN_STATUS_LABELS, adminIsAsRequired, adminIsGivenStatus } from './adminEvents';
+import type { AdminReasonCode } from './regions/administration';
+import { ADMIN_AVOID_MIDNIGHT, ADMIN_CHART_WORDING, ADMIN_REASON_CODES } from './regions/administration';
 
 export type { AdminReasonCode, AdminChartWording } from './regions/administration';
 export { ADMIN_REASON_CODES, ADMIN_CHART_WORDING, ADMIN_AVOID_MIDNIGHT } from './regions/administration';

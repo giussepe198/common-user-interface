@@ -28,4 +28,10 @@ describe('StatementList', () => {
     rerender(<StatementList statements={[]} />);
     expect(screen.getByText('No statements recorded.')).toBeTruthy();
   });
+
+  it('flags a statement with no coded term with the given words', () => {
+    render(<StatementList statements={[{ id: 'u', pattern: 'HCC', segments: [{ type: 'free', text: 'Slept well' }] }]} unboundLabel="Not coded" />);
+    expect(screen.getByText('Not coded')).toBeTruthy();
+    expect(screen.queryByText('No terms available')).toBeNull();
+  });
 });

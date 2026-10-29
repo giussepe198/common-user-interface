@@ -1,0 +1,21 @@
+.cui-menu-button { position: relative; display: inline-flex; min-width: 0; }
+.cui-menu-button__trigger { min-height: var(--control-height); }
+.cui-menu-button__trigger--pressed:not(.cui-button--primary) { background: var(--accent-surface); border-color: var(--accent); font-weight: 600; }
+.cui-menu-button__label { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.cui-menu-button__chevron { flex: none; margin-left: 2px; }
+.cui-menu { position: absolute; top: calc(100% + 2px); z-index: 900; min-width: 200px; max-width: min(360px, calc(100vw - 16px)); max-height: min(420px, calc(100vh - 80px)); overflow-y: auto; padding: var(--space-1) 0; background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); font-family: var(--font-sans); font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 400; text-align: left; }
+.cui-menu--start { left: 0; }
+.cui-menu--end { right: 0; }
+.cui-menu__item { display: flex; align-items: center; gap: var(--space-2); min-height: var(--control-height); padding: var(--space-1) var(--space-3) var(--space-1) var(--space-2); color: var(--ink); text-decoration: none; cursor: pointer; outline: none; user-select: none; }
+.cui-menu__item:focus, .cui-menu__item:hover { background: var(--hover); }
+.cui-menu__item:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.cui-menu__item--danger { color: var(--danger); }
+.cui-menu__item--disabled { color: var(--ink-disabled); cursor: not-allowed; }
+.cui-menu__item--disabled:hover { background: transparent; }
+.cui-menu__icon { flex: none; display: inline-flex; width: 16px; justify-content: center; }
+.cui-menu__text { flex: 1; min-width: 0; display: grid; }
+.cui-menu__label { overflow-wrap: anywhere; }
+.cui-menu__description { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-menu__shortcut { flex: none; margin-left: var(--space-4); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-menu__separator { height: 1px; margin: var(--space-1) 0; background: var(--border); }
+@media (pointer: coarse) { .cui-menu__item { min-height: var(--target-coarse); } }

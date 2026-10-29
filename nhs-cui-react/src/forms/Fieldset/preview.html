@@ -1,0 +1,14 @@
+<!-- @dsCard group="Forms" height=220 width=900 subtitle="A named section of a form" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { Fieldset, FormRow, FormField, TextInput } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(Fieldset, { legend: 'Next of kin', description: 'Who the service contacts in an emergency.' },
+    h(FormRow, null,
+      h(FormField, { label: 'Name' }, h(TextInput, { defaultValue: 'Alex CITIZEN' })),
+      h(FormField, { label: 'Relationship' }, h(TextInput, { defaultValue: 'Sibling' }))
+    )
+  )
+);
+</script>

@@ -1,0 +1,24 @@
+/* Legal order card. Container query: two columns of facts when wide, one when narrow. */
+.cui-legal-order {
+  container-type: inline-size;
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-2) var(--space-3); background: var(--surface); color: var(--ink);
+  border: 1px solid var(--border); border-radius: var(--radius-md);
+  font-size: var(--font-size-body); line-height: var(--line-height-body);
+}
+.cui-legal-order__header { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); }
+.cui-legal-order__title { margin: 0; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: var(--font-weight-subheading); min-width: 0; max-width: 100%; }
+.cui-legal-order__title .cui-legal-badge { font-size: inherit; line-height: inherit; }
+.cui-legal-order__source { margin: 0; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-legal-order__facts { display: grid; grid-template-columns: 1fr; gap: var(--space-1) var(--space-4); margin: 0; }
+@container (min-width: 520px) { .cui-legal-order__facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.cui-legal-order__fact { display: grid; grid-template-columns: minmax(9em, max-content) minmax(0, 1fr); gap: var(--space-2); align-items: start; min-width: 0; }
+.cui-legal-order__fact--wide { grid-column: 1 / -1; }
+.cui-legal-order__fact dt { font-size: var(--font-size-label); line-height: var(--line-height-body); color: var(--ink-muted); }
+.cui-legal-order__fact dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.cui-legal-order__value { font-weight: 600; font-variant-numeric: tabular-nums; }
+.cui-legal-order__value--unknown { font-weight: 400; color: var(--ink-muted); }
+.cui-legal-order__role { font-weight: 400; color: var(--ink-muted); }
+.cui-legal-order__conditions { margin: 0; padding-inline-start: var(--space-4); display: flex; flex-direction: column; gap: 2px; }
+.cui-legal-order__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); padding-top: var(--space-1); border-top: 1px solid var(--border); }
+@container (max-width: 359px) { .cui-legal-order__fact { grid-template-columns: 1fr; gap: 0; } }

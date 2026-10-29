@@ -79,7 +79,7 @@ export function GraphStack(props: GraphStackProps) {
   const byId = new Map(graphs.map(g => [g.id, g]));
   const shown = order.map(i => byId.get(i) as GraphStackGraph);
 
-  const localAlloc = React.useRef<SeriesStyleAllocator>();
+  const localAlloc = React.useRef<SeriesStyleAllocator | undefined>(undefined);
   const alloc = props.styleAllocator ?? (localAlloc.current ??= new SeriesStyleAllocator());
 
   const focusControlled = props.focusTime !== undefined;

@@ -1,7 +1,8 @@
 import React from 'react';
 import { cx, Icon } from '../../core';
 import { NilByMouthWarningSymbol } from '../NilByMouthBanner/NilByMouthBanner';
-import { DecisionSupportAlertLike, DecisionSupportIndicatorState, decisionSupportAlertIndicatorState } from '../utils/decisionSupport';
+import type { DecisionSupportAlertLike, DecisionSupportIndicatorState} from '../utils/decisionSupport';
+import { decisionSupportAlertIndicatorState } from '../utils/decisionSupport';
 
 export interface AlertIndicatorProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
   /** One of the five indicator states (2.4). Derived from `alerts` and `viewedIds` when omitted. */

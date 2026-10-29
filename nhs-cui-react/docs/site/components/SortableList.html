@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SortableList · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Drag and drop</p>
+<h1 style="margin:0 0 4px;font-size:20px">SortableList</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Sortable list: drag by the handle, keyboard on the handle, or the move buttons; a fixed first item; read only · Guidelines: <code>src/interaction/SortableList/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SortableList } = window.ClinicalCUI;
+const label = (t) => h('p', { className: 'cui-type-label', style: { margin: '12px 0 4px', color: 'var(--ink-muted)' } }, t);
+const start = [
+  { id: 'a', title: 'Phone the carer about Friday', due: 'Due today 17:00' },
+  { id: 'b', title: 'Book the medication review', due: 'Due Thu 29-Oct' },
+  { id: 'c', title: 'Send the discharge letter to the GP', due: 'No due date' },
+  { id: 'd', title: 'Check the housing referral', due: 'Due Mon 02-Nov' },
+];
+function Item(t) {
+  return h('div', null, h('div', { className: 'cui-type-body-strong' }, t.title), h('div', { className: 'cui-type-label', style: { color: 'var(--ink-muted)' } }, t.due));
+}
+function Demo(props) {
+  const [items, setItems] = React.useState(props.items || start);
+  return h(SortableList, Object.assign({
+    label: props.label, items, getKey: (t) => t.id, getLabel: (t) => t.title, renderItem: Item,
+    onReorder: (keys) => setItems(keys.map((k) => items.find((t) => t.id === k))),
+  }, props.extra || {}));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', { style: { maxWidth: 560 } },
+  label('To-do list'),
+  h('div', { style: { border: '1px solid var(--border)', borderRadius: 'var(--radius-md)' } }, h(Demo, { label: 'To do' })),
+  label('First item fixed (it has no handle; nothing moves above it)'),
+  h('div', { style: { border: '1px solid var(--border)', borderRadius: 'var(--radius-md)' } }, h(Demo, { label: 'Columns', extra: { canMove: (t) => t.id !== 'a', as: 'ol' } })),
+  label('Read only: no handles, no move buttons'),
+  h('div', { style: { border: '1px solid var(--border)', borderRadius: 'var(--radius-md)' } }, h(Demo, { label: 'To do, read only', extra: { disabled: true } }))
+));
+</script>
+
+</div>
+</body>
+</html>

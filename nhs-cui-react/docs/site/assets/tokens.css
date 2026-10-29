@@ -1,4 +1,4 @@
-/* Clinical CUI — generated from tokens.json */
+/* Clinical CUI: generated from tokens.json by scripts/tokens-css.mjs; do not edit. */
 :root, [data-theme="light"] {
   --surface: #ffffff;
   --surface-sunken: #f2f4f7;
@@ -39,6 +39,20 @@
   --series-3: #b38600;
   --series-4: #2e7d32;
   --normal-range: #e5f4ea;
+  --legal: #8a1f5a;
+  --legal-surface: #f8e3ee;
+  --on-legal: #ffffff;
+  --restricted: #6440a0;
+  --restricted-surface: #eee7f8;
+  --on-restricted: #ffffff;
+  --consent: #00666e;
+  --consent-surface: #dcf0f1;
+  --on-consent: #ffffff;
+  --ews-zone-yellow: #ffff99;
+  --ews-zone-orange: #ffe0ba;
+  --ews-zone-red: #ffc0d8;
+  --ews-zone-blue: #d1e8ff;
+  --ews-zone-purple: #e6d5ff;
   --shadow-popover: 0 4px 12px rgba(16,24,40,0.18);
   --shadow-dialog: 0 12px 32px rgba(16,24,40,0.24);
 }
@@ -82,8 +96,81 @@
   --series-3: #ffd166;
   --series-4: #7bd69a;
   --normal-range: #12301d;
+  --legal: #f28cc0;
+  --legal-surface: #3a1428;
+  --on-legal: #0d1117;
+  --restricted: #c7a8f5;
+  --restricted-surface: #2a1c42;
+  --on-restricted: #0d1117;
+  --consent: #63cfd6;
+  --consent-surface: #0b2c30;
+  --on-consent: #0d1117;
+  --ews-zone-yellow: #4a4712;
+  --ews-zone-orange: #57381a;
+  --ews-zone-red: #5a2236;
+  --ews-zone-blue: #1b3756;
+  --ews-zone-purple: #3d2a5e;
   --shadow-popover: 0 4px 12px rgba(0,0,0,0.6);
   --shadow-dialog: 0 12px 32px rgba(0,0,0,0.7);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface: #161b22;
+    --surface-sunken: #0d1117;
+    --surface-muted: #222a33;
+    --surface-reveal: #262c33;
+    --ink: #e8edf2;
+    --ink-muted: #b4bec9;
+    --ink-subtle: #9aa5b1;
+    --ink-disabled: #6b7682;
+    --border: #323b46;
+    --border-strong: #7d8996;
+    --accent: #6cb0f5;
+    --accent-hover: #9ccaf8;
+    --on-accent: #0d1117;
+    --accent-surface: #14273b;
+    --focus: #8cc2fa;
+    --hover: #3a3320;
+    --banner: #0a0f15;
+    --on-banner: #f0f4f8;
+    --on-banner-muted: #a9b5c2;
+    --banner-divider: #26323f;
+    --banner-alert: #ff8a80;
+    --danger: #ff8a80;
+    --danger-surface: #3b1714;
+    --on-danger: #1a0907;
+    --warning: #ffd166;
+    --warning-fill: #ffcc33;
+    --warning-surface: #352a0c;
+    --success: #7bd69a;
+    --success-surface: #12301d;
+    --info: #6cb0f5;
+    --info-surface: #14273b;
+    --encodable: #1d3756;
+    --confirmed: #2b3139;
+    --mandatory-symbol: #4a9ae8;
+    --series-1: #6cb0f5;
+    --series-2: #ff8a80;
+    --series-3: #ffd166;
+    --series-4: #7bd69a;
+    --normal-range: #12301d;
+    --legal: #f28cc0;
+    --legal-surface: #3a1428;
+    --on-legal: #0d1117;
+    --restricted: #c7a8f5;
+    --restricted-surface: #2a1c42;
+    --on-restricted: #0d1117;
+    --consent: #63cfd6;
+    --consent-surface: #0b2c30;
+    --on-consent: #0d1117;
+    --ews-zone-yellow: #4a4712;
+    --ews-zone-orange: #57381a;
+    --ews-zone-red: #5a2236;
+    --ews-zone-blue: #1b3756;
+    --ews-zone-purple: #3d2a5e;
+    --shadow-popover: 0 4px 12px rgba(0,0,0,0.6);
+    --shadow-dialog: 0 12px 32px rgba(0,0,0,0.7);
+  }
 }
 :root {
   --space-1: 4px;
@@ -95,14 +182,63 @@
   --radius-sm: 2px;
   --radius-md: 4px;
   --radius-lg: 8px;
+  --control-height: 32px;
+  --control-height-standard: 40px;
+  --target-coarse: 44px;
+  --target-touch: 48px;
+  --target-commit: 56px;
   --font-sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "Cascadia Mono", Consolas, "Courier New", monospace;
+  --font-size-patient-name: 20px;
+  --line-height-patient-name: 26px;
+  --font-weight-patient-name: 600;
+  --font-size-heading: 18px;
+  --line-height-heading: 24px;
+  --font-weight-heading: 600;
+  --font-size-subheading: 15px;
+  --line-height-subheading: 20px;
+  --font-weight-subheading: 600;
+  --font-size-body: 14px;
+  --line-height-body: 20px;
+  --font-weight-body: 400;
+  --font-size-body-strong: 14px;
+  --line-height-body-strong: 20px;
+  --font-weight-body-strong: 600;
+  --font-size-label: 12px;
+  --line-height-label: 16px;
+  --font-weight-label: 400;
+  --font-size-prompt: 12px;
+  --line-height-prompt: 16px;
+  --font-weight-prompt: 400;
+  --font-size-numeric: 14px;
+  --line-height-numeric: 20px;
+  --font-weight-numeric: 400;
+  --font-size-caption: 11px;
+  --line-height-caption: 14px;
+  --font-weight-caption: 400;
+  --font-size-detail: 13px;
+  --line-height-detail: 18px;
+  --font-weight-detail: 400;
+  --font-size-touch-body: 16px;
+  --line-height-touch-body: 22px;
+  --font-weight-touch-body: 400;
 }
-.patient-name { font-family: var(--font-sans); font-size: 20px; line-height: 26px; font-weight: 600; }
-.heading { font-family: var(--font-sans); font-size: 18px; line-height: 24px; font-weight: 600; }
-.subheading { font-family: var(--font-sans); font-size: 15px; line-height: 20px; font-weight: 600; }
-.body { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 400; }
-.body-strong { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 600; }
-.label { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 400; }
-.prompt { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 400; font-style: italic; }
-.numeric { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 400; }
+[data-density="standard"] {
+  --control-height: var(--control-height-standard);
+}
+@media (pointer: coarse) {
+  :root {
+    --control-height: var(--target-coarse);
+  }
+}
+.cui-type-patient-name { font-family: var(--font-sans); font-size: var(--font-size-patient-name); line-height: var(--line-height-patient-name); font-weight: var(--font-weight-patient-name); }
+.cui-type-heading { font-family: var(--font-sans); font-size: var(--font-size-heading); line-height: var(--line-height-heading); font-weight: var(--font-weight-heading); }
+.cui-type-subheading { font-family: var(--font-sans); font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: var(--font-weight-subheading); }
+.cui-type-body { font-family: var(--font-sans); font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: var(--font-weight-body); }
+.cui-type-body-strong { font-family: var(--font-sans); font-size: var(--font-size-body-strong); line-height: var(--line-height-body-strong); font-weight: var(--font-weight-body-strong); }
+.cui-type-label { font-family: var(--font-sans); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: var(--font-weight-label); }
+.cui-type-prompt { font-family: var(--font-sans); font-size: var(--font-size-prompt); line-height: var(--line-height-prompt); font-weight: var(--font-weight-prompt); font-style: italic; }
+.cui-type-numeric { font-family: var(--font-sans); font-size: var(--font-size-numeric); line-height: var(--line-height-numeric); font-weight: var(--font-weight-numeric); }
+.cui-type-caption { font-family: var(--font-sans); font-size: var(--font-size-caption); line-height: var(--line-height-caption); font-weight: var(--font-weight-caption); }
+.cui-type-detail { font-family: var(--font-sans); font-size: var(--font-size-detail); line-height: var(--line-height-detail); font-weight: var(--font-weight-detail); }
+.cui-type-touch-body { font-family: var(--font-sans); font-size: var(--font-size-touch-body); line-height: var(--line-height-touch-body); font-weight: var(--font-weight-touch-body); }

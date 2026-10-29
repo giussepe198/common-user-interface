@@ -1,9 +1,10 @@
 import React from 'react';
 import { cx, formatDateTime, Icon, useClinicalLocale, useId, VisuallyHidden } from '../../core';
 import type { ClinicalRegion } from '../../core';
+import type { AdrRisk, AdrStatus} from '../utils/adr';
 import {
   ADR_REGION_ABSENCE_TEXT,
-  adrAbsenceText, AdrRisk, AdrStatus, duplicateAdrAgents, formatAdrEventDate, formatAdrPastReactions, sortAdrRisks,
+  adrAbsenceText, duplicateAdrAgents, formatAdrEventDate, formatAdrPastReactions, sortAdrRisks,
 } from '../utils/adr';
 
 export interface AdrRiskListProps {
@@ -168,10 +169,10 @@ export function AdrRiskList({
                         <tbody>
                           {r.events!.map(ev => (
                             <tr key={ev.id}>
-                              <td className="cui-adr__date">{formatAdrEventDate(ev.date)}{ev.time ? ` ${ev.time}` : ''}</td>
-                              <td className={cx(ev.encoded && 'cui-adr__event--coded')}>{ev.description}</td>
-                              <td>{ev.source ? <>{ev.source.who}{ev.source.encounter ? <span className="cui-adr__meta">, {ev.source.encounter}</span> : null}</> : <span className="cui-adr__meta">Not recorded</span>}</td>
-                              <td>
+                              <td className="cui-adr__date" data-label="Date">{formatAdrEventDate(ev.date)}{ev.time ? ` ${ev.time}` : ''}</td>
+                              <td className={cx(ev.encoded && 'cui-adr__event--coded')} data-label="Event">{ev.description}</td>
+                              <td data-label="Source">{ev.source ? <>{ev.source.who}{ev.source.encounter ? <span className="cui-adr__meta">, {ev.source.encounter}</span> : null}</> : <span className="cui-adr__meta">Not recorded</span>}</td>
+                              <td data-label="Recorded by">
                                 {ev.author.name}, {ev.author.role}
                                 {ev.author.location ? <span className="cui-adr__meta">, {ev.author.location}</span> : null}
                               </td>

@@ -1,0 +1,19 @@
+/* A check box or radio with its label (shared by Checkbox, CheckboxGroup and RadioGroup). The row is at least the
+   control height, so a lone check box sits level with text boxes beside it in a FormRow. */
+.cui-check { display: inline-flex; align-items: flex-start; gap: var(--space-2); min-height: var(--control-height); padding: calc((var(--control-height) - var(--line-height-body)) / 2) 0; max-width: 100%; }
+.cui-check__input { flex: none; width: 16px; height: 16px; margin: 2px 0 0; accent-color: var(--accent); cursor: pointer; }
+.cui-check__text { display: flex; flex-direction: column; min-width: 0; }
+.cui-check__label { font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); cursor: pointer; overflow-wrap: anywhere; }
+.cui-check__description { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-check--disabled .cui-check__label { color: var(--ink-disabled); cursor: not-allowed; }
+/* A disabled option's description stays readable [suggested]: it often says why it is off, or is the content of a read-only list. */
+.cui-check--disabled .cui-check__description { cursor: not-allowed; }
+.cui-check--disabled .cui-check__input { cursor: not-allowed; }
+.cui-check__input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+@media (pointer: coarse) {
+  /* 44px targets: the whole label row is the target. */
+  .cui-check { min-height: var(--target-coarse); align-items: center; padding: 0; }
+  .cui-check__input { width: 20px; height: 20px; margin: 0; }
+  .cui-check__label { padding: var(--space-3) 0; }
+}

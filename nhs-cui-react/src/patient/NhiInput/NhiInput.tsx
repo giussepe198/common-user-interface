@@ -84,7 +84,7 @@ export const NhiInput = React.forwardRef<HTMLInputElement, NhiInputProps>(functi
     };
   }, [nhi, lookable]);
   const current = lookup && lookup.nhi === nhi ? lookup.result : null;
-  const useLive = (liveNhi: string) => {
+  const applyLiveNhi = (liveNhi: string) => {
     setOwn(liveNhi);
     onChange?.(liveNhi, liveNhi);
     onUseLiveNhi?.(liveNhi, nhi);
@@ -101,7 +101,7 @@ export const NhiInput = React.forwardRef<HTMLInputElement, NhiInputProps>(functi
           {current.liveNhi ? `This NHI is dormant. The live NHI is ${normaliseNhi(current.liveNhi)}.` : 'This NHI is dormant. The live NHI is not known.'}
         </span>
         {current.liveNhi ? (
-          <button type="button" className="cui-nhi-input__use-live" onClick={() => useLive(normaliseNhi(current.liveNhi))}>
+          <button type="button" className="cui-nhi-input__use-live" onClick={() => applyLiveNhi(normaliseNhi(current.liveNhi))}>
             Use live NHI
           </button>
         ) : null}

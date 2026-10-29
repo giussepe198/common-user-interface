@@ -107,7 +107,7 @@ export function TemplateTriggerText({
         }}
       >
         <button
-          ref={(el) => (tagRefs.current[i] = el)}
+          ref={(el) => { tagRefs.current[i] = el; }}
           type="button"
           className={cx('cui-template-tags__tag', isOpen && 'cui-template-tags__tag--open')}
           aria-expanded={isOpen}
@@ -201,7 +201,7 @@ export function TemplateTriggerText({
         {on ? `${matches.length} ${matches.length === 1 ? 'phrase has' : 'phrases have'} suggested templates. Focus a tagged phrase to see them; Down arrow moves into the list, Escape closes it.` : 'Template suggestions from free text are off.'}
       </p>
       {showToggle ? (
-        <label className="cui-template-tags__toggle">
+        <label className="cui-template-tags__toggle" data-touch-target>
           <input type="checkbox" checked={on} onChange={(e) => setOn(e.target.checked)} />
           Suggest templates from words in the text
         </label>

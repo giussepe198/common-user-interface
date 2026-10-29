@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Message · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Feedback</p>
+<h1 style="margin:0 0 4px;font-size:20px">Message</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Inline messages: info, success, warning, error with icon and words · Guidelines: <code>src/shell/Message/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+ReactDOM.createRoot(document.getElementById('root')).render(h(C.Stack, { gap: 2 },
+  h(C.Message, { tone: 'info', title: 'Read-only mode', live: 'off' }, 'The service is being updated. You can read records; saving is off until 14:30.'),
+  h(C.Message, { tone: 'success', title: 'Leave recorded', live: 'off' }),
+  h(C.Message, { tone: 'warning', title: 'Draft from 11-Aug-2026 16:05', live: 'off', actions: h(C.Cluster, null, h(C.Button, { size: 'sm' }, 'Open draft'), h(C.Button, { size: 'sm', variant: 'quiet' }, 'Discard')) }),
+  h(C.Message, { tone: 'error', title: 'Leave not saved', live: 'off', onDismiss: () => undefined }, 'The server did not answer. Your entry is still here.'),
+  h(C.Message, { tone: 'info', title: 'Filters hide 12 people', layout: 'inline', live: 'off', actions: h(C.Button, { size: 'sm', variant: 'quiet' }, 'Clear filters') })
+));
+</script>
+
+</div>
+</body>
+</html>

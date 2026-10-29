@@ -70,7 +70,7 @@ function focusables(root: HTMLElement | null): HTMLElement[] {
 }
 
 /** Internal: close a popover when the pointer goes down outside it. */
-export function useClickAway(ref: React.RefObject<HTMLElement>, active: boolean, onAway: () => void) {
+export function useClickAway(ref: React.RefObject<HTMLElement | null>, active: boolean, onAway: () => void) {
   const cb = React.useRef(onAway);
   cb.current = onAway;
   React.useEffect(() => {

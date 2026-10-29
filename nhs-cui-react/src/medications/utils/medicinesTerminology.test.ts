@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
+import type {
+  MedicinesTerminologyProduct} from './medicinesTerminology';
 import {
-  formatMedicinesTerminologyTerm, formatTerminologyStrength, hasUnitOfUse, isPackClass, isTradeProductClass, medicationLineFromTerminology,
-  MedicinesTerminologyProduct,
+  formatMedicinesTerminologyTerm, formatTerminologyStrength, hasUnitOfUse, isPackClass, isTradeProductClass, medicationLineFromTerminology
 } from './medicinesTerminology';
 import { medicationLineText } from './medicationLine';
 

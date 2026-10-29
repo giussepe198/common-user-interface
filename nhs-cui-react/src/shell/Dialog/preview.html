@@ -1,0 +1,25 @@
+<!-- @dsCard group="Overlays" height=760 subtitle="Modal dialog with description and footer; phone width becomes a full-screen sheet" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+function Demo() {
+  const [open, setOpen] = React.useState(true);
+  return h(C.SheetContainerProvider, { autoFocus: false },
+    h(C.Button, { onClick: () => setOpen(true) }, 'Record leave'),
+    h(C.Dialog, { open, onClose: () => setOpen(false), portal: false, title: 'Record leave', description: 'CHEN, Wei',
+      footer: h(React.Fragment, null, h(C.Button, { onClick: () => setOpen(false) }, 'Cancel'), h(C.Button, { variant: 'primary' }, 'Save leave')) },
+      h('p', { style: { margin: 0 } }, 'Leave details go here. The page behind is out of reach and global shortcuts do not fire.')));
+}
+function Confirm() {
+  return h(C.SheetContainerProvider, { autoFocus: false }, h(C.Dialog, { open: true, onClose: () => undefined, portal: false, size: 'sm', role: 'alertdialog', dismissible: false, title: 'Session locked',
+    footer: h(C.Button, { variant: 'primary' }, 'Unlock') }, h('p', { style: { margin: 0 } }, 'Sign in again to continue.')));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  label('Dialog, medium'), frame(860, 340, h(Demo)),
+  label('Alert dialog that must be answered'), frame(860, 300, h(Confirm))
+));
+</script>

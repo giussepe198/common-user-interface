@@ -1,0 +1,13 @@
+<!-- @dsCard group="Forms" height=140 subtitle="Search box with a clear button inside" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SearchInput, FormField } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 360 } },
+    h(SearchInput, { 'aria-label': 'Search teams', placeholder: 'Search teams' }),
+    h('div', { style: { height: 12 } }),
+    h(FormField, { label: 'Filter caseload' }, h(SearchInput, { defaultValue: 'citizen' }))
+  )
+);
+</script>

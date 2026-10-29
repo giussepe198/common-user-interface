@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RiskAlertList · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:848px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mental health</p>
+<h1 style="margin:0 0 4px;font-size:20px">RiskAlertList</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Risk alert list: severity order, high always shown, 'and N more alerts', empty state · Guidelines: <code>src/mental-health/RiskAlertList/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { RiskAlertList } = window.ClinicalCUI;
+const now = '2026-10-28T03:00:00Z';
+const alerts = [
+  { id: 'l1', category: 'Communication', severity: 'low', text: 'Hearing aid' },
+  { id: 'm1', category: 'Risk to self', severity: 'moderate', text: 'Recent self-harm', reviewDue: '2026-11-20' },
+  { id: 'h1', category: 'Safety to staff', severity: 'high', text: 'Two staff for home visits', reviewDue: '2026-10-01' },
+  { id: 'm2', category: 'Risk from others', severity: 'moderate', text: 'Family violence' }
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16, padding: 16, background: 'var(--surface)' } },
+    h(RiskAlertList, { alerts: alerts, maxVisible: 1, now: now, timeZone: 'Australia/Melbourne' }),
+    h(RiskAlertList, { alerts: [], heading: 'Alerts (none recorded)' })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

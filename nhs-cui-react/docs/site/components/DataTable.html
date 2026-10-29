@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DataTable · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Data display</p>
+<h1 style="margin:0 0 4px;font-size:20px">DataTable</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Data table: sorting, filtering, grouping, updates and stacked cards · Guidelines: <code>src/data/DataTable/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DataTable } = window.ClinicalCUI;
+const rows = [
+  { id: 'RF-0012', source: 'GP', received: '2026-10-20', priority: 'Routine', team: 'North', waiting: 8, tasks: ['Triage call'] },
+  { id: 'RF-0013', source: 'Emergency department', received: '2026-10-26', priority: 'Urgent', team: 'North', waiting: 2, tasks: [] },
+  { id: 'RF-0014', source: 'Self', received: '2026-10-12', priority: 'Routine', team: 'South', waiting: 16, tasks: ['Send letter', 'Book assessment'] },
+  { id: 'RF-0015', source: 'Police', received: '2026-10-27', priority: 'Urgent', team: 'South', waiting: 1, tasks: ['Phone referrer'] },
+];
+const columns = [
+  { id: 'id', title: 'Referral', isRowKey: true },
+  { id: 'source', title: 'Source' },
+  { id: 'received', title: 'Received', dataType: 'date' },
+  { id: 'priority', title: 'Priority', dataType: 'ordinal', options: ['Urgent', 'Routine'], groupable: true },
+  { id: 'team', title: 'Team', groupable: true },
+  { id: 'waiting', title: 'Waiting', unit: 'days', dataType: 'integer', align: 'right' },
+  { id: 'tasks', title: 'Outstanding tasks', sublist: r => r.tasks, sortable: false, filterable: false },
+];
+const base = { columns, rows, getRowKey: r => r.id, rowNoun: 'referrals' };
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gap: 16 } },
+    h(DataTable, Object.assign({}, base, { caption: 'Open referrals', defaultSort: [{ attributeId: 'received', direction: 'desc' }], selectionMode: 'multiple', updates: [{ id: 'u1', rowKey: 'RF-0015' }, { id: 'u2', rowKey: 'RF-0012', columnId: 'priority' }], onUnmark: () => {} })),
+    h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))', gap: 16, alignItems: 'start' } },
+      h(DataTable, Object.assign({}, base, { caption: 'Narrow panel: cards', layout: 'cards', cardColumnIds: ['priority', 'waiting', 'tasks'], showToolbar: false })),
+      h('div', { style: { display: 'grid', gap: 16 } },
+        h(DataTable, Object.assign({}, base, { caption: 'Grouped by team', defaultGroupBy: 'team', showToolbar: false })),
+        h(DataTable, Object.assign({}, base, { caption: 'Loading', rows: [], loading: true, showToolbar: false })),
+        h(DataTable, Object.assign({}, base, { caption: 'Empty', rows: [], emptyText: 'No open referrals for the East team', showToolbar: false })))))
+);
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!-- @dsCard group="Mental health" width=1100 height=980 subtitle="Observation round: overdue first, quick record, missed checks in words; narrow and phone worklist" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ObservationRound, ClinicalLocaleProvider, Worklist, mhObservationRoundTasks } = window.ClinicalCUI;
+const now = '2026-10-28T03:00:00Z';
+const entries = [
+  { id: 'a', person: { familyName: 'Smith', givenName: 'Alex', dateOfBirth: '1985-06-30', mrn: '009981' }, sex: 'Male', bed: 'Bed 2', level: 'intermittent', intervalMinutes: 15, dueAt: '2026-10-28T03:03:00Z' },
+  { id: 'b', person: { familyName: 'Nguyen', givenName: 'Thi Lan', dateOfBirth: '1990-03-12', mrn: '004512' }, sex: 'Female', bed: 'Bed 4', level: 'close', dueAt: '2026-10-28T02:45:00Z', missedCount: 1 },
+  { id: 'c', person: { familyName: 'Brown', givenName: 'Sam', dateOfBirth: '1979-01-02', mrn: '001234' }, bed: 'Bed 7', level: 'general', intervalMinutes: 60, dueAt: '2026-10-28T03:40:00Z' },
+  { id: 'd', person: { familyName: 'Walker', givenName: 'Jo', dateOfBirth: '2001-09-15', mrn: '007700' }, sex: 'Non-binary', bed: 'Bed 9', level: 'intermittent', intervalMinutes: 30, dueAt: '2026-10-28T02:30:00Z', recordedAt: '2026-10-28T02:31:00Z', recordedBy: 'J Lee', result: { seen: true, location: 'lounge', engagement: 'engaged', behaviour: 'settled' } }
+];
+const locations = [{ value: 'bedroom', label: 'Bedroom' }, { value: 'lounge', label: 'Lounge' }, { value: 'courtyard', label: 'Courtyard' }];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(ClinicalLocaleProvider, { region: 'AU' },
+    h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16, padding: 16, background: 'var(--surface)' } },
+      h(ObservationRound, { entries, locations, now, context: 'Ward 3', timeZone: 'Australia/Melbourne', onRecord: function () {} }),
+      h('div', { style: { display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' } },
+        h('div', { style: { flex: '1 1 300px', minWidth: 0, maxWidth: 360, border: '1px solid var(--border)' } },
+          h(ObservationRound, { entries: entries.slice(0, 2), locations, now, headingLevel: 3, labels: { title: 'Observation round (narrow)' }, timeZone: 'Australia/Melbourne', onRecord: function () {} })),
+        h('div', { style: { flex: '1 1 300px', minWidth: 0, maxWidth: 390, border: '1px solid var(--border)' } },
+          h(Worklist, { title: 'Observation round', context: 'Ward 3', headingLevel: 2, now: new Date(now), defaultFilter: 'all', tasks: mhObservationRoundTasks(entries) }))
+      )
+    )
+  )
+);
+</script>

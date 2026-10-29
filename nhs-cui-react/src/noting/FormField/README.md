@@ -18,6 +18,9 @@ Wraps a single input with its label, prompt text, required indicator, missed-fie
 
 - A child element gets `id`, `aria-describedby` (merged with its own), `aria-invalid`, `aria-required` and, for an in-field prompt, `placeholder`; props FormField has no value for are not passed, so the child's own `placeholder` is kept. Composite controls work as children when they put `id` on their input: `TerminologySearch` does (leave out its `label`). A child's `inputId` is used as the id when neither has an `id`.
 
+- Three slots in a row: FormField renders its label, control and feedback as its only children (`data-slot="label"`, `"control"`, `"feedback"`, root `data-cui-field`). Inside `FormRow` or `FormGrid` (forms area) each becomes a subgrid item: labels share one track and sit at its end, controls share the next track, and prompts below and errors share the feedback track, so they never push a control. Outside a row the slots stack as before. `labelPosition="left"` is ignored inside a row.
+- Forms controls (`TextInput`, `Select`, `Combobox`, `MultiSelect`, `TextArea`, `Switch`, `FileInput`, `SearchInput`) and the datetime inputs in `bare` mode are designed as children. Controls that draw their own box mark it `data-cui-box` (and their input `data-cui-boxed`), and the error and missed states shade the box instead of the input inside it.
+
 ## Guidance implemented
 - CNA-0440 [M] every field has a visible label; CNA-2060 [R] labels in sentence case (applied to string labels, `preserveWords` keeps proper nouns).
 - CNA-2090 [R] prompts where needed; CNA-2100 [R] prompts grey italic; CNA-2110 [M] prompt text is not editable.
@@ -34,5 +37,6 @@ Wraps a single input with its label, prompt text, required indicator, missed-fie
 
 ## Accessibility
 - The label is a real `label` bound to the control. Prompt, missed text and error are linked with `aria-describedby`; `aria-invalid` is set for errors and missed fields; `aria-required` for required fields.
+- The error sits in a polite live region that is always present, so an error that appears is announced without interrupting typing.
 - The asterisk is hidden from screen readers and replaced by the word "required".
 - Placeholder colour (`--ink-subtle`) is used on `--surface` only.

@@ -1,0 +1,14 @@
+<!-- @dsCard group="Forms" height=220 subtitle="Native drop-down list with nothing chosen by default" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { FormField, Select } = window.ClinicalCUI;
+const contact = [{ value: 'phone', label: 'Phone' }, { value: 'sms', label: 'Text message' }, { value: 'email', label: 'Email' }, { value: 'post', label: 'Post', group: 'Other' }, { value: 'none', label: 'Do not contact', group: 'Other' }];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 360 } },
+    h(FormField, { label: 'Preferred contact' }, h(Select, { options: contact })),
+    h(FormField, { label: 'Preferred contact', required: true, error: 'Choose how to contact the person' }, h(Select, { options: contact })),
+    h(FormField, { label: 'Disabled' }, h(Select, { options: contact, defaultValue: 'sms', disabled: true }))
+  )
+);
+</script>

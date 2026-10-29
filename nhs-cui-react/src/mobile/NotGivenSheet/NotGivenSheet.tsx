@@ -48,7 +48,7 @@ export interface NotGivenSheetProps {
   /** Push a history entry so the back button closes the sheet. Default true. */
   closeOnBrowserBack?: boolean;
   /** Element to focus on open. Default: the first focusable element in the sheet. See BottomSheet. */
-  initialFocusRef?: React.RefObject<HTMLElement>;
+  initialFocusRef?: React.RefObject<HTMLElement | null>;
   /**
    * Move focus in when the sheet is already open on first render. Default true (or the SheetContainerProvider
    * setting); later opens always move focus. Set false on documentation pages [suggested].

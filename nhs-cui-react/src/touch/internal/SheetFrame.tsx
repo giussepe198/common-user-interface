@@ -22,7 +22,7 @@ export interface SheetFrameProps {
   showCloseButton?: boolean;
   closeLabel?: string;
   closeStyle?: 'icon' | 'text' | 'back';
-  initialFocusRef?: React.RefObject<HTMLElement>;
+  initialFocusRef?: React.RefObject<HTMLElement | null>;
   autoFocus?: boolean;
   returnFocus?: boolean;
   headingLevel?: 1 | 2 | 3;

@@ -1,5 +1,6 @@
 import React from 'react';
-import { cx, formatShortDate, DateLike } from '../../core';
+import type { DateLike } from '../../core';
+import { cx, formatShortDate } from '../../core';
 import type { MedicationStatus } from '../utils/medicationsList';
 import { isCurrentMedicationStatus } from '../utils/medicationsList';
 

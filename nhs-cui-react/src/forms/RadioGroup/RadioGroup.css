@@ -1,0 +1,2 @@
+/* RadioGroup uses .cui-check (Checkbox.css) and .cui-choice-options (CheckboxGroup.css); radios are round. */
+.cui-check--radio .cui-check__input { border-radius: 50%; }

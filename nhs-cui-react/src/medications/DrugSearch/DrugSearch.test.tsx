@@ -21,7 +21,7 @@ describe('DrugSearch', () => {
     expect(screen.getAllByText('Please type in at least 2 characters').length).toBeGreaterThan(0);
     rerender(<DrugSearch catalogue={catalogue} query="aten" />);
     expect(screen.getByText('Commonly prescribed matches')).toBeTruthy();
-    expect(options().map(o => o.textContent?.replace(/ /g, ' '))).toEqual(['atenolol, shortcut Ctrl + 1', 'atenolol – ATENIX']);
+    expect(options().map(o => o.textContent?.replace(/\u00a0/g, ' '))).toEqual(['atenolol, shortcut Ctrl + 1', 'atenolol – ATENIX']);
   });
   it('no matches message; synonym and mis-selection text', () => {
     const { rerender } = render(<DrugSearch catalogue={catalogue} query="xyzq" />);

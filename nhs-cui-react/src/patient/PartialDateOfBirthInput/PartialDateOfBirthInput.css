@@ -1,15 +1,15 @@
 /* Partial date of birth input (HISO 10046 2.3.1, G12 5). */
 .cui-partial-dob { border: 0; margin: 0; padding: 0; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); }
-.cui-partial-dob__legend { padding: 0; font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); }
-.cui-partial-dob__required { font-size: 12px; font-weight: 400; color: var(--ink-muted); }
-.cui-partial-dob__hint { font-size: 12px; line-height: 16px; color: var(--ink-muted); max-width: 48ch; }
+.cui-partial-dob__legend { padding: 0; font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; color: var(--ink); }
+.cui-partial-dob__required { font-size: var(--font-size-label); font-weight: 400; color: var(--ink-muted); }
+.cui-partial-dob__hint { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); max-width: 48ch; }
 .cui-partial-dob__row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-3); }
 .cui-partial-dob__field { display: flex; flex-direction: column; gap: 2px; }
-.cui-partial-dob__label { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
-.cui-partial-dob__box { box-sizing: content-box; font: inherit; font-size: 14px; line-height: 20px; font-variant-numeric: tabular-nums; padding: 5px 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
-.cui-partial-dob__select { font: inherit; font-size: 14px; line-height: 20px; height: 32px; padding: 0 4px 0 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); max-width: 30ch; }
+.cui-partial-dob__label { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-partial-dob__box { box-sizing: content-box; font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); font-variant-numeric: tabular-nums; padding: 5px var(--space-2); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-partial-dob__select { font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); height: var(--control-height); padding: 0 var(--space-1) 0 var(--space-2); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); max-width: 30ch; }
 .cui-partial-dob__box:disabled, .cui-partial-dob__select:disabled { color: var(--ink-disabled); background: var(--surface-muted); border-color: var(--border); }
 .cui-partial-dob--error .cui-partial-dob__box { border-color: var(--danger); box-shadow: inset 0 0 0 1px var(--danger); }
-.cui-partial-dob__recorded { font-size: 12px; line-height: 16px; color: var(--ink-muted); min-height: 16px; }
-.cui-partial-dob__error { display: flex; align-items: flex-start; gap: var(--space-1); font-size: 12px; line-height: 16px; font-weight: 600; color: var(--danger); max-width: 48ch; }
+.cui-partial-dob__recorded { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); min-height: 16px; }
+.cui-partial-dob__error { display: flex; align-items: flex-start; gap: var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--danger); max-width: 48ch; }
 .cui-partial-dob__error .cui-icon { flex: none; }

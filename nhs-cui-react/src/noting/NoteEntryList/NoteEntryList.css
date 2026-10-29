@@ -1,5 +1,5 @@
-.cui-note-entry-list { font-size: 14px; line-height: 20px; color: var(--ink); max-width: 100%; }
-.cui-note-entry-list__heading { margin: 0 0 var(--space-2); font-size: 15px; line-height: 20px; font-weight: 600; }
+.cui-note-entry-list { font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); max-width: 100%; }
+.cui-note-entry-list__heading { margin: 0 0 var(--space-2); font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
 .cui-note-entry-list__entries { list-style: none; margin: 0; padding: 0; }
 .cui-note-entry { border-bottom: 1px solid var(--border); padding: 2px 0; }
 .cui-note-entry:first-child { border-top: 1px solid var(--border); }
@@ -9,7 +9,7 @@
 .cui-note-entry__term--encoded { font-weight: 700; }
 .cui-note-entry__summary { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
 .cui-note-entry__summary strong { font-weight: 700; }
-.cui-note-entry__summary--empty { flex: 0 0 auto; font-size: 12px; color: var(--ink-muted); }
+.cui-note-entry__summary--empty { flex: 0 0 auto; font-size: var(--font-size-label); color: var(--ink-muted); }
 .cui-note-entry__term:hover, .cui-note-entry__summary:hover { background: var(--hover); border-color: var(--border); }
 .cui-note-entry__term--static, .cui-note-entry__summary--static { cursor: default; }
 .cui-note-entry__term--static:hover, .cui-note-entry__summary--static:hover { background: transparent; border-color: transparent; }
@@ -20,7 +20,7 @@
 .cui-note-entry__date { width: 18em; max-width: 100%; }
 .cui-note-entry__date-confirm { padding-top: 6px; }
 .cui-note-entry__text { width: 26em; max-width: 100%; }
-.cui-note-entry__qualifiers { border: 0; margin: 0; padding: 4px 0 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.cui-note-entry__qualifiers { border: 0; margin: 0; padding: var(--space-1) 0 0; display: flex; flex-direction: column; gap: var(--space-1); }
 .cui-note-entry__qualifier { display: inline-flex; align-items: center; gap: var(--space-2); cursor: pointer; }
 .cui-note-entry__qualifier input { margin: 0; accent-color: var(--accent); }
 .cui-note-entry__confirm { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin: 2px 0 var(--space-1) var(--space-6); padding: var(--space-2) var(--space-3); background: var(--warning-surface); border: 1px solid var(--warning); border-radius: var(--radius-md); }

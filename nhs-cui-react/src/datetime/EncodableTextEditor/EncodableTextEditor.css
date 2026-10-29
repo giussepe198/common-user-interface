@@ -1,8 +1,8 @@
 .cui-encodable { display: flex; flex-direction: column; gap: var(--space-1); max-width: 100%; }
-.cui-encodable__label { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); }
+.cui-encodable__label { font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; color: var(--ink); }
 .cui-encodable__frame { position: relative; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
 .cui-encodable__frame:focus-within { outline: 2px solid var(--focus); outline-offset: 1px; }
-.cui-encodable__backdrop, .cui-encodable__input { box-sizing: border-box; margin: 0; padding: var(--space-2) var(--space-3); font-family: var(--font-sans); font-size: 14px; line-height: 21px; font-weight: 400; letter-spacing: normal; word-spacing: normal; text-align: left; white-space: pre-wrap; overflow-wrap: break-word; word-break: normal; tab-size: 4; }
+.cui-encodable__backdrop, .cui-encodable__input { box-sizing: border-box; margin: 0; padding: var(--space-2) var(--space-3); font-family: var(--font-sans); font-size: var(--font-size-body); line-height: 21px; font-weight: 400; letter-spacing: normal; word-spacing: normal; text-align: left; white-space: pre-wrap; overflow-wrap: break-word; word-break: normal; tab-size: 4; }
 .cui-encodable__backdrop { position: absolute; inset: 0; overflow: hidden; color: var(--ink); pointer-events: none; }
 .cui-encodable__input { position: relative; display: block; width: 100%; min-height: 64px; resize: vertical; border: 0; background: transparent; color: transparent; caret-color: var(--ink); overflow-y: auto; }
 .cui-encodable__input:focus { outline: none; }
@@ -20,7 +20,7 @@
 .cui-encodable__handle::after { content: ''; position: absolute; top: -14px; width: 4px; height: 17px; background: var(--warning-fill); border: 1px solid var(--ink); border-radius: 1px; }
 .cui-encodable__handle--start::after { left: -5px; }
 .cui-encodable__handle--end::after { left: -1px; }
-.cui-encodable__hint { font-size: 12px; line-height: 16px; font-style: italic; color: var(--ink-muted); max-width: 640px; }
+.cui-encodable__hint { font-size: var(--font-size-prompt); line-height: var(--line-height-prompt); font-style: italic; color: var(--ink-muted); max-width: 640px; }
 .cui-encodable__handle--draggable { pointer-events: auto; z-index: 2; cursor: ew-resize; touch-action: none; }
 .cui-encodable__handle--draggable::before { content: ''; position: absolute; top: -16px; left: -8px; width: 14px; height: 21px; }
 .cui-encodable__handle--draggable:hover::after, .cui-encodable__handle--dragging::after { outline: 2px solid var(--focus); outline-offset: 1px; }

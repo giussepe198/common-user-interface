@@ -261,7 +261,7 @@ export function HierarchyBrowserDialog({
                   return (
                     <button
                       key={t.id}
-                      ref={(el) => (tabRefs.current[t.id] = el)}
+                      ref={(el) => { tabRefs.current[t.id] = el; }}
                       type="button"
                       role="tab"
                       id={`${baseId}-tab-${i}`}

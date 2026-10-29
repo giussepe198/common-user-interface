@@ -7,7 +7,7 @@ Experimental. Search for a clinical data-entry template by title, synonym, abbre
 
 ## What you provide
 - `templates` (title, synonyms, abbreviations, contexts, generic, suggested, additional, metadata, sections), `onSelect`.
-- Optional `context` and `filterEnabled`/`onFilterEnabledChange`, `maxResults` (default 10 [suggested]), `match` (your own matcher), `minChars`.
+- Optional `context` and `filterEnabled`/`onFilterEnabledChange`, `maxResults` (default 10 [suggested]), `match` (your own matcher), `minChars` (with `0` the box opens listing every template to browse, suggested first, filtered by context; `browseTemplates` is the same list).
 
 ```tsx
 <TemplateSearch templates={templates} context="Cardiology" onSelect={openTemplate} />

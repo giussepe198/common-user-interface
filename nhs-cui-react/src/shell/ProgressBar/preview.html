@@ -1,0 +1,15 @@
+<!-- @dsCard group="Feedback" height=260 subtitle="Progress in words with a bar; indeterminate, finished and stopped" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+ReactDOM.createRoot(document.getElementById('root')).render(h(C.Stack, { gap: 3 },
+  h(C.ProgressBar, { label: 'Importing contacts', value: 120, max: 480, valueText: '120 of 480' }),
+  h(C.ProgressBar, { label: 'Checking records' }),
+  h(C.ProgressBar, { label: 'Import finished', value: 480, max: 480, valueText: '480 of 480', tone: 'success' }),
+  h(C.ProgressBar, { label: 'Import stopped', value: 200, max: 480, valueText: '200 of 480', tone: 'error' })
+));
+</script>

@@ -16,7 +16,15 @@ The patient identification cell for multi-patient lists: name, date of birth and
 />
 ```
 
-`patient={null}` shows an unoccupied location. Identifiers: `nhsNumber` (GB), `ihi`, `ihiStatus`, `mrn` (AU), `nhi` (NZ).
+`patient={null}` shows an unoccupied location. Optional slots: `afterName` (content on the name line after the name, for example "Known as Lan (she/her)") and `afterBirth` (content on the Born line after the date, for example the age and the sex, so they read before the identifier). Both are [suggested] extensions; without them the cell is unchanged. Identifiers: `nhsNumber` (GB), `ihi`, `ihiStatus`, `mrn` (AU), `nhi` (NZ).
+
+Further optional props, all [suggested]:
+
+- `nameHref`: the name becomes a link that opens the record, so a list row opens in one click. The link is marked by the accent colour and weight, underlined on hover and focus only, so the differentiator underline of PAL-0550 still reads. Under a coarse pointer the link is at least the touch target height, a wrapped name included.
+- `nameText`: the name exactly as the source formatted it, for a record without separate family and given names (an imported record, or "Person not identified"). The name parts win when present; `nameText` is never re-cased.
+- `dateOfBirthText`: the date of birth in the caller's words, for a partial or estimated date ("Mar-1990, day not known"); see `PartialDateOfBirthDisplay`.
+- `unknownText`: the words for a missing date of birth or identifier (default "Unknown"; a service following its own banner standard may say "Not Known").
+- `identifierTypes`: the identifiers a care setting shows, in order, for a service that holds only some of the region's, for example only its local record number (`['mrn']` with `mrnLabel="Record number"`).
 
 ## Guidance implemented
 

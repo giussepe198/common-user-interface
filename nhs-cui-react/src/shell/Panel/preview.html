@@ -1,0 +1,15 @@
+<!-- @dsCard group="Page layout" height=520 subtitle="Dense card: heading, count, actions, body, footer; collapsible" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+ReactDOM.createRoot(document.getElementById('root')).render(h(C.Stack, { gap: 3 },
+  h(C.Panel, { title: 'Contacts', count: 3, countLabel: '3 contacts', actions: h(C.Button, { size: 'sm', variant: 'quiet', icon: 'plus' }, 'Add contact'), footer: h('a', { href: '#all' }, 'Show all 3') },
+    h('p', { style: { margin: 0 } }, 'LEE, Sam, mother, 0400 000 000')),
+  h(C.Panel, { title: 'Previous episodes', subtitle: 'Collapsed: count shown', collapsible: true, defaultCollapsed: true, count: 5, countLabel: '5 episodes', countWhenCollapsed: true }, h('p', null, 'Hidden')),
+  h(C.Panel, { title: 'Nested group', variant: 'sunken', padding: 'none' }, h(C.EmptyState, { title: 'No items recorded', layout: 'inline' }))
+));
+</script>

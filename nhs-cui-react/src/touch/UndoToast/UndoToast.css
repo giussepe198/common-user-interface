@@ -1,12 +1,12 @@
-.cui-undo-toast { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3) var(--space-4); background: var(--banner); color: var(--on-banner); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); font-family: var(--font-sans); font-size: 16px; line-height: 22px; }
+.cui-undo-toast { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3) var(--space-4); background: var(--banner); color: var(--on-banner); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); font-family: var(--font-sans); font-size: var(--font-size-touch-body); line-height: var(--line-height-touch-body); }
 .cui-undo-toast--fixed { position: fixed; left: var(--space-4); right: var(--space-4); z-index: 900; max-width: 560px; margin: 0 auto; }
 .cui-undo-toast__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .cui-undo-toast__message { font-weight: 600; overflow-wrap: anywhere; }
-.cui-undo-toast__time { font-size: 14px; line-height: 20px; color: var(--on-banner-muted); font-variant-numeric: tabular-nums; }
+.cui-undo-toast__time { font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--on-banner-muted); font-variant-numeric: tabular-nums; }
 .cui-undo-toast__bar { height: 4px; background: var(--banner-divider); border-radius: 2px; overflow: hidden; }
 .cui-undo-toast__bar > span { display: block; height: 100%; background: var(--on-banner); }
 .cui-undo-toast__actions { display: flex; gap: var(--space-2); }
-.cui-undo-toast__undo, .cui-undo-toast__secondary { min-height: 48px; min-width: 48px; padding: 0 var(--space-4); border-radius: var(--radius-md); font-family: inherit; font-size: 16px; font-weight: 700; cursor: pointer; touch-action: manipulation; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1); }
+.cui-undo-toast__undo, .cui-undo-toast__secondary { min-height: var(--target-touch); min-width: var(--target-touch); padding: 0 var(--space-4); border-radius: var(--radius-md); font-family: inherit; font-size: var(--font-size-touch-body); font-weight: 700; cursor: pointer; touch-action: manipulation; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1); }
 .cui-undo-toast__undo { flex: 1 1 auto; background: var(--on-banner); color: var(--banner); border: 1px solid var(--on-banner); }
 .cui-undo-toast__secondary { background: transparent; color: var(--on-banner); border: 1px solid var(--banner-divider); font-weight: 600; }
 .cui-undo-toast__dismiss { padding: 0; }

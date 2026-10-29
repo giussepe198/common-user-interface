@@ -5,7 +5,8 @@ import { MedicationLine } from '../../medications';
 import { adminKindLabelFor, adminMidnightScheduleNote } from '../utils/adminRegion';
 import { formatDateTime, formatShortDate, formatTime, toDate } from '../../core/format';
 import { adminIsSameDay } from '../utils/adminChart';
-import { AdminMedication, adminIsAsRequired } from '../utils/adminEvents';
+import type { AdminMedication} from '../utils/adminEvents';
+import { adminIsAsRequired } from '../utils/adminEvents';
 
 export type AdminInfoTab = 'verification' | 'instructions' | 'prescriber';
 
@@ -169,7 +170,7 @@ export function MedicationInfoPanel({ medication: m, tab, onTab, onClose, id }: 
         {tabs.map((t, i) => (
           <button
             key={t.id}
-            ref={el => (refs.current[t.id] = el)}
+            ref={(el) => { refs.current[t.id] = el; }}
             type="button"
             role="tab"
             id={`${id}-tab-${t.id}`}

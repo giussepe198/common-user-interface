@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, cx, formatDateTime, toDate, useControllableState, useId, type DateLike } from '../../core';
+import { Button, cx, formatDateTime, formatShortDate, toDate, useControllableState, useId, type DateLike } from '../../core';
 import { ObservationTable, type BloodPressureSeries, type ObservationPoint, type ObservationSeries } from '../ObservationTable/ObservationTable';
 import { chooseTimeTicks, timeToX, timelineXToTime, type TimelineScale } from '../utils/timeScale';
 import { chooseYTicks } from '../utils/graphScale';
@@ -178,7 +178,7 @@ export function ObservationGraph(props: ObservationGraphProps) {
     if (t !== focusT) props.onFocusTimeChange?.(t === null ? null : new Date(t));
   };
   const [fit, setFit] = React.useState(false);
-  const localAlloc = React.useRef<SeriesStyleAllocator>();
+  const localAlloc = React.useRef<SeriesStyleAllocator | undefined>(undefined);
   const alloc = styleAllocator ?? (localAlloc.current ??= new SeriesStyleAllocator());
   const styles: Record<string, ObservationSeriesStyle> = {};
   series.forEach(s => (styles[s.id] = alloc.allocate(s.id)));
@@ -368,7 +368,7 @@ export function ObservationGraph(props: ObservationGraphProps) {
     const x = seriesPts.find(sp => sp.pts.length);
     if (!x || overlaid) return null;
     const p = x.pts[x.pts.length - 1];
-    return { text: p.p.display ?? String(p.p.value), t: p.t, source: p.p.source, critical: critOf(x.s.id, p.p.value) };
+    return { text: p.p.display ?? String(p.p.value), t: p.t, source: p.p.source, critical: critOf(x.s.id, p.p.value), day: x.s.timePrecision === 'day' };
   })();
   const nowMs = now ? toDate(now)?.getTime() : undefined;
   const svgH = T + height + B;
@@ -462,7 +462,7 @@ export function ObservationGraph(props: ObservationGraphProps) {
             <span className="cui-obs-graph__range">{rangeText}</span>
             {latest ? (
               <span className="cui-obs-graph__latest">
-                Latest <strong className="cui-tabular">{latest.text}</strong> at {formatDateTime(new Date(latest.t))}
+                Latest <strong className="cui-tabular">{latest.text}</strong> {'day' in latest && latest.day ? `on ${formatShortDate(new Date(latest.t))}` : `at ${formatDateTime(new Date(latest.t))}`}
                 {latest.source ? `, ${latest.source} reading` : ''}
                 {latest.critical ? <span className="cui-obs-graph__crit-word">{`, ${observationCriticalLabel(latest.critical).toLowerCase()}`}</span> : null}
               </span>

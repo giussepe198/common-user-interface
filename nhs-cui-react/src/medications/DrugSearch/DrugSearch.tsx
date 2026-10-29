@@ -1,12 +1,14 @@
 import React from 'react';
-import { cx, formatShortDate, Icon, useClinicalLocale, useControllableState, useId, VisuallyHidden, DateLike } from '../../core';
-import type { ClinicalRegion } from '../../core';
-import {
-  DrugCatalogueEntry, DrugSearchGroup, DrugSearchGroupResult, drugSearchGroupLabel, drugSearchGroupMembers, DrugSearchOutcome,
-  DrugSearchResult, drugSearchCountMessage, drugSearchFeedback, drugShortcutLabel, searchDrugCatalogue,
+import { cx, formatShortDate, Icon, useClinicalLocale, useControllableState, useId, VisuallyHidden } from '../../core';
+import type { ClinicalRegion , DateLike } from '../../core';
+import type {
+  DrugCatalogueEntry, DrugSearchGroup, DrugSearchGroupResult, DrugSearchOutcome,
+  DrugSearchResult} from '../utils/drugSearch';
+import { drugSearchGroupLabel, drugSearchGroupMembers, drugSearchCountMessage, drugSearchFeedback, drugShortcutLabel, searchDrugCatalogue,
 } from '../utils/drugSearch';
 import { tallManDefaultFor } from '../utils/tallMan';
-import { directResult, DrugName, DrugNameDisplay } from './DrugName';
+import type { DrugNameDisplay } from './DrugName';
+import { directResult, DrugName } from './DrugName';
 
 /** A centrally managed Quick List (MSP-0060, MSP-0090). Up to 10 drug names, no templates (MSP-0120/0130). */
 export interface DrugQuickList {
@@ -293,7 +295,7 @@ export function DrugSearch({
           autoComplete="off"
           autoCorrect="off"
           spellCheck={false}
-          aria-controls={`${uid}-list`}
+          aria-controls={!busy && !feedback ? `${uid}-list` : undefined}
           aria-describedby={`${uid}-status`}
           onChange={e => {
             setQuery(e.target.value);
@@ -404,7 +406,7 @@ export function DrugSearch({
               <Icon name="info" size={16} />
               <span>{noticeText}</span>
             </div>
-            <label className="cui-drug-search__notice-check">
+            <label className="cui-drug-search__notice-check" data-touch-target>
               <input type="checkbox" checked={noticeForget} onChange={e => setNoticeForget(e.target.checked)} />
               Don't show this message again
             </label>

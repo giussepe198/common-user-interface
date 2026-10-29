@@ -1,0 +1,6 @@
+/* The box itself is .cui-field-box (forms/internal/internal.css). */
+.cui-text-input > .cui-field-box__input[type="number"] { font-variant-numeric: tabular-nums; text-align: right; }
+.cui-text-input > .cui-field-box__affix--start + .cui-field-box__input { padding-left: var(--space-2); }
+/* widthChars sizes the text, not the box, so a prefix or unit never eats into the visible characters (CNA-0200). */
+.cui-text-input--sized { width: auto; display: inline-flex; }
+.cui-text-input--sized > .cui-field-box__input { flex: none; width: calc(var(--cui-input-chars) * 1ch + 2 * var(--space-2)); }

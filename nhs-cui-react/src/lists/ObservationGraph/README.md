@@ -29,7 +29,7 @@ Data points and series
 - GTAB-001 [M] points joined by lines, never bars or areas. GTAB-002/006..009 [M] distinct colour and symbol per series; symbols are symmetric and centred on the value (GTAB-008/012). GTAB-003..005 [M] `SeriesStyleAllocator` keeps a series' style for the session and is reset at the end of the consultation.
 - GTAB-124 [R] colours allocated blue, red, yellow first, then green and black. Only five token colours exist, so further series reuse a colour with a new symbol: every pair stays unique `[suggested]`.
 - GTAB-010/011/016 [M] 10 px symbols, larger than the 2.5 px line, constant size. GTAB-014 [R] tightly packed points become short thick vertical lines. GTAB-121 [R] black border on points (white in dark theme, through the `--ink` token).
-- GTAB-017 [R] day-precision data (`timePrecision: 'day'`) is drawn hollow and not interpolated.
+- GTAB-017 [R] day-precision data (`timePrecision: 'day'`) is drawn hollow and not interpolated, and its latest value is given with its date only ("Latest 21 on 15-Oct-2026").
 - GTAB-018..024 [M]/[R] series label above the graph at top left; overlaid series get a legend directly above the graph area. GTAB-025 no vertical labels.
 
 Units

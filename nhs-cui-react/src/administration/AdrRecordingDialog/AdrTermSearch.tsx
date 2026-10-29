@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, cx, Icon } from '../../core';
-import { AdrConcept, adrConceptLabel } from '../utils/adr';
+import type { AdrConcept} from '../utils/adr';
+import { adrConceptLabel } from '../utils/adr';
 
 export interface AdrTermSearchProps {
   id: string;
@@ -92,7 +93,6 @@ export function AdrTermSearch({
           aria-autocomplete="list"
           aria-activedescendant={active ? `${id}-opt-${hi}` : undefined}
           autoComplete="off"
-          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}
           disabled={disabled}
           placeholder={placeholder}

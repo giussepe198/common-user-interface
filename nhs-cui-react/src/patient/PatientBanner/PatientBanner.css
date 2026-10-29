@@ -1,5 +1,5 @@
 /* Patient banner (PAB): full width, horizontal, distinct background (PAB-0010, PAB-0012, PAB-0014). */
-.cui-patient-banner { width: 100%; background: var(--banner); color: var(--on-banner); border: 1px solid var(--border-strong); border-bottom: 3px solid var(--border-strong); font-size: 14px; line-height: 20px; }
+.cui-patient-banner { width: 100%; background: var(--banner); color: var(--on-banner); border: 1px solid var(--border-strong); border-bottom: 3px solid var(--border-strong); font-size: var(--font-size-body); line-height: var(--line-height-body); }
 .cui-patient-banner--sticky { position: sticky; top: 0; z-index: 20; }
 .cui-patient-banner :focus-visible { outline: 2px solid var(--on-banner); outline-offset: 2px; }
 .cui-patient-banner .cui-labelled-value__label { color: var(--on-banner-muted); }
@@ -11,7 +11,7 @@
 .cui-patient-banner .cui-telephone--unknown { color: var(--on-banner-muted); }
 .cui-patient-banner .cui-deftip__term { text-decoration-color: var(--on-banner-muted); }
 .cui-patient-banner .cui-address__view-all,
-.cui-patient-banner__view-all { font: inherit; font-size: 12px; line-height: 16px; color: var(--on-banner); background: none; border: 0; padding: 2px 0; margin-top: var(--space-1); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-align: left; }
+.cui-patient-banner__view-all { font: inherit; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--on-banner); background: none; border: 0; padding: 2px 0; margin-top: var(--space-1); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-align: left; }
 
 /* Zone 1 */
 .cui-patient-banner__zone1 { display: flex; align-items: center; gap: var(--space-8); padding: var(--space-2) var(--space-4); min-height: 56px; }
@@ -20,7 +20,7 @@
 .cui-patient-banner__name-button { font: inherit; color: inherit; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; border-radius: var(--radius-sm); }
 .cui-patient-banner__name-button:hover .cui-patient-name { text-decoration: underline; text-underline-offset: 4px; }
 .cui-patient-banner__preferred { margin-top: 2px; }
-.cui-patient-banner__ids { display: grid; grid-template-columns: repeat(3, max-content); column-gap: var(--space-8); row-gap: var(--space-1); align-items: baseline; }
+.cui-patient-banner__ids { display: grid; grid-template-columns: repeat(var(--cui-banner-id-columns, 3), max-content); column-gap: var(--space-8); row-gap: var(--space-1); align-items: baseline; }
 .cui-patient-banner__ids > .cui-labelled-value { white-space: nowrap; }
 .cui-patient-banner__age { font-weight: 600; }
 .cui-patient-banner__death { grid-column: 1 / -1; display: flex; gap: var(--space-6); align-items: baseline; }
@@ -42,14 +42,15 @@
 }
 
 /* Zone 2 */
-.cui-patient-banner__zone2 { border-top: 1px solid var(--banner-divider); }
+/* The toggle's track fits the toggle, which grows to the coarse-pointer target on touch screens. */
+.cui-patient-banner__zone2 { --cui-banner-toggle-track: 32px; border-top: 1px solid var(--banner-divider); }
 .cui-patient-banner__zone2-titles,
-.cui-patient-banner__zone2-body { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr) minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 1.1fr) 32px; column-gap: var(--space-6); padding: 0 var(--space-2) 0 var(--space-4); }
-.cui-patient-banner__zone2-titles { align-items: center; min-height: 32px; cursor: pointer; }
+.cui-patient-banner__zone2-body { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr) minmax(0, 0.8fr) minmax(0, 0.8fr) minmax(0, 1.1fr) var(--cui-banner-toggle-track); column-gap: var(--space-6); padding: 0 var(--space-2) 0 var(--space-4); }
+.cui-patient-banner__zone2-titles { align-items: center; min-height: var(--control-height); cursor: pointer; }
 .cui-patient-banner__zone2--expanded .cui-patient-banner__zone2-titles { cursor: default; }
 .cui-patient-banner__section-title { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cui-patient-banner__title-line { white-space: nowrap; }
-.cui-patient-banner__title-label { font-size: 12px; line-height: 16px; color: var(--on-banner-muted); }
+.cui-patient-banner__title-label { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--on-banner-muted); }
 .cui-patient-banner__title-value { font-weight: 600; font-variant-ligatures: no-contextual; font-feature-settings: "calt" 0; }
 .cui-patient-banner__title-value--unknown { font-weight: 400; font-style: italic; color: var(--on-banner-muted); }
 .cui-patient-banner__toggle { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; padding: 0; color: var(--on-banner); background: none; border: 1px solid var(--banner-divider); border-radius: var(--radius-md); cursor: pointer; }
@@ -61,18 +62,20 @@
 .cui-patient-banner__contacts .cui-labelled-value__label { display: inline-block; min-width: 48px; }
 .cui-patient-banner__allergy-list { display: flex; flex-direction: column; align-items: flex-start; }
 .cui-patient-banner__allergy-list ul { list-style: none; margin: 0; padding: 0; }
-.cui-patient-banner__allergy-list li { white-space: nowrap; }
+.cui-patient-banner__allergy-list li { overflow-wrap: anywhere; }
+.cui-patient-banner__allergy-note { margin-left: var(--space-2); font-size: var(--font-size-label); color: var(--on-banner-muted); }
 .cui-patient-banner__allergy-name { font-weight: 600; }
-.cui-patient-banner__allergy-date { font-size: 12px; color: var(--on-banner-muted); font-variant-numeric: tabular-nums; }
-.cui-patient-banner__muted { font-size: 12px; line-height: 16px; color: var(--on-banner-muted); }
+.cui-patient-banner__allergy-date { font-size: var(--font-size-label); color: var(--on-banner-muted); font-variant-numeric: tabular-nums; }
+.cui-patient-banner__muted { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--on-banner-muted); }
 
 /* Allergy status (PAB-0064..0072): emphasis, data or label style, unique icons. */
-.cui-patient-banner__allergy { display: inline-flex; align-items: center; gap: var(--space-2); white-space: nowrap; vertical-align: middle; }
-.cui-patient-banner__allergy--known { padding: 1px var(--space-2) 1px 3px; background: var(--banner-alert); color: var(--banner); border-radius: var(--radius-md); font-size: 14px; font-weight: 700; }
-.cui-patient-banner__allergy--none-known { font-size: 14px; font-weight: 600; color: var(--on-banner); }
+.cui-patient-banner__allergy { display: inline-flex; align-items: center; gap: var(--space-2); max-width: 100%; white-space: nowrap; vertical-align: middle; }
+.cui-patient-banner__allergy > span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.cui-patient-banner__allergy--known { padding: 1px var(--space-2) 1px 3px; background: var(--banner-alert); color: var(--banner); border-radius: var(--radius-md); font-size: var(--font-size-body); font-weight: 700; }
+.cui-patient-banner__allergy--none-known { font-size: var(--font-size-body); font-weight: 600; color: var(--on-banner); }
 .cui-patient-banner__allergy--not-recorded,
-.cui-patient-banner__allergy--unavailable { font-size: 12px; line-height: 16px; font-weight: 400; color: var(--on-banner-muted); }
-.cui-allergy-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; flex: none; width: 18px; height: 18px; font-size: 11px; line-height: 1; font-weight: 700; font-style: normal; border: 1.5px solid currentColor; border-radius: 50%; }
+.cui-patient-banner__allergy--unavailable { font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 400; color: var(--on-banner-muted); }
+.cui-allergy-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; flex: none; width: 18px; height: 18px; font-size: var(--font-size-caption); line-height: 1; font-weight: 700; font-style: normal; border: 1.5px solid currentColor; border-radius: 50%; }
 .cui-allergy-icon--known { border-radius: var(--radius-sm); background: var(--banner); color: var(--banner-alert); border-color: var(--banner); }
 .cui-allergy-icon--not-recorded { border-style: dashed; }
 .cui-allergy-icon--unavailable::after { content: ''; position: absolute; left: -3px; right: -3px; top: 50%; height: 1.5px; background: currentColor; transform: rotate(-45deg); }
@@ -86,31 +89,31 @@
 .cui-patient-banner--deceased .cui-patient-banner__zone1 .cui-identifier__flag,
 .cui-patient-banner--deceased .cui-patient-banner__zone1 .cui-patient-name__unidentified { color: var(--banner); }
 .cui-patient-banner__ids > .cui-identifier { white-space: nowrap; }
-.cui-patient-banner__similar { display: flex; align-items: center; gap: var(--space-1); margin-top: 2px; font-size: 12px; line-height: 16px; font-weight: 600; color: var(--on-banner); }
+.cui-patient-banner__similar { display: flex; align-items: center; gap: var(--space-1); margin-top: 2px; font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--on-banner); }
 .cui-patient-banner__similar .cui-icon { flex: none; }
 .cui-patient-banner--deceased .cui-patient-banner__similar { color: var(--banner); }
 /* Allergy status: wrap rather than cut, so the safety wording is never truncated [suggested]. */
 .cui-patient-banner__section-title--allergies { white-space: normal; overflow: visible; }
 .cui-patient-banner__section-title--allergies .cui-patient-banner__allergy { white-space: normal; }
-.cui-patient-banner__allergy-label { font-size: 12px; line-height: 16px; font-weight: 400; color: var(--on-banner-muted); }
+.cui-patient-banner__allergy-label { font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 400; color: var(--on-banner-muted); }
 .cui-patient-banner__allergy--known .cui-patient-banner__allergy-label { color: var(--banner); }
 .cui-allergy-icon--unknown { border-style: dotted; }
 /* AU and NZ "Not recorded" and "Unknown": warning look, text plus icon plus outline (AU-AL-01). */
-.cui-patient-banner__allergy--warn { padding: 1px var(--space-2) 1px var(--space-1); font-size: 14px; line-height: 20px; font-weight: 700; color: var(--on-banner); border: 1.5px dashed var(--on-banner); border-radius: var(--radius-md); }
+.cui-patient-banner__allergy--warn { padding: 1px var(--space-2) 1px var(--space-1); font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 700; color: var(--on-banner); border: 1.5px dashed var(--on-banner); border-radius: var(--radius-md); }
 .cui-patient-banner__allergy--warn .cui-patient-banner__allergy-label { color: var(--on-banner); font-weight: 400; }
 .cui-patient-banner__allergy--warn .cui-icon { flex: none; }
 .cui-patient-banner__allergy-list li { white-space: normal; }
 .cui-patient-banner__allergy-reaction { color: var(--on-banner); }
-.cui-patient-banner__allergy-new { display: inline-block; margin-left: var(--space-2); padding: 0 var(--space-1); font-size: 11px; line-height: 16px; font-weight: 600; border: 1px solid var(--on-banner-muted); border-radius: var(--radius-sm); }
+.cui-patient-banner__allergy-new { display: inline-block; margin-left: var(--space-2); padding: 0 var(--space-1); font-size: var(--font-size-caption); line-height: 16px; font-weight: 600; border: 1px solid var(--on-banner-muted); border-radius: var(--radius-sm); }
 .cui-patient-banner__allergy-date { white-space: nowrap; }
 /* Identity extensions (G12): protection flags, partial date of birth, dormant NHI, My Health Record. */
 .cui-patient-banner .cui-protected__indicator { color: var(--on-banner); }
 .cui-patient-banner .cui-protected__label { color: var(--on-banner); }
 .cui-patient-banner .cui-protected__error { color: var(--on-banner); }
 .cui-patient-banner__name-protected { margin-top: 2px; }
-.cui-patient-banner__protected { font-size: 12px; line-height: 16px; }
+.cui-patient-banner__protected { font-size: var(--font-size-label); line-height: var(--line-height-label); }
 .cui-patient-banner__title-line .cui-patient-banner__protected { vertical-align: middle; }
-.cui-patient-banner__dob-qualifier { margin-left: var(--space-1); font-size: 12px; font-weight: 400; font-style: italic; color: var(--on-banner-muted); }
+.cui-patient-banner__dob-qualifier { margin-left: var(--space-1); font-size: var(--font-size-prompt); font-weight: 400; font-style: italic; color: var(--on-banner-muted); }
 .cui-patient-banner .cui-identifier__link { color: var(--on-banner); }
 .cui-patient-banner .cui-identifier__group { white-space: nowrap; }
 .cui-patient-banner__mhr { position: relative; margin-top: 2px; }
@@ -119,8 +122,8 @@
 .cui-patient-banner .cui-mhr__line { flex-wrap: wrap; }
 .cui-patient-banner .cui-mhr__status { white-space: nowrap; }
 .cui-patient-banner .cui-mhr__status { flex-wrap: nowrap; }
-.cui-patient-banner .cui-mhr__label { font-size: 12px; color: var(--on-banner-muted); }
-.cui-patient-banner .cui-mhr__state { font-size: 12px; line-height: 16px; }
+.cui-patient-banner .cui-mhr__label { font-size: var(--font-size-label); color: var(--on-banner-muted); }
+.cui-patient-banner .cui-mhr__state { font-size: var(--font-size-label); line-height: var(--line-height-label); }
 .cui-patient-banner .cui-mhr__flag { color: var(--on-banner); }
 .cui-patient-banner .cui-mhr--emergency-access .cui-mhr__status,
 .cui-patient-banner .cui-mhr--emergency-access .cui-mhr__status .cui-icon,
@@ -133,3 +136,79 @@
 .cui-patient-banner--deceased .cui-patient-banner__zone1 .cui-identifier__link,
 .cui-patient-banner--deceased .cui-patient-banner__zone1 .cui-patient-banner__dob-qualifier { color: var(--banner); }
 .cui-patient-banner__name-block--mhr { flex-shrink: 0; }
+
+/* Responsive (CONVENTIONS "Responsive"): the banner is a size container and never scrolls sideways. Below 960px zone 1
+   wraps; below 720px it shows the essentials MobilePatientHeader shows (name, Born, Gender, identifiers and the allergy
+   status), the other zone 2 titles appear when expanded, and the expanded sections stack. Nothing is truncated: the
+   name and identifiers wrap between items, never inside them. */
+.cui-patient-banner { container: cui-patient-banner / inline-size; }
+@container cui-patient-banner (max-width: 959px) {
+  .cui-patient-banner__zone1 { flex-wrap: wrap; row-gap: var(--space-2); column-gap: var(--space-6); }
+  .cui-patient-banner__ids { display: flex; flex-wrap: wrap; column-gap: var(--space-6); row-gap: var(--space-1); min-width: 0; }
+  .cui-patient-banner__death { flex: 1 1 100%; }
+}
+@container cui-patient-banner (max-width: 719px) {
+  .cui-patient-banner__zone1 { padding: var(--space-2) var(--space-3); column-gap: var(--space-4); }
+  .cui-patient-banner__name-block { flex: 1 1 100%; }
+  .cui-patient-banner__ids { display: flex; flex-wrap: wrap; column-gap: var(--space-4); row-gap: var(--space-1); }
+  .cui-patient-banner__death { flex: 1 1 100%; flex-wrap: wrap; column-gap: var(--space-4); }
+  /* Wrap between an identifier and its flag or qualifier, never inside the number itself (NID-0013). */
+  .cui-patient-banner__ids > .cui-labelled-value, .cui-patient-banner__ids > .cui-identifier { white-space: normal; max-width: 100%; }
+  .cui-patient-banner .cui-identifier__value, .cui-patient-banner .cui-labelled-value__value { white-space: nowrap; }
+  .cui-patient-banner .cui-identifier__value--flagged { white-space: normal; }
+  /* A status item (legal status, alerts) is words, not a number: it wraps between them on a narrow banner. */
+  .cui-patient-banner .cui-patient-banner__item .cui-labelled-value__value { white-space: normal; }
+  .cui-patient-banner .cui-mhr__status { white-space: normal; flex-wrap: wrap; }
+  .cui-patient-banner__similar { align-items: flex-start; }
+  .cui-patient-banner__similar > span { min-width: 0; overflow-wrap: anywhere; }
+  .cui-patient-banner__zone2-titles, .cui-patient-banner__zone2-body { grid-template-columns: minmax(0, 1fr) max(var(--control-height), var(--cui-banner-toggle-track)); column-gap: var(--space-2); row-gap: var(--space-1); padding: 0 var(--space-2) 0 var(--space-3); }
+  .cui-patient-banner__zone2-titles { padding-top: var(--space-1); padding-bottom: var(--space-1); }
+  .cui-patient-banner__section-title { grid-column: 1; white-space: normal; overflow: visible; overflow-wrap: anywhere; }
+  .cui-patient-banner__title-line { white-space: normal; }
+  .cui-patient-banner__zone2:not(.cui-patient-banner__zone2--expanded) .cui-patient-banner__section-title:not(.cui-patient-banner__section-title--allergies) { display: none; }
+  .cui-patient-banner__section-title--allergies { order: -1; }
+  .cui-patient-banner__toggle { grid-column: 2; grid-row: 1; justify-self: end; }
+  .cui-patient-banner__zone2-body { padding-top: var(--space-2); padding-bottom: var(--space-3); row-gap: var(--space-3); }
+  .cui-patient-banner__section { grid-column: 1 / -1; }
+  .cui-patient-banner__section:empty { display: none; }
+  .cui-patient-banner__section--allergies { order: -1; }
+}
+@media (pointer: coarse) {
+  .cui-patient-banner__zone2 { --cui-banner-toggle-track: var(--target-coarse); }
+  .cui-patient-banner__toggle { width: var(--target-coarse); height: var(--target-coarse); }
+}
+
+/* Host extensions [suggested]: further labelled Zone 1 items, a name extension, a leading slot and actions. Items flow and
+   wrap between themselves, never inside a value; tones reuse the allergy looks so each has a verified contrast pair. */
+.cui-patient-banner__ids--flow { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-6); row-gap: var(--space-1); min-width: 0; flex: 1 1 auto; }
+.cui-patient-banner__ids--flow > .cui-labelled-value, .cui-patient-banner__ids--flow > .cui-identifier { white-space: nowrap; }
+.cui-patient-banner__item { display: inline-flex; align-items: baseline; gap: var(--space-1); max-width: 100%; min-width: 0; color: var(--on-banner); }
+.cui-patient-banner__item .cui-labelled-value { white-space: normal; }
+.cui-patient-banner__item .cui-labelled-value__value { overflow-wrap: anywhere; }
+.cui-patient-banner__item-symbol { display: inline-flex; flex: none; align-self: center; }
+.cui-patient-banner__item-value { font-weight: 600; overflow-wrap: anywhere; }
+.cui-patient-banner__item--alert { align-items: center; padding: 1px var(--space-2) 1px var(--space-1); background: var(--banner-alert); border-radius: var(--radius-md); }
+.cui-patient-banner__item--alert, .cui-patient-banner__item--alert .cui-labelled-value__label, .cui-patient-banner__item--alert .cui-labelled-value__value { color: var(--banner); }
+.cui-patient-banner__item--alert .cui-deftip__term { text-decoration-color: var(--banner); }
+.cui-patient-banner__item--warning { align-items: center; padding: 0 var(--space-2) 0 var(--space-1); border: 1.5px dashed var(--on-banner); border-radius: var(--radius-md); }
+.cui-patient-banner__item--muted .cui-patient-banner__item-value { font-weight: 400; color: var(--on-banner-muted); }
+.cui-patient-banner__item--button { font: inherit; text-align: start; cursor: pointer; background: none; border: 0; padding: 0; border-radius: var(--radius-sm); }
+.cui-patient-banner__item--button.cui-patient-banner__item--alert { background: var(--banner-alert); padding: 1px var(--space-2) 1px var(--space-1); border-radius: var(--radius-md); }
+.cui-patient-banner__item--button.cui-patient-banner__item--warning { border: 1.5px dashed var(--on-banner); padding: 0 var(--space-2) 0 var(--space-1); }
+.cui-patient-banner__item--button .cui-labelled-value__value, .cui-patient-banner__item--button .cui-patient-banner__item-value { text-decoration: underline; text-underline-offset: 3px; }
+.cui-patient-banner__leading { flex: none; align-self: center; display: flex; }
+.cui-patient-banner__name-extension { font-weight: 600; color: var(--on-banner); overflow-wrap: anywhere; }
+.cui-patient-banner__actions { flex: none; display: flex; flex-wrap: wrap; gap: var(--space-2); margin-inline-start: auto; align-self: center; }
+.cui-patient-banner--deceased .cui-patient-banner__zone1 .cui-patient-banner__item:not(.cui-patient-banner__item--alert),
+.cui-patient-banner--deceased .cui-patient-banner__zone1 .cui-patient-banner__name-extension { color: var(--banner); }
+.cui-patient-banner--deceased .cui-patient-banner__zone1 .cui-patient-banner__item--warning { border-color: var(--banner); }
+@container cui-patient-banner (max-width: 959px) {
+  .cui-patient-banner__actions { margin-inline-start: 0; }
+}
+@media (forced-colors: active) {
+  .cui-patient-banner__item--alert, .cui-patient-banner__item--warning { border: 1px solid CanvasText; }
+}
+.cui-patient-banner__name-content { color: var(--on-banner); }
+/* A long item value flows on after its label and wraps under it, rather than standing in a column beside the label. */
+.cui-patient-banner__item .cui-labelled-value { display: block; }
+.cui-patient-banner__name-block--extended { flex-shrink: 0; max-width: 40%; }

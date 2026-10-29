@@ -1,7 +1,8 @@
 import React from 'react';
 import { cx, VisuallyHidden } from '../../core';
 import type { ClinicalRegion } from '../../core';
-import { DrugCatalogueEntry, DrugSearchResult, drugResultName } from '../utils/drugSearch';
+import type { DrugCatalogueEntry, DrugSearchResult} from '../utils/drugSearch';
+import { drugResultName } from '../utils/drugSearch';
 import { applyTallManLettering } from '../utils/tallMan';
 
 /** Internal: options shared by every place a catalogue drug name is drawn. */

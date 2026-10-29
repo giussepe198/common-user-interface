@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import type {
+  EncodableMatch} from './encodable';
 import {
-  EncodableMatch,
   adjustMatchesForEdit,
   diffTextEdit,
   editTouchesConfirmed,

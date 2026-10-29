@@ -1,11 +1,11 @@
-.cui-admin-event-icon { display: inline-flex; align-items: center; gap: var(--space-1); min-height: 24px; max-width: 100%; font: inherit; font-size: 12px; line-height: 16px; color: var(--ink); background: transparent; border: 0; padding: 2px; border-radius: var(--radius-sm); text-align: left; vertical-align: middle; }
+.cui-admin-event-icon { display: inline-flex; align-items: center; gap: var(--space-1); min-height: 24px; max-width: 100%; font: inherit; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink); background: transparent; border: 0; padding: 2px; border-radius: var(--radius-sm); text-align: left; vertical-align: middle; }
 .cui-admin-event-icon--active { cursor: pointer; }
 .cui-admin-event-icon--active:hover { background: var(--hover); }
 .cui-admin-event-icon__symbol { flex: none; width: 20px; height: 20px; overflow: visible; }
 .cui-admin-event-icon__shape { fill: var(--surface); stroke: var(--ink-muted); stroke-width: 1.5; }
 .cui-admin-event-icon__glyph-line { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .cui-admin-event-icon__glyph-fill { fill: currentColor; stroke: none; }
-.cui-admin-event-icon__glyph-text { fill: currentColor; font-family: var(--font-sans); font-size: 11px; font-weight: 700; }
+.cui-admin-event-icon__glyph-text { fill: currentColor; font-family: var(--font-sans); font-size: var(--font-size-caption); font-weight: 700; }
 .cui-admin-event-icon__text { display: inline-flex; align-items: baseline; gap: var(--space-1); min-width: 0; overflow: hidden; }
 .cui-admin-event-icon__label { white-space: nowrap; font-weight: 600; font-variant-numeric: tabular-nums; }
 .cui-admin-event-icon__detail { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--ink-muted); font-variant-numeric: tabular-nums; min-width: 0; }

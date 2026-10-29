@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import type { MedicationRecord} from './medicationsList';
 import {
-  deriveMedicationStatus, groupMedications, MedicationRecord, medicationFilterNotification, medicationLookAheadTokens,
+  deriveMedicationStatus, groupMedications, medicationFilterNotification, medicationLookAheadTokens,
   medicationRecentPastNotification, sortMedications, DEFAULT_CURRENT_SORT,
 } from './medicationsList';
 

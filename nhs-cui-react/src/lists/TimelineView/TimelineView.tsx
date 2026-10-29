@@ -616,6 +616,14 @@ export function TimelineView(props: TimelineViewProps) {
             ) : null}
           </>
         ) : null}
+        {/* Touch hit area, drawn only under a coarse pointer: at least 44px each way around the entry. */}
+        <rect
+          x={Math.min(Math.max(0, x1), Math.max(0, x1) + (Math.min(plotW, e.kind === 'point' ? x1 : x2) - Math.max(0, x1)) / 2 - 22)}
+          y={y + SYM / 2 - 22}
+          width={Math.max(44, Math.min(plotW, e.kind === 'point' ? x1 : x2) - Math.max(0, x1))}
+          height={44}
+          className="cui-timeline__hit"
+        />
         {shape}
         <title>{describe(e)}</title>
       </g>
@@ -791,6 +799,7 @@ export function TimelineView(props: TimelineViewProps) {
                         <label
                           key={es.id}
                           className={cx('cui-list-choice cui-timeline__set', !avail && 'cui-timeline__set--disabled')}
+                          data-touch-target
                           title={avail ? undefined : es.kind === 'administrations' ? 'Available at "Full details" only' : 'Not available at this level of detail'}
                         >
                           <input
