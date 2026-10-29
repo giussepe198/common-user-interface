@@ -39,7 +39,7 @@ function Demo() {
   React.useEffect(() => { setTimeout(() => { const i = document.querySelector('#s input'); if (i) { const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set; set.call(i, 'hand'); i.dispatchEvent(new Event('input', { bubbles: true })); } }, 60); }, []);
   return h('div', { style: { display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start' } },
     h(GraphicPicker, { graphics: G, commonIds: ['body-adult', 'lungs', 'child'], loadedId: 'body-adult', onLoad: function () {} }),
-    h('div', { id: 's' }, h(GraphicPicker, { graphics: G, commonIds: ['body-adult', 'lungs'], onLoad: function () {}, title: 'Searching' })));
+    h('div', { id: 's', style: { maxWidth: '100%' } }, h(GraphicPicker, { graphics: G, commonIds: ['body-adult', 'lungs'], onLoad: function () {}, title: 'Searching' })));
 }
 ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
 </script>

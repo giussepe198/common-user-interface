@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ConsentToShare · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mental health</p>
+<h1 style="margin:0 0 4px;font-size:20px">ConsentToShare</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Consent to share: who may receive which information, words in every cell, review overdue, narrow cards · Guidelines: <code>src/mental-health/ConsentToShare/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ConsentToShare } = window.ClinicalCUI;
+const categories = [{ id: 'appointments', label: 'Appointments' }, { id: 'medication', label: 'Medication' }, { id: 'plan', label: 'Plan' }, { id: 'risk', label: 'Risk' }, { id: 'legal', label: 'Legal status' }];
+const recipients = [
+  { id: 'a', name: 'Linh Nguyen', kind: 'Carer, sister', states: { appointments: 'allowed', medication: 'allowed', plan: 'allowed', risk: 'restricted', legal: 'allowed' }, reason: 'The person’s stated preference', grantor: 'The person', reviewDue: '2026-12-01' },
+  { id: 'b', name: 'Dr P Shah', kind: 'GP', states: { appointments: 'allowed', medication: 'allowed', plan: 'allowed' }, reason: 'Shared care', grantor: 'The person', reviewDue: '2027-03-01' },
+  { id: 'c', name: 'Father', kind: 'Family', states: { appointments: 'withdrawn', medication: 'withdrawn', plan: 'withdrawn', risk: 'withdrawn', legal: 'withdrawn' }, reason: 'Withdrawn by the person', grantor: 'The person', reviewDue: '2026-09-01' }
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16, padding: 16, background: 'var(--surface)' } },
+    h(ConsentToShare, { categories: categories, recipients: recipients, now: '2026-10-28T00:00:00Z', timeZone: 'Australia/Melbourne', onEdit: function () {} }),
+    h('div', { style: { maxWidth: 340 } }, h(ConsentToShare, { caption: 'Narrow', categories: categories.slice(0, 3), recipients: recipients.slice(0, 1), now: '2026-10-28T00:00:00Z' }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

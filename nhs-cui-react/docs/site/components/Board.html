@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Board · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Drag and drop</p>
+<h1 style="margin:0 0 4px;font-size:20px">Board</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Board: tasks by status with a Move menu on every card, a rule task that cannot be marked done by hand, a column limit, an empty column; read only · Guidelines: <code>src/interaction/Board/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { Board } = window.ClinicalCUI;
+const label = (t) => h('p', { className: 'cui-type-label', style: { margin: '12px 0 4px', color: 'var(--ink-muted)' } }, t);
+const columns = [
+  { id: 'open', title: 'Not started' },
+  { id: 'progress', title: 'Partially completed', limit: 3 },
+  { id: 'done', title: 'Done', emptyText: 'Nothing done yet' },
+];
+const start = [
+  { id: 't1', title: 'Phone the carer', person: 'CHEN, Robin', due: 'Overdue by 1 day', status: 'open' },
+  { id: 't2', title: 'Tribunal report due', person: 'ORDER, Sam', due: 'Due today 17:00', status: 'open', rule: true },
+  { id: 't3', title: 'Write the discharge letter', person: 'NGATA, Aroha', due: 'Due Thu 29-Oct', status: 'progress' },
+];
+function Card(t) {
+  return h('div', null,
+    h('div', { className: 'cui-type-body-strong' }, t.title),
+    h('div', { className: 'cui-type-label' }, t.person),
+    h('div', { className: 'cui-type-label', style: { color: t.due.startsWith('Overdue') ? 'var(--danger)' : 'var(--ink-muted)' } }, t.due));
+}
+function Demo(props) {
+  const [items, setItems] = React.useState(start);
+  return h(Board, Object.assign({
+    label: 'Tasks by status', columns, items, getKey: (t) => t.id, getLabel: (t) => t.title, getColumn: (t) => t.status,
+    renderCard: Card, itemNoun: { one: 'task', other: 'tasks' },
+    canDrop: (t, to) => (to === 'done' && t.rule ? 'this task closes when its work is recorded' : true),
+    onMove: (t, m) => setItems(items.map((x) => (x.id === t.id ? Object.assign({}, x, { status: m.toColumn }) : x))),
+  }, props.extra || {}));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  label('Tasks by status (drag a handle, or use Move on a card)'),
+  h(Demo),
+  label('Read only: no handles and no Move menu'),
+  h(Demo, { extra: { canMove: () => false } })
+));
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tabs · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Navigation</p>
+<h1 style="margin:0 0 4px;font-size:20px">Tabs</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">ARIA tabs with counts; tabs that do not fit go into More, the selected tab stays in the bar · Guidelines: <code>src/shell/Tabs/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+const items = ['Summary', 'Notes', 'Legal status', 'Risk', 'Contacts', 'Medicines', 'Documents', 'Episodes'].map((l, i) => ({ id: 'tab' + i, label: l, count: i === 1 ? 3 : undefined, countLabel: i === 1 ? '3 drafts' : undefined, content: h('p', { style: { margin: 0 } }, l + ' panel.') }));
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  label('Wide'), h('div', { style: { maxWidth: 1160 } }, h(C.Tabs, { label: 'Record sections', items })),
+  label('Narrow (360 px): overflow in More'), h('div', { style: { maxWidth: 360 } }, h(C.Tabs, { label: 'Record sections', items, defaultValue: 'tab6' }))
+));
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SupportPersonList · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mental health</p>
+<h1 style="margin:0 0 4px;font-size:20px">SupportPersonList</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Support people: carer, nominated support person, whānau group, ended guardian, what each may be told · Guidelines: <code>src/mental-health/SupportPersonList/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SupportPersonList, ClinicalLocaleProvider } = window.ClinicalCUI;
+const people = [
+  { id: 'a', name: 'Linh Nguyen', relationship: 'Sister', primary: true, roles: [{ label: 'Carer' }, { label: 'Nominated support person', legal: true }], phones: [{ label: 'Mobile', value: '0491570159' }], email: 'linh@example.org', contactPreferences: 'Text first; no voicemail', sharing: { state: 'allowed', text: 'Appointments and the plan' } },
+  { id: 'b', name: 'Dr P Shah', relationship: 'GP', roles: [{ label: 'General practitioner' }], phones: [{ label: 'Work', value: '0255504321' }], sharing: { state: 'restricted', text: 'Not the risk formulation' } },
+  { id: 'c', name: 'Father', roles: [{ label: 'Family' }], sharing: { state: 'withdrawn', text: 'Do not share' } },
+  { id: 'd', name: 'Former guardian', roles: [{ label: 'Guardian', legal: true }], ended: { date: '2026-05-01', reason: 'Order ended' } }
+];
+const nz = [{ id: 'w', name: 'Te Whare whānau', roles: [{ label: 'Whānau' }], members: ['Aroha', 'Māia'], phones: [{ label: 'Mobile', value: '0211234567' }] }];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16, padding: 16, background: 'var(--surface)' } },
+    h(SupportPersonList, { people: people, showEnded: true, region: 'AU', timeZone: 'Australia/Melbourne', onOpen: function () {}, onAdd: function () {} }),
+    h(ClinicalLocaleProvider, { region: 'NZ' }, h(SupportPersonList, { headingLevel: 3, title: 'Support people (NZ)', people: nz }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

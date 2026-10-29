@@ -24,7 +24,7 @@ const h = React.createElement;
 const { DecisionSupportChangeToast } = window.ClinicalCUI;
 const at = function (hh, mm) { return new Date(2026, 4, 27, hh, mm); };
 ReactDOM.createRoot(document.getElementById('root')).render(
-  h('div', { style: { display: 'flex', gap: 24, alignItems: 'flex-start' } },
+  h('div', { style: { display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'flex-start' } },
     h(DecisionSupportChangeToast, { dateTime: at(10, 42), message: 'Dose Calculations and Formulary Management are not running', durationMs: 10000 }),
     h(DecisionSupportChangeToast, { dateTime: at(10, 47), status: 'High Priority', message: 'The potassium level is 7.7 mmol/L', durationMs: 10000, onClick: function () {} }),
     h(DecisionSupportChangeToast, { dateTime: at(10, 49), status: 'Priority', message: 'Creatinine has risen since the last result', durationMs: 10000, onClick: function () {} })

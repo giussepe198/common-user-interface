@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MeasureTrend · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mental health</p>
+<h1 style="margin:0 0 4px;font-size:20px">MeasureTrend</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Measure trend: totals on the observation graph with named bands, change in non-directive words, invalid totals listed · Guidelines: <code>src/mental-health/MeasureTrend/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MeasureTrend } = window.ClinicalCUI;
+const items = Array.from({ length: 10 }, function (_, i) { return { id: 'i' + (i + 1), label: 'Item ' + (i + 1) + '' }; });
+const inst = { id: 'self', name: 'Self-report measure', items: items, totalRange: { min: 10, max: 50 },
+  options: [1, 2, 3, 4, 5].map(function (v) { return { value: v, label: String(v) }; }),
+  bands: [{ from: 10, to: 15, label: 'Band A', colourVar: '--surface-sunken' }, { from: 16, to: 29, label: 'Band B', colourVar: '--info-surface' }, { from: 30, to: 50, label: 'Band C', colourVar: '--warning-surface' }],
+  bandSource: 'Placeholder band source', reliableChange: { amount: 6, lowerIsBetter: true, source: 'Placeholder change source' } };
+const fill = function (n) { const a = {}; items.forEach(function (it, i) { a[it.id] = Math.max(1, Math.min(5, Math.round(n / 10) + (i % 2))); }); return a; };
+const occasions = [
+  { id: '1', label: 'Admission', date: '2026-06-02', answers: fill(36) },
+  { id: '2', label: 'Review', date: '2026-07-14', answers: fill(30) },
+  { id: '3', label: 'Review', date: '2026-08-25', answers: { i1: 2 } },
+  { id: '4', label: 'Review', date: '2026-10-06', answers: fill(20) }
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { padding: 16, background: 'var(--surface)' } },
+    h(MeasureTrend, { instrument: inst, occasions: occasions, timeZone: 'Australia/Melbourne', now: '2026-10-28T03:00:00Z' })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

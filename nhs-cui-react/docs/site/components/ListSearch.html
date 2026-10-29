@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ListSearch · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Search</p>
+<h1 style="margin:0 0 4px;font-size:20px">ListSearch</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">List search: words in any order, close spellings, scopes and suggestions · Guidelines: <code>src/search/ListSearch/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DataTable } = window.ClinicalCUI;
+const names = ['SMITH, John', 'SMYTHE, Jon', 'TAMIHANA, Aroha', "O'BRIEN, Catherine", 'JOHNSON, Smith', 'NGATA, Wiremu', 'PATEL, Priya', 'NGUYEN, Linh', 'BROWN, Ava'];
+const teams = ['North adult team', 'South adult team', 'Māori health team', 'Youth team'];
+const rows = names.map((person, i) => ({ id: 'r' + i, person, team: teams[i % 4], status: i % 3 ? 'Waiting' : 'Overdue', received: '2026-0' + ((i % 9) + 1) + '-1' + i }));
+const columns = [
+  { id: 'person', title: 'Person', isRowKey: true, searchKind: 'name' },
+  { id: 'team', title: 'Team' },
+  { id: 'status', title: 'Status' },
+  { id: 'received', title: 'Received', dataType: 'date' },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gap: 16 } },
+    h(DataTable, { caption: 'Referrals', rowNoun: 'referrals', columns, rows, getRowKey: r => r.id, defaultSearchQuery: 'kathryn' }),
+    h(DataTable, { caption: 'Referrals (no match)', rowNoun: 'referrals', columns, rows, getRowKey: r => r.id, defaultSearchQuery: 'xamihanaqq' })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

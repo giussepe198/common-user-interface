@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MhPersonRow · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mental health</p>
+<h1 style="margin:0 0 4px;font-size:20px">MhPersonRow</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Person row: CUI identification cell with Known as, pronouns, sex, legal status and restricted marker · Guidelines: <code>src/mental-health/MhPersonRow/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MhPersonRow, ClinicalLocaleProvider, Button } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', padding: 16, background: 'var(--surface)' } },
+    h(ClinicalLocaleProvider, { region: 'AU' },
+      h(MhPersonRow, { person: { familyName: 'Nguyen', givenName: 'Thi Lan', dateOfBirth: '1990-03-12', mrn: '004512' }, preferredName: 'Lan', pronouns: 'she/her', sex: 'Female', legalStatuses: [{ state: 'current', label: 'Treatment order (example, VIC)' }], restricted: true, actions: h(Button, { size: 'sm' }, 'Open') }),
+      h(MhPersonRow, { person: { familyName: 'Smith', givenName: 'Alex', dateOfBirth: '1985-06-30', mrn: '009981' }, markers: ['Possible duplicate record'], consent: { state: 'not-recorded' }, actions: h(Button, { size: 'sm' }, 'Open') })
+    ),
+    h(ClinicalLocaleProvider, { region: 'NZ' },
+      h(MhPersonRow, { person: { familyName: 'Te Whare', givenName: 'Aroha', dateOfBirth: '2001-07-04', nhi: 'ZZZ0016' }, preferredName: 'Māia', pronouns: 'they/them', sex: 'Female' })
+    ),
+    h('div', { style: { maxWidth: 340, marginTop: 16, border: '1px solid var(--border)' } },
+      h(MhPersonRow, { region: 'AU', person: { familyName: 'Nguyen', givenName: 'Thi Lan', dateOfBirth: '1990-03-12', mrn: '004512' }, preferredName: 'Lan', pronouns: 'she/her', sex: 'Female', legalStatuses: [{ state: 'current', label: 'Treatment order (example, VIC)' }], restricted: true })
+    )
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

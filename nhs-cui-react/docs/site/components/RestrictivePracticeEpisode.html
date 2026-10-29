@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RestrictivePracticeEpisode · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mental health</p>
+<h1 style="margin:0 0 4px;font-size:20px">RestrictivePracticeEpisode</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Restrictive practice episode: timers absolute then relative, overdue in words, missed observations, ended · Guidelines: <code>src/mental-health/RestrictivePracticeEpisode/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { RestrictivePracticeEpisode, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = '2026-10-28T03:00:00Z';
+const tz = 'Australia/Melbourne';
+const ep = {
+  id: 'ri1', typeLabel: 'Seclusion', startedAt: '2026-10-28T01:35:00Z',
+  authorisedBy: 'Dr A Okafor, authorised psychiatrist', appliedBy: 'J Lee, nurse in charge',
+  observationIntervalMinutes: 15, reviewIntervalMinutes: 60, authorisationExpiresAt: '2026-10-28T05:35:00Z',
+  observations: [{ id: 'o1', at: '2026-10-28T02:30:00Z', by: 'J Lee', findings: 'Settled, breathing normally' }, { id: 'o2', at: '2026-10-28T01:50:00Z', by: 'J Lee', findings: 'Pacing, verbally distressed' }],
+  reviews: [{ id: 'r1', at: '2026-10-28T02:10:00Z', by: 'Dr A Okafor', outcome: 'Continue; offer food and drink' }],
+  missedObservations: [{ dueAt: '2026-10-28T02:05:00Z' }],
+  lessRestrictiveOptions: ['De-escalation conversation', 'Quiet room offered']
+};
+const noop = function () {};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(ClinicalLocaleProvider, { region: 'AU' },
+    h('div', { style: { display: 'flex', flexDirection: 'column', gap: 12, padding: 16, background: 'var(--surface)' } },
+      h(RestrictivePracticeEpisode, { episode: ep, now: now, timeZone: tz, authorisationSoonMinutes: 60, onRecordObservation: noop, onRecordReview: noop, onEnd: noop }),
+      h(RestrictivePracticeEpisode, { episode: Object.assign({}, ep, { typeLabel: 'Seclusion, due times from the host', nextObservationDueAt: '2026-10-28T03:05:00Z', nextReviewDueAt: '2026-10-28T03:35:00Z', authorisationExpired: true, missedReviews: [{ dueAt: '2026-10-28T02:35:00Z' }] }), now: now, timeZone: tz, onRecordObservation: noop, onRecordReview: noop, onEnd: noop }),
+      h('div', { style: { maxWidth: 360 } },
+        h(RestrictivePracticeEpisode, { headingLevel: 3, episode: Object.assign({}, ep, { typeLabel: 'Physical bodily restraint', continuousObservation: true, endedAt: '2026-10-28T02:50:00Z', missedObservations: [] }), now: now, timeZone: tz }))
+    )
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

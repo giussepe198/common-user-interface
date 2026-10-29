@@ -30,7 +30,7 @@ const S = [
   { id: '5', pattern: 'HCC', segments: [{ type: 'free', text: 'Decreasing exercise tolerance over 3 months' }], sessionTime: '2024-05-02T10:20:00', author: 'Dr B Sample' },
 ];
 ReactDOM.createRoot(document.getElementById('root')).render(
-  h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' } },
+  h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 24, alignItems: 'start' } },
     h(StatementList, { statements: S, session: { author: 'Dr B Sample', sessionTime: '2024-05-02T10:15:00', location: 'Acute medical unit' }, onAddEncoding: function () {} }),
     h(StatementList, { statements: S, grouping: 'chronological' })
   )

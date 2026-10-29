@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Switch · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Forms</p>
+<h1 style="margin:0 0 4px;font-size:20px">Switch</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Immediate on or off setting with the state in words · Guidelines: <code>src/forms/Switch/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { Switch, FormField } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 360 } },
+    h(Switch, { label: 'Show inactive teams' }),
+    h(FormField, { label: 'Notifications' }, h(Switch, { defaultChecked: true })),
+    h(Switch, { label: 'Disabled setting', disabled: true })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

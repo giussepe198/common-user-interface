@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MeasureForm · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mental health</p>
+<h1 style="margin:0 0 4px;font-size:20px">MeasureForm</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Measure form: item rating grid (placeholder items), partial total, items not answered, narrow chips · Guidelines: <code>src/mental-health/MeasureForm/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MeasureForm } = window.ClinicalCUI;
+const items = Array.from({ length: 12 }, function (_, i) { return { id: 'i' + (i + 1), label: 'Item ' + (i + 1) + '' }; });
+const honosLike = {
+  id: 'clin', name: 'Clinician rated measure (example, 12 items 0 to 4, 9 not known)', items: items,
+  options: [0, 1, 2, 3, 4].map(function (v) { return { value: v, label: String(v), description: 'Rating ' + v + '' }; }).concat([{ value: 9, label: '9', description: 'Not known', excludeFromTotal: true }]),
+  maxMissingItems: 2, bands: [{ from: 0, to: 9, label: 'Lower (example band, for discussion with the person)' }, { from: 10, to: 48, label: 'Higher (example band, for discussion with the person)' }], bandSource: 'Example source (placeholder)'
+};
+const k10Like = {
+  id: 'self', name: 'Self-report measure (example, 1 to 5)', items: items.slice(0, 4),
+  options: [1, 2, 3, 4, 5].map(function (v) { return { value: v, label: String(v) }; })
+};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16, padding: 16, background: 'var(--surface)' } },
+    h(MeasureForm, { instrument: honosLike, context: 'Rating period: the last 2 weeks', defaultValue: { i1: 2, i2: 1, i3: 9, i4: 0, i5: 3, i6: 2, i7: 1, i8: 0, i9: 2, i10: 1 }, showMissing: true, onSubmit: function () {} }),
+    h('div', { style: { maxWidth: 360, border: '1px solid var(--border)', padding: 8 } },
+      h(MeasureForm, { instrument: k10Like, headingLevel: 3, defaultValue: { i1: 3 }, onSubmit: function () {} }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CarePlanGoals · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1048px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Mental health</p>
+<h1 style="margin:0 0 4px;font-size:20px">CarePlanGoals</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Care plan goals: the person's own words, actions with who and by when, progress in words, review overdue · Guidelines: <code>src/mental-health/CarePlanGoals/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { CarePlanGoals } = window.ClinicalCUI;
+const goals = [
+  { id: 'g1', ownWords: 'I want to get back to my course next year', domain: 'Education', strengths: 'Loves art; good with deadlines', reviewDue: '2026-12-01', progress: 'some', progressNote: '"I have enrolled, I am nervous"',
+    actions: [{ id: 'a1', text: 'Call the student support office', who: 'Lan', byWhen: '2026-11-04' }, { id: 'a2', text: 'Write a letter of support', who: 'Case manager', done: true }] },
+  { id: 'g2', ownWords: 'Sleep through the night most nights', domain: 'Physical health', reviewDue: '2026-09-01', progress: 'not-started',
+    actions: [{ id: 'b1', text: 'Try the wind-down routine from the group', who: 'Lan' }, { id: 'b2', text: 'Review medication timing', who: 'Dr A Okafor', byWhen: '2026-11-10' }] },
+  { id: 'g3', ownWords: 'See my nephew every week', domain: 'Relationships', progress: 'achieved', actions: [] }
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { padding: 16, background: 'var(--surface)' } },
+    h(CarePlanGoals, { goals: goals, agreement: 'Agreed with Lan, 20-Oct-2026', now: '2026-10-28T00:00:00Z', timeZone: 'Australia/Melbourne', onAddGoal: function () {}, onEditGoal: function () {} })
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

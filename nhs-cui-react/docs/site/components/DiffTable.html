@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DiffTable · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Data display</p>
+<h1 style="margin:0 0 4px;font-size:20px">DiffTable</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Diff table: an amendment and a merge comparison, wide and narrow · Guidelines: <code>src/data/DiffTable/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DiffTable } = window.ClinicalCUI;
+const versions = [{ id: 'b', label: 'Before' }, { id: 'a', label: 'After (amended 29-Sep-2026 10:14)' }];
+const rows = [
+  { id: 't', label: 'Appointment time', values: ['10:00', '10:30'] },
+  { id: 'l', label: 'Location', values: ['Clinic 2', 'Clinic 2'] },
+  { id: 'i', label: 'Interpreter', values: [null, 'Arabic'] },
+];
+const merge = [
+  { id: 'n', label: 'Name', values: ['CITIZEN, Alex', 'CITIZEN, Alex'] },
+  { id: 'd', label: 'Date of birth', values: ['01-Jan-1980', '02-Jan-1980'], status: { text: 'Different: choose', icon: 'warning' } },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gap: 24 } },
+    h(DiffTable, { caption: 'What changed in the amendment of 29-Sep-2026', versions, rows }),
+    h('div', { style: { maxWidth: 360 } }, h(DiffTable, { caption: 'Records to compare (narrow)', versions: [{ id: 'k', label: 'Keep: TST-000184' }, { id: 'm', label: 'Merge in: TST-000233' }], rows: merge })))
+);
+</script>
+
+</div>
+</body>
+</html>

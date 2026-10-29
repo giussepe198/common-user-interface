@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BarChart · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:1248px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Data display</p>
+<h1 style="margin:0 0 4px;font-size:20px">BarChart</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Bar chart: grouped columns, horizontal bars, suppressed values and a target · Guidelines: <code>src/data/BarChart/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { BarChart } = window.ClinicalCUI;
+const series = [{ id: 'q3', label: 'Jul to Sep 2026' }, { id: 'q2', label: 'Apr to Jun 2026' }];
+const categories = [
+  { id: 'gp', label: 'GP', values: [42, 30] }, { id: 'ed', label: 'ED', values: [18, 21] },
+  { id: 'self', label: 'Self', values: [null, 7], note: 'Count under 5 suppressed' }, { id: 'police', label: 'Police', values: [9, 11] },
+];
+const teams = [
+  { id: 'n', label: 'North community team', values: [12] }, { id: 's', label: 'South community team', values: [19] },
+  { id: 'c', label: 'Child and youth mental health', values: [27] }, { id: 'a', label: 'Aged persons mental health', values: [null] },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gap: 16 } },
+    h(BarChart, { title: 'Referrals by source', unit: 'referrals', series, categories, suppressedText: '<5', thresholds: [{ value: 40, label: 'Planned capacity' }] }),
+    h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 16, alignItems: 'start' } },
+      h(BarChart, { title: 'Median wait by team, narrow', unit: 'days', categories: teams, suppressedText: 'Not shown', thresholds: [{ value: 14, label: 'Target 14 days' }] }),
+      h(BarChart, { title: 'Table view', unit: 'referrals', series, categories, suppressedText: '<5', defaultShowTable: true })))
+);
+</script>
+
+</div>
+</body>
+</html>
