@@ -1,0 +1,45 @@
+/*
+ * Form layouts (FormRow, FormGrid): the alignment rule. Every child is a field with three slots as direct children
+ * ([data-slot="label"], [data-slot="control"], [data-slot="feedback"]; FormField and the forms group controls render
+ * them). Each field spans three row tracks of the layout and takes them as a subgrid, so in one visual line every
+ * label shares the label track (as tall as the tallest label; labels sit at its end), every control shares the
+ * control track (controls start at its top, so a taller neighbour never moves them), and prompts and errors share
+ * the feedback track below. The layout is a size container: columns collapse with its own width, not the viewport.
+ */
+.cui-form-layout { container: cui-form / inline-size; width: 100%; min-width: 0; }
+.cui-form-layout__grid {
+  display: grid; grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto;
+  column-gap: var(--space-4); row-gap: 0; align-items: start;
+}
+.cui-form-layout__grid > * { grid-row: span 3; min-width: 0; }
+.cui-form-layout__grid > [data-cui-field],
+.cui-form-layout__grid > .cui-form-grid-span > [data-cui-field] {
+  display: grid; grid-template-rows: subgrid; grid-template-columns: minmax(0, 1fr); align-self: stretch;
+  margin: 0; min-width: 0;
+}
+.cui-form-layout__grid [data-cui-field] > [data-slot="label"] {
+  grid-row: 1; grid-column: 1; align-self: end; margin: 0 0 var(--space-1); padding: 0; text-align: start;
+  font-weight: 600; color: var(--ink); min-width: 0; overflow-wrap: anywhere;
+}
+.cui-form-layout__grid [data-cui-field] > [data-slot="control"] {
+  grid-row: 2; grid-column: 1; align-self: start; min-width: 0; min-height: var(--control-height);
+}
+.cui-form-layout__grid [data-cui-field] > [data-slot="feedback"] {
+  grid-row: 3; grid-column: 1; align-self: start; min-width: 0; padding-bottom: var(--space-3);
+}
+/* In a layout the control fills its column (fixed-width controls such as DateInput keep their own width). */
+.cui-form-layout__grid [data-cui-field] .cui-form-field__control { display: flex; flex: 1 1 auto; min-width: 0; }
+
+/* FormRow columns: one column below 30rem; four or more fields go to two columns below 48rem. */
+@container cui-form (min-width: 30rem) {
+  .cui-form-row > .cui-form-layout--cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cui-form-row > .cui-form-layout--cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cui-form-row > :is(.cui-form-layout--cols-4, .cui-form-layout--cols-5, .cui-form-layout--cols-6) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cui-form-row > :is(.cui-form-layout--cols-2, .cui-form-layout--cols-3).cui-form-layout--template { grid-template-columns: var(--cui-form-template); }
+}
+@container cui-form (min-width: 48rem) {
+  .cui-form-row > .cui-form-layout--cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .cui-form-row > .cui-form-layout--cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .cui-form-row > .cui-form-layout--cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .cui-form-row > .cui-form-layout--template { grid-template-columns: var(--cui-form-template); }
+}

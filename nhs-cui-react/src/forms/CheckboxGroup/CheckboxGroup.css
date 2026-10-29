@@ -1,0 +1,10 @@
+/* Options area of CheckboxGroup and RadioGroup (the control slot). Vertical by default (CNA-2000, CNA-1910). */
+.cui-choice-options { display: flex; min-width: 0; min-height: var(--control-height); }
+.cui-choice-options--vertical { flex-direction: column; align-items: flex-start; }
+.cui-choice-options--horizontal { flex-direction: row; flex-wrap: wrap; column-gap: var(--space-4); }
+.cui-choice-options .cui-check { min-height: 0; padding: 2px 0; }
+.cui-choice-options .cui-check:first-child { padding-top: calc((var(--control-height) - var(--line-height-body)) / 2); }
+.cui-choice-options--horizontal .cui-check { padding-block: calc((var(--control-height) - var(--line-height-body)) / 2); }
+@media (pointer: coarse) {
+  .cui-choice-options .cui-check, .cui-choice-options .cui-check:first-child { min-height: var(--target-coarse); padding: 0; }
+}

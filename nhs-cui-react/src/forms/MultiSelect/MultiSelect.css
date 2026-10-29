@@ -1,0 +1,28 @@
+.cui-multi-select { position: relative; display: block; width: 100%; min-width: 0; }
+/* The box grows downwards as chips wrap; a single line is exactly the control height, so it stays level in a row. */
+.cui-multi-select__box { height: auto; min-height: var(--control-height); align-items: stretch; cursor: text; }
+.cui-multi-select__values { flex: 1 1 auto; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; padding: 2px 0 2px 2px; }
+.cui-multi-select__values > .cui-multi-select__input {
+  flex: 1 1 6em; min-width: 6em; height: calc(var(--control-height) - 6px); margin: 0; border: 0; background: transparent; color: inherit;
+  font: inherit; font-family: var(--font-sans); font-size: var(--font-size-body); line-height: var(--line-height-body); padding: 0 var(--space-2);
+}
+.cui-multi-select__values > .cui-multi-select__input:focus { outline: none; }
+.cui-multi-select__values > .cui-multi-select__input::placeholder { color: var(--ink-subtle); font-style: italic; opacity: 1; }
+.cui-multi-select__box > .cui-multi-select__toggle { align-self: stretch; }
+.cui-multi-select__chips { display: contents; list-style: none; margin: 0; padding: 0; }
+.cui-multi-select__chip {
+  display: inline-flex; align-items: center; gap: 2px; max-width: 100%; margin: 1px 2px;
+  height: calc(var(--control-height) - 10px); min-height: 20px; padding: 0 2px 0 var(--space-2);
+  background: var(--accent-surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
+  font-size: var(--font-size-label); line-height: var(--line-height-label);
+}
+.cui-multi-select__chip-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cui-multi-select__chip-remove {
+  flex: none; display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; margin: 0; padding: 0;
+  border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--ink); cursor: pointer;
+}
+.cui-multi-select__chip-remove:hover { background: var(--hover); }
+@media (pointer: coarse) {
+  .cui-multi-select__chip { height: auto; min-height: 32px; }
+  .cui-multi-select__chip-remove { width: 32px; height: 32px; }
+}

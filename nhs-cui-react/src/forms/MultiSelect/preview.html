@@ -1,0 +1,13 @@
+<!-- @dsCard group="Forms" height=200 subtitle="Several choices as chips inside the box" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { FormField, MultiSelect } = window.ClinicalCUI;
+const langs = [{ value: 'en', label: 'English' }, { value: 'mi', label: 'Te reo Māori', lang: 'mi' }, { value: 'zh', label: 'Mandarin' }, { value: 'ar', label: 'Arabic' }, { value: 'vi', label: 'Vietnamese' }];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 380 } },
+    h(FormField, { label: 'Languages spoken' }, h(MultiSelect, { options: langs, defaultValue: [langs[0], langs[1], langs[2]] })),
+    h(FormField, { label: 'Interpreter languages', error: 'Choose at least one language' }, h(MultiSelect, { options: langs, placeholder: 'Type to filter' }))
+  )
+);
+</script>

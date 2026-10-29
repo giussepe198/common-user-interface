@@ -1,0 +1,12 @@
+<!-- @dsCard group="Forms" height=300 subtitle="Multi-line text with a character count" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { FormField, TextArea } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 520 } },
+    h(FormField, { label: 'Reason for referral', prompt: 'In the person’s own words where possible' }, h(TextArea, { maxLength: 200, defaultValue: 'Low mood for six weeks, not sleeping.' })),
+    h(FormField, { label: 'Summary', error: 'Shorten the summary' }, h(TextArea, { maxLength: 20, limitMode: 'warn', rows: 2, defaultValue: 'This summary is longer than allowed.' }))
+  )
+);
+</script>

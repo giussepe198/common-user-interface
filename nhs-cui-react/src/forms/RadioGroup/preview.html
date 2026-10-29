@@ -1,0 +1,13 @@
+<!-- @dsCard group="Forms" height=240 subtitle="One choice, nothing chosen by default" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { RadioGroup } = window.ClinicalCUI;
+const opts = [{ value: 'y', label: 'Yes' }, { value: 'n', label: 'No' }, { value: 'u', label: 'Not known' }];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 460 } },
+    h(RadioGroup, { label: 'Interpreter needed', options: opts, defaultValue: 'n' }),
+    h(RadioGroup, { label: 'Interpreter needed', options: opts, orientation: 'horizontal', required: true, error: 'Choose an answer' })
+  )
+);
+</script>

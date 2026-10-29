@@ -1,0 +1,13 @@
+<!-- @dsCard group="Forms" height=140 subtitle="Immediate on or off setting with the state in words" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { Switch, FormField } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 360 } },
+    h(Switch, { label: 'Show inactive teams' }),
+    h(FormField, { label: 'Notifications' }, h(Switch, { defaultChecked: true })),
+    h(Switch, { label: 'Disabled setting', disabled: true })
+  )
+);
+</script>

@@ -1,0 +1,14 @@
+.cui-select > .cui-select__input {
+  appearance: none; -webkit-appearance: none; cursor: pointer; text-overflow: ellipsis;
+  padding-right: calc(var(--control-height) - 2px);
+}
+.cui-select > .cui-select__input:disabled { cursor: not-allowed; }
+/* The empty option reads as a prompt: grey italic (CNA-2100). The options themselves stay in the normal style. */
+.cui-select > .cui-select__input--empty { color: var(--ink-subtle); font-style: italic; }
+.cui-select > .cui-select__input option, .cui-select > .cui-select__input optgroup { color: var(--ink); font-style: normal; background: var(--surface); }
+.cui-select__chevron {
+  position: absolute; top: 0; right: 0; bottom: 0; width: calc(var(--control-height) - 2px);
+  display: inline-flex; align-items: center; justify-content: center; color: var(--ink); pointer-events: none;
+  border-left: 1px solid var(--border);
+}
+.cui-field-box--disabled .cui-select__chevron { color: var(--ink-disabled); }

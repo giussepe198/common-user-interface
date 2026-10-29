@@ -1,0 +1,7 @@
+/* The box is .cui-field-box (forms/internal/internal.css). Hide the browser's own clear control; ours is in the box. */
+.cui-search-input > .cui-search-input__input::-webkit-search-cancel-button,
+.cui-search-input > .cui-search-input__input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
+.cui-search-input > .cui-search-input__input { padding-left: var(--space-1); }
+@media (pointer: coarse) {
+  .cui-search-input > .cui-field-box__button { min-width: var(--target-coarse); }
+}
