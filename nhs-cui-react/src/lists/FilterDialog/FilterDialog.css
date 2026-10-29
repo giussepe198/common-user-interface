@@ -10,10 +10,19 @@
 .cui-filter-dialog__and, .cui-filter-dialog__unit { color: var(--ink-muted); }
 .cui-filter-dialog__add { margin-top: var(--space-2); }
 .cui-filter-dialog__combine { margin: var(--space-3) 0 0; padding: var(--space-2) var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
-.cui-filter-dialog__combine legend { font-size: 12px; color: var(--ink-muted); padding: 0 var(--space-1); }
+.cui-filter-dialog__combine legend { font-size: var(--font-size-label); color: var(--ink-muted); padding: 0 var(--space-1); }
 /* CUI DateInput / TimeInput in a criterion line: the visible field label is redundant with the line, so it is
    visually hidden but kept as the accessible name. */
 .cui-list-datefield { display: inline-flex; align-items: center; gap: var(--space-2); }
 .cui-list-datefield .cui-dt-field__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .cui-list-datefield .cui-dt-field { width: 150px; }
 .cui-list-datefield--pair .cui-dt-field + .cui-dt-field { width: 96px; }
+/* Responsive: below 560px each criterion stacks (attribute, operator, value), full width, no sideways scroll. */
+@container cui-list-dialog (max-width: 559px) {
+  .cui-filter-dialog__line { flex-direction: column; align-items: stretch; }
+  .cui-filter-dialog__attr, .cui-filter-dialog__op { min-width: 0; width: 100%; }
+  .cui-filter-dialog__opval { flex-wrap: wrap; }
+  .cui-filter-dialog__opval > * { flex: 1 1 100%; }
+  .cui-filter-dialog__value, .cui-filter-dialog__value[type="datetime-local"] { width: 100%; }
+  .cui-list-datefield { flex-wrap: wrap; }
+}

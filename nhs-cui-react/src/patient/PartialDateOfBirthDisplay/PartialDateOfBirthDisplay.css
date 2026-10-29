@@ -1,4 +1,7 @@
 /* Partial date of birth display. */
-.cui-partial-dob-display__qualifier { margin-left: var(--space-1); font-size: 12px; line-height: 16px; font-weight: 400; font-style: italic; color: var(--ink-muted); }
+.cui-partial-dob-display__qualifier { margin-left: var(--space-1); font-size: var(--font-size-prompt); line-height: var(--line-height-prompt); font-weight: 400; font-style: italic; color: var(--ink-muted); }
 .cui-partial-dob-display__age { font-weight: 600; }
-.cui-partial-dob-display__source { margin-left: var(--space-1); font-size: 12px; line-height: 16px; font-weight: 400; color: var(--ink-muted); }
+.cui-partial-dob-display__source { margin-left: var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 400; color: var(--ink-muted); }
+/* The date, qualifier, age and source each stay whole; they wrap between each other on a narrow screen. */
+.cui-partial-dob-display__value, .cui-labelled-value .cui-partial-dob-display__value { white-space: normal; }
+.cui-partial-dob-display__date, .cui-partial-dob-display__qualifier, .cui-partial-dob-display__age, .cui-partial-dob-display__source { white-space: nowrap; }

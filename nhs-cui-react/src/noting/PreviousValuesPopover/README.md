@@ -30,3 +30,4 @@ A small floating panel above a numeric field that shows the most recent previous
 ## Accessibility
 - The panel never takes focus by itself; the input's `aria-describedby` points at it, so screen readers hear the previous values with dates when the field is focused.
 - Dates use the shared CUI formats (dd-Mmm-yyyy, HH:mm).
+- Inside a FormField the field's id, hints and required or invalid state pass through the popover to the entry field, so the visible label names the field [suggested].

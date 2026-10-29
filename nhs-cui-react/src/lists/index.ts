@@ -63,6 +63,7 @@ export { GraphStack } from './GraphStack/GraphStack';
 export type { GraphStackProps, GraphStackGraph } from './GraphStack/GraphStack';
 export * from './utils/listTypes';
 export * from './utils/patientListName';
+export { listNamesSoundAlike, listPhoneticCode } from './utils/nameSoundAlike';
 export * from './utils/filter';
 export * from './utils/sortGroup';
 export * from './utils/timeScale';
@@ -76,3 +77,6 @@ export * from './utils/columnWidth';
 export * from './utils/timelineEvents';
 export * from './utils/criticalThresholds';
 export * from './utils/graphStack';
+// Shared with the data area (DataTable, LineChart, BarChart): text measurement, element width and label placement.
+export { listMeasureText, useElementWidth as useListElementWidth } from './shared/measure';
+export * from './utils/graphLabelPlacement';

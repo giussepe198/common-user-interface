@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Icon, cx, formatDateTime, formatShortDate, toDate, useClinicalLocale, useControllableState, useId, type ClinicalRegion, type DateLike, type IconName } from '../../core';
-import { findDuplicateNames } from '../utils/patientListName';
+import { findDuplicateNames, type PatientListNameMatch } from '../utils/patientListName';
 import { LIST_IDENTIFIER_LABELS, listNamesDifferOnlyByDiacritics, listRegionalPatientName } from '../utils/regions/patientIdentification';
 import { listPatientIdentifiers } from '../PatientIdentificationCell/PatientIdentificationCell';
 import { ListWarningSymbol } from '../shared/ListWarningSymbol';
@@ -32,6 +32,11 @@ export interface HandoverTask {
   status: string;
   /** Due time; overdue tasks are flagged (RID 53). */
   due?: DateLike;
+  /**
+   * Overdue as the system of record decides it, when it knows better than the clock here (for example a due time in
+   * the service's own time zone) [suggested]. When omitted, a task is overdue once `due` has passed (RID 53).
+   */
+  overdue?: boolean;
   /** Time-dependent wording, e.g. "After the operation" (RID 123). */
   dueText?: string;
   /** Person, role or set of staff allocated (RID 51/52). */
@@ -111,6 +116,26 @@ export interface HandoverTaskListProps {
    * identical names only.
    */
   similarNames?: (a: HandoverPatient, b: HandoverPatient) => boolean;
+  /**
+   * Draws the identification of each item in place of the built-in name heading and identifier line, for a system
+   * whose identification cell carries more (sex, a preferred name, labelled local identifiers) [suggested]. It receives
+   * the name match the list found, so the cell can show the same similar-name warning (PAL-0560). The list keeps a
+   * heading with the name for navigation, visually hidden.
+   */
+  renderPatient?: (patient: HandoverPatient, ctx: { match: PatientListNameMatch | null }) => React.ReactNode;
+  /**
+   * Extra key facts for an item, shown under the responsibility line (for example legal status and alert counts in
+   * mental health) [suggested]. Keep it to what the receiver needs at a glance; details belong one click away.
+   */
+  renderPatientDetail?: (patient: HandoverPatient) => React.ReactNode;
+  /**
+   * Show each item's "To hand over" / "Handed over" state and the "n of m handed over" summary. Default true. Turn it
+   * off while the system cannot record the handshake, so the list never implies a handover state it does not hold
+   * [suggested].
+   */
+  showHandoverState?: boolean;
+  /** The word for an item, singular and plural. Default patient, patients; a community or mental health service may say person, people [suggested]. */
+  nouns?: { one: string; other: string };
   /** Jurisdiction; otherwise read from ClinicalLocaleProvider. Sets identifier labels and formats and name case (G10 1.6, G11 1.3). */
   region?: ClinicalRegion;
   className?: string;
@@ -124,7 +149,7 @@ export interface HandoverTaskListProps {
 export function HandoverTaskList({
   patients, tasks, statuses = HANDOVER_TASK_STATUSES, now, hideCompleted, defaultHideCompleted = false, onHideCompletedChange,
   onStatusChange, onRemoveTask, onReadBackConfirm, onRecordHandover, onOpenPatient, title = 'Handover tasks', className,
-  region: regionProp, similarNames,
+  region: regionProp, similarNames, renderPatient, renderPatientDetail, nouns = { one: 'patient', other: 'patients' }, showHandoverState = true,
 }: HandoverTaskListProps) {
   const { region } = useClinicalLocale(regionProp);
   const nameOf = (p: HandoverPatient) => listRegionalPatientName(p, region);
@@ -151,7 +176,7 @@ export function HandoverTaskList({
   const renderTask = (t: HandoverTask) => {
     const st = statusOf(t.status);
     const dueMs = t.due ? toDate(t.due)?.getTime() : undefined;
-    const overdue = !st.complete && dueMs !== undefined && dueMs < nowMs;
+    const overdue = !st.complete && (t.overdue ?? (dueMs !== undefined && dueMs < nowMs));
     return (
       <li key={t.id} className={cx('cui-handover__task', t.forHandover && 'cui-handover__task--flag', st.complete && 'cui-handover__task--done')}>
         <div className={cx('cui-handover__status', `cui-handover__status--${st.complete ? 'done' : t.status}`)}>
@@ -228,16 +253,16 @@ export function HandoverTaskList({
     <section className={cx('cui-handover', className)} aria-labelledby={`${id}-title`}>
       <div className="cui-handover__head">
         <h2 id={`${id}-title`} className="cui-handover__title">{title}</h2>
-        <span className="cui-handover__summary">
-          {patients.filter(p => p.handoverState === 'handedOver').length} of {patients.length} patients handed over
-        </span>
-        <label className="cui-list-choice cui-handover__hide">
+        {showHandoverState ? <span className="cui-handover__summary">
+          {patients.filter(p => p.handoverState === 'handedOver').length} of {patients.length} {patients.length === 1 ? nouns.one : nouns.other} handed over
+        </span> : null}
+        <label className="cui-list-choice cui-handover__hide" data-touch-target>
           <input type="checkbox" checked={hide} onChange={e => setHide(e.target.checked)} /> Hide completed tasks
         </label>
       </div>
       {unassignedCount ? (
         <div className="cui-handover__alert" role="alert">
-          <Icon name="error" /> {unassignedCount} patient{unassignedCount === 1 ? ' has' : 's have'} no one responsible. Assign a clinician before handover.
+          <Icon name="error" /> {unassignedCount} {unassignedCount === 1 ? `${nouns.one} has` : `${nouns.other} have`} no one responsible. Assign a clinician before handover.
         </div>
       ) : null}
       <ol className="cui-handover__patients">
@@ -247,7 +272,7 @@ export function HandoverTaskList({
           const reasons = [
             ...(match
               ? [
-                  `Another patient on this list ${match.kind === 'identical' ? 'is called' : 'has a name like'} ${nameOf(p)}: confirm ${
+                  `Another ${nouns.one} on this list ${match.kind === 'identical' ? 'is called' : 'has a name like'} ${nameOf(p)}: confirm ${
                     match.differentiator === 'dateOfBirth' ? 'date of birth' : match.differentiator === 'nhsNumber' ? (region === 'GB' ? 'NHS number' : LIST_IDENTIFIER_LABELS[listPatientIdentifiers(p, region)[0].type]) : 'given name'
                   }`,
                 ]
@@ -258,26 +283,33 @@ export function HandoverTaskList({
           return (
             <li key={p.id} className={cx('cui-handover__patient', handed && 'cui-handover__patient--handed')} aria-labelledby={`${id}-${p.id}`}>
               <div className="cui-handover__patient-head">
-                <div className="cui-handover__ident">
-                  <h3 id={`${id}-${p.id}`} className={cx('cui-handover__name', match && 'cui-handover__name--match')}>
-                    {match ? <ListWarningSymbol /> : null}
-                    {onOpenPatient ? (
-                      <button type="button" className="cui-handover__name-link" onClick={() => onOpenPatient(p.id)}>{nameOf(p)}</button>
-                    ) : (
-                      nameOf(p)
-                    )}
-                  </h3>
-                  <div className="cui-handover__idline">
-                    {p.location ? <span className="cui-handover__location">{p.location}</span> : null}
-                    <span><span className="cui-handover__label">Born</span> <span className="cui-tabular">{p.dateOfBirth ? formatShortDate(p.dateOfBirth) : 'Unknown'}</span></span>
-                    {listPatientIdentifiers(p, region).map(i => (
-                      <span key={i.type}><span className="cui-handover__label">{LIST_IDENTIFIER_LABELS[i.type]}</span> <span className="cui-tabular">{i.text || 'Unknown'}</span></span>
-                    ))}
+                {renderPatient ? (
+                  <div className="cui-handover__ident">
+                    <h3 id={`${id}-${p.id}`} className="cui-visually-hidden">{nameOf(p)}</h3>
+                    {renderPatient(p, { match: match ?? null })}
                   </div>
-                </div>
-                <div className={cx('cui-handover__state', handed ? 'cui-handover__state--done' : 'cui-handover__state--todo')}>
+                ) : (
+                  <div className="cui-handover__ident">
+                    <h3 id={`${id}-${p.id}`} className={cx('cui-handover__name', match && 'cui-handover__name--match')}>
+                      {match ? <ListWarningSymbol /> : null}
+                      {onOpenPatient ? (
+                        <button type="button" className="cui-handover__name-link" onClick={() => onOpenPatient(p.id)}>{nameOf(p)}</button>
+                      ) : (
+                        nameOf(p)
+                      )}
+                    </h3>
+                    <div className="cui-handover__idline">
+                      {p.location ? <span className="cui-handover__location">{p.location}</span> : null}
+                      <span><span className="cui-handover__label">Born</span> <span className="cui-tabular">{p.dateOfBirth ? formatShortDate(p.dateOfBirth) : 'Unknown'}</span></span>
+                      {listPatientIdentifiers(p, region).map(i => (
+                        <span key={i.type}><span className="cui-handover__label">{LIST_IDENTIFIER_LABELS[i.type]}</span> <span className="cui-tabular">{i.text || 'Unknown'}</span></span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {showHandoverState ? <div className={cx('cui-handover__state', handed ? 'cui-handover__state--done' : 'cui-handover__state--todo')}>
                   <Icon name={handed ? 'check' : 'clock'} /> {handed ? 'Handed over' : 'To hand over'}
-                </div>
+                </div> : null}
               </div>
               <div className="cui-handover__resp">
                 {p.responsible ? (
@@ -296,6 +328,7 @@ export function HandoverTaskList({
                   </span>
                 ) : null}
               </div>
+              {renderPatientDetail ? <div className="cui-handover__detail">{renderPatientDetail(p)}</div> : null}
               {reasons.length ? (
                 <div className={cx('cui-handover__readback', p.readBackConfirmed && 'cui-handover__readback--done')}>
                   <div className="cui-handover__readback-title">
@@ -308,14 +341,14 @@ export function HandoverTaskList({
                     ))}
                   </ul>
                   {!p.readBackConfirmed && onReadBackConfirm ? (
-                    <Button size="sm" onClick={() => onReadBackConfirm(p.id)}>Read back done</Button>
+                    <Button size="sm" onClick={() => onReadBackConfirm(p.id)}>Read back done<span className="cui-visually-hidden">: {nameOf(p)}</span></Button>
                   ) : null}
                 </div>
               ) : null}
               {renderTasks(pTasks, 'No tasks')}
               {onRecordHandover && !handed ? (
                 <div className="cui-handover__actions">
-                  <Button size="sm" variant="secondary" icon="user" onClick={() => onRecordHandover(p.id)}>Record handover</Button>
+                  <Button size="sm" variant="secondary" icon="user" onClick={() => onRecordHandover(p.id)}>Record handover<span className="cui-visually-hidden">: {nameOf(p)}</span></Button>
                 </div>
               ) : null}
             </li>
@@ -324,7 +357,7 @@ export function HandoverTaskList({
       </ol>
       {nonPatient.length ? (
         <div className="cui-handover__patient cui-handover__nonpatient">
-          <h3 className="cui-handover__name">Tasks not linked to a patient</h3>
+          <h3 className="cui-handover__name">Tasks not linked to a {nouns.one}</h3>
           {renderTasks(nonPatient, 'No tasks')}
         </div>
       ) : null}

@@ -62,7 +62,7 @@ export function MaoriDescentInput({
       {purpose ? <p className="cui-patient-question__purpose">{purpose}</p> : null}
       <div className="cui-patient-question__options cui-patient-question__options--row">
         {NZ_MAORI_DESCENT_QUESTION.options.map((o) => (
-          <div key={o.key} className="cui-patient-question__option">
+          <div key={o.key} className="cui-patient-question__option" data-touch-target>
             <input
               type="radio"
               id={`${id}-${o.key}`}

@@ -30,6 +30,18 @@ Infusion durations, lengths of stay, treatment courses, intervals.
 - D+Tb-0018 decimals and fractions rejected with a message.
 - Clock changes come from the platform's time zone database (Intl, IANA tzdb) through `describeDaylightSavingSpan`, so earlier years are also right; `spansGmtBstChange` and `describeGmtBstSpan` remain as GB wrappers.
 
+## Inside FormField (bare mode)
+- `bare` [suggested] renders the field box only: no visible label, the instructions become a screen-reader description (the tooltip stays), and the host `error` is not drawn. Put it in a `FormField` (which passes `id`, `aria-describedby`, `aria-invalid` and `aria-required`) or name it with `aria-labelledby`. Keep `label`: it still names the in-field buttons.
+- The control's own validation messages go to `onValidationChange(message | null)`; show them as the FormField `error`. Without `onValidationChange` they are still drawn below the box, so a message is never lost.
+- Disambiguation prompts, calendars and notices still open from the control. In a `FormRow` they open in the control track and push only the feedback track below.
+
+```tsx
+const [msg, setMsg] = useState<string | null>(null);
+<FormField label="Date of birth" required error={msg ?? undefined}>
+  <DurationInput label="Date of birth" bare onValidationChange={setMsg} />
+</FormField>
+```
+
 ## Do and don't
 
 - Do supply `startDateTime` when the duration feeds a schedule.

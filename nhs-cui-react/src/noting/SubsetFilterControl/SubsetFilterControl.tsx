@@ -141,11 +141,11 @@ export function SubsetFilterControl({
                   <legend className="cui-subset-filter__legend">{l.label}</legend>
                   {l.description ? <span className="cui-subset-filter__description">{l.description}</span> : null}
                   <span className="cui-subset-filter__radios">
-                    <label>
+                    <label data-touch-target>
                       <input type="radio" name={name} checked={on} onChange={() => setSelected([...selected.filter((x) => x !== l.id), l.id])} />
                       Filter
                     </label>
-                    <label>
+                    <label data-touch-target>
                       <input type="radio" name={name} checked={!on} onChange={() => setSelected(selected.filter((x) => x !== l.id))} />
                       No filter
                     </label>

@@ -1,6 +1,6 @@
 /* Shared pieces of the mobile screens: status marks, names, identifiers, identity strip, cards. */
-.cui-mobile-mark { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; box-sizing: border-box; border-radius: var(--radius-md); font-size: 14px; line-height: 1; font-weight: 700; font-variant-numeric: tabular-nums; }
-.cui-mobile-mark--small { width: 22px; height: 22px; font-size: 12px; }
+.cui-mobile-mark { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; box-sizing: border-box; border-radius: var(--radius-md); font-size: var(--font-size-body); line-height: 1; font-weight: 700; font-variant-numeric: tabular-nums; }
+.cui-mobile-mark--small { width: 22px; height: 22px; font-size: var(--font-size-label); }
 .cui-mobile-mark--round { border-radius: 50%; }
 .cui-mobile-mark__code { letter-spacing: 0; }
 .cui-mobile-mark--given, .cui-mobile-mark--done { background: var(--success); color: var(--surface); }
@@ -19,20 +19,20 @@
 .cui-mobile-id__label { color: var(--ink-muted); font-weight: 400; }
 .cui-mobile-id--unknown .cui-mobile-id__value { font-style: italic; }
 
-.cui-mobile-similar { display: inline-flex; align-items: flex-start; gap: var(--space-2); margin-top: var(--space-1); padding: 2px var(--space-2); border: 1px solid var(--warning); border-radius: var(--radius-sm); background: var(--warning-surface); color: var(--warning); font-size: 14px; line-height: 20px; font-weight: 700; align-self: flex-start; max-width: 100%; box-sizing: border-box; }
+.cui-mobile-similar { display: inline-flex; align-items: flex-start; gap: var(--space-2); margin-top: var(--space-1); padding: 2px var(--space-2); border: 1px solid var(--warning); border-radius: var(--radius-sm); background: var(--warning-surface); color: var(--warning); font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 700; align-self: flex-start; max-width: 100%; box-sizing: border-box; }
 .cui-mobile-similar .cui-icon { flex: none; margin-top: 2px; }
 
 .cui-mobile-identity { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .cui-mobile-identity__top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-2); }
 .cui-mobile-identity__name { margin: 0; font-size: 17px; line-height: 22px; font-weight: 600; min-width: 0; }
-.cui-mobile-identity__location { flex: none; font-size: 14px; line-height: 20px; font-weight: 600; max-width: 45%; text-align: right; }
-.cui-mobile-identity__ids { font-size: 14px; line-height: 20px; color: var(--ink); }
+.cui-mobile-identity__location { flex: none; font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; max-width: 45%; text-align: right; }
+.cui-mobile-identity__ids { font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); }
 .cui-mobile-identity__ids .cui-mobile-born__value { white-space: nowrap; }
 .cui-mobile-identity__sep { color: var(--ink-muted); }
 .cui-mobile-identity__item { display: inline-block; max-width: 100%; }
 .cui-mobile-identity__item > .cui-mobile-id { display: inline; }
 
-.cui-mobile-step-label { margin: 0; font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: 0.02em; color: var(--ink-muted); text-transform: uppercase; }
+.cui-mobile-step-label { margin: 0; font-size: var(--font-size-detail); line-height: var(--line-height-detail); font-weight: 600; letter-spacing: 0.02em; color: var(--ink-muted); text-transform: uppercase; }
 .cui-mobile-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); }
 
 @media (prefers-reduced-motion: reduce) {

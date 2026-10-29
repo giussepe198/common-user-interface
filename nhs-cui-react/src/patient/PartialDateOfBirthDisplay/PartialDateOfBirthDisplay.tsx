@@ -56,7 +56,7 @@ export function PartialDateOfBirthDisplay({
   const sourceLabel = showSource && source ? NZ_DOB_SOURCE_CODES.find((c) => c.code === source)?.label ?? source : '';
   const content = d ? (
     <span className="cui-partial-dob-display__value">
-      {formatPartialDate(d, dateFormat)}
+      <span className="cui-partial-dob-display__date">{formatPartialDate(d, dateFormat)}</span>
       {qualifier ? <span className="cui-partial-dob-display__qualifier">{qualifier}</span> : null}
       {age ? <span className="cui-partial-dob-display__age">{` (${age})`}</span> : null}
       {sourceLabel ? <span className="cui-partial-dob-display__source">{`(${sourceLabel})`}</span> : null}

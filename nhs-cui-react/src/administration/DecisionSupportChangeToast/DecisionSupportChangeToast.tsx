@@ -1,8 +1,10 @@
 import React from 'react';
 import { cx, Icon } from '../../core';
+import { useKeepInView } from '../../core/hooks';
 import { formatShortDate, formatTime } from '../../core/format';
 import type { DateLike } from '../../core/format';
-import { DecisionSupportAlertStatus, decisionSupportClampToastDuration } from '../utils/decisionSupport';
+import type { DecisionSupportAlertStatus} from '../utils/decisionSupport';
+import { decisionSupportClampToastDuration } from '../utils/decisionSupport';
 
 export interface DecisionSupportChangeToastProps {
   /** Date and time of the change or alert, shown in the header as dd-Mmm-yyyy and 24-hour HH:mm (2.1.1, 2.4). */
@@ -40,6 +42,8 @@ export function DecisionSupportChangeToast({
   const [phase, setPhase] = React.useState<'in' | 'shown' | 'out' | 'gone'>('in');
   const [paused, setPaused] = React.useState(false);
   const closeRef = React.useRef(onClose);
+  const toastRef = React.useRef<HTMLElement | null>(null);
+  useKeepInView(toastRef, !!anchored && phase !== 'gone');
   closeRef.current = onClose;
 
   React.useEffect(() => {
@@ -82,6 +86,9 @@ export function DecisionSupportChangeToast({
     onMouseLeave: () => setPaused(false),
     onFocus: () => setPaused(true),
     onBlur: () => setPaused(false),
+    ref: (el: HTMLElement | null) => {
+      toastRef.current = el;
+    },
   };
   return (
     <div role="status" aria-live="polite" className="cui-ds-toast-region">

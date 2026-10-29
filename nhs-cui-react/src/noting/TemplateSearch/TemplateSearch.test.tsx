@@ -17,6 +17,18 @@ function type(v: string) {
 }
 
 describe('TemplateSearch', () => {
+  it('opened empty with minChars 0 lists every template to browse, suggested first, never "No matching templates"', () => {
+    render(<TemplateSearch templates={T} onSelect={vi.fn()} minChars={0} maxResults={50} context="Cardiology" />);
+    expect(screen.queryByText('No matching templates')).toBeNull();
+    const items = screen.getAllByRole('listitem').map((li) => li.textContent);
+    expect(items[0]).toContain('Chest pain assessment');
+    expect(items.some((t) => t?.includes('Past medical history'))).toBe(true);
+    expect(screen.queryByRole('button', { name: /Wells' score/ })).toBeNull();
+  });
+  it('with the default minChars an empty box lists nothing until two letters are typed', () => {
+    render(<TemplateSearch templates={T} onSelect={vi.fn()} />);
+    expect(screen.queryByRole('list', { name: 'Templates' })).toBeNull();
+  });
   it('puts abbreviation matches first and shows metadata on focus (Themes 1, 4)', () => {
     render(<TemplateSearch templates={T} onSelect={vi.fn()} />);
     type('pmh');

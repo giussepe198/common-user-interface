@@ -1,28 +1,28 @@
-.cui-obs-keypad { display: flex; flex-direction: column; min-width: 0; color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; background: var(--surface-sunken); }
+.cui-obs-keypad { display: flex; flex-direction: column; min-width: 0; color: var(--ink); font-family: var(--font-sans); font-size: var(--font-size-touch-body); line-height: var(--line-height-touch-body); background: var(--surface-sunken); }
 .cui-obs-keypad__main { display: flex; flex-direction: column; gap: 10px; padding: var(--space-3) var(--space-4); min-width: 0; }
-.cui-obs-keypad__meta { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: var(--space-1) var(--space-3); font-size: 14px; line-height: 20px; color: var(--ink-muted); }
-.cui-obs-keypad__placeholder { margin: 0; display: flex; gap: var(--space-2); align-items: flex-start; padding: var(--space-2) var(--space-3); background: var(--warning-surface); color: var(--ink); border: 1px solid var(--warning); border-radius: var(--radius-md); font-size: 14px; line-height: 20px; font-weight: 600; }
+.cui-obs-keypad__meta { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: var(--space-1) var(--space-3); font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink-muted); }
+.cui-obs-keypad__placeholder { margin: 0; display: flex; gap: var(--space-2); align-items: flex-start; padding: var(--space-2) var(--space-3); background: var(--warning-surface); color: var(--ink); border: 1px solid var(--warning); border-radius: var(--radius-md); font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; }
 .cui-obs-keypad__placeholder .cui-icon { flex: none; color: var(--warning); }
-.cui-obs-keypad__score { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: var(--radius-md); border: 1px solid var(--border-strong); background: var(--surface-muted); color: var(--ink); font-size: 15px; line-height: 20px; font-weight: 700; white-space: nowrap; }
+.cui-obs-keypad__score { display: inline-flex; align-items: center; padding: var(--space-1) 10px; border-radius: var(--radius-md); border: 1px solid var(--border-strong); background: var(--surface-muted); color: var(--ink); font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 700; white-space: nowrap; }
 .cui-obs-keypad__score--zoned { background: var(--cui-touch-zone, var(--surface-muted)); border-color: var(--ink); }
 .cui-obs-keypad__categorical { display: flex; flex-direction: column; gap: var(--space-2); }
 .cui-obs-keypad__categorical > div[aria-live] { align-self: flex-start; }
 .cui-obs-keypad__strip-wrap { display: flex; flex-direction: column; gap: var(--space-1); }
 .cui-obs-keypad__strip { display: flex; border-radius: var(--radius-md); border: 1px solid var(--border); padding-bottom: 10px; background: var(--surface); position: relative; }
-.cui-obs-keypad__band { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; padding: 6px 2px; font-size: 12px; line-height: 15px; text-align: center; background: var(--surface-muted); color: var(--ink); border-right: 1px solid var(--surface); position: relative; overflow-wrap: anywhere; }
+.cui-obs-keypad__band { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; padding: 6px 2px; font-size: var(--font-size-label); line-height: 15px; text-align: center; background: var(--surface-muted); color: var(--ink); border-right: 1px solid var(--surface); position: relative; overflow-wrap: anywhere; }
 .cui-obs-keypad__band:last-child { border-right: 0; }
 .cui-obs-keypad__band--zoned { background: var(--cui-touch-zone, var(--surface-muted)); }
-.cui-obs-keypad__band-score { font-weight: 700; font-size: 13px; }
+.cui-obs-keypad__band-score { font-weight: 700; font-size: var(--font-size-detail); }
 .cui-obs-keypad__band--active { outline: 3px solid var(--ink); outline-offset: -3px; font-weight: 700; z-index: 1; }
 .cui-obs-keypad__band--active::after { content: ""; position: absolute; left: 50%; bottom: -10px; margin-left: -7px; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 8px solid var(--ink); }
-.cui-obs-keypad__pending { margin: 0; font-size: 14px; line-height: 20px; color: var(--ink-muted); }
-.cui-obs-keypad__critical { border: 3px double var(--danger); background: var(--danger-surface); border-radius: var(--radius-md); padding: 10px 12px; display: flex; flex-direction: column; gap: var(--space-2); outline: none; }
+.cui-obs-keypad__pending { margin: 0; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink-muted); }
+.cui-obs-keypad__critical { border: 3px double var(--danger); background: var(--danger-surface); border-radius: var(--radius-md); padding: 10px var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); outline: none; }
 .cui-obs-keypad__critical:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.cui-obs-keypad__critical-title { margin: 0; display: flex; gap: var(--space-2); align-items: center; font-size: 16px; line-height: 22px; font-weight: 700; color: var(--danger); }
+.cui-obs-keypad__critical-title { margin: 0; display: flex; gap: var(--space-2); align-items: center; font-size: var(--font-size-touch-body); line-height: var(--line-height-touch-body); font-weight: 700; color: var(--danger); }
 .cui-obs-keypad__critical-title .cui-icon { flex: none; }
-.cui-obs-keypad__critical-text { margin: 0; font-size: 15px; line-height: 21px; color: var(--ink); }
+.cui-obs-keypad__critical-text { margin: 0; font-size: var(--font-size-subheading); line-height: 21px; color: var(--ink); }
 .cui-obs-keypad__critical-actions { display: flex; gap: var(--space-2); }
 .cui-obs-keypad__critical-actions > .cui-touch-button { flex: 1 1 0; }
-.cui-obs-keypad__confirmed { margin: 0; display: flex; align-items: center; gap: var(--space-2); font-size: 15px; line-height: 21px; font-weight: 600; color: var(--success); }
+.cui-obs-keypad__confirmed { margin: 0; display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-subheading); line-height: 21px; font-weight: 600; color: var(--success); }
 .cui-obs-keypad__confirmed .cui-icon { flex: none; }
 .cui-obs-keypad__pad { margin-top: var(--space-1); }

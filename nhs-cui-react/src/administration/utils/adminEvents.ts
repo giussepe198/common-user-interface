@@ -3,7 +3,8 @@
  * Source: CUI Medications Management - Drug Administration (MEDa-xxxx).
  * Pure functions, no React.
  */
-import { DateLike, formatTime, toDate } from '../../core/format';
+import type { DateLike} from '../../core/format';
+import { formatTime, toDate } from '../../core/format';
 import type { MedicationLineData } from '../../medications';
 
 /** Recorded administration statuses (MEDa-0119, fig 95). Never "Missed" or "Not Recorded" (MEDa-0282). */

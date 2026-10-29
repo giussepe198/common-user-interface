@@ -1,6 +1,7 @@
 /** Prescription completeness and schedule text (Search and Prescribe MSP-1730, MSP-2110 to MSP-2310). */
 import type { ClinicalRegion } from '../../core';
-import { formatQuantity, MedicationQuantity } from './numbers';
+import type { MedicationQuantity } from './numbers';
+import { formatQuantity } from './numbers';
 import { formatBrandNameForRegion } from './regionalText';
 
 /**

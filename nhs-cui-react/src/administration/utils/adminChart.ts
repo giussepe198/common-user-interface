@@ -2,13 +2,15 @@
  * Drug administration chart: time window, visibility, list order, grouping and counts.
  * Source: CUI Medications Management - Drug Administration (MEDa-xxxx). Pure functions, no React.
  */
-import { DateLike, toDate } from '../../core/format';
+import type { DateLike} from '../../core/format';
+import { toDate } from '../../core/format';
 import type { ClinicalRegion } from '../../core/locale';
 import { ADMIN_CHART_WORDING } from './regions/administration';
+import type {
+  AdminMedication,
+  AdminMedicationKind} from './adminEvents';
 import {
   ADMIN_DEFAULT_TOLERANCE,
-  AdminMedication,
-  AdminMedicationKind,
   adminEventPlotTime,
   adminEventStates,
   adminInfusionStatus,

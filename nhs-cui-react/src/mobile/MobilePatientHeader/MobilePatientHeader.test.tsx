@@ -24,13 +24,13 @@ describe('MobilePatientHeader', () => {
     expect(header.textContent).toContain('Allergies and adverse reactions: penicillin, latex');
     expect(container.innerHTML).not.toMatch(/…|\.\.\./);
   });
-  it('AU and GB casing and identifiers; condensed chip keeps the full wording as its name', () => {
+  it('AU and GB casing and identifiers; condensed chip keeps the full wording as hidden text', () => {
     render(<ClinicalLocaleProvider region="AU"><MobilePatientHeader variant="condensed" now={now} patient={{ ...ngata, identifiers: [{ type: 'mrn', value: '0412345' }] }} /></ClinicalLocaleProvider>);
     const header = screen.getByRole('banner');
     expect(header.textContent).toContain('NGATA, Mereana');
     expect(header.textContent).not.toContain('(Ms)');
     expect(header.textContent).toContain('URN 0412345');
-    expect(screen.getByLabelText('Known allergies: penicillin, latex')).toBeTruthy();
+    expect(screen.getByText('Known allergies: penicillin, latex').closest('.cui-mobile-header__allergy')).toBeTruthy();
     cleanup();
     render(<MobilePatientHeader now={now} patient={{ name: { familyName: 'Smith', givenName: 'Jon' }, identifiers: [], allergies: { status: 'not-recorded' }, similarNames: [{ name: 'SMITH, John', location: 'bed 3' }] }} />);
     expect(screen.getByRole('banner').textContent).toContain('NHS No. Not Known');
@@ -54,5 +54,38 @@ describe('MobilePatientHeader', () => {
     expect(t).toContain('Name protected');
     expect(t).toContain('1975, year only (50y or 51y)');
     expect(t).toContain('My Health Record: Access code required');
+  });
+
+  it('host extensions: name extension, Born text, items, no gender, no invented primary identifier, own details view', () => {
+    const onShowDetails = vi.fn();
+    render(
+      <ClinicalLocaleProvider region="AU">
+        <MobilePatientHeader
+          patient={{ name: { familyName: 'Chen', givenName: 'Wei' }, allergies: { status: 'known' } }}
+          nameExtension="Known as Wei"
+          bornDisplay="02-Sep-1949 (77y)"
+          showGender={false}
+          requirePrimaryIdentifier={false}
+          items={[{ id: 'sex', label: 'Sex', value: 'Male', placement: 'after-born' }, { id: 'legal', label: 'Legal status', value: 'Order', tone: 'warning' }]}
+          allergyLabels={{ known: 'Allergy: penicillin (rash)' }}
+          onShowDetails={onShowDetails}
+          detailsOpen={false}
+        />
+      </ClinicalLocaleProvider>,
+    );
+    const header = screen.getByRole('banner', { name: 'Patient' });
+    expect(header.textContent).toContain('Known as Wei');
+    expect(header.textContent).toContain('Born 02-Sep-1949 (77y)');
+    expect(header.textContent).toContain('Sex Male');
+    expect(header.textContent).toContain('Legal status Order');
+    expect(header.textContent).toContain('Allergy: penicillin (rash)');
+    expect(header.textContent).not.toMatch(/Gender|IHI/);
+    fireEvent.click(screen.getByRole('button', { name: 'Show all patient details' }));
+    expect(onShowDetails).toHaveBeenCalled();
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
+  it('an empty known list without the host words is "not recorded", never "none"', () => {
+    render(<ClinicalLocaleProvider region="AU"><MobilePatientHeader patient={{ name: { familyName: 'Chen', givenName: 'Wei' }, allergies: { status: 'known' } }} showDetailsButton={false} /></ClinicalLocaleProvider>);
+    expect(screen.getByRole('banner', { name: 'Patient' }).textContent).toContain('Not recorded');
   });
 });

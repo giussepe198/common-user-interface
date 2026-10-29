@@ -10,7 +10,7 @@ const templates = [
   { id: 't2', dose: { value: 0.5, unit: 'g' }, attributes: ['twice a day'] },
   { id: 't3', brandName: 'Dilzem SR', dose: { value: 60, unit: 'mg' }, attributes: ['three times a day'] },
 ];
-const norm = (s: string | null) => (s ?? '').replace(/ /g, ' ');
+const norm = (s: string | null) => (s ?? '').replace(/\u00a0/g, ' ');
 
 describe('TemplatePrescriptionList', () => {
   it('each row starts with DOSE, no headings, other... last (MSP-1110, MSP-1130, MSP-1240)', () => {

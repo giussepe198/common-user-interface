@@ -66,7 +66,7 @@ Per row: `hasAlert` shows a warning icon with the text "Decision support alert" 
 
 ## Accessibility
 
-- `role="grid"` table with `aria-multiselectable`, `aria-selected` rows, `aria-sort` on headings and `aria-expanded` group headings; roving focus with Up, Down, Home and End; Left and Right collapse and expand a focused group.
+- `role="grid"` table (`role="treegrid"` with `aria-level` on rows when grouped, so a group heading can carry `aria-expanded`) with `aria-multiselectable`, `aria-selected` rows, `aria-sort` on headings and `aria-expanded` group headings; roving focus with Up, Down, Home and End; Left and Right collapse and expand a focused group.
 - Look-ahead strips are not focusable; each has visually hidden text such as "5 medications above:".
 - Status, suspension and selection never rely on colour alone (text, weight, tick, side bar).
 - Not implemented here: MEDv-203 multi-selection summary before an action, MEDv-129 to MEDv-136 menu contents, MEDv-201 levels of detail, MEDv-124 cross-view selection (pass `selectedIds` to share it).
@@ -81,3 +81,7 @@ Per row: `hasAlert` shows a warning icon with the text "Decision support alert" 
 - Drug Details use MedicationLine with the list's region (see MedicationLine README): AU ACSQHC order and mixed-case lettering, NZ HQSC rules, GB unchanged.
 - Look-ahead names use the same mixed-case lettering (AU on-screen 6.1.4 applies to every display).
 - List structure, statuses and wording follow NHS CUI in all regions; G10 and G11 give no list-specific overrides.
+
+## Narrow screens [suggested]
+
+The scroll area is the size container (the row and heading menus are fixed layers, which a container on the root would trap). Below 600px each row becomes a card: drug details first, then status and dates labelled from their headings; the headings wrap as sort buttons.

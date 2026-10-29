@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, cx, Icon, useClinicalLocale, useId } from '../../core';
 import type { ClinicalRegion } from '../../core';
 import { MedicationLine } from '../MedicationLine/MedicationLine';
-import { MedicationLineData } from '../utils/medicationLine';
+import type { MedicationLineData } from '../utils/medicationLine';
 import { firstDoseTimeIndex, formatAdministrationTimes } from '../utils/prescription';
 
 export interface PrescriptionPreviewProps {

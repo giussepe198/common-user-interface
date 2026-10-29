@@ -52,7 +52,7 @@ const quickLists = [
 ];
 const cell = (title, el) => h('div', { style: { minWidth: 0 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
 ReactDOM.createRoot(document.getElementById('root')).render(
-  h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' } },
+  h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 24, alignItems: 'start' } },
     h('div', { style: { gridColumn: '1 / -1' } }, cell('Empty box: Quick List with change notice beside it (shortcuts locked while open)', h(DrugSearch, { catalogue: catalogue, quickLists: quickLists, quickListChangedOn: '2026-10-20' }))),
     cell('"aten": prioritised section, then brand match in standard section', h(DrugSearch, { catalogue: catalogue, quickLists: quickLists, defaultQuery: 'aten' })),
     cell('"hyd": height limited with count and Show all; mis-selection warnings', h(DrugSearch, { catalogue: catalogue, defaultQuery: 'hyd', maxVisibleRows: 8 })),

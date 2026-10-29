@@ -14,7 +14,7 @@ function Demo() {
   React.useEffect(() => { setTimeout(() => { const i = document.querySelector('#open input'); if (i) { const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set; set.call(i, 'v'); i.dispatchEvent(new Event('input', { bubbles: true })); set.call(i, 'blood'); i.dispatchEvent(new Event('input', { bubbles: true })); } }, 60); }, []);
   return h('div', { style: { display: 'flex', gap: 48, flexWrap: 'wrap', alignItems: 'flex-start' } },
     h(SectionSearch, { sections: S, onInsert: function () {} }),
-    h('div', { id: 'open' }, h(SectionSearch, { sections: S, openIds: ['bp'], defaultOpen: true, shortcut: null, onInsert: function () {} })));
+    h('div', { id: 'open', style: { maxWidth: '100%' } }, h(SectionSearch, { sections: S, openIds: ['bp'], defaultOpen: true, shortcut: null, onInsert: function () {} })));
 }
 ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
 </script>

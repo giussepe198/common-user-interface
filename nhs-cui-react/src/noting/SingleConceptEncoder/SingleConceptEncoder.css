@@ -1,12 +1,12 @@
-.cui-concept-encoder { display: flex; flex-direction: column; gap: var(--space-3); max-width: 100%; padding: var(--space-4); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); font-size: 14px; line-height: 20px; color: var(--ink); }
-.cui-concept-encoder__title { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; }
+.cui-concept-encoder { display: flex; flex-direction: column; gap: var(--space-3); max-width: 100%; padding: var(--space-4); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); }
+.cui-concept-encoder__title { margin: 0; font-size: var(--font-size-heading); line-height: var(--line-height-heading); font-weight: 600; }
 .cui-concept-encoder__search { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); }
 .cui-concept-encoder__selected { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
-.cui-concept-encoder__selected-key { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
-.cui-concept-encoder__selected-label { display: inline-flex; align-items: center; gap: var(--space-2); font: inherit; font-weight: 700; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: 4px var(--space-2); cursor: pointer; text-align: left; overflow-wrap: anywhere; }
+.cui-concept-encoder__selected-key { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-concept-encoder__selected-label { display: inline-flex; align-items: center; gap: var(--space-2); font: inherit; font-weight: 700; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: var(--space-1) var(--space-2); cursor: pointer; text-align: left; overflow-wrap: anywhere; }
 .cui-concept-encoder__selected-label:hover { background: var(--hover); }
 .cui-concept-encoder__qualifiers { display: flex; flex-wrap: wrap; gap: var(--space-3); }
 .cui-concept-encoder__text textarea { width: 100%; max-width: 32em; min-height: 64px; overflow-x: hidden; }
 .cui-concept-encoder__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: var(--space-2); }
-.cui-concept-encoder__why { margin-right: auto; font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-concept-encoder__why { margin-right: auto; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
 .cui-concept-encoder .cui-required-key { margin: 0; }

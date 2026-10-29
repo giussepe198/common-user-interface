@@ -29,6 +29,15 @@ export interface PreviousValuesPopoverProps {
   /** The numeric entry field. It receives `aria-describedby` pointing at the values. */
   children: React.ReactElement;
   className?: string;
+  /**
+   * Field props passed on to the entry field, so a wrapping FormField that clones this popover still labels the
+   * field itself (its id) and its hints [suggested].
+   */
+  id?: string;
+  'aria-describedby'?: string;
+  'aria-invalid'?: true;
+  'aria-required'?: true;
+  placeholder?: string;
 }
 
 /**
@@ -47,6 +56,11 @@ export function PreviousValuesPopover({
   forceOpen,
   children,
   className,
+  id: fieldId,
+  'aria-describedby': fieldDescribedBy,
+  'aria-invalid': fieldInvalid,
+  'aria-required': fieldRequired,
+  placeholder,
 }: PreviousValuesPopoverProps) {
   const id = useId('cui-prev');
   const [focused, setFocused] = React.useState(false);
@@ -54,7 +68,11 @@ export function PreviousValuesPopover({
   const has = rows.length > 0;
   const open = has && (forceOpen || focused);
   const own = (children.props as { 'aria-describedby'?: string })['aria-describedby'];
-  const child = has ? React.cloneElement(children, { 'aria-describedby': [own, id].filter(Boolean).join(' ') } as Record<string, string>) : children;
+  const fieldProps = Object.fromEntries(
+    Object.entries({ id: fieldId, 'aria-invalid': fieldInvalid, 'aria-required': fieldRequired, placeholder }).filter(([, v]) => v !== undefined),
+  );
+  const describedBy = [own, fieldDescribedBy, has ? id : undefined].filter(Boolean).join(' ') || undefined;
+  const child = React.cloneElement(children, { ...fieldProps, 'aria-describedby': describedBy } as Record<string, unknown>);
   const heading = unit ? `${title} (${unit})` : title;
 
   return (

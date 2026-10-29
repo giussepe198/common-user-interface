@@ -1,14 +1,14 @@
-.cui-clinical-statement { display: grid; grid-template-columns: 9.5em minmax(0, 1fr) auto; column-gap: var(--space-3); align-items: baseline; padding: 3px var(--space-2); color: var(--ink); font-size: 14px; line-height: 20px; }
-.cui-clinical-statement__date { color: var(--ink-muted); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cui-clinical-statement { display: grid; grid-template-columns: 9.5em minmax(0, 1fr) auto; column-gap: var(--space-3); align-items: baseline; padding: 3px var(--space-2); color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-clinical-statement__date { color: var(--ink-muted); font-size: var(--font-size-label); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .cui-clinical-statement__main { display: flex; flex-direction: column; min-width: 0; }
 .cui-clinical-statement__text { overflow-wrap: anywhere; }
 /* Coded terms and free text differ by size and colour, not bold or italics. */
-.cui-clinical-statement__coded, .cui-clinical-statement__context, .cui-clinical-statement__negation { font-size: 15px; color: var(--ink); }
-.cui-clinical-statement__free { font-size: 13px; color: var(--ink-muted); }
-.cui-clinical-statement--unbound .cui-clinical-statement__free { font-size: 14px; color: var(--ink); }
+.cui-clinical-statement__coded, .cui-clinical-statement__context, .cui-clinical-statement__negation { font-size: var(--font-size-subheading); color: var(--ink); }
+.cui-clinical-statement__free { font-size: var(--font-size-detail); color: var(--ink-muted); }
+.cui-clinical-statement--unbound .cui-clinical-statement__free { font-size: var(--font-size-body); color: var(--ink); }
 .cui-clinical-statement--highlight .cui-clinical-statement__coded { background: var(--encodable); border-radius: var(--radius-sm); padding: 0 2px; }
-.cui-clinical-statement__flag { display: inline-flex; align-items: center; gap: var(--space-2); align-self: flex-start; margin-top: 2px; font-size: 12px; line-height: 16px; color: var(--ink); background: var(--warning-surface); border: 1px dashed var(--warning); border-radius: var(--radius-sm); padding: 0 6px; }
-.cui-clinical-statement__flag .cui-button { padding: 0 4px; }
-.cui-clinical-statement__provenance { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-clinical-statement__flag { display: inline-flex; align-items: center; gap: var(--space-2); align-self: flex-start; margin-top: 2px; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink); background: var(--warning-surface); border: 1px dashed var(--warning); border-radius: var(--radius-sm); padding: 0 6px; }
+.cui-clinical-statement__flag .cui-button { padding: 0 var(--space-1); }
+.cui-clinical-statement__provenance { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
 .cui-clinical-statement__edit { align-self: start; }
 .cui-clinical-statement--no-date { grid-template-columns: minmax(0, 1fr) auto; }

@@ -71,4 +71,31 @@ describe('HandoverTaskList', () => {
     const calls = spy.mock.calls as unknown as Array<[{ location?: string }, unknown]>;
     expect(calls.some(c => c[0].location === 'Bay 1')).toBe(true);
   });
+  it('renderPatient, renderPatientDetail and nouns: a system draws its own identification and key facts [suggested]', () => {
+    render(
+      <HandoverTaskList
+        patients={patients}
+        tasks={[]}
+        nouns={{ one: 'person', other: 'people' }}
+        renderPatient={(p, { match }) => <span data-testid={`cell-${p.id}`}>{`${p.givenName} ${match ? 'match' : 'no match'}`}</span>}
+        renderPatientDetail={p => <span>{`Detail for ${p.id}`}</span>}
+      />,
+    );
+    expect(screen.getByTestId('cell-p1').textContent).toBe('John match');
+    expect(screen.getByText('Detail for p2')).toBeTruthy();
+    expect(screen.getByText('0 of 2 people handed over')).toBeTruthy();
+    expect(screen.getByRole('alert').textContent).toMatch(/1 person has no one responsible/);
+    expect(screen.getAllByText(/Another person on this list is called SMITH, John/).length).toBe(2);
+    expect(screen.getAllByRole('heading', { level: 3, name: 'SMITH, John' }).length).toBe(2);
+  });
+  it('overdue from the system of record wins over the clock (RID 53) [suggested]', () => {
+    render(<HandoverTaskList patients={patients} tasks={[{ id: 'x', patientId: 'p1', description: 'Check bloods', status: 'incomplete', dueText: '14:30 AEDT', overdue: true }]} now="2026-10-27T12:00" />);
+    expect(screen.getByText('Overdue, was due')).toBeTruthy();
+    expect(screen.getByText(/14:30 AEDT/)).toBeTruthy();
+  });
+  it('showHandoverState false hides the state and the summary while no handshake can be recorded [suggested]', () => {
+    render(<HandoverTaskList patients={patients} tasks={[]} showHandoverState={false} />);
+    expect(screen.queryByText(/handed over/)).toBeNull();
+    expect(screen.queryByText('To hand over')).toBeNull();
+  });
 });

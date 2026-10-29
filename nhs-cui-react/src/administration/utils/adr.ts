@@ -4,7 +4,8 @@
 import type { DateLike } from '../../core/format';
 import { toDate } from '../../core/format';
 import type { ClinicalRegion } from '../../core/locale';
-import { ADR_SUMMARY_WORDING, AdrSummaryWording } from './regions/adr';
+import type { AdrSummaryWording } from './regions/adr';
+import { ADR_SUMMARY_WORDING } from './regions/adr';
 
 export type { AdrSummaryWording } from './regions/adr';
 export { ADR_SUMMARY_WORDING } from './regions/adr';

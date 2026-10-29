@@ -1,7 +1,9 @@
 /** Medications List logic: status, sorting, grouping, notifications, look-ahead (Medications List v1.0.0.0). */
 import type { ReactNode } from 'react';
-import { toDate, DateLike } from '../../core/format';
-import { MedicationLineData, medicationDrugName } from './medicationLine';
+import type { DateLike } from '../../core/format';
+import { toDate } from '../../core/format';
+import type { MedicationLineData} from './medicationLine';
+import { medicationDrugName } from './medicationLine';
 
 /** Status values (MEDv-166 to MEDv-171). Current = Started, Not Started, Suspended; Past = Completed, Discontinued (MEDv-172/173). */
 export type MedicationStatus = 'Started' | 'Not Started' | 'Suspended' | 'Completed' | 'Discontinued';

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { cx, useId, useClinicalLocale, Icon, VisuallyHidden } from '../../core';
+import { useKeepInView } from '../../core/hooks';
 import type { ClinicalRegion } from '../../core';
 import { getDangerousAbbreviations } from '../utils/abbreviations';
 
@@ -30,6 +31,8 @@ export function Abbreviation({ short, expansion, glossaryHref, showDiscovery = t
   const [open, setOpen] = useState(false);
   const panelId = useId('cui-abbreviation');
   const rootRef = useRef<HTMLSpanElement>(null);
+  const panelRef = useRef<HTMLSpanElement>(null);
+  useKeepInView(panelRef, open);
 
   useEffect(() => {
     if (getDangerousAbbreviations(region).some(e => !e.pattern && e.forms.includes(short))) {
@@ -63,7 +66,7 @@ export function Abbreviation({ short, expansion, glossaryHref, showDiscovery = t
         </button>
       ) : null}
       {open ? (
-        <span id={panelId} role="note" className="cui-abbreviation__panel">
+        <span ref={panelRef} id={panelId} role="note" className="cui-abbreviation__panel">
           <strong>{short}</strong>: {expansion}
           {glossaryHref ? (
             <>

@@ -1,39 +1,39 @@
-.cui-dictation-review { display: flex; flex-direction: column; min-width: 0; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 22px; }
+.cui-dictation-review { display: flex; flex-direction: column; min-width: 0; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: var(--font-size-touch-body); line-height: var(--line-height-touch-body); }
 .cui-dictation-review__main { flex: 1; display: flex; flex-direction: column; gap: 10px; padding: var(--space-3) var(--space-4); min-width: 0; }
-.cui-dictation-review__heading { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; }
-.cui-dictation-review__time { font-weight: 400; font-size: 15px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-dictation-review__heading { margin: 0; font-size: var(--font-size-heading); line-height: var(--line-height-heading); font-weight: 600; }
+.cui-dictation-review__time { font-weight: 400; font-size: var(--font-size-subheading); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
 .cui-dictation-review__icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex: none; }
-.cui-dictation-review__placeholder { margin: 0; display: flex; gap: var(--space-2); align-items: flex-start; padding: var(--space-2) var(--space-3); background: var(--warning-surface); color: var(--ink); border: 1px solid var(--warning); border-radius: var(--radius-md); font-size: 14px; line-height: 20px; font-weight: 600; }
+.cui-dictation-review__placeholder { margin: 0; display: flex; gap: var(--space-2); align-items: flex-start; padding: var(--space-2) var(--space-3); background: var(--warning-surface); color: var(--ink); border: 1px solid var(--warning); border-radius: var(--radius-md); font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; }
 
 .cui-dictation-review__question { display: flex; flex-direction: column; gap: var(--space-2); padding: 10px var(--space-3); background: var(--warning-surface); border: 2px solid var(--warning); border-radius: var(--radius-md); }
 .cui-dictation-review__question:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.cui-dictation-review__question-text { margin: 0; display: flex; gap: var(--space-2); align-items: flex-start; font-size: 16px; line-height: 22px; font-weight: 700; color: var(--ink); overflow-wrap: anywhere; }
+.cui-dictation-review__question-text { margin: 0; display: flex; gap: var(--space-2); align-items: flex-start; font-size: var(--font-size-touch-body); line-height: var(--line-height-touch-body); font-weight: 700; color: var(--ink); overflow-wrap: anywhere; }
 .cui-dictation-review__question-text .cui-dictation-review__icon { margin-top: 1px; color: var(--warning); }
 .cui-dictation-review__answers { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .cui-dictation-review__answers > .cui-touch-button { flex: 1 1 0; min-width: 120px; }
 
 .cui-dictation-review__list { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); }
-.cui-dictation-review__row { display: grid; grid-template-columns: minmax(0, 1fr) auto 48px; column-gap: 10px; align-items: center; min-height: 56px; padding: var(--space-1) var(--space-2) var(--space-1) 14px; border-top: 1px solid var(--border); }
+.cui-dictation-review__row { display: grid; grid-template-columns: minmax(0, 1fr) auto 48px; column-gap: 10px; align-items: center; min-height: var(--target-commit); padding: var(--space-1) var(--space-2) var(--space-1) 14px; border-top: 1px solid var(--border); }
 .cui-dictation-review__row:first-child { border-top: 0; }
 .cui-dictation-review__row--needed { background: var(--warning-surface); }
 .cui-dictation-review__name { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 0; overflow-wrap: anywhere; }
-.cui-dictation-review__chip { font-size: 12px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 3px; background: var(--surface-muted); color: var(--ink); }
+.cui-dictation-review__chip { font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 700; padding: 1px 6px; border-radius: 3px; background: var(--surface-muted); color: var(--ink); }
 .cui-dictation-review__chip--zoned { background: var(--cui-voice-zone); color: var(--ink); }
 .cui-dictation-review__chip--needed { background: transparent; border: 1px dashed var(--warning); color: var(--warning); }
 .cui-dictation-review__value { font-size: 19px; line-height: 24px; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; overflow-wrap: anywhere; max-width: 170px; }
-.cui-dictation-review__value--pending { font-size: 16px; color: var(--warning); }
+.cui-dictation-review__value--pending { font-size: var(--font-size-touch-body); color: var(--warning); }
 .cui-dictation-review__row:not(.cui-dictation-review__row--needed) .cui-dictation-review__value--pending { color: var(--ink-muted); font-weight: 600; }
-.cui-dictation-review__unit { font-size: 13px; font-weight: 400; }
-.cui-dictation-review__edit { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; padding: 0; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); cursor: pointer; touch-action: manipulation; }
+.cui-dictation-review__unit { font-size: var(--font-size-detail); font-weight: 400; }
+.cui-dictation-review__edit { width: var(--target-touch); height: var(--target-touch); display: flex; align-items: center; justify-content: center; padding: 0; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); cursor: pointer; touch-action: manipulation; }
 .cui-dictation-review__edit:active { background: var(--surface-muted); }
 .cui-dictation-review__edit:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
 .cui-dictation-review__total { display: flex; gap: var(--space-3); align-items: center; padding: 10px var(--space-3); border-radius: var(--radius-md); background: var(--surface-muted); color: var(--ink); border: 1px solid var(--border); }
 .cui-dictation-review__total--zoned { background: var(--cui-voice-zone); border-color: transparent; }
 .cui-dictation-review__total-value { font-size: 30px; line-height: 34px; font-weight: 700; font-variant-numeric: tabular-nums; flex: none; }
-.cui-dictation-review__total-text { display: flex; flex-direction: column; font-size: 14px; line-height: 19px; min-width: 0; }
-.cui-dictation-review__total-text strong { font-size: 16px; line-height: 22px; }
-.cui-dictation-review__mandatory { margin: 0; font-size: 14px; line-height: 20px; font-weight: 600; }
+.cui-dictation-review__total-text { display: flex; flex-direction: column; font-size: var(--font-size-body); line-height: 19px; min-width: 0; }
+.cui-dictation-review__total-text strong { font-size: var(--font-size-touch-body); line-height: var(--line-height-touch-body); }
+.cui-dictation-review__mandatory { margin: 0; font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; }
 
 .cui-dictation-review__bar { display: flex; gap: 10px; }
 .cui-dictation-review__speak { flex: 1 1 0; min-width: 0; white-space: nowrap; }

@@ -1,6 +1,6 @@
 import React from 'react';
-import { cx, formatShortDate, Icon, useClinicalLocale, useControllableState, useId, VisuallyHidden, DateLike } from '../../core';
-import type { ClinicalRegion } from '../../core';
+import { cx, formatShortDate, Icon, useClinicalLocale, useControllableState, useId, VisuallyHidden } from '../../core';
+import type { ClinicalRegion , DateLike } from '../../core';
 import type { DrugQuickList } from '../DrugSearch/DrugSearch';
 import { directResult, DrugName } from '../DrugSearch/DrugName';
 import type { DrugCatalogueEntry } from '../utils/drugSearch';
@@ -142,7 +142,7 @@ export function QuickList({
               <Icon name="info" size={16} />
               <span>{noticeText}</span>
             </div>
-            <label className="cui-drug-search__notice-check">
+            <label className="cui-drug-search__notice-check" data-touch-target>
               <input type="checkbox" checked={forget} onChange={e => setForget(e.target.checked)} />
               Don't show this message again
             </label>

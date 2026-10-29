@@ -2,14 +2,16 @@ import React from 'react';
 import { Button, cx, Icon, useClinicalLocale, useControllableState, useId } from '../../core';
 import type { ClinicalRegion } from '../../core';
 import { MedicationLine } from '../MedicationLine/MedicationLine';
-import { NONE_LEAVE_BLANK, PrescriptionOption, SentenceSelect } from '../PrescriptionForm/SentenceSelect';
+import type { PrescriptionOption} from '../PrescriptionForm/SentenceSelect';
+import { NONE_LEAVE_BLANK, SentenceSelect } from '../PrescriptionForm/SentenceSelect';
 import type { PrescriptionOptionalField } from '../PrescriptionForm/PrescriptionForm';
 import { PrescriptionPreview } from '../PrescriptionPreview/PrescriptionPreview';
 import { TemplateReopenControl } from '../TemplateReopenControl/TemplateReopenControl';
 import type { MedicationLineData } from '../utils/medicationLine';
+import type { PrescriptionFieldRelation,
+  PrescriptionValues} from '../utils/prescription';
 import {
-  canAuthorise as canAuthoriseFn, firstDoseTimeIndex, missingPrescriptionFields, parseAdministrationTimes, PrescriptionFieldRelation,
-  PrescriptionValues, resolvePrescriptionConflicts,
+  canAuthorise as canAuthoriseFn, firstDoseTimeIndex, missingPrescriptionFields, parseAdministrationTimes, resolvePrescriptionConflicts,
 } from '../utils/prescription';
 
 /** Fields of the detailed form, always in this order (MSP-1530). */

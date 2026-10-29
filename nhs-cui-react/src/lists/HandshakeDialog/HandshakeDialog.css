@@ -2,19 +2,26 @@
 .cui-handshake__summary { margin: 0 0 var(--space-1); }
 .cui-handshake__items { margin: 0 0 var(--space-3); padding-left: var(--space-6); }
 .cui-handshake__grid { display: grid; grid-template-columns: max-content 1fr; gap: var(--space-2) var(--space-4); align-items: center; margin: var(--space-2) 0 var(--space-3); }
-.cui-handshake__grid dt { font-size: 12px; color: var(--ink-muted); }
+.cui-handshake__grid dt { font-size: var(--font-size-label); color: var(--ink-muted); }
 .cui-handshake__grid dd { margin: 0; display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
 .cui-handshake__value { font-weight: 600; }
 .cui-handshake__field { width: 100%; max-width: 360px; }
 .cui-handshake__satisfaction { margin: 0; padding: var(--space-2) var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-md); display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
-.cui-handshake__satisfaction legend { font-size: 12px; color: var(--ink-muted); padding: 0 var(--space-1); }
+.cui-handshake__satisfaction legend { font-size: var(--font-size-label); color: var(--ink-muted); padding: 0 var(--space-1); }
 .cui-handshake__unsat, .cui-handshake__refuse { flex-basis: 100%; display: flex; flex-direction: column; gap: var(--space-2); }
 .cui-handshake__refuse { margin-top: var(--space-3); padding: var(--space-2) var(--space-3); border: 1px solid var(--danger); background: var(--danger-surface); border-radius: var(--radius-md); }
-.cui-handshake__label { font-size: 12px; color: var(--ink-muted); }
+.cui-handshake__label { font-size: var(--font-size-label); color: var(--ink-muted); }
 .cui-handshake__refuse .cui-handshake__label { color: var(--ink); }
 .cui-handshake__text { width: 100%; resize: vertical; }
 .cui-handshake__error { margin-top: var(--space-3); color: var(--danger); font-weight: 600; display: flex; align-items: center; gap: var(--space-2); }
-.cui-handshake__note { margin: var(--space-3) 0 0; font-size: 12px; line-height: 16px; color: var(--ink-muted); display: flex; align-items: center; gap: var(--space-1); }
+.cui-handshake__note { margin: var(--space-3) 0 0; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); display: flex; align-items: center; gap: var(--space-1); }
 .cui-handshake .cui-prompt { margin: 0; }
 .cui-handshake__when { display: inline-flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-3); vertical-align: top; }
-.cui-handshake__when .cui-dt-field__label { font-size: 12px; line-height: 16px; font-weight: 400; color: var(--ink-muted); }
+.cui-handshake__when .cui-dt-field__label { font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 400; color: var(--ink-muted); }
+.cui-handshake__pending { color: var(--danger); font-weight: 600; display: inline-flex; align-items: center; gap: var(--space-1); }
+/* On a phone the labels sit above their values, so a field has the dialog's full width for the place and names. */
+@media (max-width: 480px) {
+  .cui-handshake__grid { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-1); }
+  .cui-handshake__grid dd { margin-bottom: var(--space-2); }
+  .cui-handshake__field { max-width: none; }
+}

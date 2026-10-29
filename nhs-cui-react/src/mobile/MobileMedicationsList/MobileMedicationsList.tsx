@@ -64,7 +64,7 @@ export interface MobileMedicationsListProps {
   className?: string;
 }
 
-function useBelowItems(enabled: boolean, listRef: React.RefObject<HTMLElement>, deps: unknown[]): string[] {
+function useBelowItems(enabled: boolean, listRef: React.RefObject<HTMLElement | null>, deps: unknown[]): string[] {
   const [below, setBelow] = React.useState<string[]>([]);
   const measure = React.useCallback(() => {
     const list = listRef.current;

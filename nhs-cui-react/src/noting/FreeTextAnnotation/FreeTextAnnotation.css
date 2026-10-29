@@ -1,12 +1,12 @@
-.cui-free-text { align-self: flex-start; display: inline-flex; align-items: flex-start; gap: var(--space-3); max-width: 100%; padding: var(--space-1) var(--space-2); border: 1px solid transparent; border-radius: var(--radius-md); font-size: 14px; line-height: 20px; color: var(--ink); }
+.cui-free-text { align-self: flex-start; display: inline-flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-3); max-width: 100%; padding: var(--space-1) var(--space-2); border: 1px solid transparent; border-radius: var(--radius-md); font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); }
 .cui-free-text--below { flex-direction: column; gap: var(--space-2); }
 .cui-free-text--marquee { border-color: var(--border); }
 .cui-free-text__control { flex: none; min-width: 0; }
-.cui-free-text__side { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); min-width: 0; flex: 1 1 auto; }
+.cui-free-text__side { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); min-width: 0; flex: 1 1 12em; }
 .cui-free-text__text { font: inherit; text-align: left; white-space: pre-wrap; overflow-wrap: anywhere; max-width: 32em; margin: 0; padding: 3px 6px; color: var(--ink); background: transparent; border: 1px solid transparent; border-radius: var(--radius-sm); cursor: pointer; }
 .cui-free-text__text:hover { background: var(--hover); border-color: var(--border); }
 .cui-free-text__text--static { cursor: default; }
-.cui-free-text__editor { display: flex; flex-direction: column; gap: var(--space-1); align-items: flex-start; }
+.cui-free-text__editor { display: flex; max-width: 100%; flex-direction: column; gap: var(--space-1); align-items: flex-start; }
 .cui-free-text__editor--popup { z-index: 15; padding: var(--space-2); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); }
 .cui-free-text__field { width: 22em; max-width: 100%; min-height: 48px; overflow-x: hidden; overflow-y: auto; resize: vertical; }
 .cui-free-text__actions { display: flex; gap: var(--space-2); align-self: stretch; justify-content: flex-end; }

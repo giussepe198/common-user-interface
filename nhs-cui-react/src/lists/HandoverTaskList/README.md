@@ -24,8 +24,16 @@ Shift handover, geographic transfer and ad hoc handover of one or more patients 
 Pass `similarNames` to flag similar names (PAL-0560) such as SMITH, John and SMITH, Jon for read-back. Use the same function you pass to `PatientList` so the ward list and the handover list warn about the same pairs:
 
 ```tsx
-const similarNames = (a, b) => sameFamilyName(a, b) && soundsLike(a.givenName, b.givenName); // your phonetic test
-<HandoverTaskList patients={patients} tasks={tasks} similarNames={similarNames} />
+import { listNamesSoundAlike } from '@clinical-cui/react'; // or your own phonetic test
+<HandoverTaskList patients={patients} tasks={tasks} similarNames={listNamesSoundAlike} />
+```
+
+A system whose identification cell carries more than the list's own line (sex, a preferred name, labelled local identifiers) passes `renderPatient`; it receives the name match the list found so the cell can show the same warning, and the list keeps a visually hidden heading with the name. `renderPatientDetail` adds key facts under the responsibility line (for example legal status and alert counts in mental health; keep details one click away). `showHandoverState={false}` hides the handover state and summary while your system cannot record the handshake, so the list never implies a state it does not hold. `nouns` changes "patient" and "patients" in the list's own words (for example person, people) `[suggested]`:
+
+```tsx
+<HandoverTaskList patients={patients} tasks={tasks} nouns={{ one: 'person', other: 'people' }}
+  renderPatient={(p, { match }) => <MyPersonCell id={p.id} match={match} />}
+  renderPatientDetail={p => <KeyFacts id={p.id} />} />
 ```
 
 Statuses default to `HANDOVER_TASK_STATUSES` (Incomplete, Partially completed, Completed). Pass richer sets ("Bloods taken", "Sent", "Checked and acted on") with an icon and label for each.
@@ -61,3 +69,7 @@ Set `region` or wrap in `ClinicalLocaleProvider`. GB shows "NHS No.". AU shows I
 - Patients are an ordered list of labelled items with headings; tasks are lists.
 - Status selects have names ("Status for Repeat U&E"); remove buttons name the task.
 - The no-one-responsible summary is an alert region.
+
+## Narrow screens [suggested]
+
+The list is a size container. Below 520px a task's status sits above its description instead of in a fixed column.

@@ -38,7 +38,7 @@ export function TemplateBrowseTree({ sections, onOpenSection, onOpenFullForm, ad
     });
 
   const renderList = (items: TemplateSectionDef[], path: string[], level: number): React.ReactNode => (
-    <ul className="cui-template-tree__list" role={level === 0 ? undefined : 'group'}>
+    <ul className="cui-template-tree__list">
       {items.map((s) => {
         const hasKids = !!s.children?.length;
         const ex = expanded.has(s.id);

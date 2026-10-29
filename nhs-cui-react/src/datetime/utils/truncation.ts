@@ -58,7 +58,7 @@ export function truncateMiddle(text: string, maxWidth: number, measure: TextMeas
   const clean = text.replace(/\s+/g, ' ').trim();
   if (measure(clean) <= maxWidth) return { display: clean, truncated: false };
   const atoms = truncationAtoms(clean);
-  const join = (h: number, t: number) => `${trimEnd(atoms.slice(0, h).join(' '))} ${marker} ${atoms.slice(atoms.length - t).join(' ')}`;
+  const join = (h: number, t: number) => `${trimEnd(atoms.slice(0, h).join(' '))}\u00a0${marker}\u00a0${atoms.slice(atoms.length - t).join(' ')}`;
   if (atoms.length < 3 || measure(join(1, 1)) > maxWidth) return truncateEnd(clean, maxWidth, measure, marker);
   let h = 1;
   let t = 1;

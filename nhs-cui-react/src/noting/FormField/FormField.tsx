@@ -102,35 +102,42 @@ export function FormField({
 
   const labelText = typeof label === 'string' && sentenceCase ? toSentenceCase(label, preserveWords) : label;
 
+  // Three slots (label, control, feedback) as direct children, so FormRow and FormGrid can make each field a
+  // subgrid of their three row tracks: labels share one track, controls the next, and prompts and errors sit
+  // below and never push a control off the row's line. Outside a row the slots stack as before.
   return (
     <div
       className={cx('cui-form-field', `cui-form-field--label-${labelPosition}`, missed && 'cui-form-field--missed', error && 'cui-form-field--error', className)}
       style={labelPosition === 'left' ? ({ '--cui-form-field-label-width': labelWidth } as React.CSSProperties) : undefined}
+      data-cui-field=""
     >
-      <label className="cui-form-field__label" htmlFor={controlId}>
+      <label className="cui-form-field__label" htmlFor={controlId} data-slot="label">
         {labelText}
         {required ? <RequiredFieldIndicator /> : null}
       </label>
-      <div className="cui-form-field__body">
-        <div className={cx('cui-form-field__row', promptPlacement === 'right' && 'cui-form-field__row--prompt-right')}>
-          <div className="cui-form-field__control">
-            {control}
-            {missed ? (
-              <span className="cui-form-field__missed-icon" title="Required field not completed">
-                <Icon name="warning" />
-              </span>
-            ) : null}
-          </div>
-          {prompt && promptPlacement === 'right' ? <span id={promptId} className="cui-prompt cui-form-field__prompt">{prompt}</span> : null}
+      <div className={cx('cui-form-field__row', promptPlacement === 'right' && 'cui-form-field__row--prompt-right')} data-slot="control">
+        <div className="cui-form-field__control">
+          {control}
+          {missed ? (
+            <span className="cui-form-field__missed-icon" title="Required field not completed">
+              <Icon name="warning" />
+            </span>
+          ) : null}
         </div>
+        {prompt && promptPlacement === 'right' ? <span id={promptId} className="cui-prompt cui-form-field__prompt">{prompt}</span> : null}
+      </div>
+      <div className="cui-form-field__feedback" data-slot="feedback">
         {prompt && promptPlacement === 'below' ? <span id={promptId} className="cui-prompt cui-form-field__prompt">{prompt}</span> : null}
         {missed ? <span id={missedId} className="cui-visually-hidden">Required field not completed.</span> : null}
-        {error ? (
-          <span id={errorId} className="cui-form-field__error">
-            <Icon name="error" />
-            {error}
-          </span>
-        ) : null}
+        {/* Always present so a message that appears is announced (polite: it never interrupts typing). */}
+        <div className="cui-form-field__messages" aria-live="polite">
+          {error ? (
+            <span id={errorId} className="cui-form-field__error">
+              <Icon name="error" />
+              {error}
+            </span>
+          ) : null}
+        </div>
       </div>
     </div>
   );

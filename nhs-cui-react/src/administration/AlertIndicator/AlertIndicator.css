@@ -1,12 +1,12 @@
-.cui-alert-ind { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 32px; padding: 2px var(--space-2); font: inherit; font-size: 14px; line-height: 20px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); cursor: pointer; text-align: left; }
+.cui-alert-ind { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--control-height); padding: 2px var(--space-2); font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); cursor: pointer; text-align: left; }
 .cui-alert-ind:hover { background: var(--hover); }
 .cui-alert-ind__symbol { position: relative; display: inline-flex; flex: none; color: var(--ink-muted); }
 .cui-alert-ind__dot { position: absolute; top: -3px; right: -4px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); border: 1px solid var(--surface); }
 .cui-alert-ind__text { display: inline-flex; flex-direction: column; }
 .cui-alert-ind__label { font-weight: 600; }
 .cui-alert-ind__count { font-variant-numeric: tabular-nums; }
-.cui-alert-ind__state { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
-.cui-alert-ind__new { font-size: 12px; line-height: 16px; font-weight: 600; padding: 0 var(--space-1); border-radius: var(--radius-sm); background: var(--accent); color: var(--on-accent); }
+.cui-alert-ind__state { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-alert-ind__new { font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; padding: 0 var(--space-1); border-radius: var(--radius-sm); background: var(--accent); color: var(--on-accent); }
 .cui-alert-ind--highUnviewed, .cui-alert-ind--highViewed { border-color: var(--danger); }
 .cui-alert-ind--highUnviewed { background: var(--danger-surface); border-width: 2px; padding: 1px calc(var(--space-2) - 1px); }
 .cui-alert-ind--highUnviewed .cui-alert-ind__label, .cui-alert-ind--highViewed .cui-alert-ind__label { color: var(--danger); }

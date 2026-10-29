@@ -1,21 +1,21 @@
 .cui-sex-gender { border: 0; margin: 0; padding: 0; min-width: 0; display: flex; flex-direction: column; gap: var(--space-2); align-items: flex-start; }
-.cui-sex-gender__label { padding: 0; font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); }
-.cui-sex-gender__short { font-size: 12px; line-height: 16px; color: var(--ink-muted); margin-top: calc(-1 * var(--space-1)); }
+.cui-sex-gender__label { padding: 0; font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; color: var(--ink); }
+.cui-sex-gender__short { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); margin-top: calc(-1 * var(--space-1)); }
 .cui-sex-gender__options { display: flex; flex-direction: column; gap: var(--space-1); }
 .cui-sex-gender--horizontal .cui-sex-gender__options { display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; column-gap: var(--space-6); row-gap: var(--space-1); }
 .cui-sex-gender__option { display: flex; align-items: center; gap: var(--space-2); min-height: 24px; }
 .cui-sex-gender__option input { margin: 0; width: 16px; height: 16px; accent-color: var(--accent); }
 .cui-sex-gender__option label { cursor: pointer; }
-.cui-sex-gender__select { font: inherit; font-size: 14px; line-height: 20px; min-width: 16ch; padding: 5px 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-sex-gender__select { font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); min-width: 16ch; padding: 5px var(--space-2); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
 .cui-sex-gender--error .cui-sex-gender__select { border-color: var(--danger); }
-.cui-sex-gender__error { display: flex; gap: var(--space-1); align-items: flex-start; font-size: 12px; line-height: 16px; font-weight: 600; color: var(--danger); }
+.cui-sex-gender__error { display: flex; gap: var(--space-1); align-items: flex-start; font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--danger); }
 .cui-sex-gender__error .cui-icon { flex: none; }
-.cui-sex-gender__about-toggle { display: inline-flex; align-items: center; gap: var(--space-1); font: inherit; font-size: 12px; line-height: 16px; color: var(--accent); background: none; border: 0; padding: 2px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-.cui-sex-gender__about-body { max-width: 56ch; margin-top: var(--space-1); padding: var(--space-2) var(--space-3); background: var(--surface-sunken); border: 1px solid var(--border); border-radius: var(--radius-md); font-size: 12px; line-height: 16px; color: var(--ink); }
+.cui-sex-gender__about-toggle { display: inline-flex; align-items: center; gap: var(--space-1); font: inherit; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--accent); background: none; border: 0; padding: 2px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.cui-sex-gender__about-body { max-width: 56ch; margin-top: var(--space-1); padding: var(--space-2) var(--space-3); background: var(--surface-sunken); border: 1px solid var(--border); border-radius: var(--radius-md); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink); }
 .cui-sex-gender__about-body p { margin: 0 0 var(--space-2); }
 .cui-sex-gender__about-body dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: var(--space-1) var(--space-3); }
 .cui-sex-gender__about-body dt { font-weight: 600; }
 .cui-sex-gender__about-body dd { margin: 0; }
 .cui-sex-gender__specify { display: flex; flex-direction: column; gap: var(--space-1); margin-left: calc(16px + var(--space-2)); }
-.cui-sex-gender__specify-label { font-size: 12px; line-height: 16px; font-weight: 600; color: var(--ink); }
-.cui-sex-gender__specify-box { box-sizing: border-box; width: 28ch; max-width: 100%; font: inherit; font-size: 14px; line-height: 20px; padding: 5px 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-sex-gender__specify-label { font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--ink); }
+.cui-sex-gender__specify-box { box-sizing: border-box; width: 28ch; max-width: 100%; font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); padding: 5px var(--space-2); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }

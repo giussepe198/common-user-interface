@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Icon, cx, useId } from '../../core';
 import { findTermMatchRanges } from '../utils/searchText';
-import { matchTemplates, templateBreadcrumb, type TemplateDefinition, type TemplateMatch, type TemplateSectionDef } from '../utils/templates';
+import { browseTemplates, matchTemplates, templateBreadcrumb, type TemplateDefinition, type TemplateMatch, type TemplateSectionDef } from '../utils/templates';
 
 export interface TemplateSearchProps {
   /** Templates that can be found. */
@@ -79,7 +79,9 @@ export function TemplateSearch({
   const [expanded, setExpanded] = React.useState<Set<string>>(new Set());
   const [flyout, setFlyout] = React.useState<string | null>(null);
   const canSearch = query.replace(/\s/g, '').length >= minChars;
-  const result = canSearch ? (match ? match(query, { context, filterEnabled: filterOn }) : matchTemplates(templates, query, { context, filterEnabled: filterOn })) : { templates: [], sections: [] };
+  // Opened empty (minChars 0): every template to browse, not "No matching templates".
+  const browsing = canSearch && !query.trim();
+  const result = !canSearch ? { templates: [], sections: [] } : browsing ? { templates: browseTemplates(templates, { context, filterEnabled: filterOn }), sections: [] } : match ? match(query, { context, filterEnabled: filterOn }) : matchTemplates(templates, query, { context, filterEnabled: filterOn });
   const shown = showAll ? result.templates : result.templates.slice(0, maxResults);
   const hidden = result.templates.length - shown.length;
   const setFilter = (on: boolean) => {
@@ -106,7 +108,7 @@ export function TemplateSearch({
         />
       </div>
       {context ? (
-        <label className="cui-template-search__filter">
+        <label className="cui-template-search__filter" data-touch-target>
           <input type="checkbox" checked={filterOn} onChange={(e) => setFilter(e.target.checked)} />
           <span>
             Filter: <strong>{context}</strong>

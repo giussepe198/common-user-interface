@@ -2,10 +2,11 @@ import React from 'react';
 import { Button, cx, Icon, useId } from '../../core';
 import { formatDateTime, formatShortDate, formatTime, toDate } from '../../core/format';
 import { AdminDefaultMedicationLine } from '../DrugAdministrationChart/MedicationLeftPanel';
-import {
+import type {
   AdminInfusionEntry,
   AdminInfusionEntryKind,
-  AdminMedication,
+  AdminMedication} from '../utils/adminEvents';
+import {
   adminEstimatedStop,
   adminInfusionStatus,
   adminInfusionStatusLabel,
@@ -319,7 +320,7 @@ export function InfusionDetailView({
             </div>
           ) : null}
 
-          <div className="cui-inf__table-wrap">
+          <div className="cui-inf__table-wrap" tabIndex={0} role="region" aria-label="Administration record">
             <table className="cui-inf__table">
               <caption className="cui-inf__caption">Administration record</caption>
               <thead>
@@ -431,7 +432,7 @@ export function InfusionDetailView({
                       </label>
                       <input id={`${id}-vol`} className="cui-inf__control" value={volume} placeholder="For example 500 mL" onChange={e => setVolume(e.target.value)} />
                     </div>
-                    <label className="cui-inf__check">
+                    <label className="cui-inf__check" data-touch-target>
                       <input type="checkbox" checked={approx} onChange={e => setApprox(e.target.checked)} />
                       Volume is approximate
                     </label>

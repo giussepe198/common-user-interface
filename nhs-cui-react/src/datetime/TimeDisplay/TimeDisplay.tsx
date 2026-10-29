@@ -1,7 +1,8 @@
 import React from 'react';
 import { cx, toDate, useClinicalLocale } from '../../core';
 import type { ClinicalRegion, DateLike } from '../../core';
-import { TimeInputValue, formatTimeInputValue } from '../utils/timeInput';
+import type { TimeInputValue} from '../utils/timeInput';
+import { formatTimeInputValue } from '../utils/timeInput';
 import { ZoneLabel } from './ZoneLabel';
 import { formatZoned, isValidTimeZone, needsZoneLabel } from '../utils/timeZones';
 

@@ -1,8 +1,9 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { cx, useId } from '../../core';
-import {
+import type {
   EncodableMatch,
-  TextEdit,
+  TextEdit} from '../utils/encodable';
+import {
   diffTextEdit,
   editTouchesConfirmed,
   marqueeDragCandidates,

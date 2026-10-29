@@ -1,8 +1,8 @@
 .cui-patient-name { overflow-wrap: normal; word-break: normal; }
-.cui-patient-name--emphasis { font-size: 20px; line-height: 26px; font-weight: 600; }
+.cui-patient-name--emphasis { font-size: var(--font-size-patient-name); line-height: var(--line-height-patient-name); font-weight: 600; }
 .cui-patient-name__part { white-space: nowrap; }
 .cui-patient-name__part--unknown { font-style: italic; font-weight: 400; }
 /* NZ: family name kept as recorded, so it is distinguished by weight as well as order (G11 2.3). */
 .cui-patient-name--as-recorded .cui-patient-name__part--family { font-weight: 700; }
 /* Unidentified patient qualifier: text plus a dashed outline, never colour alone (AU-NM-02). */
-.cui-patient-name__unidentified { display: inline-block; margin-left: var(--space-1); padding: 0 var(--space-2); font-size: 12px; line-height: 18px; font-weight: 600; font-style: normal; white-space: nowrap; vertical-align: 2px; border: 1.5px dashed currentColor; border-radius: var(--radius-md); }
+.cui-patient-name__unidentified { display: inline-block; margin-left: var(--space-1); padding: 0 var(--space-2); font-size: var(--font-size-label); line-height: 18px; font-weight: 600; font-style: normal; white-space: nowrap; vertical-align: 2px; border: 1.5px dashed currentColor; border-radius: var(--radius-md); }

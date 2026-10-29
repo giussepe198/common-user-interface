@@ -14,7 +14,7 @@ const alerts = [
   { id: 'h2', status: 'High Priority', occurredAt: at(9, 2), source: 'Drug Interaction Checking', summary: 'Possible interaction between Clarithromycin and Simvastatin.' },
 ];
 ReactDOM.createRoot(document.getElementById('root')).render(
-  h('div', { style: { display: 'flex', gap: 24, alignItems: 'flex-start' } },
+  h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: 24, alignItems: 'flex-start' } },
     h(AlertContainer, { alerts: alerts, height: 520, onRecordResponse: function () {}, onDismiss: function () {} }),
     h(AlertContainer, { alerts: [], height: 200, heading: 'Alerts (empty)', resizable: false })
   )

@@ -7,7 +7,7 @@ const kinds = [['prohibition', 'Do not exceed 4 g in 24 hours'], ['mandatory', '
 const phone = h('path', { d: 'M7 4h3l1.5 4-2 1.5a10 10 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 5 6a2 2 0 0 1 2-2z' });
 ReactDOM.createRoot(document.getElementById('root')).render(
   h('div', { style: { display: 'flex', flexDirection: 'column', gap: 14 } },
-    h('div', { style: { display: 'flex', gap: 20, alignItems: 'center' } },
+    h('div', { style: { display: 'flex', gap: 20, flexWrap: 'wrap', alignItems: 'center' } },
       [16, 24, 32, 48].map(size => h('div', { key: size, style: { display: 'flex', gap: 8, alignItems: 'center' } },
         kinds.map(([k, l]) => h(AlertSymbol, { key: k, kind: k, label: l, size }))))),
     h('div', { style: { display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'center' } },

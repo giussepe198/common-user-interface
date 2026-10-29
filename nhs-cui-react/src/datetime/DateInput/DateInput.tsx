@@ -7,15 +7,17 @@ import { NoWrapDates } from '../DisambiguationPrompt/NoWrapDates';
 import type { DateLike } from '../../core';
 import { CalendarPicker } from '../CalendarPicker/CalendarPicker';
 import { DisambiguationPrompt } from '../DisambiguationPrompt/DisambiguationPrompt';
+import type {
+  DateInputValue} from '../utils/dateInput';
 import {
-  DateInputValue,
   dateInputValueToIso,
   formatDateInputValue,
   makeLocalDate,
   parseDateInput,
 } from '../utils/dateInput';
+import type {
+  TextSegment} from '../utils/segments';
 import {
-  TextSegment,
   dateTextSegments,
   monthFromPrefix,
   replaceSegment,
@@ -81,6 +83,24 @@ export interface DateInputProps {
   region?: ClinicalRegion;
   /** Adds a hidden input with the ISO value (2008-04-05, 2008-04, 2008, or "unknown") for forms. */
   name?: string;
+  /**
+   * Field-only mode for use inside `FormField` (or any host that draws its own label, prompt and error) [suggested].
+   * No visible label, the instructions become a screen-reader description only (the tooltip stays), and the host
+   * `error` is not drawn (the host shows it). Pass `id` (FormField does) so the host's `<label htmlFor>` names the
+   * input, or `aria-labelledby`. The control's own validation messages go to `onValidationChange`; without it they
+   * are still drawn below the box, so a message is never lost. Default false.
+   */
+  bare?: boolean;
+  /** Called with the control's own validation message, or null, whenever it changes (show it in the host field). */
+  onValidationChange?: (message: string | null) => void;
+  /** Extra ids describing the input, merged with the control's own (FormField passes its prompt and error). */
+  'aria-describedby'?: string;
+  /** Ids of the elements that label the input, when no `<label htmlFor>` reaches it (bare mode). */
+  'aria-labelledby'?: string;
+  /** Marks the input invalid (FormField passes this for an error or a missed field). */
+  'aria-invalid'?: boolean | 'true' | 'false';
+  /** Marks the input required (FormField passes this). */
+  'aria-required'?: boolean | 'true' | 'false';
   id?: string;
   className?: string;
 }
@@ -113,12 +133,21 @@ export const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(func
     today: todayProp, min, max, validate, allowTodayShortcut, error: hostError, disabled, readOnly, required, name, id, className,
     region: regionProp,
   } = props;
+  const { bare = false, onValidationChange, 'aria-describedby': ariaDescribedBy, 'aria-labelledby': ariaLabelledBy, 'aria-invalid': ariaInvalid, 'aria-required': ariaRequired } = props;
   const locale = useClinicalLocale(regionProp);
   const inputId = useId('cui-date-input', id);
   const [value, setValue] = useControllableState<DateInputValue | null>(valueProp, defaultValue, onChange);
   const fmt = (v: DateInputValue | null) => formatDateInputValue(v, unknownText);
   const [text, setText] = useState(() => fmt(value));
   const [error, setError] = useState<string | null>(null);
+  const validationCb = useRef(onValidationChange);
+  validationCb.current = onValidationChange;
+  const validationReported = useRef(false);
+  useEffect(() => {
+    if (!validationReported.current && error === null) return;
+    validationReported.current = true;
+    validationCb.current?.(error);
+  }, [error]);
   const [prompt, setPrompt] = useState<{ message: string; candidates: DateInputValue[]; focus: boolean } | null>(null);
   const [calendarOpen, setCalendarOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -364,18 +393,22 @@ export const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(func
   };
 
   const shownError = hostError ?? error;
+  // Bare mode: the host draws its own error; the control's own message is drawn only when nobody listens for it.
+  const drawnError = bare ? (onValidationChange ? null : error) : shownError;
   const hintId = `${inputId}-hint`;
   const errorId = `${inputId}-error`;
-  const describedBy = [hintId, shownError ? errorId : null].filter(Boolean).join(' ');
+  const describedBy = [ariaDescribedBy, hintId, drawnError ? errorId : null].filter(Boolean).join(' ');
   const ph = placeholder ?? (defaultDisplay === 'today' ? formatShortDate(today) : 'DD-Mmm-YYYY');
 
   return (
-    <div ref={rootRef} className={cx('cui-dt-field', 'cui-date-input', disabled && 'cui-dt-field--disabled', className)} onBlur={onRootBlur}>
-      <label htmlFor={inputId} className="cui-dt-field__label">
-        {label}
-        {required ? <span className="cui-dt-field__required"> (required)</span> : null}
-      </label>
-      <div className={cx('cui-dt-field__box', shownError && 'cui-dt-field__box--invalid')}>
+    <div ref={rootRef} className={cx('cui-dt-field', bare && 'cui-dt-field--bare', 'cui-date-input', disabled && 'cui-dt-field--disabled', className)} onBlur={onRootBlur}>
+      {bare ? null : (
+        <label htmlFor={inputId} className="cui-dt-field__label">
+          {label}
+          {required ? <span className="cui-dt-field__required"> (required)</span> : null}
+        </label>
+      )}
+      <div className={cx('cui-dt-field__box', shownError && 'cui-dt-field__box--invalid')} data-cui-box="">
         <input
           ref={setRefs}
           id={inputId}
@@ -389,8 +422,10 @@ export const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(func
           disabled={disabled}
           readOnly={readOnly}
           required={required}
-          aria-required={required || undefined}
-          aria-invalid={shownError ? true : undefined}
+          aria-required={required || ariaRequired === true || ariaRequired === 'true' || undefined}
+          aria-invalid={shownError || ariaInvalid === true || ariaInvalid === 'true' ? true : undefined}
+          aria-labelledby={ariaLabelledBy}
+          data-cui-boxed=""
           aria-describedby={describedBy}
           onChange={onChangeText}
           onKeyDown={onKeyDown}
@@ -421,7 +456,7 @@ export const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(func
           <Icon name="calendar" size={16} />
         </button>
       </div>
-      <div id={hintId} className={cx('cui-dt-field__hint', hideInstructions && 'cui-visually-hidden')}>
+      <div id={hintId} className={cx('cui-dt-field__hint', (hideInstructions || bare) && 'cui-visually-hidden')}>
         {instructionText}
       </div>
       {calendarOpen ? (
@@ -463,10 +498,10 @@ export const DateInput = React.forwardRef<HTMLInputElement, DateInputProps>(func
           }}
         />
       ) : null}
-      {shownError ? (
+      {drawnError ? (
         <div id={errorId} role="alert" className="cui-dt-field__error">
           <Icon name="error" size={16} />
-          <span><NoWrapDates text={shownError} /></span>
+          <span><NoWrapDates text={drawnError} /></span>
         </div>
       ) : null}
       {name ? <input type="hidden" name={name} value={value?.kind === 'unknown' ? 'unknown' : dateInputValueToIso(value)} /> : null}

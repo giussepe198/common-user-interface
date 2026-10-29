@@ -5,8 +5,10 @@
  */
 import type { ClinicalRegion } from '../../core';
 import { formatBrandName, formatGenericName, MEDICATION_SEPARATOR } from './names';
-import { formatQuantity, formatStrength, MedicationQuantity, MedicationStrength } from './numbers';
-import { expandMedicineAbbreviations, formatBrandNameForRegion, MedicineTextKind, withPermittedAbbreviation } from './regionalText';
+import type { MedicationQuantity, MedicationStrength } from './numbers';
+import { formatQuantity, formatStrength } from './numbers';
+import type { MedicineTextKind} from './regionalText';
+import { expandMedicineAbbreviations, formatBrandNameForRegion, withPermittedAbbreviation } from './regionalText';
 import { applyTallManLettering, tallManDefaultFor } from './tallMan';
 
 /** One active ingredient of a multi-drug medication ("paracetamol  500 mg + metoclopramide  5 mg"). */

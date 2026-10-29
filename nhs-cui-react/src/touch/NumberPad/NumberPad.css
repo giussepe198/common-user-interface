@@ -1,8 +1,8 @@
 .cui-numpad { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; color: var(--ink); font-family: var(--font-sans); }
 .cui-numpad__display { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.cui-numpad__previous { font-size: 14px; line-height: 20px; color: var(--ink-muted); }
-.cui-numpad__label { font-size: 16px; line-height: 22px; font-weight: 600; }
-.cui-numpad__label--large { font-size: 20px; line-height: 26px; }
+.cui-numpad__previous { font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink-muted); }
+.cui-numpad__label { font-size: var(--font-size-touch-body); line-height: var(--line-height-touch-body); font-weight: 600; }
+.cui-numpad__label--large { font-size: var(--font-size-patient-name); line-height: var(--line-height-patient-name); }
 .cui-numpad__readout { display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-2); min-width: 0; }
 .cui-numpad__value { font-size: 52px; line-height: 58px; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 1ch; }
 .cui-numpad__value--empty { color: var(--ink-muted); }

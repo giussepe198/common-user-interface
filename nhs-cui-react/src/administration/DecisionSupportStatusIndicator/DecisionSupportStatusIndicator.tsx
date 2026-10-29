@@ -3,8 +3,9 @@ import { cx, Icon, useControllableState, useId, VisuallyHidden } from '../../cor
 import type { DateLike } from '../../core/format';
 import { DecisionSupportChangeToast } from '../DecisionSupportChangeToast/DecisionSupportChangeToast';
 import { NilByMouthWarningSymbol } from '../NilByMouthBanner/NilByMouthBanner';
+import type {
+  DecisionSupportService} from '../utils/decisionSupport';
 import {
-  DecisionSupportService,
   decisionSupportOverallState,
   decisionSupportServiceStateText,
   formatDecisionSupportServiceTooltip,

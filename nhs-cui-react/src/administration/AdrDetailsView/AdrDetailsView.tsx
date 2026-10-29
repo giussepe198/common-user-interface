@@ -4,7 +4,8 @@ import type { ClinicalRegion } from '../../core';
 import { formatDateTime } from '../../core/format';
 import type { DateLike } from '../../core/format';
 import { AdrRemoveConfirm } from '../AdrRecordingDialog/AdrRemoveConfirm';
-import { AdrEntry, adrConceptLabel, adrSummaryWording } from '../utils/adr';
+import type { AdrEntry} from '../utils/adr';
+import { adrConceptLabel, adrSummaryWording } from '../utils/adr';
 
 /** One change in the edit history of an entry (RAD-0890). */
 export interface AdrHistoryItem {

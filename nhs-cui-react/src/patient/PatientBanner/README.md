@@ -46,7 +46,7 @@ Desktop patient banner that identifies the patient whose record is open, with a 
 - PAB-0019 [M]: unknown items show "Not Known" after the label; "?" and "-" are never shown, even if supplied.
 - PAB-0020, PAB-0037, PAB-0054, PAB-0061, PAB-0062 [R/M]: preferred name (given-name portion) below the name, labelled "Preferred name"; without it the name block is vertically centred.
 - PAB-0021 [R]: no photograph prop.
-- PAB-0025, PAB-0028, PAB-0040, PAB-0041 [M/R]: collapsed titles "Address ..." and "Phone and email ..." on one line, cut with an ellipsis.
+- PAB-0025, PAB-0028, PAB-0040, PAB-0041 [M/R]: collapsed titles "Address ..." and "Phone and email ..." on one line, cut with an ellipsis; a cut title carries its full text as a tooltip.
 - PAB-0026, PAB-0027 [M]: expanded address in full with postcode, preceded by its type label.
 - PAB-0029, PAB-0030 [M]: Home, Work, Mobile, Email in that order with those labels.
 - PAB-0033..0039, PAB-0042, PAB-0043 [M/R]: labels "Born", "Gender", "NHS No.", "Preferred name", "Died", "Age at Death", no colons.
@@ -75,6 +75,17 @@ Where the source documents disagree (the safer option is used):
   - NZ protection flags (HISO 10046): `nameProtected` keeps the name visible with "Name protected"; `address.protected` and `contacts.protected` mask Zone 2 ("Protected" in the collapsed title, masked body) and `onRevealProtected(item, reason)` offers a reveal with a reason [suggested].
   - NZ dormant NHI: identifiers take `nhiStatus` and `liveNhi`; `onUseLiveNhi` adds "Use live NHI".
   - Partial date of birth: `partialDateOfBirth` (or a year-only or year-month `dateOfBirth` string) shows "1975 year only (50y or 51y)" and never an invented day; age at death uses the same rule.
+
+## Host extensions [suggested]
+
+Generic additions for hosts that must keep more in view with the identity (contributable; nothing here is specific to one service):
+
+- `items`: further labelled Zone 1 items (`label`, `value`, `definition`, `tone` "alert" / "warning" / "muted", `symbol`, `onSelect` with `selectLabel`, `placement` "after-born" or after the identifiers). With items the identifier grid flows and wraps between items, never inside a value; each item carries `data-banner-item`. Tones reuse the known-allergy badge and the dashed "Not recorded" outline, so they keep verified contrast on the banner colour.
+- `nameExtension` (beside the name, e.g. a preferred name and pronouns), `nameContent` (a host-rendered name that still reads "FAMILY, Given"), `leading` (before the name; PAB-0021 still recommends no photograph), `actions` (end of Zone 1).
+- `showGender={false}` for a host that shows sex in its own words as an item placed "after-born"; `requirePrimaryIdentifier={false}` when the host's record number, shown as an item, is its primary identifier.
+- `dateOfBirthDisplay` and `dateOfDeathDisplay` for values the host formats itself; Age at Death is then shown only when it can be computed.
+- `similarNameWarning` accepts a node, so the warning can link to a comparison of the patients.
+- Allergy items may omit `lastUpdated`; no date is then shown.
 
 ## Do and don't
 
@@ -118,3 +129,7 @@ Set the region with `ClinicalLocaleProvider` or the `region` prop. GB behaviour 
 - Not built: AU red ID band indicator (AU-AL-04 C, use `section3`), My Health Record access states (AU-PV-01/02), NZ name protection flag and dormant NHI linkage ([UNCERTAIN] in the notes), sex recorded at birth in Zone 2 (pass it in `section3` with `GenderDisplay kind="sex"`).
 - Sources: G10 sections 1-4 and 10; G11 sections 1-3, 9 and 12.6.
 - G12 additions: AU Medicare valid to and My Health Record; NZ protection flags, dormant NHI and partial dates of birth. Sources in `docs/guidance-notes/G12-identity-extensions.md`.
+
+## Narrow screens [suggested]
+
+The banner is a size container (CONVENTIONS "Responsive"). Below 960px zone 1 wraps and the identifiers flow as a wrapping line; below 720px it shows the same essentials as MobilePatientHeader (name, Born, Gender, identifiers and the allergy status), the other zone 2 titles appear when expanded, wrap in full, and the expanded sections stack, allergies first. The toggle's track grows with the 44px coarse-pointer toggle, so it never pushes the banner wider than its container. Names and identifier numbers are never split or truncated; an identifier's flag may wrap below it. Nothing scrolls sideways at 320px.

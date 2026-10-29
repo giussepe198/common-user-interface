@@ -4,7 +4,8 @@
  * terminology data (no network); these functions only shape and format it.
  * AMT: AMT v3 Model Editorial Rules v3.0 (2021), G10 9.4. NZMT: Health NZ NZMT and HL7 NZ NZF glossary, G11 8.5.
  */
-import { formatClinicalNumber, MedicationQuantity, MedicationStrength } from './numbers';
+import type { MedicationQuantity, MedicationStrength } from './numbers';
+import { formatClinicalNumber } from './numbers';
 import type { MedicationIngredient, MedicationLineData } from './medicationLine';
 
 /** The seven concept classes shared by AMT and NZMT. */

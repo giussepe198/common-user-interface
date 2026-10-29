@@ -90,7 +90,7 @@ export function ReasonCodePicker(props: ReasonCodePickerProps) {
         {options.map(o => {
           const on = o.code === value.code;
           return (
-            <label key={o.code} className={cx('cui-reason-code__option', on && 'cui-reason-code__option--on', (disabled || o.disabled) && 'cui-reason-code__option--disabled')}>
+            <label key={o.code} className={cx('cui-reason-code__option', on && 'cui-reason-code__option--on', (disabled || o.disabled) && 'cui-reason-code__option--disabled')} data-touch-target>
               <input
                 type="radio"
                 name={`${id}-code`}
@@ -157,7 +157,7 @@ export function ReasonCodePicker(props: ReasonCodePickerProps) {
             const problem = problems.find(x => x.field === 'prompt' && x.promptId === p.id);
             return (
               <div key={p.id} className="cui-reason-code__prompt-wrap">
-                <label className="cui-reason-code__prompt">
+                <label className="cui-reason-code__prompt" data-touch-target>
                   <input
                     type="checkbox"
                     checked={!!value.prompts[p.id]}

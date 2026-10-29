@@ -149,7 +149,7 @@ export function readTouchDateInput(text: string, opts: TouchDateReadOptions): To
   const parseOpts = { today: todayDate, region, numericOrder: order, allowUnknown: false } as const;
 
   // Day and month without a year.
-  const numeric = /^(\d{1,2})\s*[/.\-]\s*(\d{1,2})$/.exec(spoken);
+  const numeric = /^(\d{1,2})\s*[/.-]\s*(\d{1,2})$/.exec(spoken);
   const worded = /^(\d{1,2}) ([a-z]{3,9})$|^([a-z]{3,9}) (\d{1,2})$/.exec(spoken);
   if (numeric || worded) {
     const withYear = (y: number) => (numeric ? `${numeric[1]}/${numeric[2]}/${y}` : `${spoken} ${y}`);
@@ -180,7 +180,7 @@ export function readTouchDateInput(text: string, opts: TouchDateReadOptions): To
   if (r.status === 'ok') {
     const d = fromValue(r.value);
     if (!d) return { status: 'incomplete', message: 'Enter a full date: day, month and year.' };
-    const isNumeric = /^\d{1,2}\s*[/.\-]\s*\d{1,2}\s*[/.\-]\s*\d{2,4}$|^\d{8}$/.test(raw.trim());
+    const isNumeric = /^\d{1,2}\s*[/.-]\s*\d{1,2}\s*[/.-]\s*\d{2,4}$|^\d{8}$/.test(raw.trim());
     return { status: 'ok', date: d, notes: isNumeric && order === 'dayFirst' ? ['day first'] : [] };
   }
   if (r.status === 'ambiguous') {

@@ -1,7 +1,8 @@
 import React from 'react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
-import { CascadeSelector, CascadeLevel, cascadeLevelsForPath } from './CascadeSelector';
+import type { CascadeLevel} from './CascadeSelector';
+import { CascadeSelector, cascadeLevelsForPath } from './CascadeSelector';
 
 afterEach(cleanup);
 

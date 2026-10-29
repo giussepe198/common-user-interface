@@ -61,7 +61,7 @@ export function SpellCheckPopover({ word, suggestions, onAccept, onIgnore, onCan
         <fieldset className="cui-spell-check__choices">
           <legend className="cui-spell-check__legend">Did you mean</legend>
           {suggestions.map((s) => (
-            <label key={s.text} className="cui-spell-check__choice">
+            <label key={s.text} className="cui-spell-check__choice" data-touch-target>
               <input type="radio" name={`${baseId}-choice`} checked={choice === s.text} onChange={() => setChoice(s.text)} />
               <span>{s.text}</span>
               {s.source === 'dictionary' ? <span className="cui-spell-check__source">dictionary</span> : null}

@@ -39,4 +39,17 @@ describe('HandshakeDialog', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Confirm refusal' }));
     expect(onSubmit.mock.calls[0][0]).toMatchObject({ outcome: 'refused', refusalReason: 'Not my team' });
   });
+  it('RID 108: refuses to accept an item whose read-back is not confirmed, but records a refusal', () => {
+    const onSubmit = vi.fn();
+    const items = [...base.items, { id: 'p2', label: 'SMYTH, Jon' }];
+    render(<HandshakeDialog {...base} items={items} pendingReadBack={['p2']} onSubmit={onSubmit} onCancel={() => {}} modal={false} />);
+    expect(screen.getByText(/Read back not confirmed/)).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Accept responsibility' }));
+    expect(screen.getByRole('alert').textContent).toMatch(/Read back before accepting: SMYTH, Jon/);
+    expect(onSubmit).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole('button', { name: 'Refuse handover' }));
+    fireEvent.change(screen.getByLabelText(/Reason for refusing/), { target: { value: 'Could not confirm identity' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Confirm refusal' }));
+    expect(onSubmit.mock.calls[0][0]).toMatchObject({ outcome: 'refused', itemIds: ['p1', 'p2'] });
+  });
 });

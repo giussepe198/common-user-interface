@@ -1,8 +1,9 @@
 import React from 'react';
 import { cx, VisuallyHidden } from '../../core';
-import {
+import type {
   ClinicalDurationParts,
-  DurationUnitSymbols,
+  DurationUnitSymbols} from '../utils/duration';
+import {
   describeClinicalDuration,
   formatClinicalDuration,
 } from '../utils/duration';

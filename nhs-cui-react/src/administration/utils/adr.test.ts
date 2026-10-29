@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import type {
+  AdrEntry} from './adr';
 import {
-  AdrEntry,
   adrBuildExpression,
   adrConceptLabel,
   adrDetectDangerousWords,

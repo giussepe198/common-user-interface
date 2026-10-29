@@ -35,4 +35,30 @@ describe('AlertContainer', () => {
     render(<AlertContainer alerts={[]} />);
     expect(screen.getByText('No active alerts for this patient.')).toBeTruthy();
   });
+
+  it('carries sizes as CSS variables, not inline sizes, so the stylesheet can keep it inside a 320px screen', () => {
+    const { container, rerender } = render(<AlertContainer alerts={[]} />);
+    const root = container.querySelector('.cui-ds-alerts') as HTMLElement;
+    expect(root.getAttribute('style')).toBeNull();
+    rerender(<AlertContainer alerts={[]} height={300} minWidth={280} minHeight={150} />);
+    const el = container.querySelector('.cui-ds-alerts') as HTMLElement;
+    expect(el.style.getPropertyValue('--cui-ds-alerts-height')).toBe('300px');
+    expect(el.style.getPropertyValue('--cui-ds-alerts-min-width')).toBe('280px');
+    expect(el.style.getPropertyValue('--cui-ds-alerts-min-height')).toBe('150px');
+    expect(el.style.height).toBe('');
+    expect(el.style.minWidth).toBe('');
+  });
+
+  it('lists host-rendered alert items of another kind in the same frame, with its own count words', () => {
+    const { container } = render(
+      <AlertContainer heading="High alerts to read" count="2 to acknowledge" height="auto" resizable={false} alerts={[]} headingLevel={2}>
+        <p>Item one</p>
+      </AlertContainer>,
+    );
+    expect(screen.getByRole('heading', { level: 2, name: 'High alerts to read' })).toBeTruthy();
+    expect(screen.getByText('2 to acknowledge')).toBeTruthy();
+    expect(screen.getByText('Item one')).toBeTruthy();
+    expect(screen.queryByText('No active alerts for this patient.')).toBeNull();
+    expect(container.querySelector('.cui-ds-alerts--auto')).toBeTruthy();
+  });
 });

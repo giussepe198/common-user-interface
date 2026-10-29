@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { cx, useId, useControllableState, Icon, VisuallyHidden } from '../../core';
-import { TextMeasure, findIdenticalTruncations, truncateEnd, truncationAtoms } from '../utils/truncation';
+import type { TextMeasure} from '../utils/truncation';
+import { findIdenticalTruncations, truncateEnd, truncationAtoms } from '../utils/truncation';
 
 /** A coded clinical term in a selection list, e.g. a SNOMED CT preferred term. */
 export interface ClinicalTerm {

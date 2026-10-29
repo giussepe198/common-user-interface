@@ -1,11 +1,12 @@
 .cui-filter-notification { display: flex; flex-direction: column; }
-.cui-filter-notification__bar { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); background: var(--info-surface); color: var(--ink); font-weight: 600; border: 1px solid var(--info); border-top-width: 3px; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+.cui-filter-notification__bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); background: var(--info-surface); color: var(--ink); font-weight: 600; border: 1px solid var(--info); border-top-width: 3px; border-radius: var(--radius-md) var(--radius-md) 0 0; }
 .cui-filter-notification__bar > .cui-icon { color: var(--info); flex: none; }
-.cui-filter-notification__text { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.cui-filter-notification__text { flex: 1 1 12rem; min-width: 0; overflow-wrap: anywhere; }
+.cui-filter-notification__remove { flex: none; }
 .cui-filter-notification__count { font-weight: 400; }
 .cui-filter-notification__tabs { display: flex; gap: 2px; padding: var(--space-1) var(--space-2) 0; background: var(--surface-muted); border-bottom: 1px solid var(--border-strong); }
-.cui-filter-notification__tab { font: inherit; font-size: 14px; display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-1) var(--space-3); border: 1px solid transparent; border-bottom: none; background: transparent; color: var(--ink-muted); cursor: pointer; border-radius: var(--radius-md) var(--radius-md) 0 0; margin-bottom: -1px; }
+.cui-filter-notification__tab { font: inherit; font-size: var(--font-size-body); display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-1) var(--space-3); border: 1px solid transparent; border-bottom: none; background: transparent; color: var(--ink-muted); cursor: pointer; border-radius: var(--radius-md) var(--radius-md) 0 0; margin-bottom: -1px; }
 .cui-filter-notification__tab:hover { background: var(--hover); color: var(--ink); }
 .cui-filter-notification__tab--active { background: var(--surface); color: var(--ink); border-color: var(--border-strong); font-weight: 600; }
-.cui-filter-notification__tab-count { font-size: 12px; line-height: 16px; padding: 0 6px; border-radius: 8px; background: var(--surface-sunken); color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 400; }
+.cui-filter-notification__tab-count { font-size: var(--font-size-label); line-height: var(--line-height-label); padding: 0 6px; border-radius: 8px; background: var(--surface-sunken); color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 400; }
 .cui-filter-notification__bar + .cui-filter-notification__tabs { border-left: 1px solid var(--info); border-right: 1px solid var(--info); }

@@ -73,7 +73,11 @@ function firstDifferentiator(a: PatientListIdentity, b: PatientListIdentity): Pa
  */
 export function findDuplicateNames(
   patients: PatientListIdentity[],
-  opts: { similar?: (a: PatientListIdentity, b: PatientListIdentity) => boolean } = {},
+  opts: {
+    similar?: (a: PatientListIdentity, b: PatientListIdentity) => boolean;
+    /** True when two entries are the same patient listed twice (two teams, two tasks): never warned against each other [suggested]. */
+    samePatient?: (a: PatientListIdentity, b: PatientListIdentity) => boolean;
+  } = {},
 ): Map<string, PatientListNameMatch> {
   const out = new Map<string, PatientListNameMatch>();
   const fullKey = (p: PatientListIdentity) => `${norm(p.familyName)}|${norm(p.givenName)}`;
@@ -85,6 +89,7 @@ export function findDuplicateNames(
     for (let j = 0; j < patients.length; j++) {
       if (i === j) continue;
       const b = patients[j];
+      if (opts.samePatient?.(a, b)) continue;
       const identical = fullKey(a) === fullKey(b);
       const similar = !identical && !!opts.similar && opts.similar(a, b);
       if (!identical && !similar) continue;

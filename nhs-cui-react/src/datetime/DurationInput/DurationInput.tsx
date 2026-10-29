@@ -3,10 +3,11 @@ import { cx, useId, useControllableState, useClinicalLocale, Button, Icon } from
 import type { ClinicalRegion } from '../../core';
 import { NoWrapDates } from '../DisambiguationPrompt/NoWrapDates';
 import { DisambiguationPrompt } from '../DisambiguationPrompt/DisambiguationPrompt';
-import {
+import type {
   ClinicalDurationParts,
   DurationUnitKey,
-  DurationUnitSymbols,
+  DurationUnitSymbols} from '../utils/duration';
+import {
   addClinicalDuration,
   describeClinicalDuration,
   formatClinicalDuration,
@@ -56,6 +57,24 @@ export interface DurationInputProps {
   disabled?: boolean;
   readOnly?: boolean;
   required?: boolean;
+  /**
+   * Field-only mode for use inside `FormField` (or any host that draws its own label, prompt and error) [suggested].
+   * No visible label, the instructions become a screen-reader description only (the tooltip stays), and the host
+   * `error` is not drawn (the host shows it). Pass `id` (FormField does) so the host's `<label htmlFor>` names the
+   * input, or `aria-labelledby`. The control's own validation messages go to `onValidationChange`; without it they
+   * are still drawn below the box, so a message is never lost. Default false.
+   */
+  bare?: boolean;
+  /** Called with the control's own validation message, or null, whenever it changes (show it in the host field). */
+  onValidationChange?: (message: string | null) => void;
+  /** Extra ids describing the input, merged with the control's own (FormField passes its prompt and error). */
+  'aria-describedby'?: string;
+  /** Ids of the elements that label the input, when no `<label htmlFor>` reaches it (bare mode). */
+  'aria-labelledby'?: string;
+  /** Marks the input invalid (FormField passes this for an error or a missed field). */
+  'aria-invalid'?: boolean | 'true' | 'false';
+  /** Marks the input required (FormField passes this). */
+  'aria-required'?: boolean | 'true' | 'false';
   id?: string;
   className?: string;
 }
@@ -81,6 +100,7 @@ export const DurationInput = React.forwardRef<HTMLInputElement, DurationInputPro
     hideInstructions, placeholder = 'e.g. 2hr 40min', startDateTime, onTimezoneNotice, error: hostError,
     disabled, readOnly, required, id, className, timeZone: zoneProp, region,
   } = props;
+  const { bare = false, onValidationChange, 'aria-describedby': ariaDescribedBy, 'aria-labelledby': ariaLabelledBy, 'aria-invalid': ariaInvalid, 'aria-required': ariaRequired } = props;
   const locale = useClinicalLocale(region);
   const zone = zoneProp && isValidTimeZone(zoneProp) ? zoneProp : locale.timeZone;
   const inputId = useId('cui-duration-input', id);
@@ -89,6 +109,14 @@ export const DurationInput = React.forwardRef<HTMLInputElement, DurationInputPro
   const fmt = (v: ClinicalDurationParts | null) => (v ? formatClinicalDuration(v, { units }) : '');
   const [text, setText] = useState(() => fmt(value));
   const [error, setError] = useState<string | null>(null);
+  const validationCb = useRef(onValidationChange);
+  validationCb.current = onValidationChange;
+  const validationReported = useRef(false);
+  useEffect(() => {
+    if (!validationReported.current && error === null) return;
+    validationReported.current = true;
+    validationCb.current?.(error);
+  }, [error]);
   const [prompt, setPrompt] = useState<{ message: string; candidates: ClinicalDurationParts[] } | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const lastNoticeKey = useRef('');
@@ -154,6 +182,8 @@ export const DurationInput = React.forwardRef<HTMLInputElement, DurationInputPro
   };
 
   const shownError = hostError ?? error;
+  // Bare mode: the host draws its own error; the control's own message is drawn only when nobody listens for it.
+  const drawnError = bare ? (onValidationChange ? null : error) : shownError;
   const hintId = `${inputId}-hint`;
   const errorId = `${inputId}-error`;
   const editable = !disabled && !readOnly;
@@ -161,14 +191,16 @@ export const DurationInput = React.forwardRef<HTMLInputElement, DurationInputPro
   return (
     <div
       ref={rootRef}
-      className={cx('cui-dt-field', 'cui-duration-input', disabled && 'cui-dt-field--disabled', className)}
+      className={cx('cui-dt-field', bare && 'cui-dt-field--bare', 'cui-duration-input', disabled && 'cui-dt-field--disabled', className)}
     >
-      <label htmlFor={inputId} className="cui-dt-field__label">
-        {label}
-        {required ? <span className="cui-dt-field__required"> (required)</span> : null}
-      </label>
+      {bare ? null : (
+        <label htmlFor={inputId} className="cui-dt-field__label">
+          {label}
+          {required ? <span className="cui-dt-field__required"> (required)</span> : null}
+        </label>
+      )}
       <div className="cui-dt-field__row">
-        <div className={cx('cui-dt-field__box', shownError && 'cui-dt-field__box--invalid')}>
+        <div className={cx('cui-dt-field__box', shownError && 'cui-dt-field__box--invalid')} data-cui-box="">
           <input
             ref={setRefs}
             id={inputId}
@@ -182,9 +214,11 @@ export const DurationInput = React.forwardRef<HTMLInputElement, DurationInputPro
             disabled={disabled}
             readOnly={readOnly}
             required={required}
-            aria-required={required || undefined}
-            aria-invalid={shownError ? true : undefined}
-            aria-describedby={[hintId, shownError ? errorId : null].filter(Boolean).join(' ')}
+            aria-required={required || ariaRequired === true || ariaRequired === 'true' || undefined}
+            aria-invalid={shownError || ariaInvalid === true || ariaInvalid === 'true' ? true : undefined}
+            aria-labelledby={ariaLabelledBy}
+            data-cui-boxed=""
+            aria-describedby={[ariaDescribedBy, hintId, drawnError ? errorId : null].filter(Boolean).join(' ')}
             onChange={e => {
               setPrompt(null);
               setText(e.target.value);
@@ -212,13 +246,13 @@ export const DurationInput = React.forwardRef<HTMLInputElement, DurationInputPro
           />
         </div>
         {allowApproximate ? (
-          <label className="cui-dt-field__check">
+          <label className="cui-dt-field__check" data-touch-target="">
             <input type="checkbox" checked={approx} disabled={!editable} onChange={e => setApprox(e.target.checked)} />
             Approx
           </label>
         ) : null}
       </div>
-      <div id={hintId} className={cx('cui-dt-field__hint', hideInstructions && 'cui-visually-hidden')}>{instructions}</div>
+      <div id={hintId} className={cx('cui-dt-field__hint', (hideInstructions || bare) && 'cui-visually-hidden')}>{instructions}</div>
       {value && !isEmptyClinicalDuration(value) ? (
         <div className="cui-visually-hidden" aria-live="polite">{describeClinicalDuration(value, { approximate: approx })}</div>
       ) : null}
@@ -238,10 +272,10 @@ export const DurationInput = React.forwardRef<HTMLInputElement, DurationInputPro
           }}
         />
       ) : null}
-      {shownError ? (
+      {drawnError ? (
         <div id={errorId} role="alert" className="cui-dt-field__error">
           <Icon name="error" size={16} />
-          <span><NoWrapDates text={shownError} /></span>
+          <span><NoWrapDates text={drawnError} /></span>
         </div>
       ) : null}
       {notice ? (

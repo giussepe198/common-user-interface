@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
 import { cx, Icon } from '../../core';
+import type {
+  ShortcutConflict,
+  ShortcutDefinition} from '../utils/shortcuts';
 import {
   STANDARD_WINDOWS_SHORTCUTS,
-  ShortcutConflict,
-  ShortcutDefinition,
   detectShortcutConflicts,
   normaliseKeys,
 } from '../utils/shortcuts';

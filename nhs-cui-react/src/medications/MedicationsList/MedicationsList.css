@@ -8,7 +8,7 @@
 .cui-medications-list__view-btn,
 .cui-medications-list__filter-btn {
   display: inline-flex; align-items: center; gap: var(--space-1);
-  font: inherit; font-size: 14px; line-height: 20px; padding: 5px 12px; cursor: pointer;
+  font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); padding: 5px var(--space-3); cursor: pointer;
   color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); margin-left: -1px;
 }
 .cui-medications-list__toggle > .cui-medications-list__view-btn:first-child { margin-left: 0; border-radius: var(--radius-md) 0 0 var(--radius-md); }
@@ -19,13 +19,13 @@
 .cui-medications-list__filter-btn.is-selected { background: var(--accent-surface); border-color: var(--accent); }
 .cui-medications-list__view-btn:focus-visible, .cui-medications-list__filter-btn:focus-visible { position: relative; z-index: 2; }
 .cui-medications-list__groupby { display: inline-flex; align-items: center; gap: var(--space-2); }
-.cui-medications-list__groupby-label { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
-.cui-medications-list__groupby select { font: inherit; font-size: 14px; padding: 4px 6px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); }
+.cui-medications-list__groupby-label { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-medications-list__groupby select { font: inherit; font-size: var(--font-size-body); padding: var(--space-1) 6px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); }
 
 /* Menus */
 .cui-medications-menu { z-index: 20; min-width: 180px; padding: var(--space-1) 0; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); }
 .cui-medications-list__filter-menu { position: absolute; top: calc(100% + 2px); left: 0; }
-.cui-medications-menu__item { display: flex; width: 100%; align-items: center; gap: var(--space-2); padding: 6px var(--space-3); font: inherit; font-size: 14px; text-align: left; background: none; border: 0; color: var(--ink); cursor: pointer; }
+.cui-medications-menu__item { display: flex; width: 100%; align-items: center; gap: var(--space-2); padding: 6px var(--space-3); font: inherit; font-size: var(--font-size-body); text-align: left; background: none; border: 0; color: var(--ink); cursor: pointer; }
 .cui-medications-menu__item:hover, .cui-medications-menu__item:focus { background: var(--hover); outline: none; }
 .cui-medications-menu__item:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 .cui-medications-menu__item:disabled { color: var(--ink-disabled); cursor: default; }
@@ -42,7 +42,7 @@
 .cui-medications-list__head { top: 0; }
 .cui-medications-list__foot { bottom: 0; }
 .cui-medications-list__head th { text-align: left; font-weight: 400; background: var(--surface); border-bottom: 1px solid var(--border-strong); padding: 0; }
-.cui-medications-list__sort { display: inline-flex; align-items: center; gap: var(--space-1); width: 100%; padding: 6px var(--space-3); font: inherit; font-size: 12px; line-height: 16px; color: var(--ink-muted); background: none; border: 0; text-align: left; cursor: pointer; }
+.cui-medications-list__sort { display: inline-flex; align-items: center; gap: var(--space-1); width: 100%; padding: 6px var(--space-3); font: inherit; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); background: none; border: 0; text-align: left; cursor: pointer; }
 .cui-medications-list__sort:hover { background: var(--hover); color: var(--ink); }
 /* MEDv-103/104: active sort column formatted distinctly, with an arrow */
 .cui-medications-list__head th.is-sorted .cui-medications-list__sort { color: var(--ink); font-weight: 700; }
@@ -65,7 +65,7 @@
 .cui-medications-list__drug { overflow-wrap: normal; }
 
 /* Group headings: prominent, toggle at the start (MEDv-086/092) */
-.cui-medications-list__group th { text-align: left; font-size: 15px; line-height: 20px; font-weight: 600; padding: 8px var(--space-3) 6px; background: var(--surface-sunken); border-bottom: 1px solid var(--border-strong); cursor: pointer; }
+.cui-medications-list__group th { text-align: left; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; padding: var(--space-2) var(--space-3) 6px; background: var(--surface-sunken); border-bottom: 1px solid var(--border-strong); cursor: pointer; }
 .cui-medications-list__group-toggle { display: inline-flex; vertical-align: -3px; margin-right: var(--space-1); color: var(--ink-muted); }
 .cui-medications-list__group-count { font-weight: 400; }
 
@@ -73,7 +73,7 @@
 .cui-medications-list__notice-row td { padding: 6px var(--space-3); background: var(--info-surface); border-bottom: 1px solid var(--border); }
 .cui-medications-list__notice-row--recent td { background: var(--surface-sunken); font-style: italic; }
 .cui-medications-list__notice { display: inline-flex; align-items: center; flex-wrap: wrap; gap: var(--space-2); }
-.cui-medications-list__notice-action { font: inherit; font-size: 14px; color: var(--accent); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; font-style: normal; }
+.cui-medications-list__notice-action { font: inherit; font-size: var(--font-size-body); color: var(--accent); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; font-style: normal; }
 .cui-medications-list__notice-action:hover { color: var(--accent-hover); }
 .cui-medications-list__empty-row td { color: var(--ink-muted); padding: var(--space-3); }
 /* MEDv-142: exactly one line of blank space at the end */
@@ -85,7 +85,7 @@
 .cui-medications-list__foot .cui-medications-list__lasb-row td { border-top: 1px solid var(--border); border-bottom: 0; }
 .cui-medications-list__lasb { display: flex; justify-content: flex-end; height: 24px; padding: 2px 0; overflow: hidden; }
 /* Single line, shrink to fit, right-aligned against the scroll bar (MEDv-043/044/059); light solid fill, subtle 1px border (MEDv-188/189) */
-.cui-medications-list__lasb-note { display: inline-flex; align-items: center; white-space: nowrap; font-size: 12px; line-height: 18px; padding: 0 var(--space-2); background: var(--surface-reveal); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--ink); }
+.cui-medications-list__lasb-note { display: inline-flex; align-items: center; white-space: nowrap; font-size: var(--font-size-label); line-height: 18px; padding: 0 var(--space-2); background: var(--surface-reveal); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--ink); }
 .cui-medications-list__lasb-name { font-weight: 700; display: inline-flex; align-items: center; gap: 2px; }
 .cui-medications-list__lasb-count { font-weight: 400; display: inline-flex; align-items: center; gap: 2px; }
 .cui-medications-list__lasb-dot { font-size: 8px; color: var(--ink); white-space: pre; }
@@ -94,3 +94,29 @@
 
 /* MEDv-025: past list visually distinct (status first, italic past statuses, sunken header) */
 .cui-medications-list--past .cui-medications-list__head th { background: var(--surface-sunken); }
+
+/* Responsive (CONVENTIONS "Responsive"): the scroll area is the size container, not the root, because the row and
+   heading menus are fixed-position layers a size container would trap. Below 600px each row becomes a card: drug
+   details first, then the other columns labelled from their headings; the headings wrap as sort buttons. */
+.cui-medications-list__scroll { container: cui-medications-list / inline-size; }
+@container cui-medications-list (max-width: 599px) {
+  .cui-medications-list__table, .cui-medications-list__table > thead, .cui-medications-list__table > tbody,
+  .cui-medications-list__table > tfoot, .cui-medications-list__table tr, .cui-medications-list__table td,
+  .cui-medications-list__table th { display: block; width: auto; }
+  .cui-medications-list__table colgroup { display: none; }
+  .cui-medications-list__head > tr:first-child { display: flex; flex-wrap: wrap; border-bottom: 1px solid var(--border-strong); background: var(--surface); }
+  .cui-medications-list__head > tr:first-child > th { border-bottom: 0; background: transparent; }
+  .cui-medications-list__head th .cui-medications-list__sort { width: auto; }
+  .cui-medications-list__row { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--border); }
+  .cui-medications-list__row.is-shaded { background: var(--surface-muted); }
+  .cui-medications-list__row:hover { background: var(--hover); }
+  .cui-medications-list__row.is-selected { background: var(--accent-surface); box-shadow: inset 3px 0 0 var(--accent); }
+  .cui-medications-list__table tbody .cui-medications-list__row > td { padding: 0; border-bottom: 0; background: transparent; }
+  .cui-medications-list__row.is-selected td:first-child { box-shadow: none; }
+  .cui-medications-list__row > td.cui-medications-list__drug { order: -1; }
+  .cui-medications-list__row > td[data-label]:not(.cui-medications-list__drug) { display: flex; flex-wrap: wrap; gap: 0 var(--space-2); align-items: baseline; }
+  .cui-medications-list__row > td[data-label]:not(.cui-medications-list__drug)::before { content: attr(data-label); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+  .cui-medications-list__row.is-suspended td.cui-medications-list__status { background: var(--warning-surface); padding: 0 var(--space-1); }
+  .cui-medications-list__lasb { justify-content: flex-start; }
+}
+@media (pointer: coarse) { .cui-medications-list__group th { height: var(--target-coarse); } }

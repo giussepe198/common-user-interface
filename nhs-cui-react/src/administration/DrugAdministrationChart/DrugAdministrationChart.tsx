@@ -3,14 +3,17 @@ import { Button, cx, Icon, useClinicalLocale, useControllableState, useId, Visua
 import type { ClinicalRegion } from '../../core';
 import { formatShortDate, formatTime, toDate } from '../../core/format';
 import type { DateLike } from '../../core/format';
-import { AdministrationEventIcon, AdministrationEventMarker } from '../AdministrationEventIcon/AdministrationEventIcon';
-import { AdministrationRecordingForm, AdministrationRecordingPayload } from '../AdministrationRecordingForm/AdministrationRecordingForm';
+import type { AdministrationEventMarker } from '../AdministrationEventIcon/AdministrationEventIcon';
+import { AdministrationEventIcon } from '../AdministrationEventIcon/AdministrationEventIcon';
+import type { AdministrationRecordingPayload } from '../AdministrationRecordingForm/AdministrationRecordingForm';
+import { AdministrationRecordingForm } from '../AdministrationRecordingForm/AdministrationRecordingForm';
 import { NilByMouthBanner } from '../NilByMouthBanner/NilByMouthBanner';
 import { ADMIN_CHART_WORDING, adminReasonCodes, adminReasonLegend, adminRegionalStatusLabel } from '../utils/adminRegion';
-import {
+import type {
   AdminEvent,
   AdminEventState,
-  AdminMedication,
+  AdminMedication} from '../utils/adminEvents';
+import {
   adminEstimatedStop,
   adminEventPlotTime,
   adminEventStates,
@@ -22,8 +25,9 @@ import {
   adminLockoutEnd,
   adminOutstandingEvents,
 } from '../utils/adminEvents';
+import type {
+  AdminGrouping} from '../utils/adminChart';
 import {
-  AdminGrouping,
   adminAddDays,
   adminAdjacentEventDate,
   adminGroupMedications,
@@ -42,7 +46,8 @@ import {
   adminVisibleWindow,
 } from '../utils/adminChart';
 import { DayCalendar } from './DayCalendar';
-import { AdminInfoTab, MedicationInfoPanel, MedicationLeftPanel } from './MedicationLeftPanel';
+import type { AdminInfoTab} from './MedicationLeftPanel';
+import { MedicationInfoPanel, MedicationLeftPanel } from './MedicationLeftPanel';
 
 /** A prescription change made by someone else while the chart is open (MEDa-0294 to MEDa-0297). */
 export interface DrugAdministrationUpdate {
@@ -966,7 +971,7 @@ export function DrugAdministrationChart(props: DrugAdministrationChartProps) {
             <div role="columnheader" className="cui-dac__head-cell cui-dac__head-cell--lhp">
               Medication
             </div>
-            <div className="cui-dac__head-nav" role="presentation">
+            <div className="cui-dac__head-nav" role="gridcell">
               <Button size="sm" variant="quiet" icon="chevron-left" iconOnly onClick={() => goTo(adminAddDays(selected, -1))}>
                 Previous day
               </Button>
@@ -1018,7 +1023,7 @@ export function DrugAdministrationChart(props: DrugAdministrationChartProps) {
                 </div>
               );
             })}
-            <div className="cui-dac__head-nav cui-dac__head-nav--next" role="presentation">
+            <div className="cui-dac__head-nav cui-dac__head-nav--next" role="gridcell">
               <Button size="sm" variant="quiet" icon="chevron-right" iconOnly onClick={() => goTo(adminAddDays(selected, 1))}>
                 Next day
               </Button>

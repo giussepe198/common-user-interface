@@ -13,7 +13,6 @@ import {
   isValidUkPostcode,
   formatAddress,
   truncateBannerText,
-  formatTelephoneNumber,
   ALLERGY_STATUS_LABELS,
   PATIENT_BANNER_LABELS,
   CURRENT_GENDER_VALUES,
@@ -21,6 +20,7 @@ import {
   TITLE_PRESETS,
   PATIENT_NAME_FIELDS,
 } from './patient';
+import { formatTelephoneNumber } from './telephone';
 import { PATIENT_COUNTRIES, ISO_COUNTRY_NAMES, ITU_COUNTRY_CODES } from './countries';
 
 describe('patient name', () => {
