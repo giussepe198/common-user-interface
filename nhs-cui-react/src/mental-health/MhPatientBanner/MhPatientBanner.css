@@ -41,3 +41,14 @@
 .cui-mh-banner__phone-section { min-width: 0; overflow-wrap: anywhere; }
 .cui-mh-banner__phone-items { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); }
 .cui-mh-banner__symbol { display: inline-flex; }
+
+/* Compact (while a panel or dialog opens below the banner) [suggested]: every item stays, packed closer in the detail
+   type size; touch targets keep their size. The phone header's details wait closed (hidden in the markup). */
+.cui-mh-banner--compact .cui-mobile-header { gap: 2px; padding-top: max(var(--space-1), env(safe-area-inset-top, 0px)); padding-bottom: var(--space-1); }
+.cui-mh-banner--compact .cui-mobile-header__who { gap: 2px; }
+.cui-mh-banner--compact .cui-mobile-header__name { font-size: 17px; line-height: 22px; }
+.cui-mh-banner--compact .cui-mobile-header__name-extension { font-size: var(--font-size-detail); line-height: var(--line-height-detail); }
+.cui-mh-banner--compact .cui-mobile-header__facts { column-gap: 10px; row-gap: 0; font-size: var(--font-size-detail); line-height: var(--line-height-detail); }
+.cui-mh-banner--compact .cui-mobile-header__row { gap: var(--space-1); font-size: var(--font-size-detail); line-height: var(--line-height-detail); }
+.cui-mh-banner--compact .cui-mobile-header__allergy { padding: 0 6px; }
+.cui-mh-banner--compact .cui-mh-banner__phone-similar { padding-bottom: var(--space-1); }

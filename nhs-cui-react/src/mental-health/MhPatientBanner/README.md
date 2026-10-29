@@ -13,6 +13,7 @@ The mental health patient banner: the CUI `PatientBanner` (one dark band, Zone 1
 - Identity: `name` (legal name parts) or `nameContent`, `preferredName`, `pronouns`, `nameExtension`, `similarNameWarning`, `leading`, `dateOfBirth` or `bornText`, `dateOfDeath` or `deceased`, `sex` (host words), `recordNumber` (labelled `labels.recordNumber`), `identifiers` (IHI, NHI, Medicare the host marks for the header).
 - Zone 1 safety items: `legalStatuses` (`MhBannerLegalStatus`: badge props plus `countdown` and `countdownTone`; most restrictive first), `onOpenLegalStatus`, `alerts` and `onShowAllAlerts`, `interpreter`, `consent`, `restricted`, `emergencyAccess` (`BreakGlassBar` props), `items` (more host items: markers, assurance), `actions`.
 - Zone 2: `address`, `contacts`, `careTeam` (section 3), `safetySection` (section 4; default the sharing state with `legalDetails`), `allergies`.
+- `compact`: the compact form while a panel or dialog opens below the banner (below).
 - `layout` ("auto", "desktop", "phone"), `phoneBelow` (default 600), `print`, `labels` for every fixed word; legal and service words come from the host.
 
 ```tsx
@@ -45,6 +46,7 @@ Part of the mental health extension. The NHS CUI guidance has no mental health d
 - Restricted information held, a sharing restriction (consent restricted or withdrawn) and an interpreter are Zone 1 items in the band; other sharing states are in Zone 2 [suggested].
 - Allergies known list the items, "No known allergies (checked date)" only when recorded so, anything else "Allergies not recorded"; an empty known list is never shown as known or none [suggested].
 - Phone: below `phoneBelow` px of its own width (measured, so it works in any slot) the banner is the CUI `MobilePatientHeader` with the same items in compact form; the expand button opens the details in place below the header (address, contacts, interpreter, sharing, care team), capped at half the screen while open. Interpreter, sharing restriction and restricted marker move into the details there; legal status, alerts, allergies and host markers stay in the header [suggested].
+- Compact [suggested]: while a panel, drawer or dialog opens below the banner and the full banner would leave it too little of the screen, the host passes `compact`. Every identity and safety item stays in the same element and order (name, Born, sex, record number, legal status, the alert count, allergies, markers), packed closer in the detail type size with touch targets kept; the phone header's open details wait closed and the desktop banner keeps Zone 2 collapsed. When `compact` goes, both come back as they were. An overlay should never cover the banner; compact keeps the overlay a usable height below it.
 - Print: `print` gives light colours and nothing interactive [suggested].
 - Deceased: Died in words with the CUI deceased colour and pattern, never red [suggested].
 

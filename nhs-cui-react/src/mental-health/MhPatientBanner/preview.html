@@ -1,4 +1,4 @@
-<!-- @dsCard group="Mental health" width=1200 height=620 subtitle="Patient banner with preferred name and pronouns: one dark band with legal status and the alert count; the phone header on a narrow banner" -->
+<!-- @dsCard group="Mental health" width=1200 height=900 subtitle="Patient banner with preferred name and pronouns: one dark band with legal status and the alert count; the phone header on a narrow banner, full and compact" -->
 <div id="root" class="cui-root"></div>
 <script>
 const h = React.createElement;
@@ -35,7 +35,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         consent: { state: 'allowed', text: 'Share with GP' },
         emergencyAccess: { endsAt: '2026-10-28T04:32:00Z', now: '2026-10-28T03:34:00Z', reason: 'Crisis presentation', onEnd: function () {} }
       }),
-      h('div', { style: { maxWidth: 375 } }, h(MhPatientBanner, lan))
+      h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'flex-start' } },
+        h('div', { style: { width: 375, maxWidth: '100%' } }, h(MhPatientBanner, lan)),
+        h('div', { style: { width: 375, maxWidth: '100%' } }, h(MhPatientBanner, Object.assign({}, lan, { compact: true }))))
     )
   )
 );

@@ -175,6 +175,14 @@ export interface MhPatientBannerProps {
   phoneBelow?: number;
   /** Print: light colours, nothing interactive. */
   print?: boolean;
+  /**
+   * The compact form, for while a panel or dialog opens below the banner and the full banner would leave it too little of
+   * the screen [suggested]. Every identity and safety item stays (name, Born, sex, record number, legal status, the alert
+   * count, allergies, markers): the phone header packs them closer in smaller type and its open details wait closed;
+   * the desktop banner keeps Zone 2 collapsed. Nothing is removed and no item changes place, so focus kept on a band
+   * item stays put. Turn it off when the panel closes; the details and Zone 2 come back as they were.
+   */
+  compact?: boolean;
   /** Phone header only: a back button before the name, as in the mobile patient review (MobilePatientHeader `onBack`) [suggested]. */
   onBack?: () => void;
   /** Accessible name of the back button ("Back to today's visits"). Default "Back". */
@@ -255,6 +263,7 @@ export function MhPatientBanner({
   layout = 'auto',
   phoneBelow = 600,
   print = false,
+  compact = false,
   now,
   timeZone: tzProp,
   className,
@@ -444,7 +453,7 @@ export function MhPatientBanner({
       section3={careTeam}
       section4={section4}
       showZone2={showZone2}
-      zone2Expanded={zone2Expanded}
+      zone2Expanded={compact ? false : zone2Expanded}
       defaultZone2Expanded={defaultZone2Expanded}
       onZone2ExpandedChange={onZone2ExpandedChange}
       now={now}
@@ -475,7 +484,7 @@ export function MhPatientBanner({
           showLocation={false}
           items={[...items.filter((it) => !PHONE_DETAILS.has(it.id)).map((it) => (it.id === 'legal-status' && legalShort ? { ...it, value: legalShort } : it)), ...(isDeceased ? [{ id: 'died', label: 'Died', value: deceasedDisplay ?? (dateOfDeath ? mhFormatZonedDate(dateOfDeath, timeZone) : labels.unknown), placement: 'after-born' as const }] : [])]}
           allergyLabels={allergyLabels}
-          detailsOpen={phoneOpen}
+          detailsOpen={phoneOpen && !compact}
           onShowDetails={() => setPhoneOpen(!phoneOpen)}
           aria-label="Patient summary"
           {...(onBack ? { onBack, ...(backLabel ? { backLabel } : {}) } : {})}
@@ -487,7 +496,7 @@ export function MhPatientBanner({
             <span>{similarNameWarning}</span>
           </p>
         ) : null}
-        <div id={detailsId} className="cui-mh-banner__phone-details" hidden={!phoneOpen}>
+        <div id={detailsId} className="cui-mh-banner__phone-details" hidden={!phoneOpen || compact}>
           {legalFull ? <LabelledValue label={labels.legalStatus} value={legalFull} noWrap={false} layout="stacked" /> : null}
           {actions ? <div className="cui-mh-banner__phone-actions">{actions}</div> : null}
           {items.some((it) => PHONE_DETAILS.has(it.id)) ? (
@@ -529,13 +538,14 @@ export function MhPatientBanner({
 
   // Open on a phone, the details scroll inside the banner (at most half the screen): a named, focusable region, so the
   // keyboard can scroll it too [suggested].
-  const openRegion = phone && phoneOpen ? { role: 'region', 'aria-label': 'Patient details', tabIndex: 0 } : {};
+  const openRegion = phone && phoneOpen && !compact ? { role: 'region', 'aria-label': 'Patient details', tabIndex: 0 } : {};
   return (
     <div
       ref={ref}
-      className={cx('cui-mh-banner', sticky && !print && 'cui-mh-banner--sticky', phone && 'cui-mh-banner--phone', phone && phoneOpen && 'cui-mh-banner--open', print && 'cui-mh-banner--print', emergencyAccess && 'cui-mh-banner--emergency', className)}
+      className={cx('cui-mh-banner', sticky && !print && 'cui-mh-banner--sticky', phone && 'cui-mh-banner--phone', phone && phoneOpen && !compact && 'cui-mh-banner--open', compact && !print && 'cui-mh-banner--compact', print && 'cui-mh-banner--print', emergencyAccess && 'cui-mh-banner--emergency', className)}
       data-region={region}
       data-layout={phone ? 'phone' : 'desktop'}
+      {...(compact && !print ? { 'data-compact': '' } : {})}
       {...openRegion}
     >
       {bar}
