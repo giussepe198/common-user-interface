@@ -1,0 +1,22 @@
+<!-- @dsCard group="Application frame" height=520 width=900 subtitle="Grouped destinations with icons and counts, current marked; collapsed icon rail" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+const groups = [
+  { id: 'work', label: 'Work', items: [
+    { id: 'caseload', label: 'Caseload', href: '#c', icon: 'user' },
+    { id: 'tasks', label: 'Tasks', href: '#t', icon: 'check', count: 4, countLabel: '4 open' },
+    { id: 'notes', label: 'Notes', href: '#n', icon: 'pencil' },
+  ] },
+  { id: 'gov', label: 'Governance', items: [{ id: 'audit', label: 'Audit', href: '#a', icon: 'history' }, { id: 'kaupapa', label: 'Ratonga kaupapa Māori', href: '#k', lang: 'mi' }] },
+];
+const box = (w, c) => h('div', { style: { width: w, border: '1px solid var(--border)', background: 'var(--surface)' } }, c);
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', { style: { display: 'flex', gap: 32, alignItems: 'flex-start', flexWrap: 'wrap' } },
+  h('div', null, label('Expanded, Tasks current'), box(220, h(C.SideNav, { groups, current: 'tasks', onSelect: (id, e) => e.preventDefault(), header: h('strong', null, 'Riverside') }))),
+  h('div', null, label('Icon rail'), box(48, h(C.SideNav, { groups, current: 'tasks', collapsed: true, onSelect: (id, e) => e.preventDefault() })))
+));
+</script>

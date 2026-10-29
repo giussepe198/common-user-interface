@@ -1,0 +1,23 @@
+.cui-message { display: flex; align-items: flex-start; gap: var(--space-2); padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3); border: 1px solid; border-radius: var(--radius-md); color: var(--ink); font-family: var(--font-sans); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-message--info { background: var(--info-surface); border-color: var(--info); }
+.cui-message--success { background: var(--success-surface); border-color: var(--success); }
+.cui-message--warning { background: var(--warning-surface); border-color: var(--warning); }
+.cui-message--error { background: var(--danger-surface); border-color: var(--danger); }
+.cui-message__icon { flex: none; display: inline-flex; }
+.cui-message--info .cui-message__icon { color: var(--info); }
+.cui-message--success .cui-message__icon { color: var(--success); }
+.cui-message--warning .cui-message__icon { color: var(--warning); }
+.cui-message--error .cui-message__icon { color: var(--danger); }
+.cui-message__content { flex: 1; min-width: 0; display: grid; gap: var(--space-1); }
+.cui-message__title { font-weight: var(--font-weight-body-strong); overflow-wrap: anywhere; }
+.cui-message__body { overflow-wrap: anywhere; }
+.cui-message__body > :first-child { margin-top: 0; }
+.cui-message__body > :last-child { margin-bottom: 0; }
+.cui-message__actions { display: flex; flex-wrap: wrap; gap: var(--space-2); padding-top: 2px; }
+.cui-message--inline { padding-top: var(--space-1); padding-bottom: var(--space-1); }
+.cui-message--inline .cui-message__content { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-2); row-gap: 2px; }
+.cui-message--inline .cui-message__actions { padding-top: 0; }
+.cui-message__dismiss { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; margin: -4px 0; padding: 0; border: 1px solid transparent; border-radius: var(--radius-md); background: transparent; color: var(--ink); cursor: pointer; }
+.cui-message__dismiss:hover { background: var(--hover); }
+.cui-message__dismiss:focus-visible { outline: 2px solid var(--focus); outline-offset: 0; }
+@media (pointer: coarse) { .cui-message__dismiss { width: var(--target-coarse); height: var(--target-coarse); } }

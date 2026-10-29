@@ -1,0 +1,14 @@
+<!-- @dsCard group="Application frame" height=160 subtitle="Trail with the current page last; back link in narrow containers" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+const items = [{ id: 'a', label: 'Administration', href: '#a' }, { id: 'r', label: 'Roles', href: '#r' }, { id: 'c', label: 'Clinician' }];
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  label('Wide'), h(C.Breadcrumbs, { items }),
+  label('Narrow container (320 px)'), h('div', { style: { maxWidth: 320 } }, h(C.Breadcrumbs, { items }))
+));
+</script>

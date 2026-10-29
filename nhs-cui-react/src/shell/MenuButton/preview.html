@@ -1,0 +1,25 @@
+<!-- @dsCard group="Navigation" height=320 subtitle="Menu button with icons, shortcut hint, disabled, separator and danger items" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+const items = [
+  { id: 'print', label: 'Print letter', icon: 'free-text', shortcut: 'Ctrl+P' },
+  { id: 'copy', label: 'Copy link', icon: 'link', disabled: true },
+  { id: 'dense', label: 'Dense rows', checked: true },
+  { id: 'sep', separator: true },
+  { id: 'remove', label: 'Remove from caseload', icon: 'trash', danger: true },
+];
+function Open() {
+  const ref = React.useRef(null);
+  React.useEffect(() => { const b = ref.current && ref.current.querySelector('button'); if (b) b.click(); if (b) b.blur(); }, []);
+  return h('div', { ref }, h(C.MenuButton, { label: 'Actions', items }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', { style: { display: 'flex', gap: 48, alignItems: 'flex-start' } },
+  h('div', null, label('Closed, variants'), h(C.Cluster, null, h(C.MenuButton, { label: 'Actions', items }), h(C.MenuButton, { label: 'Help', icon: 'help', iconOnly: true, variant: 'quiet', items }))),
+  h('div', null, label('Open'), h(Open))
+));
+</script>

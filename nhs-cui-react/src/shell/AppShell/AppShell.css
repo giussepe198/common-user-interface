@@ -1,0 +1,41 @@
+.cui-app-shell { container: cui-app-shell / inline-size; position: relative; display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; min-width: 0; background: var(--surface-sunken); color: var(--ink); font-family: var(--font-sans); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-app-shell__skip { position: absolute; left: var(--space-2); top: var(--space-2); z-index: 1200; padding: var(--space-2) var(--space-3); background: var(--surface); color: var(--accent); border: 2px solid var(--focus); border-radius: var(--radius-md); font-weight: 600; text-decoration: underline; transform: translateY(-200%); }
+.cui-app-shell__skip:focus { transform: none; }
+@media (pointer: coarse) { .cui-app-shell__skip { display: inline-flex; align-items: center; min-height: var(--target-coarse); } }
+.cui-app-shell__env { flex: none; min-width: 0; }
+.cui-app-shell__env--text { display: flex; align-items: center; justify-content: center; gap: var(--space-2); padding: 2px var(--space-3); background: var(--warning-surface); color: var(--ink); border-bottom: 1px solid var(--warning); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; text-align: center; }
+.cui-app-shell__env--text .cui-icon { flex: none; color: var(--warning); }
+.cui-app-shell__notices { flex: none; min-width: 0; }
+.cui-app-shell__context-bar { min-width: 0; }
+.cui-app-shell__nav-button { display: inline-flex; align-items: center; justify-content: center; width: var(--control-height); height: var(--control-height); padding: 0; border: 1px solid transparent; border-radius: var(--radius-md); background: transparent; color: var(--ink); cursor: pointer; }
+.cui-app-shell__nav-button:hover { background: var(--hover); }
+.cui-app-shell__nav-button:focus-visible { outline: 2px solid var(--focus); outline-offset: 0; }
+.cui-app-shell__nav-button--open { display: none; }
+.cui-app-shell__body { flex: 1 1 auto; display: grid; grid-template-columns: 220px minmax(0, 1fr); min-width: 0; }
+.cui-app-shell--nav-collapsed .cui-app-shell__body { grid-template-columns: 48px minmax(0, 1fr); }
+.cui-app-shell--no-nav .cui-app-shell__body { grid-template-columns: minmax(0, 1fr); }
+.cui-app-shell__nav { min-width: 0; background: var(--surface); border-right: 1px solid var(--border); }
+.cui-app-shell__nav > .cui-sidenav { position: sticky; top: 0; max-height: 100vh; max-height: 100dvh; overflow-y: auto; }
+.cui-app-shell--nav-collapsed .cui-app-shell__nav > .cui-sidenav { overflow: visible; }
+.cui-app-shell__column { display: flex; flex-direction: column; min-width: 0; }
+.cui-app-shell__patient { position: sticky; top: 0; z-index: 20; min-width: 0; }
+.cui-app-shell__patient-compact { display: none; }
+.cui-app-shell__main { flex: 1 1 auto; display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; padding: var(--space-3) var(--space-4); outline: none; }
+.cui-app-shell__main--flush { padding: 0; gap: 0; }
+.cui-app-shell__tabbar { display: none; position: sticky; bottom: 0; z-index: 20; }
+.cui-app-shell__drawer .cui-drawer__body { padding: 0; }
+@container cui-app-shell (max-width: 899px) {
+  .cui-app-shell__body, .cui-app-shell--nav-collapsed .cui-app-shell__body { grid-template-columns: minmax(0, 1fr); }
+  .cui-app-shell__nav, .cui-app-shell__nav-button--collapse { display: none; }
+  .cui-app-shell__nav-button--open { display: inline-flex; }
+}
+@container cui-app-shell (max-width: 599px) {
+  .cui-app-shell__main { padding: var(--space-2); gap: var(--space-2); }
+  .cui-app-shell__main--flush { padding: 0; }
+  .cui-app-shell--has-tabs .cui-app-shell__tabbar { display: block; }
+  .cui-app-shell--more-tab .cui-app-shell__nav-button--open { display: none; }
+  .cui-app-shell--has-compact-banner .cui-app-shell__patient-full { display: none; }
+  .cui-app-shell--has-compact-banner .cui-app-shell__patient-compact { display: block; }
+}
+@media (pointer: coarse) { .cui-app-shell__nav-button { width: var(--target-coarse); height: var(--target-coarse); } }
+@media (prefers-reduced-motion: no-preference) { .cui-app-shell__body { transition: grid-template-columns 160ms ease-out; } }

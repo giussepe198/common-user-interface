@@ -1,0 +1,13 @@
+<!-- @dsCard group="Feedback" height=320 subtitle="Empty list in words with the next step; inline form for dense lists" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+ReactDOM.createRoot(document.getElementById('root')).render(h(C.Stack, { gap: 3 },
+  h(C.Panel, { title: 'Contacts' }, h(C.EmptyState, { title: 'No contacts match', action: h(C.Button, null, 'Clear filters') }, 'Filters hide 12 contacts.')),
+  h(C.Panel, { title: 'Alerts', padding: 'none' }, h(C.EmptyState, { title: 'No alerts recorded', layout: 'inline', action: h(C.Button, { size: 'sm', icon: 'plus' }, 'Add alert') }))
+));
+</script>

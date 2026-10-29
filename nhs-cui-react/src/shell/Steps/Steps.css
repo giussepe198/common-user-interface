@@ -1,0 +1,24 @@
+.cui-steps { container: cui-steps / inline-size; min-width: 0; font-family: var(--font-sans); font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); }
+.cui-steps__list { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); margin: 0; padding: 0; list-style: none; counter-reset: none; }
+.cui-steps__item { position: relative; display: flex; min-width: 0; }
+.cui-steps--horizontal .cui-steps__item:not(:last-child)::after { content: ''; align-self: flex-start; width: 16px; height: 1px; margin: 15px 0 0 var(--space-4); background: var(--border-strong); }
+.cui-steps__static, .cui-steps__button { display: inline-flex; align-items: flex-start; gap: var(--space-2); min-height: var(--control-height); padding: var(--space-1) 0; color: inherit; font: inherit; text-align: left; }
+.cui-steps__button { border: 0; border-radius: var(--radius-md); background: transparent; cursor: pointer; padding-right: var(--space-1); }
+.cui-steps__button:hover { background: var(--hover); }
+.cui-steps__button:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.cui-steps__button .cui-steps__label { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.cui-steps__marker { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-strong); background: var(--surface); color: var(--ink-muted); font-size: var(--font-size-label); line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cui-steps__marker--done { background: var(--success-surface); border-color: var(--success); color: var(--success); }
+.cui-steps__marker--current { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.cui-steps__marker--error { background: var(--danger-surface); border-color: var(--danger); color: var(--danger); }
+.cui-steps__text { display: grid; min-width: 0; padding-top: 1px; }
+.cui-steps__item--current .cui-steps__label { font-weight: var(--font-weight-body-strong); }
+.cui-steps__item--todo .cui-steps__label { color: var(--ink-muted); }
+.cui-steps__item--error .cui-steps__label { color: var(--danger); font-weight: var(--font-weight-body-strong); }
+.cui-steps__description { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-steps--vertical .cui-steps__list { flex-direction: column; flex-wrap: nowrap; gap: 0; }
+@container cui-steps (max-width: 520px) {
+  .cui-steps--horizontal .cui-steps__list { flex-direction: column; flex-wrap: nowrap; gap: 0; }
+  .cui-steps--horizontal .cui-steps__item:not(:last-child)::after { display: none; }
+}
+@media (pointer: coarse) { .cui-steps__button { min-height: var(--target-coarse); } }
