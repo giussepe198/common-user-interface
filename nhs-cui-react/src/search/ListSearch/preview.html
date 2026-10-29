@@ -1,0 +1,21 @@
+<!-- @dsCard group="Search" width=1200 height=520 subtitle="List search: words in any order, close spellings, scopes and suggestions" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { DataTable } = window.ClinicalCUI;
+const names = ['SMITH, John', 'SMYTHE, Jon', 'TAMIHANA, Aroha', "O'BRIEN, Catherine", 'JOHNSON, Smith', 'NGATA, Wiremu', 'PATEL, Priya', 'NGUYEN, Linh', 'BROWN, Ava'];
+const teams = ['North adult team', 'South adult team', 'Māori health team', 'Youth team'];
+const rows = names.map((person, i) => ({ id: 'r' + i, person, team: teams[i % 4], status: i % 3 ? 'Waiting' : 'Overdue', received: '2026-0' + ((i % 9) + 1) + '-1' + i }));
+const columns = [
+  { id: 'person', title: 'Person', isRowKey: true, searchKind: 'name' },
+  { id: 'team', title: 'Team' },
+  { id: 'status', title: 'Status' },
+  { id: 'received', title: 'Received', dataType: 'date' },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gap: 16 } },
+    h(DataTable, { caption: 'Referrals', rowNoun: 'referrals', columns, rows, getRowKey: r => r.id, defaultSearchQuery: 'kathryn' }),
+    h(DataTable, { caption: 'Referrals (no match)', rowNoun: 'referrals', columns, rows, getRowKey: r => r.id, defaultSearchQuery: 'xamihanaqq' })
+  )
+);
+</script>
