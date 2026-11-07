@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Combobox · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Forms</p>
+<h1 style="margin:0 0 4px;font-size:20px">Combobox</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Type to filter; async options with no drop-down button · Guidelines: <code>src/forms/Combobox/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { FormField, Combobox } = window.ClinicalCUI;
+const teams = ['Community team North', 'Community team South', 'Acute care team', 'Te Whare Tāwharau', 'Youth team', 'Older adults team'].map((l, i) => ({ value: String(i), label: l + '' }));
+const load = (q) => new Promise((r) => setTimeout(() => r(teams.filter((t) => t.label.toLowerCase().includes(q.toLowerCase()))), 150));
+function Demo() {
+  React.useEffect(() => {
+    const el = document.querySelector('#first input');
+    if (el) { el.focus(); el.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true })); }
+  }, []);
+  return h('div', { style: { maxWidth: 380, minHeight: 330 } },
+    h('div', { id: 'first' }, h(FormField, { label: 'Team' }, h(Combobox, { options: teams, defaultValue: teams[3] }))),
+    h(FormField, { label: 'Clinician', prompt: 'Type two or more letters' }, h(Combobox, { loadOptions: load }))
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
+
+</div>
+</body>
+</html>

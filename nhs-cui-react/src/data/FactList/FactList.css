@@ -1,0 +1,13 @@
+/* FactList: LabelledValue pairs in a grid or in rows (composition, PAB label and data styles). */
+.cui-fact-list { container-type: inline-size; list-style: none; margin: 0; padding: 0; min-width: 0; }
+.cui-fact-list__item { min-width: 0; }
+.cui-fact-list .cui-labelled-value { display: flex; min-width: 0; }
+.cui-fact-list .cui-labelled-value__value { overflow-wrap: anywhere; }
+.cui-fact-list--grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--cui-fact-min, 160px)), 1fr)); gap: var(--space-2) var(--space-4); }
+.cui-fact-list--grid .cui-fact-list__item--wide { grid-column: 1 / -1; }
+.cui-fact-list--rows .cui-fact-list__item { padding: var(--space-1) 0; border-top: 1px solid var(--border); }
+.cui-fact-list--rows .cui-fact-list__item:first-child { border-top: none; padding-top: 0; }
+.cui-fact-list--rows .cui-labelled-value { display: grid; grid-template-columns: minmax(120px, 34%) minmax(0, 1fr); gap: 0 var(--space-3); align-items: baseline; }
+@container (max-width: 400px) {
+  .cui-fact-list--rows .cui-labelled-value { display: flex; flex-direction: column; }
+}

@@ -11,6 +11,11 @@ export interface ClinicalLocale {
   region: ClinicalRegion;
   /** IANA time zone used for "now", daylight-saving notices and scheduling. */
   timeZone: string;
+  /**
+   * The zone instants are shown and entered in, set when the host names a zone (`ClinicalLocaleProvider` `timeZone`):
+   * the facility's zone (AU-DT-07), so a device elsewhere still shows the facility's times. Undefined: the device's zone.
+   */
+  displayTimeZone?: string;
   /** BCP 47 tag for the region's English. */
   language: 'en-GB' | 'en-AU' | 'en-NZ';
   /** NZ only: show te reo Māori labels alongside English where a standard value set defines them. */
@@ -33,7 +38,11 @@ const LocaleContext = createContext<ClinicalLocale>(makeClinicalLocale('GB'));
 
 export interface ClinicalLocaleProviderProps {
   region: ClinicalRegion;
-  /** Defaults per region: Europe/London, Australia/Sydney, Pacific/Auckland. Use e.g. Australia/Brisbane, Australia/Perth, Pacific/Chatham as needed. */
+  /**
+   * Defaults per region: Europe/London, Australia/Sydney, Pacific/Auckland. Use e.g. Australia/Brisbane, Australia/Perth,
+   * Pacific/Chatham as needed. A zone given here is also the zone every control shows and takes times in, whatever
+   * the device's zone; without one, controls show the device's zone.
+   */
   timeZone?: string;
   teReoLabels?: boolean;
   children: React.ReactNode;
@@ -42,7 +51,7 @@ export interface ClinicalLocaleProviderProps {
 /** Sets the jurisdiction for every control below it. Controls also accept a `region` prop that overrides this. */
 export function ClinicalLocaleProvider({ region, timeZone, teReoLabels, children }: ClinicalLocaleProviderProps) {
   const value = useMemo(
-    () => makeClinicalLocale(region, { ...(timeZone ? { timeZone } : {}), ...(teReoLabels != null ? { teReoLabels } : {}) }),
+    () => makeClinicalLocale(region, { ...(timeZone ? { timeZone, displayTimeZone: timeZone } : {}), ...(teReoLabels != null ? { teReoLabels } : {}) }),
     [region, timeZone, teReoLabels],
   );
   return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>;

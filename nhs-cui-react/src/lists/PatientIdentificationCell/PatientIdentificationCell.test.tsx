@@ -49,4 +49,35 @@ describe('PatientIdentificationCell', () => {
     const lines = Array.from(container.querySelectorAll('.cui-patient-list__name, .cui-patient-list__idline')).map(e => e.textContent);
     expect(lines).toEqual(['Ngāwai, Kāhu', 'Born 05-Jan-1944', 'NHI ZBN77VL']);
   });
+  it('optional afterName and afterBirth slots: content after the name and on the Born line, before the identifier', () => {
+    const { container, rerender } = render(
+      <PatientIdentificationCell region="AU" patient={{ familyName: 'Nguyen', givenName: 'Thi Lan', dateOfBirth: '1990-03-12', mrn: '004512' }} afterName="Known as Lan" afterBirth="(36y) Sex Female" />,
+    );
+    const lines = Array.from(container.querySelectorAll('.cui-patient-list__name, .cui-patient-list__idline')).map(e => e.textContent);
+    expect(lines).toEqual(['NGUYEN, Thi LanKnown as Lan', 'Born 12-Mar-1990(36y) Sex Female', 'URN 004512']);
+    expect(container.querySelector('.cui-patient-list__after-birth')?.textContent).toBe('(36y) Sex Female');
+    rerender(<PatientIdentificationCell region="AU" patient={{ familyName: 'Nguyen', givenName: 'Thi Lan', dateOfBirth: '1990-03-12', mrn: '004512' }} />);
+    expect(container.querySelector('.cui-patient-list__after-birth')).toBeNull();
+    expect(container.querySelector('.cui-patient-list__after-name')).toBeNull();
+  });
+  it('nameHref makes the name a link and keeps the differentiator underline (PAL-0550) [suggested]', () => {
+    const { container } = render(
+      <PatientIdentificationCell region="AU" patient={{ familyName: 'Smith', givenName: 'John', dateOfBirth: '1962-06-11', mrn: '0398812' }} nameHref="/people/p1" match={{ kind: 'similar', differentiator: 'givenName', matches: ['x'] }} />,
+    );
+    const link = screen.getByRole('link', { name: 'SMITH, John' });
+    expect(link.getAttribute('href')).toBe('/people/p1');
+    expect(link.querySelector('.cui-patient-list__diff')?.textContent).toBe('John');
+    expect(container.querySelector('.cui-list-warning, .cui-patient-list__name--match')).toBeTruthy();
+  });
+  it('nameText, dateOfBirthText and unknownText for records the host words itself [suggested]', () => {
+    const { container, rerender } = render(<PatientIdentificationCell region="AU" patient={{ dateOfBirth: '1990-03-12' }} nameText="Person not identified" dateOfBirthText="Mar-1990, day not known (36y)" unknownText="Not Known" mrnLabel="Record number" />);
+    const lines = () => Array.from(container.querySelectorAll('.cui-patient-list__name, .cui-patient-list__idline')).map(e => e.textContent);
+    expect(lines()).toEqual(['Person not identified', 'Born Mar-1990, day not known (36y)', 'IHI Not Known']);
+    // The name parts win over nameText when present.
+    rerender(<PatientIdentificationCell region="AU" patient={{ familyName: 'Nguyen', givenName: 'Lan', mrn: '004512' }} nameText="Lan Nguyen" unknownText="Not Known" mrnLabel="Record number" />);
+    expect(lines()).toEqual(['NGUYEN, Lan', 'Born Not Known', 'Record number 004512']);
+    // identifierTypes: a service that holds only its local record number says that one is not known.
+    rerender(<PatientIdentificationCell region="AU" patient={{ familyName: 'Nguyen', givenName: 'Lan' }} unknownText="Not Known" mrnLabel="Record number" identifierTypes={['mrn']} />);
+    expect(lines()).toEqual(['NGUYEN, Lan', 'Born Not Known', 'Record number Not Known']);
+  });
 });

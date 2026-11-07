@@ -1,7 +1,8 @@
 import React from 'react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
-import { PreferenceChoiceList, PreferenceChoiceOption } from './PreferenceChoiceList';
+import type { PreferenceChoiceOption } from './PreferenceChoiceList';
+import { PreferenceChoiceList } from './PreferenceChoiceList';
 
 afterEach(cleanup);
 

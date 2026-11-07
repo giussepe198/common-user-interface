@@ -1,0 +1,16 @@
+.cui-pagination { container: cui-pagination / inline-size; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-4); min-width: 0; font-family: var(--font-sans); font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); }
+.cui-pagination__summary { margin: 0; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-pagination__list { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1); margin: 0 0 0 auto; padding: 0; list-style: none; }
+.cui-pagination__step, .cui-pagination__page { display: inline-flex; align-items: center; justify-content: center; gap: 2px; min-height: var(--control-height); min-width: var(--control-height); padding: 0 var(--space-2); border: 1px solid transparent; border-radius: var(--radius-md); background: transparent; color: var(--accent); font: inherit; font-variant-numeric: tabular-nums; cursor: pointer; }
+.cui-pagination__step:hover:not(:disabled), .cui-pagination__page:hover { background: var(--hover); }
+.cui-pagination__step:disabled { color: var(--ink-disabled); cursor: not-allowed; }
+.cui-pagination__step:focus-visible, .cui-pagination__page:focus-visible { outline: 2px solid var(--focus); outline-offset: 0; }
+.cui-pagination__page--current { border-color: var(--accent); background: var(--accent-surface); color: var(--ink); font-weight: var(--font-weight-body-strong); cursor: default; }
+.cui-pagination__gap { padding: 0 2px; color: var(--ink-muted); }
+.cui-pagination__compact { display: none; padding: 0 var(--space-2); color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+@container cui-pagination (max-width: 480px) {
+  .cui-pagination__number, .cui-pagination__gap { display: none; }
+  .cui-pagination__compact { display: list-item; list-style: none; }
+  .cui-pagination__list { margin-left: 0; width: 100%; justify-content: space-between; }
+}
+@media (pointer: coarse) { .cui-pagination__step, .cui-pagination__page { min-height: var(--target-coarse); min-width: var(--target-coarse); } }

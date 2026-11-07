@@ -1,0 +1,26 @@
+<!-- @dsCard group="Mental health" width=900 height=470 subtitle="Legal order card: dates in the jurisdiction zone, conditions, clinician, actions (Victorian and NZ wording)" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { LegalOrderCard, Button } = window.ClinicalCUI;
+const now = '2026-10-28T03:00:00Z';
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 12, padding: 16, background: 'var(--surface-sunken)' } },
+    h(LegalOrderCard, {
+      orderType: 'Community treatment order (example, VIC)',
+      startedAt: '2026-08-14T00:00:00Z', expiresAt: '2026-10-30T06:00:00Z', reviewAt: '2026-10-29T00:00:00Z', hearingAt: '2026-11-05T23:30:00Z',
+      conditions: ['Attend appointments with the treating team', 'Accept treatment as prescribed'],
+      responsibleClinician: { name: 'Dr A Example', role: 'Authorised psychiatrist' },
+      labels: { hearing: 'Tribunal hearing' },
+      countdown: { soonWithinMinutes: 4320, urgentWithinMinutes: 1440 },
+      timeZone: 'Australia/Melbourne', now: now,
+      actions: [h(Button, { key: 'a', size: 'sm', variant: 'primary' }, 'Record outcome'), h(Button, { key: 'b', size: 'sm' }, 'Vary order')]
+    }),
+    h(LegalOrderCard, {
+      orderType: 'Compulsory treatment order (example, NZ)', state: 'unconfirmed', unconfirmedWarning: 'Order may have expired, status not confirmed',
+      source: 'Information received from Eastgate Health on 02-Jun-2026 11:30 NZST',
+      startedAt: '2026-04-01T00:00:00Z', expiresAt: '2026-10-01T00:00:00Z', timeZone: 'Pacific/Auckland', now: now
+    })
+  )
+);
+</script>

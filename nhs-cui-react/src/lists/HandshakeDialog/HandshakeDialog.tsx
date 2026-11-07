@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Icon, formatDateTime, pad2, toDate, useId, type DateLike } from '../../core';
+import { Button, Icon, formatShortDate, pad2, toDate, useClinicalLocale, useId, type DateLike } from '../../core';
+import { getZonedParts } from '../../datetime/utils/timeZones';
 import { ListDialog } from '../shared/ListDialog';
 import { DateInput, TimeInput } from '../../datetime';
 import { listDateValueToIso, listIsoToDateValue, listIsoToTimeValue } from '../shared/ListFilterValueInput';
@@ -9,8 +10,10 @@ export interface HandshakeRecord {
   outcome: 'accepted' | 'refused';
   /** Who recorded it. */
   actingAs: 'giver' | 'receiver';
-  /** Local date and time of the handover, "YYYY-MM-DDTHH:mm". */
+  /** Wall date and time of the handover, "YYYY-MM-DDTHH:mm", in `timeZone` (else the device's zone). */
   dateTime: string;
+  /** The IANA zone `dateTime` is in when the locale names one (the facility's, `ClinicalLocaleProvider` `timeZone`). */
+  timeZone?: string;
   place: string;
   giver: string;
   receiver: string;
@@ -51,9 +54,20 @@ export interface HandshakeDialogProps {
   onCancel: () => void;
   /** Modal with translucent backdrop (default) or inline. */
   modal?: boolean;
+  /**
+   * Ids of items whose read-back is not yet confirmed (RID 108), e.g. from HandoverTaskList `readBackReasons` without
+   * `readBackConfirmed`. Responsibility cannot be accepted for them: accepting shows an error naming them, while a
+   * refusal can still be recorded (an unanswered read-back is a reason to refuse, RID 87) [suggested].
+   */
+  pendingReadBack?: string[];
 }
 
-const toLocalInput = (d: Date) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}T${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+/** An instant as the wall date and time in a zone (the device's when none), "YYYY-MM-DDTHH:mm". */
+const toZonedInput = (d: Date, timeZone: string | undefined) => {
+  if (!timeZone) return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}T${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+  const p = getZonedParts(d, timeZone);
+  return `${String(p.year).padStart(4, '0')}-${pad2(p.month)}-${pad2(p.day)}T${pad2(p.hour)}:${pad2(p.minute)}`;
+};
 
 /**
  * Records the handover event and the transfer of responsibility (handshake). Date, time, place, giver and
@@ -63,10 +77,13 @@ const toLocalInput = (d: Date) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-
 export function HandshakeDialog({
   items, giver, receiver, actingAs = 'receiver', place: initialPlace = '', dateTime, othersPresent: initialOthers = '',
   reasons = ['Shift change', 'Transfer of care', 'Break cover', 'Ad hoc handover'], retrospective = false, onSubmit, onCancel, modal = true,
+  pendingReadBack = [],
 }: HandshakeDialogProps) {
   const id = useId('cui-hs');
+  // The facility's zone (AU-DT-07): the time captured, shown and edited is the facility's, whatever the device's zone.
+  const { displayTimeZone } = useClinicalLocale();
   const captured = React.useMemo(() => toDate(dateTime ?? new Date()) ?? new Date(), [dateTime]);
-  const [when, setWhen] = React.useState(toLocalInput(captured));
+  const [when, setWhen] = React.useState(() => toZonedInput(captured, displayTimeZone));
   const [editWhen, setEditWhen] = React.useState(false);
   const [place, setPlace] = React.useState(initialPlace);
   const [others, setOthers] = React.useState(initialOthers);
@@ -79,11 +96,13 @@ export function HandshakeDialog({
   const [error, setError] = React.useState('');
 
   const record = (outcome: 'accepted' | 'refused'): HandshakeRecord => ({
-    outcome, actingAs, dateTime: when, place: place.trim(), giver, receiver, othersPresent: others.trim(), reason,
+    outcome, actingAs, dateTime: when, ...(displayTimeZone ? { timeZone: displayTimeZone } : {}), place: place.trim(), giver, receiver, othersPresent: others.trim(), reason,
     satisfactory, unsatisfactoryNote: satisfactory ? undefined : note.trim(), flagIncident: satisfactory ? undefined : incident,
     refusalReason: outcome === 'refused' ? refusal.trim() : undefined, itemIds: items.map(i => i.id),
   });
+  const pending = items.filter(i => pendingReadBack.includes(i.id));
   const submit = (outcome: 'accepted' | 'refused') => {
+    if (outcome === 'accepted' && pending.length) return setError(`Read back before accepting: ${pending.map(i => i.label).join('; ')}. Confirm the read-back on the list, or refuse the handover.`);
     if (!place.trim()) return setError('Enter the place of handover.');
     if (!satisfactory && !note.trim()) return setError('Describe what was unsatisfactory.');
     if (outcome === 'refused' && !refusal.trim()) return setError('Enter the reason for refusing.');
@@ -122,7 +141,10 @@ export function HandshakeDialog({
       </p>
       <ul className="cui-handshake__items">
         {items.map(i => (
-          <li key={i.id}>{i.label}</li>
+          <li key={i.id}>
+            {i.label}
+            {pendingReadBack.includes(i.id) ? <span className="cui-handshake__pending"> <Icon name="warning" /> Read back not confirmed</span> : null}
+          </li>
         ))}
       </ul>
       <p className="cui-prompt">Date, time and place are captured automatically. Check them before you confirm.</p>
@@ -152,7 +174,7 @@ export function HandshakeDialog({
               />
             </span>
           ) : (
-            <span className="cui-handshake__value cui-tabular">{formatDateTime(when)}</span>
+            <span className="cui-handshake__value cui-tabular">{`${formatShortDate(when.slice(0, 10))} ${when.slice(11, 16)}`}</span>
           )}{' '}
           <Button size="sm" variant="quiet" icon="pencil" onClick={() => setEditWhen(e => !e)}>{editWhen ? 'Done' : 'Change'}</Button>
         </dd>
@@ -175,17 +197,17 @@ export function HandshakeDialog({
       </dl>
       <fieldset className="cui-handshake__satisfaction">
         <legend>Was the handover satisfactory?</legend>
-        <label className="cui-list-choice">
+        <label className="cui-list-choice" data-touch-target>
           <input type="radio" name={`${id}-sat`} checked={satisfactory} onChange={() => setSatisfactory(true)} /> Satisfactory
         </label>
-        <label className="cui-list-choice">
+        <label className="cui-list-choice" data-touch-target>
           <input type="radio" name={`${id}-sat`} checked={!satisfactory} onChange={() => setSatisfactory(false)} /> Not satisfactory
         </label>
         {!satisfactory ? (
           <div className="cui-handshake__unsat">
             <label htmlFor={`${id}-note`} className="cui-handshake__label">What was unsatisfactory</label>
             <textarea id={`${id}-note`} className="cui-list-input cui-handshake__text" rows={3} value={note} onChange={e => setNote(e.target.value)} />
-            <label className="cui-list-choice">
+            <label className="cui-list-choice" data-touch-target>
               <input type="checkbox" checked={incident} onChange={e => setIncident(e.target.checked)} /> Flag as an incident
             </label>
             <p className="cui-prompt">The record is stamped with your name, the date and the time.</p>

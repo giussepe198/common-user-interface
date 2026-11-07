@@ -65,7 +65,7 @@ describe('time scale geometry', () => {
   });
   it('grows the line so events do not overlap (MEDa-0275)', () => {
     expect(adminLineHeight([[at(8), at(14)]], 160, 24)).toBe(160);
-    expect(adminLineHeight([[at(8), at(8, 30)]], 160, 24)).toBe(1152 > 960 ? 960 : 1152);
+    expect(adminLineHeight([[at(8), at(8, 30)]], 160, 24)).toBe(960);
     expect(adminLineHeight([[at(8), at(10)]], 160, 24)).toBe(288);
   });
 });

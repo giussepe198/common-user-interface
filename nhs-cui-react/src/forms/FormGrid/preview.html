@@ -1,0 +1,21 @@
+<!-- @dsCard group="Forms" height=320 width=1000 subtitle="Columns that collapse with the grid width; a full-width text area" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { FormGrid, FormGridSpan, FormField, TextInput, TextArea, Combobox, TimeInput } = window.ClinicalCUI;
+const teams = [{ value: 'a', label: 'Community team North' }, { value: 'b', label: 'Acute care team' }];
+function Demo() {
+  return h('div', null,
+    h(FormGrid, { columns: 3 },
+      h(FormField, { label: 'Preferred name' }, h(TextInput, { defaultValue: 'Sam' })),
+      h(FormField, { label: 'Team responsible for the current episode of care' }, h(Combobox, { options: teams })),
+      h(FormField, { label: 'Time seen' }, h(TimeInput, { label: 'Time seen', bare: true, showClockIndicator: false, hideInstructions: true })),
+      h(FormField, { label: 'Phone' , prompt: 'Use TelephoneNumberInput for validated numbers' }, h(TextInput, { type: 'text' })),
+      h(FormField, { label: 'Email', error: 'Enter an email address like name@example.org' }, h(TextInput, { type: 'email' })),
+      h(FormField, { label: 'Case number' }, h(TextInput, { widthChars: 10 })),
+      h(FormGridSpan, { span: 'full' }, h(FormField, { label: 'Reason for referral' }, h(TextArea, { maxLength: 500 })))
+    )
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

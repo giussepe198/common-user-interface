@@ -9,7 +9,7 @@ function Demo() {
   React.useEffect(() => {
     setTimeout(() => { const i = document.querySelector('#typing input'); if (i) { i.focus(); i.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true })); } }, 60);
   }, []);
-  return h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px 40px', alignItems: 'start' } },
+  return h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '24px 40px', alignItems: 'start' } },
     cell('Exact phrase selected automatically', h(NaturalDateInput, { referenceDate: ref, defaultValue: 'past 10 years' })),
     cell('GB: ambiguous numeric date asks for a choice', h(NaturalDateInput, { referenceDate: ref, defaultValue: '05/04/2008' })),
     cell('With the date menu (CNA-0630) and an unrecognised phrase', h(NaturalDateInput, { referenceDate: ref, defaultValue: 'when the dog died', showDateMenu: true })),

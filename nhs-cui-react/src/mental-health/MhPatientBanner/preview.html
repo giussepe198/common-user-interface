@@ -1,0 +1,44 @@
+<!-- @dsCard group="Mental health" width=1200 height=900 subtitle="Patient banner with preferred name and pronouns: one dark band with legal status and the alert count; the phone header on a narrow banner, full and compact" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { MhPatientBanner, ClinicalLocaleProvider, Button } = window.ClinicalCUI;
+const now = '2026-10-28T03:00:00Z';
+const lan = {
+  sticky: false, now: now,
+  name: { familyName: 'Nguyen', givenName: 'Thi Lan' }, preferredName: 'Lan', pronouns: 'she/her',
+  dateOfBirth: '1990-03-12', sex: 'Female', recordNumber: '004512',
+  identifiers: [{ type: 'ihi', value: '8003608166690503' }, { type: 'medicare', value: '2123456701', irn: '1' }],
+  legalStatuses: [{ state: 'unconfirmed', label: 'Treatment order (Community)', warning: 'Order may have expired, status not confirmed', countdown: 'passed 57 days ago', countdownTone: 'expired' }],
+  legalDetails: h('span', null, 'End date 01-Sep-2026 17:00 AEST. Information received from Eastgate Health on 02-Mar-2026.'),
+  allergies: { status: 'known', items: [{ name: 'Penicillin', reaction: 'anaphylaxis' }] },
+  alerts: [{ id: '1', severity: 'high', text: 'Safety to staff' }, { id: '2', severity: 'high', text: 'Family violence' }, { id: '3', severity: 'moderate', text: 'Risk to self' }, { id: '4', severity: 'low', text: 'Hearing aid' }, { id: '5', severity: 'low', text: 'Prefers morning visits' }],
+  onShowAllAlerts: function () {},
+  interpreter: 'Vietnamese',
+  consent: { state: 'restricted', text: 'Do not share with father' },
+  restricted: true,
+  address: { lines: ['Unit 2, 14 Smith St'], town: 'Fitzroy', state: 'VIC', postcode: '3065' },
+  contacts: { mobile: '0491570156' },
+  careTeam: { title: h('span', null, h('span', { className: 'cui-patient-banner__title-label' }, 'Care team '), h('span', { className: 'cui-patient-banner__title-value' }, 'Adult community team')), content: h('span', null, 'Adult community team · Key clinician: Jordan Lee') },
+  actions: h(Button, { size: 'sm' }, 'Safety summary')
+};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 16 } },
+    h(ClinicalLocaleProvider, { region: 'AU', timeZone: 'Australia/Melbourne' },
+      h(MhPatientBanner, lan),
+      h(MhPatientBanner, {
+        sticky: false, now: now,
+        name: { familyName: 'Wolfeschlegelsteinhausen', givenName: 'Alexander' }, preferredName: 'Sasha', pronouns: 'he/him',
+        dateOfBirth: '1975-01-02', recordNumber: null,
+        legalStatuses: [{ state: 'current', label: 'Inpatient treatment order', countdown: 'in 2 days', countdownTone: 'urgent' }, { state: 'current', label: 'Assessment order' }],
+        allergies: { status: 'none-known', checkedAt: '2026-10-03T00:00:00Z' },
+        consent: { state: 'allowed', text: 'Share with GP' },
+        emergencyAccess: { endsAt: '2026-10-28T04:32:00Z', now: '2026-10-28T03:34:00Z', reason: 'Crisis presentation', onEnd: function () {} }
+      }),
+      h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'flex-start' } },
+        h('div', { style: { width: 375, maxWidth: '100%' } }, h(MhPatientBanner, lan)),
+        h('div', { style: { width: 375, maxWidth: '100%' } }, h(MhPatientBanner, Object.assign({}, lan, { compact: true }))))
+    )
+  )
+);
+</script>

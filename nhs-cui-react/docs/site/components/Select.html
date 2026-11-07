@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Select · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Forms</p>
+<h1 style="margin:0 0 4px;font-size:20px">Select</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Native drop-down list with nothing chosen by default · Guidelines: <code>src/forms/Select/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { FormField, Select } = window.ClinicalCUI;
+const contact = [{ value: 'phone', label: 'Phone' }, { value: 'sms', label: 'Text message' }, { value: 'email', label: 'Email' }, { value: 'post', label: 'Post', group: 'Other' }, { value: 'none', label: 'Do not contact', group: 'Other' }];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 360 } },
+    h(FormField, { label: 'Preferred contact' }, h(Select, { options: contact })),
+    h(FormField, { label: 'Preferred contact', required: true, error: 'Choose how to contact the person' }, h(Select, { options: contact })),
+    h(FormField, { label: 'Disabled' }, h(Select, { options: contact, defaultValue: 'sms', disabled: true }))
+  )
+);
+</script>
+
+</div>
+</body>
+</html>

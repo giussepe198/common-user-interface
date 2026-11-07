@@ -1,13 +1,13 @@
 .cui-chip-group { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; }
-.cui-chip-group__label { font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: 0.02em; color: var(--ink-muted); }
+.cui-chip-group__label { font-size: var(--font-size-detail); line-height: var(--line-height-detail); font-weight: 600; letter-spacing: 0.02em; color: var(--ink-muted); }
 .cui-chip-group__viewport { position: relative; min-width: 0; }
 .cui-chip-group__chips { display: flex; gap: var(--space-2); }
 .cui-chip-group__chips--center { justify-content: center; }
 .cui-chip-group--wrap .cui-chip-group__chips { flex-wrap: wrap; }
 .cui-chip-group--scroll .cui-chip-group__chips { overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; padding: 3px 2px; margin: -3px -2px; scroll-padding-inline: 48px; }
 .cui-chip-group--scroll .cui-chip-group__chips::-webkit-scrollbar { display: none; }
-.cui-chip { flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; min-width: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid var(--border-strong); background: var(--surface); color: var(--ink); font-family: var(--font-sans); font-size: 15px; line-height: 20px; font-weight: 600; white-space: nowrap; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
-.cui-chip--h48 { min-height: 48px; border-radius: 24px; font-size: 16px; }
+.cui-chip { flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: var(--target-coarse); min-width: var(--target-coarse); padding: 0 14px; border-radius: 22px; border: 1px solid var(--border-strong); background: var(--surface); color: var(--ink); font-family: var(--font-sans); font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; white-space: nowrap; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.cui-chip--h48 { min-height: var(--target-touch); border-radius: 24px; font-size: var(--font-size-touch-body); }
 .cui-chip:active { background: var(--surface-muted); }
 .cui-chip--pressed, .cui-chip--pressed:active { background: var(--ink); border-color: var(--ink); color: var(--surface); }
 .cui-chip:disabled { color: var(--ink-disabled); border-color: var(--border); background: var(--surface-muted); cursor: not-allowed; }

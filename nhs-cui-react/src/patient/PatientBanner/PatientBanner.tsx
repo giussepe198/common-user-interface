@@ -1,10 +1,10 @@
 import React from 'react';
 import { cx, formatShortDate, Icon, pad2, toDate, useClinicalLocale, useControllableState, useId, VisuallyHidden } from '../../core';
 import type { ClinicalRegion, DateLike } from '../../core';
+import { formatAge } from '../utils/age';
+import { formatTelephoneNumber } from '../utils/telephone';
 import {
-  formatAge,
   formatPatientName,
-  formatTelephoneNumber,
   PATIENT_BANNER_DEFINITIONS,
   PATIENT_BANNER_LABELS,
   PATIENT_UNKNOWN_TEXT,
@@ -59,11 +59,14 @@ export interface PatientBannerContacts {
 /** One allergy in expanded section 5, with the date its record was last updated (PAB-0065). */
 export interface PatientBannerAllergy {
   name: string;
-  lastUpdated: DateLike;
+  /** When the record was last updated (PAB-0065). Omit when the host does not hold it; no date is then shown. */
+  lastUpdated?: DateLike | null;
   /** Reaction, e.g. "throat swelling" (AU-AL-03; HQSC NMC "agent: reaction"). */
   reaction?: string;
   /** Reaction caused during the current admission (HQSC NMC "New this admission"). */
   newThisAdmission?: boolean;
+  /** A short note shown after it in the expanded list, e.g. "Not yet verified" [suggested]. */
+  note?: string;
 }
 
 /** Allergy information for section 5. */
@@ -87,6 +90,33 @@ export interface PatientBannerSection {
   title: React.ReactNode;
   /** Expanded content. */
   content?: React.ReactNode;
+}
+
+/**
+ * A further labelled item in Zone 1 (host extension [suggested]): a status the host must keep in view with the identity,
+ * e.g. a legal status, an alert count or "Interpreter needed". Shown in label and data style like the built-in items,
+ * never truncated; `tone` marks a safety item with the banner's alert or warning look as well as words.
+ */
+export interface PatientBannerItem {
+  /** Stable key; also written to `data-banner-item` so a host can find the item. */
+  id: string;
+  /** Label in label style, no colon (PAB-0042). Omit for an item whose value says what it is ("Provisional record"). */
+  label?: string;
+  /** The data. Empty shows `unknownText` (PAB-0019). */
+  value?: React.ReactNode;
+  /** Definition tooltip on the label (PAB-0047). Not shown when the item is a button. */
+  definition?: string;
+  /** "alert": the emphasised badge used for known allergies; "warning": the dashed outline used for "Not recorded"; "muted": label style. Default plain data style. */
+  tone?: 'default' | 'alert' | 'warning' | 'muted';
+  /** A symbol before the value (an icon with its own text alternative, or decorative when the words say it all). */
+  symbol?: React.ReactNode;
+  /** Makes the item a button, e.g. to open the alerts or the legal status history. */
+  onSelect?: () => void;
+  /** Accessible name of the button when the visible words are not enough. */
+  selectLabel?: string;
+  /** "after-born": straight after Born (and Gender when shown); default "after-identifiers": after the identifiers. */
+  placement?: 'after-born' | 'after-identifiers';
+  className?: string;
 }
 
 /** Parts of the record a banner item can open (PAB-0048, PAB-0066). */
@@ -119,8 +149,20 @@ export interface PatientBannerProps {
   showTitle?: boolean;
   /** The name is a placeholder for an unidentified patient; shows an "Unidentified patient" qualifier (AU-NM-02, G11 2.5). */
   unidentified?: boolean;
-  /** Same or similar name warning from the host, shown with an icon below the name (AU-PI-04; EMM 3.3 "alert users to patients with identical names"). */
-  similarNameWarning?: string;
+  /**
+   * Same or similar name warning from the host, shown with an icon below the name (AU-PI-04; EMM 3.3 "alert users to
+   * patients with identical names"). May hold a link to compare the patients.
+   */
+  similarNameWarning?: React.ReactNode;
+  /**
+   * The name already rendered by the host, e.g. markup that keeps the recorded case and capitalises the family name by
+   * CSS. It must still read "FAMILY, Given" (PAB-0049..0053); `name` still names the banner for assistive technology.
+   */
+  nameContent?: React.ReactNode;
+  /** Content straight after the name on the same line, e.g. a preferred name and pronouns in the host's words [suggested]. */
+  nameExtension?: React.ReactNode;
+  /** Content before the name block, e.g. a back button. PAB-0021 recommends no photograph; a host whose policy allows one puts it here. */
+  leading?: React.ReactNode;
   /** Preferred name; only the given-name portion is shown, below the name, labelled "Preferred name" (PAB-0020, PAB-0037, PAB-0054, PAB-0061). */
   preferredName?: string | null;
   /**
@@ -128,6 +170,8 @@ export interface PatientBannerProps {
    * A year-only or year-month string ("1975", "1975-03", "197503") is read as a partial date and never given an invented day (G12 5).
    */
   dateOfBirth?: DateLike | null;
+  /** The Born value already formatted by the host (e.g. its own partial-date rules). Overrides `dateOfBirth` for display. */
+  dateOfBirthDisplay?: React.ReactNode;
   /**
    * NZ partial date of birth (HISO 10046 YYYY[MM[DD]]): shown "1975 year only (50y or 51y)" or "Mar-1975 day not known (51y)".
    * Takes precedence over `dateOfBirth` (G12 5).
@@ -137,6 +181,8 @@ export interface PatientBannerProps {
   dateOfDeath?: DateLike | null;
   /** Mark the patient deceased when the date of death is not known; "Died" then shows `unknownText`. Default: deceased when `dateOfDeath` is set. */
   deceased?: boolean;
+  /** The Died value already formatted by the host. Overrides `dateOfDeath` for display; Age at Death is then shown only when computable. */
+  dateOfDeathDisplay?: React.ReactNode;
   /** Date format: "dd-Mmm-yyyy" (default, PAB-0034) or "dd/mm/yyyy" to match AU wristbands and labels (AU-PI-03, configurable). */
   dateFormat?: 'dd-Mmm-yyyy' | 'dd/mm/yyyy';
   /**
@@ -146,6 +192,8 @@ export interface PatientBannerProps {
   gender?: CurrentGenderValue | string | null;
   /** The person's own words for a "different term" or "another gender" (ABS 2020, HISO 10046 gender detail). */
   genderDetail?: string | null;
+  /** Show the Gender item. Default true (PAB-0016). A host that shows sex in its own words instead adds it as an `items` entry placed "after-born". */
+  showGender?: boolean;
   /** NHS Number, labelled "NHS No.", shown "999 999 9999" (PAB-0036, NUM-0002). */
   nhsNumber?: string | null;
   /**
@@ -155,6 +203,15 @@ export interface PatientBannerProps {
   identifiers?: ReadonlyArray<PatientIdentifier>;
   /** Identifier types shown in Zone 1, in order. Default: GB nhs; AU ihi, mrn, medicare, dva; NZ nhi. */
   identifierTypes?: ReadonlyArray<PatientIdentifierType>;
+  /**
+   * Show the region's primary identifier as "Not Known" when none is held (G10 1.6, AU-PI-01, G11 12.6). Default true. A
+   * host whose own record number is its primary identifier, shown as an item, sets false.
+   */
+  requirePrimaryIdentifier?: boolean;
+  /** Further labelled Zone 1 items (host extension). */
+  items?: ReadonlyArray<PatientBannerItem>;
+  /** Actions at the end of Zone 1, e.g. "Safety summary". */
+  actions?: React.ReactNode;
   /** NZ: flag Z-range test NHIs in the banner. Turn off in test environments. Default true. */
   flagTestIdentifiers?: boolean;
   /** NZ: a dormant NHI (identifier `nhiStatus: 'dormant'`, `liveNhi`) shows a "Use live NHI" button that calls this (G12 4). */
@@ -233,16 +290,25 @@ export function PatientBanner({
   showTitle,
   unidentified = false,
   similarNameWarning,
+  nameExtension,
+  nameContent,
+  leading,
   preferredName,
   dateOfBirth,
+  dateOfBirthDisplay,
   dateOfDeath,
+  dateOfDeathDisplay,
   deceased: deceasedProp,
   dateFormat = 'dd-Mmm-yyyy',
   gender,
   genderDetail,
+  showGender = true,
   nhsNumber,
   identifiers,
   identifierTypes,
+  requirePrimaryIdentifier = true,
+  items,
+  actions,
   flagTestIdentifiers = true,
   onUseLiveNhi,
   nameProtected = false,
@@ -283,11 +349,12 @@ export function PatientBanner({
   const isPartialDob = !!partialDob && partialDateAccuracy(partialDob) !== 'day';
   const dob = isPartialDob ? null : partialDob ? new Date(partialDob.year, (partialDob.month ?? 1) - 1, partialDob.day ?? 1) : toDate(dateOfBirth ?? null);
   const dod = toDate(dateOfDeath ?? null);
-  const isDeceased = deceasedProp ?? !!dod;
+  const isDeceased = deceasedProp ?? (!!dod || dateOfDeathDisplay != null);
   const open = (item: PatientRecordItem) => (onOpenRecord ? () => onOpenRecord(item) : undefined);
   const nowDate = toDate(now ?? new Date()) ?? new Date();
   const fullName = formatPatientName(name, { unknownText, region, familyNameCase, showTitle });
-  const fmtDate = (v: DateLike) => {
+  const fmtDate = (v: DateLike | null | undefined) => {
+    if (v == null || v === '') return '';
     if (dateFormat !== 'dd/mm/yyyy') return formatShortDate(v);
     const d = toDate(v);
     return d ? `${pad2(d.getDate())}/${pad2(d.getMonth() + 1)}/${d.getFullYear()}` : '';
@@ -296,7 +363,9 @@ export function PatientBanner({
   // Born value: "14-Jul-1945 (61y)" for a living patient; date only when deceased (PAB-0034, PAB-0060).
   const age = dob && !isDeceased ? formatAge(dob, nowDate) : '';
   const partialAge = isPartialDob && partialDob && !isDeceased ? formatPartialAge(partialDob, nowDate) : '';
-  const bornValue = dob ? (
+  const bornValue = dateOfBirthDisplay != null ? (
+    dateOfBirthDisplay
+  ) : dob ? (
     <>
       {fmtDate(dob)}
       {age ? <span className="cui-patient-banner__age">{` (${age})`}</span> : null}
@@ -317,7 +386,7 @@ export function PatientBanner({
   const types = identifierTypes ?? BANNER_IDENTIFIER_TYPES[region];
   const shownIds: PatientIdentifier[] = types.flatMap((t) => held.filter((x) => x.type === t && (x.value ?? '').trim()));
   const primary = PRIMARY_IDENTIFIER_ORDER[region];
-  if (!shownIds.some((x) => primary.includes(x.type))) shownIds.unshift({ type: primary[0], value: '' });
+  if (requirePrimaryIdentifier && !shownIds.some((x) => primary.includes(x.type))) shownIds.unshift({ type: primary[0], value: '' });
   // The My Health Record line widens the name block, so allow at most three columns then [suggested].
   const idColumns = region === 'GB' ? 3 : Math.min(2 + shownIds.length, myHealthRecord ? 3 : 4);
 
@@ -350,6 +419,24 @@ export function PatientBanner({
     ) : null;
 
   const toggle = () => setExpanded(!expanded);
+  // PAB-0025: a collapsed title cut with an ellipsis carries its full text as a tooltip, kept in step with the width.
+  const titlesRef = React.useRef<HTMLDivElement>(null);
+  React.useLayoutEffect(() => {
+    const row = titlesRef.current;
+    if (!row) return undefined;
+    const sync = () => {
+      for (const el of row.querySelectorAll<HTMLElement>('.cui-patient-banner__section-title')) {
+        const text = (el.textContent ?? '').replace(/\s+/g, ' ').trim();
+        if (el.scrollWidth > el.clientWidth + 1 && text) el.title = text;
+        else el.removeAttribute('title');
+      }
+    };
+    sync();
+    if (typeof ResizeObserver === 'undefined') return undefined;
+    const ro = new ResizeObserver(sync);
+    ro.observe(row);
+    return () => ro.disconnect();
+  });
   const sections: Array<{ key: string; title: React.ReactNode; body: React.ReactNode }> = [
     {
       key: 'address',
@@ -444,8 +531,9 @@ export function PatientBanner({
                 <li key={i}>
                   <span className="cui-patient-banner__allergy-name">{a.name}</span>
                   {a.reaction ? <span className="cui-patient-banner__allergy-reaction">{`: ${a.reaction}`}</span> : null}{' '}
-                  <span className="cui-patient-banner__allergy-date">{fmtDate(a.lastUpdated)}</span>
+                  {a.lastUpdated ? <span className="cui-patient-banner__allergy-date">{fmtDate(a.lastUpdated)}</span> : null}
                   {a.newThisAdmission ? <span className="cui-patient-banner__allergy-new">New this admission</span> : null}
+                  {a.note ? <span className="cui-patient-banner__allergy-note">{a.note}</span> : null}
                 </li>
               ))}
             </ul>
@@ -463,7 +551,34 @@ export function PatientBanner({
     },
   ];
 
-  const nameDisplay = (
+  const renderItem = (it: PatientBannerItem) => {
+    const body = (
+      <>
+        {it.symbol ? <span className="cui-patient-banner__item-symbol">{it.symbol}</span> : null}
+        {it.label ? (
+          <LabelledValue label={it.label} definition={it.onSelect ? undefined : it.definition} value={it.value} unknownText={unknownText} noWrap={false} />
+        ) : (
+          <span className="cui-patient-banner__item-value">{it.value ?? unknownText}</span>
+        )}
+      </>
+    );
+    const classes = cx('cui-patient-banner__item', `cui-patient-banner__item--${it.tone ?? 'default'}`, it.className);
+    return it.onSelect ? (
+      <button key={it.id} type="button" className={cx(classes, 'cui-patient-banner__item--button')} data-banner-item={it.id} aria-label={it.selectLabel} onClick={it.onSelect}>
+        {body}
+      </button>
+    ) : (
+      <span key={it.id} className={classes} data-banner-item={it.id}>
+        {body}
+      </span>
+    );
+  };
+  const itemsAfterBorn = (items ?? []).filter((it) => it.placement === 'after-born');
+  const itemsAfterIds = (items ?? []).filter((it) => it.placement !== 'after-born');
+
+  const nameDisplay = nameContent != null ? (
+    <span className="cui-patient-banner__name-content">{nameContent}</span>
+  ) : (
     <PatientNameDisplay
       {...name}
       region={region}
@@ -489,7 +604,8 @@ export function PatientBanner({
       data-deceased={isDeceased || undefined}
     >
       <div className="cui-patient-banner__zone1">
-        <div className={cx('cui-patient-banner__name-block', (preferred || similarNameWarning || nameProtected || myHealthRecord) && 'cui-patient-banner__name-block--preferred',
+        {leading ? <div className="cui-patient-banner__leading">{leading}</div> : null}
+        <div className={cx('cui-patient-banner__name-block', nameExtension != null && 'cui-patient-banner__name-block--extended', !!(preferred || similarNameWarning || nameProtected || myHealthRecord) && 'cui-patient-banner__name-block--preferred',
             myHealthRecord && 'cui-patient-banner__name-block--mhr')}>
           {onOpenRecord ? (
             <button type="button" className="cui-patient-banner__name-button" onClick={() => onOpenRecord('name')} title="Click here to open this section of the record.">
@@ -498,6 +614,7 @@ export function PatientBanner({
           ) : (
             nameDisplay
           )}
+          {nameExtension != null ? <div className="cui-patient-banner__name-extension">{nameExtension}</div> : null}
           {preferred ? (
             <div className="cui-patient-banner__preferred">
               <LabelledValue label={PATIENT_BANNER_LABELS.preferredName} definition={defs.preferredName} value={preferred} />
@@ -516,7 +633,7 @@ export function PatientBanner({
           ) : null}
           {myHealthRecord ? <MyHealthRecordStatus {...myHealthRecord} variant="compact" className="cui-patient-banner__mhr" /> : null}
         </div>
-        <div className="cui-patient-banner__ids" style={idColumns !== 3 ? { gridTemplateColumns: `repeat(${idColumns}, max-content)` } : undefined}>
+        <div className={cx('cui-patient-banner__ids', !!items?.length && 'cui-patient-banner__ids--flow')} style={idColumns !== 3 && !items?.length ? ({ '--cui-banner-id-columns': idColumns } as React.CSSProperties) : undefined}>
           <LabelledValue
             className="cui-patient-banner__born"
             label={PATIENT_BANNER_LABELS.born}
@@ -525,6 +642,7 @@ export function PatientBanner({
             unknownText={unknownText}
             onOpenRecord={open('dateOfBirth')}
           />
+          {showGender ? (
           <GenderDisplay
             className="cui-patient-banner__gender"
             region={region}
@@ -535,6 +653,8 @@ export function PatientBanner({
             unknownText={unknownText}
             onOpenRecord={open('gender')}
           />
+          ) : null}
+          {itemsAfterBorn.map(renderItem)}
           {shownIds.map((x, i) => (
             <PatientIdentifierDisplay
               key={`${x.type}-${i}`}
@@ -554,24 +674,29 @@ export function PatientBanner({
               <LabelledValue
                 label={PATIENT_BANNER_LABELS.died}
                 definition={defs.died}
-                value={dod ? fmtDate(dod) : null}
+                value={dateOfDeathDisplay != null ? dateOfDeathDisplay : dod ? fmtDate(dod) : null}
                 unknownText={unknownText}
                 onOpenRecord={open('dateOfDeath')}
               />
+              {dateOfDeathDisplay != null && !ageAtDeath ? null : (
               <LabelledValue
                 label={PATIENT_BANNER_LABELS.ageAtDeath}
                 definition={defs.ageAtDeath}
                 value={ageAtDeath || null}
                 unknownText={unknownText}
               />
+              )}
             </div>
           ) : null}
+          {itemsAfterIds.map(renderItem)}
         </div>
+        {actions ? <div className="cui-patient-banner__actions">{actions}</div> : null}
       </div>
 
       {showZone2 ? (
         <div className={cx('cui-patient-banner__zone2', expanded && 'cui-patient-banner__zone2--expanded')}>
           <div
+            ref={titlesRef}
             className="cui-patient-banner__zone2-titles"
             title={expanded ? undefined : zone2Tooltip}
             onClick={(e) => {

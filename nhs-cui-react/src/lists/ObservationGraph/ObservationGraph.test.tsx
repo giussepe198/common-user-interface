@@ -20,6 +20,10 @@ describe('ObservationGraph', () => {
     expect(screen.getByText('Normal range (adult) 60 to 100')).toBeTruthy();
     expect(screen.getByText('160')).toBeTruthy();
   });
+  it('gives the latest day-precision value its date only, never a made-up time (GTAB-017)', () => {
+    render(<ObservationGraph {...props} start="2026-08-01T00:00" end="2026-11-01T00:00" series={[{ id: 'k10', label: 'K10 total', unit: 'points', timePrecision: 'day', points: [{ time: '2026-09-02T00:00', value: 24 }, { time: '2026-10-15T00:00', value: 21 }] }]} yRange={{ min: 0, max: 50 }} />);
+    expect(screen.getByText(/Latest/).textContent).toMatch(/Latest 21 on 15-Oct-2026$/);
+  });
   it('moves a focus line between readings with the arrow keys and announces values (GTAB-057..065)', () => {
     render(<ObservationGraph {...props} series={[pulse]} />);
     const svg = screen.getByRole('group');

@@ -276,8 +276,8 @@ export const TerminologySearch = React.forwardRef<HTMLInputElement, TerminologyS
 
   const seq = React.useRef(createRequestSequencer());
   const abortRef = React.useRef<AbortController | null>(null);
-  const debounceRef = React.useRef<ReturnType<typeof setTimeout>>();
-  const busyRef = React.useRef<ReturnType<typeof setTimeout>>();
+  const debounceRef = React.useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const busyRef = React.useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const queryRef = React.useRef(query);
   const lastQueryRef = React.useRef(query);
   const searchRef = React.useRef(search);
@@ -421,6 +421,8 @@ export const TerminologySearch = React.forwardRef<HTMLInputElement, TerminologyS
   const activeResult = open && active >= 0 ? flat[active] : undefined;
   const flyoutId = `${baseId}-details`;
   const showList = open && (busy || status === 'done' || status === 'error');
+  // The combobox controls the popup, and the listbox inside it whenever results are listed (not while busy, on error or with no match).
+  const listRendered = !busy && status !== 'error' && !(results && results.length === 0);
   const inputValue = selected && !clearOnSelect ? displayLabel(selected, choice).text : query;
   const helpId = helpText ? `${baseId}-help` : undefined;
   const missedId = missed ? `${baseId}-missed` : undefined;
@@ -512,7 +514,7 @@ export const TerminologySearch = React.forwardRef<HTMLInputElement, TerminologyS
           role="combobox"
           aria-autocomplete="list"
           aria-expanded={showList}
-          aria-controls={listId}
+          aria-controls={listRendered ? `${listId}-popup ${listId}` : `${listId}-popup`}
           aria-activedescendant={activeResult ? `${baseId}-opt-${active}` : undefined}
           aria-describedby={describedBy}
           aria-required={ariaRequired ?? (required || undefined)}
@@ -538,7 +540,8 @@ export const TerminologySearch = React.forwardRef<HTMLInputElement, TerminologyS
       {missed ? <span id={missedId} className="cui-visually-hidden">Required field not completed.</span> : null}
       {helpText ? <span id={helpId} className="cui-prompt cui-terminology-search__help">{helpText}</span> : null}
       <span className="cui-visually-hidden" aria-live="polite" aria-atomic="true">{announcement}</span>
-      <div className="cui-terminology-search__popup" hidden={!showList}>
+      {/* The combobox controls the whole popup: the listbox, or the searching, error and no-match text in its place. */}
+      <div id={`${listId}-popup`} className="cui-terminology-search__popup" hidden={!showList}>
         <div className="cui-terminology-search__results">
           {busy ? (
             <div className="cui-terminology-search__status">

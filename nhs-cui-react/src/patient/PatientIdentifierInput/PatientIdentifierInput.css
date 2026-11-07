@@ -1,17 +1,17 @@
 /* Shared identifier input (IhiInput, MedicareNumberInput, DvaNumberInput, NhiInput, PatientIdentifierInput). */
 .cui-id-input { display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); }
-.cui-id-input__label { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); }
-.cui-id-input__required { font-size: 12px; font-weight: 400; color: var(--ink-muted); }
-.cui-id-input__hint { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-id-input__label { font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; color: var(--ink); }
+.cui-id-input__required { font-size: var(--font-size-label); font-weight: 400; color: var(--ink-muted); }
+.cui-id-input__hint { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
 .cui-id-input__row { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
 /* Box sized to the identifier and no more, one line high (cf. NUM-0012, NUM-0013). */
-.cui-id-input__box { box-sizing: content-box; max-width: calc(100vw - 64px); font: inherit; font-size: 14px; line-height: 20px; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; padding: 5px 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-id-input__box { box-sizing: content-box; max-width: calc(100vw - 64px); font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); font-variant-numeric: tabular-nums; letter-spacing: 0.02em; padding: 5px var(--space-2); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
 .cui-id-input__box:disabled, .cui-id-input__select:disabled { color: var(--ink-disabled); background: var(--surface-muted); border-color: var(--border); }
 .cui-id-input--error .cui-id-input__box { border-color: var(--danger); box-shadow: inset 0 0 0 1px var(--danger); }
-.cui-id-input__select { font: inherit; font-size: 14px; line-height: 20px; height: 32px; padding: 0 4px 0 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-id-input__select { font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); height: var(--control-height); padding: 0 var(--space-1) 0 var(--space-2); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
 .cui-id-input__note:empty { display: none; }
-.cui-id-input__note { font-size: 12px; line-height: 16px; color: var(--ink-muted); max-width: 40ch; }
-.cui-id-input__error, .cui-id-input__warning { display: flex; align-items: flex-start; gap: var(--space-1); font-size: 12px; line-height: 16px; font-weight: 600; max-width: 40ch; }
+.cui-id-input__note { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); max-width: 40ch; }
+.cui-id-input__error, .cui-id-input__warning { display: flex; align-items: flex-start; gap: var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; max-width: 40ch; }
 .cui-id-input__error { color: var(--danger); }
 .cui-id-input__warning { color: var(--warning); }
 .cui-id-input__error .cui-icon, .cui-id-input__warning .cui-icon { flex: none; }

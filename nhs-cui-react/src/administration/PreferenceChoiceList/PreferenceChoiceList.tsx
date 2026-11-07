@@ -1,6 +1,7 @@
 import React from 'react';
 import { cx, useControllableState, useId } from '../../core';
-import { InformationWindow, InformationWindowProps, InformationWindowResponse } from '../InformationWindow/InformationWindow';
+import type { InformationWindowProps, InformationWindowResponse } from '../InformationWindow/InformationWindow';
+import { InformationWindow } from '../InformationWindow/InformationWindow';
 import { PreferenceIcon } from '../PreferenceIcon/PreferenceIcon';
 
 /** One option in a choice list with an optional preference rating (2.3). */
@@ -77,7 +78,7 @@ export function PreferenceChoiceList({ options, label, value, defaultValue = nul
                 <span className="cui-pref-list__pref">
                   {p ? (
                     <PreferenceIcon
-                      ref={el => (iconRefs.current[o.id] = el)}
+                      ref={(el) => { iconRefs.current[o.id] = el; }}
                       level={p.level}
                       reasons={p.reasons}
                       optionLabel={optionText(o)}
@@ -86,7 +87,7 @@ export function PreferenceChoiceList({ options, label, value, defaultValue = nul
                     />
                   ) : null}
                 </span>
-                <label className="cui-pref-list__choice">
+                <label className="cui-pref-list__choice" data-touch-target>
                   <input
                     type="radio"
                     name={`${id}-choice`}

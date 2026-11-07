@@ -1,11 +1,11 @@
 /* GraphStack (GTAB-145..153): graphs stacked with minimal gaps, left axes and time intervals aligned. */
 .cui-graph-stack { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; color: var(--ink); }
 .cui-graph-stack__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3); }
-.cui-graph-stack__title { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; }
-.cui-graph-stack__range { font-size: 14px; color: var(--ink); }
-.cui-graph-stack__focus { margin-left: auto; font-size: 14px; font-weight: 600; }
-.cui-graph-stack__help { margin: 0; font-size: 12px; line-height: 16px; font-style: italic; color: var(--ink-subtle); }
-.cui-graph-stack__oov { display: flex; flex-direction: column; gap: 2px; padding: var(--space-1) var(--space-3); background: var(--info-surface); border: 1px solid var(--info); border-radius: var(--radius-md); font-size: 12px; line-height: 16px; font-weight: 600; color: var(--ink); }
+.cui-graph-stack__title { margin: 0; font-size: var(--font-size-heading); line-height: var(--line-height-heading); font-weight: 600; }
+.cui-graph-stack__range { font-size: var(--font-size-body); color: var(--ink); }
+.cui-graph-stack__focus { margin-left: auto; font-size: var(--font-size-body); font-weight: 600; }
+.cui-graph-stack__help { margin: 0; font-size: var(--font-size-prompt); line-height: var(--line-height-prompt); font-style: italic; color: var(--ink-subtle); }
+.cui-graph-stack__oov { display: flex; flex-direction: column; gap: 2px; padding: var(--space-1) var(--space-3); background: var(--info-surface); border: 1px solid var(--info); border-radius: var(--radius-md); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--ink); }
 .cui-graph-stack__scroll { display: flex; flex-direction: column; min-width: 0; }
 .cui-graph-stack__scroll--bounded { overflow-y: auto; border-top: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-strong); }
 .cui-graph-stack__item { display: flex; align-items: stretch; min-width: 0; }
@@ -14,3 +14,6 @@
 .cui-graph-stack__item:first-child .cui-graph-stack__graph { border-radius: var(--radius-md) var(--radius-md) 0 0; }
 .cui-graph-stack__item:last-child .cui-graph-stack__graph { border-radius: 0 0 var(--radius-md) var(--radius-md); }
 .cui-graph-stack__move { flex: none; display: flex; flex-direction: column; justify-content: center; gap: 2px; padding-left: var(--space-1); }
+/* Responsive (CONVENTIONS "Responsive"): each graph measures its own width, so the stack fits its container. */
+.cui-graph-stack { max-width: 100%; }
+@media (pointer: coarse) { .cui-graph-stack__move .cui-button { min-height: var(--target-coarse); min-width: var(--target-coarse); } }

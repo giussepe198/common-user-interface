@@ -1,0 +1,11 @@
+/* Break-glass dialog: shell/Dialog with the forms controls, marked by the restricted hue. */
+.cui-break-glass { border-top: var(--space-1) solid var(--restricted); }
+.cui-break-glass__title { display: inline-flex; align-items: center; gap: var(--space-2); }
+.cui-break-glass__title .cui-mh-glyph { flex: none; color: var(--restricted); }
+.cui-break-glass__lead { font-weight: 600; }
+.cui-break-glass__body { display: flex; flex-direction: column; gap: var(--space-2); }
+.cui-break-glass__person { margin: 0; color: var(--ink); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.cui-break-glass__hint { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); margin: 0; }
+.cui-break-glass__declare { padding: var(--space-1) var(--space-2); background: var(--surface-sunken); border-radius: var(--radius-sm); }
+.cui-break-glass__restricted { margin: 0; display: flex; align-items: flex-start; gap: var(--space-1); padding: var(--space-1) var(--space-2); color: var(--restricted); background: var(--restricted-surface); border: 1px solid var(--restricted); border-inline-start-width: var(--space-1); border-radius: var(--radius-sm); font-weight: 600; }
+.cui-break-glass__restricted .cui-icon { flex: none; margin-top: 2px; }

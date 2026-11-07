@@ -6,6 +6,7 @@ import { ClinicalLocaleProvider } from '../../core';
 import { FilterDialog } from '../FilterDialog/FilterDialog';
 import { evaluateFilter } from '../utils/filter';
 import { progressiveSort } from '../utils/sortGroup';
+import type { ListFilterState } from '../utils/listTypes';
 
 afterEach(cleanup);
 
@@ -33,6 +34,11 @@ describe('PatientList', () => {
     expect(screen.getAllByText(/Warning: identical name on this list. Check date of birth./)).toHaveLength(2);
     expect(screen.getByText('UNOCCUPIED')).toBeTruthy();
   });
+  it('sets the title heading level so the list nests under a section heading', () => {
+    render(<PatientList {...base} headingLevel={3} />);
+    expect(screen.getByRole('heading', { level: 3, name: 'Patient list for: Dr Okafor' })).toBeTruthy();
+    expect(screen.queryByRole('heading', { level: 2 })).toBeNull();
+  });
   it('sorts by a header click and reverses on a second click (FSG-0087)', () => {
     const onSortChange = vi.fn();
     render(<PatientList {...base} onSortChange={onSortChange} />);
@@ -54,7 +60,7 @@ describe('PatientList', () => {
   });
   it('filters from a header cell (FSG-0012, 0033) and shows the notification above the list', () => {
     function Host() {
-      const [filter, setFilter] = React.useState<import('../utils/listTypes').ListFilterState | null>(null);
+      const [filter, setFilter] = React.useState<ListFilterState | null>(null);
       return <PatientList {...base} headerFilter filter={filter} onFilterChange={setFilter} />;
     }
     render(<Host />);
@@ -165,5 +171,46 @@ describe('patientListAttributes', () => {
     render(<FilterDialog tableName="Ward list" rowNoun="patients" attributes={patientListAttributes(cols)} onOk={() => {}} onCancel={() => {}} />);
     const sel = screen.getByLabelText('Criterion 1 attribute') as HTMLSelectElement;
     expect([...sel.options].map(o => o.textContent)).toEqual(expect.arrayContaining(['Location', 'Patient', 'NEWS2 score (points)', 'Acuity']));
+  });
+});
+
+describe('PatientList narrow layout (CONVENTIONS Responsive)', () => {
+  it('labels every cell with its column title for the stacked card layout', () => {
+    render(<PatientList {...base} />);
+    const cells = Array.from(document.querySelectorAll('.cui-patient-list__row .cui-patient-list__cell'));
+    expect(cells.length).toBeGreaterThan(0);
+    expect(new Set(cells.map(c => c.getAttribute('data-label')))).toEqual(new Set(['Location', 'Patient', 'NEWS2 score', 'Working diagnosis']));
+  });
+  it('renderPatient lets the host draw the patient cell and passes the name match the list found (PAL-0540) [suggested]', () => {
+    const seen: Array<string | null> = [];
+    render(
+      <PatientList
+        {...base}
+        renderPatient={(row, { patient, match }) => {
+          seen.push(match ? match.kind : null);
+          return <span>{patient ? `Custom ${row.bed}${match ? ` ${match.kind}` : ''}` : 'Nobody'}</span>;
+        }}
+      />,
+    );
+    expect(screen.getByText('Custom Bed 1 identical')).toBeTruthy();
+    expect(screen.getByText('Custom Bed 2 identical')).toBeTruthy();
+    expect(screen.getByText('Nobody')).toBeTruthy();
+    expect(seen).toContain('identical');
+  });
+  it('getPatientId: one patient on two rows is not warned against itself (PAL-0540) [suggested]', () => {
+    const twice: Row[] = [
+      { bed: 'Team A', patient: { familyName: 'Rossi', givenName: 'Maria', dateOfBirth: '1936-01-19' }, news: 1, problem: '' },
+      { bed: 'Team B', patient: { familyName: 'Rossi', givenName: 'Maria', dateOfBirth: '1936-01-19' }, news: 2, problem: '' },
+    ];
+    const { rerender } = render(<PatientList {...base} rows={twice} />);
+    expect(screen.getAllByText(/Warning: identical name on this list/)).toHaveLength(2);
+    rerender(<PatientList {...base} rows={twice} getPatientId={() => 'p-rossi'} />);
+    expect(screen.queryByText(/Warning: identical name on this list/)).toBeNull();
+  });
+  it('a link or button inside a cell keeps its own Enter: the grid does not open the row over it [suggested]', () => {
+    const onOpenRow = vi.fn();
+    render(<PatientList {...base} onOpenRow={onOpenRow} renderPatient={(row) => <a href={`#${row.bed}`}>{`Open ${row.bed}`}</a>} />);
+    fireEvent.keyDown(screen.getByRole('link', { name: 'Open Bed 1' }), { key: 'Enter' });
+    expect(onOpenRow).not.toHaveBeenCalled();
   });
 });

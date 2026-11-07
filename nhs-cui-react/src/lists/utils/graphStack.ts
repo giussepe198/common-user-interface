@@ -122,19 +122,19 @@ const critText = (v: GraphStackFocusValue) => (v.critical ? `, ${observationCrit
  * Screen reader text for a focus time, covering every graph in display order, e.g.
  * "27-Oct-2026 12:00. Temperature 38.4 °C, manual. Respiratory rate: no reading at this time; before 22 at 08:00, after 24 at 16:00."
  */
-export function graphStackAnnouncement(entries: GraphStackFocusEntry[], focus: DateLike): string {
+export function graphStackAnnouncement(entries: GraphStackFocusEntry[], focus: DateLike, timeZone?: string): string {
   const t = toDate(focus);
   const parts = entries.map(e => {
     if (e.aligned.length) {
       return e.aligned.map(v => `${v.label} ${v.text} ${v.unit}${v.source ? `, ${v.source}` : ''}${critText(v)}`).join('. ');
     }
     const around = [
-      ...e.before.map(v => `before ${v.text} at ${formatTime(v.time)}`),
-      ...e.after.map(v => `after ${v.text} at ${formatTime(v.time)}`),
+      ...e.before.map(v => `before ${v.text} at ${formatTime(v.time, { timeZone })}`),
+      ...e.after.map(v => `after ${v.text} at ${formatTime(v.time, { timeZone })}`),
     ];
     return `${e.title}: no reading at this time${around.length ? `; ${around.join(', ')}` : ''}`;
   });
-  return `${t ? formatDateTime(t) : ''}. ${parts.join('. ')}.`;
+  return `${t ? formatDateTime(t, { timeZone }) : ''}. ${parts.join('. ')}.`;
 }
 
 /**

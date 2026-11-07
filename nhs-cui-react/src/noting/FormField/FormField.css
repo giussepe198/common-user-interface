@@ -1,27 +1,38 @@
-.cui-form-field { display: flex; flex-direction: column; gap: var(--space-1); margin-bottom: var(--space-3); }
-.cui-form-field--label-left { display: grid; grid-template-columns: var(--cui-form-field-label-width, 12em) minmax(0, 1fr); column-gap: var(--space-3); align-items: start; }
-.cui-form-field__label { font-size: 14px; line-height: 20px; color: var(--ink); font-weight: 600; }
-.cui-form-field--label-left .cui-form-field__label { text-align: right; padding-top: 6px; font-weight: 400; color: var(--ink-muted); }
-.cui-form-field__body { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
-.cui-form-field__row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+/* Three slots as direct children (label, control row, feedback), so FormRow and FormGrid can make each field a
+   subgrid (forms area). Outside a row they stack: label, control, then prompt and error below. */
+.cui-form-field { display: flex; flex-direction: column; min-width: 0; margin-bottom: var(--space-3); }
+.cui-form-field__label { font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); font-weight: 600; margin-bottom: var(--space-1); }
+.cui-form-field--label-left { display: grid; grid-template-columns: var(--cui-form-field-label-width, 12em) minmax(0, 1fr); grid-template-rows: auto auto; column-gap: var(--space-3); align-items: start; }
+.cui-form-field--label-left .cui-form-field__label { grid-column: 1; grid-row: 1 / span 2; margin-bottom: 0; text-align: right; padding-top: calc((var(--control-height) - var(--line-height-body)) / 2); font-weight: 400; color: var(--ink-muted); }
+.cui-form-field--label-left .cui-form-field__row { grid-column: 2; grid-row: 1; }
+.cui-form-field--label-left .cui-form-field__feedback { grid-column: 2; grid-row: 2; }
+.cui-form-field__row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); min-width: 0; }
 .cui-form-field__control { position: relative; display: inline-flex; align-items: center; gap: var(--space-2); max-width: 100%; border-radius: var(--radius-md); }
+.cui-form-field__feedback { min-width: 0; }
 .cui-form-field__prompt { display: block; }
-.cui-form-field__error { display: inline-flex; align-items: flex-start; gap: var(--space-1); color: var(--danger); font-size: 12px; line-height: 16px; }
+.cui-form-field__feedback > .cui-form-field__prompt,
+.cui-form-field__messages > .cui-form-field__error { margin-top: var(--space-1); }
+.cui-form-field__error { display: flex; align-items: flex-start; gap: var(--space-1); color: var(--danger); font-size: var(--font-size-label); line-height: var(--line-height-label); }
+.cui-form-field__error .cui-icon { flex: none; }
 
-/* Text-like controls inside a field (consumers may use their own). */
-.cui-form-field__control :where(input:not([type="checkbox"]):not([type="radio"]), select, textarea),
+/* Plain text-like controls inside a field (consumers may use their own). Composite controls that draw their own box
+   (forms TextInput, Select, Combobox; datetime DateInput, TimeInput, DurationInput) mark their inner input
+   `data-cui-boxed` and their box `data-cui-box`, and the box takes the error and missed states instead. */
+.cui-form-field__control :where(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([data-cui-boxed]), select:not([data-cui-boxed]), textarea:not([data-cui-boxed])),
 :where(.cui-noting-input) {
-  font: inherit; font-size: 14px; line-height: 20px; color: var(--ink); background: var(--surface);
-  border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: 5px 8px; min-height: 32px; max-width: 100%;
+  font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); background: var(--surface);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: 5px var(--space-2); min-height: var(--control-height); max-width: 100%;
 }
-.cui-form-field__control :where(textarea), :where(textarea.cui-noting-input) { min-height: 48px; resize: vertical; overflow-x: hidden; overflow-y: auto; }
+.cui-form-field__control :where(textarea:not([data-cui-boxed])), :where(textarea.cui-noting-input) { min-height: 48px; resize: vertical; overflow-x: hidden; overflow-y: auto; }
 .cui-form-field__control input::placeholder, .cui-form-field__control textarea::placeholder, .cui-noting-input::placeholder { color: var(--ink-subtle); font-style: italic; opacity: 1; }
-.cui-form-field--error .cui-form-field__control input,
-.cui-form-field--error .cui-form-field__control select,
-.cui-form-field--error .cui-form-field__control textarea { border-color: var(--danger); }
+.cui-form-field--error .cui-form-field__control input:not([data-cui-boxed]),
+.cui-form-field--error .cui-form-field__control select:not([data-cui-boxed]),
+.cui-form-field--error .cui-form-field__control textarea:not([data-cui-boxed]),
+.cui-form-field--error .cui-form-field__control [data-cui-box] { border-color: var(--danger); }
 
 /* Missed required field: yellow shading plus icon (CNA-1160/1170). */
-.cui-form-field--missed .cui-form-field__control input,
-.cui-form-field--missed .cui-form-field__control select,
-.cui-form-field--missed .cui-form-field__control textarea { background: var(--warning-surface); border-color: var(--warning); }
+.cui-form-field--missed .cui-form-field__control input:not([data-cui-boxed]),
+.cui-form-field--missed .cui-form-field__control select:not([data-cui-boxed]),
+.cui-form-field--missed .cui-form-field__control textarea:not([data-cui-boxed]),
+.cui-form-field--missed .cui-form-field__control [data-cui-box] { background: var(--warning-surface); border-color: var(--warning); }
 .cui-form-field__missed-icon { color: var(--warning); display: inline-flex; }

@@ -29,7 +29,7 @@ const meds = [
 ];
 const block = (title, el) => h('div', { style: { marginBottom: 20 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
 ReactDOM.createRoot(document.getElementById('root')).render(
-  h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' } },
+  h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 24, alignItems: 'start' } },
     block('GB: suspend three medications (shown inline; normally a modal dialog)', h(MedicationActionSummaryDialog, { inline: true, actionLabel: 'Suspend', medications: meds, onConfirm: () => {}, onCancel: () => {} })),
     h('div', null,
       block('AU: discontinue, danger style, mixed-case lettering', h(ClinicalLocaleProvider, { region: 'AU' }, h(MedicationActionSummaryDialog, { inline: true, actionLabel: 'Discontinue', confirmVariant: 'danger', medications: meds.slice(0, 2), onConfirm: () => {}, onCancel: () => {} }))),

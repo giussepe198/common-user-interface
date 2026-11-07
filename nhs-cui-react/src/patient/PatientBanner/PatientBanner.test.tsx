@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { render, screen, fireEvent, cleanup, within } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup, waitFor, within } from '@testing-library/react';
 import { PatientBanner } from './PatientBanner';
 import { ClinicalLocaleProvider } from '../../core';
 
@@ -50,6 +50,18 @@ describe('PatientBanner (GB)', () => {
     expect(onChange).toHaveBeenCalledWith(true);
     expect(screen.getByRole('button', { name: 'Hide more patient details' }).getAttribute('aria-expanded')).toBe('true');
     expect(screen.getByText('Latex')).toBeTruthy();
+  });
+  it('a collapsed title cut with an ellipsis carries its full text as a tooltip (PAB-0025)', () => {
+    const sw = vi.spyOn(HTMLElement.prototype, 'scrollWidth', 'get').mockImplementation(function (this: HTMLElement) {
+      return this.classList.contains('cui-patient-banner__section-title--address') ? 300 : 0;
+    });
+    const cw = vi.spyOn(HTMLElement.prototype, 'clientWidth', 'get').mockReturnValue(100);
+    const { container } = render(<PatientBanner now={now} name={{ familyName: 'Smith', givenName: 'John' }} address={{ lines: ['1 Long Street Name'], postcode: 'LS1 1AA' }} />);
+    const cut = container.querySelector('.cui-patient-banner__section-title--address') as HTMLElement;
+    expect(cut.title).toMatch(/1 Long Street Name/);
+    expect(container.querySelector('.cui-patient-banner__section-title--allergies')?.hasAttribute('title')).toBe(false);
+    sw.mockRestore();
+    cw.mockRestore();
   });
   it('hides clinical information when not permitted (PAB-0008)', () => {
     const { container } = render(<PatientBanner now={now} name={{ familyName: 'Smith', givenName: 'John' }} allergies={{ status: 'none-known' }} showClinicalInformation={false} />);
@@ -223,7 +235,7 @@ describe('PatientBanner identity extensions (G12)', () => {
     expect(txt(zone1(container))).toContain('Medicare 2123 45670 1 IRN 1, Valid to 09/2026');
     expect(txt(zone1(container))).toContain('Card expired');
   });
-  it('AU My Health Record: compact state, access options and emergency indicator (AU-PV-01, AU-PV-02)', () => {
+  it('AU My Health Record: compact state, access options and emergency indicator (AU-PV-01, AU-PV-02)', async () => {
     const onEmergency = vi.fn();
     const { container, rerender } = render(
       <PatientBanner
@@ -233,7 +245,7 @@ describe('PatientBanner identity extensions (G12)', () => {
         myHealthRecord={{ state: 'access-code-required', onSubmitAccessCode: () => {}, onEmergencyAccess: onEmergency }}
       />,
     );
-    expect(txt(zone1(container))).toContain('My Health RecordAccess code required');
+    await waitFor(() => expect(txt(zone1(container))).toContain('My Health RecordAccess code required'));
     fireEvent.click(screen.getByRole('button', { name: 'Access options' }));
     expect(screen.getByLabelText('Record access code')).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Emergency access' })).toBeTruthy();
@@ -247,5 +259,71 @@ describe('PatientBanner identity extensions (G12)', () => {
     );
     expect(txt(zone1(container))).toContain('Emergency access');
     expect(txt(zone1(container))).toContain('until 01-Nov-2026 10:00');
+  });
+});
+
+describe('PatientBanner layout (CONVENTIONS Responsive)', () => {
+  it('passes the identifier column count as a CSS variable, so the narrow layout can wrap the identifiers', () => {
+    const { container } = render(
+      <ClinicalLocaleProvider region="AU">
+        <PatientBanner now={now} name={{ familyName: 'Nguyen', givenName: 'Mia' }} identifiers={[{ type: 'ihi', value: '8003601234567894' }, { type: 'mrn', value: '0042137' }]} />
+      </ClinicalLocaleProvider>,
+    );
+    const ids = container.querySelector('.cui-patient-banner__ids') as HTMLElement;
+    expect(ids.style.gridTemplateColumns).toBe('');
+    expect(ids.style.getPropertyValue('--cui-banner-id-columns')).toBe('4');
+  });
+
+  describe('host extensions', () => {
+    it('adds labelled items after Born or after the identifiers, a name extension, a leading slot and actions', () => {
+      const onSelect = vi.fn();
+      const { container } = render(
+        <PatientBanner
+          region="AU"
+          name={{ familyName: 'Chen', givenName: 'Wei' }}
+          dateOfBirth="1949-09-02"
+          now="2026-10-27"
+          showGender={false}
+          requirePrimaryIdentifier={false}
+          identifiers={[{ type: 'medicare', value: '2123456701', irn: '1' }]}
+          nameExtension={<span>Known as Wei (he/him)</span>}
+          leading={<span data-testid="lead">L</span>}
+          actions={<button type="button">Safety summary</button>}
+          items={[
+            { id: 'sex', label: 'Sex', value: 'Male', placement: 'after-born' },
+            { id: 'count', label: 'Alerts', value: '2 high', tone: 'alert', onSelect, selectLabel: 'Alerts: 2 high' },
+            { id: 'empty', label: 'Interpreter', value: '' },
+          ]}
+        />,
+      );
+      const ids = Array.from(container.querySelector('.cui-patient-banner__ids')!.children).map((c) => txt(c));
+      expect(ids[0]).toMatch(/^Born/);
+      expect(ids[1]).toBe('Sex Male');
+      expect(ids[2]).toMatch(/^Medicare/);
+      expect(ids.some((t) => t === 'Interpreter Not Known')).toBe(true);
+      expect(container.textContent).not.toContain('Gender');
+      expect(container.textContent).not.toContain('IHI');
+      expect(screen.getByText('Known as Wei (he/him)').closest('.cui-patient-banner__name-block')).toBeTruthy();
+      expect(screen.getByTestId('lead').closest('.cui-patient-banner__leading')).toBeTruthy();
+      expect(container.querySelector('.cui-patient-banner__actions')?.textContent).toBe('Safety summary');
+      const count = screen.getByRole('button', { name: 'Alerts: 2 high' });
+      expect(count.getAttribute('data-banner-item')).toBe('count');
+      expect(count.className).toContain('cui-patient-banner__item--alert');
+      fireEvent.click(count);
+      expect(onSelect).toHaveBeenCalled();
+    });
+    it('shows host-formatted Born and Died values and a host-rendered name', () => {
+      const { container } = render(
+        <PatientBanner name={{ familyName: 'Chen', givenName: 'Wei' }} nameContent={<h2>CHEN, Wei</h2>} dateOfBirthDisplay="02-Sep-1949 (77y)" dateOfDeathDisplay="02-Oct-2026" now="2026-10-27" />,
+      );
+      expect(screen.getByRole('heading', { name: 'CHEN, Wei' })).toBeTruthy();
+      expect(txt(container.querySelector('.cui-patient-banner__born'))).toBe('Born 02-Sep-1949 (77y)');
+      expect(container.querySelector('.cui-patient-banner--deceased')).toBeTruthy();
+      expect(txt(container.querySelector('.cui-patient-banner__death'))).toBe('Died 02-Oct-2026');
+    });
+    it('a similar-name warning may hold a link', () => {
+      render(<PatientBanner name={{ familyName: 'Chen', givenName: 'Wei' }} similarNameWarning={<a href="#compare">Similar name on the ward</a>} />);
+      expect(screen.getByRole('link', { name: 'Similar name on the ward' })).toBeTruthy();
+    });
   });
 });

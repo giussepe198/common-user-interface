@@ -136,7 +136,7 @@ export { SEASON_MONTHS, CHILDHOOD_PERIODS } from './utils/regions/dates';
 export type { SeasonName } from './utils/regions/dates';
 export { nearestGraphicSide, clampToCanvas, isInsideGraphic, placeAnnotationTextBox, canvasHeightFor, rectsOverlap } from './utils/graphics';
 export type { GraphicPoint, GraphicRect } from './utils/graphics';
-export { matchTemplates, templateBreadcrumb, orderTemplateSections, phraseSimilarity, templateStem, STANDARD_SECTION_ORDER, findTemplateTriggerPhrases } from './utils/templates';
+export { browseTemplates, matchTemplates, templateBreadcrumb, orderTemplateSections, phraseSimilarity, templateStem, STANDARD_SECTION_ORDER, findTemplateTriggerPhrases } from './utils/templates';
 export type { TemplateDefinition, TemplateSectionDef, TemplateMatch, TemplateSearchOptions, TemplateTriggerPhrase, TemplateTriggerTextMatch } from './utils/templates';
 export { pathwayVisibleStages, pathwayStageCode, clampPathwaySplit, PATHWAY_SPLIT_LIMITS, cycleStageAngle, cyclePoint } from './utils/pathway';
 export { renderHierarchyRefinement, refinedHierarchyAttributes } from './utils/hierarchy';

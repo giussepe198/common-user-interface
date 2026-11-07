@@ -1,0 +1,13 @@
+<!-- @dsCard group="Forms" height=240 subtitle="Choose or drop files; turned-down files say why" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { FormField, FileInput } = window.ClinicalCUI;
+const letter = new File(['x'.repeat(48000)], 'referral-letter-example.pdf', { type: 'application/pdf' });
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { maxWidth: 480 } },
+    h(FormField, { label: 'Referral letter' }, h(FileInput, { accept: '.pdf', acceptText: 'PDF', maxSizeBytes: 20 * 1024 * 1024, defaultValue: [letter] })),
+    h(FormField, { label: 'Photos', prompt: 'Up to 5 images' }, h(FileInput, { accept: 'image/*', acceptText: 'Images', multiple: true, maxFiles: 5 }))
+  )
+);
+</script>

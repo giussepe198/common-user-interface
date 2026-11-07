@@ -19,10 +19,10 @@ let savedOverflow = '';
 
 interface ModalOptions {
   open: boolean;
-  dialogRef: React.RefObject<HTMLElement>;
+  dialogRef: React.RefObject<HTMLElement | null>;
   /** Called for Esc and the browser or Android back button. Return false when the close was refused. */
   onDismiss: (reason: SheetCloseReason) => boolean | void;
-  initialFocusRef?: React.RefObject<HTMLElement>;
+  initialFocusRef?: React.RefObject<HTMLElement | null>;
   /** Return focus to the element focused before opening. */
   returnFocus: boolean;
   /** Push a history entry while open so the back button closes the sheet instead of leaving the page. */

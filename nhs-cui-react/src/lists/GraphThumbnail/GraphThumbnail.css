@@ -10,4 +10,4 @@
 .cui-graph-thumb__line { fill: none; stroke: var(--series-1); stroke-width: 1.5; }
 .cui-graph-thumb__bp { stroke: var(--ink); stroke-width: 1.5; }
 .cui-graph-thumb__view { fill: none; stroke: var(--accent); stroke-width: 1.5; }
-.cui-graph-thumb__caption { font-size: 11px; line-height: 14px; color: var(--ink); font-weight: 600; text-align: center; }
+.cui-graph-thumb__caption { font-size: var(--font-size-caption); line-height: var(--line-height-caption); color: var(--ink); font-weight: 600; text-align: center; }

@@ -2,10 +2,10 @@
 .cui-timeline__banner { border-bottom: 1px solid var(--border-strong); }
 .cui-timeline__controls { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-2) var(--space-3); background: var(--surface-muted); border-bottom: 1px solid var(--border-strong); }
 .cui-timeline__total { display: flex; align-items: center; gap: var(--space-3); }
-.cui-timeline__total-label { font-size: 12px; color: var(--ink-muted); white-space: nowrap; }
+.cui-timeline__total-label { font-size: var(--font-size-label); color: var(--ink-muted); white-space: nowrap; }
 .cui-timeline__total-track { position: relative; flex: 1 1 auto; display: flex; align-items: center; gap: var(--space-2); }
 .cui-timeline__slider { flex: 1 1 auto; accent-color: var(--accent); margin: 0; height: 20px; }
-.cui-timeline__total-end { font-size: 12px; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cui-timeline__total-end { font-size: var(--font-size-label); color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .cui-timeline__nav { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-2) var(--space-3); }
 .cui-timeline__period { display: inline-flex; flex-direction: column; gap: 2px; }
 .cui-timeline__nav-buttons { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--space-1); }
@@ -18,29 +18,29 @@
 .cui-timeline__axis-svg { display: block; overflow: visible; }
 .cui-timeline__tick { stroke: var(--border-strong); stroke-width: 1; shape-rendering: crispEdges; }
 .cui-timeline__tick--major { stroke: var(--ink); stroke-width: 2; }
-.cui-timeline__tick-label { font-size: 12px; fill: var(--ink); font-variant-numeric: tabular-nums; }
+.cui-timeline__tick-label { font-size: var(--font-size-label); fill: var(--ink); font-variant-numeric: tabular-nums; }
 .cui-timeline__tick-label--major { font-weight: 600; }
-.cui-timeline__tick-sub { font-size: 12px; fill: var(--ink-muted); font-weight: 600; }
+.cui-timeline__tick-sub { font-size: var(--font-size-label); fill: var(--ink-muted); font-weight: 600; }
 .cui-timeline__now-marker path { fill: var(--accent); }
 .cui-timeline__section { border-top: 2px solid var(--border-strong); }
 .cui-timeline__section:first-of-type { border-top: none; }
 .cui-timeline__section-bar { display: flex; align-items: center; gap: var(--space-3); padding: 2px var(--space-2); background: var(--surface-muted); border-bottom: 1px solid var(--border-strong); min-height: 36px; }
-.cui-timeline__collapse { font: inherit; display: inline-flex; align-items: center; gap: var(--space-1); background: none; border: none; padding: 4px; cursor: pointer; color: var(--ink); border-radius: var(--radius-sm); }
+.cui-timeline__collapse { font: inherit; display: inline-flex; align-items: center; gap: var(--space-1); background: none; border: none; padding: var(--space-1); cursor: pointer; color: var(--ink); border-radius: var(--radius-sm); }
 .cui-timeline__collapse:hover { background: var(--hover); }
-.cui-timeline__section-title { font-size: 15px; font-weight: 600; }
-.cui-timeline__oov-total { font-size: 12px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); padding: 0 6px; border-radius: var(--radius-sm); }
+.cui-timeline__section-title { font-size: var(--font-size-subheading); font-weight: 600; }
+.cui-timeline__oov-total { font-size: var(--font-size-label); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); padding: 0 6px; border-radius: var(--radius-sm); }
 .cui-timeline__section-spacer { flex: 1 1 auto; }
 .cui-timeline__lod { display: inline-flex; align-items: center; gap: var(--space-2); }
-.cui-timeline__lod select { min-height: 28px; padding: 2px 4px; }
+.cui-timeline__lod select { min-height: 28px; padding: 2px var(--space-1); }
 .cui-timeline__section-wrap { position: relative; }
 .cui-timeline__section-body { overflow-y: auto; overflow-x: hidden; resize: vertical; }
-.cui-timeline__oov { position: absolute; left: 0; z-index: 3; display: flex; align-items: center; justify-content: center; gap: 4px; font-size: 12px; font-weight: 600; color: var(--ink); background: var(--surface-muted); height: 18px; pointer-events: none; }
+.cui-timeline__oov { position: absolute; left: 0; z-index: 3; display: flex; align-items: center; justify-content: center; gap: var(--space-1); font-size: var(--font-size-label); font-weight: 600; color: var(--ink); background: var(--surface-muted); height: 18px; pointer-events: none; }
 .cui-timeline__oov--above { top: 0; border-bottom: 1px solid var(--border-strong); }
 .cui-timeline__oov--below { bottom: 0; border-top: 1px solid var(--border-strong); }
 .cui-timeline__row { display: flex; border-bottom: 1px solid var(--border); }
 .cui-timeline__row--graph { border-bottom: 2px solid var(--border-strong); }
 .cui-timeline__row-svg { display: block; flex: none; overflow: visible; }
-.cui-timeline__id { flex: none; position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-1); padding: 3px var(--space-1) 3px var(--space-2); background: var(--surface); border-right: 1px solid var(--border-strong); font-size: 14px; line-height: 18px; }
+.cui-timeline__id { flex: none; position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-1); padding: 3px var(--space-1) 3px var(--space-2); background: var(--surface); border-right: 1px solid var(--border-strong); font-size: var(--font-size-body); line-height: 18px; }
 .cui-timeline__id--alt { background: var(--surface-sunken); }
 .cui-timeline__id-text { overflow-wrap: anywhere; padding-top: 2px; }
 .cui-timeline__row-nav { display: inline-flex; flex: none; }
@@ -64,13 +64,13 @@
 .cui-timeline__tickmark { stroke: var(--accent); stroke-width: 2; }
 .cui-timeline__thumb { fill: var(--accent); }
 .cui-timeline__cluster { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
-.cui-timeline__cluster-text { font-size: 11px; font-weight: 700; fill: var(--ink); }
+.cui-timeline__cluster-text { font-size: var(--font-size-caption); font-weight: 700; fill: var(--ink); }
 .cui-timeline__leader { stroke: var(--ink-muted); stroke-width: 1; }
-.cui-timeline__label { font-size: 12px; fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; stroke-linejoin: round; }
+.cui-timeline__label { font-size: var(--font-size-label); fill: var(--ink); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; stroke-linejoin: round; }
 .cui-timeline__empty { padding: var(--space-3); color: var(--ink-muted); }
-.cui-timeline__sets { display: inline-flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); margin: 0; padding: 0; border: none; font-size: 12px; }
+.cui-timeline__sets { display: inline-flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); margin: 0; padding: 0; border: none; font-size: var(--font-size-label); }
 .cui-timeline__set--disabled { color: var(--ink-disabled); cursor: not-allowed; }
-.cui-timeline__id-event { position: absolute; left: var(--space-2); right: var(--space-1); font-size: 12px; line-height: 18px; color: var(--ink-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cui-timeline__id-event { position: absolute; left: var(--space-2); right: var(--space-1); font-size: var(--font-size-label); line-height: 18px; color: var(--ink-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cui-timeline__event-link { stroke: var(--ink-muted); stroke-width: 1; }
 .cui-timeline__event { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
 .cui-timeline__event--planned { stroke-dasharray: 2 2; }
@@ -78,3 +78,20 @@
 .cui-timeline__event-tick { stroke: var(--ink); stroke-width: 2; }
 .cui-timeline__event-fo { overflow: visible; }
 .cui-timeline__event-fo .cui-admin-event-icon { padding: 2px; min-height: 0; background: var(--surface); }
+
+/* Responsive (CONVENTIONS "Responsive"): the plot measures its own width (ResizeObserver) and the identifier column
+   gives way, so the canvas always fits; below 600px the controls and section bars wrap instead of widening the page. */
+.cui-timeline { container: cui-timeline / inline-size; }
+@container cui-timeline (max-width: 599px) {
+  .cui-timeline__total { flex-wrap: wrap; row-gap: var(--space-1); }
+  .cui-timeline__total-track { flex: 1 1 100%; min-width: 0; }
+  .cui-timeline__slider { min-width: 0; }
+  .cui-timeline__showing { margin-left: 0; flex: 1 1 100%; }
+  .cui-timeline__section-bar { flex-wrap: wrap; row-gap: var(--space-1); }
+  .cui-timeline__section-spacer { display: none; }
+  .cui-timeline__lod { flex-wrap: wrap; min-width: 0; }
+  .cui-timeline__lod select { max-width: 100%; }
+  .cui-timeline__row-pop { min-width: 0; max-width: calc(100cqi - var(--space-4)); }
+}
+.cui-timeline__hit { display: none; fill: transparent; }
+@media (pointer: coarse) { .cui-timeline__hit { display: inline; } }

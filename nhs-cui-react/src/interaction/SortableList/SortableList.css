@@ -1,0 +1,20 @@
+.cui-sortable-list { min-width: 0; }
+.cui-sortable-list__items { list-style: none; margin: 0; padding: 0; }
+.cui-sortable-list__item { position: relative; display: flex; align-items: center; gap: var(--space-2); padding: var(--space-1) var(--space-2) var(--space-1) var(--space-1); border-top: 1px solid var(--border); background: var(--surface); }
+.cui-sortable-list__item:first-child { border-top: none; }
+.cui-sortable-list--read-only .cui-sortable-list__item { padding-left: var(--space-2); }
+.cui-sortable-list__content { flex: 1 1 auto; min-width: 0; }
+.cui-sortable-list__moves { display: inline-flex; flex: none; gap: 2px; }
+/* The lifted item stays in place, outlined and quieter, so the list does not jump (DND-0350). */
+.cui-sortable-list__item--lifted { outline: 2px dashed var(--accent); outline-offset: -2px; background: var(--surface-muted); }
+.cui-sortable-list__item--lifted .cui-sortable-list__content { color: var(--ink-muted); }
+.cui-sortable-list__item--busy .cui-sortable-list__content { color: var(--ink-muted); }
+.cui-sortable-list__status { display: inline-block; margin-left: var(--space-2); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+/* The insertion line: no height of its own, so nothing moves while the pointer looks for a place (DND-0210). */
+.cui-sortable-list__line { position: relative; height: 0; list-style: none; z-index: 2; }
+.cui-sortable-list__line::before { content: ''; position: absolute; left: 0; right: 0; top: -2px; height: 3px; background: var(--accent); border-radius: var(--radius-sm); }
+.cui-sortable-list__line .cui-drop-label { position: absolute; right: var(--space-2); top: -10px; }
+.cui-sortable-list__preview { font-weight: 600; }
+@media (pointer: coarse) {
+  .cui-sortable-list__moves .cui-button { min-width: var(--target-coarse); min-height: var(--target-coarse); justify-content: center; }
+}

@@ -86,7 +86,7 @@ export function SensitiveCharacteristicInput({
       {set.instruction ? <p className="cui-patient-question__hint">{set.instruction}</p> : null}
       <div className="cui-patient-question__options">
         {set.options.map((o) => (
-          <div key={o.code} className="cui-patient-question__option">
+          <div key={o.code} className="cui-patient-question__option" data-touch-target>
             <input
               type="radio"
               id={`${id}-${o.code}`}

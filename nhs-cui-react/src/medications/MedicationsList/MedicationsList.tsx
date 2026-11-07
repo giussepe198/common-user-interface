@@ -1,14 +1,16 @@
 import React from 'react';
-import { cx, formatShortDate, Icon, toDate, useClinicalLocale, useControllableState, useId, VisuallyHidden, DateLike } from '../../core';
-import type { ClinicalRegion } from '../../core';
+import { cx, formatShortDate, Icon, toDate, useClinicalLocale, useControllableState, useId, VisuallyHidden } from '../../core';
+import type { ClinicalRegion , DateLike } from '../../core';
 import { MedicationActionSummaryDialog } from '../MedicationActionSummaryDialog/MedicationActionSummaryDialog';
 import { MedicationLine } from '../MedicationLine/MedicationLine';
 import { MedicationStatusText } from '../MedicationLine/MedicationStatus';
-import { MedicationAttributeKey, medicationDrugName } from '../utils/medicationLine';
+import type { MedicationAttributeKey} from '../utils/medicationLine';
+import { medicationDrugName } from '../utils/medicationLine';
 import { tallManDefaultFor } from '../utils/tallMan';
+import type { MedicationLookAheadEntry, MedicationLookAheadToken,
+  MedicationGroupingOption, MedicationRecord, MedicationSort, MedicationSortKey} from '../utils/medicationsList';
 import {
-  DEFAULT_CURRENT_SORT, DEFAULT_PAST_SORT, groupMedications, isCurrentMedicationStatus, MedicationLookAheadEntry, MedicationLookAheadToken,
-  MedicationGroupingOption, MedicationRecord, MedicationSort, MedicationSortKey, medicationFilterNotification,
+  DEFAULT_CURRENT_SORT, DEFAULT_PAST_SORT, groupMedications, isCurrentMedicationStatus, medicationFilterNotification,
   medicationLookAheadTokens, medicationRecentPastNotification, sortMedications,
 } from '../utils/medicationsList';
 import { MedicationsMenu } from './MedicationsMenu';
@@ -282,6 +284,7 @@ export function MedicationsList({
   const sorted = sortMedications(listRows, vs.sort, defaultSort);
   const grouping = vs.groupBy === 'none' ? null : groupingOptions.find(g => g.id === vs.groupBy) ?? null;
 
+  const grouped = grouping != null;
   const items: Item[] = [];
   if (grouping) {
     for (const g of groupMedications(sorted, grouping)) {
@@ -510,7 +513,7 @@ export function MedicationsList({
     switch (c.key) {
       case 'drugDetails':
         return (
-          <td key={c.key} className="cui-medications-list__drug">
+          <td key={c.key} data-label={c.heading} className="cui-medications-list__drug">
             <MedicationLine
               {...row.line}
               region={region}
@@ -533,7 +536,7 @@ export function MedicationsList({
         );
       case 'status':
         return (
-          <td key={c.key} className="cui-medications-list__status">
+          <td key={c.key} data-label={c.heading} className="cui-medications-list__status">
             <MedicationStatusText status={row.status} suspendedOn={row.suspendedOn} supplement={level?.showStatusSupplement === false ? undefined : row.statusSupplement} />
           </td>
         );
@@ -541,7 +544,7 @@ export function MedicationsList({
       case 'endDate': {
         const v = c.key === 'startDate' ? row.startDate : row.endDate;
         return (
-          <td key={c.key} className="cui-medications-list__date">
+          <td key={c.key} data-label={c.heading} className="cui-medications-list__date">
             {v ? formatShortDate(v) : <span className="cui-medications-list__none">Not recorded</span>}
           </td>
         );
@@ -614,10 +617,11 @@ export function MedicationsList({
         ) : null}
       </div>
 
+      {/* Groups that expand and collapse make the rows a tree (ARIA treegrid); without groups it is a plain grid. */}
       <div ref={scrollRef} className="cui-medications-list__scroll" style={{ maxHeight }}>
         <table
           className="cui-medications-list__table"
-          role="grid"
+          role={grouped ? 'treegrid' : 'grid'}
           aria-multiselectable="true"
           aria-label={`${isPast ? 'Past' : 'Current'} medications`}
           aria-describedby={`${uid}-hint`}
@@ -684,6 +688,7 @@ export function MedicationsList({
                     key={k}
                     ref={el => { if (el) itemRefs.current.set(k, el); else itemRefs.current.delete(k); }}
                     className="cui-medications-list__group"
+                    aria-level={1}
                     aria-expanded={!it.collapsed}
                     tabIndex={tabKey === k ? 0 : -1}
                     onFocus={() => setFocusKey(k)}
@@ -715,6 +720,7 @@ export function MedicationsList({
                     row.status === 'Suspended' && 'is-suspended',
                   )}
                   aria-selected={isSel}
+                  aria-level={grouped ? 2 : undefined}
                   tabIndex={tabKey === k ? 0 : -1}
                   onFocus={() => setFocusKey(k)}
                   onClick={e => onRowClick(e, row)}
@@ -758,7 +764,7 @@ export function MedicationsList({
           items={[{ id: 'collapse', label: 'Collapse All Groups' }, { id: 'expand', label: 'Expand All Groups' }]}
           onSelect={id => patch({ collapsed: id === 'collapse' ? items.filter(i => i.type === 'heading').map(i => (i as { key: string }).key) : [] })}
           onClose={() => setHeadingMenu(null)}
-          returnFocusTo={headingFocusRef as React.RefObject<HTMLElement>}
+          returnFocusTo={headingFocusRef as React.RefObject<HTMLElement | null>}
           className="cui-medications-list__context-menu"
           style={{ position: 'fixed', left: headingMenu.x, top: headingMenu.y }}
         />
@@ -778,7 +784,7 @@ export function MedicationsList({
             if (action) runAction(action, rowMenu.rows);
           }}
           onClose={() => setRowMenu(null)}
-          returnFocusTo={rowMenuReturn as React.RefObject<HTMLElement>}
+          returnFocusTo={rowMenuReturn as React.RefObject<HTMLElement | null>}
           className="cui-medications-list__context-menu"
           style={{ position: 'fixed', left: rowMenu.x, top: rowMenu.y }}
         />

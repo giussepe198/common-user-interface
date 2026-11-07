@@ -1,13 +1,13 @@
 .cui-readback { display: flex; flex-direction: column; gap: var(--space-2); min-width: 0; color: var(--ink); font-family: var(--font-sans); }
-.cui-readback__label { font-size: 16px; line-height: 22px; font-weight: 600; }
+.cui-readback__label { font-size: var(--font-size-touch-body); line-height: var(--line-height-touch-body); font-weight: 600; }
 .cui-readback__row { display: flex; align-items: center; gap: 10px; }
-.cui-readback__input { width: 140px; max-width: 60%; min-height: 56px; font-family: inherit; font-size: 28px; line-height: 34px; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; padding: 0 12px; border: 2px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); }
+.cui-readback__input { width: 140px; max-width: 60%; min-height: var(--target-commit); font-family: inherit; font-size: 28px; line-height: 34px; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; padding: 0 var(--space-3); border: 2px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); }
 .cui-readback__input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .cui-readback__input--match { border-color: var(--success); }
 .cui-readback__input--problem { border-color: var(--danger); }
-.cui-readback__unit { font-size: 20px; line-height: 26px; font-weight: 600; }
+.cui-readback__unit { font-size: var(--font-size-patient-name); line-height: var(--line-height-patient-name); font-weight: 600; }
 .cui-readback__status { min-height: 22px; }
-.cui-readback__ok, .cui-readback__problem { display: inline-flex; align-items: flex-start; gap: 6px; font-size: 15px; line-height: 21px; font-weight: 600; }
+.cui-readback__ok, .cui-readback__problem { display: inline-flex; align-items: flex-start; gap: 6px; font-size: var(--font-size-subheading); line-height: 21px; font-weight: 600; }
 .cui-readback__ok { color: var(--success); }
 .cui-readback__problem { color: var(--danger); }
 .cui-readback__ok .cui-icon, .cui-readback__problem .cui-icon { flex: none; }

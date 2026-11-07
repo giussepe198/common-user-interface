@@ -1,0 +1,32 @@
+.cui-drawer-layer { position: fixed; inset: 0; z-index: 1000; display: flex; justify-content: flex-end; font-family: var(--font-sans); font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); }
+.cui-drawer-layer--start { justify-content: flex-start; }
+.cui-drawer-backdrop { position: absolute; inset: 0; background: var(--banner); opacity: 0.45; animation: cui-drawer-fade 120ms ease-out; }
+.cui-drawer { position: relative; display: flex; flex-direction: column; width: 100%; height: 100%; min-height: 0; background: var(--surface); color: var(--ink); box-shadow: var(--shadow-dialog); outline: none; }
+.cui-drawer--end { border-left: 1px solid var(--border); animation: cui-drawer-in-end 160ms ease-out; }
+.cui-drawer--start { border-right: 1px solid var(--border); animation: cui-drawer-in-start 160ms ease-out; }
+.cui-drawer--sm { max-width: 320px; }
+.cui-drawer--md { max-width: 400px; }
+.cui-drawer--lg { max-width: 560px; }
+/* Non-modal side panel: the layer lets the page beside the panel be read and used; no backdrop, a quieter shadow. */
+.cui-drawer-layer--nonmodal { pointer-events: none; }
+.cui-drawer-layer--nonmodal > .cui-drawer { pointer-events: auto; box-shadow: var(--shadow-popover); }
+.cui-drawer:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.cui-drawer__header { flex: none; display: flex; align-items: flex-start; gap: var(--space-2); padding: var(--space-2) var(--space-2) var(--space-2) var(--space-4); border-bottom: 1px solid var(--border); }
+.cui-drawer__titles { flex: 1; min-width: 0; display: grid; gap: 2px; padding-top: var(--space-1); }
+.cui-drawer__title { margin: 0; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: var(--font-weight-subheading); overflow-wrap: anywhere; }
+.cui-drawer__description { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); overflow-wrap: anywhere; }
+.cui-drawer__close { flex: none; display: inline-flex; align-items: center; justify-content: center; width: var(--control-height); height: var(--control-height); padding: 0; border: 1px solid transparent; border-radius: var(--radius-md); background: transparent; color: var(--ink); cursor: pointer; }
+.cui-drawer__close:hover { background: var(--hover); }
+.cui-drawer__close:focus-visible { outline: 2px solid var(--focus); outline-offset: 0; }
+.cui-drawer__body { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: var(--space-3) var(--space-4); }
+.cui-drawer__footer { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-2); padding: var(--space-2) var(--space-4); border-top: 1px solid var(--border); }
+.cui-drawer__sheet-body { padding: var(--space-2) var(--space-4) var(--space-4); }
+.cui-drawer__sheet-footer { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3) var(--space-4) max(16px, env(safe-area-inset-bottom)); border-top: 1px solid var(--border); }
+.cui-drawer__sheet-footer > * { width: 100%; justify-content: center; min-height: var(--target-touch); }
+@media (pointer: coarse) { .cui-drawer__close { width: var(--target-coarse); height: var(--target-coarse); } }
+@keyframes cui-drawer-in-end { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes cui-drawer-in-start { from { transform: translateX(-24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes cui-drawer-fade { from { opacity: 0; } to { opacity: 0.45; } }
+@media (prefers-reduced-motion: reduce) { .cui-drawer, .cui-drawer-backdrop { animation: none; } }
+/* Content kept across the frame change (useStableContent): the slot and its element add no box of their own. */
+.cui-overlay-content-slot, .cui-overlay-content { display: contents; }

@@ -50,3 +50,7 @@ Values are kept as entered text (numbers as decimal text, dates as `YYYY-MM-DD`,
 - Every control has an accessible name ("Criterion 2 operator"). The criteria are an ordered list labelled by the lead text.
 - Esc cancels; focus is kept inside the modal dialog and returns to the opener on close. After Add or Remove, focus moves to the affected line.
 - The AND / OR choice is a `fieldset` with a legend.
+
+## Narrow screens [suggested]
+
+The dialog body is a size container. Below 560px each criterion stacks (attribute, operator, value) at full width; below 480px of screen the dialog keeps an 8px gutter.

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button, cx, Icon, useClinicalLocale, useId, VisuallyHidden } from '../../core';
 import type { ClinicalRegion } from '../../core';
-import {
+import type {
   AdrConcept,
   AdrEntry,
-  AdrReaction,
+  AdrReaction} from '../utils/adr';
+import {
   ADR_DEFAULT_REACTION_LEXICON,
   adrBuildExpression,
   adrConceptLabel,
@@ -400,7 +401,7 @@ export function AdrRecordingDialog({
                 <legend className="cui-adr__label">Type</legend>
                 <div className="cui-adr__radios">
                   {(['allergy', 'intolerance'] as const).map(t => (
-                    <label key={t} className="cui-adr__check">
+                    <label key={t} className="cui-adr__check" data-touch-target>
                       <input
                         type="radio"
                         name={`${id}-type`}
@@ -453,7 +454,7 @@ export function AdrRecordingDialog({
           </div>
 
           {/* 4. Clinician witnessed (RAD-0440) */}
-          <label className="cui-adr__check">
+          <label className="cui-adr__check" data-touch-target>
             <input
               type="checkbox"
               disabled={!hasAgent}
@@ -464,7 +465,7 @@ export function AdrRecordingDialog({
           </label>
 
           {w.newThisAdmission ? (
-            <label className="cui-adr__check">
+            <label className="cui-adr__check" data-touch-target>
               <input
                 type="checkbox"
                 disabled={!hasAgent}

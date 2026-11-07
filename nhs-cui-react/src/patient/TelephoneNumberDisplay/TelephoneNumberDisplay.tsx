@@ -1,7 +1,8 @@
 import React from 'react';
 import { cx, useClinicalLocale } from '../../core';
 import type { ClinicalRegion } from '../../core';
-import { formatTelephoneNumber, PATIENT_UNKNOWN_TEXT, telephoneHref } from '../utils/patient';
+import { PATIENT_UNKNOWN_TEXT } from '../utils/patient';
+import { formatTelephoneNumber, telephoneHref } from '../utils/telephone';
 import { LabelledValue } from '../LabelledValue/LabelledValue';
 
 export interface TelephoneNumberDisplayProps {
@@ -43,7 +44,7 @@ export function TelephoneNumberDisplay({
   const content = text ? (
     asLink ? (
       <a
-        className="cui-telephone__link"
+        className="cui-telephone__link cui-touch-inline"
         href={
           region === 'GB'
             ? `tel:${text.replace(/\s+x(\d+)$/, ',$1').replace(/[^\d+,]/g, '')}`

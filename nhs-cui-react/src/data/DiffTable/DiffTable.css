@@ -1,0 +1,29 @@
+/* DiffTable: versions side by side, changed values marked in words and an icon, never struck out. */
+.cui-diff-table { min-width: 0; color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-diff-table__summary { display: block; font-weight: 400; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-diff-table__frame { container: cui-diff-table / inline-size; }
+.cui-diff-table__table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-diff-table__caption { caption-side: top; text-align: left; padding: 0 0 var(--space-1); font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
+.cui-diff-table__table th, .cui-diff-table__table td { padding: var(--space-1) var(--space-2); text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); overflow-wrap: anywhere; }
+.cui-diff-table__table thead th { background: var(--surface-muted); font-weight: 600; border-bottom: 2px solid var(--border-strong); }
+.cui-diff-table__table tbody tr:last-child > * { border-bottom: none; }
+.cui-diff-table__field { font-weight: 600; }
+.cui-diff-table__value--changed { background: var(--info-surface); font-weight: 600; }
+.cui-diff-table__value--missing .cui-diff-table__text { font-style: italic; font-weight: 400; color: var(--ink-muted); }
+.cui-diff-table__mark { display: inline-flex; vertical-align: -3px; margin-right: var(--space-1); color: var(--info); }
+.cui-diff-table__chip { display: inline-flex; align-items: center; gap: var(--space-1); padding: 0 var(--space-2); border-radius: var(--radius-sm); border: 1px solid var(--border-strong); font-size: var(--font-size-label); line-height: var(--line-height-body); white-space: nowrap; }
+.cui-diff-table__chip--changed { background: var(--info-surface); border-color: var(--info); font-weight: 600; }
+.cui-diff-table__chip--same { color: var(--ink-muted); }
+.cui-diff-table__empty { color: var(--ink-muted); text-align: center; }
+/* Narrow: each field a card, every value labelled by its version. */
+@container cui-diff-table (max-width: 520px) {
+  .cui-diff-table__table, .cui-diff-table__table tbody, .cui-diff-table__table tr, .cui-diff-table__caption { display: block; }
+  .cui-diff-table__table thead { display: none; }
+  .cui-diff-table__row { border-bottom: 1px solid var(--border-strong); padding: var(--space-1) 0; }
+  .cui-diff-table__table tbody tr:last-child { border-bottom: none; }
+  .cui-diff-table__table .cui-diff-table__row > * { display: grid; grid-template-columns: minmax(96px, 38%) minmax(0, 1fr); gap: var(--space-3); border-bottom: none; }
+  .cui-diff-table__table .cui-diff-table__row > .cui-diff-table__field { display: block; }
+  .cui-diff-table__row > td::before { content: attr(data-label); font-size: var(--font-size-label); font-weight: 400; color: var(--ink-muted); }
+  .cui-diff-table__row > td > * { grid-column: 2; }
+  .cui-diff-table__row > td > .cui-diff-table__mark { display: none; }
+}

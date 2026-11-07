@@ -1,8 +1,9 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { cx, Icon } from '../../core';
-import {
+import type {
   ShortcutConflict,
-  ShortcutDefinition,
+  ShortcutDefinition} from '../utils/shortcuts';
+import {
   detectShortcutConflicts,
   normaliseKeyEvent,
   normaliseKeys,

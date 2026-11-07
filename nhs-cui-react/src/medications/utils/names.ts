@@ -19,10 +19,10 @@ function isPreservedToken(token: string, wholeNameUpper: boolean): boolean {
 export function formatGenericName(name: string): string {
   const trimmed = name.trim().replace(/\s+/g, ' ');
   const letters = trimmed.replace(/[^A-Za-z]/g, '');
-  const longWords = trimmed.split(/[\s+\-/]+/).filter(w => /^[A-Za-z]{4,}$/.test(w) && !ROMAN.test(w));
+  const longWords = trimmed.split(/[\s+-/]+/).filter(w => /^[A-Za-z]{4,}$/.test(w) && !ROMAN.test(w));
   const wholeNameUpper = letters.length > 0 && letters === letters.toUpperCase() && longWords.length > 0;
   return trimmed
-    .split(/([\s+\-]+)/)
+    .split(/([\s+-]+)/)
     .map(part => (isPreservedToken(part, wholeNameUpper) ? part : part.toLowerCase()))
     .join('');
 }

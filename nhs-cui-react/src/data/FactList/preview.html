@@ -1,0 +1,17 @@
+<!-- @dsCard group="Data display" height=340 width=900 subtitle="Fact list: label and value pairs in a grid and in rows" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { FactList } = window.ClinicalCUI;
+const items = [
+  { label: 'Source', value: 'GP' }, { label: 'Received', value: '20-Oct-2026' },
+  { label: 'Priority', value: 'Routine' }, { label: 'Keyworker', value: null, unknownText: 'Not allocated' },
+  { label: 'Episode', value: 'Community', onOpenRecord: () => {}, definition: 'The episode of care this referral opened' },
+  { label: 'Reason for referral', value: 'Low mood and poor sleep for three months, worse since a change of job; asks for a review of medication.', wide: true },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gap: 24 } },
+    h(FactList, { 'aria-label': 'Referral details', items }),
+    h('div', { style: { maxWidth: 520 } }, h(FactList, { layout: 'rows', 'aria-label': 'Referral details in rows', items })))
+);
+</script>

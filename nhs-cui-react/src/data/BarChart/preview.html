@@ -1,0 +1,22 @@
+<!-- @dsCard group="Data display" height=760 width=1200 subtitle="Bar chart: grouped columns, horizontal bars, suppressed values and a target" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { BarChart } = window.ClinicalCUI;
+const series = [{ id: 'q3', label: 'Jul to Sep 2026' }, { id: 'q2', label: 'Apr to Jun 2026' }];
+const categories = [
+  { id: 'gp', label: 'GP', values: [42, 30] }, { id: 'ed', label: 'ED', values: [18, 21] },
+  { id: 'self', label: 'Self', values: [null, 7], note: 'Count under 5 suppressed' }, { id: 'police', label: 'Police', values: [9, 11] },
+];
+const teams = [
+  { id: 'n', label: 'North community team', values: [12] }, { id: 's', label: 'South community team', values: [19] },
+  { id: 'c', label: 'Child and youth mental health', values: [27] }, { id: 'a', label: 'Aged persons mental health', values: [null] },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'grid', gap: 16 } },
+    h(BarChart, { title: 'Referrals by source', unit: 'referrals', series, categories, suppressedText: '<5', thresholds: [{ value: 40, label: 'Planned capacity' }] }),
+    h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 16, alignItems: 'start' } },
+      h(BarChart, { title: 'Median wait by team, narrow', unit: 'days', categories: teams, suppressedText: 'Not shown', thresholds: [{ value: 14, label: 'Target 14 days' }] }),
+      h(BarChart, { title: 'Table view', unit: 'referrals', series, categories, suppressedText: '<5', defaultShowTable: true })))
+);
+</script>

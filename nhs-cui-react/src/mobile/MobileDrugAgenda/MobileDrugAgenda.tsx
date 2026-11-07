@@ -219,11 +219,13 @@ export function MobileDrugAgenda(props: MobileDrugAgendaProps) {
 
 function NowLine({ now }: { now: Date }) {
   return (
-    <li role="separator" aria-label={`Now ${formatTime(now)}`} className="cui-mobile-agenda__now">
-      <span className="cui-mobile-agenda__now-label" aria-hidden="true">
-        Now {formatTime(now)}
-      </span>
-      <span className="cui-mobile-agenda__now-rule" aria-hidden="true" />
+    <li className="cui-mobile-agenda__now-item">
+      <div role="separator" aria-label={`Now ${formatTime(now)}`} className="cui-mobile-agenda__now">
+        <span className="cui-mobile-agenda__now-label" aria-hidden="true">
+          Now {formatTime(now)}
+        </span>
+        <span className="cui-mobile-agenda__now-rule" aria-hidden="true" />
+      </div>
     </li>
   );
 }

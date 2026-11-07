@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { cx, useId, useControllableState, useClinicalLocale, Button, Icon } from '../../core';
 import type { ClinicalRegion } from '../../core';
-import {
+import type {
   AbbreviationFinding,
-  DangerousAbbreviation,
+  DangerousAbbreviation} from '../utils/abbreviations';
+import {
   applyAbbreviationSuggestion,
   getDangerousAbbreviations,
   findDangerousAbbreviations,

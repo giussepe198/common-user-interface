@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Icon, cx, formatShortDate, formatTime, toDate, useControllableState, useId, type DateLike } from '../../core';
+import { Button, Icon, VisuallyHidden, cx, formatShortDate, formatTime, toDate, useControllableState, useId, type DateLike } from '../../core';
 import { alignDecimals } from '../utils/graphScale';
 import { observationCriticalBreach, observationCriticalLabel, observationCriticalText, type ObservationCriticalThreshold } from '../utils/criticalThresholds';
 
@@ -170,9 +170,9 @@ export function ObservationTable({
 
   const valueCell = (r: Row, key: string) => {
     const c = r.cells[key];
-    if (!c) return <span className="cui-obs-table__none" aria-label="No reading">&nbsp;</span>;
+    if (!c) return <span className="cui-obs-table__none"><span aria-hidden="true">&nbsp;</span><VisuallyHidden>No reading</VisuallyHidden></span>;
     return (
-      <span className="cui-obs-table__val" tabIndex={c.full ? 0 : undefined} title={[c.full ? `Recorded value ${c.full}` : '', c.context ?? ''].filter(Boolean).join('. ') || undefined}>
+      <span className={cx('cui-obs-table__val', c.full && 'cui-touch-inline')} tabIndex={c.full ? 0 : undefined} title={[c.full ? `Recorded value ${c.full}` : '', c.context ?? ''].filter(Boolean).join('. ') || undefined}>
         <span className="cui-obs-table__num">{aligned[key].get(r.t)}</span>
         {c.full ? <span className="cui-visually-hidden">{` (rounded; recorded ${c.full})`}</span> : null}
         <span className={cx('cui-obs-table__src', c.source === 'manual' && 'cui-obs-table__src--manual')}>

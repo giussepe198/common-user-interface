@@ -135,7 +135,7 @@ export function AnnotatedGraphicCanvas({
   undoDepth = 20,
   textPlaceholder = 'Enter text here...',
   onRemoveModule,
-  label,
+  label: _label,
   createId = defaultCreateId,
   className,
 }: AnnotatedGraphicCanvasProps) {
@@ -509,6 +509,8 @@ export function AnnotatedGraphicCanvas({
         </div>
       ) : null}
       <h3 className="cui-graphic-canvas__title" id={`${baseId}-title`}>{graphic.title}</h3>
+      {/* The surface keeps its pixel geometry; on a narrow screen it scrolls sideways inside this frame. */}
+      <div className="cui-graphic-canvas__frame" tabIndex={0} role="region" aria-labelledby={`${baseId}-title`}>
       <div ref={surfaceRef} className="cui-graphic-canvas__surface" style={{ width, height }}>
         <svg
           ref={svgRef}
@@ -626,6 +628,7 @@ export function AnnotatedGraphicCanvas({
             </div>
           );
         })}
+      </div>
       </div>
       {lookAhead ? (
         <div className="cui-graphic-canvas__look-ahead-anchor" aria-hidden="true">

@@ -1,29 +1,29 @@
-.cui-address-input { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; grid-template-columns: max-content auto; gap: var(--space-2) var(--space-3); align-items: start; justify-content: start; }
-.cui-address-input__legend { padding: 0; margin-bottom: var(--space-2); font-size: 15px; line-height: 20px; font-weight: 600; color: var(--ink); }
+.cui-address-input { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; grid-template-columns: max-content minmax(0, auto); gap: var(--space-2) var(--space-3); align-items: start; justify-content: start; }
+.cui-address-input__legend { padding: 0; margin-bottom: var(--space-2); font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; color: var(--ink); }
 .cui-address-input__row { display: contents; }
 /* Labels immediately left of the boxes, right-aligned to each other (ADR-0019, ADR-0037, ADR-0054). */
-.cui-address-input__label { grid-column: 1; padding-top: 6px; text-align: right; font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.cui-address-input__label { grid-column: 1; padding-top: 6px; text-align: right; font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; color: var(--ink); white-space: nowrap; }
 .cui-address-input__control { grid-column: 2; display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap; }
-.cui-address-input__box { box-sizing: content-box; max-width: calc(100vw - 200px); font: inherit; font-size: 14px; line-height: 20px; padding: 5px 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-address-input__box { box-sizing: content-box; max-width: calc(100vw - 200px); font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); padding: 5px var(--space-2); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
 .cui-address-input__box::placeholder { color: var(--ink-subtle); font-style: italic; opacity: 1; }
 .cui-address-input__box:disabled { color: var(--ink-disabled); background: var(--surface-muted); border-color: var(--border); }
 .cui-address-input__box--postcode { width: 8ch; }
 .cui-address-input__outside { grid-column: 2; display: flex; align-items: center; gap: var(--space-2); }
 .cui-address-input__outside input { margin: 0; width: 16px; height: 16px; accent-color: var(--accent); }
 .cui-address-input__finder { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; row-gap: var(--space-2); padding: var(--space-3) 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.cui-address-input__finder-title { grid-column: 2; font-size: 12px; line-height: 16px; color: var(--ink-muted); }
-.cui-address-input__status { grid-column: 2; font-size: 12px; line-height: 16px; color: var(--ink-muted); min-height: 0; }
+.cui-address-input__finder-title { grid-column: 2; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-address-input__status { grid-column: 2; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); min-height: 0; }
 .cui-address-input__status:empty { display: none; }
-.cui-address-input__error { grid-column: 2; display: flex; gap: var(--space-1); align-items: flex-start; font-size: 12px; line-height: 16px; font-weight: 600; color: var(--warning); }
+.cui-address-input__error { grid-column: 2; display: flex; gap: var(--space-1); align-items: flex-start; font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--warning); }
 .cui-address-input__error .cui-icon { flex: none; }
 .cui-address-input__results { grid-column: 2; list-style: none; margin: 0; padding: var(--space-1) 0; max-height: 240px; overflow-y: auto; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
-.cui-address-input__result { display: block; width: 100%; text-align: left; font: inherit; font-size: 14px; line-height: 20px; color: var(--ink); background: none; border: 0; padding: var(--space-1) var(--space-3); cursor: pointer; }
+.cui-address-input__result { display: block; width: 100%; text-align: left; font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); background: none; border: 0; padding: var(--space-1) var(--space-3); cursor: pointer; }
 .cui-address-input__result:hover { background: var(--hover); }
 .cui-address-input__result:focus-visible { outline-offset: -2px; }
-.cui-address-input__select { font: inherit; font-size: 14px; line-height: 20px; height: 32px; padding: 0 4px 0 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-address-input__select { font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); height: var(--control-height); padding: 0 var(--space-1) 0 var(--space-2); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
 .cui-address-input__select:disabled { color: var(--ink-disabled); background: var(--surface-muted); border-color: var(--border); }
-.cui-address-input__hint { flex-basis: 100%; font-size: 12px; line-height: 16px; color: var(--ink-muted); }
-.cui-address-input__message { flex-basis: 100%; display: flex; gap: var(--space-1); align-items: flex-start; font-size: 12px; line-height: 16px; font-weight: 600; max-width: 48ch; }
+.cui-address-input__hint { flex-basis: 100%; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-address-input__message { flex-basis: 100%; display: flex; gap: var(--space-1); align-items: flex-start; font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; max-width: 48ch; }
 .cui-address-input__message--error { color: var(--danger); }
 .cui-address-input__message--warning { color: var(--warning); }
 .cui-address-input__message .cui-icon { flex: none; }

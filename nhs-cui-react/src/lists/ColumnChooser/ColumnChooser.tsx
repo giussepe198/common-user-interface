@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Icon, cx, useControllableState, useId } from '../../core';
+import { Icon, cx, useControllableState, useId } from '../../core';
+import { SortableList } from '../../interaction';
 
 /** A column the user may show, hide or reorder. */
 export interface ColumnChooserColumn {
@@ -43,21 +44,8 @@ export function ColumnChooser({ columns, value, defaultValue, onChange, presets,
   const visible = normalise(raw);
   const set = (ids: string[]) => setRaw(normalise(ids));
   const [announce, setAnnounce] = React.useState('');
-  const movable = visible.filter(x => !lockedIds.includes(x));
   const hidden = columns.filter(c => !visible.includes(c.id));
   const byId = (x: string) => columns.find(c => c.id === x) as ColumnChooserColumn;
-  const btnRefs = React.useRef(new Map<string, HTMLButtonElement | null>());
-
-  const move = (colId: string, dir: -1 | 1) => {
-    const i = movable.indexOf(colId);
-    const j = i + dir;
-    if (j < 0 || j >= movable.length) return;
-    const next = movable.slice();
-    [next[i], next[j]] = [next[j], next[i]];
-    set(next);
-    setAnnounce(`${byId(colId).title} moved to position ${lockedIds.length + j + 1}`);
-    requestAnimationFrame(() => btnRefs.current.get(`${colId}:${dir}`)?.focus());
-  };
   const toggle = (colId: string, on: boolean) => {
     set(on ? [...visible, colId] : visible.filter(x => x !== colId));
     setAnnounce(`${byId(colId).title} ${on ? 'shown' : 'hidden'}`);
@@ -67,44 +55,18 @@ export function ColumnChooser({ columns, value, defaultValue, onChange, presets,
     return ids.length === visible.length && ids.every((x, i) => x === visible[i]);
   });
 
-  const row = (c: ColumnChooserColumn, shown: boolean, pos?: number) => {
-    const locked = !!c.locked;
+  const check = (c: ColumnChooserColumn, shown: boolean) => {
     const cid = `${id}-${c.id}`;
     return (
-      <li key={c.id} className={cx('cui-column-chooser__item', !shown && 'cui-column-chooser__item--hidden')}>
-        <input id={cid} type="checkbox" checked={shown} disabled={locked} onChange={e => toggle(c.id, e.target.checked)} />
+      <span className="cui-column-chooser__check" data-touch-target>
+        <input id={cid} type="checkbox" checked={shown} disabled={!!c.locked} onChange={e => toggle(c.id, e.target.checked)} />
         <label htmlFor={cid} className="cui-column-chooser__label">{c.title}</label>
-        {locked ? (
+        {c.locked ? (
           <span className="cui-column-chooser__locked">
             <Icon name="lock" /> Always shown
           </span>
-        ) : shown && pos !== undefined ? (
-          <span className="cui-column-chooser__moves">
-            <Button
-              ref={el => {
-                btnRefs.current.set(`${c.id}:-1`, el);
-              }}
-              size="sm"
-              variant="quiet"
-              iconOnly
-              icon="arrow-up"
-              disabled={pos === 0}
-              onClick={() => move(c.id, -1)}
-            >{`Move ${c.title} left`}</Button>
-            <Button
-              ref={el => {
-                btnRefs.current.set(`${c.id}:1`, el);
-              }}
-              size="sm"
-              variant="quiet"
-              iconOnly
-              icon="arrow-down"
-              disabled={pos === movable.length - 1}
-              onClick={() => move(c.id, 1)}
-            >{`Move ${c.title} right`}</Button>
-          </span>
         ) : null}
-      </li>
+      </span>
     );
   };
 
@@ -135,15 +97,28 @@ export function ColumnChooser({ columns, value, defaultValue, onChange, presets,
         ) : null}
       </div>
       <p className="cui-prompt cui-column-chooser__hint">Shown columns appear in this order, left to right.</p>
-      <ul className="cui-column-chooser__list" aria-label="Shown columns">
-        {lockedIds.map(x => row(byId(x), true))}
-        {movable.map((x, i) => row(byId(x), true, i))}
-      </ul>
+      {/* Shown columns in order: drag the handle, use the keyboard on it, or the move buttons (G13). Locked key
+          columns hold the first places (PAL-0720): they have no handle and nothing moves above them. */}
+      <SortableList
+        className="cui-column-chooser__list cui-column-chooser__list--shown"
+        label="Shown columns"
+        items={visible.map(byId)}
+        getKey={c => c.id}
+        getLabel={c => c.title}
+        canMove={c => !c.locked}
+        renderItem={c => check(c, true)}
+        moveLabels={{ earlier: l => `Move ${l} left`, later: l => `Move ${l} right` }}
+        onReorder={keys => set(keys)}
+      />
       {hidden.length ? (
         <>
           <div className="cui-column-chooser__sub">Hidden</div>
           <ul className="cui-column-chooser__list" aria-label="Hidden columns">
-            {hidden.map(c => row(c, false))}
+            {hidden.map(c => (
+              <li key={c.id} className="cui-column-chooser__item cui-column-chooser__item--hidden" data-touch-target>
+                {check(c, false)}
+              </li>
+            ))}
           </ul>
         </>
       ) : null}

@@ -43,3 +43,7 @@ Apply the result with `progressiveSort(rows, sort, attributes)`. `PatientList` a
 
 - Each attribute select is labelled by its line label; each order choice is a radio group named "Order for Consultant".
 - Esc cancels; focus is kept inside the modal dialog. After Add or Remove focus moves to the affected line.
+
+## Narrow screens [suggested]
+
+Below 480px of dialog width the attribute select takes the whole line and the order choices wrap below it.

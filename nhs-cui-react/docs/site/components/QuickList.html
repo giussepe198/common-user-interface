@@ -31,7 +31,7 @@ const lists = [
 ];
 const block = (title, el) => h('div', { style: { marginBottom: 20 } }, h('div', { className: 'cui-label', style: { marginBottom: 6 } }, title), el);
 ReactDOM.createRoot(document.getElementById('root')).render(
-  h('div', { style: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'start' } },
+  h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 24, alignItems: 'start' } },
     block('GB: two lists, change notice beside the list (shortcuts off until closed)', h(QuickList, { lists: lists, selectedId: 'amox', changedOn: '2026-10-20', onSelect: () => {} })),
     h('div', null,
       block('AU: mixed-case lettering, brand in Title Case italic', h(ClinicalLocaleProvider, { region: 'AU' }, h(QuickList, { lists: lists.slice(0, 1), onSelect: () => {} }))),

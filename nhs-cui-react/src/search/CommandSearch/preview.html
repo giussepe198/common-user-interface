@@ -1,0 +1,25 @@
+<!-- @dsCard group="Search" width=1200 height=480 subtitle="Global search panel: screens and people, keyboard first" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { CommandSearch } = window.ClinicalCUI;
+const screens = [{ id: 'caseload', label: 'Caseload' }, { id: 'work', label: 'My work' }, { id: 'search', label: 'Find a person' }];
+const people = [
+  { id: 'p1', label: 'SMITH, John', description: 'Born 12-Mar-1980 (46y), Record number URN-000123', warning: 'Similar name: check the date of birth and record number' },
+  { id: 'p2', label: 'SMYTHE, Jon', description: 'Born 01-Jul-1975 (51y), Record number URN-000456', warning: 'Similar name: check the date of birth and record number' },
+];
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { position: 'relative', height: 460, transform: 'translateZ(0)' } },
+    h(CommandSearch, {
+      initialQuery: 'smi',
+      sources: [
+        { id: 'screens', label: 'Screens', search: q => screens.filter(s => s.label.toLowerCase().includes(q.toLowerCase())) },
+        { id: 'people', label: 'People', minChars: 2, search: () => people },
+      ],
+      onSelect: () => {},
+      onClose: () => {},
+      getTop: () => 0,
+    })
+  )
+);
+</script>

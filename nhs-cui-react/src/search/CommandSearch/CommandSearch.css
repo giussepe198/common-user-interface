@@ -1,0 +1,32 @@
+/* CommandSearch: a non-modal panel below the top bar and the patient banner (never over them). */
+.cui-command-search {
+  position: fixed; z-index: 60; top: var(--cui-command-search-top, 0px); right: var(--space-4);
+  width: min(40rem, calc(100vw - 2 * var(--space-4))); max-height: calc(100dvh - var(--cui-command-search-top, 0px) - var(--space-4));
+  display: flex; flex-direction: column; background: var(--surface); color: var(--ink);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover);
+  font-size: var(--font-size-body); line-height: var(--line-height-body);
+}
+.cui-command-search__head { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2); border-bottom: 1px solid var(--border); }
+.cui-command-search__box { flex: 1 1 auto; min-width: 0; }
+.cui-command-search__body { overflow-y: auto; overscroll-behavior: contain; min-height: 0; }
+.cui-command-search__list { padding: var(--space-1) 0; }
+.cui-command-search__group + .cui-command-search__group { border-top: 1px solid var(--border); }
+.cui-command-search__heading { padding: var(--space-2) var(--space-3) var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--ink-muted); }
+.cui-command-search__status { padding: var(--space-1) var(--space-3) var(--space-2); color: var(--ink-muted); }
+.cui-command-search__status--error { display: flex; gap: var(--space-1); align-items: center; color: var(--danger); }
+.cui-command-search__option { display: flex; flex-direction: column; gap: 2px; min-height: var(--control-height); justify-content: center; padding: var(--space-1) var(--space-3); cursor: pointer; }
+.cui-command-search__option--active { background: var(--accent-surface); box-shadow: inset 3px 0 0 var(--accent); }
+.cui-command-search__option:hover { background: var(--hover); }
+.cui-command-search__label { overflow-wrap: anywhere; }
+.cui-command-search__description { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-command-search__note { display: flex; align-items: center; gap: var(--space-1); }
+.cui-command-search__warning { display: flex; align-items: center; gap: var(--space-1); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--warning); font-weight: 600; }
+.cui-command-search__keys { margin: 0; padding: var(--space-2) var(--space-3); border-top: 1px solid var(--border); font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+@media (pointer: coarse) {
+  .cui-command-search__option { min-height: var(--target-coarse); }
+  .cui-command-search__keys { display: none; }
+}
+/* Phones: the whole screen below the top bar and the banner. */
+@media (max-width: 599px) {
+  .cui-command-search { left: 0; right: 0; bottom: 0; width: auto; max-height: none; border-radius: 0; border-left: 0; border-right: 0; }
+}

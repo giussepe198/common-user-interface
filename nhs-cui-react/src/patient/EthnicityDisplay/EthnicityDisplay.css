@@ -1,5 +1,5 @@
 .cui-ethnicity-display__list { display: inline; }
 .cui-ethnicity-display__item { white-space: nowrap; }
-.cui-ethnicity-display__level { font-size: 12px; font-weight: 400; color: var(--ink-muted); }
-.cui-ethnicity-display__notice { display: inline-flex; align-items: center; gap: var(--space-1); margin-left: var(--space-2); font-size: 12px; line-height: 16px; font-weight: 600; color: var(--warning); }
+.cui-ethnicity-display__level { font-size: var(--font-size-label); font-weight: 400; color: var(--ink-muted); }
+.cui-ethnicity-display__notice { display: inline-flex; align-items: center; gap: var(--space-1); margin-left: var(--space-2); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--warning); }
 .cui-ethnicity-display__notice .cui-icon { flex: none; }

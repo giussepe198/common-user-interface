@@ -4,19 +4,21 @@ import type { ClinicalRegion } from '../../core';
 import { formatShortDate, formatTime, toDate } from '../../core/format';
 import { AdministrationEventIcon } from '../AdministrationEventIcon/AdministrationEventIcon';
 import { NilByMouthWarningSymbol } from '../NilByMouthBanner/NilByMouthBanner';
-import {
-  ADMIN_STATUS_LABELS,
+import type {
   AdminEvent,
   AdminEventState,
   AdminMedication,
-  AdminStatus,
+  AdminStatus} from '../utils/adminEvents';
+import {
+  ADMIN_STATUS_LABELS,
   adminDeriveGivenStatus,
   adminEventStatus,
   adminFormatStateLabel,
   adminValidateAdministrationTime,
 } from '../utils/adminEvents';
 import { adminAddDays, adminParseClock, adminStartOfDay } from '../utils/adminChart';
-import { ADMIN_CHART_WORDING, AdminReasonCode, adminFindReasonCode, adminReasonCodes } from '../utils/adminRegion';
+import type { AdminReasonCode} from '../utils/adminRegion';
+import { ADMIN_CHART_WORDING, adminFindReasonCode, adminReasonCodes } from '../utils/adminRegion';
 
 /** What the form submits. */
 export interface AdministrationRecordingPayload {
@@ -336,11 +338,11 @@ export function AdministrationRecordingForm({
         <div className="cui-admin-form__field" role="radiogroup" aria-labelledby={`${base}-outcome-label`}>
           <span className="cui-admin-form__label" id={`${base}-outcome-label`}>Outcome</span>
           <div className="cui-admin-form__radios">
-            <label className="cui-admin-form__radio">
+            <label className="cui-admin-form__radio" data-touch-target>
               <input ref={firstFieldRef} id={`${base}-outcome`} type="radio" name={`${base}-outcome`} checked={outcome === 'given'} onChange={() => setOutcome('given')} />
               Given
             </label>
-            <label className="cui-admin-form__radio">
+            <label className="cui-admin-form__radio" data-touch-target>
               <input type="radio" name={`${base}-outcome`} checked={outcome === 'notGiven'} onChange={() => setOutcome('notGiven')} />
               {wording.notGivenOutcome}
             </label>
@@ -414,7 +416,7 @@ export function AdministrationRecordingForm({
           <div className="cui-admin-form__notify" role="note">
             <Icon name="bell" size={16} />
             <span>Notify the prescriber.</span>
-            <label className="cui-admin-form__check">
+            <label className="cui-admin-form__check" data-touch-target>
               <input type="checkbox" checked={notified} onChange={e => setNotified(e.target.checked)} />
               Prescriber notified
             </label>
@@ -466,7 +468,7 @@ export function AdministrationRecordingForm({
               autoComplete="off"
             />
           </div>
-          <label className="cui-admin-form__check">
+          <label className="cui-admin-form__check" data-touch-target>
             <input type="checkbox" checked={approx} onChange={e => setApprox(e.target.checked)} />
             Time is approximate
           </label>
@@ -526,7 +528,7 @@ export function AdministrationRecordingForm({
               </div>
             ) : null}
             {outcome === 'given' ? (
-              <label className="cui-admin-form__check">
+              <label className="cui-admin-form__check" data-touch-target>
                 <input type="checkbox" checked={self} onChange={e => setSelf(e.target.checked)} />
                 Self-administered by the patient
               </label>

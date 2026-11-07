@@ -1,9 +1,9 @@
 .cui-noting-modal { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: flex-start; justify-content: center; padding: 48px var(--space-4) var(--space-4); overflow-y: auto; }
 .cui-noting-modal__backdrop { position: fixed; inset: 0; background: var(--ink); opacity: 0.35; }
-.cui-noting-modal__dialog { position: relative; width: 560px; max-width: 100%; background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); box-shadow: var(--shadow-dialog); padding: var(--space-4); font-size: 14px; line-height: 20px; display: flex; flex-direction: column; gap: var(--space-3); }
+.cui-noting-modal__dialog { position: relative; width: 560px; max-width: 100%; background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); box-shadow: var(--shadow-dialog); padding: var(--space-4); font-size: var(--font-size-body); line-height: var(--line-height-body); display: flex; flex-direction: column; gap: var(--space-3); }
 .cui-noting-modal__dialog:focus { outline: none; }
-.cui-noting-modal__title { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; }
+.cui-noting-modal__title { margin: 0; font-size: var(--font-size-heading); line-height: var(--line-height-heading); font-weight: 600; }
 .cui-noting-modal__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-2); }
-.cui-noting-popover { position: absolute; z-index: 30; background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); padding: var(--space-3); font-size: 14px; line-height: 20px; display: flex; flex-direction: column; gap: var(--space-2); }
-.cui-noting-popover__title { margin: 0; font-size: 15px; line-height: 20px; font-weight: 600; }
+.cui-noting-popover { position: absolute; z-index: 30; background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); padding: var(--space-3); font-size: var(--font-size-body); line-height: var(--line-height-body); display: flex; flex-direction: column; gap: var(--space-2); }
+.cui-noting-popover__title { margin: 0; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
 .cui-noting-modal--inline { position: static; inset: auto; z-index: auto; padding: 0; overflow: visible; display: block; }

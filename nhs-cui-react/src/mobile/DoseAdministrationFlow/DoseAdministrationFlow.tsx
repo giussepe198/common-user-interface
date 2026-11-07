@@ -442,7 +442,7 @@ export function DoseAdministrationFlow(props: DoseAdministrationFlowProps) {
                     {w}
                   </span>
                 ))}
-                <label className="cui-dose-flow__ack">
+                <label className="cui-dose-flow__ack" data-touch-target>
                   <input type="checkbox" checked={ack} onChange={e => setAck(e.target.checked)} disabled={locked} />
                   <span>I have checked {warnings.length === 1 ? 'this warning' : 'these warnings'}</span>
                 </label>

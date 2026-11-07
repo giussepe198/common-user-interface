@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { cx, useId, Icon, VisuallyHidden } from '../../core';
-import { TruncationResult, truncateEnd, truncateMiddle, truncationAtoms } from '../utils/truncation';
+import type { TruncationResult} from '../utils/truncation';
+import { truncateEnd, truncateMiddle, truncationAtoms } from '../utils/truncation';
 
 export interface TruncatedTextProps {
   /** The full text, e.g. a SNOMED CT preferred term. */

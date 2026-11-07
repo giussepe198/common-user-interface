@@ -152,7 +152,7 @@ export function EthnicityInput({
       {purpose ? <p className="cui-patient-question__purpose">{purpose}</p> : null}
       <div className="cui-patient-question__options">
         {NZ_ETHNICITY_QUESTION.options.map((o) => (
-          <div key={o.code} className="cui-patient-question__option">
+          <div key={o.code} className="cui-patient-question__option" data-touch-target>
             <input
               type="checkbox"
               id={`${id}-${o.code}`}
@@ -162,7 +162,7 @@ export function EthnicityInput({
             <label htmlFor={`${id}-${o.code}`}>{o.label}</label>
           </div>
         ))}
-        <div className="cui-patient-question__option">
+        <div className="cui-patient-question__option" data-touch-target>
           <input
             type="checkbox"
             id={`${otherId}-check`}
@@ -263,7 +263,7 @@ export function EthnicityInput({
             <span>No ethnic group has been marked. Ask again, or record one of these responses.</span>
           </p>
           {NZ_ETHNICITY_NONE_ENTERED_OPTIONS.map((o) => (
-            <div key={o.code} className="cui-patient-question__option">
+            <div key={o.code} className="cui-patient-question__option" data-touch-target>
               <input
                 type="checkbox"
                 id={`${id}-${o.code}`}

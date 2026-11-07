@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steps · Clinical CUI</title>
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/clinical-cui.css">
+<style>body{margin:0;background:var(--surface-sunken);color:var(--ink);font-family:var(--font-sans)}</style>
+<script src="../assets/react.production.min.js"></script>
+<script src="../assets/react-dom.production.min.js"></script>
+<script src="../assets/clinical-cui.js"></script>
+</head>
+<body>
+<div class="cui-root" style="padding:16px 24px;max-width:948px">
+<p style="margin:0 0 4px;font-size:12px"><a href="../index.html" style="color:var(--accent)">Clinical CUI</a> · Navigation</p>
+<h1 style="margin:0 0 4px;font-size:20px">Steps</h1>
+<p style="margin:0 0 16px;font-size:14px;color:var(--ink-muted)">Steps: done, current, not started and needs attention; stacks when narrow · Guidelines: <code>src/shell/Steps/README.md</code></p>
+</div>
+<div style="padding:0 24px 24px">
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+const items = [{ id: 'who', label: 'Choose person', description: 'CHEN, Wei' }, { id: 'details', label: 'Leave details' }, { id: 'check', label: 'Check and save' }];
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  label('Second step current, first can be revisited'), h(C.Steps, { label: 'Steps to record leave', items, current: 1, onStepSelect: () => undefined }),
+  label('Error on a step'), h(C.Steps, { label: 'Steps', items: [items[0], Object.assign({}, items[1], { error: true }), items[2]], current: 2 }),
+  label('Narrow (320 px)'), h('div', { style: { maxWidth: 320 } }, h(C.Steps, { label: 'Steps', items, current: 1 }))
+));
+</script>
+
+</div>
+</body>
+</html>

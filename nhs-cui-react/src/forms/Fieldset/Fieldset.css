@@ -1,0 +1,8 @@
+.cui-fieldset { margin: 0 0 var(--space-4); padding: 0; border: 0; min-width: 0; }
+.cui-fieldset__legend {
+  padding: 0; margin: 0 0 var(--space-2); color: var(--ink);
+  font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: var(--font-weight-subheading);
+}
+.cui-fieldset__description { margin: 0 0 var(--space-3); max-width: 60ch; color: var(--ink-muted); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-fieldset__body { display: flex; flex-direction: column; min-width: 0; }
+.cui-fieldset + .cui-fieldset { padding-top: var(--space-3); border-top: 1px solid var(--border); }

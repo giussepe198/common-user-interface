@@ -2,7 +2,8 @@
  * Decision support: alert ordering, indicator state, service list helpers. Pure, no React.
  * Source: CUI Design Guide Entry - Decision Support and Release 4 Decision Support Summary.
  */
-import { DateLike, formatShortDate, formatTime, toDate } from '../../core/format';
+import type { DateLike} from '../../core/format';
+import { formatShortDate, formatTime, toDate } from '../../core/format';
 
 /** Exactly two alert levels (Key principles 1.3). */
 export type DecisionSupportAlertStatus = 'High Priority' | 'Priority';

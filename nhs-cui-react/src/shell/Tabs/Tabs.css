@@ -1,0 +1,26 @@
+.cui-tabs { container: cui-tabs / inline-size; min-width: 0; font-family: var(--font-sans); }
+.cui-tabs__bar { position: relative; display: flex; align-items: flex-end; gap: var(--space-1); min-width: 0; border-bottom: 1px solid var(--border); }
+.cui-tabs__list { display: flex; flex: 0 1 auto; min-width: 0; overflow: hidden; }
+.cui-tabs__tab { position: relative; flex: none; display: inline-flex; align-items: center; gap: var(--space-1); min-height: var(--control-height); padding: 0 var(--space-3); margin-bottom: -1px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--ink-muted); font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); white-space: nowrap; cursor: pointer; }
+.cui-tabs__tab:hover:not(:disabled) { background: var(--hover); color: var(--ink); }
+.cui-tabs__tab:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.cui-tabs__tab:disabled { color: var(--ink-disabled); cursor: not-allowed; }
+.cui-tabs__tab--selected { color: var(--accent); border-bottom-color: var(--accent); font-weight: var(--font-weight-body-strong); }
+.cui-tabs__count { display: inline-block; min-width: 18px; padding: 0 5px; border-radius: 9px; background: var(--surface-muted); color: var(--ink); font-size: var(--font-size-label); line-height: 16px; font-weight: 600; text-align: center; font-variant-numeric: tabular-nums; }
+.cui-tabs__more { flex: none; margin-bottom: 2px; }
+.cui-tabs__measure { position: absolute; left: 0; top: 0; display: flex; visibility: hidden; pointer-events: none; height: 0; overflow: hidden; white-space: nowrap; }
+.cui-tabs__measure .cui-tabs__tab { font-weight: var(--font-weight-body-strong); }
+.cui-tabs__panel { min-width: 0; }
+.cui-tabs__panel:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.cui-tabs__panel--compact { padding: var(--space-3) 0; }
+@media (pointer: coarse) { .cui-tabs__tab { min-height: var(--target-coarse); } }
+.cui-tabs__measure-icon { display: inline-block; width: 18px; }
+.cui-tabs__tab--more-measure { padding: 0 var(--space-3) 0 var(--space-4); }
+.cui-tabs--links .cui-tabs__list { margin: 0; padding: 0; list-style: none; }
+.cui-tabs--links .cui-tabs__item { display: flex; }
+.cui-tabs--links a.cui-tabs__tab { text-decoration: none; }
+.cui-tabs--links a.cui-tabs__tab:visited { color: var(--ink-muted); }
+.cui-tabs--links a.cui-tabs__tab--selected, .cui-tabs--links a.cui-tabs__tab--selected:visited { color: var(--accent); }
+.cui-tabs__tab--disabled { color: var(--ink-disabled); cursor: not-allowed; }
+/* One tab left beside "More" on a very narrow screen: its words wrap rather than run past the edge. */
+.cui-tabs__list > .cui-tabs__tab:only-child, .cui-tabs__list > .cui-tabs__item:only-child, .cui-tabs__list > .cui-tabs__item:only-child > .cui-tabs__tab { flex: 0 1 auto; min-width: 0; white-space: normal; overflow-wrap: anywhere; text-align: start; }

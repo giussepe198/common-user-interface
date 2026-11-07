@@ -1,0 +1,32 @@
+/* Consent to share matrix (consent hue). Words and icon in every cell; colour supports. */
+.cui-consent-share { container: cui-consent-share / inline-size; color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body); max-width: 100%; }
+.cui-consent-share__table { width: 100%; border-collapse: collapse; }
+.cui-consent-share__caption { text-align: start; padding-bottom: var(--space-1); font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
+.cui-consent-share__table th, .cui-consent-share__table td { padding: 2px var(--space-1); border-bottom: 1px solid var(--border); text-align: start; vertical-align: top; }
+.cui-consent-share__table thead th { background: var(--surface-sunken); font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--ink-muted); }
+.cui-consent-share__who { font-weight: 400; min-width: 7rem; }
+.cui-consent-share__name { display: block; font-weight: 600; overflow-wrap: anywhere; }
+.cui-consent-share__kind { display: block; font-size: var(--font-size-detail); line-height: var(--line-height-detail); color: var(--ink-muted); }
+.cui-consent-share__state {
+  display: inline-flex; align-items: center; gap: var(--space-1); padding: 0 var(--space-1);
+  border: 1px solid var(--consent); border-radius: var(--radius-md); background: var(--consent-surface); color: var(--consent);
+  font-size: var(--font-size-label); line-height: var(--line-height-body); font-weight: 600;
+}
+.cui-consent-share__state--restricted, .cui-consent-share__state--withdrawn { border-inline-start-width: var(--space-1); }
+.cui-consent-share__state--not-recorded { background: var(--surface); color: var(--warning); border: 1px dashed var(--warning); }
+.cui-consent-share__reason { min-width: 9rem; }
+.cui-consent-share__reason > span { display: block; }
+.cui-consent-share__reason-text { overflow-wrap: anywhere; }
+.cui-consent-share__grantor, .cui-consent-share__review { font-size: var(--font-size-detail); line-height: var(--line-height-detail); color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+.cui-consent-share__reason > .cui-consent-share__review--overdue { display: inline-flex; align-items: center; gap: var(--space-1); color: var(--warning); font-weight: 600; }
+.cui-consent-share__reason > .cui-consent-share__ended { display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--font-size-detail); line-height: var(--line-height-detail); color: var(--ink-muted); font-weight: 600; }
+.cui-consent-share__reason > .cui-consent-share__actions { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-top: 2px; }
+.cui-consent-share__empty { color: var(--ink-muted); font-style: italic; }
+@container cui-consent-share (max-width: 800px) {
+  .cui-consent-share__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .cui-consent-share__table tr { display: block; padding: var(--space-1) 0; border-bottom: 1px solid var(--border); }
+  .cui-consent-share__table th, .cui-consent-share__table td { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); border: 0; padding: 1px var(--space-1); }
+  .cui-consent-share__table td[data-label]::before { content: attr(data-label); flex: 0 0 8rem; font-size: var(--font-size-label); line-height: var(--line-height-body); color: var(--ink-muted); }
+  .cui-consent-share__table th.cui-consent-share__who { display: block; }
+}
+@media (forced-colors: active) { .cui-consent-share__state { border-color: CanvasText; } }

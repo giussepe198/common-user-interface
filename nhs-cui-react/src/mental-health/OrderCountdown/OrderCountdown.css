@@ -1,0 +1,32 @@
+/* Order countdown. Absolute first, relative after; never animated. */
+.cui-order-countdown { display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--space-1); max-width: 100%; }
+.cui-order-countdown__line {
+  display: inline-flex; align-items: flex-start; gap: var(--space-1); max-width: 100%;
+  padding: 1px var(--space-2); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--surface-sunken); color: var(--ink);
+  font-size: var(--font-size-body); line-height: var(--line-height-body); overflow-wrap: anywhere;
+}
+.cui-order-countdown__icon { display: inline-flex; flex: none; padding-top: 2px; color: var(--ink-muted); }
+.cui-order-countdown__text { display: inline-flex; flex-wrap: wrap; column-gap: var(--space-1); min-width: 0; }
+.cui-order-countdown__absolute { font-weight: 600; font-variant-numeric: tabular-nums; }
+.cui-order-countdown__relative { font-variant-numeric: tabular-nums; }
+.cui-order-countdown__state { font-weight: 600; }
+.cui-order-countdown__action { font-weight: 600; }
+.cui-order-countdown__action::before { content: ": "; }
+.cui-order-countdown--soon .cui-order-countdown__line { background: var(--warning-surface); border-color: var(--warning); }
+.cui-order-countdown--soon .cui-order-countdown__icon,
+.cui-order-countdown--soon .cui-order-countdown__state { color: var(--warning); }
+.cui-order-countdown--urgent .cui-order-countdown__line { background: var(--warning-surface); border-color: var(--warning); border-inline-start-width: var(--space-1); }
+.cui-order-countdown--urgent .cui-order-countdown__icon,
+.cui-order-countdown--urgent .cui-order-countdown__state { color: var(--warning); }
+.cui-order-countdown--overdue .cui-order-countdown__line { background: var(--danger-surface); border-color: var(--danger); border-inline-start-width: var(--space-1); }
+.cui-order-countdown--overdue .cui-order-countdown__icon,
+.cui-order-countdown--overdue .cui-order-countdown__state { color: var(--danger); }
+.cui-order-countdown__why {
+  display: inline-flex; align-items: center; gap: var(--space-1); padding: 0; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--accent);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.cui-order-countdown__why-text { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink); max-width: 60ch; }
+.cui-order-countdown__why-text[hidden] { display: none; }
+@media (pointer: coarse) { .cui-order-countdown__why { min-height: var(--target-coarse); } }

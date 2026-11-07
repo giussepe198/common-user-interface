@@ -5,8 +5,9 @@
  */
 import type { ClinicalRegion } from '../../core';
 import { formatBrandName } from './names';
-import {
-  ErrorProneMedicineTerm, ERROR_PRONE_MEDICINE_TERMS, MedicineTermField, NZ_EXPANDED_PERMITTED_TERMS, NZ_PERMITTED_MEDICINE_ABBREVIATIONS,
+import type {
+  ErrorProneMedicineTerm, MedicineTermField} from './regions/medicineTerms';
+import { ERROR_PRONE_MEDICINE_TERMS, NZ_EXPANDED_PERMITTED_TERMS, NZ_PERMITTED_MEDICINE_ABBREVIATIONS,
 } from './regions/medicineTerms';
 
 const WORD = 'A-Za-z0-9µμ';

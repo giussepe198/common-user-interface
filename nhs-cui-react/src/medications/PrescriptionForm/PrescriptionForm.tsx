@@ -3,11 +3,13 @@ import { Button, cx, Icon, useClinicalLocale, useControllableState, useId } from
 import type { ClinicalRegion } from '../../core';
 import { MedicationLine } from '../MedicationLine/MedicationLine';
 import { PrescriptionPreview } from '../PrescriptionPreview/PrescriptionPreview';
-import { MedicationLineData } from '../utils/medicationLine';
+import type { MedicationLineData } from '../utils/medicationLine';
+import type { PrescriptionValues} from '../utils/prescription';
 import {
-  canAuthorise as canAuthoriseFn, firstDoseTimeIndex, missingPrescriptionFields, parseAdministrationTimes, PrescriptionValues,
+  canAuthorise as canAuthoriseFn, firstDoseTimeIndex, missingPrescriptionFields, parseAdministrationTimes
 } from '../utils/prescription';
-import { NONE_LEAVE_BLANK, PrescriptionOption, SentenceSelect } from './SentenceSelect';
+import type { PrescriptionOption} from './SentenceSelect';
+import { NONE_LEAVE_BLANK, SentenceSelect } from './SentenceSelect';
 
 export type { PrescriptionOption } from './SentenceSelect';
 

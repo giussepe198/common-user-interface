@@ -1,0 +1,16 @@
+<!-- @dsCard group="Mental health" width=700 height=720 subtitle="Emergency access: reason, justification, time box and declaration" -->
+<div id="root" class="cui-root" style="position: relative; min-height: 700px;"></div>
+<script>
+const h = React.createElement;
+const { BreakGlassDialog } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(BreakGlassDialog, {
+    open: true, onClose: function () {}, onConfirm: function () {},
+    reasons: [{ value: 'crisis', label: 'Crisis presentation' }, { value: 'ed', label: 'Emergency department attendance' }, { value: 'other', label: 'Other urgent care need' }],
+    maximum: '12 hours',
+    person: { name: 'NGUYEN, Thi Lan', identifiers: 'Born 12-Mar-1990 (36y), Sex Female, Record number 004512' },
+    includesRestricted: true,
+    stepUpNote: 'You will confirm it is you with your passkey.'
+  })
+);
+</script>

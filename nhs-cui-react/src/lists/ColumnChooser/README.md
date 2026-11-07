@@ -23,6 +23,7 @@ Beside or inside a settings popover for `PatientList` (feed its `value` to `visi
 - PAL-0720 [M] key identifier columns (patient identification, location) cannot be removed: they are locked, shown first and labelled "Always shown".
 - PAL-0730 [R] role-based default column sets via `presets`; the list shows "Custom" when the user changes a set.
 - PAL-0790 [R] persist the selection between sessions: store what `onChange` gives you.
+- G13 drag and drop [suggested]: shown columns are a `SortableList` (interaction area). Drag a column by its handle (mouse, pen, or a long press on touch), move it with the keyboard on the handle (Space or Enter to pick up, Up and Down, Space or Enter to drop, Escape to cancel) or with the move buttons. Locked columns have no handle and nothing can be moved above them.
 
 ## Do and don't
 
@@ -31,6 +32,6 @@ Beside or inside a settings popover for `PatientList` (feed its `value` to `visi
 
 ## Accessibility
 
-- Real checkboxes with labels. Move buttons have full names ("Move Age left") and keep focus after moving.
-- Changes are announced in a polite live region ("Age moved to position 4").
+- Real checkboxes with labels. Move buttons have full names ("Move Age left") and keep focus after moving; the drag handle is a button named "Move Age", described by the keyboard instructions, 44 px on a coarse pointer.
+- Changes are announced in a polite live region ("Age moved to position 4 of 6.", "Picked up Age, position 4 of 6.", "Cannot drop here: Patient stays where it is").
 - The lock is shown with an icon and the text "Always shown", not colour.

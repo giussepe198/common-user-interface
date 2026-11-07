@@ -196,7 +196,7 @@ function EmergencyAccessForm({ onConfirm, onCancel, disabled }: { onConfirm: (r:
       <fieldset className="cui-mhr__grounds">
         <legend>Which applies? (required)</legend>
         {t.grounds.map((g) => (
-          <div key={g.value} className="cui-mhr__option">
+          <div key={g.value} className="cui-mhr__option" data-touch-target>
             <input type="radio" id={`${id}-${g.value}`} name={`${id}-ground`} checked={ground === g.value} onChange={() => setGround(g.value)} />
             <label htmlFor={`${id}-${g.value}`}>{g.label}</label>
           </div>
@@ -206,7 +206,7 @@ function EmergencyAccessForm({ onConfirm, onCancel, disabled }: { onConfirm: (r:
         {`${t.reasonLabel} (required)`}
       </label>
       <textarea id={`${id}-reason`} className="cui-mhr__reason" rows={3} maxLength={1000} value={reason} onChange={(e) => setReason(e.target.value)} />
-      <div className="cui-mhr__option cui-mhr__option--ack">
+      <div className="cui-mhr__option cui-mhr__option--ack" data-touch-target>
         <input type="checkbox" id={`${id}-ack`} checked={ack} onChange={(e) => setAck(e.target.checked)} />
         <label htmlFor={`${id}-ack`}>{t.acknowledgement}</label>
       </div>

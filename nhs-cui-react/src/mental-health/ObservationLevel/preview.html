@@ -1,0 +1,15 @@
+<!-- @dsCard group="Mental health" height=150 subtitle="Observation level: constant, close, intermittent with interval, general; words from props" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { ObservationLevel } = window.ClinicalCUI;
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: 8, padding: 16, background: 'var(--surface)', alignItems: 'flex-start' } },
+    h(ObservationLevel, { level: 'constant', detail: 'Within arm’s length' }),
+    h(ObservationLevel, { level: 'close' }),
+    h(ObservationLevel, { level: 'intermittent', intervalMinutes: 15 }),
+    h(ObservationLevel, { level: 'general' }),
+    h(ObservationLevel, { level: 'intermittent', intervalMinutes: 30, size: 'compact', labels: { intermittent: 'Level 3 (example host words)' } })
+  )
+);
+</script>

@@ -101,7 +101,7 @@ export function TemplateSuggestionsPanel({
         <p className="cui-template-suggestions__none">Templates related to terms in your note appear here.</p>
       )}
       {freeTextTriggering !== undefined ? (
-        <label className="cui-template-suggestions__toggle">
+        <label className="cui-template-suggestions__toggle" data-touch-target>
           <input type="checkbox" checked={freeTextTriggering} onChange={(e) => onFreeTextTriggeringChange?.(e.target.checked)} />
           Suggest from words in free text
         </label>

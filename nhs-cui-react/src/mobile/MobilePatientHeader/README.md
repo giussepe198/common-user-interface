@@ -34,6 +34,10 @@ Compact patient banner for phones (concepts A1, A3, B2, P3, P4), with full and c
 - NZ: name as recorded with macrons (G11 2.3), NHI unbroken and test or dormant NHIs flagged (G11 1.3, G12 4), "Allergies and adverse reactions" / "No known allergies or adverse reactions" (G11 9.2, wording [UNCERTAIN]).
 - Wording data: `ALLERGY_STATUS_TEXT`, `PATIENT_NAME_RULES` (patient area) and `MOBILE_ALLERGY_SHORT_LABEL`.
 
+## Host extensions [suggested]
+
+The same generic additions as PatientBanner, so a host can show the same items on a phone: `nameContent`, `nameExtension`, `bornDisplay`, `showGender`, `requirePrimaryIdentifier`, `items` (the `PatientBannerItem` shape; they wrap, never truncate) and `allergyLabels` (a "known" override is shown even without items; without it an empty known list is "not recorded", never "none"). `onShowDetails` lets the host show the details itself (for example expanding in place below the header); the expand button then reports `aria-expanded` from `detailsOpen` instead of opening PatientDetailsSheet.
+
 ## Do and don't
 
 - Do supply `similarNames` from your ward census.

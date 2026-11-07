@@ -52,7 +52,7 @@ export interface PatientDetailsSheetProps {
   /** Push a history entry so the back button closes the sheet. Default true. */
   closeOnBrowserBack?: boolean;
   /** Element to focus on open. Default: the first focusable element in the sheet. See FullScreenSheet. */
-  initialFocusRef?: React.RefObject<HTMLElement>;
+  initialFocusRef?: React.RefObject<HTMLElement | null>;
   /**
    * Move focus in when the sheet is already open on first render. Default true (or the SheetContainerProvider
    * setting); later opens always move focus. Set false on documentation pages [suggested].
@@ -292,10 +292,12 @@ export function PatientDetailsSheet(props: PatientDetailsSheetProps) {
                   <strong>{applyTallManLettering(a.name, region)}</strong>
                   {a.reaction ? <span>{a.reaction}</span> : null}
                   {a.newThisAdmission ? <span className="cui-patient-details__new">New this admission</span> : null}
-                  <span className="cui-patient-details__note">
-                    Recorded {formatShortDate(a.lastUpdated)}
-                    {a.recordedBy ? ` by ${a.recordedBy}` : ''}
-                  </span>
+                  {a.lastUpdated || a.recordedBy ? (
+                    <span className="cui-patient-details__note">
+                      Recorded{a.lastUpdated ? ` ${formatShortDate(a.lastUpdated)}` : ''}
+                      {a.recordedBy ? ` by ${a.recordedBy}` : ''}
+                    </span>
+                  ) : null}
                 </li>
               ))}
             </ul>

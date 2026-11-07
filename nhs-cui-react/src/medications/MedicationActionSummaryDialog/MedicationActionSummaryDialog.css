@@ -7,8 +7,8 @@
   background: var(--surface); color: var(--ink); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); box-shadow: var(--shadow-dialog);
 }
 .cui-med-summary--inline { box-shadow: none; border-radius: var(--radius-md); }
-.cui-med-summary__title { margin: 0; font-size: 18px; line-height: 24px; font-weight: 600; }
-.cui-med-summary__desc { margin: 0; font-size: 14px; line-height: 20px; color: var(--ink); }
+.cui-med-summary__title { margin: 0; font-size: var(--font-size-heading); line-height: var(--line-height-heading); font-weight: 600; }
+.cui-med-summary__desc { margin: 0; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); }
 /* Every selected medication in full; the list scrolls, never truncates (MEDi-012) */
 .cui-med-summary__list { list-style: none; margin: 0; padding: 0; overflow-y: auto; min-height: 0; border: 1px solid var(--border); border-radius: var(--radius-md); }
 .cui-med-summary__list:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }

@@ -19,7 +19,7 @@ export function MedicationsMenu({ items, label, onSelect, onClose, returnFocusTo
   label: string;
   onSelect: (id: string) => void;
   onClose: () => void;
-  returnFocusTo?: React.RefObject<HTMLElement>;
+  returnFocusTo?: React.RefObject<HTMLElement | null>;
   radio?: boolean;
   style?: React.CSSProperties;
   className?: string;

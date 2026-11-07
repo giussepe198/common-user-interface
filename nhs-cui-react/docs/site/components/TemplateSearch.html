@@ -39,8 +39,8 @@ function Demo() {
     }, 60);
   }, []);
   return h('div', { style: { display: 'flex', gap: 48, flexWrap: 'wrap', alignItems: 'flex-start' } },
-    h('div', { id: 'a', style: { width: 720 } }, h(TemplateSearch, { templates: T, context: 'Cardiology', onSelect: function () {} })),
-    h('div', { id: 'b' }, h(TemplateSearch, { templates: T, context: 'Cardiology', onSelect: function () {}, label: 'No matches with the filter on' })));
+    h('div', { id: 'a', style: { width: 720, maxWidth: '100%' } }, h(TemplateSearch, { templates: T, context: 'Cardiology', onSelect: function () {} })),
+    h('div', { id: 'b', style: { maxWidth: '100%' } }, h(TemplateSearch, { templates: T, context: 'Cardiology', onSelect: function () {}, label: 'No matches with the filter on' })));
 }
 ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
 </script>

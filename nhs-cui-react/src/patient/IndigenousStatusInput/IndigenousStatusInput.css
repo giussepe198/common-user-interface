@@ -1,38 +1,38 @@
 /* Shared question layout for demographic questions (IndigenousStatusInput, EthnicityInput, MaoriDescentInput, IwiInput). */
 .cui-patient-question { border: 0; margin: 0; padding: 0; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); max-width: 64ch; }
-.cui-patient-question__legend { padding: 0; font-size: 15px; line-height: 20px; font-weight: 600; color: var(--ink); }
-.cui-patient-question__te-reo { margin: calc(-1 * var(--space-1)) 0 0; font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink-muted); }
-.cui-patient-question__hint, .cui-patient-question__purpose { margin: 0; font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-patient-question__legend { padding: 0; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; color: var(--ink); }
+.cui-patient-question__te-reo { margin: calc(-1 * var(--space-1)) 0 0; font-size: var(--font-size-body); line-height: var(--line-height-body); font-weight: 600; color: var(--ink-muted); }
+.cui-patient-question__hint, .cui-patient-question__purpose { margin: 0; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
 .cui-patient-question__options { display: flex; flex-direction: column; gap: var(--space-1); }
-.cui-patient-question__option { display: flex; align-items: center; gap: var(--space-2); min-height: 24px; font-size: 14px; line-height: 20px; color: var(--ink); }
+.cui-patient-question__option { display: flex; align-items: center; gap: var(--space-2); min-height: 24px; font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); }
 .cui-patient-question__option input { margin: 0; width: 16px; height: 16px; flex: none; accent-color: var(--accent); }
 .cui-patient-question__option label { cursor: pointer; }
 .cui-patient-question__option--separate { padding-top: var(--space-2); border-top: 1px solid var(--border); }
-.cui-patient-question__derived { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
-.cui-patient-question__route { display: flex; align-items: center; gap: var(--space-1); margin: 0; font-size: 12px; line-height: 16px; color: var(--ink); }
+.cui-patient-question__derived { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-patient-question__route { display: flex; align-items: center; gap: var(--space-1); margin: 0; font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink); }
 .cui-patient-question__route .cui-icon { flex: none; color: var(--accent); }
-.cui-patient-question__error, .cui-patient-question__warning { display: flex; gap: var(--space-1); align-items: flex-start; font-size: 12px; line-height: 16px; font-weight: 600; }
+.cui-patient-question__error, .cui-patient-question__warning { display: flex; gap: var(--space-1); align-items: flex-start; font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; }
 .cui-patient-question__error { color: var(--danger); }
 .cui-patient-question__warning { color: var(--warning); }
 .cui-patient-question__error .cui-icon, .cui-patient-question__warning .cui-icon { flex: none; }
-.cui-patient-question__text { box-sizing: border-box; width: 32ch; max-width: 100%; font: inherit; font-size: 14px; line-height: 20px; padding: 5px 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-patient-question__text { box-sizing: border-box; width: 32ch; max-width: 100%; font: inherit; font-size: var(--font-size-body); line-height: var(--line-height-body); padding: 5px var(--space-2); color: var(--ink); background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
 .cui-patient-question__text::placeholder { color: var(--ink-subtle); font-style: italic; opacity: 1; }
 .cui-patient-question__text:disabled { color: var(--ink-disabled); background: var(--surface-muted); border-color: var(--border); }
 .cui-patient-question__panel { display: flex; flex-direction: column; gap: var(--space-1); padding: var(--space-2) var(--space-3); background: var(--warning-surface); border: 1px solid var(--border); border-radius: var(--radius-md); }
-.cui-patient-question__panel-title { display: flex; gap: var(--space-1); align-items: flex-start; margin: 0; font-size: 12px; line-height: 16px; font-weight: 600; color: var(--warning); }
+.cui-patient-question__panel-title { display: flex; gap: var(--space-1); align-items: flex-start; margin: 0; font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; color: var(--warning); }
 .cui-patient-question__panel-title .cui-icon { flex: none; }
 .cui-patient-question__chips { display: flex; flex-wrap: wrap; gap: var(--space-1); list-style: none; margin: 0; padding: 0; }
-.cui-patient-question__chip { display: inline-flex; align-items: center; gap: var(--space-1); padding: 1px 2px 1px var(--space-2); font-size: 12px; line-height: 20px; color: var(--ink); background: var(--surface-muted); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
+.cui-patient-question__chip { display: inline-flex; align-items: center; gap: var(--space-1); padding: 1px 2px 1px var(--space-2); font-size: var(--font-size-label); line-height: 20px; color: var(--ink); background: var(--surface-muted); border: 1px solid var(--border-strong); border-radius: var(--radius-md); }
 .cui-patient-question__chip button { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; padding: 0; color: var(--ink-muted); background: none; border: 0; border-radius: var(--radius-sm); cursor: pointer; }
 .cui-patient-question__chip button:hover { color: var(--ink); background: var(--hover); }
 /* As-you-type list (combobox). */
 .cui-patient-question__combo { position: relative; display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap; }
 .cui-patient-question__listbox { position: absolute; left: 0; top: calc(100% + 2px); z-index: 30; min-width: 32ch; max-height: 240px; overflow-y: auto; list-style: none; margin: 0; padding: var(--space-1) 0; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-popover); }
-.cui-patient-question__listbox li { padding: var(--space-1) var(--space-3); font-size: 14px; line-height: 20px; color: var(--ink); cursor: pointer; }
+.cui-patient-question__listbox li { padding: var(--space-1) var(--space-3); font-size: var(--font-size-body); line-height: var(--line-height-body); color: var(--ink); cursor: pointer; }
 .cui-patient-question__listbox li[aria-selected="true"] { background: var(--accent-surface); }
 .cui-patient-question__listbox li:hover { background: var(--hover); }
-.cui-patient-question__listbox .cui-patient-question__meta { font-size: 12px; color: var(--ink-muted); margin-left: var(--space-2); }
-.cui-patient-question__status { font-size: 12px; line-height: 16px; color: var(--ink-muted); }
+.cui-patient-question__listbox .cui-patient-question__meta { font-size: var(--font-size-label); color: var(--ink-muted); margin-left: var(--space-2); }
+.cui-patient-question__status { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
 .cui-patient-question__status:empty { display: none; }
 /* Interviewer version (METeOR 602543 two-step, G12 8). */
-.cui-indigenous-input__q2 { margin-top: var(--space-2); padding: 0 0 0 24px; }
+.cui-indigenous-input__q2 { margin-top: var(--space-2); padding: 0 0 0 var(--space-6); }

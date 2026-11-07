@@ -1,0 +1,24 @@
+<!-- @dsCard group="Mental health" width=1000 height=1500 subtitle="Safety plan: seven sections in the person's words, shared state, numbers, edit mode, empty" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { SafetyPlan, EMPTY_SAFETY_PLAN } = window.ClinicalCUI;
+const at = '2026-10-20T01:00:00Z';
+const e = function (id, text, phone, detail) { return { id: id, text: text, phone: phone, detail: detail, recordedAt: at }; };
+const plan = Object.assign({}, EMPTY_SAFETY_PLAN, {
+  warningSigns: [e('w1', 'Not sleeping for more than two nights'), e('w2', 'Staying in my room and not answering messages')],
+  copingStrategies: [e('c1', 'Walk around the block with music on'), e('c2', 'Cold shower')],
+  distraction: [e('d1', 'The library on Main Street'), e('d2', 'Cousin Mai, coffee')],
+  helpPeople: [e('h1', 'My sister Linh', '0491570159', 'Any time')],
+  professionals: [e('p1', 'Community mental health team', '0255504321', 'Weekdays 09:00 to 17:00'), e('p2', 'Crisis line', '1300975707')],
+  environment: [e('m1', 'Ask my sister to keep my medicines')],
+  reasonsForLiving: [e('r1', 'My dog'), e('r2', 'Finishing my course')]
+});
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h('div', { style: { display: 'flex', flexDirection: 'column', gap: 24, padding: 16, background: 'var(--surface)' } },
+    h(SafetyPlan, { value: plan, region: 'AU', timeZone: 'Australia/Melbourne', updatedAt: at, updatedBy: 'J Lee', reviewDue: '2027-01-20', sharing: { shared: true, sharedAt: '2026-10-20', how: 'Printed copy given' }, onEdit: function () {}, onPrint: function () {} }),
+    h('div', { style: { maxWidth: 380 } }, h(SafetyPlan, { headingLevel: 3, region: 'AU', mode: 'edit', defaultValue: Object.assign({}, EMPTY_SAFETY_PLAN, { helpPeople: plan.helpPeople, warningSigns: plan.warningSigns.slice(0, 1) }), onCancel: function () {}, now: new Date('2026-10-28T03:00:00Z') })),
+    h(SafetyPlan, { headingLevel: 3, value: EMPTY_SAFETY_PLAN, onMarkShared: function () {}, onEdit: function () {} })
+  )
+);
+</script>

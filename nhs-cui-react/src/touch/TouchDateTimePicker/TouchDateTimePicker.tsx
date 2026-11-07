@@ -338,13 +338,13 @@ export function TouchDateTimePicker(props: TouchDateTimePickerProps) {
           {allowApproximate || allowTimeNotKnown ? (
             <div className="cui-touch-dtp__checks">
               {allowApproximate ? (
-                <label className="cui-touch-dtp__check">
+                <label className="cui-touch-dtp__check" data-touch-target>
                   <input type="checkbox" checked={value.approximate} disabled={disabled || timeOff} onChange={e => update({ approximate: e.target.checked })} />
                   Approximate
                 </label>
               ) : null}
               {allowTimeNotKnown ? (
-                <label className="cui-touch-dtp__check">
+                <label className="cui-touch-dtp__check" data-touch-target>
                   <input
                     type="checkbox"
                     checked={timeOff}

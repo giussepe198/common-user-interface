@@ -1,0 +1,23 @@
+<!-- @dsCard group="Mental health" width=1000 height=760 subtitle="Leave tracker: absent and overdue first, filters with counts, escalation in words" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const { LeaveTracker, ClinicalLocaleProvider } = window.ClinicalCUI;
+const now = '2026-10-28T03:00:00Z';
+const p = function (f, g, m) { return { familyName: f, givenName: g, dateOfBirth: '1988-04-20', mrn: m }; };
+const episodes = [
+  { id: '1', person: p('Smith', 'Alex', '009981'), sex: 'Male', bed: 'Bed 2', status: 'absent', absentSince: '2026-10-28T00:30:00Z', leaveType: 'Ground leave' },
+  { id: '2', person: p('Nguyen', 'Thi Lan', '004512'), sex: 'Female', bed: 'Bed 4', status: 'on-leave', leaveType: 'Day leave', startAt: '2026-10-27T23:00:00Z', expectedReturnAt: '2026-10-28T02:30:00Z', authorisedBy: 'Dr A Okafor' },
+  { id: '3', person: p('Brown', 'Sam', '001234'), bed: 'Bed 7', status: 'on-leave', leaveType: 'Escorted leave', startAt: '2026-10-28T01:00:00Z', expectedReturnAt: '2026-10-28T03:30:00Z', dueState: 'due-back' },
+  { id: '4', person: p('Walker', 'Jo', '007700'), sex: 'Non-binary', bed: 'Bed 9', status: 'authorised', leaveType: 'Overnight leave', startAt: '2026-10-28T06:00:00Z', expectedReturnAt: '2026-10-29T06:00:00Z' },
+  { id: '5', person: p('Taylor', 'Kim', '002468'), bed: 'Bed 11', status: 'returned', leaveType: 'Day leave', returnedAt: '2026-10-28T01:40:00Z' }
+];
+const noop = function () {};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  h(ClinicalLocaleProvider, { region: 'AU' },
+    h('div', { style: { padding: 16, background: 'var(--surface)' } },
+      h(LeaveTracker, { episodes: episodes, now: now, context: 'Ward 3', timeZone: 'Australia/Melbourne', onRecordReturn: noop, onRecordAbsent: noop, onExtend: noop, onStart: noop, absentAction: 'Notify police and the nominated support person (example host words).' })
+    )
+  )
+);
+</script>

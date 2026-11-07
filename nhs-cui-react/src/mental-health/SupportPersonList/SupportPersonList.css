@@ -1,0 +1,40 @@
+/* Support people. Dense cards in a responsive grid; legal roles in the legal style. */
+.cui-support-people { container: cui-support-people / inline-size; display: flex; flex-direction: column; gap: var(--space-1); color: var(--ink); font-size: var(--font-size-body); line-height: var(--line-height-body); }
+.cui-support-people__header { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-3); }
+.cui-support-people__title { margin: 0; font-size: var(--font-size-subheading); line-height: var(--line-height-subheading); font-weight: 600; }
+.cui-support-people__hidden { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-support-people__add { margin-inline-start: auto; }
+.cui-support-people__empty { margin: 0; color: var(--ink-muted); font-style: italic; }
+.cui-support-people__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); gap: var(--space-2); }
+.cui-support-people__item { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 0; padding: var(--space-1) var(--space-2); border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); }
+.cui-support-people__item--ended { background: var(--surface-sunken); }
+.cui-support-people__who { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-2); }
+.cui-support-people__name { margin: 0; font-size: var(--font-size-body-strong); line-height: var(--line-height-body-strong); font-weight: 600; overflow-wrap: anywhere; }
+.cui-support-people__open { font: inherit; padding: 0; border: 0; background: none; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; text-align: start; }
+.cui-support-people__relationship { color: var(--ink-muted); }
+.cui-support-people__primary { font-size: var(--font-size-label); line-height: var(--line-height-label); font-weight: 600; padding: 0 var(--space-1); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); }
+.cui-support-people__roles { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.cui-support-people__role { display: inline-flex; align-items: center; gap: var(--space-1); padding: 0 var(--space-1); border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface-sunken); font-size: var(--font-size-label); line-height: var(--line-height-body); font-weight: 600; }
+.cui-support-people__role--legal { border-radius: 0; border-color: var(--legal); border-inline-start-width: var(--space-1); background: var(--legal-surface); color: var(--legal); }
+.cui-support-people__ended { margin: 0; display: inline-flex; align-items: center; gap: var(--space-1); font-weight: 600; color: var(--ink-muted); }
+.cui-support-people__members, .cui-support-people__prefs { margin: 0; font-size: var(--font-size-detail); line-height: var(--line-height-detail); color: var(--ink-muted); overflow-wrap: anywhere; }
+.cui-support-people__contact { display: flex; flex-wrap: wrap; gap: 0 var(--space-3); font-variant-numeric: tabular-nums; }
+.cui-support-people__email { overflow-wrap: anywhere; }
+.cui-support-people__none { color: var(--ink-muted); font-style: italic; }
+.cui-support-people__sharing { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1); margin-top: 2px; }
+.cui-support-people__label { font-size: var(--font-size-label); line-height: var(--line-height-label); color: var(--ink-muted); }
+.cui-support-people__actions { margin-inline-start: auto; display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.cui-support-people__who { width: 100%; }
+.cui-support-people__notice { align-self: stretch; display: flex; align-items: flex-start; gap: var(--space-1); padding: var(--space-1) var(--space-2); border: 1px solid currentColor; border-inline-start-width: var(--space-1); border-radius: var(--radius-sm); }
+.cui-support-people__notice--danger { color: var(--danger); background: var(--danger-surface); }
+.cui-support-people__notice--warning { color: var(--warning); background: var(--warning-surface); }
+.cui-support-people__notice-words { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.cui-support-people__notice-title { font-weight: 600; }
+.cui-support-people__notice-text { color: var(--ink); overflow-wrap: anywhere; }
+.cui-support-people__details { margin: 0; align-self: stretch; display: grid; gap: 2px; }
+.cui-support-people__detail { display: grid; grid-template-columns: minmax(0, 9rem) minmax(0, 1fr); gap: var(--space-2); }
+.cui-support-people__detail-value { margin: 0; overflow-wrap: anywhere; }
+.cui-support-people__content { align-self: stretch; margin-top: var(--space-1); }
+@container cui-support-people (max-width: 480px) { .cui-support-people__detail { grid-template-columns: 1fr; gap: 0; } .cui-support-people__actions { margin-inline-start: 0; } }
+@container cui-support-people (max-width: 480px) { .cui-support-people__add { margin-inline-start: 0; } }
+@media (pointer: coarse) { .cui-support-people__open { min-height: var(--target-coarse); } }

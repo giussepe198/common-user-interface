@@ -1,0 +1,15 @@
+<!-- @dsCard group="Navigation" height=300 subtitle="Steps: done, current, not started and needs attention; stacks when narrow" -->
+<div id="root" class="cui-root"></div>
+<script>
+const h = React.createElement;
+const C = window.ClinicalCUI;
+const label = (t) => h('p', { style: { margin: '14px 0 6px', fontSize: 'var(--font-size-label)', lineHeight: 'var(--line-height-label)', color: 'var(--ink-muted)' } }, t);
+const frame = (w, hgt, child) => h('div', { style: { position: 'relative', maxWidth: w, height: hgt, overflow: 'hidden', transform: 'translateZ(0)', border: '1px solid var(--border)', background: 'var(--surface)' } }, child);
+
+const items = [{ id: 'who', label: 'Choose person', description: 'CHEN, Wei' }, { id: 'details', label: 'Leave details' }, { id: 'check', label: 'Check and save' }];
+ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+  label('Second step current, first can be revisited'), h(C.Steps, { label: 'Steps to record leave', items, current: 1, onStepSelect: () => undefined }),
+  label('Error on a step'), h(C.Steps, { label: 'Steps', items: [items[0], Object.assign({}, items[1], { error: true }), items[2]], current: 2 }),
+  label('Narrow (320 px)'), h('div', { style: { maxWidth: 320 } }, h(C.Steps, { label: 'Steps', items, current: 1 }))
+));
+</script>

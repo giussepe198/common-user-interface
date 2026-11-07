@@ -46,7 +46,7 @@ export interface TouchSheetBaseProps {
   /** Close button text (or accessible name of the icon). Default "Close" for BottomSheet, "Cancel" for FullScreenSheet. */
   closeLabel?: string;
   /** Element to focus on open. Default: the first focusable element in the sheet other than the close button. */
-  initialFocusRef?: React.RefObject<HTMLElement>;
+  initialFocusRef?: React.RefObject<HTMLElement | null>;
   /**
    * Move focus into the sheet when it is already open on first render. Default true (or the SheetContainerProvider
    * setting). Set false on documentation pages so they do not load with a focus ring; opening the sheet later

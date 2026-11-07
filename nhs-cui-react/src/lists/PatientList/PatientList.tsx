@@ -14,6 +14,10 @@ import { listMeasureText } from '../shared/measure';
 import { UpdateMarker } from '../UpdateMarker/UpdateMarker';
 import { SubList } from '../SubList/SubList';
 import { HistoricalSnapshotBanner } from '../HistoricalSnapshotBanner/HistoricalSnapshotBanner';
+import { ListSearch, SearchHighlight, SearchMatchNote, listSearchLabel } from '../../search/ListSearch/ListSearch';
+import { useListSearch } from '../../search/ListSearch/useListSearch';
+import { listSearchFields } from '../../search/utils/listSearchFields';
+import { smartHitRanges, smartMatchNote, type SmartFieldKind, type SmartFieldValue, type SmartSearchField } from '../../search/utils/smartSearch';
 
 export type { PatientListPatient } from '../PatientIdentificationCell/PatientIdentificationCell';
 
@@ -48,6 +52,12 @@ export interface PatientListColumn<T> {
   width?: number;
   /** Minimum width when resizing. Default 64. */
   minWidth?: number;
+  /** The list search reads this column: a shown column unless false, a hidden one only when true [suggested]. */
+  searchable?: boolean;
+  /** How the search compares its values. Default: names for the patient column, dates by data type, else words. */
+  searchKind?: SmartFieldKind;
+  /** The values the search reads when the cell value is not text. */
+  searchValue?: (row: T) => SmartFieldValue;
 }
 
 /** An update to mark for the user (PAL-0880..0950). Marks are per user (PAL-0970): keep them in your user's state. */
@@ -67,6 +77,8 @@ export interface PatientListUpdate {
 export interface PatientListProps<T> {
   /** List title in the header. Default "Patient list". */
   title?: string;
+  /** Heading level of the title, so the list nests under a page section's own heading [suggested]. Default 2. */
+  headingLevel?: 2 | 3 | 4;
   /** Who the list is for, e.g. "Dr Maxhurst", "Mr Crossley, Mr Argos", "Physiotherapists" (PAL-0040, 0050..0070). */
   listFor?: string;
   /** Service provided, e.g. "Respiratory medicine" (PAL-0040). */
@@ -92,8 +104,22 @@ export interface PatientListProps<T> {
   getRowKey: (row: T) => string;
   /** Patient for the identification column; return null for an unoccupied location (PAL-0660). */
   getPatient?: (row: T) => PatientListPatient | null;
+  /**
+   * Custom content for the patient column [suggested]: the host renders the identification cell itself (for example
+   * `PatientIdentificationCell` with `nameHref`, or a local extension such as a preferred name) and receives the
+   * name match the list found (PAL-0540..0570), so the identical and similar name warning is never lost. Sorting,
+   * filtering and the name check still use `getPatient`. Default: `PatientIdentificationCell`.
+   */
+  renderPatient?: (row: T, cell: { patient: PatientListPatient | null; match: PatientListNameMatch | null }) => React.ReactNode;
+  /**
+   * The patient's own id, for a list where one patient can have several rows (a person under two teams) [suggested].
+   * Rows of the same patient are never warned against each other as identical names (PAL-0540).
+   */
+  getPatientId?: (row: T) => string;
   /** Plural noun for rows, used in messages. Default "patients". */
   rowNoun?: string;
+  /** Singular noun for one row ("person" for "people") [suggested]. Default `rowNoun` without its final "s". */
+  rowNounSingular?: string;
   /** Ids of displayed columns in display order (PAL-0710). Key columns are always shown first (PAL-0720). */
   visibleColumnIds?: string[];
   /** Controlled sort keys (FSG-0121). */
@@ -167,6 +193,18 @@ export interface PatientListProps<T> {
   headerFilter?: boolean;
   /** Widen a resized column automatically when updated content no longer fits its longest word (PAL-0270). Default true. */
   autoWidenColumns?: boolean;
+  /**
+   * The list search box above the toolbar [suggested]: names in either order, close spellings and similar-sounding
+   * names, the record number and other identifiers, dates of birth ("born:1980"), and the columns as scopes. 'auto'
+   * (default) shows it once the list has 8 rows or more; true always; false never.
+   */
+  search?: boolean | 'auto';
+  /** The search text, controlled. Never put a search for people in a URL: keep it in component state. */
+  searchQuery?: string;
+  defaultSearchQuery?: string;
+  onSearchQueryChange?: (query: string) => void;
+  /** Further values the search reads (other names, other identifiers). */
+  searchFields?: SmartSearchField<T>[];
   className?: string;
 }
 
@@ -194,10 +232,10 @@ function elapsedText(ms: number): string {
   return `${h} hour${h === 1 ? '' : 's'} ago`;
 }
 
-function defaultCellText(v: unknown, type: ListDataType): string {
+function defaultCellText(v: unknown, type: ListDataType, timeZone?: string): string {
   if (v === null || v === undefined || v === '') return '';
-  if (type === 'date') return formatShortDate(v as DateLike);
-  if (type === 'dateTime') return formatDateTime(v as DateLike);
+  if (type === 'date') return formatShortDate(v as DateLike, { timeZone });
+  if (type === 'dateTime') return formatDateTime(v as DateLike, { timeZone });
   return String(v);
 }
 
@@ -235,14 +273,14 @@ export function patientListAttributes<T>(
  */
 export function PatientList<T>(props: PatientListProps<T>) {
   const {
-    title = 'Patient list', listFor, service, locations, timestamp, timestampKind = 'lastUpdated', inclusionCriteria, historical,
+    title = 'Patient list', headingLevel = 2, listFor, service, locations, timestamp, timestampKind = 'lastUpdated', inclusionCriteria, historical,
     columns, rows, getRowKey, getPatient, rowNoun = 'patients', visibleColumnIds, onSortChange, filter, onFilterChange,
     groupBy, hideUnoccupied, updates = [], onUnmark, confirmUnmarkAll = true, onSuppressUnmarkConfirm, realTime = true,
     lastRefreshed, refreshIntervalLabel, onRefresh, now, showOutOfViewMessage = true, onDismissOutOfViewMessage,
     selectionMode = 'single', onOpenRow, onHeaderCommand, similarNames, toolbar, maxHeight = 480, className,
-    dateOfBirthFormat, mrnLabel, headerFilter = false, autoWidenColumns = true,
+    dateOfBirthFormat, mrnLabel, headerFilter = false, autoWidenColumns = true, search = 'auto', searchFields,
   } = props;
-  const { region } = useClinicalLocale(props.region);
+  const { region, displayTimeZone: timeZone } = useClinicalLocale(props.region);
   const baseId = useId('cui-pl');
   const nowMs = useNow(now, !realTime);
 
@@ -268,9 +306,43 @@ export function PatientList<T>(props: PatientListProps<T>) {
     return [...keys, ...rest];
   }, [columns, visibleColumnIds, sort]);
 
+  // ---------- search: the patient's names, identifiers and date of birth, then the columns ----------
+  const [queryRaw, setQuery] = useControllableState<string>(props.searchQuery, props.defaultSearchQuery ?? '', props.onSearchQueryChange);
+  const query = queryRaw ?? '';
+  const searchShown = search === true || (search === 'auto' && (rows.length >= 8 || !!query.trim()));
+  const fields = React.useMemo<SmartSearchField<T>[]>(() => {
+    const person = (row: T) => (getPatient ? getPatient(row) : null);
+    const cols = columns.map(c =>
+      c.kind === 'patient' && !c.searchValue
+        ? {
+            ...c,
+            searchKind: c.searchKind ?? ('name' as const),
+            searchValue: (row: T): SmartFieldValue => {
+              const p = person(row);
+              if (!p) return null;
+              const legal = [p.familyName, p.givenName].filter(Boolean).join(', ');
+              return [legal || null, p.preferredName ? { text: p.preferredName, note: 'Preferred name' } : null];
+            },
+          }
+        : c,
+    );
+    const ids: SmartSearchField<T>[] = getPatient
+      ? [
+          { key: 'born', label: 'Born', kind: 'date', scopeAliases: ['dob', 'birth'], get: row => (person(row)?.dateOfBirth ?? null) as SmartFieldValue },
+          { key: 'mrn', label: mrnLabel ?? 'Record number', kind: 'identifier', scopeAliases: ['urn', 'record', 'number'], get: row => person(row)?.mrn ?? null },
+          { key: 'identifier', label: 'Identifier', kind: 'identifier', scopeAliases: ['ihi', 'nhi', 'nhs'], get: row => {
+            const p = person(row);
+            return p ? [p.ihi, p.nhi, p.nhsNumber, p.temporaryNumber] : null;
+          } },
+        ]
+      : [];
+    return listSearchFields(cols, shownColumns.map(c => c.id), [...ids, ...(searchFields ?? [])]);
+  }, [columns, shownColumns, searchFields, getPatient, mrnLabel]);
+  const found = useListSearch(rows, fields, searchShown ? query : '');
+
   // ---------- data pipeline ----------
   const [filterView, setFilterView] = React.useState<'in' | 'out' | 'all'>('in');
-  const filterResult = React.useMemo(() => evaluateFilter(rows, filter ?? null, attrs), [rows, filter, attrs]);
+  const filterResult = React.useMemo(() => evaluateFilter(found.rows, filter ?? null, attrs), [found.rows, filter, attrs]);
   const filterActive = filterResult.filteredOut.length > 0 || (filter?.criteria.some(c => c.operator) ?? false);
   const viewRows = filterView === 'out' ? filterResult.filteredOut : filterView === 'all' ? filterResult.all : filterResult.filteredIn;
   React.useEffect(() => {
@@ -280,8 +352,8 @@ export function PatientList<T>(props: PatientListProps<T>) {
   const visibleRows = React.useMemo(() => {
     let r = viewRows;
     if (hideUnoccupied && getPatient) r = r.filter(row => getPatient(row) !== null);
-    return progressiveSort(r, sort, attrs);
-  }, [viewRows, hideUnoccupied, getPatient, sort, attrs]);
+    return found.rankOrder(progressiveSort(r, sort, attrs));
+  }, [viewRows, hideUnoccupied, getPatient, sort, attrs, found]);
 
   const [collapsed, setCollapsed] = React.useState<Set<string>>(() => new Set());
   React.useEffect(() => setCollapsed(new Set()), [groupBy]);
@@ -303,18 +375,23 @@ export function PatientList<T>(props: PatientListProps<T>) {
   const nameMatches = React.useMemo(() => {
     if (!getPatient) return new Map<string, PatientListNameMatch>();
     const ids: Array<PatientListPatient & { id: string }> = [];
+    const patientOf = new Map<string, string>();
+    const getPatientId = props.getPatientId;
     rows.forEach(r => {
       const p = getPatient(r);
-      if (p) ids.push({ ...p, id: getRowKey(r) });
+      if (!p) return;
+      ids.push({ ...p, id: getRowKey(r) });
+      if (getPatientId) patientOf.set(getRowKey(r), getPatientId(r));
     });
+    const samePatient = getPatientId ? (a: { id: string }, b: { id: string }) => patientOf.get(a.id) === patientOf.get(b.id) : undefined;
     // AU and NZ: names differing only by macrons or diacritics are flagged as similar by default [suggested].
     const similar = similarNames
       ? (a: PatientListPatient, b: PatientListPatient) => similarNames(a, b)
       : region !== 'GB'
         ? listNamesDifferOnlyByDiacritics
         : undefined;
-    return findDuplicateNames(ids, similar ? { similar } : {});
-  }, [rows, getPatient, getRowKey, similarNames, region]);
+    return findDuplicateNames(ids, { ...(similar ? { similar } : {}), ...(samePatient ? { samePatient } : {}) });
+  }, [rows, getPatient, getRowKey, similarNames, region, props.getPatientId]);
 
   // ---------- updates ----------
   const updateIndex = React.useMemo(() => {
@@ -498,6 +575,8 @@ export function PatientList<T>(props: PatientListProps<T>) {
   }, [rows, updates, autoWidenColumns]);
 
   const onGridKeyDown = (e: React.KeyboardEvent) => {
+    // A link or button inside a cell (the patient's name as a link) keeps its own Enter and Space [suggested].
+    if ((e.key === 'Enter' || e.key === ' ') && (e.target as HTMLElement).closest('a[href], button:not(.cui-patient-list__group-toggle), input, select, textarea')) return;
     const { r, c } = safeFocus;
     const item = r >= 0 ? flat[r] : undefined;
     const ctrl = e.ctrlKey || e.metaKey;
@@ -557,7 +636,7 @@ export function PatientList<T>(props: PatientListProps<T>) {
   };
 
   // ---------- header ----------
-  const ts = formatDateTime(timestamp);
+  const ts = formatDateTime(timestamp, { timeZone });
   const forText = listFor ? `${title} for: ${listFor}` : title;
   const headerMeta = [service, locations && locations.length ? locations.join(', ') : undefined].filter(Boolean) as string[];
 
@@ -584,7 +663,9 @@ export function PatientList<T>(props: PatientListProps<T>) {
   };
 
   // ---------- cells ----------
-  const renderPatient = (row: T, rowKey: string) => (
+  const renderPatient = (row: T, rowKey: string) => props.renderPatient ? (
+    props.renderPatient(row, { patient: getPatient ? getPatient(row) : null, match: nameMatches.get(rowKey) ?? null })
+  ) : (
     <PatientIdentificationCell
       patient={getPatient ? getPatient(row) : null}
       region={region}
@@ -602,7 +683,15 @@ export function PatientList<T>(props: PatientListProps<T>) {
     const removed = ups.reduce((n, u) => n + (u.removedCount ?? 0), 0);
     let content: React.ReactNode;
     if (cellMarks.some(u => u.cellRemoved)) content = <span className="cui-patient-list__removed">Item removed</span>;
-    else if (col.kind === 'patient') content = renderPatient(row, rowKey);
+    else if (col.kind === 'patient') {
+      const hit = found.active ? found.hitOf(row) : undefined;
+      content = (
+        <>
+          {renderPatient(row, rowKey)}
+          {hit ? <SearchMatchNote note={smartMatchNote(hit)} /> : null}
+        </>
+      );
+    }
     else if (col.sublist) {
       const items = col.sublist(row);
       const updatedIndexes = items.map((_, i) => i).filter(i => ups.some(u => u.sublistIndex === i));
@@ -620,7 +709,10 @@ export function PatientList<T>(props: PatientListProps<T>) {
     else {
       const attr = attrs.find(a => a.id === col.id) as ListAttribute<T>;
       const v = attr.getValue ? attr.getValue(row) : (row as unknown as Record<string, unknown>)[col.id];
-      content = defaultCellText(v, col.dataType ?? 'string');
+      const text = defaultCellText(v, col.dataType ?? 'string', timeZone);
+      const hit = found.active && text && col.dataType !== 'date' && col.dataType !== 'dateTime' ? found.hitOf(row) : undefined;
+      const m = hit?.matches.find(x => x.fieldKey === col.id && x.value === text);
+      content = hit && m ? <SearchHighlight text={text} ranges={smartHitRanges(hit, col.id, m.valueIndex)} /> : text;
     }
     const cellMarked = cellMarks.length > 0;
     const rowMark = col.kind === 'patient' && rowUpdated.length > 0;
@@ -634,16 +726,17 @@ export function PatientList<T>(props: PatientListProps<T>) {
   };
 
   const headerTextId = `${baseId}-title`;
+  const TitleTag = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
   const totalMarked = updates.length;
   const showBar = totalMarked > 0 || !realTime;
 
   return (
     <section className={cx('cui-patient-list', historical && 'cui-patient-list--historical', className)} aria-labelledby={headerTextId}>
       <header className="cui-patient-list__header">
-        <h2 id={headerTextId} className="cui-patient-list__title">
+        <TitleTag id={headerTextId} className="cui-patient-list__title">
           {historical ? <HistoricalSnapshotBanner variant="tag" /> : null}
           {forText}
-        </h2>
+        </TitleTag>
         <div className="cui-patient-list__meta">
           {headerMeta.map(m => (
             <span key={m} className="cui-patient-list__meta-item">{m}</span>
@@ -654,6 +747,23 @@ export function PatientList<T>(props: PatientListProps<T>) {
         </div>
         {inclusionCriteria ? <div className="cui-patient-list__criteria">Showing: {inclusionCriteria}</div> : null}
       </header>
+      {searchShown ? (
+        <div className="cui-patient-list__search">
+          <ListSearch
+            label={listSearchLabel(title)}
+            value={query}
+            onChange={setQuery}
+            scopes={found.scopeFields}
+            activeScopes={found.query?.scopes ?? []}
+            shown={found.rows.length}
+            total={rows.length}
+            rowNoun={rowNoun}
+            rowNounSingular={props.rowNounSingular}
+            closeMatches={found.closeMatches}
+            suggestions={found.suggestions}
+          />
+        </div>
+      ) : null}
       {toolbar ? <div className="cui-patient-list__toolbar">{toolbar}</div> : null}
       {filterActive && filter ? (
         <FilterNotification
@@ -692,7 +802,7 @@ export function PatientList<T>(props: PatientListProps<T>) {
               <span id={`${baseId}-confirm`}>
                 <Icon name="warning" /> You may not have seen all the updates. Unmark all {totalMarked}?
               </span>
-              <label className="cui-list-choice">
+              <label className="cui-list-choice" data-touch-target>
                 <input type="checkbox" checked={suppressTick} onChange={e => setSuppressTick(e.target.checked)} /> Do not ask again
               </label>
               <Button ref={confirmBtn} size="sm" variant="primary" onClick={unmarkAll}>Unmark all</Button>
@@ -880,7 +990,7 @@ export function PatientList<T>(props: PatientListProps<T>) {
             {flat.length === 0 ? (
               <tr>
                 <td colSpan={colCount} className="cui-patient-list__empty">
-                  {filterActive ? `No ${rowNoun} match the filter` : `No ${rowNoun} on this list`}
+                  {found.active && !found.rows.length ? `No ${rowNoun} match the search` : filterActive ? `No ${rowNoun} match the filter` : `No ${rowNoun} on this list`}
                 </td>
               </tr>
             ) : null}
@@ -907,7 +1017,7 @@ export function PatientList<T>(props: PatientListProps<T>) {
                           {col ? `${col.title}: ` : ''}
                           {item.label}
                         </span>
-                        <span className="cui-patient-list__group-count">{`${item.count} ${item.count === 1 ? rowNoun.replace(/s$/, '') : rowNoun}`}</span>
+                        <span className="cui-patient-list__group-count">{`${item.count} ${item.count === 1 ? (props.rowNounSingular ?? rowNoun.replace(/s$/, '')) : rowNoun}`}</span>
                       </button>
                     </th>
                   </tr>
@@ -937,6 +1047,7 @@ export function PatientList<T>(props: PatientListProps<T>) {
                       <Tag
                         key={col.id}
                         data-col={col.id}
+                        data-label={col.title}
                         scope={frozen ? 'row' : undefined}
                         tabIndex={safeFocus.r === ri && safeFocus.c === ci ? 0 : -1}
                         data-nav={`${ri}:${ci}`}

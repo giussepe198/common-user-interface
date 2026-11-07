@@ -35,7 +35,7 @@ export function SectionOrderToggle({ value, defaultValue = 'added', onChange, st
       <legend className="cui-section-order__legend">{legend}</legend>
       <div className="cui-section-order__options">
         {options.map(([m, text]) => (
-          <label key={m} className={cx('cui-section-order__option', mode === m && 'cui-section-order__option--on')}>
+          <label key={m} className={cx('cui-section-order__option', mode === m && 'cui-section-order__option--on')} data-touch-target>
             <input
               type="radio"
               name={id}

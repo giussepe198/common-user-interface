@@ -1,0 +1,23 @@
+/* Observation level badge. Words carry the level; the bar and fill support it [suggested]. */
+.cui-obs-level {
+  display: inline-flex; align-items: flex-start; gap: var(--space-1); max-width: 100%;
+  padding: 2px var(--space-2); border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+  background: var(--surface-sunken); color: var(--ink);
+  font-size: var(--font-size-body); line-height: var(--line-height-body); overflow-wrap: anywhere;
+}
+.cui-obs-level--compact { font-size: var(--font-size-label); line-height: var(--line-height-label); padding: 1px var(--space-1); }
+.cui-obs-level__icon { display: inline-flex; flex: none; padding-top: 2px; }
+.cui-obs-level--compact .cui-obs-level__icon { padding-top: 0; }
+.cui-obs-level__text { display: inline-flex; flex-wrap: wrap; column-gap: var(--space-1); min-width: 0; }
+.cui-obs-level__label { font-weight: 600; }
+.cui-obs-level__interval { font-variant-numeric: tabular-nums; }
+.cui-obs-level__detail { color: var(--ink-muted); }
+.cui-obs-level__detail::before { content: "("; }
+.cui-obs-level__detail::after { content: ")"; }
+.cui-obs-level--constant { background: var(--danger-surface); border-color: var(--danger); border-inline-start-width: var(--space-1); }
+.cui-obs-level--constant .cui-obs-level__icon, .cui-obs-level--constant .cui-obs-level__label { color: var(--danger); }
+.cui-obs-level--close { background: var(--warning-surface); border-color: var(--warning); border-inline-start-width: var(--space-1); }
+.cui-obs-level--close .cui-obs-level__icon, .cui-obs-level--close .cui-obs-level__label { color: var(--warning); }
+.cui-obs-level--intermittent { background: var(--info-surface); border-color: var(--info); }
+.cui-obs-level--intermittent .cui-obs-level__icon, .cui-obs-level--intermittent .cui-obs-level__label { color: var(--info); }
+@media (forced-colors: active) { .cui-obs-level { border-color: CanvasText; } }

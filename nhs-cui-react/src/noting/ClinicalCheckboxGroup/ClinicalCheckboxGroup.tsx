@@ -87,7 +87,7 @@ export function ClinicalCheckboxGroup({
         const checked = current.includes(o.value);
         return (
           <div key={o.value} className={cx('cui-choice-group__option', o.disabled && 'cui-choice-group__option--disabled')}>
-            <label className="cui-choice-group__control" htmlFor={optId}>
+            <label className="cui-choice-group__control" data-touch-target htmlFor={optId}>
               <input
                 id={optId}
                 type="checkbox"

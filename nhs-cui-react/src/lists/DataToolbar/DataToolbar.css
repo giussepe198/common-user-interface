@@ -8,3 +8,8 @@
 .cui-data-toolbar__menu-item:hover, .cui-data-toolbar__menu-item:focus { background: var(--hover); outline: none; }
 .cui-data-toolbar__menu-item:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
 .cui-data-toolbar__check { width: 16px; display: inline-flex; color: var(--accent); }
+/* Responsive (CONVENTIONS "Responsive"): the toolbar wraps; menus never run off a narrow screen; touch targets grow. */
+.cui-data-toolbar { min-width: 0; max-width: 100%; }
+.cui-data-toolbar__menu { max-width: min(320px, calc(100vw - var(--space-4))); }
+.cui-data-toolbar__menu-item { white-space: normal; }
+@media (pointer: coarse) { .cui-data-toolbar__menu-item { min-height: var(--target-coarse); } }

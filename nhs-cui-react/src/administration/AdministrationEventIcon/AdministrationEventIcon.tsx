@@ -4,10 +4,11 @@ import type { ClinicalRegion, IconName } from '../../core';
 import { formatTime } from '../../core/format';
 import type { DateLike } from '../../core/format';
 import { adminEventGlyph, adminReasonLegend, adminRegionalStatusLabel } from '../utils/adminRegion';
-import {
+import type {
   AdminEventState,
   AdminMedicationKind,
-  AdminStatus,
+  AdminStatus} from '../utils/adminEvents';
+import {
   adminFormatStateLabel,
   adminIsGivenStatus,
 } from '../utils/adminEvents';

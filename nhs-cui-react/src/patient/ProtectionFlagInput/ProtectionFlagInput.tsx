@@ -47,7 +47,7 @@ export function ProtectionFlagInput({
   const codeId = `${id}-code`;
   return (
     <div className={cx('cui-protection-flag', on && 'cui-protection-flag--on', className)}>
-      <div className="cui-protection-flag__row">
+      <div className="cui-protection-flag__row" data-touch-target>
         <input
           type="checkbox"
           id={id}

@@ -1,8 +1,9 @@
 import React from 'react';
-import { cx, DateLike, useClinicalLocale, VisuallyHidden } from '../../core';
-import type { ClinicalRegion } from '../../core';
+import { cx, useClinicalLocale, VisuallyHidden } from '../../core';
+import type { ClinicalRegion , DateLike} from '../../core';
+import type { MedicationAttributeKey, MedicationLineChunk, MedicationLineData, MedicationLineSegment} from '../utils/medicationLine';
 import {
-  buildMedicationLineChunks, MedicationAttributeKey, MedicationLineChunk, MedicationLineData, MedicationLineSegment,
+  buildMedicationLineChunks
 } from '../utils/medicationLine';
 import type { MedicationStatus } from '../utils/medicationsList';
 import { MedicationStatusText } from './MedicationStatus';

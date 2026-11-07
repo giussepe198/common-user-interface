@@ -118,7 +118,7 @@ export function IndigenousStatusInput({
           {purpose ? <p className="cui-patient-question__purpose">{purpose}</p> : null}
           <div className="cui-patient-question__options">
             {iq.q1Options.map((o) => (
-              <div key={o.key} className="cui-patient-question__option">
+              <div key={o.key} className="cui-patient-question__option" data-touch-target>
                 <input
                   type="radio"
                   id={`${id}-q1-${o.key}`}
@@ -145,7 +145,7 @@ export function IndigenousStatusInput({
                 {iq.q2Options
                   .filter((o) => includeBoth || o.key !== 'both')
                   .map((o) => (
-                    <div key={o.key} className="cui-patient-question__option">
+                    <div key={o.key} className="cui-patient-question__option" data-touch-target>
                       <input
                         type="radio"
                         id={`${id}-q2-${o.key}`}
@@ -160,7 +160,7 @@ export function IndigenousStatusInput({
             </fieldset>
           ) : null}
           {allowNotStated ? (
-            <div className="cui-patient-question__option cui-patient-question__option--separate">
+            <div className="cui-patient-question__option cui-patient-question__option--separate" data-touch-target>
               <input
                 type="checkbox"
                 id={`${id}-not-stated`}
@@ -214,7 +214,7 @@ export function IndigenousStatusInput({
       ) : null}
       <div className="cui-patient-question__options">
         {AU_INDIGENOUS_STATUS_QUESTION.options.map((o) => (
-          <div key={o.key} className="cui-patient-question__option">
+          <div key={o.key} className="cui-patient-question__option" data-touch-target>
             <input
               type="checkbox"
               id={`${id}-${o.key}`}
@@ -226,7 +226,7 @@ export function IndigenousStatusInput({
         ))}
       </div>
       {allowNotStated ? (
-        <div className="cui-patient-question__option cui-patient-question__option--separate">
+        <div className="cui-patient-question__option cui-patient-question__option--separate" data-touch-target>
           <input type="checkbox" id={`${id}-not-stated`} checked={boxes.notStated} onChange={(e) => toggle('notStated', e.target.checked)} />
           <label htmlFor={`${id}-not-stated`}>Not answered: the person declined or could not be asked</label>
         </div>
