@@ -10,3 +10,21 @@ nhs-cui-react/dist/
 nhs-cui-react/dist-*/
 nhs-cui-react/src/.entry-*
 nhs-cui-react/examples/.entry-*
+
+# Source-reference site build output (canonical PDFs remain in nhs-cui-documents/)
+/site/
+/docs/pdfs/
+/.cache/
+/.venv/
+__pycache__/
+*.pyc
+
+# Local-only private workspace
+/.private
+
+# Disposable agent and browser-automation artefacts
+/.playwright-mcp
+/.playwright
+/playwright-report
+/blob-report
+/test-results

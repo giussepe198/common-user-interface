@@ -29,6 +29,8 @@ The library code implements the rules and behaviours described in the guidance; 
 
 ## Other sources
 
+The illustrated transcriptions and retained source-image extraction in `docs/guidance/` were contributed by Marcus Baw from `pacharanero/nhs-cui`. Their pinned provenance and checksums are in `docs/source-manifest.json`. Original content retains its document-specific rights above; the import does not include the four Microsoft-co-owned documents. The new source-site infrastructure is contributed under Apache-2.0, except `s/docs`, adapted from Marcus Baw's MIT-licensed house-style example and retaining its MIT notice (see `LICENSES/MIT.txt`).
+
 The Australian and New Zealand rules in `nhs-cui-react/docs/guidance-notes/G10-australia.md`, `G11-new-zealand.md` and `G12-identity-extensions.md` cite their sources (ACSQHC, Australian Digital Health Agency, Services Australia, ABS and METeOR, HISO, HQSC, Stats NZ and others) item by item. Those organisations' publications keep their own terms; the notes paraphrase and cite them, and value sets and codes are reproduced for interoperability.
 
 SNOMED CT is a registered trademark of SNOMED International. Use of SNOMED CT content requires an appropriate licence (in Australia through the National Clinical Terminology Service, in New Zealand through Te Whatu Ora, in the UK through NHS England). The library ships no SNOMED CT content; the examples use fictional concept identifiers.

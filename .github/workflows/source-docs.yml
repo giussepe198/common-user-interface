@@ -1,0 +1,36 @@
+# Check the illustrated source-reference site only. No Pages deployment or repo-setting changes.
+name: Source documentation
+on:
+  pull_request:
+    paths: ["docs/**", "mkdocs.yml", "requirements.txt", "s/**", "tests/**", ".github/workflows/source-docs.yml"]
+  push:
+    paths: ["docs/**", "mkdocs.yml", "requirements.txt", "s/**", "tests/**", ".github/workflows/source-docs.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements.txt
+      - run: s/test-docs
+      - run: s/build-docs
+  workflow-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: taiki-e/install-action@ab49d3c64680143e184118bed66a46419fc15519 # v2.90.5
+        with:
+          tool: zizmor@1.32.0
+          fallback: none
+      - run: zizmor --strict-collection .
+        env:
+          GH_TOKEN: ${{ github.token }}

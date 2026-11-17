@@ -1,0 +1,2 @@
+# Site dependency, verified against PyPI on 2026-11-17.
+zensical==0.1.1

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Check the source-reference site independently of the React component test suite.
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+bash -n s/docs s/build-docs s/check-docs s/test-docs
+python3 -m unittest discover -s tests -v
+python3 s/prepare-docs.py
+exec s/check-docs "$@"

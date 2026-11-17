@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Check navigation coverage and local Markdown/image/PDF targets, without dependencies.
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+exec python3 s/check-docs.py "$@"
