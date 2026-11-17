@@ -114,53 +114,11 @@ Additionally, users implementing applications that follow this design guide’s 
 Refer to [NHS Common User Interface for further information on the patient safety process and for](http://www.cui.nhs.uk/Pages/NHSCommonUserInterface.aspx) the safety status and any relevant accompanying safety documentation for this design guide.
 ### 1 INTRODUCTION
 
-This document provides guidance for the design of Timeline Views. It describes the area of focus, lists mandatory and recommended guidance points with usage examples and explains the rationale behind the guidance.
 
-Patients’ medical records contain vast quantities of information which play a pivotal role in clinical decision making. This decision making relies critically upon swiftly gleaning an accurate and complete picture from a catalogue of previous and planned events while identifying cause-effect relationships and trends. In addition, being able to visualise planned activities in the context of past events provides the clinician with an ‘integrated vision’ of what has happened, what is about to happen, and what has just failed to happen. Timeline Views of patient clinical data provide this visualisation.
-
-Timelines provide an easy mechanism to view and compare both items with duration, and single events, against time. There are a few current clinical systems which employ timelines of some description to convey information, sometimes to the patient, other times to the clinician or multi-disciplinary team.
-
-There are not, however, guidelines which Independent Software Vendors (ISVs) can follow to help mitigate patient safety risks which may be encountered when showing clinical data in a Timeline View. This guidance document provides guidelines relating to the use of timelines to convey duration and event data in clinical systems developed by ISVs.
-
-To indicate their relative importance, each guideline in this document is ranked by **Conformance** and by **Evidence Rating** . Table 1 defines those terms:
-
-Conformance Indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:
-
- **Mandatory**         - An implementation should follow the guideline
-
- **Recommended**         - An implementation is advised to follow the guideline
-
-Evidence Rating Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):
-
- **Low:**
-
- Does not mitigate specific patient safety hazards
-
- User research findings unclear and with few participants
-
- Unreferenced usability principles indicate the design is not significantly better than alternatives
-
- **Medium:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear but with few participants
-
- References authoritative guidance (for example, from National Patient Safety Agency (NPSA), Institute for
-
-Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
- **High:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear and with a significant number of participants
-
- References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
-
- Referenced usability principles indicate the design is significantly better than alternatives
+| Term | Definition |
+| --- | --- |
+| Conformance | Indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:      Mandatory – An implementation should follow the guideline  Recommended – An implementation is advised to follow the guideline |
+| Evidence Rating | Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):  Low:  Does not mitigate specific patient safety hazards  User research findings unclear and with few participants  Unreferenced usability principles indicate the design is not significantly better than alternatives  Medium:  Mitigates specific patient safety hazards  User research findings clear but with few participants  References authoritative guidance (for example, from National Patient Safety Agency (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded  Referenced usability principles indicate the design is significantly better than alternatives  High:  Mitigates specific patient safety hazards  User research findings clear and with a significant number of participants  References recent authoritative guidance (for example, from NPSA, ISMP or WHO)  Referenced usability principles indicate the design is significantly better than alternatives |
 
 Table 1: Conformance and Evidence Rating Definitions
 
@@ -216,39 +174,26 @@ HSCIC Controlled Document
 
 ##### 1.2.1 In Scope
 
-Navigating vertically and horizontally (potentially simultaneously)
 
-Indication of data beyond the visible area of the canvas
-
-How to navigate the timeline canvas to view timeline data
-
-How to indicate that there is information outside the current viewing window which may be relevant to the user
-
-Indication of now, past and future How to identify whether the range of time for which the user is currently viewing data is in the past, the future, or spans past and future.
-
-Position of timeline element labels How to position the timeline canvas elements (labels, durations, events) in a patient-safe manner
-
-Visual design of continuous duration timeline elements
-
-How to display duration elements on the timeline canvas
-
-Visual design of discrete event timeline elements How to display event elements on the timeline canvas
-
-Display of timeline element attributes How to display information related to a duration or event element (such as dosage and rate for medications prescriptions)
-
-Position of timeline elements on the canvas How to position timeline elements on the canvas to optimise the canvas space available whilst maintaining patient safety
-
-Mixing timelines with graph data / integrating quantitative data with timeline data
-
-How timeline data and quantitative data (such as physiological observations data) can be displayed in the same view - high level guidance only
-
-Background and gridlines How to display the canvas on which the timeline elements are displayed
-
-Time navigation High level guidance relating to changing the viewed time range
-
-Levels of detail High level guidance on adjusting the level of detail shown for the timeline elements
-
-‘Time window’ selection High level guidance only
+| Scope Area | Details |
+| --- | --- |
+| Navigating vertically and horizontally (potentially | How to navigate the timeline canvas to view timeline data |
+| simultaneously) |  |
+| Indication of data beyond the visible area of the | How to indicate that there is information outside the current viewing window |
+| canvas | which may be relevant to the user |
+| Indication of now, past and future | How to identify whether the range of time for which the user is currently viewing data is in the past, the future, or spans past and future. |
+| Position of timeline element labels | How to position the timeline canvas elements (labels, durations, events) in a patient-safe manner |
+| Visual design of continuous duration timeline | How to display duration elements on the timeline canvas |
+| elements |  |
+| Visual design of discrete event timeline elements | How to display event elements on the timeline canvas |
+| Display of timeline element attributes | How to display information related to a duration or event element (such as dosage and rate for medications prescriptions) |
+| Position of timeline elements on the canvas | How to position timeline elements on the canvas to optimise the canvas space available whilst maintaining patient safety |
+| Mixing timelines with graph data / integrating | How timeline data and quantitative data (such as physiological observations |
+| quantitative data with timeline data | data) can be displayed in the same view - high level guidance only |
+| Background and gridlines | How to display the canvas on which the timeline elements are displayed |
+| Time navigation | High level guidance relating to changing the viewed time range |
+| Levels of detail | High level guidance on adjusting the level of detail shown for the timeline elements |
+| ‘Time window’ selection | High level guidance only |
 
 Table 2: Subject Areas Covered by This Guidance
 
@@ -274,25 +219,24 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Linkage of control variables How to link controls on the form (for example, linking the level of detail shown for element attributes with the time window selection control so that for large time windows, minimal attributes are displayed)
 
-Adding, removing or moving other data series
-
-Accessing more info by navigating to or revealing more data
-
-How to manage which data series are displayed as timelines, including the method of selecting from a list of available data series
-
-How to access further information related to a selected item by navigating to another view or revealing the information in parallel with the timeline (for example, within a ‘pop-up’ dialogue)
-
-Default time window The time period to be displayed by default (that is, when a user accesses a Timeline View for the first time within a session)
-
-Defaults for controls The defaults for controls (such as level of detail and section collapse/expand)
-
-Representing absence of data How to indicate when information for a data series or type is not available to the system either temporarily (for example, due to a hardware failure) or for more fundamental reasons (such as lack of compatibility between systems)
-
-Representing uncertainty How to graphically represent such notions of uncertainty as ‘event occurred sometime between January and March 2008’, ‘patient self-administered during Tuesday evening’, and ‘condition is likely to clear up within next 2 months’.
-
-When to use a timeline representation When (and when not) to use a timeline representation as opposed to other representations of the same data.
+| Scope Area | Details |
+| --- | --- |
+| Grouping timeline entries | How to show different types of timeline data on the same canvas |
+| Designing for multiple time axes | This guidance is applicable to where time is displayed on the x-axis only |
+| Collapse/expand control | The appearance and interaction behaviour of any user control that collapses and expands (that is, hides and reveals) timeline visualised data |
+| Sorting, filtering and grouping | How to sort, filter and group timeline entries(for example, by title, time of occurrence or by some other data taxonomy attribute) |
+| Non-linear timescale | Displaying data on a timeline where the time axis is non-linear (such as logarithmic) |
+| Linkage of control variables | How to link controls on the form (for example, linking the level of detail shown for element attributes with the time window selection control so that for large time windows, minimal attributes are displayed) |
+| Adding, removing or moving other data | How to manage which data series are displayed as timelines, including the |
+| series | method of selecting from a list of available data series |
+| Accessing more info by navigating to or | How to access further information related to a selected item by navigating to |
+| revealing more data | another view or revealing the information in parallel with the timeline (for example, within a ‘pop-up’ dialogue) |
+| Default time window | The time period to be displayed by default (that is, when a user accesses a Timeline View for the first time within a session) |
+| Defaults for controls | The defaults for controls (such as level of detail and section collapse/expand) |
+| Representing absence of data | How to indicate when information for a data series or type is not available to the system either temporarily (for example, due to a hardware failure) or for more fundamental reasons (such as lack of compatibility between systems) |
+| Representing uncertainty | How to graphically represent such notions of uncertainty as ‘event occurred sometime between January and March 2008’, ‘patient self-administered during Tuesday evening’, and ‘condition is likely to clear up within next 2 months’. |
+| When to use a timeline representation | When (and when not) to use a timeline representation as opposed to other representations of the same data. |
 
 Table 3: Subject Areas Not Covered by This Guidance
 
@@ -326,41 +270,25 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-**A2** The system performance is adequate to display the quantity of data without significant delays (for example when scrolling through large quantities of data).
 
-Although system performance is out of scope for this guidance, approaches that may improve performance recorded during research are:
-
- Cache data directly adjacent to the currently viewed time period (a technique used by popular Internet mapping sites to
-
-enable seamless scrolling to adjacent areas)
-
- When navigation beyond the adjacent time periods is being performed, only update the viewing area once the user has
-
-completed the action
-
-**A3** The minimum screen resolution used by the clinician is 1024 x 768 pixels, although a higher resolution may be employed.
-
-**A4** Medications viewed on a timeline will be shown using the intended start and end dates of the course of medication.
-
-**A5** The Timeline View is not the only view of patient medical data in the Clinical System. All the data shown on the Timeline View is accessible through other views, including the view that represents the data as entered into the system.
-
-**A6** Timelines are implemented based upon encoded data which aids aggregation of results, and a record which uses an individual coded statement approach.
-
-**A7** Source data for the timeline supports duration, explicitly or by inference
+| ID | Assumption |
+| --- | --- |
+| A1 | The quality (that is, provenance, accuracy, and completeness) of the data displayed in the Timeline View is of an acceptable level. Data quality will be particularly important in scenarios where there are multiple data sources (for example, from primary and secondary care settings) as the quality of the data may vary between sources. Although the quality of data is not in scope for this guidance, the following risks were recorded during user research (see APPENDIX B):  Coding of data is suboptimal; for example, coding is not good quality, or at the ‘wrong’ level for displaying on timeline (where coding is at symptomatic level rather than at underlying etiology), or different codes are used to represent the same concept  System cannot display all the data, or cannot be certain that all data is there  User infers from the absence of unavailable data that no event(s) occurred  Data is known to be missing but a ‘best estimate’ is not displayed  If timelines are not implemented based upon encoded data (which aids aggregation of results) and are not in a record which uses an individual coded statement approach, then Timeline Views may misrepresent the data stored in the system, and therefore clinicians may gain a mistaken or (unnecessarily) incomplete understanding of the patient |
+| A2 | The system performance is adequate to display the quantity of data without significant delays (for example when scrolling through large quantities of data). Although system performance is out of scope for this guidance, approaches that may improve performance recorded during research are:  Cache data directly adjacent to the currently viewed time period (a technique used by popular Internet mapping sites to enable seamless scrolling to adjacent areas)  When navigation beyond the adjacent time periods is being performed, only update the viewing area once the user has completed the action |
+| A3 | The minimum screen resolution used by the clinician is 1024 x 768 pixels, although a higher resolution may be employed. |
+| A4 | Medications viewed on a timeline will be shown using the intended start and end dates of the course of medication. |
+| A5 | The Timeline View is not the only view of patient medical data in the Clinical System. All the data shown on the Timeline View is accessible through other views, including the view that represents the data as entered into the system. |
+| A6 | Timelines are implemented based upon encoded data which aids aggregation of results, and a record which uses an individual coded statement approach. |
+| A7 | Source data for the timeline supports duration, explicitly or by inference |
 
 Table 4: Assumptions
 
 #### 1.4 Dependencies
 
-**D1** The following design guidance documents (changes in these documents may affect current guidance):
 
- Medications Management – Drug Administration – User Interface Design Guidance
-
- Medications Management – Medication Line – User Interface Design Guidance
-
- Medications Management – Medications List – User Interface Design Guidance
-
- Displaying Graphs and Tables – User Interface Design Guidance
+| ID | Dependency |
+| --- | --- |
+| D1 | The following design guidance documents (changes in these documents may affect current guidance):  Medications Management – Drug Administration – User Interface Design Guidance  Medications Management – Medication Line – User Interface Design Guidance  Medications Management – Medications List – User Interface Design Guidance  Displaying Graphs and Tables – User Interface Design Guidance |
 
 Table 5: Dependencies
 
@@ -536,7 +464,118 @@ Page 10
 
 HSCIC Controlled Document
 
-Section 8 contains guidance for the selection of the viewed time period, navigation to time periods adjacent to the current time period and larger scale navigation to time points throughout the total available time period.
+
+|  | Existing guidelines and standards |
+| --- | --- |
+|  | UI best practice |
+|  | Clinical timelines literature:      Gaining New Medical Insights through Interactive Visual Exploration {R10}      LifeLines: Using Visualization to Enhance Navigation and Analysis of Patient Records {R11}      LifeLines: Visualizing Personal Histories {R12}      TimeLine: Visualizing Integrated Patient Records {R13} |
+|  | Viewing personal history records: A comparison of Tabular format and graphical presentation using LifeLines {R14} |
+| ary re | search |
+| In | terviews with health care professionals, including doctors |
+| lar co | nsultation with experts |
+| A | panel of clinical experts |
+| A | technical audience (developers) |
+| rincip | les (see APPENDIX A for details on these principles): |
+| sen’s | usability heuristics |
+| iderma | n’s eight golden rules of interface design |
+| 9241: | Characteristics of presented information (taken from ISO 9241-10: 1996 |
+| nomic | requirements for office work with visual display terminals (VDTs) -- Part 10: |
+| ogues | principles {R4}) |
+| andard | s: |
+| SO 924 | 1-10:1996 Ergonomic requirements for office work with visual display terminals |
+| s): Pa | rt 10: Dialogues principles {R4} |
+| andard | s: |
+| laying | Graphs and Tables – User Interface Design Guidance {R5} |
+| cation | s Management – Drug Administration – User Interface Design Guidance {R6} |
+| cation | s Management – Medication Line – User Interface Design Guidance {R7} |
+| mary o | f Guidance |
+| marise | s the content of this document by outlining each area of guidance (along with a |
+| ence t | o the relevant section) and providing a visual example to illustrate how it might be |
+| . |  |
+|  |  |
+| illus | trations are best viewed on a screen in colour. |
+| idance | Visual Summary |
+| rovide | s guidance |
+| all la | yout of the |
+| ew, in | cluding the |
+| of th | e patient |
+| ions t | o navigate to |
+| , and | the main |
+| vigati | on controls. |
+| idance | Visual Summary |
+| nclude | s guidance |
+| arance | of the |
+| ewing | area, |
+| ackgro | und colours |
+| ineati | on, and time |
+| s. The | indication of |
+| nt, an | d future time |
+| also d | etailed. |
+| rovide | s guidance |
+| e entr | ies (including |
+| h no d | uration, |
+| ion, a | nd open |
+| timeli | ne entry |
+| row i | dentifier cells. |
+| lso pr | ovides |
+| the d | isplay of |
+| onjunc | tion with |
+| tries. |  |
+| tative | data is |
+| esente | d as a graph |
+| e, obs | ervations |
+| peratu | re, blood |
+| nd so | on.) These |
+| ed in | conjunction |
+| line r | epresentation |
+| ta to | provide |
+| ve pat | ient data |
+| ons. |  |
+| idance | Visual Summary |
+| nclude | s guidance |
+| meline | sections to |
+| es, an | d covers the |
+| sectio | n title bars, |
+| of any | timeline |
+| hin th | e chosen |
+| are o | ut of view, |
+| ling t | he level of |
+| layed | in each |
+|  |  |
+| vel of | detail |
+| n each | timeline |
+| be co | ntrolled by |
+| hey ca | n make best |
+| availa | ble viewing |
+| heir p | articular task. |
+| , clin | icians may |
+| pare a |  |
+| s dose | changes |
+| a high | level of detail |
+| dicati | ons’ section) |
+| tient’ | s health issues |
+| t a lo | wer level of |
+| the ‘p | roblems’ |
+|  |  |
+| rovide | s guidance |
+| tionin | g and |
+| of set | s of events |
+| timeli | ne entries (for |
+| armaci | st Review |
+| cludin | g multiple |
+|  |  |
+| n also | covers the |
+| drug a | dministrations |
+| d set | of events. |
+| idance | Visual Summary |
+| ontain | s guidance |
+| ection | of the viewed |
+| , navi | gation to time |
+| acent | to the current |
+| and l | arger scale |
+| to tim | e points |
+| the to | tal available |
+| . |  |
 
 Table 6: Summary of Guidance
 
@@ -924,7 +963,357 @@ HSCIC Controlled Document
 
 ##### 5.2.6 Row Identifier Cells
 
-Additional to timeline labels, row identifier cells provide a means for the user to identify what is displayed in a row. This is particularly useful when, for the viewed time period, a row does not contain any timeline entries. Row identifier cells also provide the user a means for quickly assimilating the information that is being displayed. Figure 6 illustrates row identifier cells:
+
+| ID | Guideline | Conformance Rating |
+| --- | --- | --- |
+| TLN-0190 | Provide a means for the user to navigate from an element of information (for example, a drug prescription) to alternative views of that information (for example, the drug administration view) and back again. | Recommended              Medium |
+| Usage Examples |  |  |
+| No usage example | s for these guidelines |  |
+| Rationale |  |  |
+| The usage exampl | es in this and throughout this document show multiple prescriptions displayed on a | single row, where the medication |
+| row identity is | at the level of drug name (for example, all prescriptions for paracetamol are show | n on the same row). This level of row |
+| identity is not | CUI guidance, but aims to make best use of the display space available while ensur | ing – through the clear display of |
+| timeline entry l | abels – that important differences between entries can be highlighted. |  |
+| However, for som | e clinical contexts and applications, medication row identity at the level of drug | name may be deemed unsafe by an |
+| appropriate clin | ical authority |  |
+| Hazard Risk Anal | ysis Summary: |  |
+| No mitigated haz | ards recorded for this area |  |
+| Significant Risk | s That Are Not Directly Mitigated by Guidance: |  |
+| The following ri | sks are not directly mitigated by the guidance in this document. Suppliers should | be aware of these risks and design |
+| their applicatio | ns to mitigate them accordingly: |  |
+| Potential Hazard | s:                         Cause:                         Potential Consequences: |  |
+|  MTI182 Wh | at if the row               How ISVs implement CUI        Actual changes (for ex | ample, to dose, route, frequency or |
+| identifie | r is not easily changed      Medications Timeline           strength) are missed. | Depending on the context, the |
+| and is se | t at a too low level of      design guidance                potential for inapprop | riate clinical treatment as a result is |
+| detail? | of varying severity. I potential delays to cl picture of clinical ca | n this instance, user confusion, inical treatment and an inappropriate re understood by the user. |
+|  MTI183 Wh | at if the row               How ISVs implement CUI        For example, the user' | s ability to see all of the medication |
+| identifie | r is not easily changed      Medications Timeline           information at once wo | uld be compromised, leading to a |
+| and is se | t at a too high level of     design guidance                potential for inapprop | riate treatment with varying |
+| detail, e | g. just the drug name?                                      consequences |  |
+| .2          Time | line Entries with No Significant Duration |  |
+| Some timeline en | tries occur at a point in time and have no duration. Examples of timeline entries |  |
+| with no duration | are: |  |
+|  ‘Once onl | y’ prescriptions (other than once only infusions) that have no significant duratio | n |
+| (for | example, tablets) |  |
+|  General n | otes recording (for example, ‘past history of appendicectomy’) | Evidence |
+| ID            Gu | ideline | Conformance Rating |
+| TLN-0210      Us | e the same colour scheme for all timeline entries with no duration | Mandatory            Medium |
+| TLN-0220      Av | oid colour schemes that may have additional meanings which are unintended | Mandatory            Medium |
+| (f | or example, red and green may be misinterpreted as ‘safe’ and ‘unsafe’) |  |
+| TLN-0230      Us | e the same symbol for all timeline entries with no duration | Mandatory            Medium |
+| TLN-0240      Di | splay the same size symbols for all timeline entries, regardless of the time | Mandatory            Medium |
+| pe | riod chosen |  |
+| TLN-0250      Fo | r a timeline entry with no duration, use a symbol that visually aligns with the | Mandatory            High |
+| ti | me axis |  |
+| TLN-0260      Fo | r a timeline entry with no duration, use a symbol that is symmetrical along its | Recommended          Medium |
+| ve | rtical axis |  |
+| TLN-0270      Us | e a symbol for which the centre point is clearly indicated | Recommended          Medium |
+| TLN-0280      Po | sition the symbol so that its centre point is aligned with the time that it | Recommended          Medium |
+| re | presents |  |
+| TLN-0290      To | indicate a once only (‘stat’) medication that has an administration of no | Mandatory            Medium |
+| si | gnificant duration (for example, a tablet or injection), use a timeline entry with |  |
+| no | duration. Align the symbol with the planned administration time. |  |
+| Usage Examples |  |  |
+| In this correct | example, the blue arrowhead symbols align clearly with the times they indicate. Th | e same symbol is used for the |
+| different data t | ypes shown (patient problem and drug prescription). The drug prescription represen | ts a ‘once-only’ prescription. |
+| (TLN-0210, TLN-0 | 220, TLN-0230, TLN-0250, TLN-0260, TLN-0270, TLN-0280, TLN-0290) |  |
+| In this incorrec | t example, different symbols have been wrongly used, and the second symbol uses th | e colour green, which may have |
+| unintended seman | tic meaning. The second entry also incorrectly represents a prescription requiring | more than one administration as a |
+| timeline event w | ith no duration. (TLN-0220, TLN-0230) |  |
+| In this correct | example, the symbols are vertically symmetrical and their centres clearly align wi | th the time axis. (TLN-0250, TLN-0260, |
+| TLN-0270, TLN-02 | 80) |  |
+| In this incorrec | t example, the symbols are not vertically symmetrical. (TLN-0250, TLN-0260, TLN-02 | 70, TLN-0280) |
+| In this incorrec | t example, the symbols are vertically symmetrical, but their centres do not clearl | y align with the time axis. (TLN-0250, |
+| TLN-0270, TLN-02 | 80) |  |
+| Rationale |  |  |
+| There are a very | large number of different data types and categories that could be displayed simul | taneously in a Timeline View. |
+| Therefore, it is | impractical to use different symbols and/or colours to distinguish these types an | d categories. For example, using red to |
+| indicate cardiov | ascular health issues and medications.(This guidance does not apply to patient obs | ervations displayed as graphs, |
+| guidelines for w | hich can be found in section 5.2.8 of this document and in Displaying Graphs and T | ables – User Interface Design |
+| Guidance {R5}) |  |  |
+| User research (r | ef) found that items marked in red and green were confusing and misinterpreted to | mean ‘stop’ and ‘go’. Previous CUI |
+| research has fou | nd that very few colour conventions are universal in healthcare and therefore shou | ld be avoided if possible in cases |
+| where it could m | istakenly be interpreted as having meaning. |  |
+| These guidance p | oints follow the relevant guidance for plotting nodes described in Displaying Grap | hs and Tables – User Interface |
+| Design Guidance | {R5}, as on a graph, minimising ambiguity as to an item’s point in time is essenti | al in a Timeline View. Clear centre |
+| points also emph | asise the point-in-time nature of such entries. |  |
+| Hazard Risk Anal | ysis Summary: |  |
+| Potential Hazard | s:                                                       Mitigations: |  |
+|     MTI083 C | olour is used to show linkage between data              TLN-0210 (Use the same co | lour scheme for all timeline |
+| groups. | If colour is not used consistently between patients, a   entries with no duration) |  |
+| user may | make mistaken assumptions about what colour |  |
+| conveys | for a patient. Also many grouping sets will have too |  |
+| many mem | bers to support a useful colour scheme |  |
+| .3          Time | line Entries with Known Duration |  |
+| Many record entr | ies have a period of validity determined by start and end times. Displaying entrie | s |
+| with a known dur | ation is one of the strengths of the timeline approach to data visualisation. |  |
+| Examples are: |  |  |
+|  Drug pres | criptions that are for a defined period; for example, a prescription for an infusi | on |
+| over | 12 hours, or a seven day course of tablets |  |
+|  Patient c | onditions that have been noted and then recorded as resolved; for example, |  |
+| ‘infe | cted foot’ | Evidence |
+| ID            Gu | ideline | Conformance Rating |
+| TLN-0300      Us | e the same start and end symbols and style (including colour) of duration lines | Mandatory     High |
+| fo | r all timeline entries with known duration. |  |
+| TLN-0310      Di | splay duration as a horizontal unbroken line with a thickness and colour that | Mandatory     Medium |
+| cl | early distinguishes it from the background, with no fill colour. |  |
+| TLN-0320      Us | e different symbols for the start time and end time. Position the symbols and the | Mandatory         Medium |
+| du | ration line to form a continuous shape. |  |
+| TLN-0330      Us | e start time and end time symbols that provide a clear visual interruption to the | Mandatory     High |
+| du | ration line, such that if two or more timeline entries with known duration are |  |
+| po | sitioned end-to-end, there is a noticeable discontinuation of the duration lines. |  |
+| TLN-0340      Us | e start time and end time symbols that extend downwards from the duration | Recommended   Medium |
+| li | ne. |  |
+| TLN-0350      Us | e a start time symbol with a left hand edge that clearly aligns with the time axis | .   Mandatory     Medium |
+| TLN-0360      Us | e an end time symbol with a right hand edge that clearly aligns with the time | Mandatory     Medium |
+| ax | is. |  |
+| TLN-0370      Do | not vary the style of timeline entries and labels between past and future time | Recommended   Medium |
+| pe | riods |  |
+| TLN-0380      Fo | r drug prescriptions, use a timeline entry with known duration to indicate a | Mandatory     High |
+| pr | escription requiring more than one administration. Align the start time symbol |  |
+| wi | th the first planned administration time and the end time symbol with the last |  |
+| pl | anned administration time. |  |
+| TLN-0390      To | indicate a once only (‘stat’) medication that has an administration with a | Recommended   Medium |
+| si | gnificant duration (for example, an infusion), use a timeline entry with known |  |
+| du | ration. Align the start time symbol with the planned beginning of the |  |
+| ad | ministration time and the end time symbol with the planned end of the |  |
+| ad | ministration. |  |
+| Usage Examples |  |  |
+| Example 2: Same | Symbols and Duration Line Styles Used for all Timeline Entries |  |
+| In this correct | example, the same symbols and duration line style have been used for all the timel | ine entries of known duration. The |
+| start and end sy | mbols have edges that clearly align with the time axis, and where two timelines sh | are a row (the saline entries) there is |
+| a noticeable dis | continuation of the duration lines. (TLN-0300, TLN-0310, TLN-0320, TLN-0330, TLN-0 | 340, TLN-0350, TLN-0360, |
+| TLN-0390) |  |  |
+| In this incorrec | t example, different symbols and duration line styles have been incorrectly used t | o differentiate between data types. |
+| Additionally, th | e second timeline style does not provide a noticeable discontinuation of the durat | ion line if another timeline of this style |
+| where positioned | end-to-end with it. (TLN-0300, TLN-0330) |  |
+| In this incorrec | t example, the same symbol has been incorrectly used for start and end times. Addi | tionally, the mid-point of the symbol |
+| is incorrectly u | sed to align with the time axis. As a result, the end point of the first entry ove | rlaps the start point of the second entry, |
+| wrongly inferrin | g a data series. As there is no noticeable discontinuation of the duration lines, | this false inference is reinforced. |
+| (TLN-0320, TLN-0 | 330) |  |
+| These correct ex | amples of alternative designs all satisfy the guidelines. (TLN-0300, TLN-0310, TLN | -0320, TLN-0330, TLN-0340, |
+| TLN-0350TLN-0360 | ) |  |
+| These incorrect | examples of alternative designs do not provide a noticeable discontinuation of the | duration lines. (TLN-0330) |
+| A selection of i | ncorrect examples. The first symbol incorrectly uses a thin duration line, which m | ay not have enough prominence to be |
+| clearly distingu | ishable when positioned on a coloured background. The second symbol incorrectly us | es a dotted line, which may |
+| falsely infer a | temporary status. The third symbol incorrectly uses a bar with an internal fill co | lour, which adds unnecessary visual |
+| complexity. (TLN | -0310) |  |
+| In this correct | example of timeline entry styling for future time periods, the entries do not chan | ge in style as they cross the ‘now time |
+| point into the f | uture time period. (TLN-0370, TLN-0300, TLN-0310, TLN-0320, TLN-0330, TLN-0340, TL | N-0350, TLN-0360) |
+| In this incorrec | t example of timeline entry styling for future time periods, the duration lines ch | ange style to use a dashed line – this can |
+| be mistakenly in | terpreted as representing a series of ‘on-off’ events, or that the status of the m | edication prescription has changed in |
+| some way. (TLN-0 | 370, TLN-0310) |  |
+| Rationale |  |  |
+| Broken lines may | be inferred as representing unconfirmed or varying status, and very thin lines ma | y either be lost on the background |
+| or mistaken as h | orizontal gridlines. User research (see APPENDIX B) suggested that internal fill c | olours might contribute to a mistaken |
+| assumption that | the duration items are ‘progress bars’, conveying status such as administration st | atus. Redundant use of fill colour |
+| was also perceiv | ed to contribute to overall visual complexity of the timeline. |  |
+| Start, end and d | uration should form a continuous shape so that they can be unambiguously associate | d. |
+| When timeline en | tries share rows, individual entries must be clearly discernable from each other. | This is particularly important when |
+| entries that hav | e been grouped onto a shared row using one attribute (for example, drug name) have | other important attributes that |
+| may significantl | y differ (for example, dose.) In these circumstances if individual entries are not | clearly discernable from each other, the |
+| viewer of the ti | melines may mistakenly infer a false continuity (for example, continuity of dose) | between entries. |
+| In addition, use | r research showed that in designs without a clear start symbol, users can misinter | pret the occlusion of the duration |
+| items by the lef | t hand edge of the screen as the starting point of those items (when they actually | extend off-screen leftwards). |
+| When timeline it | ems share rows, it may be common for duration items to follow on from each other; | such as when a prescription’s |
+| dose is changed | when the line summarises all of the prescriptions a patient has had for a particul | ar drug (see Example 2). As the end |
+| time of one item | and start time of another are shared, having symbols that do not overlap makes th | e start and end of each item |
+| clearer. Shared | start / end points are also a problem if durations can be ‘moused-over’ to highlig | ht them, as indicated in potential |
+| hazard MTI153. |  |  |
+| Hazard Risk Anal | ysis Summary: |  |
+| Potential Hazard | s:                                                    Mitigations: |  |
+|      MTI073 | dashed line misinterpreted as something else,          TLN-0300 (Display duration | as a horizontal unbroken line with |
+| such as | on / off                                               a thickness and colour tha background., with no fill | t clearly distinguishes it from the colour ) |
+|      MTI079 | Only ‘discrete’ items are displayed – no items with  TLN-0300 (Display duration a | s a horizontal unbroken line with |
+| duratio | n. Users forget that some events may imply a          a thickness and colour that | clearly distinguishes it from the |
+| persist | ent condition (such as a diagnosis of asthma) and     background with no fill colo | ur). Risk is mitigated by displaying |
+| therefo | re do not factor in things like co-occurrence         any items that have a durati | on |
+|      MTI153 | If you ‘mouse over’ a shared prescription start/end  TLN-0350 (Use a start time s | ymbol with a left hand edge that |
+| blob (t | hat is, shares two durations) - which duration is     clearly aligns with the time | axis) and TLN-0350 (Use an end |
+| highlig | hted?                                                 time symbol with a right han time axis) | d edge that clearly aligns with the |
+|      MTI176 | If two duration items one the same line have been  TLN-0330, TLN-0350, TLN-0360 ( | Start and end items do not |
+| stopped | and started in quick succession (e.g. a            occlude each other) |  |
+| medicat | ion dose is changed by stopping one and starting |  |
+| another | ) then it is quite likely that the two 'blobs' will |  |
+| occlude | and so turn the 'crowding' UI on (which might |  |
+| make it | harder to notice that items are separate?) |  |
+|      MTI072 | User mistakenly thinks that past events HAVE           TLN-0370 (Do not vary the | style of timeline entries and labels |
+| occurre | d, or that future events WILL occur                     between past and future ti | me periods) |
+|      MTI073 | What if the dashed line (representing future items)  TLN-0370 (Do not vary the st | yle of timeline entries and labels |
+| is misi | nterpreted as something else, such as on / off?       between past and future time | periods) |
+|      MTI162 | The clinician mistakenly assumes that the solid        TLN-0370(Do not vary the s | tyle of timeline entries and labels |
+| and dot | ted line on prescriptions refers to administration      between past and future ti | me periods) |
+| status |  |  |
+|      MTI163 | The clinician is confused as to why the                  TLN-0370 (Do not vary th | e style of timeline entries and labels |
+| prescri | ption line (a plan) changes to a dotted in the future -   between past and future | time periods) |
+| as the | PLAN to give it doesn't change, and that it might |  |
+| (incorr | ectly) be seen as a status change (such as an |  |
+| adminis | tration status change) |  |
+| .4            Ti | meline Entries with Open Duration |  |
+| Sometimes the en | d time of a timeline entry is unknown, indeterminate or infinite. |  |
+| Examples are: |  |  |
+|  Current | medical conditions which may (or may not) be resolved at some undetermined |  |
+| time | in the future |  |
+|  Drugs p | rescribed on an ‘ongoing basis |  |
+|  Amputat | ions or congenital conditions which the patient will have for the duration of thei | r |
+| life |  |  |
+| Note |  |  |
+| These exa | mples, with the exception of amputations and congenital conditions, may be updated | to timeline |
+| entries w | ith known duration if end times are later provided. Therefore, there is a need to | represent timeline |
+| entries w | ith an open duration. | Evidence |
+| TLN-0400 | For a timeline with open duration, use the same design for the start time symbol and the duration line as used for timelines with known duration. | Mandatory              Medium |
+| TLN-0410 | For a timeline with open duration, extend the duration line to the right hand margin of the viewing area | Mandatory              Medium |
+| TLN-0420 | For a timeline with open duration, do not use any symbol on the right hand end of the duration line | Recommended            Low |
+| TLN-0430 | For drug prescriptions, use a timeline entry with open duration to indicate an ‘ongoing’ prescription. Align the start time symbol with the first planned administration time. | Mandatory              High |
+| Usage Examples |  |  |
+| This correct exa | mple shows the duration line extending to the last viewable time, with no symbol o | n the right hand end of the duration |
+| line. (TLN-0400, | TLN-0410, TLN-0420) |  |
+| This incorrect e | xample shows a symbol which interrupts the duration line before it reaches the rig | ht margin of the viewing area. |
+| (TLN-0420) |  |  |
+| Example 3: Durat | ion Line Incorrectly Using a Symbol at the End |  |
+| This incorrect e | xample shows a duration line that correctly extends to the right margin of the vie | wable area, but incorrectly uses a |
+| symbol at the en | d. (TLN-0420) |  |
+| Rationale |  |  |
+| During user rese | arch, some clinicians interviewed were unsure of the distinction between duration | items that had no end date (open |
+| items), and thos | e that had a future end date that was not currently visible. |  |
+| Symbols that int | errupt a duration line, such as in Example 3, may be mistakenly interpreted as end | symbols. |
+| Hazard Risk Anal | ysis Summary: |  |
+| Potential Hazard | s:                                                 Mitigations: |  |
+|    MTI076 | If probably (or certainly) persistent durations  TLN-0410 and TLN-0420 (Durations | where the future end date is |
+| are not | represented persistently (in that, they are not  unknown (for example asthma in a | child) shown as extending into |
+| represe | nted past the ‘current’ time), then a user might  the future, rather than ending a | t the current time). |
+| forget | that a condition could be persistent |  |
+| .5         Timel | ine Entry Labels | Evidence |
+| ID           Gui | deline | Conformance Rating |
+| TLN-0440     Pos | ition the timeline entry label above the related timeline entry. | Mandatory     Medium |
+| TLN-0450     Ext | end a vertical line from the left hand edge of the label down to the related | Mandatory     Medium |
+| tim | eline entry. |  |
+| TLN-0460     Ens | ure the vertical space between the top of the label and the row above is | Mandatory     Medium |
+| suf | ficient to avoid mistaken association of the label with entries in that row. |  |
+| TLN-0470     For | timeline entries with duration, if the start of the timeline entry is in view, al | ign Mandatory    Medium |
+| the | left hand edge of the label with the start time symbol. |  |
+| TLN-0480     For | timeline entries with duration, when the entry extends past the left edge of | Mandatory     Medium |
+| the | viewing area (that is, the start time symbol is not visible), align the left hand |  |
+| edg | e of the label with the left edge of the viewing area. |  |
+| TLN-0490     For | a timeline entry with no duration, align the left hand edge of the label with | Mandatory     Medium |
+| the | time of occurrence. |  |
+| TLN-0500     If | the label extends beyond the right edge of the viewing area, shorten it to fit in | Mandatory     Medium |
+| the | available space and provide a symbol to indicate truncation. Provide an |  |
+| alt | ernative means (for example a tooltip) to view the full label text. |  |
+| TLN-0510     Pro | vide an ellipsis symbol to indicate where truncation has occurred. | Recommended   Medium |
+| TLN-0520     Whe | n multiple timeline entries share a row and the labels contain identical text, | Recommended   Medium |
+| if | the labels overlap then hide the labels that are obscured. Maintain the vertical |  |
+| lin | es up to (but not over) the label. |  |
+| TLN-0530     Whe | n multiple timeline entries share a row and the labels do not contain | Recommended   Medium |
+| ide | ntical text, display the labels in such a way as to avoid overlap (for example, |  |
+| by | repositioning the labels to different distances directly above the timeline |  |
+| ent | ries and extending their vertical lines to maintain the visual linkage.) |  |
+| TLN-0540     App | ly context-specific rules supplied by the appropriate clinical authority to the | Mandatory        High |
+| tru | ncation and overlap of labels, to ensure the safe display of timeline labels (for |  |
+| exa | mple, in inpatient contexts it may be unsafe to truncate full drug prescription |  |
+| det | ails). |  |
+| TLN-0550     Do | not partially display medication names | Mandatory     High |
+| TLN-0560     Do | not partially display the individual fields (for example, dose, route and | Mandatory     Medium |
+| fre | quency) of each medication’s set of drug details. |  |
+| TLN-0570     Whe | n drug prescriptions are displayed as timeline entries, the facility to display | Mandatory     High |
+| ful | l prescription details in the labels must be provided (the format for which is |  |
+| det | ailed in Medications Management – Medication Line – User Interface Design |  |
+| Gui | dance {R7}). |  |
+| TLN-0580     Whe | n drug prescriptions are displayed as timeline entries, the facility to display | Recommended   High |
+| onl | y the drug name in the labels may be provided as an additional viewing |  |
+| opt | ion to displaying full prescription details. Note Determining what is shown for the drug name is outside the scope of this guidance. |  |
+| TLN-0590     Whe | n full drug prescription details are displayed in timeline entry labels, the    Ma | ndatory          High |
+| com | plete label text must be displayed (that is, not truncated or hidden). The only |  |
+| exc | eption is labels that extend beyond the right hand edge of the viewing area |  |
+| (wh | ich will need to be truncated). |  |
+| TLN-0600       W | hen drug prescriptions are displayed as timeline entries, if the option to display | Mandatory                      High |
+| s | hortened labels (for example, only the drug name) is provided, then when this |  |
+| o | ption is active the full prescription details must be available for the user to vi | ew |
+| f | or each entry by an alternative mechanism (for example by revealing the full |  |
+| p | rescription on mouse hover, or by selecting a greater level of detail). |  |
+| Usage Examples |  |  |
+| In this correct | example, the label for the timeline entry with no duration is left aligned to the | time of occurrence. The label for the |
+| timeline entry w | ith duration is left aligned with the start time. For both entries a vertical line | extends down to the related timeline entry. |
+| (TLN-0440, TLN-0 | 450, TLN-0460, TLN-0470, TLN-0490) |  |
+| In this incorrec | t example, the label for the first entry (‘thunderclap headache’) is not positione | d above the entry and does not have a |
+| line to visually | associate it with the entry. If there were another entry to the right of the labe | l it would not be clear which entry the label |
+| is associated wi | th. (TLN-0440, TLN-0450, TLN-0490) |  |
+| The label for th | e second entry (‘paracetamol’) is also centrally aligned, but positioned under the | duration line. This position may lead to |
+| the label obscur | ing the start and end point symbols for entries which have a duration line that is | shorter than the label. (TLN-0440, |
+| TLN-0450, TLN-04 | 70) |  |
+| The label for th | e third entry (‘infected foot’) is centrally aligned with the duration line, which | gives undue prominence to this mid-point |
+| time. In this ex | ample, the user may wrongly infer that the mid-point time 10:20 has special releva | nce to the ‘infected foot’ entry. |
+| (TLN-0440, TLN-0 | 450, TLN-0470) |  |
+| The label for th | e fourth entry (‘enoxaparin’) is so close to the row above it that the user may mi | stakenly associate the label with the |
+| third entry. (TL | N-0460) |  |
+| Example 4: Corre | ct Scrolling Behaviour |  |
+| In this correct | example, when the user scrolls the viewing area two hours forward, the timeline en | try with no duration is not visible and |
+| so the label is | not displayed. The timeline entry with duration is still visible, and so its label | aligns with the left hand edge of the viewing |
+| area. (TLN-0480) |  |  |
+| In this incorrec | t example, when the user scrolls the viewing area two hours forward, the labels st | ay positioned relative to the starting |
+| points of the ti | meline entries, and are partially obscured. (TLN-0480) |  |
+| Example 5: Corre | ct Label Truncation |  |
+| In this correct | example, the user has scrolled the viewable area so that the text in the two timel | ine entry labels extends past the right |
+| hand edge of the | viewing area. The labels are adjusted to terminate at the right hand edge, and re | d ellipsis symbols are used to |
+| provide clear in | dication that the label text has been truncated. (TLN-0500, TLN-0510) |  |
+| Example 6: Incor | rect Label Truncation |  |
+| In this incorrec | t example, the labels have been wrapped onto multiple lines within the horizontal | space available. (In the worst case, if |
+| the available ho | rizontal space was one character wide and the label was 25 characters in length, t | his would result in a label with 25 |
+| rows of single c | haracters.) (TLN-0500) |  |
+| Example 7: Incor | rect Label Truncation |  |
+| In this incorrec | t example, the labels have been repositioned so that their right hand edge aligns | with the right hand edge of the viewing |
+| area. This appro | ach produces misalignment with the timeline entries: the user may wrongly infer th | at the first entry has duration |
+| starting at abou | t 07:50. (TLN-0470, TLN-0490, TLN-0500) |  |
+| In this correct | example, on both rows the medication names extend beyond the right edge of the vie | wing area. To avoid partial display, |
+| the medication n | ames have been removed and a truncation symbol is displayed instead. (TLN-0550) |  |
+| In this incorrec | t example, in both rows the medication names extend beyond the right edge of the v | iewing area. The medication names |
+| have wrongly bee | n partially displayed. (TLN-0550) |  |
+| In this incorrec | t example, in both rows the drug details extend beyond the right edge of the viewi | ng area. The drug details have |
+| wrongly been par | tially truncated at points which show the maximum text in each label. (TLN-0560) |  |
+| In this incorrec | t example, the label of the first entry on the first row extends beyond the starti | ng point of the next two entries, and so the |
+| overlapped label | s are not displayed. The label of the first entry on the second row extends beyond | the starting point of the next entry, |
+| which is similar | ly not displayed. The vertical lines of the hidden labels extend to the lower edge | of the labels above, and additional |
+| visual indicatio | n is provided in the form of a ‘shadow’ label decoration. (TLN-0520) |  |
+| Example 8: Incor | rect Label Overlap Behaviour |  |
+| In this incorrec | t example, labels on both rows are truncated by other labels. In a situation where | many entries sharing a line have |
+| labels that trun | cate each other, the user may not be able to see any complete label text and could | make wrong assumptions based on |
+| the truncated te | xt. (TLN-0520) |  |
+| Example 9: Corre | ct Display of Full Drug Prescription Details |  |
+| In this correct | example of displaying full drug prescription details (the format of which is detai | led in Medications Management – |
+| Medication Line | – User Interface Design Guidance {R7}), the option to view all labels is shown. (T | LN-0530, TLN-0560, TLN-0570) |
+| In this incorrec | t example, of displaying full drug prescription details, the first label overlaps | the other three labels, and the system has |
+| hidden those lab | els. The user may wrongly infer that the first prescription details (dose, frequen | cy, and so on) are valid for the other |
+| three timeline e | ntries. (TLN-0530, TLN-0570) |  |
+| Example 10: Inco | rrect Display of Full Drug Prescription Details |  |
+| In this incorrec | t example of displaying full drug prescription details, the first three labels are | truncated by the next label in the |
+| sequence. This m | akes it very difficult for the user to read the information. (TLN-0530, TLN-0560, | TLN-0570) |
+| Rationale |  |  |
+| Positioning the | label above the timeline item allows items to run up against one another without h | aving to move the labels. Other |
+| examples of the | benefits of positioning the label above the timeline item are given in Example 4. | Preferences and rationale from user |
+| research (see AP | PENDIX B) supported labels displayed simultaneously on/near the items and in a sta | tic column (see the next |
+| section). |  |  |
+| The guidance poi | nts encourage the correct association of label and item. This is especially import | ant when the label cannot be |
+| positioned exact | ly next to the timeline item as a result of TLN-0530 (see Example 9) |  |
+| The behaviour of | the labels allows for a consistent placement of labels relative to the item’s sta | rting point, and allows the user to |
+| always see a lab | el for items in view. |  |
+| In this case, tr | uncating labels that extend off the right hand side of the screen is preferable to | either wrapping (as shown by |
+| Example 5 and Ex | ample 6) or repositioning the label (as shown by Example 7). |  |
+| As shown in Exam | ple 8, in situations with many closely arranged labels, overlapping labels from th | e left gives the best possible chance |
+| that at least on | e full label will be shown in view. Maintaining the vertical line from the overlap | ped label gives a reminder that some |
+| aspect of the it | em has changed. |  |
+| As shown in Exam | ple 10, overlapping labels which are NOT the same may lead the user to wrongly inf | er that the details displayed in |
+| the label for th | e first item are valid for the overlapped items as well. |  |
+| Hazard Risk Anal | ysis Summary: |  |
+| Potential Hazard | s:                                                 Mitigations: |  |
+|      MTI097 | What if the labels change position relative         TLN-0440, TLN-0450, TLN-0460, | TLN-0470, TLN-0480, |
+| to the | line? (makes it harder to learn associations)        TLN-0490,(Timeline formatting | ) |
+|      MTI098 | What if labels overlap?                             TLN-0520, TLN-0530, TLN-0540, TLN-0570, TLN-0580, TLN-0590, positioning) | TLN-0550, TLN-0560, TLN-0600 (Timeline label |
+|      MTI099 | What if the label is out of view?                   TLN-0440, TLN-0450, TLN-0460, TLN-0500 (Timeline formatting edge) | TLN-0470, TLN-0480, TLN-0490, and truncation at right-hand screen |
+| .6            Ro | w Identifier Cells |  |
+| Additional to ti | meline labels, row identifier cells provide a means for the user to identify what | is |
+| displayed in a r | ow. This is particularly useful when, for the viewed time period, a row does not |  |
+| contain any time | line entries. Row identifier cells also provide the user a means for quickly |  |
+| assimilating the | information that is being displayed. Figure 6 illustrates row identifier cells: |  |
 
 Figure 6: Row Identifier Cells
 
@@ -1281,39 +1670,26 @@ HSCIC Controlled Document
 
 #### 9.1 Terms and Abbreviations
 
-CATR Clinical Authority to Release
 
-CSG Clinical Safety Group
-
-CUI Common User Interface
-
-EMS Event Management System
-
-ENT Ear, Nose and Throat
-
-HCP Health Care Professional
-
-INR International Normalised Ratio
-
-ISMP The Institute for Safe Medication Practices
-
-ISO International Organization for Standardization
-
-LoD Level of Detail
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NPfIT National Programme for Information Technology
-
-NPSA National Patient Safety Agency
-
-UI User Interface
-
-VDT Visual Display Terminal
-
-WHO World Health Organization
+| Abbreviation | Definition |
+| --- | --- |
+| CATR | Clinical Authority to Release |
+| CSG | Clinical Safety Group |
+| CUI | Common User Interface |
+| EMS | Event Management System |
+| ENT | Ear, Nose and Throat |
+| HCP | Health Care Professional |
+| INR | International Normalised Ratio |
+| ISMP | The Institute for Safe Medication Practices |
+| ISO | International Organization for Standardization |
+| LoD | Level of Detail |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPfIT | National Programme for Information Technology |
+| NPSA | National Patient Safety Agency |
+| UI | User Interface |
+| VDT | Visual Display Terminal |
+| WHO | World Health Organization |
 
 Table 7: Terms and Abbreviations
 
@@ -1337,39 +1713,17 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Evidence Rating In the guidance tables, summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):
 
- **Low:**
-
- Does not mitigate specific patient safety hazards
-
- User research findings unclear and with few participants
-
- Unreferenced usability principles indicate the design is not significantly better than alternatives
-
- **Medium:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear but with few participants
-
- References old authoritative guidance (for example, from National Patient Safety Agency (NPSA),
-
-Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
- **High:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear and with a significant number of participants
-
- References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
+| Term | Definition |
+| --- | --- |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Conformance | In the guidance tables, indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:  Mandatory – An implementation should follow the guideline  Recommended – An implementation is advised to follow the guideline |
+| Current best practice Cu | rrent best practice is used rather than best practice, as over time best practice guidance may change or be |
+| re | vised due to changes to products, changes in technology, or simply the additional field deployment |
+| ex | perience that comes over time. |
+| erm | Definition |
+| vidence Rating | In the guidance tables, summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):  Low:  Does not mitigate specific patient safety hazards  User research findings unclear and with few participants  Unreferenced usability principles indicate the design is not significantly better than alternatives  Medium:  Mitigates specific patient safety hazards  User research findings clear but with few participants  References old authoritative guidance (for example, from National Patient Safety Agency (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded  Referenced usability principles indicate the design is significantly better than alternatives  High:  Mitigates specific patient safety hazards  User research findings clear and with a significant number of participants  References recent authoritative guidance (for example, from NPSA, ISMP or WHO)  Referenced usability principles indicate the design is significantly better than alternatives |
+| HS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
 
 Table 8: Definitions
 
@@ -1379,21 +1733,17 @@ This section shows how to interpret the different styles used in this document t
 
 ##### 9.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 9: Body Text Styles
 
@@ -1405,55 +1755,38 @@ HSCIC Controlled Document
 
 ##### 9.3.2 Cross-References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 10: Cross-Reference Styles
 
 #### 9.4 References
 
-**R1.** Timelines in Health care – Gill, Dr Jasdeep K.(Internal NHS CFH research) March 2009
 
-**R2.** Nielsen, J: Usability Engineering, 1993 1993
-
-**R3.** Shneiderman, B: Designing the User Interface – Strategies for Effective Human-Computer Interaction, 1998
-
-**R4.** British Standards Institute, BS EN ISO 9241-10: 1996 Ergonomic requirements for office work with visual display terminals (VDTs) – Part 10: Dialogues principles
-
-Third Edition
-
-1996
-
-**R5.** NHS CUI Programme – Displaying Graphs and Tables – User Interface Design Guidance 2.0.0.0
-
-**R6.** NHS CUI Programme – Medications Management – Drug Administration – User Interface Design Guidance
-
-**R7.** NHS CUI Programme – Medications Management – Medication Line – User Interface Design Guidance
-
-**R8.** NHS CUI Programme – Medications Management – Medications List – User Interface Design Guidance
-
-**R9.** Aligning temporal data by sentinel events: discovering patterns in electronic health records. In Proceeding of the Twenty-Sixth Annual SIGCHI Conference on Human Factors in Computing Systems - Wang, T. D., Plaisant, C., Quinn, A. J., Stanchak, R., Murphy, S., and Shneiderman, B. 2008
-
-**R10.** Gaining New Medical Insights through Interactive Visual Exploration - Aigner, Miksch
-
-**R11.** LifeLines: Using Visualization to Enhance Navigation and Analysis of Patient Records - HCIL Technical Report 1998 - Plaisant, Mushlin, Snyder, Heller, Shneiderman
-
-**R12.** LifeLines: Visualizing Personal Histories - ACM CHI 1996 - Plaisant, Milash, Rose, Widoff, Shneiderman
-
-**R13.** TimeLine: Visualizing Integrated Patient Records - IEEE Trans. On Information Technology in Biomedicine, Vol. 11, No. 4, July 2007 - Bui, Aberle, Kangarloo
-
-**R14.** Viewing personal history records: A comparison of Tabular format and graphical presentation using LifeLines - Alonso, Rose, Plaisant, Norman
-
-**R15.** NHS CUI Programme – Medications Management – Search and Prescribe – User Interface Design Guidance
-
-**R16.** NHS CFH – dm+d Implementation Guide (Secondary Care) [http://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/refdocs](http://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/refdocs)
+| Reference | Document | Version |
+| --- | --- | --- |
+| R1. | Timelines in Health care – Gill, Dr Jasdeep K.(Internal NHS CFH research) | March 2009 |
+| R2. | Nielsen, J: Usability Engineering, 1993 | 1993 |
+| R3. | Shneiderman, B: Designing the User Interface – Strategies for Effective Human-Computer Interaction, 1998 | Third Edition |
+| R4. | British Standards Institute, BS EN ISO 9241-10: 1996 Ergonomic requirements for office work with visual display terminals (VDTs) – Part 10: Dialogues principles | 1996 |
+| R5. | NHS CUI Programme – Displaying Graphs and Tables – User Interface Design Guidance | 2.0.0.0 |
+| R6. | NHS CUI Programme – Medications Management – Drug Administration – User Interface Design Guidance | 4.0.0.0 |
+| R7. | NHS CUI Programme – Medications Management – Medication Line – User Interface Design Guidance | 2.0.0.0 |
+| R8. | NHS CUI Programme – Medications Management – Medications List – User Interface Design Guidance | 1.0.0.0 |
+| R9. | Aligning temporal data by sentinel events: discovering patterns in electronic health records. In Proceeding of the Twenty-Sixth Annual SIGCHI Conference on Human Factors in Computing Systems - Wang, T. D., Plaisant, C., Quinn, A. J., Stanchak, R., Murphy, S., and Shneiderman, B. 2008 | 2008 |
+| R10. | Gaining New Medical Insights through Interactive Visual Exploration - Aigner, Miksch |  |
+| R11. | LifeLines: Using Visualization to Enhance Navigation and Analysis of Patient Records - HCIL Technical Report 1998 - Plaisant, Mushlin, Snyder, Heller, Shneiderman | 1998 |
+| R12. | LifeLines: Visualizing Personal Histories - ACM CHI 1996 - Plaisant, Milash, Rose, Widoff, Shneiderman | 1996 |
+| R13. | TimeLine: Visualizing Integrated Patient Records - IEEE Trans. On Information Technology in Biomedicine, Vol. 11, No. 4, July 2007 - Bui, Aberle, Kangarloo | July 2007 |
+| R14. | Viewing personal history records: A comparison of Tabular format and graphical presentation using LifeLines - Alonso, Rose, Plaisant, Norman | 1997 |
+| R15. | NHS CUI Programme – Medications Management – Search and Prescribe – User Interface Design Guidance | 1.0.0.0 |
+| R16. | NHS CFH – dm+d Implementation Guide (Secondary Care) http://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/refdocs | 24-Jun-2009 |
 
 Table 11: References
 
@@ -1631,51 +1964,72 @@ Detailed notes from the interviews were qualitatively analysed using thematic co
 
 ##### B.4.1 Participant Description
 
-13 participants were interviewed separately. Each had either volunteered through the NHS CFH Event Management System (EMS) signup or had been recruited by an HCP who had volunteered. Four out of 13 participants had previously taken part in CUI clinical engagement for other work areas. Table 12 shows a summary of the participants’ profiles:
 
-389 Nurse Practitioner Emergency Senior Walk-in centre Various
-
-390 Nurse Practitioner Renal Outpatients Senior Large Hospital A PAS, Path, PACS
-
-391 Doctor Surgery CT1 Teaching Hospital A PAS, Path, PACS, eTTAs
-
-392 Pharmacist and Analyst
-
-Systems Senior Teaching Hospital B PICS and various
-
-393 Doctor Obstetrics and Gynaecology
-
-394 Doctor Obstetrics and Gynaecology
-
-395 Doctor Obstetrics and Gynaecology
-
-396 Doctor Obstetrics and Gynaecology
-
-F1 Teaching Hospital C PAS, Path, PACS, eTTAs, iSOFT [®] Synergy, EMIS [®] LV™,
-
-F1 Teaching Hospital C PAS, PACS, Path, iSOFT i.Clinical Manager
-
-F1 Teaching Hospital C PAS, PACS, Path
-
-F2 Teaching Hospital C PAS, PACS, Path, EMIS, INPS Vision
-
-397 Pharmacist? Senior Teaching Hospital C PAS, PACS, Path, eTTAs, iMDsoft [®] MetaVision
-
-398 Nurse Stroke? DGH PAS
-
-399 Doctor Ear, Nose and Throat (ENT)
-
-400 Doctor Clinical Pharmacology
-
-Research Fellow
-
-Research fellow
-
-DGH PAS, PACS, Path
-
-Large hospital B PAS, PACS, Path, eTTAs, an ePrescribing system
-
-401 Nurse ENT Sister DGH PAS
+| B.1 | Abstract |
+| --- | --- |
+| The UK | National Health Service (NHS) Common User Interface (CUI) programme is a partnership ® |
+| between | Microsoft and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Program | me for Information Technology (NPfIT). |
+| As part | of CUI, the Clinical Applications and Patient Safety (CAPS) Project has the goal of ensuring |
+| that so | ftware applications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provide | s software developers with user interface design guidelines derived through a user-centric |
+| develop | ment process that includes explicit patient-safety evaluations. |
+| This su | mmary describes key findings from user research carried out in April 2009 by the CUI CAPS |
+| team on | the display of clinical data in a Timeline View. These findings are a subset from a larger |
+| interna | l report prepared for the CUI CAPS Timeline team. |
+| Purpose | : |
+| To gain | clinical feedback on design concepts for Timeline Views of clinical data (primarily |
+| medicat | ions) in electronic systems. |
+| Method: |  |
+| Intervi | ews: structured interviews with 13 Health Care Professionals (HCPs) eliciting HCP |
+| prefere | nces and qualitative feedback on design alternatives. |
+| Key Res | ults: |
+| Based o | n clinician preference and rationale: |
+|  T | he distinction between prescription item and medication administration items should be |
+| c | learer |
+|  O | ptions for alternative marking of future duration items should be considered, including |
+| h | aving the same representation for past and future |
+|  T | he canvas background should mark a distinction between past and future. However, this |
+| s | hould be subtle and take into account readability of all the elements on the canvas |
+| ( | including gridlines) |
+|  T | he ability to view labels both inline and in a left column should be considered |
+|  T | he ability for the clinician to vary the level of detail and line identity should be retained (for |
+| e | xample, the ability to aggregate prescriptions to the 'drug name' level) |
+|  F | urther methods for reorganising large datasets and indicating data out of view should be |
+| e | xplored |
+| B.2 | Research Objectives |
+| To gath | er HCP design preferences and qualitative feedback on, and to identify possible patient |
+| safety | hazards with, CUI Timeline View designs. |
+| B.3 | Research Design |
+| Intervi | ews were structured, lasted one hour and carried out in person or by telephone. Participants ® |
+| were ta | ken through wireframe design alternatives for each area of investigation and a Microsoft ® |
+| Office | Excel mockup, and then asked for preference based on patient safety criteria. Other |
+| qualita | tive feedback was elicited covering: |
+|  | Rationale for preference |
+|  | Design fit with current and best practice |
+|  | Design understandability |
+|  | Any potential hazards resulting from the designs. |
+| Detaile | d notes from the interviews were qualitatively analysed using thematic coding. |
+| B.4 | Results |
+| B.4.1 | Participant Description |
+| 13 part | icipants were interviewed separately. Each had either volunteered through the NHS CFH |
+| Event M | anagement System (EMS) signup or had been recruited by an HCP who had volunteered. |
+| Four ou | t of 13 participants had previously taken part in CUI clinical engagement for other work |
+| areas. | Table 12 shows a summary of the participants’ profiles: |
+| Sessio | n Job Role                    Specialty           Level      Site                  Systems Used |
+| 389 | Nurse Practitioner   Emergency           Senior     Walk-in centre        Various |
+| 390 | Nurse Practitioner   Renal Outpatients   Senior     Large Hospital A      PAS, Path, PACS |
+| 391 | Doctor               Surgery             CT1        Teaching Hospital A   PAS, Path, PACS, eTTAs |
+| 392 | Pharmacist and       Systems             Senior     Teaching Hospital B   PICS and various Analyst |
+| 393 | Doctor               Obstetrics and      F1         Teaching Hospital C   PAS, Path, PACS, eTTAs, Gynaecology                                          iSOFT® Synergy, EMIS® LV™, |
+| 394 | Doctor               Obstetrics and      F1         Teaching Hospital C   PAS, PACS, Path, iSOFT Gynaecology                                          i.Clinical Manager |
+| 395 | Doctor               Obstetrics and      F1         Teaching Hospital C   PAS, PACS, Path Gynaecology |
+| 396 | Doctor               Obstetrics and      F2         Teaching Hospital C   PAS, PACS, Path, EMIS, INPS Gynaecology                                          Vision |
+| 397 | Pharmacist           ?                   Senior     Teaching Hospital C   PAS, PACS, Path, eTTAs, iMDsoft® MetaVision |
+| 398 | Nurse                Stroke              ?          DGH                   PAS |
+| 399 | Doctor               Ear, Nose and       Research   DGH                   PAS, PACS, Path Throat (ENT)        Fellow |
+| 400 | Doctor               Clinical            Research   Large hospital B      PAS, PACS, Path, eTTAs, an Pharmacology        fellow                           ePrescribing system |
+| 401 | Nurse                ENT                 Sister     DGH                   PAS |
 
 Table 12: Interview Participants
 

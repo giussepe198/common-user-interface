@@ -89,37 +89,12 @@ Table 1 describes the changes made since the previous version of this document:
 
 ![](medline_assets/medline.pdf-3-0.png)
 
-1.0.0.0 28-Mar-2008 The following table summarises updates that have been made to this document:
 
-**Deleted** :
-
- MEDi-006 deleted to remove constraint to UK or NHS standards
-
-**Modified** :
-
- MEDi-002 includes additional information that cites exceptions in which capital letters can be
-
-used in a generic drug name
-
- MEDi-004 has been split into MEDi-023 and MEDi-026. These two guidance points are listed in
-
-separate sections to provide more detailed guidance for truncation and abbreviation respectively
-
- MEDi-005 has been split into MEDi-018 and MEDi-027. These two guidance points are listed in
-
-separate sections to provide more detailed guidance for separators and symbols respectively
-
- MEDi-007 has been updated to mandate the use of the word ‘DOSE’ in a text label for a dose
-
-value
-
- MEDI-010, MEDi-011 and MEDi-012 have been reworded to clarify the guidance
-
-**Added** :
-
- A further 42 guidance points, MEDi-013 to MEDi-054, have been added. Refer to section 2.1 for
-
-more details
+| Previous | Previous |
+| --- | --- |
+| Baseline | Baseline          Changes Since Previous Baseline |
+| Version | Date |
+| 1.0.0.0 | 28-Mar-2008       The following table summarises updates that have been made to this document: Deleted:  MEDi-006 deleted to remove constraint to UK or NHS standards Modified:  MEDi-002 includes additional information that cites exceptions in which capital letters can be used in a generic drug name  MEDi-004 has been split into MEDi-023 and MEDi-026. These two guidance points are listed in separate sections to provide more detailed guidance for truncation and abbreviation respectively  MEDi-005 has been split into MEDi-018 and MEDi-027. These two guidance points are listed in separate sections to provide more detailed guidance for separators and symbols respectively  MEDi-007 has been updated to mandate the use of the word ‘DOSE’ in a text label for a dose value  MEDI-010, MEDi-011 and MEDi-012 have been reworded to clarify the guidance Added:  A further 42 guidance points, MEDi-013 to MEDi-054, have been added. Refer to section 2.1 for more details |
 
 Table 1: Changes Since the Last Baseline Version
 
@@ -341,13 +316,110 @@ The following are also not covered in this guidance:
 
 #### 1.3 Dependencies
 
-**D1** This guidance is informed by ongoing and unpublished work by the NHS National Programme for IT (NPfIT) that is referred to in this document as NHS Connecting for Health (NHS CFH) Medication Types Rules. The NHS CFH Medication Types Rules is still evolving and is based on extensive research and consultation. Changes to this work will trigger changes to this guidance.
 
-**D2** The guidance points in section 3.3.1 are particularly dependent on research into the application of Tallman lettering, as documented by the Institute for Safe Medication Practices (ISMP) in _How should Tallman lettering be applied to look-_ _alike/sound-alike drug name pairs?_ _[2]_. In summary, Tallman lettering is a proposed solution for mitigating the risks of ‘lookalike, sound-alike’ drug names. Tallman lettering is mandated in the US and recommended by the World Health Organization (WHO) in _Look-Alike Sound-Alike Medication Names_ _[3]_. The uptake of Tallman lettering in electronic prescribing in the UK would require a review of the use of capital letters for differentiating brand names, and is currently the subject of an ongoing NHS CFH research project.
-
-**D3** This guidance is informed by the NHS CFH _ePrescribing Functional Specification_ _[4]_.
-
-**D4** This guidance uses the concepts ‘generic drug’ and ‘brand name’ and depends on access to, or creation of, a database or dictionary, that can support these concepts, such as the _Dictionary of Medicines and Devices_ (known as ‘dm+d’) [5].
+|  | Generic rules for the display of medication including wrapping, truncation, abbreviation, spacing, fonts formatting and labelling |
+| --- | --- |
+| wing | users are covered in this guidance: |
+| tors | and other independent prescribers |
+| ses w | ith responsibility for medicines administration |
+| rmaci | sts |
+| wing | care settings are covered in this guidance: |
+| atien | t |
+| wing | medications are covered in this guidance: |
+| l sol | ids and liquids |
+| alers | and sprays |
+| , ear | and nose drops |
+| ical | liquids |
+| ams, | ointments and gels |
+| mas a | nd rectal solutions |
+| nules | and powders |
+| posit | ories and pessaries |
+| ical | patches |
+| ulise | r solutions |
+| ple i | nfusions (by example only) |
+| ectio | ns (insulin example only) |
+| icens | ed medications |
+| O | ut of Scope |
+| there | may be specific risks associated with the out of scope areas that are not addressed |
+| uidan | ce, it is likely that the principles in this guidance will extend to the display of |
+| n inf | ormation in many of the areas listed below. |
+| wing | features are not covered in this guidance: |
+| disp | lay of all information about a single medication: |
+|  | Guidance for the layout and structure for the presentation of ‘all’ information for one medication from the selection of a medication anywhere in a clinical application |
+| ntity | of a medication: |
+|  | Definition of which attributes can be changed without the need for a new medication line to be created (in the UI) |
+| wing | users are not covered in this guidance: |
+| er he | alth care professionals |
+| ior n | urse (for ward management and multi-patient tasks) |
+| -clin | ical staff |
+| ient |  |
+|  |  |
+| atien | t is out of scope because the guidance is designed to support user interfaces used by |
+| cians | . As such, it will therefore present information in formats that are designed to support health care |
+| ssion | als. The display of medication information in views that are designed for patients is not |
+| ssed | in this guidance. |
+| wing | care settings are not covered in this guidance: |
+| patie | nts |
+| nics |  |
+| rmaci | es |
+| rgenc | y services and departments |
+| ensiv | e Care, High Dependency Unit (HDU) |
+| mary | care, including General Practice |
+| munit | y and home visits |
+| wing | types of medications are not covered in this guidance: |
+| eral | feeds |
+| ssing | s and devices |
+| lants | and sticks |
+| raute | rine devices (IUDs) |
+| ents |  |
+| eopat | hic products (including complementary and alternative therapies) |
+| lysis | solutions |
+| ectio | ns (except by specific example) |
+| ulin | (except by specific example) |
+| usion | s and fluids (except by specific examples) |
+| binat | ion infusions |
+| al Pa | rental Nutrition (TPN) |
+| es |  |
+| od an | d platelet products |
+| io-ph | armacy |
+| iable | dose medications (by example only) |
+| ms |  |
+| ioact | ive agents |
+| imens | and order sets |
+| isory | Committee on Borderline Substances (ACBS) products |
+| r the | counter (OTC) medications |
+| reati | onal drugs |
+| icati | ons with titrating doses |
+| charg | e medications – to take out (TTO) |
+| ient’ | s own drugs (PODs) |
+| dural | s and analgesia (and similar patient controlled medications) |
+| empor | aneous prescriptions |
+| icati | on prescribed by Patient Group Direction (PGD) |
+| icati | on prescribed by supplementary prescribers |
+| wing | are also not covered in this guidance: |
+| Seale | d envelopes |
+| Decis | ion support |
+| Knowl | edge support |
+| Alert | s and warnings |
+| When | a patient is ‘Nil by Mouth’ |
+| Aller | gies |
+| Patie | nt preference (for example, for a particular drug form) |
+| Depe | ndencies |
+| Depe | ndency |
+| This | guidance is informed by ongoing and unpublished work by the NHS National Programme for IT (NPfIT) that is referred |
+| to i | n this document as NHS Connecting for Health (NHS CFH) Medication Types Rules. The NHS CFH Medication Types |
+| Rule | s is still evolving and is based on extensive research and consultation. Changes to this work will trigger changes to this |
+| guid | ance. |
+| The | guidance points in section 3.3.1 are particularly dependent on research into the application of Tallman lettering, as |
+| docu | mented by the Institute for Safe Medication Practices (ISMP) in How should Tallman lettering be applied to look- |
+| alik | e/sound-alike drug name pairs?2. In summary, Tallman lettering is a proposed solution for mitigating the risks of ‘look- |
+| alik | e, sound-alike’ drug names. Tallman lettering is mandated in the US and recommended by the World Health |
+| Orga | nization (WHO) in Look-Alike Sound-Alike Medication Names3. The uptake of Tallman lettering in electronic prescribing |
+| in t | he UK would require a review of the use of capital letters for differentiating brand names, and is currently the subject of |
+| an o | ngoing NHS CFH research project. |
+| This | guidance is informed by the NHS CFH ePrescribing Functional Specification4 . |
+| This | guidance uses the concepts ‘generic drug’ and ‘brand name’ and depends on access to, or creation of, a database or |
+| dict | ionary, that can support these concepts, such as the Dictionary of Medicines and Devices (known as ‘dm+d’)5. |
 
 Table 2: Dependencies
 
@@ -880,53 +952,33 @@ HSCIC Controlled Document
 
 #### 4.1 Terms and Abbreviations
 
-ACBS Advisory Committee on Borderline Substances
 
-AMP Actual Medicinal Product
-
-BNF British National Formulary
-
-CATR Clinical Authority to Release
-
-CSG Clinical Safety Group
-
-CSMS Clinical Safety Management System
-
-CUI Common User Interface
-
-dm+d Dictionary of Medicines and Devices
-
-HDU High Dependency Unit
-
-ISMP The Institute for Safe Medication Practices
-
-IUD Intrauterine Device
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NPfIT National Programme for IT
-
-NPSA National Patient Safety Agency
-
-OTC Over the Counter
-
-PGD Patient Group Direction
-
-PODs Patient’s Own Drugs
-
-TFN Trade Family Name
-
-TPN Total Parental Nutrition
-
-TTO To Take Out
-
-UI User Interface
-
-VTM Virtual Therapeutic Moiety
-
-WHO World Health Organization
+| Abbreviation | Definition |
+| --- | --- |
+| ACBS | Advisory Committee on Borderline Substances |
+| AMP | Actual Medicinal Product |
+| BNF | British National Formulary |
+| CATR | Clinical Authority to Release |
+| CSG | Clinical Safety Group |
+| CSMS | Clinical Safety Management System |
+| CUI | Common User Interface |
+| dm+d | Dictionary of Medicines and Devices |
+| HDU | High Dependency Unit |
+| ISMP | The Institute for Safe Medication Practices |
+| IUD | Intrauterine Device |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPfIT | National Programme for IT |
+| NPSA | National Patient Safety Agency |
+| OTC | Over the Counter |
+| PGD | Patient Group Direction |
+| PODs | Patient’s Own Drugs |
+| TFN | Trade Family Name |
+| TPN | Total Parental Nutrition |
+| TTO | To Take Out |
+| UI | User Interface |
+| VTM | Virtual Therapeutic Moiety |
+| WHO | World Health Organization |
 
 Table 4: Terms and Abbreviations
 
@@ -954,7 +1006,14 @@ Brand name A brand name for a product containing medication. A brand name may be
 
 **Important Note**
 
-This definition is for this document only and may not reflect the definitions that are used in clinical practice or healthcare organisations.
+
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
+| Generic drug name | This can be a single drug name that refers to a single active ingredient or it can be multiple active ingredients that are prescribed as one drug. In the structure of the dm+d {R9}, this generally equates to a Virtual Therapeutic Moiety (VTM). Important Note This definition is for this document only and may not reflect the definitions that are used in clinical practice or healthcare organisations. |
+| Brand name | A brand name for a product containing medication. A brand name may be associated with many products. In some cases, the same brand name may be associated with different generic drugs. Future versions of the dm+d {R9} are expected to include a separate entity for brand name, known as Trade Family Name (TFN). In the meantime, the brand name is part of the Actual Medicinal Product (AMP). Important Note This definition is for this document only and may not reflect the definitions that are used in clinical practice or healthcare organisations. |
 
 Table 5: Definitions
 
@@ -964,21 +1023,17 @@ This section shows how to interpret the different styles used in this document t
 
 ##### 4.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 6: Body Text Styles
 
@@ -990,15 +1045,14 @@ HSCIC Controlled Document
 
 ##### 4.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 7: Cross Reference Styles
 
@@ -1068,59 +1122,61 @@ Page 36
 
 HSCIC Controlled Document
 
-**R18.** British National Formulary – BNF No. 56 – BNF Extra – Resources – Name changes [http://bnf.org/bnf/extra/56/450049.htm](http://bnf.org/bnf/extra/56/450049.htm)
 
-**R19.** WHO Drug Information, Vol. 22, No. 1, 2008 – International Nonproprietary Names for Pharmaceutical Substances (INN) [http://whqlibdoc.who.int/druginfo/INN_2008_list59.pdf](http://whqlibdoc.who.int/druginfo/INN_2008_list59.pdf)
-
-**R20.** Medica – Over-the-Counter Drug List [http://member.medica.com/router/default.pdf?doc=/C15/DrugFormulary/Document%20Library/OTC_](http://member.medica.com/router/default.pdf?doc=/C15/DrugFormulary/Document%20Library/OTC_Druglist_2007.pdf) [Druglist_2007.pdf](http://member.medica.com/router/default.pdf?doc=/C15/DrugFormulary/Document%20Library/OTC_Druglist_2007.pdf)
-
-**R21.** Vista Healthplans – Formulary Drug List 2006 [http://www.vistahealthplan.com/Static/shared/PDF/Formulary/vista_member_formulary.pdf](http://www.vistahealthplan.com/Static/shared/PDF/Formulary/vista_member_formulary.pdf)
-
-**R22.** BlueCross BlueShield of Illinois – 2008 Blue Cross and Blue Shield of Illinois Drug Formulary [http://www.bcbsil.com/rx/pdf/2008_prescription_drug_formulary.pdf](http://www.bcbsil.com/rx/pdf/2008_prescription_drug_formulary.pdf)
-
-**R23.** ISMP – ISMP MedicationSafetyAlert! – It’s Time for Standards to Improve Safety with Electronic Communication of Medication Orders – Draft Guidelines for Safe Electronic Communication of Medication Orders [http://www.ismp.org/Newsletters/acutecare/articles/20030220.asp](http://www.ismp.org/Newsletters/acutecare/articles/20030220.asp)
-
-**R24.** NHS NPfIT – Guidelines for the Design and Presentation of Medication Elements Required in Electronic Prescribing or Medication Ordering Systems – NPfIT-EP-DB-0003.01
-
-**R25.** How to limit clinical errors in interpretation of data – Wright P, Jansen C, Wyatt J – Lancet 1998; 352: 1539-43
-
-**R26.** Helping Clinicians to find data and avoid delays – Nygren E, Wyatt J C, Wright, P – Lancet 1998; 352: 1462-66
-
-**R27.** ISMP List of Error-Prone Abbreviations, Symbols, and Dose Designations – November 2003, Volume 8, Issue 24 [http://www.usp.org/pdf/EN/patientSafety/ismpAbbreviations.pdf](http://www.usp.org/pdf/EN/patientSafety/ismpAbbreviations.pdf)
-
-**R28.** The Joint Commission – National Patient Safety Goals – Goal 2B [http://www.jointcommission.org/PatientSafety/NationalPatientSafetyGoals/08_npsg_facts.htm](http://www.jointcommission.org/PatientSafety/NationalPatientSafetyGoals/08_npsg_facts.htm)
-
-**R29.** Data Presentation & Visual Literacy in Medicine and Science – Simmonds D, Reynolds L – Newton, MA, USA – Butterworth-Heinemann – 1994
-
-September 2008
-
-2008
-
-01-Aug-2007
-
-2006
-
-01-Jul-2008
-
-20-Feb-2003
-
-2005
-
-1998
-
-1998
-
-27-Nov-2003
-
-June 2007
-
-1994
-
-**R30.** Designing Instructional Text – Hartley J – London, Kogan Page Third Edition, 1994
-
-**R31.** Drug selection errors in relation to medication labels: a simulation study – Garnerin et al – Anaesthesia 2007, 62, pages 1090-1094
-
-**R32.** NHS NPfIT – Types of medication item for display and prescribing within Secondary Care electronic systems – NPfIT-EP-DB-0022.01
+| Reference | Document | Version |
+| --- | --- | --- |
+| R1. | NHS CUI Programme – Design Guide Entry – Medications Management – Medication Line | 1.0.0.0 |
+| R2. | NPSA – Safety in doses: medication safety incidents in the NHS http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=5535 | 2007 |
+| R3. | Medication Errors – Causes, Prevention, and Risk Management – Cohen M R (Ed) – Jones and Bartlett Publishers | 2004 |
+| R4. | To Err is Human – Building a Safer Health System – Kohn L, Corrigan J, Donaldson M – Washington, DC: National Academy Press, 2000 | 2000 |
+| R5. | Understanding Patient Safety – Wachter R M – The McGraw-Hill Companies, Inc, 2008 | 2008 |
+| R6. | ISMP – Frequently Asked Questions (FAQ) – How should Tallman lettering be applied to look- alike/sound-alike drug name pairs? http://www.ismp.org/faq.asp#Question_5 | 2008 |
+| R7. | WHO Collaborating Centre for Patient Safety Releases – Patient Safety Solutions – volume 1, solution 1 – Look-Alike, Sound-Alike Medication Names http://www.ccforpatientsafety.org/fpdf/Presskit/PS-Solution1.pdf | May 2007 |
+| R8. | NHS CFH – ePrescribing Functional Specification http://www.connectingforhealth.nhs.uk/newsroom/news-stories/eprescfunctspec | 1.0 |
+| R9. | NHS – dictionary of medicines + devices Welcome to the dm+d website — The NHS Dictionary of Medicines and Devices | Release 2.3 |
+| R10. | NHS CUI Programme – Design Guide Entry – Medications Management – Medication Views | 2.0.0.0 |
+| R11. | NHS CUI Programme – Design Guide Entry – Medications Management – Drug Administration | 3.0.0.0 |
+| R12. | Lothian Joint Formulary Lothian Joint Formulary | July 2008 |
+| R13. | Northumberland and North Tyneside Drugs and Therapeutics Committee – Formulary – Version 1.1 Sep September 2004                                                                               200 http://www.gp-training.net/protocol/therapeutics/formulary_northumberland.pdf | tember 4 |
+| R14. | The AARP Guide to Pills – Essential Information on More than 1,200 Prescription & Nonprescriptio Medications, Including Generics – AARP, Avord, J, Greider, K | n January 2006 |
+| R15. | Complete Guide to Prescription and Nonprescription Drugs – Griffith H W, Moore S, Boesen, K | August 2007 |
+| R16. | British National Formulary – BNF No. 56 http://bnf.org/bnf/bnf/current/104945.htm | September 2008 |
+| R17. | British National Formulary – BNF No. 56 – Product Label List http://bnf.org/bnf/bnf/current/100159.htm | September 2008 |
+| Reference        D | ocument | Version |
+| R18.             B | ritish National Formulary – BNF No. 56 – BNF Extra – Resources – Name changes | September |
+| h | ttp://bnf.org/bnf/extra/56/450049.htm | 2008 |
+| R19.             W | HO Drug Information, Vol. 22, No. 1, 2008 – International Nonproprietary Names for | 2008 |
+| P | harmaceutical Substances (INN) |  |
+| h | ttp://whqlibdoc.who.int/druginfo/INN_2008_list59.pdf |  |
+| R20.             M | edica – Over-the-Counter Drug List                                                        01-Aug | -2007 |
+| h | ttp://member.medica.com/router/default.pdf?doc=/C15/DrugFormulary/Document%20Library/OTC_ |  |
+| D | ruglist_2007.pdf |  |
+| R21.             V | ista Healthplans – Formulary Drug List 2006 | 2006 |
+| h | ttp://www.vistahealthplan.com/Static/shared/PDF/Formulary/vista_member_formulary.pdf |  |
+| R22.             B | lueCross BlueShield of Illinois – 2008 Blue Cross and Blue Shield of Illinois Drug Formulary | 01-Jul-2008 |
+| h | ttp://www.bcbsil.com/rx/pdf/2008_prescription_drug_formulary.pdf |  |
+| R23.             I | SMP – ISMP MedicationSafetyAlert! – It’s Time for Standards to Improve Safety with Electronic | 20-Feb-2003 |
+| C | ommunication of Medication Orders – Draft Guidelines for Safe Electronic Communication of |  |
+| M | edication Orders |  |
+| h | ttp://www.ismp.org/Newsletters/acutecare/articles/20030220.asp |  |
+| R24.             N | HS NPfIT – Guidelines for the Design and Presentation of Medication Elements Required in | 2005 |
+| E | lectronic Prescribing or Medication Ordering Systems – NPfIT-EP-DB-0003.01 |  |
+| R25.             H | ow to limit clinical errors in interpretation of data – Wright P, Jansen C, Wyatt J – Lancet 199 | 8;   1998 |
+| 3 | 52: 1539-43 |  |
+| R26.             H | elping Clinicians to find data and avoid delays – Nygren E, Wyatt J C, Wright, P – Lancet 1998; | 1998 |
+| 3 | 52: 1462-66 |  |
+| R27.             I | SMP List of Error-Prone Abbreviations, Symbols, and Dose Designations – November 2003, | 27-Nov-2003 |
+| V | olume 8, Issue 24 |  |
+| h | ttp://www.usp.org/pdf/EN/patientSafety/ismpAbbreviations.pdf |  |
+| R28.             T | he Joint Commission – National Patient Safety Goals – Goal 2B | June 2007 |
+| h | ttp://www.jointcommission.org/PatientSafety/NationalPatientSafetyGoals/08_npsg_facts.htm |  |
+| R29.             D | ata Presentation & Visual Literacy in Medicine and Science – Simmonds D, Reynolds L – Newton, 19 | 94 |
+| M | A, USA – Butterworth-Heinemann – 1994 |  |
+| R30.             D | esigning Instructional Text – Hartley J – London, Kogan Page | Third Edition, 1994 |
+| R31.             D | rug selection errors in relation to medication labels: a simulation study – Garnerin et al – | 2007 |
+| A | naesthesia 2007, 62, pages 1090-1094 |  |
+| R32.             N | HS NPfIT – Types of medication item for display and prescribing within Secondary Care electronic | 2008 |
+| s | ystems – NPfIT-EP-DB-0022.01 |  |
 
 Table 8: References
 
@@ -1341,13 +1397,89 @@ MEDi-050 3.3.12 Use a comma to break up numeric values of one thousand and above
 **MEDi-051 to MEDi-053**
 **Visual Summary:**
 
-**generic** - BRAND – strength – form – **`DOSE`** **dose** - route – frequency
 
-MEDi-051 3.3.13 When describing a medication as a line of text, adhere to the following order for the display of the medication attributes: drug name, brand name, strength, form, dose or volume, rate, dose duration, route, frequency (as applicable)
-
-MEDi-052 3.3.13 When designing for specific contexts, especially those that need additional text labels and line breaks, display drug name first and display other attributes (in a different order if necessary) from the one defined above
-
-MEDi-053 3.3.13 When a medication is not displayed as a single line of text and the attributes of a medication are listed in a different order, use text labels for as many of these attributes as possible: strength, form, route and frequency
+| Reference | Section | Description generic                     brand |
+| --- | --- | --- |
+| MEDi-001 to MED | i-003, | diltiazem – CALCICARD CR – |
+| MEDi-013 Visual | Summary: | modified-release tablet – DOSE 120 mg – oral – twice a day |
+| MEDi-001 | 3.3.1 | Display generic drug names in bold |
+| MEDi-002 | 3.3.1 | Display generic drug names in lowercase (capital letters may still be used for acronyms and abbreviations in some drug names such as amphotericin B, factor VIII, carbomer 974P) |
+| MEDi-003 | 3.3.1 | Display drug brand names in uppercase |
+| MEDi-013 | 3.3.1 | Where both the generic name and the brand name appear in a medication line, list the generic name first |
+| MEDi-014 to MED | i-017 | 500 mg               2,000              0.9 g |
+| Visual Summary: |  |  |
+| MEDi-014 | 3.3.2 | Where possible, avoid the need for decimal points by changing the units without breaking convention |
+| MEDi-015 | 3.3.2 | Do not put a trailing zero after a sub-decimal value (that is, ‘0.5’ is correct but ‘0.50’ is incorrect) |
+| MEDi-016 | 3.3.2 | Put a leading zero before a decimal point for values of less than one |
+| MEDi-017 | 3.3.2 | Use a comma to break up numeric values of one thousand and above |
+| MEDi-018 to MED | i-020 | paracetamol – tablet – DOSE 1 g – |
+| Visual Summary: |  | oral – every 6 hours |
+| MEDi-018 | 3.3.3 | When combining attributes in a text string, use a long dash (em dash) surrounded by spaces between the attributes |
+| MEDi-019 | 3.3.3 | Use a double space instead of a long dash or separator between a drug name and strength when there are multiple drug names in one medication line |
+| MEDi-020 | 3.3.3 | Use a double space instead of a long dash or separator between a drug name and strength when the strength is expressed as a percentage paracetamol 500 mg + metoclopramide 5 mg – |
+| MEDi-010, MEDi- | 011, | sachet – DOSE 2 sachets – oral – |
+| MEDi-021, MEDi- | 008 | every 4 hours as required – |
+| Visual Summary: |  | maximum 6 doses in 24 hours |
+| MEDi-010 | 3.3.4 | When wrapping the text of a medication line, do so without breaking up the contents of a single attribute unless that single attribute will not fit on one line |
+| MEDi-011 | 3.3.4 | When wrapping the text of a medication line, keep trailing delimiters with the preceding attribute |
+| MEDi-021 | 3.3.4 | If a long drug name exceeds the available screen space and has to be wrapped, ensure that the drug name is wrapped between words |
+| MEDi-008 | 3.3.4 | Do not allow wrapping to separate a label from a value |
+| Reference | Section | Description paracetamol |
+| MEDi-022 to MED | i-024 | Do not abbreviate para – tablet – DOSE 500 mg – |
+| Visual Summary: |  | drug names oral – every 6 hours |
+| MEDi-022 | 3.3.5 | Do not abbreviate drug names |
+| MEDi-023 | 3.3.5 | Use long form names rather than abbreviations or symbols where possible |
+| MEDi-024 | 3.3.5 | Do not put a full stop after abbreviations for units (for example, mg and mL) injection |
+| MEDi-025, MEDi- | 012 | heparin – 5,000 units per mL – solution for in |
+| Visual Summary: |  | Do not truncate or omit information from a medication line |
+| MEDi-025 | 3.3.6 | Do not truncate drug names |
+| MEDi-012 | 3.3.6 | If necessary, wrap but do not truncate medication line information |
+| MEDi-054 | 3.3.6 | Do not display a part of the medication line alone if its meaning relies on other parts that are not displayed |
+| MEDi-026 to MED | i-028 | @&\|/\<>()[]{} |
+| Visual Summary: |  |  |
+| MEDi-026 | 3.3.7 | Do not use symbols that may be confused with numbers or otherwise misinterpreted, including: @ \| < > / \ & ° (at sign, vertical bar, greater than bracket, less than bracket, forward slash, backslash, ampersand, degree) |
+| MEDi-027 | 3.3.7 | Use the ‘+’ (plus symbol) only for multiple drug name medications and surround it with spaces. When a ‘+’ is displayed adjacent to a ‘4’, separate the two with a double space |
+| MEDi-028 | 3.3.7 | Use alternatives such as a dash or a black dot ( ● ) instead of brackets and separators such as ( ) [ ] { } that look like the number one heparin – solution for injection STRENGTH 5,000 units per mL |
+| MEDi-009, MEDi- | 029 to | DOSE 5,000 units |
+| MED-034 Visual | Summary: | ROUTE subcutaneous – once only |
+| MEDi-009 | 3.3.8 | Use a different font and colour to differentiate labels from values |
+| MEDi-029 | 3.3.8 | When a medication is represented as a single-text sentence, use a label for dose only |
+| MEDi-030 | 3.3.8 | When a medication is represented as a series of lines with hard line breaks, labels should appear at the beginning of a new line after a hard line break |
+| MEDi-031 | 3.3.8 | Use a space to separate a label from a value |
+| MEDi-032 | 3.3.8 | Do not use a colon after a label |
+| MEDi-033 | 3.3.8 | Display labels in uppercase |
+| MEDi-034 | 3.3.8 | Keep the number of text labels in a medication represented as a single-text sentence to a minimum |
+| Reference | Section | Description line break paracetamol – tablet |
+| MEDi-035 Visual | Summary: | DOSE 500 mg – oral – every 6 hours text wrap |
+| MEDi-035 | 3.3.9 | When using hard line breaks at set points (such as before a dose), do not use a long dash at the end of the previous line paracetamol – tablet –                             Preserve white |
+| MEDi-036, MEDi- | 037 |  |
+| Visual Summary: |  | DOSE 500 mg –                        space between lines oral – every 6 hours |
+| MEDi-036 | 3.3.10 | When displaying a medication as one or many lines of text, preserve white space between the lines by ensuring that the line height is no less than 120% (120% leading) and no greater than 140% (140% leading) |
+| MEDi-037 | 3.3.10 | When displaying a list of medications, ensure that there is a space equivalent to at least one line height of 100% between the last line of one medication line and the first line of the medication line below label            space                         bold |
+| MEDi-007, MEDi- | 038 to |  |
+| MEDi-044 Visual | Summary: | DOSE 500 mg                       DOSE 500 mg |
+| MEDi-007 | 3.3.11 | Provide a text label that reads ‘DOSE’ before a dose |
+| MEDi-038 | 3.3.11 | Display the dose amount and units in bold |
+| MEDi-039 | 3.3.11 | When a dose is expressed as a volume, display the volume amount in bold |
+| MEDi-040 | 3.3.11 | When there is no dose or volume, display a dose equivalent in place of the dose and subject to the same guidance points as a dose. Precede with an appropriate text label |
+| MEDi-041 | 3.3.11 | Separate the dose amount from the dose units with a space |
+| MEDi-042 | 3.3.11 | Do not put a trailing zero after a sub-decimal value when displaying a dose amount (that is, ‘0.5’ is correct but ‘0.50’ is incorrect) |
+| MEDi-043 | 3.3.11 | Put a leading zero before a decimal point for values of less than one when displaying a dose value |
+| MEDi-044 | 3.3.11 | Use a comma to break up numeric values of one thousand and above when displaying a dose value co-amoxiclav – 400 and 57 mg in 5 mL – |
+| MEDi-045 to MED | i-050 | suspension – DOSE 1.2 mL – oral – |
+| Visual Summary: |  | every 12 hours |
+| MEDi-045 | 3.3.12 | When describing strengths with an active ingredient in a fluid, use ‘in’ rather than a forward slash ( ‘/’ ) before the fluid quantity |
+| MEDi-046 | 3.3.12 | When describing strengths of an ingredient in a single unit of fluid, use the word ‘per’ to describe the unit of fluid |
+| MEDi-047 | 3.3.12 | When describing a strength for a combination drug whose two strength values use the same unit (such as mg), use the word ‘and’ in a smaller font to join the two strength values and display the units after the second strength value |
+| MEDi-048 | 3.3.12 | Do not put a trailing zero after a decimal point when displaying numbers in a strength value |
+| Reference | Section | Description |
+| MEDi-049 | 3.3.12 | Put a leading zero before a decimal point for values of less than one when displaying numbers in a strength value |
+| MEDi-050 | 3.3.12 | Use a comma to break up numeric values of one thousand and above when displaying numbers in a strength value |
+| MEDi-051 to MED | i-053 | generic – BRAND – strength – form – |
+| Visual Summary: |  | DOSE dose – route – frequency |
+| MEDi-051 | 3.3.13 | When describing a medication as a line of text, adhere to the following order for the display of the medication attributes: drug name, brand name, strength, form, dose or volume, rate, dose duration, route, frequency (as applicable) |
+| MEDi-052 | 3.3.13 | When designing for specific contexts, especially those that need additional text labels and line breaks, display drug name first and display other attributes (in a different order if necessary) from the one defined above |
+| MEDi-053 | 3.3.13 | When a medication is not displayed as a single line of text and the attributes of a medication are listed in a different order, use text labels for as many of these attributes as possible: strength, form, route and frequency |
 
 Table 9: Reference Summary of Guidance
 

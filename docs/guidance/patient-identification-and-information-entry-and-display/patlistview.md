@@ -93,47 +93,11 @@ Additionally, users implementing applications that follow this design guide’s 
 Refer to [NHS Common User Interface for further information on the patient safety process and for](http://www.cui.nhs.uk/Pages/NHSCommonUserInterface.aspx) the safety status and any relevant accompanying safety documentation for this design guide.
 ### 1 INTRODUCTION
 
-This document provides guidance for the design of Patient Lists. It describes the area of focus, lists mandatory and recommended guidance points with usage examples and explains the rationale behind the guidance.
 
-To indicate their relative importance, each guideline in this document is ranked by **Conformance** and by **Evidence Rating** . Table 1 defines those terms:
-
-Conformance Indicates the extent to which you should follow the guideline when defining your User Interface (UI) implementation. There are two levels:
-
- **Mandatory**         - An implementation should follow the guideline
-
- **Recommended**         - An implementation is advised to follow the guideline
-
-Evidence Rating Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):
-
- **Low** :
-
- Does not mitigate specific patient safety hazards
-
- User research findings unclear and with few participants
-
- Unreferenced usability principles indicate the design is not significantly better than alternatives
-
- **Medium** :
-
- Mitigates specific patient safety hazards
-
- User research findings clear but with few participants
-
- References old authoritative guidance (for example, from National Patient Safety Agency (NPSA),
-
-Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
- **High** :
-
- Mitigates specific patient safety hazards
-
- User research findings clear and with a significant number of participants
-
- References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
-
- Referenced usability principles indicate the design is significantly better than alternatives
+| Term | Definition |
+| --- | --- |
+| Conformance | Indicates the extent to which you should follow the guideline when defining your User Interface (UI) implementation. There are two levels:  Mandatory – An implementation should follow the guideline  Recommended – An implementation is advised to follow the guideline |
+| Evidence Rating | Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):  Low:  Does not mitigate specific patient safety hazards  User research findings unclear and with few participants  Unreferenced usability principles indicate the design is not significantly better than alternatives  Medium:  Mitigates specific patient safety hazards  User research findings clear but with few participants  References old authoritative guidance (for example, from National Patient Safety Agency (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded  Referenced usability principles indicate the design is significantly better than alternatives  High:  Mitigates specific patient safety hazards  User research findings clear and with a significant number of participants  References recent authoritative guidance (for example, from NPSA, ISMP or WHO)  Referenced usability principles indicate the design is significantly better than alternatives |
 
 Table 1: Conformance and Evidence Rating Definitions
 
@@ -202,81 +166,27 @@ This section sets out the items that are in and out of scope for this design gui
 
 ##### 1.2.1 In Scope
 
-Datatype (format and layout)
 
-Attribute (content and format)
-
- Structured text (for example, tasks) excluding
-
-associated metadata (for example, task status changes)
-
- Patient identifiers (including layout and positioning)
-
- Location (static location)
-
- 'Appointment' times (including multiple times)
-
- Multiple data types per cell
-
- Style (for example, banding
-
- Size and resizing (both user and system initiated)
-
-Cells  Cell padding
-
- Multiple entries per cell
-
-List Header  Label and inclusion criteria of list
-
-Row and Column  Headers (for example, style, labels)
-
- Gridlines
-
-More Details  Opening items (for example, patient care records)  'Opened' items in context with list
-
-Navigation  Moving around a long or wide list (vertical and
-
-horizontal scrolling)
-
-No Data  Empty rows (beds or timeslots)  No results in list
-
-Out of View  Indicating data out of view per cell and/or row (for
-
-example, truncation)
-
- Indicating items out of list view
-
- Use of out of view (that is, do you always show some
-
-datatypes and/or attributes)
-
- Fitting items on a page (for default views)
-
-Provenance  Indication of refreshed list  Refreshing the list
-
-Updates  Indication of update (at list or 'cell' level, including
-
-'new' items)
-
- Viewing update history
-
- Viewing previous patients on the list
-
-Datasets  Alter the visible dataset (for example, adding
-
-columns, including role specific views, list level of detail, and so on)
-
-Layout  Layout of data (for example, column order)
-
-Manipulation  Indication of filtered list
-
- Filtering the list
-
- Indication of grouping
-
-Similarity  Flagging similar names and similarity (indication of
-
-determining differential)
+| Areas | Details |
+| --- | --- |
+| Datatype (format  S | tructured text (for example, tasks) excluding |
+| and layout)        a | ssociated metadata (for example, task status |
+| c | hanges) |
+| Attribute (content  | Patient identifiers (including layout and positioning)       'Appointment' times (including multiple times) |
+| and format)         | Location (static location) |
+| Cells |  Cell padding                                                Multiple data types per cell  Multiple entries per cell |
+| List Header |  Label and inclusion criteria of list |
+| Row and Column  Hea | ders (for example, style, labels)                             Style (for example, banding  Gridlines                                                   Size and resizing (both user and system initiated) |
+| More Details |  Opening items (for example, patient care records)           'Opened' items in context with list |
+| Navigation |  Moving around a long or wide list (vertical and horizontal scrolling) |
+| No Data |  Empty rows (beds or timeslots)                              No results in list |
+| Out of View |  Indicating data out of view per cell and/or row (for        Use of out of view (that is, do you always show some example, truncation)                                         datatypes and/or attributes)  Indicating items out of list view                           Fitting items on a page (for default views) |
+| Provenance |  Indication of refreshed list                                Refreshing the list |
+| Updates |  Indication of update (at list or 'cell' level, including    Provenance –- when was data last updated 'new' items)                                                Snapshot history (viewing, navigating, indication of  Viewing update history                                       past, et cetera)  Viewing previous patients on the list |
+| Datasets |  Alter the visible dataset (for example, adding columns, including role specific views, list level of detail, and so on) |
+| Layout |  Layout of data (for example, column order) |
+| Manipulation |  Indication of filtered list                                 Indication of sort order  Filtering the list                                          Showing and hiding 'columns'  Indication of grouping |
+| Similarity |  Flagging similar names and similarity (indication of determining differential) |
 
 Table 2: In Scope
 
@@ -444,81 +354,34 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-List header  Ward level aggregated scores (for example, number
 
-of infections)
-
-List inclusion  Patient’s ‘outside’ the standard set (for example,
-
-those pending admission)
-
- View non-patient data (for example, ward level
-
-information)
-
- Data about patients not in the systems
-
-Manipulation  Indication of grouping
-
- Change view setting
-
- Use of sort order
-
-Miscellaneous  Handover status
-
- Colours
-
- Ambiguous information
-
- Lists with multiple instance of the same patient
-
- Specifying list criteria
-
- Multiple patients allocated to the same bed (next
-
-patient awaiting admission)
-
- Sort on a key within multiple datatype cells
-
- Sorting items within a cell (for example, prioritising
-
-patients)
-
- Remote view
-
- Patient List summary in the context of a single record
-
-Navigation  Navigating to a Patient List  Navigating from Patient List
-
-Printing  Printing all or part of a Patient List
-
-Process  Process of handover (for example, transfer of responsibility)
-
-Structured layout  Structured lines (for example, stack of Patient Banners)
-
-Summary  Indicating fallibility of summaries  Usage of ‘how much’ data should be allowed ‘in’ a
-
-Patient List
-
-Tasks  Basic task display layout and format
-
- Task status indicator per task
-
- Task status indicator per patient
-
- Hierarchical view of tasks
-
- Filtering tasks
-
- Display of completed tasks
-
- Colour coding
-
- Role specific mark-up
-
- View task assignment
-
- Indicate overdue tasks
+| Areas | Details |
+| --- | --- |
+| Alerts |  Alerts of change in patient state (for example, change of Medical Early Warning Score (MEWS)) |
+| Application |  Location in window                                        Simultaneous user considerations (for example,  Context of list                                            checkout, editing and so on)  Window or port sizing                                     Search in progress  Determining default row and column dimensions |
+| Attribute (content |  Mark for discharge                                        Association of goals with tasks, results and |
+| and format) |  Resuscitation status                                       outcomes  Clinical summary (or equivalent) and its structure        Rationale for decisions  Sealed information |
+| Datasets |  Specifying datasets for particular contexts               Multi-user view (for example, viewing in a  Handling 'exceptional data' (that is, important data       Multi-Disciplinary Team (MDT) meeting) but outside of the normal dataset)                        Alter level of detail shown within a column |
+| Datatype (format  | Numerical data per cell                                     Flagging and check of auto populated information |
+| and layout)       | Free-text                                                   Flagging missing data  Numerical series                                          Graphing display  Scoring (for example, MEWS)                               Data structured in contextually relevant handover  Flagging potentially incorrect information                 information structures (for example, Mechanism Illness/Injury Signs/Symptoms Treatment (MIST))  Personal notes  Abbreviations  Highlighting information  Misspellings |
+| Dual layout view  | Ensuring equivalent patient information is presented        Selection behaviour (for example, selecting a Patient consistently between the two views                           List row highlights location on a graphical schema)  Dealing with information that is only displayed in one  Ensuring equivalent patient information is in view in a of the views (for example, 'summary' not shown on a      table when selected on a graphical schema schematic view)                                         Method of switching between views (if viewed  Consistent visual indication of selection                alternately) |
+| Form factor |  Size and interaction modality |
+| Graphical layout |  Schematic, architectural, layout, and so on               Access to further information  Minimum information                                       Area showing ‘patient row’ for selection  Information constraints                                   Area showing Patient Banner for selected location |
+| Information      S | howing and hiding data                                      Restrictions on history viewing |
+| Governance (IG)  S | creensaver or lockout |
+| Input |  Input of any data |
+| Layout |  Changing of layout (for example, column horizontal order) |
+| List actions | The Patient List is not used to enter data into the system  Find within a list Access to actions (for example, through header and in-      Selection of rows, cells, data in cells, columns context including selection)                                 (navigation, visual confirmation, states, navigation,  Differing actions based on list and/or selection           and so on) |
+| List header |  Ward level aggregated scores (for example, number of infections) |
+| List inclusion |  Patient’s ‘outside’ the standard set (for example,         Lists with multiple instance of the same patient those pending admission)                                   Specifying list criteria  View non-patient data (for example, ward level             Multiple patients allocated to the same bed (next information)                                                patient awaiting admission)  Data about patients not in the systems |
+| Manipulation |  Indication of grouping                                     Sort on a key within multiple datatype cells  Change view setting                                        Sorting items within a cell (for example, prioritising  Use of sort order                                           patients) |
+| Miscellaneous |  Handover status                                            Remote view  Colours                                                    Patient List summary in the context of a single record  Ambiguous information |
+| Navigation |  Navigating to a Patient List                               Navigating from Patient List |
+| Printing |  Printing all or part of a Patient List |
+| Process |  Process of handover (for example, transfer of responsibility) |
+| Structured layout  | Structured lines (for example, stack of Patient Banners) |
+| Summary |  Indicating fallibility of summaries                        Usage of ‘how much’ data should be allowed ‘in’ a Patient List |
+| Tasks |  Basic task display layout and format                       Task state transition model  Task status indicator per task                             Viewing task priority  Task status indicator per patient                          Viewing tasks independence  Hierarchical view of tasks                                 Viewing task time dependence  Filtering tasks                                            Discharge with outstanding tasks  Display of completed tasks                                 Changing a task’s status  Colour coding                                              Allocation of tasks  Role specific mark-up                                      Setting task priority  View task assignment                                       View tasks in relation to care pathway  Indicate overdue tasks |
 
 Table 3: Out of Scope
 
@@ -556,21 +419,24 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-**A3** The minimum screen resolution used by the clinician is 1024 x 768 pixels, although a higher resolution may be employed.
 
-**A4** The Patient List consists entirely of information that resides in and is accessible through other views, including views that represent the data as entered into the system.
+| ID | Assumption |
+| --- | --- |
+| A1 | The quality (that is, provenance, accuracy, and completeness) of the data displayed in the Patient List is of an acceptable level. Data quality is particularly important in scenarios where there are multiple data sources (as the quality of data may vary between sources). |
+| A2 | Where the system supports the live update of Patient List information, the system performance and connectivity is of such a level that there is minimum delay between the update being entered and the Patient List being updated. |
+| ID       As | sumption |
+| A3       Th | e minimum screen resolution used by the clinician is 1024 x 768 pixels, although a higher resolution may be employed. |
+| A4       Th | e Patient List consists entirely of information that resides in and is accessible through other views, including views that |
+| re | present the data as entered into the system. |
 
 Table 4: Assumptions
 
 #### 1.4 Dependencies
 
-**D1** Changes in the following documents may affect the guidance presented in this document:
 
- Design Guide Entry – Patient Banner
-
- Displaying Graphs and Tables – User Interface Design Guidance
-
- Filtering, Sorting and Grouping – User Interface Design Guidance
+| ID | Dependency |
+| --- | --- |
+| D1 | Changes in the following documents may affect the guidance presented in this document:  Design Guide Entry – Patient Banner  Displaying Graphs and Tables – User Interface Design Guidance  Filtering, Sorting and Grouping – User Interface Design Guidance |
 
 Table 5: Dependencies
 
@@ -693,7 +559,86 @@ Page 10
 ![](patlistview_assets/patlistview.pdf-14-2.png)
 HSCIC Controlled Document
 
-Section 4.2.4 provides guidance on how to display further information that a user has opened
+
+|  | Interviews with healthcare professionals, including doctors (see APPENDIX B) |
+| --- | --- |
+|  | Regular consultation with a panel of clinical experts |
+| ondar | y Research: |
+|  | Existing guidelines and standards |
+|  | UI best practice |
+| y Pri | nciples (see APPENDIX A for details on these principles): |
+| lsen’ | s usability heuristics |
+| eider | man’s eight golden rules of interface design |
+| ernat | ional Organization for Standardization (ISO) 9241: Characteristics of presented |
+| infor | mation (taken from BS EN ISO 9241-10: 1996 Ergonomic requirements for office work |
+| with | visual display terminals (VDTs) -- Part 10: Dialogues principles {R1}) |
+| Stan | dards: |
+| EN IS | O 9241-10:1996 Ergonomic requirements for office work with visual display |
+| minal | s (VDTs): Part 10: Dialogues principles {R1} |
+| 7581: | 1992 Guide to Presentation of tables and graphs {R2} |
+| Stan | dards: |
+| ign G | uide Entry – Patient Banner {R3} |
+| playi | ng Graphs and Tables – User Interface Design Guidance {R4} |
+| terin | g, Sorting and Grouping – User Interface Design Guidance {R5} |
+| Summa | ry of Guidance |
+| ummar | ises the content of this document by outlining each area of guidance (along with a |
+| erenc | e to the relevant section) and providing a visual example to illustrate how it might be |
+| ed: |  |
+| Guida | nce                                              Visual Summary |
+| prov | ides guidance on the layout of Patient Lists |
+| .2.1 | provides |
+| on th | e Patient List |
+| hich | communicates |
+| xt of | the Patient List |
+| .2.2 | provides |
+| on co | lumn headers, |
+| vide | the titles for |
+| mn |  |
+| .2.3 | provides |
+| on co | lumns, which |
+| he se | ts of |
+| on fo | r the Patient List |
+| .2.4 | provides |
+| on ro | ws and cells. |
+| ain t | he information |
+| patie | nt in the Patient |
+| ls co | ntain specific |
+| on fo | r each patient |
+| Guida | nce                                                       Visual Summary |
+| .2.5 | provides |
+| on su | blists, which |
+| ed wi | thin cells and |
+| nform | ation that is |
+| d in | a list format |
+| .2.6 | provides |
+| on th | e display of |
+| denti | fication |
+| on |  |
+| .2.7 | provides |
+| on ro | w key |
+| rs, w | hich uniquely |
+| each | row from others |
+| tient | List |
+| prov | ides guidance on managing the information displayed in a Patient List |
+| .2.1 | provides |
+| on ho | w to manage |
+| ns di | splayed in the |
+| ist |  |
+| Guida | nce                                            Visual Summary |
+| .2.2 | provides |
+| on no | tifying the |
+| pdate | s to information |
+| in t | he Patient List. |
+| .2.3 | provides |
+| on di | splaying |
+| l pat | ient information |
+| lete | Patient List |
+| ’. |  |
+| Guida | nce                                             Visual Summary |
+| .2.4 | provides |
+| on ho | w to display |
+| nform | ation that a user |
+| d |  |
 
 Table 6: Summary of Guidance
 
@@ -756,7 +701,60 @@ HSCIC Controlled Document
 
 ##### 3.2.2 Column Headers
 
-This section provides guidance on column headers, which provide the titles for each column. Figure 3 illustrates that feature:
+
+| ID | Guideline | Conformance Rating |
+| --- | --- | --- |
+| PAL-0010 | Ensure that the Patient List header is always visible when the Patient List is displayed | Mandatory     High |
+| PAL-0020 | Locate the Patient List header at the top of the Patient List area and extend it across the entire width of the Patient List area | Mandatory     High |
+| PAL-0030 | Ensure that the Patient List header is displayed using a font size and weight that gives it greater visual prominence than neighbouring Patient List elements | Recommended   Medium |
+| PAL-0040 | In the Patient List header, display an appropriate combination of the following information:  Who the list is for  The service provided  The location to which the list applies  The time and date at which the data was last updated or, if the system supports real-time updates, the current time | Mandatory     High |
+| PAL-0050 | If the Patient List has been prepared for a single clinician, display the clinician’s name in the Patient List header using family name, given name and salutation | Recommended   Medium |
+| PAL-0060 | If the Patient List has been prepared for several individuals, reflect this in the Patient List header (for example, display ‘Patient List for: Mr Crossley, Mr Argos’) | Recommended   Medium |
+| AL-0070       If | the Patient List has been prepared for a team, reflect this in the Patient List | Recommended            Medium |
+| he | ader (for example, display ‘Patient List for: Physiotherapists’) |  |
+| AL-0080       In | the Patient List header, provide sufficient location details to uniquely identify the M | andatory               High |
+| lo | cation the Patient List applies to |  |
+| AL-0090       Wh | en a Patient List comprises patients in different locations (for example, multiple Recom | mended                 Medium |
+| wa | rds) reflect this in the Patient List header (for example, ‘Elkington Ward, |  |
+| Re | mington Ward’, ‘All Wards’) |  |
+| AL-0100       In | the Patient List header, display the current time and date in accordance with | Mandatory              High |
+| De | sign Guide Entry – Time Display {R6} and Design Guide Entry – Date |  |
+| Di | splay {R7} |  |
+| sage Examples |  |  |
+| n this correct e | xample, the Patient List header extends across the entire width of the Patient List area | and the contents are displayed |
+| sing a prominent | font size and weight. The header information includes who the list is for (Dr Maxhurst) | , the location to which it |
+| pplies (Elkingto | n Ward) and the current time and date in the correct format (PAL-0020, PAL-0030, PAL-004 | 0, PAL-0050, PAL-0100) |
+| n this incorrect | example, there is no location information to set context for the Patient List. The date | is also missing, and the time is not |
+| n the correct fo | rmat. (PAL-0040, PAL-0080, PAL-0100) |  |
+| n this correct e | xample, the Patient List shows that it is configured for use by the on-call surgical tea | m. (PAL-0050) |
+| n this correct e | xample, the Patient List shows that it is configured to display patients across all ward | s. (PAL-0090) |
+| n this correct e | xample, multiple ‘Ward 3’ locations exist in the same hospital so the additional detail | ‘North wing’ has been added. |
+| PAL-0080) |  |  |
+| n this correct e | xample, the Patient List is for a ‘Baby Clinic’ service, for which a specific location i | s not required (PAL-0040) |
+| ationale |  |  |
+| s the Patient Li | st header communicates the context of use of the list to the user, it is important that | the information is presented in a |
+| lear, consistent | and unambiguous form and has visual prominence at the top of the list. Such headers are | particularly important when |
+| variety of Pati | ent Lists may be used within multi-disciplinary teams. |  |
+| or example, Pati | ent Lists such as these: |  |
+| Used by all cli | nicians on a ward with general information (such as patient location and infection contr | ol measures) |
+| Used for role-s | pecific lists shared between a group of clinicians (such as junior doctors and nursing s | taff) |
+| Configured for | use by individuals (such as consultants and occupational therapists) |  |
+| azard Risk Analy | sis Summary: |  |
+| Potential Ha | zards:                                                                      Mitigations: |  |
+|  PLI012 Wha | t if there is no clear header on the list?                                   PAL-0010, | PAL-0020 |
+|  PLI109 Wha | t if the title does not have sufficient emphasis to identify the particular  PAL-0030 |  |
+| list shown | ? |  |
+|  PLI112 Wha | t if the status of the list is not shown within close proximity to the list?  PAL-0010, | PAL-0020, PAL-0080 |
+|  PLI127 Wha | t happens if a clinician cannot distinguish which list is being viewed       PAL-0040, | PAL-0060, PAL-0080 |
+|  PLI128 Wha | t if the date and time fields are not closely situated                       PAL-0100 |  |
+|  PLI046 Wha | t if there is more than one consultant with the same name within the         PAL-0050 |  |
+| Trust, the | given name and prefix (or initial) is not on the list and ID numbers are |  |
+| not availa | ble? |  |
+|  PLI283 Wha | t if the list presents patients from mixed locations (for example, more      PAL-0090 |  |
+| than one h | ospital ward in one view)? |  |
+| 2           Colu | mn Headers |  |
+| his section prov | ides guidance on column headers, which provide the titles for each column. Figure |  |
+| illustrates tha | t feature: |  |
 
 Figure 3: Column Headers
 
@@ -798,7 +796,45 @@ HSCIC Controlled Document
 
 ##### 3.2.3 Columns
 
-This section provides guidance on columns, which contain the sets of information for the Patient List. Figure 4 illustrates that feature:
+
+| ID | Guideline | Conformance Rating |
+| --- | --- | --- |
+| PAL-0110 | Vertically align all column header titles to the top of their text area | Recommended             Low |
+| PAL-0120 | Support wrapping of column header titles onto multiple lines | Recommended             High |
+| PAL-0130 | Match the left and right margins within each column header to that used by the Rec data displayed in the column | ommended                Medium |
+| PAL-0140 | Match the horizontal alignment of each column header title to that used by the data displayed in the column | Recommended             Medium |
+| PAL-0150        Do | not truncate the column header title | Recommended              High |
+| PAL-0160        If | the width of the column is insufficient to display the column header title on | Recommended              Medium |
+| on | e line, display the title on multiple lines |  |
+| PAL-0170        If | the Patient List content area requires vertical scrolling, ensure that the | Mandatory                High |
+| co | lumn header bar remains visible (that is, it does not scroll out of view) |  |
+| Usage Examples |  |  |
+| In this correct ex | ample, the column header titles are vertically aligned to the top of their text ar | ea and use the same horizontal |
+| alignment as the c | olumn content (hence, ‘Location’ is centre aligned and the other fields left align | ed.) The left and right margins within |
+| each column header | title match those used for the content. ’Presenting complaint’ and ‘Past medical | history’ have wrapped onto the |
+| next line. (PAL-01 | 10, PAL-0130, PAL-0140, PAL-0150, PAL-0160) |  |
+| In this incorrect | example, the column header titles are middle aligned regardless of the horizontal | alignment of the column content. |
+| ‘Presenting compla | int’ and ‘Past medical history’ have been truncated. (PAL-0140, PAL-0150, PAL-0160 | ) |
+| In this incorrect | example, in addition to mismatching horizontal alignment, the column header title | left and right margins are not the |
+| same as the column | content. This impedes visual scanning between title and content. The lack of sepa | ration between ‘Presenting |
+| complaint’ and ‘Pa | st medical history’ impedes legibility. (PAL-0130, PAL-0140, PAL-0160) |  |
+| In this correct ex | ample, when the user scrolls the viewing area down, the column headers remain visi | ble. (PAL-0170) |
+| In this incorrect | example, when the user scrolls down, the column headers are scrolled off the top o | f the viewing area. (PAL-0170) |
+| Rationale |  |  |
+| Correctly aligned | and non-truncated column headers are particularly important for those Patient List | s that have a large number of |
+| columns. Such colu | mn headers assist the user in identifying the types of content displayed (for exam | ple, ‘Presenting complaint’ versus |
+| ‘Past medical hist | ory’). Maintaining the visibility of the column headers for a scrolled list is par | ticularly important for this reason. |
+| Section 4.2.1 incl | udes guidance and rationale on permitting users to choose which columns are displa | yed in the Patient List and the |
+| order in which the | y appear. Thereby, it is possible that users will position columns with similarly | formatted content next to each other |
+| (for example, two | or more columns containing times). For this reason, it is important that the user | can readily view the identity of each |
+| column at all time | s. |  |
+| Hazard Risk Analys | is Summary: |  |
+| Potential Haz | ards:                                             Mitigations: |  |
+|  PLI246 What | if you cannot see the labels for the data you  PAL-0150, PAL-0160, PAL-0170 |  |
+| are looking | at? |  |
+| .3          Column | s |  |
+| This section provi | des guidance on columns, which contain the sets of information for the Patient |  |
+| List. Figure 4 ill | ustrates that feature: |  |
 
 Figure 4: Columns
 
@@ -863,7 +899,79 @@ HSCIC Controlled Document
 ![](patlistview_assets/patlistview.pdf-27-0.png)
 ##### 3.2.4 Rows and Cells
 
-This section provides guidance on rows and cells. Rows contain the information for each patient in the Patient List. Cells contain individual content (and sublists, where required). Figure 5 illustrates those features:
+
+| ID | Guideline | Conformance Rating |
+| --- | --- | --- |
+| PAL-0180 | Separate columns with prominent vertical divider lines | Mandatory             High |
+| PAL-0190 | Use left and right margins within each column to ensure separation between adjacent content | Mandatory             High |
+| PAL-0200 | Allow the user to adjust the width of columns and persist the set column widths between the user’s sessions | Mandatory             High |
+| PAL-0210 | To prevent truncation, by default limit the minimum width of a column to the widest Rec element in its title and content (for example, the longest word) plus its left and righ margins | ommended              High t |
+| PAL-0220 | When users change the width of a column, ensure that by default the widths of other columns are kept the same (even if this causes the combined column width to exceed the viewable area) | Recommended           Medium |
+| PAL-0230 | When the combined column width exceeds the viewable area, permit horizontal scrolling | Recommended           Medium |
+| PAL-0240     Wh | en columns are out of view, by default display symbols (for example, left and | Mandatory            High |
+| ri | ght arrows) to indicate the direction the user will need to scroll to view those |  |
+| co | lumns. Position the symbols immediately above and towards the left and right |  |
+| bo | rders of the viewing area to avoid obscuring information |  |
+| PAL-0250     Su | pplement out of view symbols with the message ‘columns out of view – scroll | Recommended          Low |
+| le | ft and right’ or similar. Position this message in close proximity to the out of view |  |
+| sy | mbols |  |
+| PAL-0260     Pr | ovide users with the option to hide out of view notifications until the next user | Recommended          Medium |
+| se | ssion |  |
+| PAL-0270     If | , after an update of Patient List content, the elements in a column (for example, | Recommended          High |
+| th | e longest word) become wider than the column width, automatically resize the |  |
+| co | lumn to prevent truncation. |  |
+| Usage Examples | In sep and ens (PA In div and sep For ‘Ur acc (PA | this correct example, columns are arated by prominent vertical lines the margins within each column ure separation of adjacent content. L-0180, PAL-0190) this incorrect example, the column ider lines are not prominent enough the margins inadequate to ensure aration between adjacent content. example, ‘Chronic Pancreatitis’ and inary antigens negative’ could be identally read as one sentence. L-0180, PAL-0190) |
+| In this incorre | ct example, the user has been permitted to resize the middle column narrower than the w | idest elements resulting in the |
+| words ‘Pancreat | itis’ and ‘Cerebrovascular’ being truncated. (PAL-0210) |  |
+| In this incorre | ct example, when the user resizes the first column, the other columns are automatically | resized to maintain the overall |
+| width of the co | mbined columns. As a consequence information has been relocated (for example, ‘Wednesda | y – on Potassium’ and |
+| ‘Diarrhoea’ are | no longer in view). (This example assumes the user has not set a preference for this b | ehaviour). (PAL-0220) |
+| In this correct | example, when the user resizes the third column (‘Presenting complaint’) the columns t | o the right remain the same |
+| width. The over | all width has increased beyond the viewable area, so a horizontal scrollbar is displaye | d. The out-of-view symbols and |
+| warning message | are displayed by default immediately above the viewable area. (PAL-0200, PAL-0220, PAL | -0230, PAL-0240, |
+| PAL-0250, PAL-0 | 260) |  |
+| In this correct | example, the system updates the second column, replacing ‘None’ with ‘Echocardiogram’. | The width of the column is |
+| automatically a | djusted so that the new content is not truncated. (PAL-0270) |  |
+| See section 4.2 | .2 for guidance and rationale on information updates |  |
+| Rationale |  |  |
+| The close posit | ioning of information within columns has potential safety hazards if the boundaries of | each column are not clearly |
+| delineated. If | a user accidentally reads two adjacent lines of content as one sentence, at best they w | ill be confused; at worst they will |
+| form a wrong in | terpretation. This guidance mitigates that hazard. |  |
+| The ability to | adjust the width of columns was considered desirable by the majority of participants (s | ee APPENDIX B). Horizontal |
+| scrolling was c | onsidered unfamiliar as many existing Patient Lists are based on word processing docume | nts, which are typically |
+| constrained to | a fixed width. However, participants generally agreed that the benefits of an unrestric | ted list width (including the ability |
+| for users to ad | just columns to a width appropriate for the content) outweighed the initial unfamiliari | ty. |
+| This guidance m | itigates the identified hazards that may arise when clinicians migrate from document-ba | sed Patient Lists, in particular |
+| with regard to | horizontal scrolling and columns that are out of view. |  |
+| Note |  |  |
+| The fo | llowing rationale regarding truncation also applies to sections 3.2.4 and 3.2.5. |  |
+| The truncation | of information within a Patient List was considered in several forms: |  |
+|  Truncation ca | used by a set maximum character limit within a field |  |
+|  Truncation of | long words that exceed the width of the column they are located in |  |
+|  Truncation of | sublists (where a maximum number of entries has been exceeded.) |  |
+| Design mock-ups | for each of these types of truncation were shown to the user research and hazard asses | sment participants. |
+| The majority of | participants considered truncation to be a significant safety hazard, in particular wi | th regard to truncated sublists (for |
+| example where o | nly the first 10 entries are displayed) where users may wrongly assume the sublist is c | omplete (see APPENDIX B). |
+| This guidance t | herefore recommends that truncation should be avoided in any form within Patient Lists. |  |
+| Note |  |  |
+| The q | uality of the source data is out of scope for this guidance, including the length of so | urce data to display. However, |
+| hazar | d assessments did explore and record the hazards of displaying unlimited, non-truncated | information (for example, |
+| displ | aying unnecessary or inappropriate detail for a given use) (see APPENDIX B). In the abs | ence of guidance on the quality |
+| of so | urce data, the discussion concluded that clinicians can help mitigate these hazards by: |  |
+|  Man | aging the columns that are displayed in their Patient Lists (for example, to avoid unne | cessarily verbose content) |
+|  Man | aging the quantity and appropriateness of the content that they provide |  |
+| Hazard Risk Ana | lysis Summary: |  |
+| Potential | Hazards:                                                   Mitigations: |  |
+|  PLI071 W | hat if, when horizontally scrolling, there is no            PAL-0240, PAL-0250, PAL-02 | 60 |
+| indicati | on of data present to the left or right? |  |
+|  PLI245 W | hat if many similar columns are presented next to           PAL-0180, PAL-0190 |  |
+| each oth | er? |  |
+|  PLI014 W | hat if the column width is not flexible or set to           PAL-0200, PAL-0210, PAL-02 | 20, PAL-0230, PAL-0270 |
+| useful s | izes to accommodate the data clearly? |  |
+| .4           Ro | ws and Cells |  |
+| This section pr | ovides guidance on rows and cells. Rows contain the information for each patient in |  |
+| the Patient Lis | t. Cells contain individual content (and sublists, where required). Figure 5 illustrate | s |
+| those features: |  |  |
 
 Figure 5: Rows and Cells
 
@@ -914,7 +1022,80 @@ HSCIC Controlled Document
 
 ##### 3.2.5 Sublists
 
-This section provides guidance on sublists, which are located within cells and contain information that is structured in a list format. Figure 6 illustrates that feature:
+
+| ID | Guideline | Conformance Rating |
+| --- | --- | --- |
+| PAL-0280 | Orientate Patient List entries horizontally (that is, so the information for each patient is displayed across the viewing area.) Note This guidance overrides GTAB-191 in Displaying Graphs and Tables – User Interface Design Guidance {R4} for Patient List contexts only | Mandatory                High |
+| PAL-0290 | Separate rows using prominent horizontal divider lines | Mandatory                High |
+| PAL-0300       Vi | sually delineate each row by using two alternating background colours | Recommended              Medium |
+| PAL-0310       Ch | oose row background colours that do not detract from the legibility of content Recom | mended                     Medium |
+| wi | thin the list and the divider lines, and are unlikely to have semantic meaning in |  |
+| th | at context |  |
+| PAL-0320       Su | pport wrapping of cell text content onto multiple lines | Recommended              High |
+| PAL-0330       Co | ntent in Patient List cells should never be truncated | Recommended              High |
+| PAL-0340       By | default, the height of each patient row must be sufficient to avoid truncation | Recommended              High |
+| of | content |  |
+| PAL-0350       If | , after an update of Patient List content, the content exceeds the row height, | Recommended              High |
+| au | tomatically resize the row to prevent truncation |  |
+| PAL-0360       Wh | en the Patient List is longer than the viewable area, allow access to the out of Rec | ommended                   Medium |
+| vi | ew part of the list with a vertical scrollbar |  |
+| PAL-0370       Pr | ovide an indicator at the top and across the full width of the Patient List to | Recommended              Medium |
+| in | form the user they are at the start of the list |  |
+| PAL-0380       Pr | ovide an indicator at the end and across the full width of the Patient List to | Recommended              Medium |
+| in | form the user they are at the end of the list |  |
+| Usage Examples |  |  |
+| In this correct e | xample, the Patient List is oriented horizontally and each row is separated by a pro | minent horizontal line. Each row is |
+| delineated using | alternating background colours and the height of each row is sufficient to avoid tru | ncation of content. (PAL-0280, |
+| PAL-0260, PAL-030 | 0, PAL-0310, PAL-0330, PAL-0340) |  |
+| In this incorrect | example, the horizontal divider lines between rows are not prominent enough and the | re is no alternating background |
+| colour to delinea | te the rows. As a result, users would find it difficult to associate content with th | e row it belongs to. For example, it is |
+| not clear where t | he list of problems and test results in the fifth column for the second patient ends | and the list for the third patient |
+| begins. (PAL-0290 | , PAL-0300, PAL-0310) |  |
+| In this correct e | xample, new content is added to two of the rows as a result of an update. The height | of each row has automatically |
+| increased to acco | mmodate the new content and truncation is avoided. (PAL-0330, PAL-0340, PAL-0350) |  |
+| See section 4.2.2 | for guidance and rationale on information updates. |  |
+| In this correct e | xample, an indicator is displayed at the top of the Patient List informing the user | they are at the start of the list. |
+| (PAL-0370) |  |  |
+| In this correct e | xample, an indicator is displayed at the bottom of the Patient List informing the us | er they are at the end of the list. |
+| (PAL-0380) |  |  |
+| Rationale |  |  |
+| All observed exam | ples of existing Patient Lists orient the information horizontally (that is, informa | tion for a patient is displayed in a row |
+| across the screen | ). This orientation is particularly appropriate when the number of rows is likely to | vary over time and for Patient Lists |
+| this occurs when | patients are added or removed. During guidance research and design no significant be | nefits of vertically oriented lists |
+| were discovered ( | see APPENDIX B). Therefore, GTAB-191 in Displaying Graphs and Tables – User Interfac | e Design Guidance {R4}, |
+| which recommends | the facility for users to re-orient tables, is overridden for Patient List contexts | only |
+| Emphasising horiz | ontal rows by using prominent horizontal divider lines and alternating background co | lours facilitates reading across |
+| each row within t | he Patient List. Using more than two background colours may lead users to wrongly in | fer meaning from the row |
+| colour. |  |  |
+| During hazard ass | essments, participants found the concept of vertically scrolling a single ‘page’ fam | iliar due to their use of this |
+| navigation techni | que in other contexts (for example, browsing Web pages). Advantages of a single, scr | ollable page include: |
+|       Improved s | peed of navigation (no need to click through multiple pages) |  |
+|       List compl | eteness (clear list beginning and end points) |  |
+|       Avoiding p | atient information being spread over separate pages |  |
+| See the rationale | in section 3.2.3 for discussion of truncation issues. |  |
+| Note |  |  |
+| Although | the format and layout of data is out of scope for this guidance, during discussions | it was noted that there are hazards |
+| associat | ed with wrapping cell text content onto multiple lines. Examples of such hazards are | : |
+|  Fragme | ntation of structured data (for example, the label ‘potassium’ becomes separated fro | m its value ‘2.6’) |
+|  Fragme | ntation of free text instructions (for example, the essential qualifier ‘not’ become | s separated from ‘to go home’) |
+| Hazard Risk Analy | sis Summary: |  |
+| Potential Haz | ards:                                                                            Mit | igations: |
+|  PLI143 What | if patients are not displayed as strict columns and rows?                        P | AL-0280 |
+|  PLI131 What | if clinician misinterprets colours used?                                         P | AL-0310 |
+|  PLI026 What | if there is not enough space in the columns?                                     P | AL-0330 |
+|  PLI110 What | if the text within a column is truncated?                                        P | AL-0330, PAL-0340, PAL-0350 |
+|  PLI025 What | if a row is split over a page or fold boundary?                                  P | AL-0360 |
+|  PLI120 What | if patients are listed on more than one tab?                                     P | AL-0360 |
+|  PLI147 What | if all your patients are not on one page?                                        P | AL-0360 |
+|  PLI149 What | if it is not clear that there are more patients out of view?                     P | AL-0360 |
+|  PLI275 What | if patient entries on the lists go out of view?                                  P | AL-0360 |
+|  PLI055 What | if the data is displayed in too long a list, which may take the                  P | AL-0360, PAL-0370, PAL-0380 |
+| information | off the page (particularly relevant to printing)? |  |
+|  PLI056 What | if you do not have a 'this is the top of the list' to match the 'this is the     P | AL-0370, PAL-0380 |
+| bottom of t | he list'? |  |
+| .5            Sub | lists |  |
+| This section prov | ides guidance on sublists, which are located within cells and contain information |  |
+| that is structure | d in a list format. Figure 6 illustrates that feature: |  |
 
 Figure 6: Sublists
 
@@ -952,8 +1133,45 @@ HSCIC Controlled Document
 
 ##### 3.2.6 Patient Identification
 
-This section provides guidance on the display of patient identification information in a Patient List. Figure 7 illustrates that feature:
 
+| ID | Guideline | Conformance Rating |
+| --- | --- | --- |
+| PAL-0450 | Locate the patient name, date of birth and NHS number in that order on separate lines in the same column | Mandatory     High |
+| PAL-0460 | When both the family name and given name of a patient are unknown, display the words ‘UNKNOWN, Unknown’ and the patient gender (if known) | Recommended   Medium |
+| PAL-0470 | When the family name of a patient is unknown and the given name is known,    Recomme display the word ‘UNKNOWN’, the given name and the patient gender (if known) | nded          Medium |
+| PAL-0480 | When the family name of a patient is known and the given name is unknown, display the family name, the word ‘Unknown’ and the patient gender (if known). | Recommended   Medium |
+| PAL-0490 | When the date of birth of a patient is unknown display the word ‘Unknown’ | Recommended   Medium |
+| PAL-0500 | When an NHS number is unknown, display the word ‘Unknown’ | Recommended   Medium |
+| PAL-0510 | For the duration that an NHS number is unknown, display the temporary identification number used by the care setting to uniquely identify that patient. Use the same font style as the patient name field and the label ‘Temporary Number’ or similar | Recommended   Low |
+| PAL-0520 | Ensure that the display of the patient name conforms to all guidance points in section 2.6.1 of Design Guide Entry – Patient Banner {R3} | Mandatory     High |
+| PAL-0530 | Ensure that the display of the preferred name (if available), date of birth and NHS number conforms to guidance points PAB-0033, PAB-0036, PAB-0037, PAB-0042, PAB-0043 and PAB-0046 in section 2.5.1 of Design Guide Entry – Patient Banner {R3} | Recommended   Medium |
+| PAL-0540 | When patients on a Patient List have identical names (including the family name) visually highlight these names and display a warning symbol next to the patients’ names | Mandatory     High |
+| PAL-0550 | When patients on the same Patient List have identical names (including the family name), indicate the first element of patient identification information that differentiates the patients (for example, by underlining). This might be their given name or, if identical, their date of birth or, if identical, their NHS number. | Mandatory    High |
+| PAL-0560 | If supported by the system, when patients on a Patient List have similar looking or sounding names (including the family name) visually highlight those names and display a warning symbol next to the patients’ names | Recommended   Low |
+| PAL-0570 | If supported by the system, when patients on the same Patient List have similar Reco looking or sounding names (including the family name), indicate the first element of patient identification information that differentiates the patients (for example, by underlining). This might be their given name or, if identical or similar, their date of birth or, if identical, their NHS number | mmended       Low |
+| Usage Example | s In this correct example, the patient identifica provided in the order patient name, date of bir Where a preferred name is available, this is di patient name. (PAL-0450, PAL-0520, PAL-0530) In this incorrect example, the patient identifi not displayed in the required order. As a resul difficulty reading the information quickly and Tony Madigan’s day of birth may accidentally be the NHS number.) (PAL-0450, PAL-0520, PAL-0530) In this correct example, a patient whose family name are unknown is displayed using the words ‘ Unknown’ plus his gender. His date of birth and have the word ‘Unknown’ displayed. While his NH unknown, the temporary number used by the care uniquely identify him is displayed using the sa the patient name field, and is labelled ‘Tempor PAL-0490, PAL-0500, PAL-0510) In this correct example, a patient whose family and whose given name is known is displayed usin name, the word ‘Unknown’ and his gender. (PAL-0 PAL-0500, PAL-0510) In this correct example, a patient whose family whose given name is unknown is displayed using ‘UNKNOWN’, his given name and his gender. (PAL- PAL-0490, PAL-0500, PAL-0510) | tion information is th and NHS number. splayed after the cation information is t, users will have safely (for example, read as part of name and given UNKNOWN, NHS number also S number is setting to me font style as for ary No’ (PAL-0460, name is unknown g his family 460, PAL-0490, name is known and the word 0460, |
+| In this incor | rect example, two patients in the list have the same names but this is not highlight | ed in any way, potentially leading to |
+| misidentifica | tion by users of the list. (PAL-0540, PAL-0550) |  |
+| In this corre | ct example, two patients in the list have the same names. This is highlighted by a s | ymbol next to the names and a changed |
+| font colour f | or the identical information. The first elements of patient identification informati | on which differentiates the patients (their |
+| dates of birt | h) are underlined. (PAL-0540, PAL-0550) |  |
+| In this corre | ct example, two patients in the list have similar sounding names. This is highlighte | d by a symbol next to the names and a |
+| changed font | colour for the similar information. The first elements of patient identification inf | ormation which differentiates the patients |
+| (their dates | of birth) are underlined. (PAL-0560, PAL-0570) |  |
+| Rationale |  |  |
+| The clear ide | ntification of patients is essential to any Patient List. The guidance in this secti | on is consistent with that provided in |
+| Design Guide | Entry – Patient Banner {R3} and extends that guidance by considering display of iden | tification information for multiple |
+| patients at t | he same time. |  |
+| In certain cl | inical scenarios (for example, emergency wards) the names of patients may be unknown | . Guidance on the display of |
+| partially or | completely unknown patient names was informed by the NPSA communication Guidance on | the standard for Patient |
+| Identifiers f | or Identity bands {R9}. |  |
+| Table 7 detai | ls the differences between the NPSA guidance and the Patient List guidance on unknow | n names: |
+| Name Part K | nown/Unknown                              NPSA Guidance                        Patie | nt List Guidance |
+| Family name | unknown, given name unknown              Unknown Male, Unknown Male           UNKNO | WN, Unknown, Male |
+| Family name | unknown, given name known                Unknown Male, Ben                    UNKNO | WN, Ben, Male |
+| Family name | known, given name unknown                SMITH, Unknown Male                  SMITH | , Unknown, Male |
+
+Figure 7: Patient Identification
 Figure 7: Patient Identification
 
 Page 30
@@ -1011,7 +1229,23 @@ HSCIC Controlled Document
 
 ##### 3.2.7 Row Key Identifiers
 
-This section provides guidance on row key identifiers, which uniquely identify each row from others in the Patient List. Figure 8 illustrates that feature:
+
+| Potential Hazards: | Mitigations: |
+| --- | --- |
+|  PLI028 What if the different attributes in the patient identification cell are not formatted |  PAL-0450, PAL-0520, PAL-0530 |
+| differently? |  |
+|  PLI038 What if labels are used within the Patient List (for example, born, NHS number, |  PAL-0530 |
+| gender)? |  |
+|  PLI044 What if the 'NHS number' is not displayed? |  PAL-0450 |
+|  PLI024 What if there is blank space in the list (for example, surname missing)? Solution:  PAL | -0460, PAL-0490 |
+| would want to confirm or action this rather than leave it blank |  |
+|  PLI034 What if the name prefix is not shown in the list? |  PAL-0520 |
+|  PLI153 What if multiple items in the list share similar details? |  PAL-0540, PAL-0550 |
+|  PLI030 What if the preferred name is not displayed on the list and staff refer to the |  PAL-0530 |
+| patient by their given name? |  |
+| Row Key Identifiers |  |
+| s section provides guidance on row key identifiers, which uniquely identify each row from others |  |
+| the Patient List. Figure 8 illustrates that feature: |  |
 
 Figure 8: Row Key Identifiers
 
@@ -1212,11 +1446,106 @@ grouped by ward?
 
 ##### 4.2.2 Refresh Options and Update Indication
 
- PAL-0770
 
- PAL-0780
-
-This section provides guidance on notifying the user of updates to information displayed in the Patient List. Figure 10 illustrates those features:
+| ID | Guideline | Conformance Rating |
+| --- | --- | --- |
+| PAL-0710 | Allow individual users to manage the columns that are displayed in the Patient List, including the order they are displayed in (with the exception of those containing row key identifier information) | Recommended   Medium |
+| PAL-0720 | Do not permit the removal of columns that contain row key identifier information (for example, patient identification and ward location columns) | Mandatory     High |
+| PAL-0730 | Enable users to manage default column selections for different user types (for example, default column selections for junior doctors, paediatric nurses, occupational therapists, and so on) | Recommended   Medium |
+| AL-0740       O | n a user’s first use of a default column selection, size the columns to fit the Rec | ommended                 Medium |
+| w | idth of the viewing area so that none are out of view. If the combined minimum |  |
+| c | olumn widths exceed the width of the viewing area, use the minimum column |  |
+| w | idths |  |
+| AL-0750       E | nable users to filter the Patient List using the attributes displayed. Follow | Recommended              Medium |
+| g | uidance in section 3.6 of Filtering Sorting and Grouping – User Interface |  |
+| D | esign Guidance {R5} |  |
+| AL-0760       W | hen a filter has been applied to the Patient List, ensure that the filter        Ma | ndatory                  High |
+| n | otification (as mandated in section 3.6 of Filtering Sorting and Grouping – User |  |
+| I | nterface Design Guidance {R5}) is located above the viewing area and uses |  |
+| c | lear visual differentiation (for example, from a strong background colour) |  |
+| AL-0770       E | nable users to sort the Patient List using the columns displayed. Follow | Recommended              Medium |
+| g | uidance in section 3.7 of Filtering Sorting and Grouping – User Interface |  |
+| D | esign Guidance {R5} |  |
+| AL-0780       E | nable users to group the Patient List using the attributes displayed. Follow | Recommended              Medium |
+| g | uidance in section 3.8 of Filtering Sorting and Grouping – User Interface |  |
+| D | esign Guidance {R5} |  |
+| AL-0790       P | ersist the users column selection, sorting, grouping and filtering settings | Recommended              Medium |
+| b | etween user sessions |  |
+| sage Examples |  |  |
+| n this correct | example, users can select a default column set which best matches their needs and c | an also adjust the columns and the |
+| rder they will | be displayed in. If the ‘Location’ or ‘Patient Identification’ column is selected, | it cannot be removed as it is a row key |
+| dentifier. (PAL | -0710, PAL-0720, PAL-0730) |  |
+| Note |  |  |
+| The meth | od and interface for Patient List column selection and ordering is out of scope for | this guidance. The interface shown |
+| in this | example is used solely to convey column management concepts and should not be consi | dered part of guidance. |
+| n this incorrec | t example, the user has been allowed to remove a row key identifier (the patient id | entification information) (PAL-0720) |
+| n this correct | example, the user is viewing a default column selection for the first time. The col | umns have been automatically sized to |
+| it the width of | the viewing area so that none are out of view. Although the columns are narrow the | user has been made aware of the |
+| omplete column | set. (PAL-0740) |  |
+| n this correct | example, the Patient List has been filtered with the filter notification area displ | ayed above the viewing area using a |
+| trong visual di | fferentiator. (PAL-0750, PAL-0760) |  |
+| n this correct | example, the Patient List has been progressively sorted, firstly by the consultant | name in ascending alphabetical order |
+| nd secondly by | the patient age in ascending order. (PAL-0770) |  |
+| ationale |  |  |
+| uring user rese | arch and hazard assessments (see APPENDIX B), discussions concerning column managem | ent included the |
+| ollowing design | areas: |  |
+| Column sets (i | ncluding default and group determined sets) |  |
+| Role-based col | umn sets (for example, switching between a number of predefined sets such as ‘Junio | r Doctor’, ‘Consultant’, and so |
+| on) |  |  |
+| Mandatory cont | ent per role (for example, always displaying certain columns, such as ‘Tasks’, depe | nding on the users role) |
+| Consistency be | tween users’ Patient Lists |  |
+| articipants agr | eed that users should be given the flexibility to manage the columns displayed in t | heir Patient Lists, so that they can |
+| ptimise the inf | ormation displayed to meet their individual needs. However, participants also thoug | ht that provision of ‘default’ column |
+| ets for role an | d working context (for example, ‘Nursing staff – Respiratory Ward’) would be a usef | ul starting point for new users. From |
+| iscussion aroun | d columns out of view (see section 3.2.3), it was recommended that at first display | column widths should be sized to |
+| it within the v | iewing area to ensure the user is fully aware of all columns in the set. |  |
+| Note |  |  |
+| Although | guidance on determining ‘safe’ sets of columns is out of scope, during discussions | it was acknowledged that there |
+| are haza | rds associated with enabling users to manage the columns in their Patient List (for | example, the risk that the user will |
+| choose n | ot to display information that is essential for their role). |  |
+| azard Risk Anal | ysis Summary: |  |
+| Potential Haz | ards: | Mitigations: |
+|  PLI006 What | if a Multi-Disciplinary Team is sharing the list and all members' information  PA | L-0710 |
+| is on one l | ist? |  |
+|  PLI007 What | if different roles have different views of the list? |  PAL-0710, PAL-0730 |
+|  PLI018 What | if it is not possible to configure the list to suit the user? |  PAL-0710, PAL-0790 |
+|  PLI020 What | if staff could not clearly and easily view a list that shows patients that are |  PAL-0710 |
+| the doctor’ | s or team’s responsibility? |  |
+|  PLI072 What | if the visible view is horizontally long and you want to relate information |  PAL-0710, PAL-0740 |
+| from opposi | te ends of the line? |  |
+|  PLI075 What | if you are not able to filter jobs by role? |  PAL-0710, PAL-0730, PAL-0790 |
+|  PLI080 What | if the clinician cannot lower the level of detail to the related task level for |  PAL-0710 |
+| his or her | role? |  |
+|  PLI215 What | if one professional group find the data hard to read because the view |  PAL-0710, PAL-0730, PAL-0790 |
+| contains da | ta that is not appropriate to them? |  |
+|  PLI216 What | if data that would be relevant to all professional groups is missed because  PAL- | 0710, PAL-0730, PAL-0790 |
+| it is only | contained in a view or area for one particular professional group (for example, |  |
+| important i | nformation is put in a nursing section which is not read by doctors)? |  |
+|  PLI222 What | if the layout of the information is optimised for one professional group or |  PAL-0710, PAL-0730, PAL-0790 |
+| task? |  |  |
+|  PLI229 What | if the clinician can only see some of the data per patient (for example, only  PA | L-0710 |
+| some of the | tasks, some of the problems, and so on)? |  |
+|  PLI094 What | if you cannot view all the patients in the list in some summary form that |  PAL-0710 |
+| minimises e | verything but the patient identifiers? |  |
+|  PLI091 What | if you cannot see all the associated tasks for the patient in one view AND |  PAL-0730 |
+| all tasks f | or all patients in one view? |  |
+|  PLI277 What | if the default view of the list is configurable? |  PAL-0790 |
+|  PLI148 What | if all your tasks per patient are not immediately visible? |  PAL-0740 |
+|  PLI265 What | if user preferences are not persisted from session to session? |  PAL-0790 |
+|  PLI108 Wh | at if it is unclear that the list is filtered? |  PAL-0750, PAL-0760 |
+|  PLI082 Wh | at if a user cannot set up lists with different inclusion criteria (for example, al | l    PAL-0750 |
+| patients, | all deteriorating patients)? |  |
+|  PLI116 Wh | at if there is no indication what the list is ordered on? |  PAL-0770 |
+|  PLI134 Wh | at if it is unclear that the sort order is per group and the amount of groups |  PAL-0770, PAL-0780 |
+| mean the | sort order is less useful than it might be? |  |
+|  PLI259 Wh | at if the list is only ever able to be sorted by one criterion? |  PAL-0770 |
+|  PLI274 Wh | at if there is only one sort order and the user is unable to change the view of |  PAL-0770 |
+| the list | depending on preference and context of use? |  |
+|  PLI022 Wh | at if in a list showing patients from multiple wards the patients are not |  PAL-0780 |
+| grouped b | y ward? |  |
+| 2            Re | fresh Options and Update Indication |  |
+| his section pro | vides guidance on notifying the user of updates to information displayed in the |  |
+| atient List. Fi | gure 10 illustrates those features: |  |
 
 Figure 10: Refresh Options and Update Notification
 
@@ -1366,7 +1695,141 @@ HSCIC Controlled Document
 
 ##### 4.2.3 Displaying Historical Patient List Information
 
-This section provides guidance on displaying historical patient information as a complete Patient List ‘snapshot’. Figure 11 illustrates those features:
+
+| ID | Guideline | Conformance Rating |
+| --- | --- | --- |
+| PAL-0800 | Ensure that data displayed in the Patient List can be refreshed (that is, any updates to the source data can be reflected in the Patient List) | Mandatory         High |
+| PAL-0810 | Apply updates to Patient List data in real-time | Recommended       High |
+| PAL-0820 | If the system supports real-time update of data, ensure that updates to the source data are automatically reflected in the Patient List as soon as possible | Recommended       Medium |
+| PAL-0830     If t | he system does not support real-time update of data, ensure that the system         Rec | ommended   Medium |
+| auto | matically refreshes the data displayed in the Patient List using an interval |  |
+| comm | unicated to the users |  |
+| PAL-0840     Prov | ide an update notification field to inform the user how many updates are            Rec | ommended   Medium |
+| curr | ently marked for viewing in the Patient List. Locate this field above the viewing |  |
+| area |  |  |
+| PAL-0850     When | the update notification field displays how many updates are currently              Rec | ommended   Medium |
+| mark | ed for viewing, include advice on how many of these are currently out of view |  |
+| (tha | t is, how many could be viewed if the user scrolled the viewing area |  |
+| hori | zontally and/or vertically) |  |
+| PAL-0860     If t | he system does not support real-time update of data, display the elapsed time       Rec | ommended   Medium |
+| sinc | e the last refresh in the update notification field |  |
+| PAL-0870     If t | he system does not support real-time update of data, provide an option for the     Reco | mmended    Medium |
+| user | to manually trigger a refresh. Locate this option near to the update notification |  |
+| fiel | d |  |
+| PAL-0880     When | content within a cell is updated, bring this to the user’s attention by marking    Man | datory     High |
+| the | cell with an update symbol and visually differentiating the cell (for example, by |  |
+| chan | ging the cell background colour). Ensure that the update symbol does not |  |
+| obsc | ure content and that the overall readability of the Patient List is not unduly |  |
+| disr | upted |  |
+| PAL-0890     If t | he Patient List is configured to be used by an individual clinician, do not mark    Rec | ommended   Medium |
+| upda | tes that have been made by the clinician (if the system can detect this) |  |
+| PAL-0900     When | a sublist entry has been updated (but not removed) visually differentiate the      Man | datory     High |
+| subl | ist entry (not the entire cell) |  |
+| PAL-0910     When | content has been removed by an update, display a notification in the list cell Recomme | nded       Medium |
+| wher | e the content was previously displayed (for example, the text ‘item removed’) |  |
+| PAL-0920     When | one or more items in a sublist have been removed by an update, display a           Rec | ommended   Medium |
+| noti | fication at the end of the sublist (for example, the text ‘3 items removed’) |  |
+| PAL-0930     Prov | ide the option for users to unmark each update individually for their Patient       Rec | ommended   Medium |
+| List |  |  |
+| PAL-0940     When | a patient has been added to the list as a result of an update, mark the            Rec | ommended   Medium |
+| pati | ent identification cell with an update symbol and visually differentiate the entire |  |
+| row | (for example, by changing the row background colour). Provide the option for |  |
+| user | s to unmark this update as an entire row (rather than individual cells within the |  |
+| row) |  |  |
+| PAL-0950     When | a patient has been removed from the list as a result of an update, mark the Recommende | d          Low |
+| Pati | ent Identification cell with an update symbol and visually differentiate the entire |  |
+| row | (for example, by changing the row background colour). Provide the option for |  |
+| user | s to unmark this update as an entire row (rather than individual cells within the |  |
+| row) | ??? |  |
+| PAL-0960     Prov | ide an option to unmark all updates. Locate this option next to the update          Rec | ommended   Low |
+| noti | fication field. |  |
+| PAL-0970     When | a user unmarks updates for their Patient List, ensure that other users’            Rec | ommended   Medium |
+| Pati | ent Lists are unaffected |  |
+| PAL-0980     When | a user selects the option to unmark all updates, by default alert them that        Rec | ommended   Medium |
+| they | may not have seen all the updates on the list and require confirmation of the |  |
+| acti | on. Provide an option to not show this alert and continue to display this option |  |
+| unle | ss it is selected |  |
+| Usage Examples |  |  |
+| In this correct e | xample, the update notification field is displayed above the viewing area. It informs t | he users how many updates are |
+| currently marked | on the Patient List and how many of these are currently out of view. An option to unmar | k all the updates is also |
+| provided next to | the update notification field. (PAL-0840, PAL-0850, PAL-0960) |  |
+| In this correct e | xample, the system does not support the real-time update of data and so a manual refres | h option is provide. The |
+| elapsed time sinc | e the last refresh is displayed in the update notification field (PAL-0860, PAL-0870) |  |
+| In this correct e | xample, the system has updated the content and two new sublist entries have been added. | The new entries are |
+| visually highligh | ted using a background colour and a symbol (the corner triangle), which is positioned s | o that it does not obscure the |
+| content. (PAL-088 | 0, PAL-0900) |  |
+| In this correct e | xample, the system has updated the content and three entries have been removed from the | sublists. The user is |
+| informed of this | by the display of ‘item removed’ messages in the sublists. (PAL-0910, PAL-0920) |  |
+| In this correct e | xample, the system has updated the content and a new patient has been added to the list | . The entire row for the new |
+| patient is visual | ly differentiated using the background colour and the patient identification cell has b | een marked with the update |
+| symbol. (PAL-0940 | ) |  |
+| In this correct e | xample, the system has updated the content and a patient has been removed from the list | , leaving that location |
+| unoccupied. The e | ntire row for the unoccupied location is visually differentiated using the background c | olour and the patient |
+| identification ce | ll has been marked with the update symbol. (PAL-0950) |  |
+| Rationale |  |  |
+| The ‘live’ update | of information displayed in Patient Lists will be an unfamiliar concept to those users | migrating from document or |
+| paper based lists | . For such users, a Patient List will have typically been created at a defined point in | time (for example, at the start of a |
+| shift) and update | d by the users themselves during the period of usage (for example, throughout the shift | ). However, system-based |
+| Patient Lists cou | ld be updated continually, for example, for events such as: |  |
+|  When the Pathol | ogy Department enter test results into the hospital system for a patient that is on the | Patient List |
+|  When a patient | record is updated and the Patient List includes content sourced from that patient recor | d |
+|  When a new pati | ent is admitted to a ward during a shift |  |
+| Design mock-ups f | or marking updated information were shown to user research participants (see APPENDIX B | ), who particularly liked |
+| how live update m | ark-ups could mitigate the risk of missing changes in patient information including imp | rovements and/or |
+| deteriorations. |  |  |
+| Research found th | at the safest method of clearing update mark-ups is individually on each mark-up, as cl | inicians can then ensure that |
+| they have seen al | l updates (including those that may be out of view). However, this could be time consum | ing, particularly when |
+| updates occur fre | quently. It was also found that sporadic viewing of a Patient List may result in it bei | ng covered with numerous update |
+| mark-ups, which c | ould potentially distract from the patient information. The guidance therefore includes | recommendations on the |
+| provision of a ‘c | lear all mark-up’ option. |  |
+| Note |  |  |
+| Determin | ing when information should be removed from the Patient List (for example, when tasks a | re completed) is out of |
+| scope fo | r this guidance. However, it was considered important for users to be made aware when i | nformation is removed from |
+| the Pati | ent List and so guidance on update mark-up includes removed information. |  |
+| Participants disc | ussed whether users should be alerted about updates for columns they have chosen not to | display but which may |
+| have been deemed | important to their role (for example, by being in the default column set for that users | role). On exploring how these |
+| alerts may be mad | e, it was found that there was no clear way to convey this information in a clear and u | nambiguous manner. The |
+| benefits of displ | aying alerts about information the user had chosen not to display were therefore deemed | not great enough to outweigh |
+| the potential int | erface complexity. |  |
+| Note |  |  |
+| Indicati | on of status (for example, task completion), responsibility (for example, task allocati | on) or acceptance (for example, |
+| acknowle | dgement of test results) is out of scope, therefore the guidance in this section should | not be considered suitable for |
+| supporti | ng mark-up for these purposes. |  |
+| Hazard Risk Analy | sis Summary: |  |
+| Potential Haza | rds:                                                               Mitigations: |  |
+|  PLI001 What | if entries are made into the Patient List that result in two or     PAL-0800, PAL-0820 | , PAL-0830 |
+| more version | s of the same information in the record and in the Patient |  |
+| List? |  |  |
+|  PLI097 What | if the information underlying the view has changed (since it        PAL-0870 |  |
+| was opened) | even though the refresh alert has not yet appeared? |  |
+|  PLI098 What | if the view is updated while open without manual refresh or         PAL-0840, PAL-0880 |  |
+| indication o | f a change or what those changes are? |  |
+|  PLI099 What | if updates are not automatic (once the view is open) and            PAL-0800, PAL-0870 |  |
+| there is no | option for manual refresh? |  |
+|  PLI100 What | if the changes since the clinician's last view are not              PAL-0800, PAL-0840 | , PAL-0880, PAL-0900 |
+| indicated? |  |  |
+|  PLI103 Risk | of not knowing whether it was worth refreshing or not               PAL-0840, PAL-0860 |  |
+|  PLI104 Misin | terpretation of time associated with refresh action                 PAL-0840, PAL-0860 |  |
+|  PLI107 Updat | es: what if there is no marker to show what is new or what          PAL-0840, PAL-0880 | , PAL-0900 |
+| has been upd | ated and/or changed? |  |
+|  PLI111 What | if you do not realise that the status of the list has to be         PAL-0870 |  |
+| manually upd | ated? |  |
+|  PLI125 What | if you are not aware of the status of the list because no time  PAL-0840, PAL-0860 |  |
+| is shown? |  |  |
+|  PLI129 What | happens if you do not notice additional data which is               PAL-0840, PAL-0880 | , PAL-0900, PAL-0940 |
+| appearing on | screen? |  |
+|  PLI220 What | if data in the view (either the list of patients or the data per    PAL-0840, PAL-0860 |  |
+| patient) is | mistakenly interpreted to be current information when it is |  |
+| actually out | of date? |  |
+|  PLI279 What | if the system allows you the ability to unmark all updates          PAL-0850, PAL-0930 | , PAL-0980 |
+| even if all | updates have not been viewed? |  |
+|  PLI152 What | if you cannot see completed tasks?                                  PAL-0910, PAL-0920 |  |
+|  PLI066 What | if completed jobs are removed too soon from the list?               PAL-0910, PAL-0920 |  |
+|  PLI270 What | if results for unknown patient still show 'unknown' but live        PAL-0820 |  |
+| system has n | ow updated patient's record with known demographics? |  |
+| .3            Dis | playing Historical Patient List Information |  |
+| This section prov | ides guidance on displaying historical patient information as a complete Patient |  |
+| List ‘snapshot’. | Figure 11 illustrates those features: |  |
 
 Figure 11: Historical Patient List Information
 
@@ -1395,7 +1858,42 @@ HSCIC Controlled Document
 
 ##### 4.2.4 Displaying Further Information
 
-This section provides guidance on how to display further information that a user has opened from the Patient List. Figure 12 illustrates that feature:
+
+| ID | Guideline | Conformance Rating |
+| --- | --- | --- |
+| PAL-0990 | Enable users to access historical Patient List information as a complete list for a specified point in time | Recommended   Medium |
+| PAL-1000 | When historical Patient List information is displayed as a complete list, ensure that it is displayed in a similar format to that used by the equivalent current Patient List. | Recommended   Medium |
+| PAL-1010 | When historical Patient List information is displayed as a complete list, visually emphasise the time and date to which it applies | Recommended   Medium |
+| PAL-1020 | When historical Patient List information is displayed as a complete list, ensure that there is clear visual differentiation between it and current Patient Lists (for example, by using a distinct colour scheme and including the word ‘Historical’ in the header) | Mandatory     High |
+| PAL-1030 | When historical Patient List information is displayed as a complete list, never display it and the equivalent current Patient List at the same time | Mandatory     High |
+| Usage Examples |  |  |
+| In this correct e | xample, the historical Patient List is displayed with a different colour scheme to that | used in other guidance examples, |
+| and the time and | date are emphasised. The information is presented in a similar format to the current Pa | tient List. (PAL-0990, |
+| PAL-1000, PAL-101 | 0, PAL-1020) |  |
+| In this incorrect | example, the historical Patient List and the current Patient List are displayed at the | same time. (PAL-1030) |
+| Rationale |  |  |
+| When user researc | h participants (see APPENDIX B) were shown design mock-ups of historical Patient Lists, | they agreed that |
+| accessing histori | cal information on current patients and on previous patients was useful. |  |
+| Providing a histo | rical ‘snapshot’ of all information across a Patient List has the advantages of providi | ng clinicians with a familiar format |
+| in which to view | the information. This is particularly useful if clinicians want to remind themselves of | what their Patient List looked like |
+| at the end of the | ir previous shift and to discover what happened to previous patients who may have been | discharged since then. |
+| Providing a histo | rical Patient List with a similar format to the current Patient List could introduce ha | zards of misidentification, so |
+| specific guidelin | es are provided to mitigate this hazard. |  |
+| Hazard Risk Analy | sis Summary: |  |
+| Potential Haza | rds:                                                          Mitigations: |  |
+|  PLI151 What | if you cannot see the details from the previous day?           PAL-0990, PAL-1000, PAL | -1010, PAL-1020, PAL-1030 |
+|  PLI205 Being | unable to review previous information such as                 PAL-0990, PAL-1000, PAL | -1010, PAL-1020, PAL-1030 |
+| trends (whic | h are not necessarily quantitative information), |  |
+| completed ac | tions and patients who have now been discharged |  |
+|  PLI219 What | if 'snapshots' of the state of the list have to be taken       PAL-0990, PAL-1000, PAL | -1010, PAL-1020, PAL-1030 |
+| manually? |  |  |
+|  PLI240 What | if you cannot access jobs that have been completed             PAL-0990, PAL-1000, PAL | -1010, PAL-1020, PAL-1030 |
+| for a patien | t? |  |
+|  PLI239 What | if you cannot get access to patients who have been             PAL-0990, PAL-1000, PAL | -1010, PAL-1020, PAL-1030 |
+| on the ward | recently? |  |
+| .4           Disp | laying Further Information |  |
+| This section prov | ides guidance on how to display further information that a user has opened from |  |
+| the Patient List. | Figure 12 illustrates that feature: |  |
 
 Figure 12: Displaying Further Information
 
@@ -1439,35 +1937,24 @@ HSCIC Controlled Document
 
 #### 5.1 Terms and Abbreviations
 
-CATR Clinical Authority to Release
 
-CSG Clinical Safety Group
-
-CUI Common User Interface
-
-IG Information Governance
-
-ISMP Institute for Safe Medication Practices
-
-ISO International Organization for Standardization
-
-MDT Multi-Disciplinary Team
-
-MEWS Medical Early Warning Score
-
-MIST Mechanism Illness/Injury Signs/Symptoms Treatment
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NPSA National Patient Safety Agency
-
-UI User Interface
-
-VDT Visual Display Terminal
-
-WHO World Health Organization
+| Abbreviation | Definition |
+| --- | --- |
+| CATR | Clinical Authority to Release |
+| CSG | Clinical Safety Group |
+| CUI | Common User Interface |
+| IG | Information Governance |
+| ISMP | Institute for Safe Medication Practices |
+| ISO | International Organization for Standardization |
+| MDT | Multi-Disciplinary Team |
+| MEWS | Medical Early Warning Score |
+| MIST | Mechanism Illness/Injury Signs/Symptoms Treatment |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPSA | National Patient Safety Agency |
+| UI | User Interface |
+| VDT | Visual Display Terminal |
+| WHO | World Health Organization |
 
 Table 8: Terms and Abbreviations
 
@@ -1491,39 +1978,17 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Evidence Rating In the guidance tables, summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):
 
- **Low:**
-
- Does not mitigate specific patient safety hazards
-
- User research findings unclear and with few participants
-
- Unreferenced usability principles indicate the design is not significantly better than alternatives
-
- **Medium:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear but with few participants
-
- References old authoritative guidance (for example, from National Patient Safety Agency (NPSA),
-
-Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
- **High:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear and with a significant number of participants
-
- References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
+| Term | Definition |
+| --- | --- |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Conformance | In the guidance tables, indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:  Mandatory – An implementation should follow the guideline  Recommended – An implementation is advised to follow the guideline |
+| Current best practice Cu | rrent best practice is used rather than best practice, as over time best practice guidance may change or be |
+| re | vised due to changes to products, changes in technology, or simply the additional field deployment |
+| ex | perience that comes over time. |
+| erm | Definition |
+| vidence Rating | In the guidance tables, summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):  Low:  Does not mitigate specific patient safety hazards  User research findings unclear and with few participants  Unreferenced usability principles indicate the design is not significantly better than alternatives  Medium:  Mitigates specific patient safety hazards  User research findings clear but with few participants  References old authoritative guidance (for example, from National Patient Safety Agency (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded  Referenced usability principles indicate the design is significantly better than alternatives  High:  Mitigates specific patient safety hazards  User research findings clear and with a significant number of participants  References recent authoritative guidance (for example, from NPSA, ISMP or WHO)  Referenced usability principles indicate the design is significantly better than alternatives |
+| HS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
 
 Table 9: Definitions
 
@@ -1533,21 +1998,17 @@ This section shows how to interpret the different styles used in this document t
 
 ##### 5.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 10: Body Text Styles
 
@@ -1559,47 +2020,33 @@ HSCIC Controlled Document
 
 ##### 5.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 11: Cross Reference Styles
 
 #### 5.4 References
 
-**R1.** British Standards Institute – BS EN ISO 9241-10:1996 Ergonomic requirements for office work with visual display terminals (VDTs) – Part 10: Dialogues principles
 
-1996
-
-**R2.** British Standards Institute – BS 7581:1992 Guide to Presentation of tables and graphs 1992
-
-**R3.** NHS CUI Programme – Design Guide Entry – Patient Banner 4.0.0.0
-
-**R4.** NHS CUI Programme – Displaying Graphs and Tables – User Interface Design Guidance 2.0.0.0
-
-**R5.** NHS CUI Programme – Filtering, Sorting and Grouping – User Interface Design Guidance 1.0.0.0
-
-**R6.** NHS CUI Programme – Design Guide Entry – Time Display 4.0.0.0
-
-**R7.** NHS CUI Programme – Design Guide Entry – Date Display 5.0.0.0
-
-**R8.** World Health Organization Collaborating Centre for Patient Safety Solutions – Aide Memoire – Volume 1, solution 2, May 2007 – Patient Identification
-
-**R9.** National Patient Safety Agency National Reporting and Learning Service – DSCN 04/2009 – Guidance on the standard for Patient Identifiers for Identity bands
-
-May 2007
-
-March 2009
-
-**R10.** Nielsen, J – Usability Engineering 1993
-
-**R11.** Shneiderman, B – Designing the User Interface: Strategies for Effective Human-Computer Interaction
+| Reference | Document | Version |
+| --- | --- | --- |
+| R1. | British Standards Institute – BS EN ISO 9241-10:1996 Ergonomic requirements for office work with visual display terminals (VDTs) – Part 10: Dialogues principles | 1996 |
+| R2. | British Standards Institute – BS 7581:1992 Guide to Presentation of tables and graphs | 1992 |
+| R3. | NHS CUI Programme – Design Guide Entry – Patient Banner | 4.0.0.0 |
+| R4. | NHS CUI Programme – Displaying Graphs and Tables – User Interface Design Guidance | 2.0.0.0 |
+| R5. | NHS CUI Programme – Filtering, Sorting and Grouping – User Interface Design Guidance | 1.0.0.0 |
+| R6. | NHS CUI Programme – Design Guide Entry – Time Display | 4.0.0.0 |
+| R7. | NHS CUI Programme – Design Guide Entry – Date Display | 5.0.0.0 |
+| R8. | World Health Organization Collaborating Centre for Patient Safety Solutions – Aide Memoire – Volume 1, solution 2, May 2007 – Patient Identification | May 2007 |
+| R9. | National Patient Safety Agency National Reporting and Learning Service – DSCN 04/2009 – Guidance on the standard for Patient Identifiers for Identity bands | March 2009 |
+| R10. | Nielsen, J – Usability Engineering | 1993 |
+| R11. | Shneiderman, B – Designing the User Interface: Strategies for Effective Human-Computer Interaction | Third Edition |
 
 Table 12: References
 
@@ -1755,45 +2202,64 @@ Detailed notes from the interviews were qualitatively analysed using thematic co
 
 ##### B.3.1 Participant Description
 
-11 participants were interviewed in 11 sessions. Each had either volunteered through the NHS CFH Event Management System (EMS) signup or had been recruited by an HCP who had volunteered. 5 out of 11 participants had previously taken part in CUI clinical engagement for other work areas. Table 4 shows a summary of the participants’ profiles:
 
-426 Doctor Obstetrics and Gynaecology
-
-427 Doctor Obstetrics and Gynaecology
-
-428 Doctor Obstetrics and Gynaecology
-
-429 Doctor Obstetrics and Gynaecology
-
-430 Doctor GP Rotation (Obstetrics and Gynaecology)
-
-Senior SpR Labour board, handwritten list No
-
-Junior SpR Labour board, printed document No
-
-SpR Labour board, handwritten list No
-
-SpR Labour board, printed document No
-
-SHO Labour board, printed document (both personal and shared)
-
-No
-
-Yes
-
-431 Nurse Renal (outpatients)? Consultant Printed document (both personal and shared)
-
-432 Nurse Critical Care Senior Printed document (shared) Yes
-
-433 Pharmacist ITU? Printed document (personal) No
-
-434 Doctor GP Rotation / Military? F2 Electronic systems at two trusts, printed document (personal)
-
-Yes
-
-435 Doctor Surgery SHO Printed document (personal) Yes
-
-436 Pharmacist Various? Electronic system, printed document (personal)
+| B.1 | Abstract |
+| --- | --- |
+| The UK | National Health Service (NHS) Common User Interface (CUI) programme is a partnership ® |
+| between | Microsoft and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Program | me for Information Technology (NPfIT). |
+| As part | of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring |
+| that so | ftware applications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provide | s software developers with user interface design guidelines derived through a user-centric |
+| develop | ment process that includes explicit patient-safety evaluations. |
+| This su | mmary describes key findings from user research carried out in November 2009 by the CUI |
+| CAPS te | am on Patient List Views. These findings are a subset of those in a larger internal report |
+| prepare | d for the CUI CAPS Patient List Views team. |
+| Purpose | : |
+| To gain | clinical feedback on designs for Patient List Views. |
+| Method: |  |
+| Intervi | ews: structured interviews with 11 Health Care Professionals (HCPs) eliciting HCP |
+| prefere | nces and qualitative feedback on designs. |
+| Key Res | ults: |
+| Based o | n clinician preference and rationale: |
+|  T | runcating items in sublists is problematic and may hinder use of the view |
+|  T | he option for end-user clinicians to be able to customise the dataset visible should be |
+| f | urther explored |
+|  M | arking of updates was a popular feature, though unmarking was initially unclear |
+|  A | ‘snapshots’ feature was also liked, primarily in order to access patients no longer on the |
+| c | urrent list |
+| B.1 | Research Objectives |
+| To gath | er HCP preferences and qualitative feedback on, and to identify possible patient safety |
+| hazards | with, CUI Patient List designs. |
+| B.2 | Research Design |
+| 11 clin | icians were interviewed across 11 structured 1 hour interviews, carried out in person. |
+| Partici | pants were shown static designs of the Patient List View, with design alternatives per design |
+| area. D | esigns and example data used a secondary care inpatient scenario. |
+| Partici | pants were asked for preferences based on patient safety criteria. Other qualitative feedback |
+| was eli | cited covering: |
+|  R | ationale for preference |
+|  D | esign fit with current and best practice |
+|  D | esign understandability |
+|  A | ny potential hazards resulting from the designs |
+| Detaile | d notes from the interviews were qualitatively analysed using thematic coding. |
+| B.3 | Results |
+| B.3.1 | Participant Description |
+| 11 part | icipants were interviewed in 11 sessions. Each had either volunteered through the NHS |
+| CFH Eve | nt Management System (EMS) signup or had been recruited by an HCP who had |
+| volunte | ered. 5 out of 11 participants had previously taken part in CUI clinical engagement for other |
+| work ar | eas. Table 4 shows a summary of the participants’ profiles: CUI Feedback |
+| Session | Job Role             Specialty                 Level          Used Electronic Templates? before? |
+| 426 | Doctor               Obstetrics and            Senior SpR     Labour board, handwritten list         No Gynaecology |
+| 427 | Doctor               Obstetrics and            Junior SpR     Labour board, printed document         No Gynaecology |
+| 428 | Doctor               Obstetrics and            SpR            Labour board, handwritten list         No Gynaecology |
+| 429 | Doctor               Obstetrics and            SpR            Labour board, printed document         No Gynaecology |
+| 430 | Doctor               GP Rotation (Obstetrics   SHO            Labour board, printed document (both   No and Gynaecology)                         personal and shared) |
+| 431 | Nurse                Renal (outpatients)       ? Consultant   Printed document (both personal and    Yes shared) |
+| 432 | Nurse                Critical Care             Senior         Printed document (shared)              Yes |
+| 433 | Pharmacist           ITU                       ?              Printed document (personal)            No |
+| 434 | Doctor               GP Rotation / Military    ? F2           Electronic systems at two trusts,      Yes printed document (personal) |
+| 435 | Doctor               Surgery                   SHO            Printed document (personal)            Yes |
+| 436 | Pharmacist           Various                   ?              Electronic system, printed document    Yes (personal) |
 
 Table 13: Interview Participants
 

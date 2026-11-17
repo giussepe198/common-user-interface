@@ -133,6 +133,23 @@ Figure 1 (below) illustrates all three categories: forms (left), single concept 
 
 ![](termpostcoord_assets/termpostcoord.pdf-4-1.png)
 
+
+|  | The user makes notes by selecting boxes and choosing options, not by entering text |
+| --- | --- |
+|  | An encoding interface is not needed–the clinical codes should be embedded within the form itself |
+| gle c | oncept matching |
+|  | The user makes notes by typing the note for a single concept (such as 'asthma'), and the system returns SNOMED-CT matches. The user can then choose an appropriate match, refine the concept, then elaborate it with a combination of free text, qualifying SNOMED-CT attributes (such as 'severe'), and numerical values. |
+|  | Encoding interfaces require components to match and elaborate SNOMED-CT concepts. |
+| t par | ser matching |
+|  | The user makes notes by writing unconstrained text, while the system matches words and phrases against the SNOMED-CT database, or a constrained subset of the database, and displays the matches. The user then has the option to do one of the following:    Confirm that they want to encode these SNOMED-CT expressions    Browse alternative matches    Refine a selected match    Leave the note un-encoded, in which case it will be saved as unstructured text rather than as a SNOMED-CT expression |
+|  | Encoding interfaces require components to identify and match SNOMED-CT concepts, as well as build post-coordinated SNOMED-CT expressions, based upon sanctioned attribute relationships, from within the text. The interface must also be able to identify terms and relationships from additional informational models in order to support accurate and comprehensive clinical noting. |
+| (belo | w) illustrates all three categories: forms (left), single concept matching (centre) and |
+| er ma | tching (right). |
+| The | user enters key                                                              As the user types in |
+| word | s and the system                                                             notes, the system |
+| retu | rns matches, which                                                           suggests SNOMED-CT |
+| the | user can elaborate                                                           matches |
+
 Figure 1: Styles of Encoding
 
 A possible fourth hybrid category could be defined where forms may include areas where single concept matching or text parser is used.
@@ -249,6 +266,52 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+|  | Qualification |
+| --- | --- |
+|  | Refinement of a defining attribute |
+|  | Addition of unsanctioned qualifiers |
+|  | Addition of ‘nested’ qualifiers |
+| s mod | ification (including negation) |
+| This | is where the elaboration fundamentally changes the meaning of the concept, rather |
+| than | simply qualifies or refines it. Such an elaboration of the concept results in it no longer |
+| being | subsumed as a subtype of a parent concept. |
+| For e | xample, if we elaborated the concept ‘Asthma’ to associate it with a patient’s mother, |
+| the m | eaning of the resulting expression would have a fundamentally different meaning, and |
+| there | fore different clinical implications, from the noting of the concept of ‘Asthma’ by itself. If |
+| the c | linician were running a query of all instances of asthma in their practice, they would not |
+| expec | t the system to return instances where asthma is linked to a family member. |
+| Addit | ionally, concepts that are post-coordinated with a negation concept (such as ‘Known |
+| absen | t’), have their meanings fundamentally shifted. |
+| A mod | ified concept is not a subtype of the unmodified instance of the concept. For |
+| examp | le, ‘Asthma present’ is not the subtype of the context-neutral concept, ‘Asthma’. |
+| Inste | ad, it is a type of ‘Explicit context’. Indeed, negated concepts subsume in the opposite |
+| direc | tion to their positive counterparts. Whereas positive expressions are subsumed by |
+| more | general instances, negated expressions are subsumed by more specific negative |
+| expre | ssions. |
+| It is | for this reason that modified concepts should be treated differently to concepts that |
+| have | been refined through subtype qualification. |
+| cept | combination and linkage |
+| Conce | pts can be combined by way of a number of relationships, such as causal or |
+| tempo | ral relationships. For example, one may post-coordinate the concept ‘Laparoscopic |
+| proce | dure’ with the concept ‘Cholecystectomy’, which is the canonical equivalent of the |
+| conce | pt ‘Laparoscopic cholecystectomy’. |
+| Conce | pts can also be linked together, for example, to indicate causality. In this way, the |
+| conce | pt ‘Anaemia’ can be linked by the attribute ‘Due to’ to the concept ‘Ascorbic acid |
+| defic | iency’. The resulting post-coordination is equivalent to the concept ‘Anaemia due to |
+| ascor | bic acid deficiency’. It is worth noting here that, in this example, the concept ‘Anemia’ |
+| may b | e the ‘base’ concept, with ‘Due to’ the attribute name, and ‘Ascorbic acid deficiency’ |
+| the a | ttribute value. |
+| logy | user interface must also allow the user to add non-SNOMED-CT concepts, such as |
+| es an | d units, or measurement readings, to SNOMED-CT expressions. For example, the |
+| ld be | able to add the value ’38.9’ and the unit ‘Degrees centigrade’ to the concept of |
+| perat | ure’. This is discussed in more detail in the document NHS CUI Design Guide |
+| m - D | esign Guide Entry - Terminology - Elaboration {R4}. For the current document, we |
+| at th | e appropriate relationships are provided by an external information model (such as |
+| on H | L7 v3 or EN13606) and that the coordination of these values and units with |
+| conc | epts will be handled in the same way as with other attribute values. |
+| of po | st-coordination is highlighted in the User Interaction Model, in Figure 2 (below). |
+
 Figure 2: User Interaction Model
 
 #### 1.3 References to Table of Contents Document
@@ -318,13 +381,27 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-C2.2 The scope for any system-led search for attribute relationship matches or other elaboration in a passage of text will be limited (by the system) and limitable (by the user).
 
-For example, the system may only be required to search within a marquee, which in turn is automatically defined by full stops.
-
-Further limitations may be required to reduce performance demands, such as only allowing up to four potential codes within a grouping marquee.
-
-C2.3 The system will identify potential elaboration within the typed notes and will offer relevant elaboration options during the encoding process.
+| Ref | Requirements (See APPENDIX A) |
+| --- | --- |
+| C1.1 | Users will be able to refine/select certain key attributes of a concept. These attributes may be based on SNOMED-CT relationships such as qualifiers, surgical procedures, and (body) finding sites. They may include axis modifiers (based on the Context Model). |
+| C1.2 | The system will allow users to negate disorder concepts. |
+| C1.3 | If users have included negation text in a search, the system should be able to identify pre-coordinated negated concepts in search results and present them differently (or omit them). |
+| C1.4 | Users will be able to refine the base concept without necessarily losing the refined attributes. |
+| C1.5 | The system will need to handle ‘error’ situations where the refinement causes mismatches with other attribute values. |
+| C1.6 | Users will be able to simultaneously refine multiple attribute concepts of a given concept. |
+| C1.9 | The system will allow users to specify a small set of elaboration values that are not defined by SNOMED-CT nor Context Model relationships. These will include time values and values defined by additional Informational models (such as blood pressure readings and temperature readings). |
+| C1.10 | Where users can enter numerical values, appropriate units must be presented to users by the system. Where there is a choice of units, the system must present the choice clearly and explicitly communicate the user’s choice. |
+| C1.11 | The system will encourage users to refine mandatory attributes and values (where appropriate). |
+| C1.14 | Users will have the flexibility to be able to undo and/or re-refine any elaboration, whether it be proposed by the system or selected by the user. |
+| C1.15 | Users will be able to apply elaboration to more than one concept if the relationship is allowed. |
+| C1.16 | Users will be able to move elaboration from one concept to another if the relationship is allowed. |
+| C1.17 | The system will attempt to render concepts and their elaboration in a meaningful way. |
+| C1.18 | The system will clearly communicate attribute relationships, both in a structured view and in a ‘narrative’ view |
+| C2.1 | The system will identify potential attribute relationships between concept matches in free text and will promote them in the search process. |
+| ef | Requirements (See APPENDIX A) |
+| 2.2 | The scope for any system-led search for attribute relationship matches or other elaboration in a passage of text will be limited (by the system) and limitable (by the user). For example, the system may only be required to search within a marquee, which in turn is automatically defined by full stops. Further limitations may be required to reduce performance demands, such as only allowing up to four potential codes within a grouping marquee. |
+| 2.3 | The system will identify potential elaboration within the typed notes and will offer relevant elaboration options during the encoding process. |
 
 Table 2: NHS CFH Requirements for Post-Coordination
 
@@ -475,11 +552,18 @@ considers:
 
 - Must ensure that there is at least one base concept (that is, a Clinical finding, Procedure,
 
-Observable entity or Situation with explicit context concept) in each expression.
 
-_**2.1.1.3**_ _**How to Use the Design Guide Entry**_
-
-expression boundary (such as a full stop or carriage return) until running the post-coordination matching process.
+|  | Matching fit of the base concept |
+| --- | --- |
+|  | Matching fit of concepts linked to the base concept through sanctioned SNOMED-CT attribute relationships |
+| ensu | re that there is at least one base concept (that is, a Clinical finding, Procedure, |
+| rvabl | e entity or Situation with explicit context concept) in each expression. |
+|  | How to Use the Design Guide Entry |
+| t | Example            Comments |
+| Wait | until the system has identified an |
+| expre | ssion boundary (such as a full |
+| stop | or carriage return) until running the |
+| post- | coordination matching process. |
 
 Table 3: How to Use the Design Guide Entry
 
@@ -487,7 +571,11 @@ _**2.1.1.4**_ _**How Not to Use the Design Guide Entry**_
 
 ####  Attempt to post coordinate matches in
 
-different expression windows
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Attempt to post coordinate matches in |  |  |
+| different expression windows |  |  |
 
 Table 4: How Not to Use the Design Guide Entry
 
@@ -573,11 +661,44 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-both matches and order them as normal, that is, according to statistic word matching scores and any filtering that applies.
 
-Likewise, if the user types in the character ‘?’, the system will identify this as a synonym of ‘Known possible’, and will run a matching process against the subsequent text, but filtered to disorders only. Given that no SNOMED-CT concept description label begins with the character ‘?’ the system does not need to run two simultaneous matching processes.
-
-The following figures (Figure 4, Figure 5 and Figure 6) demonstrate the matching of negation and uncertainty.
+|  | Matching fit of the base concept    Could calculate fit in terms of ‘efficiency of fit’ and ‘scope of fit’ |
+| --- | --- |
+|  | Matching fit of concepts linked to the base concept through sanctioned SNOMED-CT attribute relationships |
+|  | Proximity/order weighting, that is, how close the input words that match the expression are to one another, and the extent to which they match the order of the words in the SNOMED-CT expression |
+| et to | test this matching model in an interactive prototype. We anticipate that there could |
+| erfor | mance penalties associated with the matching of longer sentences. In such |
+| s, th | ere may be a need for a restriction on the size of expression that the user can parse at |
+| ime. | Equally, the character-by-character matching may not be viable for this post- |
+| ion m | odel. |
+| N | egation and Uncertainty |
+| a co | uple of important instances where the system will need to treat the post-coordination |
+| n a d | ifferent manner. The first is dealing with the negation of disorder concepts, and the |
+| deal | ing with the indication of uncertainty, for example, before a suspected disorder or |
+| . The | se need to be treated differently because: |
+| y mig | ht have a big impact on the meaning of the expression |
+| nece | ssary attribute relationships may not currently exist in SNOMED-CT |
+| corr | ect concept label in SNOMED-CT may be different to the way that the clinician |
+| icula | tes it |
+| ician | s write ‘No’ plus the name of a disorder, what they mean is that the disorder is |
+| be ab | sent. Therefore, in the absence of any other qualifier values, ‘No’ means ‘Known |
+| this | is a SNOMED-CT concept (ConceptID 410516002). |
+| inate | d matches must be returned in a familiar form so that the user can clearly see that |
+| pt is | negated or is qualified with uncertainty. Clinicians will be used to seeing the order |
+| conc | ept, or ‘?’ then concept, for example, ‘No gastroenteritis’. |
+| , if | the user types in the word ‘No’ followed by a space and some text, the system will |
+| the w | ord ‘no’ and will run a separate simultaneous matching process against the |
+| t tex | t, but filtered to disorders only. Meanwhile, it will continue to match the full text in the |
+| y. Th | e negated disorders will be distinguished by the fact that the word ‘No’ will be |
+| in bo | ld style text in order to make the negation stand out. The system will take results for |
+| hes a | nd order them as normal, that is, according to statistic word matching scores and |
+| ring | that applies. |
+| if t | he user types in the character ‘?’, the system will identify this as a synonym of ‘Known |
+| , and | will run a matching process against the subsequent text, but filtered to disorders |
+| en th | at no SNOMED-CT concept description label begins with the character ‘?’ the system |
+| need | to run two simultaneous matching processes. |
+| wing | figures (Figure 4, Figure 5 and Figure 6) demonstrate the matching of negation and |
+| ty. | Expression of negation in bold. |
 
 Figure 4: System Identifying an Expression of Negation
 
@@ -709,13 +830,64 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+|  | Identifying the key word ‘No‘ at the start of an expression (with a space character after the letters) in the user’s typed input |
+| --- | --- |
+| Ru | nning a parallel matching process for disorders against the subsequent text typed in |
+| by | the user |
+| Di | splaying the word ‘No’ in front of the matched disorder concepts |
+| Me | rging the returned results from both matching processes, and order them according |
+| to | statistic word matching |
+| Po | st-coordinating the chosen match with the Finding context attribute (ConceptID |
+| 40 | 8729009) with the qualifier value ‘Known possible’ (ConceptID 410590009) |
+| d pos | t-coordinate expressions of uncertainty (‘?’, meaning ‘Known possible’) for |
+| der c | oncepts by: |
+| Id | entifying the key word ‘?’ at the start of an expression in the user’s typed input |
+| Ru | nning a matching process for disorders against the subsequent text typed in by the |
+| us | er |
+| Di | splaying the word ‘?’ in front of the matched disorder concepts |
+| Po | st-coordinating the chosen match with the Finding context attribute with the qualifier |
+| va | lue ‘Known possible’ |
+| only | provide this simple method of negation and uncertainty post-coordination for |
+| pts w | ithin the ‘Disorder’ hierarchy (which is a sub-hierarchy of the ‘Clinical Findings’ |
+| evel | category) |
+| also | allow the post-coordination of other negation and possibility axis modifiers in the |
+| way a | s other post-coordination |
+| d not | allow the user to browse for subtypes of a negated concept |
+| d all | ow the user to browse for subtypes or super-types (‘related concepts’) for a |
+| pt qu | alified with uncertainty |
+| d dis | play the Fully Specified Name (FSN) of the negated disorder in the flyout, linked |
+| e pos | t-coordinated label by the text ‘known absence of’ |
+| d dis | play the Fully Specified Name (FSN) of the uncertain disorder in the flyout, linked |
+| e pos | t-coordinated label by the text ‘possibly present’ |
+| confi | rm the whole post-coordinated simple negation expression by selection of a |
+| e che | ck box |
+| confi | rm the whole post-coordinated queried expression by selection of a single check |
+|  |  |
+| d onl | y apply a negation match or an uncertainty match to one concept at time (in the |
+| ce of | any intelligent language processing) |
+| Sh | ould identify whether there are concepts in the same sentence as a negation match |
+| th | at have not been negated, and display a warning message that they have not been |
+| ne | gated. |
+| Sh | ould identify if there are concepts in the same sentence as an uncertainty match that |
+| ha | ve not been associated with it, and display a warning message to that effect. |
+| Ho | w to Use the Design Guide |
+| t | Example                     Comments |
+| splay | the negation or uncertainty |
+| rds i | n bold, regardless of |
+| nfirm | ation status |
+
 Table 5: How to Use the Design Guide Entry
 
 _**2.1.2.4**_ _**How Not to Use the Design Guide**_
 
 ####  Allow users to browse the hierarchy for
 
-a negated concept
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Allow users to browse the hierarchy for |  |  |
+| a negated concept |  |  |
 
 Table 6: How Not to Use the Design Guide Entry
 
@@ -822,9 +994,41 @@ HSCIC Controlled Document
 
 ##### 2.1.3 Adjusting Post-Coordination Matching
 
-An important part of the post-coordination process will be the user’s adjustment of the suggested post-coordination presented by the system. Users need one or more clear mechanisms to quickly adjust the matching, and responsive feedback to indicate the effects of this adjustment.
 
-In the following example, the clinician has typed in some notes, against which the system has matched a number of SNOMED-CT concepts, including a post-coordinated expression comprising three separate concepts: a base-concept (‘Pain in finger’), a finding site attribute with the value ‘Index’ finger’, and the laterality qualifier ‘Left’. Out of the three concepts, the user is only able to select the base-concept as the system does not allow the user to confirm body structures or qualifiers on their own (see Figure 10).
+|  | Identifying the key word ‘No‘ at the start of an expression (with a space character after the letters) in the user’s typed input |
+| --- | --- |
+|  | Running a parallel matching process for disorders against the subsequent text typed in by the user |
+|  | Displaying the word ‘No’ in front of the matched disorder concepts |
+|  | Merging the returned results from both matching processes, and order them according to statistic word matching |
+|  | Post-coordinating the chosen match with the Finding context attribute (ConceptID 408729009), with the qualifier value ‘Known absent’ (ConceptID 410516002) |
+| uld p | ost-coordinate expressions of uncertainty (‘?’, meaning ‘Possible diagnosis’) for |
+| order | concepts by: |
+|  | Identifying the key word ‘?’ at the start of an expression in the user’s typed input |
+|  | Running a matching process for disorders against the subsequent text typed in by the user |
+|  | Displaying the word ‘?’ in front of the matched disorder concepts |
+|  | Post-coordinating the chosen match with the Finding context attribute (ConceptID 408729009) with the qualifier value ‘Known possible’ (ConceptID 410590009) |
+| t als | o allow the post-coordination of other negation and possibility axis modifiers in the |
+| e way | as other post-coordination |
+| uld d | isplay the Fully Specified Name (FSN) of the negated disorder in the flyout, linked |
+| the p | ost-coordinated label by the text ‘known absence of’ |
+| uld d | isplay the Fully Specified Name (FSN) of the uncertain disorder in the flyout, linked |
+| the p | ost-coordinated label by the text ‘possibly present’ |
+| uld a | llow the user to browse for subtypes or super-types (‘related concepts’) for a |
+| cept | qualified with uncertainty |
+| uld o | nly apply a negation match or a query match to one concept at time (in the |
+| ence | of any intelligent language processing) |
+|  | Should identify whether there are concepts in the same sentence as a negation match that have not been negated, and display a warning message that they have not been negated. |
+|  | Should identify if there are concepts in the same sentence as a query match that have not been associated with the query, and display a warning message that they have not been associated with the query. |
+| Ad | justing Post-Coordination Matching |
+| ant p | art of the post-coordination process will be the user’s adjustment of the suggested |
+| dinat | ion presented by the system. Users need one or more clear mechanisms to quickly |
+| e mat | ching, and responsive feedback to indicate the effects of this adjustment. |
+| llowi | ng example, the clinician has typed in some notes, against which the system has |
+| numb | er of SNOMED-CT concepts, including a post-coordinated expression comprising |
+| arate | concepts: a base-concept (‘Pain in finger’), a finding site attribute with the value |
+| inger | ’, and the laterality qualifier ‘Left’. Out of the three concepts, the user is only able to |
+| e bas | e-concept as the system does not allow the user to confirm body structures or |
+| s on | their own (see Figure 10). Only the base concept is selectable. |
 
 Figure 10: Suggested Top Matches Including a Post-Coordinated Expression Match
 
@@ -979,7 +1183,16 @@ moved a marquee boundary
 
 ####  Feature a slight delay in updating the
 
-matching following boundary adjustments
+
+|  | Should allow users to adjust expression boundaries by dragging the boundaries of the expression marquee |
+| --- | --- |
+|  | How to Use the Design Guide Entry |
+| t | Example              Comments |
+| Updat | e matching once the user has |
+| moved | a marquee boundary |
+| Featu | re a slight delay in updating the                          The matching updating should not be |
+| match | ing following boundary                                     instantaneous as there could be a |
+| adjus | tments                                                     number of unnecessary matching calls to the server while the user is trying to position the boundary where they want it |
 
 Table 7: How to Use the Design Guide Entry
 
@@ -989,7 +1202,11 @@ The matching updating should not be instantaneous as there could be a number of 
 
 ####  Obscure the input text with the encoding
 
-dialog flyout
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Obscure the input text with the encoding |  | Instead, the system should feature a |
+| dialog flyout |  | mechanism that moves the flyout either above or below the relevant text |
 
 Table 8: How Not to Use the Design Guide Entry
 
@@ -1035,9 +1252,22 @@ alternative matches for a concept
 
 ##### 2.1.4 Selecting and Confirming Post-Coordinated Expressions
 
-Once the user has typed in some notes, for which the system returned matches, the user must confirm that they would like to encode these matched expressions.
 
-In the design shown in Figure 23 (below), the user has moved the mouse onto the suggested match area, which causes the area to turn yellow, and for the ‘in-focus’ boundary to move to the appropriate text in the right-hand text input area.
+|  | Should allow users to adjust expression boundaries by dragging the boundaries of the expression marquee |
+| --- | --- |
+|  |  |
+| only | offer those attribute matches that are allowed by the attribute relationships |
+| ated | by its base concept |
+| ld re | move an attribute match from the expression if the user changes the base |
+| ept t | o a match that does not support the attribute relationships |
+| disp | lay all the attribute components involved in the expression when displaying |
+| rnati | ve matches for a concept |
+| Sele | cting and Confirming Post-Coordinated Expressions |
+| er ha | s typed in some notes, for which the system returned matches, the user must |
+| t the | y would like to encode these matched expressions. |
+| gn sh | own in Figure 23 (below), the user has moved the mouse onto the suggested |
+| whic | h causes the area to turn yellow, and for the ‘in-focus’ boundary to move to the |
+| text | in the right-hand text input area. Moving the mouse over the expression area turns it yellow and reveals ‘down arrow’ icons. Clicking on the area moves the focus in the right-hand text input area too. |
 
 Figure 23: User Moves Mouse Over Suggested Match
 
@@ -1119,7 +1349,35 @@ _**2.1.4.2**_ _**How to Use the Design Guide Entry**_
 the start of the sentence. The only exception is in the case where it has been associated with axial modifiers such as expressions of negation or possibility.
 ####  Render the confirmed attributes in the
 
-order in which they appear in the user’s typed text
+
+|  | Should feature a separate check box control for each separate concept in the post- coordinated expression |
+| --- | --- |
+|     M | ust not allow users to confirm any concepts in a post-coordinated expression if they |
+| h | ave not confirmed the base-concept |
+|  | Could disable all the check boxes for confirming attribute concepts in an expression until the user selects the check box to confirm the base-concept |
+| ld all | ow users to un-confirm any of the individual concepts within a post-coordinated |
+| ession | (that is, independently from the others in the expression) |
+| d auto | matically select all of the concepts within an expression when the user selects |
+| base-c | oncept for confirmation, but allow the user to clear the check boxes afterwards |
+| allow | the user to return to the original input text by un-confirming the base-concept |
+| d allo | w the user to un-confirm an attribute without un-confirming the base-concept. |
+| will | remove the attribute SNOMED-CT label from the text input field |
+|  |  |
+| thod o | f rendering the attribute name labels (that is, translating them into more user-friendly and |
+| le wor | ds) would require the creation and management of such data by the NHS CFH. However, |
+| s mere | ly a default position until a more sophisticated solution is developed. This point is also outlined |
+| ign Gu | ide Entry - Terminology - Display Standards for Coded Information {R3} |
+| H | ow to Use the Design Guide Entry |
+| t | Example                     Comments |
+| Render | the confirmed base concept at |
+| the st | art of the sentence. The only |
+| except | ion is in the case where it has |
+| been a | ssociated with axial modifiers |
+| such a | s expressions of negation or |
+| possib | ility. |
+| Render | the confirmed attributes in the |
+| order | in which they appear in the user’s |
+| typed | text |
 
 Table 9: How to Use the Design Guide Entry
 
@@ -1127,7 +1385,12 @@ _**2.1.4.3**_ _**How Not to Use the Design Guide Entry**_
 
 ####  Allow users to confirm an attribute
 
-match without confirming its base concept match
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Allow users to confirm an attribute |  |  |
+| match without confirming its base |  |  |
+| concept match |  |  |
 
 Table 10: How Not to Use the Design Guide Entry
 
@@ -1249,21 +1512,17 @@ HSCIC Controlled Document
 
 #### 4.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-FSN Fully Specified Name
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-SCT Systematized Nomenclature of Medicine – Clinical Terms
-
-SCTIDs SNOMED Concept IDs
-
-SNOMED-CT Systematised Nomenclature of Medicine-Clinical Terms
-
-TLC Top Level Concept
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| FSN | Fully Specified Name |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| SCT | Systematized Nomenclature of Medicine – Clinical Terms |
+| SCTIDs | SNOMED Concept IDs |
+| SNOMED-CT | Systematised Nomenclature of Medicine-Clinical Terms |
+| TLC | Top Level Concept |
 
 Table 11: Terms and Abbreviations
 
@@ -1295,21 +1554,41 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Hierarchy An ordered organisation of concepts. General concepts are at the top of the hierarchy; at each level down the hierarchy, concepts become increasingly specialised. SNOMED CT concepts are arranged into top-level hierarchies. Each of these hierarchies subdivides into smaller subhierarchies. Concepts are related by IS-A relationships to their more general parent concepts directly above them in a hierarchy. There is one concept from which the top-level hierarchies descend called _SNOMED CT concept_ or the ‘Root concept’.
 
-Nested qualifiers Where the value of a qualifier is a refinement of a refined concept.
-
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
-
-Primitive concept A concept is primitive when its modelling (roles and parents) does not fully express its meaning. A concept definition is the list of its relationships to other concepts. Primitive concepts do not have the unique relationships needed to distinguish them from their parent or sibling concepts.
-
-Qualifying attribute Some SNOMED CT concepts can have Qualifying attributes, which are optional non-defining relationships that may be applied by a user or implementer in post-coordination. The qualifier value mechanism in SNOMED CT constrains the possible values an implementer can select in assigning a qualifying characteristic to a concept.
-
-Relationship An association between two concepts. The nature of the association is indicated by a Relationship Type.
-
-Sanctioned relationships Relationships between SNOMED-CT concepts that are sanctioned by the SNOMED-CT Concept Model. Sanctioned relationships are specified in a row in the SNOMED-CT Relationships table, as opposed to ‘Allowable’ relationships, which are a pattern in the Concept Model.
-
-Unsanctioned qualifiers Qualifiers that link to a base concept by sanctioned relationships. See ‘Sanctioned relationships’.
+| Term | Definition |
+| --- | --- |
+| Allowable relationships. | Allowable attribute relationships between SNOMED-CT concepts that may be unsanctioned by the SNOMED-CT Concept Model. These should be limited to qualifications that the Concept Model specifies for concepts of the same general type, for example, a ‘finding’ attribute used for another ‘finding’ concept (but not for an ‘approach’ concept). |
+| Attributes | Concepts that express characteristics of other concepts. SNOMED-CT concepts form relationships to other SNOMED-CT concept s through attributes. SNOMED-CT attributes are found in the ‘Linkage’ concept hierarchy. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Canonical equivalence | When two SNOMED-CT concepts or post-coordinated expressions have the same meaning. Equivalence can occur when a post-coordinated expression has the same meaning as a pre- coordinated concept; or when two different post-coordinated expressions have the same meaning. |
+| Concept ID | The unique identifier (code) for each SNOMED-CT concept. |
+| Context Model | A model that specifies relationships relating to semantic context that has been defined outside of the SNOMED-CT Concept Model. |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
+| Fully defined concept | SNOMED CT concepts are either primitive or fully defined. A concept is primitive when its modelling (attributes and parents) does not fully express its meaning. Fully defined concepts can be differentiated from their parent and sibling concepts by virtue of their relationships. Primitive concepts do not have the unique relationships needed to distinguish them from their parent or sibling concepts. |
+| Fully Specified Name | A description that names a concept in a manner intended to be unambiguous. |
+| erm                              Defi | nition |
+| ierarchy                         An o | rdered organisation of concepts. General concepts are at the top of the hierarchy; at each level |
+| down | the hierarchy, concepts become increasingly specialised. SNOMED CT concepts are |
+| arra | nged into top-level hierarchies. Each of these hierarchies subdivides into smaller sub- |
+| hier | archies. Concepts are related by IS-A relationships to their more general parent concepts |
+| dire | ctly above them in a hierarchy. There is one concept from which the top-level hierarchies |
+| desc | end called SNOMED CT concept or the ‘Root concept’. |
+| ested qualifiers                 Wher | e the value of a qualifier is a refinement of a refined concept. |
+| HS Entity                        With | in this document, defined as a single NHS organisation or group that is operated within a single |
+| tech | nical infrastructure environment by a defined group of IT administrators. |
+| rimitive concept                 A co | ncept is primitive when its modelling (roles and parents) does not fully express its meaning. A |
+| conc | ept definition is the list of its relationships to other concepts. Primitive concepts do not have the |
+| uniq | ue relationships needed to distinguish them from their parent or sibling concepts. |
+| ualifying attribute              Some | SNOMED CT concepts can have Qualifying attributes, which are optional non-defining |
+| rela | tionships that may be applied by a user or implementer in post-coordination. The qualifier value |
+| mech | anism in SNOMED CT constrains the possible values an implementer can select in assigning |
+| a qu | alifying characteristic to a concept. |
+| elationship                      An a | ssociation between two concepts. The nature of the association is indicated by a Relationship |
+| Type | . |
+| anctioned relationships          Rela | tionships between SNOMED-CT concepts that are sanctioned by the SNOMED-CT Concept |
+| Mode | l. Sanctioned relationships are specified in a row in the SNOMED-CT Relationships table, as |
+| oppo | sed to ‘Allowable’ relationships, which are a pattern in the Concept Model. |
+| nsanctioned qualifiers           Qual | ifiers that link to a base concept by sanctioned relationships. See ‘Sanctioned relationships’. |
 
 Table 12: Definitions
 
@@ -1351,9 +1630,25 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-**R7.** NHS Common User Interface Programme, Release 4 Terminology, Nov 2006, User Feedback
 
-**R8.** NHS CUI Design Guide Workstream, Terminology Demonstrator and Wireframe User Feedback
+| Reference Document | Version | Date |
+| --- | --- | --- |
+| R1.               NHS CUI Design Guide Workstream - Table of Contents | 2.0.0.0 | 30-Oct-2006 |
+| R2.               NHS CUI Design Guide Workstream - Design Guide Entry - Terminology - | 1.0.0.0 | 27-Mar-2007 |
+| Matching |  |  |
+| R3.               NHS CUI Design Guide Workstream - Design Guide Entry - Terminology - | 2.0.0.0 | 27-Mar-2007 |
+| Display Standards for Coding Information |  |  |
+| R4.               NHS CUI Design Guide Workstream - Design Guide Entry - Terminology - | 2.0.0.0 | 27-Mar-2007 |
+| Elaboration |  |  |
+| R5.               NHS National Programme for Information Technology’s ‘SNOMED CT Post- | 1.0 | 13-Jan-2005 |
+| coordination rules Guidance’ |  |  |
+| R6.               NHS Common User Interface Programme, Release 4 Terminology Jan 2007, | n/a | 29-Jan-2007 |
+| User Feedback |  |  |
+| Reference Document                                                                       Version   D | ate |  |
+| R7.              NHS Common User Interface Programme, Release 4 Terminology, Nov 2006,   n/a       1 | 3-Dec-2006 |  |
+| User Feedback |  |  |
+| R8.              NHS CUI Design Guide Workstream, Terminology Demonstrator and           n/a       J | uly 2006 |  |
+| Wireframe User Feedback |  |  |
 
 Table 13: References
 
@@ -1843,7 +2138,60 @@ assessment, including a redefinition of the NHS CUI Design Guide Workstream stra
 
 #### Open Issues Summary
 
-None
+
+| Date | Author | Version | Change Reference |
+| --- | --- | --- | --- |
+| 20-Jun-2006 | Giles Colborne | 0.0.0.1 | Initial draft for review/discussion |
+| 26-Jul-2006 | Laura Dromundo Ben Luff | 0.0.0.2 | Updates to incorporate final Deliverable information |
+| 28-Jul-2006 | Paul Robinson | 0.0.0.3 | Formatting updates |
+| 02-Aug-2006 | Vivienne Jones | 0.0.0.4 | Copyedit |
+| 10-Aug-2006 | Laura Dromundo Ben Luff | 0.0.0.5 | Final Updates |
+| 14-Aug-2006 | Vivienne Jones | 0.0.0.6 | Copyedited following updates from informal review with the Authority. |
+| 15-Aug-2006 | Ben Luff Laura Dromundo | 0.0.0.7 | Changes in response to copy edit |
+| 15-Aug-2006 | Vivienne Jones | 0.0.0.8 | Copyedit on updates. |
+| 15-Aug-2006 | Ben Luff | 0.0.0.9 | Changes in response to copy edit |
+| 16-Aug-2006 | Paul Robinson | 0.0.0.10 | Final check of document |
+| 16-Aug-2006 | Vivienne Jones | 0.1.0.0 | Document cleansed. Informal reviews carried out with the Authority, hence, Working Baseline not used previously. Moved to Baseline Candidate. |
+| 18-Aug-2006 | Vivienne Jones | 1.0.0.0 | Baseline following Acceptance |
+| 27-Feb-2007 | Ben Luff | 1.0.0.1 | Updated working baseline document |
+| 01-Mar-2007 | Marc Brown | 1.0.0.2 | Copyedit |
+| 01-Mar-2007 | Igor Laketic | 1.0.0.3 | Changes post copyedit |
+| 02-Mar-2007 | Marc Brown | 1.0.1.0 | Cleansed, Working Baseline |
+| 12-Mar-2007 | Ben Luff / Igor Laketic | 1.0.1.1 | Added audience’s comments |
+| 13-Mar-2007 | Vivienne Jones | 1.0.1.2 | Copyedit of updates |
+| 13-Mar-2007 | Vivienne Jones | 1.0.1.3 | Accepted changes |
+| 14-Mar-2007 | Vivienne Jones | 1.1.0.0 | Copyedit changes accepted by Igor. Document cleansed |
+| 20-Mar-2007 | Ben Luff | 1.1.0.1 | Added audience’s comments |
+| 20-Mar-2007 | Marc Brown | 1.1.0.2 | Copyedit of updates |
+| 20-Mar-2007 | Igor Laketic | 1.1.0.3 | Accepted changes |
+| 21-Mar-2007 | Marc Brown | 1.2.0.0 | Cleansed, Baseline Candidate |
+| 27-Mar-2007 | Vivienne Jones | 2.0.0.0 | Baseline following Acceptance |
+| 25-Jul-2007 | Vivienne Jones | 2.0.0.0 | Preface added so the document can be released to the Distribution Mechanism. The date fields were changed to static text as the original acceptance date needs to be maintained from a cross-reference point of view. |
+| Document Status | has the following | meaning: |  |
+|  Drafts 0 | .0.0.X – Draft docu | ment reviewed | by the Microsoft CUI project team and the |
+| Authorit | y designate for the | appropriate | Workstream. The document is liable to change. |
+|  Working | Baseline 0.0.X.0 – | The document | has reached the end of the review phase and |
+| may only | have minor changes | . The documen | t will be submitted to the Authority CUI project |
+| team for | wider review by st | akeholders, e | nsuring buy-in and to assist in communication. |
+|  Baseline | Candidate 0.X.0.0 | – The documen | t has reached the end of the review phase and |
+| it is re | ady to be frozen on | formal agree | ment between the Authority and the Company |
+|  Baseline | X.0.0.0 – The docu | ment has been | formally agreed between the Authority and the |
+| Company |  |  |  |
+| Note that minor | updates or correct | ions to a doc | ument may lead to multiple versions at a particular |
+| status. |  |  |  |
+| ience |  |  |  |
+| The audience fo | r this document inc | ludes: |  |
+|  Authorit | y CUI Manager / Pro | ject Sponsor. | Overall Project Manager and sponsor for the |
+| NHS CUI | Project within the | Authority. |  |
+|  Authorit | y NHS CUI Design Gu | ide Workstrea | m Project Manager. Responsible for |
+| ongoing | management and admi | nistration of | the Workstream. |
+|  The Auth | ority Project Team. | This documen | t defines the approach to be taken during this |
+| assessme | nt and therefore mu | st be agreed | by the Authority. |
+|  Microsof | t NHS CUI Team. Thi | s document de | fines the approach to be taken during this |
+| assessme | nt, including a red | efinition of | the NHS CUI Design Guide Workstream strategy. |
+| n Issues Summar | y |  |  |
+| Issue |  |  | Raised By   Action to Resolve |
+| None |  |  |  |
 
 Table 14: Open Issues Summary
 

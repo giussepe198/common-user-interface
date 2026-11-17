@@ -279,23 +279,16 @@ The ultimate aim is to prevent the administration of drugs known to be dangerous
 
 ###### 1.4.1 In Scope
 
-Adding new ADR risks to the ADR summary
 
-Editing existing ADR risks within the ADR summary
-
-Removing existing ADR risks within the ADR summary
-
-The guidelines in this section cover when the clinician wishes to add a new drug risk (for a particular patient) to the adverse drug reaction summary.
-
-This will typically occur when the clinician feels that they have seen or heard sufficient evidence to conclude that the patient is at risk of suffering an adverse reaction if they take a certain drug in future. This evidence may take the form of a patient testimony, a testimony from a third party or an account in existing clinical documentation, such as a referral letter. Additionally, it may be that the clinician has examined the patient and has concluded that they have suffered an ADR.
-
-The guidelines in this section cover when the clinician wishes to edit details of an existing ADR in the summary.
-
-The guidelines in this section cover when the clinician wishes to remove an existing ADR from the summary. This section covers any warning messages that are required and how to allow the clinician to view risks that have been removed from the summary list in the past.
-
-The warning messages would also communicate to the clinician that by removing the ADR risk from the summary they are not removing any corresponding notes from the rest of the patient record.
-
-Recording ‘No known ADRs’ The guidelines in this section cover how to allow the clinician to record where they have checked the patient’s ADR status and are confident that the patient has no known ADRs.
+| Guidance Area | Details |
+| --- | --- |
+| Adding new ADR risks to the ADR | The guidelines in this section cover when the clinician wishes to add a new drug risk (for a |
+| summary | particular patient) to the adverse drug reaction summary. This will typically occur when the clinician feels that they have seen or heard sufficient evidence to conclude that the patient is at risk of suffering an adverse reaction if they take a certain drug in future. This evidence may take the form of a patient testimony, a testimony from a third party or an account in existing clinical documentation, such as a referral letter. Additionally, it may be that the clinician has examined the patient and has concluded that they have suffered an ADR. |
+| Editing existing ADR risks within the | The guidelines in this section cover when the clinician wishes to edit details of an existing |
+| ADR summary | ADR in the summary. |
+| Removing existing ADR risks within | The guidelines in this section cover when the clinician wishes to remove an existing ADR |
+| the ADR summary | from the summary. This section covers any warning messages that are required and how to allow the clinician to view risks that have been removed from the summary list in the past. The warning messages would also communicate to the clinician that by removing the ADR risk from the summary they are not removing any corresponding notes from the rest of the patient record. |
+| Recording ‘No known ADRs’ | The guidelines in this section cover how to allow the clinician to record where they have checked the patient’s ADR status and are confident that the patient has no known ADRs. |
 
 Table 1: In Scope
 
@@ -365,9 +358,31 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-How to automatically extract reaction keywords from free text
 
-Moving links to a supporting note between risks
+| Guidance Area | Details |
+| --- | --- |
+| Detailed documentation of adverse | The current guidelines have been developed on the assumption that, in the event that a |
+| drug reaction events | clinician witnesses an ADR, they enter detailed examination notes in the record. However, the current guidelines do not cover the entry of such notes. The assumption is that in addition to the detailed notes, the clinician should also record a summary of the ADR in a highly accessible and visible area of the record, which communicates that the patient is at risk of reacting to the drug if administered in future. The current guidelines only cover the recording of this summary, or risk, of the ADR. |
+| How to communicate the link between The cu | rrent guidelines have been developed on the assumption that, within the ADR |
+| supporting notes and ADR risk during summa | ry list, there will be links to any detailed examination notes and/or any other relevant |
+| input                                data, | such as details of past drug administration or diagnoses of ADRs. However, the current guidelines do not cover how to create nor present these links. |
+| Browsing up and down a terminology | In order to assist the clinician in finding the drug or substance name that they seek in |
+| hierarchy structure, in order to define | attempting to define the ADR's causative agent, the UI could allow the clinician to browse the |
+| either the causative agent or a | terminology hierarchy structure. For example, they could enter 'penicillin' and browse down to |
+| reaction type | specific instances of penicillin, such as 'amoxicillin'. However, this feature is not covered by the current guidance. But, for a fuller discussion of how this may be achieved, refer to the CUI Design Guide Entry – Terminology – Matching {R6}. |
+| How to trigger an automatic ADR entry The | current guidelines cover some aspects of the UI that could enable the clinician to quickly |
+| dialog                                and | easily add an entry to the ADR summary list if they have just entered:  Notes about an examination of ADR symptoms  A diagnosis of an ADR However, the current guidelines do not cover how the UI identifies that the clinician has entered information about an ADR nor the criteria for triggering an 'add to summary' prompt. |
+| Automatic linking between risk and | If the UI can identify where notes about an ADR event have been entered, and can |
+| supporting notes (and vice versa) | automatically prompt the user to enter the corresponding risk, it can ensure that these two types of note can be linked together automatically. This would facilitate the clinician's accessing of the detailed notes from the ADR summary. However, the current guidelines do not cover the process or the UI that would be involved in creating such links. Equally, the guidelines do not cover how much of the detailed notes are linked to the risk in the summary. |
+| Manual linking between risk and | The current guidelines also assume that, in future, it will be possible for the clinician to |
+| supporting notes | manually link entries in the ADR summary to entries elsewhere in the patient record that document symptoms or diagnoses relating to the corresponding ADR event. However, the current guidelines do not cover the process or the UI that would be involved in allowing the clinician to create such links. |
+| Inputting dates, including | The current guidelines outline a UI whereby ADRs are described in a fairly abstract and |
+| distinguishing between recorded, | high-level manner; that is to say, the ADR is described as a risk that is not limited by date or |
+| reported and actual dates | time. This is in contrast to descriptions of the corresponding ADR events (namely occasions when the patient has actually reacted to the drug) that are firmly linked to a specific date and time (and place). Although the clinician may add some dates to the summary as part of their justification (which is captured in free text), they are not required to enter dates in a structured manner. The system may automatically capture the date and time when the clinician records the risk, but the main purpose of this is for data organisation and audit and this does not need to be visible to the clinician at the point of entering the risk. Therefore, the current guidelines do not cover when the clinician should input dates. However, for guidance on how to enter dates please refer to CUI Design Guide Entry – Date Display {R7} |
+| How to automatically extract reaction | As part of the design work, the guidance authors considered solutions whereby the clinician |
+| keywords from free text | could type in text freely and the UI would identify word matches with the clinical terminology and would then provide a mechanism by which the clinician could encode these words. However, as this natural language parsing technology is still fairly immature and largely unavailable to suppliers of health technology, the current guidelines do not cover such a solution as the primary entry mechanism. |
+| Moving links to a supporting note | If links exist between an ADR risk entry (in the summary) and the detailed notes which |
+| between risks | support it, there may be a need for the clinician to be able to transfer links between risks. For example, following the attribution of a rash to an ADR to penicillin, subsequent evidence suggests that the rash was more likely in response to them taking diclofenac. In this case, the clinician may want to transfer the linked rash event from the penicillin risk to the diclofenac risk. However, the current guidelines do not cover how the clinician can transfer links. |
 
 Table 2: Out of Scope
 
@@ -385,19 +400,16 @@ However, the current guidelines do not cover how the clinician can transfer link
 
 **Note**
 
-This approach has been taken in line with the NHS Connecting for Health position (see _SNOMED CT – the_ _language of the NHS Care Records Service_ **{R8})** . However, the requirement that clinical information technology (IT) suppliers must use SNOMED CT is not one endorsed by Microsoft [®].
 
-**A2** Appropriate subsets within SNOMED CT and dm+d are available.
-
-**A3** The user interface design should follow the agreed NHS CFH position on the structure of ADR notes **{R5}**, unless there are patient safety reasons not to do so.
-
-**A4** The application will be able to recognise that the encoded terms 'allergy to penicillin' and 'intolerance to penicillin' are subtypes of 'propensity to adverse reaction to penicillin'.
-
-**A5** The National Programme for Information Technology (NPfIT) Standards Consulting Group (SCG) messaging regarding allergies and ADRs is the assumed messaging standard for this guidance (see _SCG Guidance on the Representation of_ _Allergies and Adverse Reaction Information Using NHS Message Templates_ **{R9})** . Therefore, we intend that the Summary Care Record application will be consistent with this guidance [1].
-
-**A6** This guidance applies to PC-screen-based applications that allow dynamically changing screen views, linked into a database. It does not apply to mobile devices, electronic paper or voice-recognition software although some of the principles that apply in the current guidance could also apply to applications delivered by those types of mechanism.
-
-**A7** This guidance applies (although not exclusively) to server-based applications delivered over a network (for example, over the Internet).
+| ID | Assumption |
+| --- | --- |
+| A1 | The structured terminology used for this guidance will be SNOMED CT® and the Dictionary of Medicines and Devices (dm+d). Note This approach has been taken in line with the NHS Connecting for Health position (see SNOMED CT – the language of the NHS Care Records Service {R8}). However, the requirement that clinical information technology (IT) suppliers must use SNOMED CT is not one endorsed by Microsoft®. |
+| A2 | Appropriate subsets within SNOMED CT and dm+d are available. |
+| A3 | The user interface design should follow the agreed NHS CFH position on the structure of ADR notes {R5}, unless there are patient safety reasons not to do so. |
+| A4 | The application will be able to recognise that the encoded terms 'allergy to penicillin' and 'intolerance to penicillin' are subtypes of 'propensity to adverse reaction to penicillin'. |
+| A5 | The National Programme for Information Technology (NPfIT) Standards Consulting Group (SCG) messaging regarding allergies and ADRs is the assumed messaging standard for this guidance (see SCG Guidance on the Representation of Allergies and Adverse Reaction Information Using NHS Message Templates {R9}). Therefore, we intend that the Summary Care Record application will be consistent with this guidance1. |
+| A6 | This guidance applies to PC-screen-based applications that allow dynamically changing screen views, linked into a database. It does not apply to mobile devices, electronic paper or voice-recognition software although some of the principles that apply in the current guidance could also apply to applications delivered by those types of mechanism. |
+| A7 | This guidance applies (although not exclusively) to server-based applications delivered over a network (for example, over the Internet). |
 
 Table 3: Assumptions
 
@@ -411,27 +423,12 @@ HSCIC Controlled Document
 
 ##### 1.6 Dependencies
 
-**D1** The availability of appropriate data sets, for example, SNOMED CT subsets
 
-**D2** The following CUI guidance documents. Changes in these documents may affect the current guidance:
-
- Display of Adverse Drug Reaction Risks – User Interface Design Guidance
-
- Design Guide Entry – Terminology – Matching
-
- Design Guide Entry – Terminology – Post Coordination
-
- Design Guide Entry – Terminology – Elaboration
-
- Design Guide Entry – Terminology – Display Standards for Coded Information
-
- Design Guide Entry – Date Display
-
- Medications Management – Medication Line – User Interface Design Guidance
-
- Displaying Graphs and Tables – User Interface Design Guidance
-
-**D3** Certain guidelines are dependent upon the fact that the medication terminology used contains the same length terms as the current version of the dm+d
+| ID | Dependency |
+| --- | --- |
+| D1 | The availability of appropriate data sets, for example, SNOMED CT subsets |
+| D2 | The following CUI guidance documents. Changes in these documents may affect the current guidance:  Display of Adverse Drug Reaction Risks – User Interface Design Guidance  Design Guide Entry – Terminology – Matching  Design Guide Entry – Terminology – Post Coordination  Design Guide Entry – Terminology – Elaboration  Design Guide Entry – Terminology – Display Standards for Coded Information  Design Guide Entry – Date Display  Medications Management – Medication Line – User Interface Design Guidance  Displaying Graphs and Tables – User Interface Design Guidance |
+| D3 | Certain guidelines are dependent upon the fact that the medication terminology used contains the same length terms as the current version of the dm+d |
 
 Table 4: Dependencies
 
@@ -502,17 +499,28 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-3.2.10 Displaying ADR Risk Details for the Clinician to Confirm
 
-3.2.11 Warning About Duplicating Risks in the Summary
-
-3.2.12 Feedback Upon Adding, Editing or Removing a Risk
-
-4.2 Guidelines – Removing an Adverse Drug Reaction Risk
-
-5.2 Guidelines – Recording ‘No Known Adverse Drug Reactions’
-
-6.2 Guidelines – Editing an Adverse Drug Reaction Risk
+| Visual Summary | Areas of Guidance 3.2.1 Initiating the Addition of a New Adverse Drug Reaction Risk 3.2.2 Dialog for Adverse Drug Reaction Risk Entry |
+| --- | --- |
+| isual Summary | Areas of Guidance 3.2.3 Displaying Existing Reaction Risks 3.2.4 Entry Field Ordering and Tabbing |
+| Current filter: Drug allergens | 3.2.5 Entering the Causative Agent |
+| penicillin |  |
+| Relevant matches |  |
+| Type(s) oftext |  |
+| reactions experienced |  |
+| penicillin |  |
+| penicillin |  |
+| Additional (class) |  |
+| (class)                             penicillin |  |
+| penicillin |  |
+| Search G                                      synonym for penicil | lin – class of |
+| penicillin V                                   antibiotic (substan | ce) |
+| procaine penicillin |  |
+| procaine penicillin G                          is a beta-lactam an | tibiotic |
+| penicillin – class of antibiotic (class) |  |
+| Other details/ justification |  |
+| aqueous procaine penicillin G | 3.2.6 Entering Reaction Types 3.2.7 Elaborating the Encoded Reaction Type Keywords 3.2.8 Adding Further Details and Justification 3.2.9 Specifying the Source of Information |
+| isual Summary | Areas of Guidance 3.2.10 Displaying ADR Risk Details for the Clinician to Confirm 3.2.11 Warning About Duplicating Risks in the Summary 3.2.12 Feedback Upon Adding, Editing or Removing a Risk 4.2 Guidelines – Removing an Adverse Drug Reaction Risk 5.2 Guidelines – Recording ‘No Known Adverse Drug Reactions’ 6.2 Guidelines – Editing an Adverse Drug Reaction Risk |
 
 Table 5: Overview of the Structure of the Adverse Drug Reaction Risk Display
 
@@ -1019,9 +1027,571 @@ of a diagnosis)
 
 - Presenting the clinician with a dialog that allows the clinician to create a corresponding
 
-entry in the ADR summary
 
-This guidance assumes that a mechanism is put in place that can identify where an ADR event is being noted and then triggers a dialog accordingly. The current guidance only addresses the dialog itself (shown on the right in Figure 6), and not the triggering process.
+| ID | Description | Conformance Rating |
+| --- | --- | --- |
+| RAD-0010 | Provide a control in the ADR summary list that initiates the process of adding a new ADR | Mandatory            High |
+| RAD-0010.1 | Activating the control will open the ADR entry dialog | Mandatory            High |
+| RAD-0010.2 | Ensure that the control is always visible upon initially viewing the ADR summary display | Mandatory            High |
+| RAD-0010.3 | Provide a button for initiating the process of adding a new reaction risk | Recommended          High |
+| RAD-0010.3.1 | Locate the button at the top of the ADR summary display | Recommended          Medium |
+| RAD-0010.3.2 | Label the button with a phrase that refers to the action of adding the reaction risk | Mandatory            High |
+| RAD-0010.3.3 | Label the button 'Add new drug reaction' | Recommended          Medium |
+| RAD-0010.3.4 | Locate the button immediately adjacent to the other options available in the ADR summary dialog (for example, a 'Close' button) | Recommended          High |
+| Usage Examples | Provide a control in the ADR su  process of adding a new ADR. Activating the control will ope Provide a button for initiating reaction risk. Locate the button at the top of Label the button with a phrase adding the reaction risk. Label the button 'Add new drug Locate the button immediately a available in the ADR summary di 'x' button in the corner of a d                      Do not locate command buttons t distinct locations                      Do not label the button with an | mmary list that initiates the n the ADR entry dialog. the process of adding a new the ADR summary display. that refers to the action of reaction'. djacent to the other options alog (for example, 'Close or an ialog window'). hat are functionally related in overly complicated phrase |
+| Rationale |  |  |
+| Design Analysis: |  |  |
+| The point at whi | ch the clinician views the ADR summary is also a logical point for adding a new risk. T | his is demonstrated, for |
+| example, in a sc | enario we considered regarding checking ADR risks upon admission. There are a number of | elements on the ADR risk |
+| display with whi | ch the control will have to compete. The 'add' control is an important function that ma | y be needed regularly by the |
+| clinician. |  |  |
+| Our analysis com | pared different widget options and concluded that a button is the best feature, based u | pon this type of control's |
+| familiarity. |  |  |
+| Our analysis com | pared different location options and concluded that the top of the display is the optim | al location for the function |
+| buttons, as this | would allow the list to be extended in length (if necessary) while keeping the 'Add ne | w' button in view. The top right- |
+| hand location av | oids competing for space with the title text. |  |
+| Our analysis sho | wed that providing labels that describe the action (to be performed by the user) that t | he control will execute are easier |
+| to understand th | an labels that contain other types of phrase. It is also good usability practice to fea | ture consistency in the phrasing of |
+| labels and this | action label is consistent with other action labels, including 'Close', 'Undo', 'Cancel | ' and 'Finish'. |
+| Desk Research: |  |  |
+| Studies that con | sidered eyeball tracking have shown that, when viewing displays of information, the use | r's eyes move first to the |
+| upper-left centr | e of the dialog, then quickly move through the display in a clockwise direction. Streve | ler and Wasserman (1984) |
+| showed that user | s found visual targets fastest when they were located in the upper-left quadrant of a s | creen (quoted in Essential guide |
+| to user interfac | e design {R15}). According to their research, those targets located in the lower-right | quadrant took longest to find. |
+| Given that the d | ialog title text is located in the top left-hand corner, the most appropriate prominent | location for the 'add new' control is |
+| the top right-ha | nd corner of the dialog. In this way, the user may read the title and then look across | and see the 'add new' control. |
+| According to the | UI design expert Ben Shneiderman (Designing the User Interface: Strategies for Effecti | ve Human-Computer |
+| Interaction {R16 | }), the phrasing of menu items should: |  |
+| 1. Use familiar | and consistent terminology |  |
+| 2. Ensure that i | tems are distinct from one another |  |
+| 3. Use consisten | t and concise phrasing |  |
+| 4. Bring the key | word to the left |  |
+| Our research has | shown that clinicians understand the term ‘add’ when used in relation to entering new | information into a summary. |
+| Also, there are | no other actions in the dialog that employ the word ‘add’, so it is distinct. Finally, | the word ‘add’ is located at the far left |
+| of the label. |  |  |
+| User Research: |  |  |
+| In testing, clin | icians all identified how to add a new risk correctly using a design that followed the | guidelines listed here. The |
+| mechanism for ad | ding a new risk was consistently understood in both iterations of the testing. |  |
+| Hazard Risk Anal | ysis Summary: |  |
+| From our Patient | Safety Risk Assessment analyses we identified a number of potential hazards, including | the following key risks which |
+| are mitigated by | the design: |  |
+| Potential Haz | ards:                                                    Mitigations: |  |
+|  User does n | ot understand that they can add a new ADR                 Provide a clear control for | adding a new ADR risk to the |
+| risk to the | summary                                                   summary. Provide such a cont | rol in an intuitive location |
+|  It might be | easy for someone to accidentally click ‘add to           If the user clicks the 'add' | button, they will be presented with a |
+| the list’ w | ithout intending to                                        dialog that is clearly title view | d and a button to go back to the list |
+| .2         Dialo | g for Adverse Drug Reaction Risk Entry |  |
+| This guidance co | vers the layout and labelling of the dialog that contains the entry fields necessary |  |
+| for the clinicia | n to enter the new reaction risk. It also outlines the main screen elements that are to |  |
+| be contained wit | hin this dialog. |  |
+| It is worth emph | asising that the term 'dialog' does not necessarily imply a pop-up modal window. In |  |
+| the current guid | ance, 'dialog' could refer to a discrete set of screen elements within a given section |  |
+| of a page. We ar | e also assuming that, owing to an expected constraint on screen space, the 'ADR |  |
+| summary list' an | d the 'ADR risk entry' dialogs would not be both visible at the same time. However, |  |
+| if space is not | constrained, there would be no reason why they should not be visible at the same |  |
+| time. |  | Evidence |
+| ID             D | escription | Conformance Rating |
+| RAD-0020       F | eature a title which communicates the purpose of the dialog | Mandatory     High |
+| RAD-0020.1     P | hrase the title in terms of the action that the user can perform with the dialog | Recommended   High |
+| RAD-0020.2     L | ocate the title in a sufficiently prominent position | Mandatory     High |
+| RAD-0020.3     L | ocate the title in the top left-hand corner of the dialog | Recommended   High |
+| RAD-0030       F | eature all the global function buttons in a single location | Recommended   High |
+| RAD-0030.1     L | ocate all the global function buttons horizontally adjacent to each other | Recommended   Medium |
+| RAD-0030.2     L | abel all the global function buttons and phrase the labels in terms of the actions Reco | mmended       Medium |
+| t | hat the user will perform |  |
+| RAD-0040       V | isually deprecate those global function buttons that cannot be activated at the | Mandatory     High |
+| t | ime of viewing by greying them out |  |
+| RAD-0040.1     P | rovide a common point of reference (for example, a banner) that spans both | Recommended   Medium |
+| t | he list display and the input field set so that the clinician understands the |  |
+| r | elationship between the entry field set and the final list display |  |
+| RAD-0040.2     W | ithin the ADR risk entry dialog clearly communicate what information will | Recommended   High |
+| a | ppear immediately as a line in the ADR summary list display after the new risk |  |
+| i | s saved |  |
+| RAD-0040.3     P | rovide a banner in the input field set that looks like a line in the risk list display | Recommended   Medium |
+| a | nd in which data will populate as the user enters data into the fields below. This |  |
+| w | ill emphasise what data will be visible at the top level of the display and what |  |
+| w | ill be initially hidden. |  |
+| RAD-0040.4     F | eature similar formatting between the banner and a selected line in the ADR | Recommended   Medium |
+| s | ummary list |  |
+| RAD-0040.5     D | isplay the causative agent in the banner following its entry into the fields below Reco | mmended       Medium |
+| RAD-0040.6     D | isplay the reaction types in the banner following their entry into the fields below Rec | ommended      Medium |
+| RAD-0040.7     H | ighlight the data that the user enters that will be displayed at the top level (that | Recommended   Medium |
+| i | s, immediately visible) in the ADR list display |  |
+| RAD-0050       C | ommunicate to the user that the fields relate to the action of adding a new risk | Mandatory     High |
+| RAD-0060       P | rovide a brief prompt that outlines the instructions for entering the risk | Recommended   High |
+| RAD-0060.1     P | rovide a brief prompt that communicates the purpose of recording the risk in | Recommended   High |
+| t | he summary, namely that it will warn other clinicians of the risk. |  |
+| RAD-0060.2     T | he prompts that relate to the purpose of, and instructions for, recording the risk Reco | mmended       Low |
+| m | ay disappear once the user starts entering the information |  |
+| RAD-0060.3 | The prompts that relate to the purpose of, and instructions for, recording the risk R may be located in the banner | ecommended                Low |
+| RAD-0070 | The user must be able to always access the prompting information in the form of Recom an on-screen help feature | mended                    Low |
+| Usage Examples |  Feature a title which c dialog. Phrase the title in ter perform with the dialog Locate the title in a s Locate the title in the Communicate to the user of adding a new risk  Feature all the global Locate all the global f to each other. Label all the global fu in terms of the actions Visually deprecate thos cannot be activated at | ommunicates the purpose of the ms of the action that the user can . ufficiently prominent position. top left-hand corner of the dialog. that the fields relate to the action function buttons in a single location. unction buttons horizontally adjacent nction buttons, and phrase the labels that the user will perform. e global function buttons which the time of viewing (grey out) |
+| understands the | relationship between the entry field set and the final list display. |  |
+| Provide a common | point of reference (for example, a banner) that spans both the list display and the in | put field set so that the clinician |
+| Provide a banner | in the input field set that looks like a line in the risk list display and in which da | ta will populate as the user enters data |
+| into the fields | below. This will emphasise what data will be visible at the top level of the display an | d what will be initially hidden. |
+| Provide a brief | prompt that outlines the instructions for entering the risk. The prompts that relate to | the purpose of, and instructions for, |
+| recording the ri | sk may be located in the banner  Display the causative a entry into the fields b Within the ADR risk ent information will appear summary list display af Display the reaction ty  entry into the fields b Within the ADR risk ent information will appear summary list display af Feature similar formatt selected line in the AD Highlight the data that displayed at the top le the ADR list display | gent in the banner following its elow. ry dialog clearly communicate what immediately as a line in the ADR ter the new risk is saved. pes in the banner following their elow. ry dialog clearly communicate what immediately as a line in the ADR ter the new risk is saved. ing between the banner and a R summary list. the user enters that will be vel (that is, immediately visible) in |
+| Rationale |  |  |
+| Design Analysis: |  |  |
+| Our analysis sho | wed that providing a title in the dialog would orient the user in terms of what they ne | ed to do in the dialog and where |
+| they are in the | clinical noting process. It also indicated that providing titles that refer to the acti | on to be performed by the user in the |
+| dialog will be e | asier to understand than titles that contain other types of phrase. |  |
+| Following early | design exploration of the ADR entry dialog, clinicians and UI experts indicated that, o | wing to the fact that creating an |
+| ADR summary elec | tronically is a new and unfamiliar concept (in secondary care), the first-time user cou | ld be confused as to what they |
+| should enter on | the screen. Additionally, it was deemed appropriate to communicate to users the purpose | of entering this information, |
+| in the form of p | rompts, as this could help the clinician to determine what information to enter. Once t | he risk has been (or is being) |
+| recorded, the pr | ompts are less useful and may contribute to on-screen clutter and, in this way, may be | a distraction to the main task. |
+| This is especial | ly pertinent if the same interface will be used for displaying the details in future. T | herefore, the prompts may disappear |
+| once the user st | arts entering the information. |  |
+| Although it is g | ood UI practice to provide a control that allows the user to 'undo' the entry or editin | g action that they have just |
+| performed, featu | ring the control in the entry dialog was considered confusing and risky: typically 'und | o' is handled at a more global |
+| level in applica | tions. Therefore, the guidance recommends that if the application features an 'undo' an | d 'redo' control, these controls |
+| should apply to | the ADR entry dialog and the actions performed within it. |  |
+| Vertical space s | hould be used sparingly in this design, given the number of stacked fields in the body | of the dialog. Therefore a |
+| horizontal arran | gement of the global function buttons is more appropriate in this situation. |  |
+| Our analysis sho | wed that providing labels that describe the action (to be performed by the user) that t | he control will execute are easier |
+| to understand th | an labels which contain other types of phrase. It is also good usability practice to fe | ature consistency in the phrasing of |
+| labels and this | action label is consistent with other action labels, including 'Add', 'Close', 'Cancel' | and 'Finish'. |
+| A key concern is | that the user is unsure of how what they are entering will eventually be displayed. Th | is could lead to them entering |
+| information in a | suboptimal fashion, for example, if they decide not to enter keywords describing the t | ype of reaction associated with |
+| the risk. Also, | navigationally, it is important that, if the user clicks on a row to view more details, | they can see that the details in the |
+| ensuing dialog r | elate to the row they just clicked. Finally, although the team considered showing the w | hole dialog within the ADR |
+| summary list, th | is was not deemed practical due to space considerations and issues of clutter. Therefor | e, a common point of reference |
+| that links the d | isplay and the input or further details dialog should feature in the design. Our analys | is showed that a banner which |
+| contains the sam | e information as is (or will be) displayed on the first level ('LEVEL 1', according to | the CUI Display of Adverse Drug |
+| Reaction Risks – | User Interface Design Guidance {R17}) in the ADR risk list could provide this point of | reference in the simplest |
+| manner. |  |  |
+| Desk Research: |  |  |
+| According to the | RCP Health Informatics Unit (in their Validating Clinical Requirements for information | systems in secondary care |
+| (VCR): Detailed | Clinical Requirements (DCR) {R18} (section 2.10.1)), applications should "provide on-li | ne help for new and |
+| experienced user | s". Therefore, the guidance proposes that the UI provides detailed prompts to help the | user to complete the dialog. |
+| These prompts ma | y disappear after the user has entered information into the relevant fields. The curren | t guidance does not cover how |
+| this online help | can be accessed by the user after the initial prompts have disappeared from the screen | , but it is clear from the DCR |
+| that this facili | ty should be provided. |  |
+| A quick best pra | ctice review of popular applications showed that typically dialog titles are located at | the top of the dialog, and left or |
+| centre-justified | . Given the small amount of space available in the current dialog (a space that could s | hrink, given competing demands |
+| from other scree | n areas in the application), the default option should be to locate the title in the to | p left-hand corner. This is consistent |
+| with studies tha | t have shown that users' eyes tend to direct initially to that area of the screen, desc | ribed earlier in this document {R15}. |
+| It is good UI pr | actice to locate the title of a dialog in a sufficiently prominent position, but one wh | ich does not affect the fields that the |
+| user must addres | s. This gives the user feedback that they have selected the correct option to initiate | the entry process. Failure to |
+| locate the title | in a sufficiently prominent position could mean that the user does not see it and assu | mes that they are in a different |
+| dialog. |  |  |
+| Locating all com | mand buttons, which comprise alternative actions, in the same area of the screen is goo | d UI design practice, as this |
+| allows the user | to quickly and easily see the options that are available to them. The Gestalt principle | of 'proximity' suggests that items |
+| that are close t | ogether are perceived as belonging to a common group if they are located sufficiently c | lose to one another in relation to |
+| the other screen | elements. |  |
+| User Research an | d Reviews: |  |
+| Previous CUI res | earch has shown that clinicians are sometimes confused by the nature of the ADR summary | list and consequently |
+| believe that it | is a repository for full details about the reaction that the patient experienced. There | fore, it is important that the interface |
+| communicates tha | t the entry fields relate to the action of adding a new risk. |  |
+| Hazard Risk Anal | ysis Summary: |  |
+| From our Patient | Safety Risk Assessment analyses we identified a number of potential hazards, including | the following key risks which |
+| are mitigated by | the design: |  |
+| Potential Haz | ards:                                            Mitigations: |  |
+|  What if the | word ‘risk’ is misunderstood in the              Our design avoids the use of the wor | d 'risk'. Instead it distinguishes |
+| context of | Adverse Drug Reaction ‘Risk’?                      the 'risk' data from 'event' data by an entry in the summary | referring to the former data type as |
+|  Cannot reco | rd ‘tests’ (for example, skin-prick tests)  The user should refer or link to notes out | side of the summary (the |
+| with the re | actions.                                     details are out of scope) or make a note o The UI will enable this to happen. Note Skin-prick tests are fairly u | f the test in the free text field. ncommon in addressing drug reactions |
+|  Users inter | pret the ADR entry UI as conveying                The dialogs now refer to the term 'a | dverse drug reaction summary' |
+| ADR history | rather than ADR risk                              rather than 'adverse drug reaction r | isks'. |
+| .3         Displ | aying Existing Reaction Risks |  |
+| It is important | that the clinician can see the salient information from the existing ADR risk |  |
+| statements (name | ly the causative agents) before and during the entry of a new ADR risk, as |  |
+| knowledge of the | se other risks may influence how the clinician expresses the new risk. For |  |
+| example, if the | clinician was entering an ADR to ampicillin, and they noticed that the patient has an |  |
+| existing ADR ris | k to flucloxacillin, they may decide to record a risk to Penicillins (the class of drug | ), |
+| taking care to j | ustify this risk entry and refer to both the ampicillin and flucloxacillin in the |  |
+| associated justi | fication field. | Evidence |
+| ID             D | escription                                                                          Con | formance Rating |
+| RAD-0070       A | llow the user to access the existing reaction risks without leaving the dialog      Man | datory           Medium |
+| RAD-0070.1     W | here space allows, display all existing reaction summaries simultaneously at the    Rec | ommended         Medium |
+| t | ime of displaying the ADR input fields. |  |
+| RAD-0070.2     P | rovide a label or header for any list of existing ADR risks                         Man | datory           High |
+| RAD-0070.3     D | isplay the existing ADR risks stacked vertically in any list of existing reaction   Rec | ommended         High |
+| s | ummaries |  |
+| RAD-0070.4     D | isplay the current drug risks immediately to the right of the ADR risk entry field set | Recommended      Low |
+| RAD-0080       W | arn the user if they are entering a drug that has already been entered              Man | datory           High |
+| Usage Examples |  All exi lea Dis sta Dis imm ADR            Do rea arr | ow the user to access the sting reaction risks without ving the dialog. play the existing ADR risks cked vertically. play the current drug risks ediately to the right of the risk entry field set. not display the existing ctions in a tiled angement. |
+| Rationale |  |  |
+| Design Analysis: |  |  |
+| Scenario analysi | s has shown that it is a patient safety risk for the user to enter a new reaction risk | without being aware of the existing |
+| ADR risks as the | presence of an existing risk may affect the optimum choice of drug for the risk being | entered. For example, if the user |
+| entered 'amoxici | llin' when a risk to 'ampicillin' is already on the list this would be suboptimal compa | red to updating the amoxicillin risk |
+| to one of 'penic | illin'. |  |
+| Analysis also sh | owed that failure to provide an appropriate label could leave open the possibility of t | he user misinterpreting this list. |
+| For example, if | there were only a single other risk listed, they may think that the system was proposin | g that the user record this risk in |
+| the current enco | unter. |  |
+| Owing to a short | age of vertical space, due to the other screen elements in the dialog, the most efficie | nt location for the existing drug |
+| risks is immedia | tely adjacent to the main dialog. Our analysis suggested that locating the list immedia | tely to the left could be too |
+| distracting for | the task in hand. Locating the list immediately to the right of the main dialog may be | sufficiently noticeable but not too |
+| distracting. |  |  |
+| Desk Research: |  |  |
+| Best practice in | dicates that users can more quickly and effectively scan and find items that are stacke | d vertically than those which are |
+| arranged horizon | tally {R19, R20}. |  |
+| User Research: |  |  |
+| In user testing, | we compared a number of designs where existing risks were arranged in a number of conf | igurations, including |
+| vertically stack | ed and horizontally arranged (and wrapped). Although users showed evidence of being abl | e to spot drugs within both |
+| arrangements, th | ey indicated a preference for vertically stacking the risks. |  |
+| Hazard Risk Anal | ysis Summary: |  |
+| From our Patient | Safety Risk Assessment analyses we identified a number of potential hazards, including | the following key risks which |
+| are mitigated by | the design: |  |
+| Potential Haz | ards:                                         Mitigations: |  |
+|  Clinician e | nters a drug that is similar to or the         Provide a summary of existing ADR risks |  |
+| same as an | existing drug risk                             Provide a mechanism that identifies exa clinician that they are entering a dupl | ct duplicates and warns the icate |
+| .4          Entr | y Field Ordering and Tabbing |  |
+| The order in whi | ch the entry fields are visually arranged, and the order in which the focus navigates |  |
+| through the acti | on of keyboard tabbing, is important as it can influence whether fields are |  |
+| completed or not | . Accordingly, this section of the guidance describes how the ordering and tabbing |  |
+| should be arrang | ed to reduce such errors. | Evidence |
+| RAD-0090 | Disable all fields, except for the causative agent, until the causative agent field ha been completed. | s Recommended    High |
+| RAD-0100 | After the causative agent field has been completed, enable the remaining fields | Recommended   High |
+| RAD-0110 | If the user has entered data into the causative agent field, plus any other fields, and then removes the data in the causative agent field, the user must be warned that, without a causative agent, the risk will not be saved and, accordingly, will not be displayed in the list | Mandatory     Medium |
+| RAD-0120 | Automatically move the focus into the causative agent field upon opening the dialog | Recommended   High |
+| RAD-0130 | If the causative agent field is not completed, the tab order takes the user to the 'Cancel' button (that is, the point of exit from dialog) | Recommended   Medium |
+| RAD-0140 | After the user has entered a causative agent, the system must provide a control that allows the user to leave the dialog with the risk retained by the system and/or committed to the record. | Mandatory     High |
+| RAD-0150 | Feature a consistent and logical tabbing order that is reflected in the left-to-right, top-to-bottom visual ordering | Mandatory     High |
+| RAD-0150.1 | The tabbing order will follow the order of priority: causative agent, reaction types, source of information, ‘clinician witness reaction’ and then justifications and detail | Recommended      High s |
+| Usage Examples |  |  |
+| Disable all fiel | ds, except for the causative agent, until the causative agent field has been completed. |  |
+| After the causat | ive agent field has been completed, enable the remaining fields |  |
+| After the user h | as entered a causative agent, the system must provide a control that allows the user to | leave the dialog with the risk |
+| retained by the | system and/or committed to the record |  |
+| Feature a consis | tent and logical tabbing order which is reflected in the left-to-right, top-to-bottom v | isual ordering. |
+| The tabbing orde | r will follow the order of priority: causative agent, reaction types, source of informa | tion, ‘clinician witness reaction’ and |
+| then justificati | ons and details |  |
+| Rationale |  |  |
+| Design Analysis: |  |  |
+| Following early | design exploration of the ADR entry dialog, a clinical audience indicated that they fou | nd it difficult to see the focus of |
+| the dialog when | all the fields have equal visual prominence. Therefore, the guidance proposes that thos | e fields that cannot be |
+| completed at the | time of viewing should be visually deprecated by being greyed-out. |  |
+| Desk Research: |  |  |
+| Best practice re | views of existing applications, both within and outside of the healthcare industry, has | shown that the technique of |
+| greying out fiel | ds until they are editable is a common practice. |  |
+| User Research: |  |  |
+| In testing, user | s found that they could understand which fields to complete, although in early designs, | where there were fields arranged |
+| horizontally, so | me users missed fields. Therefore, the current design arranges the fields vertically wh | ere possible. |
+| Hazard Risk Anal | ysis Summary: |  |
+| From our Patient | Safety Risk Assessment analyses we identified a number of potential hazards, including | the following key risks which |
+| are mitigated by | the design: |  |
+| Potential Haz | ards:                                              Mitigations: |  |
+|  User fails | to record the causative agent of the ADR risk,  The interface prevents the ADR risk be | ing added to the summary |
+| namely the | drug or substance                                if the causative agent field has not b | een completed |
+|  User fails | to record other details of the risk                 The tabbing order navigates the us before arriving at the command but | er through the other entry fields tons (including ‘Finish’) |
+| .5         Enter | ing the Causative Agent |  |
+| This section of | the guidance covers the action of entering the causative agent of the ADR risk, |  |
+| namely the drug | or substance that is believed to provoke a reaction in the patient. The illustrations |  |
+| in this section | largely feature design aspects that are currently being explored (further details of |  |
+| these design asp | ects can be found in section A.2). |  |
+| This section onl | y covers those guidelines that are specific to the recording of an ADR causative |  |
+| agent and does n | ot cover more general design aspects, which are currently undergoing |  |
+| exploration. The | reader is advised to refer to section A.2 and to the CUI Design Guide Entry – |  |
+| Terminology – Ma | tching guidance {R6}. |  |
+| The user is expe | cted to type in all or part of the name of the drug that they believe provokes ADRs |  |
+| in the patient. | The system then returns a list of matched drug names. The trigger for the return of |  |
+| the matches can | be automatic (‘progressively’ matching terms as the user types in letters) or it can |  |
+| be user-triggere | d (either by clicking a button or ‘Enter’). The user then selects one of the matched |  |
+| terms. |  |  |
+| This causative a | gent term will be automatically ‘post-coordinated’ with the concepts ‘propensity to |  |
+| adverse reaction | s to drug’ (SNOMED CT ID 419511003), or ‘propensity to adverse reactions to |  |
+| substance ’, if | the causative agent term is identified to fall within a non-drug subset. These |  |
+| concepts will be | connected by the attribute concept ‘has causative agent’ (SNOMED CT ID |  |
+| 4 |  |  |
+| 246075003) . Thi | s is consistent with the relevant SCG guidance {R9}. |  |
+| In addition to t | he user explicitly entering the causative agent, the system will also automatically |  |
+| record the time | and date of the entry and the author who entered it (from their login credentials). |  |
+| This information | will combine with the causative agent and the source and justification free-text |  |
+| data to constitu | te the ADR risk statement. | Evidence |
+| ID           Des | cription                                                                             Co | nformance Rating |
+| RAD-0160     Ens | ure that any appropriate labels for the subsets that will filter the matching        Ma | ndatory     Medium |
+| pro | cess are displayed as the user is entering either the causative agent or the |  |
+| rea | ction types. |  |
+| RAD-0170     Dis | play encoded causative agent text in bold.                                           Ma | ndatory     Medium |
+| RAD-0180     The | system should facilitate the capture of the ADR risk according to the               Re | commended   High |
+| SNO | MED CT structure outlined by the appropriate authority5: |  |
+| How | ever, despite any post-coordination that is required in order to satisfy the |  |
+| pre | scribed structure, the user only has to enter the name of the drug or the |  |
+| sub | stance. |  |
+| RAD-0190     The | system should identify whether the causative agent that the user has entered        Re | commended   High |
+| is | a drug or a non-drug substance. It should post-coordinate drug concepts with |  |
+| con | cepts 419511003 : 246075003, and non-drug substance concepts with |  |
+| con | cepts 418471000 : 246075003. |  |
+| RAD-0191     If | a term is not recognised, the system will warn the clinician that the term has not   Re | commended   Medium |
+| bee | n recognised, but will allow them to enter it as free text. |  |
+| 4 |  |  |
+| Further detail | s about SNOMED CT post-coordination can be found in the SNOMED Clinical Terms User Guid | e {R21} or in |
+| the CUI Design G | uide Entry – Terminology – Post Coordination {R22} |  |
+| 5 |  |  |
+| Note: this gui | deline is predicated on the assumption that the application is using SNOMED CT as the t | erminology for |
+| recording the AD | R risk. If other terminologies are used instead or in conjunction with SNOMED CT this g | uideline may not |
+| hold true. |  |  |
+| Usage Examples |  Present th which they the ADR ri Entry – Te  Ensure tha subsets wh process ar entering e reaction t                    After the has clicke matches th SNOMED CT, subsets. F Entry – Te  Display en bold | e user with a blank text field into can type the causative agent of sk. For details see Design Guide rminology – Matching {R6} t any appropriate labels for the ich will filter the matching e displayed as the user is ither the causative agent or the ypes. user has typed three letters (or d the ‘search’ icon) the system e text against terms in constrained by relevant or details see Design Guide rminology – Matching {R6} coded causative agent text in |
+| Rationale |  |  |
+| Design Analysis: |  |  |
+| An ADR risk (pro | pensity) could be expressed in SNOMED CT in a number of ways. For example, an allergy t | o penicillin could be |
+| expressed as: |  |  |
+|  Allergy to pen | icillin (91936005) |  |
+|  Drug allergy ( | 416098002): has causative agent (246075003): penicillin – class of antibiotic (6369005) |  |
+| The former examp | le shows the expression of this clinical concept as a ‘pre-coordinated’ term, whereas t | he latter example shows a |
+| ‘pre-coordinated | ’ expression. Ultimately they mean the same. |  |
+| Our analysis sho | wed that it is preferable to enter the causative agent according to the latter structur | e because: |
+|  Not all drugs | and substances have a corresponding pre-coordinated ADR or allergy concept in SNOMED CT | . Mixing the two |
+| structures cou | ld lead to problems due to inconsistent data quality. |  |
+|  The latter, ‘n | ormalised’ version is easier to interpret by machine: decision-support systems have les | s processing to do using the |
+| SNOMED CT stru | cture in order to identify the causative agent. |  |
+| Additionally, pr | evious CUI research has shown that, for the purposes of displaying ADR risks, it is pro | blematic to communicate |
+| whether the ADRs | have been immunologically or pharmacologically mediated (that is, whether the reaction | is allergic or not). |
+| Therefore, the g | uidance proposes that the codes that are used are: |  |
+|  Propensity to | adverse reactions to drug (419511003): has causative agent (246075003): + drug concept |  |
+|  Propensity to | adverse reactions to substance (418471000): has causative agent (246075003): + substanc | e concept |
+| However, given t | hat the CUI research also demonstrated that the word ‘propensity’ is not well understoo | d, the guidance does not |
+| propose that the | labels ‘propensity to adverse reactions to…’ are visible to the user. Equally, the gui | dance does not recommend that |
+| the label ‘has c | ausative agent’ is displayed. |  |
+| Desk Research: |  |  |
+| Currently there | is legacy data in existence that could contain pre-coordinated allergy or adverse react | ion codes (such as “14L1. H/O |
+| Penicillin aller | gy” in Read 2; “Xa5sH Penicillin allergy” in CTV3; and “91936005 penicillin allergy” in | SNOMED CT {R9}). However, the |
+| NPfIT SCG recomm | ends that “the handling of the allergy codes by systems must follow the post-coordinate | d model” {R9}. This would |
+| apply to the ent | ry of new ADR risks, and therefore applies to the current guidance. |  |
+| The SNOMED CT co | des ‘propensity to adverse reactions to drug’ (419511003) and ‘propensity to adverse re | actions to substance’ |
+| (418471000) are | both approved by the NPfIT SCG {R9}. |  |
+| The post-coordin | ation of these terms could be thus: |  |
+|  Propensity to | adverse reactions to drug (419511003): has causative agent (246075003): + drug concept |  |
+|  Propensity to | adverse reactions to substance (418471000): has causative agent (246075003): + substanc | e concept |
+| User Research: |  |  |
+| In testing, user | s understood the process of matching a causative agent. In early designs there was some | confusion as to the precise |
+| meaning of the t | erm ‘penicillin’, namely whether it referred to the class of drug or a specific type of | penicillin. The confusion lies in the |
+| fact that: |  |  |
+|  Clinicians oft | en use the term synonymously with specific types of penicillin (such as penicillin V) |  |
+|  In SNOMED CT, | the word 'penicillin' is a synonym for 'penicillin - class of antibiotic' |  |
+| In the current d | esign, the system identifies if the drug falls directly within a subset of ‘drug class’ | concepts. If it does, the system will |
+| display the word | ‘class’ in parentheses next to the term’s label. Clinicians reviewing this design foun | d it easy to understand, although |
+| they stressed th | at, once encoded, the word ‘class’ must remain next to the term. |  |
+| However, a clean | er and safer approach to resolving this problem would be for the synonym to be changed | within SNOMED CT, which |
+| is beyond the sc | ope of the current guidance. |  |
+| Hazard Risk Anal | ysis Summary: |  |
+| From our Patient | Safety Risk Assessment analyses we identified a number of potential hazards, including | the following key risks which |
+| are mitigated by | the design: |  |
+| Potential Haz | ards:                           Mitigations: |  |
+|  What if the | clinician selects the           The design not only automatically displays a definiti | on for the drug at the point of its |
+| wrong drug | from a drop down list?            selection but also clearly displays the term back to mitigate against the user mistakenly selecting the wr correct drug name. The design cannot mitigate against the wrong drug if they believe that that drug actuall clinical decision). | the user in the dialog. This should ong drug when they know the the user mistakenly choosing y caused the reaction (as this is a |
+|  What if vis | ually or auditorily similar      The further SNOMED CT definition of a term is provide | d in a fly-out that automatically |
+| terms are p | resented or selected?             appears as the user is selecting the term from the li | st of results. |
+|  What if an | allergy is a non-drug            Users can change the subset filter to be able to choo | se from a set of non-drug |
+| substance? | substances. Note General allergy recording is out-of-scope. |  |
+|  What if the | allergy is recorded in an       We cannot force the clinician to record the drug to a | given level. The aim of the CUI |
+| over specif | ic way (for example,              is to enable clinicians to record their notes, rather | than to instruct them in the content |
+| specific dr | ug)?                              of their notes. However, owing to the fact that the U the causative agent in encoded terminology, Decision which class a drug belongs | I encourages the user to record Support Systems can detect to |
+|  What if the | allergy is recorded in an       We cannot force the clinician to record the drug to a | given level. The aim of the CUI |
+| under speci | fic way (for example,             is to enable clinicians to record their notes, rather | than to instruct them in the content |
+| drug class) | ?                                 of their notes. However, owing to the fact that the U the causative agent in encoded terminology, Decision which class a drug belongs | I encourages the user to record Support Systems can detect to |
+|  What if the | clinician does not           Our design allows the clinician to enter a drug brand na | me, although it encourages |
+| recognise t | he generic drug from a         users to enter the generic name, if known. The default s | ubset does not include trade |
+| drug brand | name (or vice-versa)?          family names (brand names), but the user can expand the them. | subset range to include |
+|  What if a t | erm is misspelled and not     The drug names and reaction types are to be encoded. We | are recommending partial |
+| recognised? | word matching or pre-fix matching to allow misspelled te an application has the capability for progressive matchi user to get to the correct spelling. | rms to be recognized. Also, if ng, this feature could help the |
+|  What if a t | erm is not recognised?        If a term is not recognised, the system will still allow will warn the clinician that the term has not been recog enter it as free text. | the user to enter it. The system nised, but will allow them to |
+|  Singular an | d plural for penicillin have  Although in our design, if a drug term refers to a drug | class, the word 'class' is |
+| different i | mplications                    displayed in brackets next to the term's label, we would solved by changing the terminology (SNOMED CT) in order 'penicillin - class of antibiotic' features the word 'cl | recommend that this issue is that the synonym for ass' in it or is removed. |
+|  Readers wan | t to navigate to more         The design will allow readers to navigate to details of | specific reactions, if such |
+| details of | specific reactions             details have been linked to the summary. |  |
+| .6         Enter | ing Reaction Types |  |
+| This section of | the guidance covers the action of entering the types of adverse reaction that have |  |
+| been provoked in | the patient after taking the drug or substance. It is worth emphasising that the |  |
+| clinician is onl | y expected to enter brief details of the types of reaction that the patient has suffere | d, |
+| rather than prov | iding a detailed account of an examination of the patient. Detailed notes of the |  |
+| reaction event(s | ) suffered by the patient will have been fully documented when the reaction |  |
+| occurred, and ar | e likely to be elsewhere the patient’s record, but not in the ADR summary list. |  |
+| Instead, the cli | nician is expected to summarise the most significant reactions, ideally as single |  |
+| words or phrases | . |  |
+| The illustration | s in this section largely feature design aspects that are currently being explored |  |
+| (further details | of these design aspects can be found in section A.3. This section only covers those |  |
+| guidelines that | are specific to the recording of types of adverse reaction and will not cover |  |
+| guidelines for g | eneral terminology encoding, for which the reader is advised to refer to APPENDIX |  |
+| A and to the CUI | Terminology – Matching guidance {R6}. |  |
+| The clinician is | expected to enter each reaction type in the same way as for the causative agent, |  |
+| except that, whe | n the clinician selects a reaction type, the encoded term is displayed in the text box |  |
+| to the right of | the search field and the search field becomes blank. At this point, the clinician may |  |
+| tab to the text | field in order to add additional text to the encoded term or may enter an additional |  |
+| reaction type. I | n this way, the clinician may enter several types of reaction that the patient has |  |
+| suffered in resp | onse to taking the drug. | Evidence |
+| ID             D | escription                                                                            C | onformance Rating |
+| RAD-0200       P | rovide one or more controls for entering the types of past reaction that the          M | andatory     Medium |
+| p | atient has had to the causative agent |  |
+| RAD-0210       P | rovide one or more text entry fields for entering or selecting reaction keywords Mandat | ory          Medium |
+| o | r key phrases that summarise the past reactions to the causative agent |  |
+| RAD-0220       A | llow for multiple reaction keywords or key phrases to be entered for a single         M | andatory     medium |
+| d | rug |  |
+| RAD-0230       E | ncourage the user to enter at least one encoded SNOMED CT concept for                 M | andatory     Medium |
+| e | ach distinct reaction. This will be the keyword or key phrase for that reaction |  |
+| RAD-0240       P | rovide one or more fields for entering elaborating or qualifying text around          R | ecommended   Medium |
+| e | ach reaction keyword or key phrase |  |
+| RAD-0250       E | laborating text may comprise either (i) free text or (ii) encoded text. If the text   R | ecommended   Medium |
+| i | s encoded, it must be linked to the keyword or key phrase by the encoding |  |
+| t | erminology model or a clinical data model |  |
+| RAD-0260       I | f the system identifies any words which fundamentally change the meaning of           M | andatory     High |
+| t | he keyword or key phrase the system should warn the user. |  |
+| T | hese 'dangerous' words may include expressions of negation, expressions of |  |
+| r | eduction, or references to family history or other patients. |  |
+| RAD-0270       E | nsure that the system sufficiently communicates to the user which elaborating         M | andatory     High |
+| t | ext applies to which reaction keyword or key phrase |  |
+| RAD-0280       C | learly and appropriately label the section for entering the reactions                 M | andatory     High |
+| RAD-0280.1     L | abel the reactions section ‘Type(s) of reactions experienced’                         R | ecommended   Medium |
+| RAD-0290       A | llow the entry of negation with the reaction keywords. This will post-coordinate Recomm | ended        High |
+| t | he reaction term with ‘known absent’ |  |
+| RAD-0300       A | llow the entry of severity qualifiers with the reaction keywords. This will post-   Rec | ommended            High |
+| c | oordinate the reaction term with the appropriate severity |  |
+| RAD-0310       P | rovide prompting text to instruct the clinician what to do in the fields.           Rec | ommended            High |
+| RAD-0320       A | llow the clinician to delete the reaction keyword or key phrase                     Man | datory              High |
+| RAD-0330       I | f the clinician clicks on the encoded reaction keyword or key phrase, reveal a      Rec | ommended            Low |
+| b | utton to delete the reaction |  |
+| Usage Examples |  Pro ent tha cau  Enc lea con Thi rea  Onc it (se  All key dru  All rea coo ‘kn                    All wit wil ter  Pro the  If en ph th | vide one or more controls for ering the types of past reaction t the patient has had to the sative agent ourage the user to enter at st one encoded SNOMED CT cept for each distinct reaction. s will be the keyword for that ction. e the term has been matched, will appear in the right-hand field e section A.3) ow for multiple reaction words to be entered for a single g (see section A.3) ow the entry of negation with the ction keywords. This will post- rdinate the reaction term with own absent’ ow the entry of severity qualifiers h the reaction keywords. This l post-coordinate the reaction m with the appropriate severity vide prompting text to instruct user what to do in the fields. the clinician clicks on the coded reaction keyword or key rase, reveal a button to delete e reaction |
+| Rationale |  |  |
+| Design Analysis: |  |  |
+| In the phrase ‘T | ype(s) of reaction experienced’, the word ‘Type(s)’ has been included in order to empha | sise that, although the risk is |
+| based upon the e | vidence of past reactions, these reactions are not specific to a particular time as the | y are an ever-present risk (if the |
+| patient takes th | e drug in question). Also, in the unlikely event that the patient has reacted in the sa | me way to the same drug, but on |
+| different occasi | ons, it is not helpful to list the reaction twice in the summary. This should be avoide | d by using the more abstract phrase |
+| ‘Type(s) of reac | tion experienced’. This should also emphasise the distinction between the current ADR r | isk statements and statements |
+| that may exist e | lsewhere in the record that document the actual reaction events in detail. |  |
+| Desk Research: |  |  |
+| The latest desig | n is supported, in part, by the CUI Design Guide Entry – Terminology – Matching {R6} gu | idance, which outlines how to |
+| match the text t | yped in by the user against SNOMED CT concepts from within a specially chosen subset. |  |
+| The requirement | for entering multiple past reactions is supported by the CUI Display of Adverse Drug Re | action Risks – User Interface |
+| Design Guidance | {R17}. |  |
+| User Research: |  |  |
+| Initial designs | featured a single field into which the user could enter the reaction. If users wanted t | o add another reaction, they had to |
+| click a button t | hat would add another blank field into which they could enter another reaction type. Ho | wever, testing showed that, |
+| although users u | nderstood the process of typing a word and selecting the matched term, they did not und | erstand the mechanism for |
+| adding multiple | reactions. The latest design has been reviewed by clinicians who did not find that the | design presented any risks to the |
+| patient safety. | However, this design has not been fully user tested, and therefore confidence in this m | echanism is low. |
+| Hazard Risk Anal | ysis Summary: |  |
+| From our Patient | Safety Risk Assessment analyses we identified a number of potential hazards, including | the following key risks which |
+| are mitigated by | the design: |  |
+| Potential Haz | ards:         Mitigations: |  |
+|  All users r | equest     On balance, a structured grading of severity that relates to the drug risk | as a whole has been |
+| reaction se | verity      deemed to be potentially unclear and ambiguous. The problem is that the rat | ing of severity of a past |
+| ranking tha | t can be    reaction is quite subjective. Attempts to rate the severity of a future rea | ction is quite impossible. This |
+| used to sor | t the ADR   is supported by a study that has shown that most fatal drug anaphylactic re in the study, over four-fifths dying from drug anaphylaxis had no previous {R23}. Allowing clinicians to rate either the severity of a future reaction will suffer it is therefore unnecessary and actually could be misleading an influences the action of another clinician. Therefore severity of reactions are (i) implied by the type of reacti encoded (post-coordinated) qualifiers of the reaction term that the c ‘severe rash’). This has been supported by user research conducted by Adverse Drug Reaction Risks {R17}). This approach is also consistent by NHS CFH {R5} | actions are unpredictable: indication of their allergy or the likelihood of the patient d dangerous, if it incorrectly on and (ii) can be expressed as linician enters (for example, the CUI team (see Display of with documentation published |
+|  Some users | will omit  The fields have been located in a prominent location in order to encourage | the user to enter reaction |
+| to enter re | action      types (if known). |  |
+| keywords in | the             Note |  |
+| reactions f | ield This is not mandatory data as the reaction may be unknown. |  |
+| .7          Elab | orating the Encoded Reaction Type Keywords |  |
+| This section of | the guidance covers the action of entering additional information to an encoded |  |
+| reaction type te | rm. For example, the clinician may want to add some additional description to the |  |
+| reaction, which | they feel is significant enough to include in the summary. |  |
+| This text would | be packaged up with the keyword to which it relates to form a clinical statement. |  |
+| Therefore, it is | imperative that the UI clearly shows which text belongs with which keyword. |  |
+| The general mech | anism for this ‘elaboration’ action is being covered in more detail in ongoing |  |
+| design work (see | section A.3) and, in part, by the CUI Design Guide Entry – Terminology – |  |
+| Elaboration {R24 | } document. | Evidence |
+| ID            De | scription | Conformance Rating |
+| RAD-0340      Al | low the user to add additional free text that elaborates on the reaction keywords | Recommended          Medium |
+| RAD-0350      En | able the free text elaboration to be strongly visually associated with a specific | Recommended          Low |
+| re | action keyword |  |
+| RAD-0360      Up | on its saving and subsequent retrieval, the free text elaboration should be treated | Recommended          Medium |
+| as | part of a unit in conjunction with the reaction keyword or key phrase. These |  |
+| co | mponents can be used to populate a clinical statement message pattern (see |  |
+| se | ction 2.2). |  |
+| RAD-0370      Wo | rds corresponding to severity or certainty (and that are recognised SNOMED CT | Recommended          Low |
+| qu | alifiers) that are entered as free text should be highlighted and offered to the user |  |
+| fo | r encoding.6 Note This guideline is only recommended for applications with the technological sophistication to handle text parsing of free text (see the CUI Design Guide Entry – Terminology – Matching {R6} document for details). |  |
+| Usage Examples |  Allow the user elaborates on Enable the fre visually assoc keyword  Words correspo (and that are qualifiers) th be highlighted encoding | to add additional free text that the reaction keywords e text elaboration to be strongly iated with a specific reaction nding to severity or certainty recognised SNOMED CT at are entered as free text should and offered to the user for |
+| his follows the | CUI Design Guide Entry – Terminology – Elaboration {R16} document. |  |
+| Rationale |  |  |
+| Design Analysis: |  |  |
+| Analysis has sho | wn that clinicians may wish to type in more description than a single SNOMED CT concept | or expression in order to |
+| express the true | nature of the reaction that the patient experienced. For example, they may wish to ind | icate the location of a rash if |
+| they feel that i | s a significant detail. They may also wish to enter that they are unsure if the patient | ’s reaction was a direct result of the |
+| drug. Although t | his would not be a forced structured choice, it would appear to be a valid comment that | the clinician wishes to make in |
+| relation to the | reaction. As this is not the proper repository for a detailed description of the patien | t’s reaction, the clinician should not be |
+| offered prompts | or dedicated fields in which to type detailed examination notes. |  |
+| User Research: |  |  |
+| Initial user res | earch tested designs in which the user had to select an encoded term or phrase and then | continue typing in the field if |
+| they had any fur | ther (free text) notes. However, users did not find this design easy to understand. The | refore, the design has been |
+| updated to featu | re a fixed field into which the user can insert the encoded keywords (using the search | field) and then add additional |
+| free text. This | action is communicated to the user by a text prompt that appears in the right-hand fiel | d until data is entered into it. As |
+| each encoded key | word is inserted only on a new line, the clinician is encouraged to enter the elaborati | on immediately after it (but they |
+| can carry on typ | ing onto a new line). This new design has been reviewed by a panel of clinicians who di | d not deem this control to be a |
+| risk to patient | safety. However, to date, it has not been fully user tested. |  |
+| Hazard Risk Anal | ysis Summary: |  |
+| From our Patient | Safety Risk Assessment analyses we identified a number of potential hazards, including | the following key risks which |
+| are mitigated by | the design: |  |
+| Potential Haz | ards:                         Mitigation: |  |
+|  The user el | aborates the keyword           The system should warn the user if it identifies expres | sions of negation in the |
+| with text t | hat effectively negates         elaboration text. |  |
+| the keyword |  The elaboration text will be packaged with its associat statement. Therefore, if the clinician decides to leave be partially mitigated by the fact that the accompanyin the same time as the keyword (although it still constit | ed keyword as a single clinical the negating free-text in, this will g text will often be accessed at utes a risk) |
+| .8          Addi | ng Further Details and Justification |  |
+| This section of | the guidance covers the action of entering additional free text that (further) justifie | s |
+| the clinician’s | belief that the drug or substance constitutes a significant risk to the patient in the |  |
+| future. |  | Evidence |
+| RAD-0380 | Allow users to enter text which justifies or adds further detail to the risk and which may apply to the overall risk | Recommended         High |
+| RAD-0380.1 | The user can type in as much text as they wish into the field (the field can start scrolling when the text exceeds the visible space) | Recommended         High |
+| RAD-0390 | Provide one or more text entry fields into which the user may type justification or further details pertaining to the risk | Recommended         Medium |
+| RAD-0400 | Justification text can comprise either free text or encoded text, depending upon Rec the data model in place | ommended               High |
+| RAD-0410 | The UI should identify any reaction keywords or key phrases that are typed into Reco the justification field | mmended                Medium |
+| RAD-0410.1 | The UI should communicate to the user that a significant reaction word (or         R words) has been identified in the text and that the user should enter this word in the 'Type(s) of reactions experienced' section. | ecommended             Medium |
+| RAD-0410.2 | The UI should highlight significant reaction words or phrases with a coloured highlight | Recommended         Medium |
+| RAD-0410.3 | The UI should not highlight any reaction words that have already been matched Recomm in the 'Type(s) of reactions experienced' section. | ended                  High |
+| RAD-0420 | When there is no text in the justification field, display instructional text prompts in the field | Recommended         Medium |
+| Usage Examples |  |  |
+| Provide one or m | ore text entry fields into which the user may type justification or further details per | taining to the risk. |
+| When the field i | s devoid of data (or focus), the field contains prompting text. |  |
+| Justification te | xt can comprise either free text or encoded text, depending upon the data model in plac | e.  |
+| The UI should id | entify any reaction keywords or key phrases that are typed into the justification field | .  |
+| If the user ente | rs text that relates to a reaction that has not already been entered in the ‘type(s) of | reactions experienced’ section, the |
+| system warns the | m and instructs them to enter the term into the appropriate section. After entry in the | appropriate section, the |
+| highlight and th | e warning disappear. |  |
+| Rationale |  |  |
+| Design Analysis: |  |  |
+| Analyses indicat | ed that in many situations there will be justification and details that the clinician w | ishes to enter that does not |
+| correspond to a | reaction type. Therefore, a free text field is appropriate in this situation. |  |
+| User Research: |  |  |
+| User research sh | owed that: |  |
+|  Users felt it | was clear what they could type into this fieldUsers noticed the highlighted terms and w | hy they were highlighted |
+| Hazard Risk Anal | ysis Summary: |  |
+| From our Patient | Safety Risk Assessment analyses we identified a number of potential hazards, including | the following key risks which |
+| are mitigated by | the design: |  |
+| Potential Haz | ards:                                                  Mitigations: |  |
+|  What if vit | al contextual info such as route of medication or       The precise details of an ADR | event should be recorded |
+| reason for | medication is not entered?                               elsewhere in the notes, as usu is a significant factor that m location, he or she may add th | al. If the clinician believes that it ust be flagged in a prominent is as free text in the summary |
+|  What if it | is not clear that the justification area (text and      The current solution clearly i | ndicates that the fields relate to |
+| callouts) r | elates to the new ADR (in dialogue box above)            the entry of a new adverse dru | g reaction (that is, that it is new |
+| including ‘ | More past reactions’?                                    to the summary) |  |
+| .9         Speci | fying the Source of Information |  |
+| This section of | the guidance deals with how to allow the clinician to record the source of the ADR |  |
+| risk information | . | Evidence |
+| RAD-0430 | Allow the user to specify a ‘source’ of the information displayed for the risk | Mandatory            High |
+| RAD-0430.1 | Allow the user to specify the most recent source of the risk information (namely, how they discovered the risk) | Recommended          Medium |
+| RAD-0430.2 | Provide a field for selecting the most recent source of the risk | Recommended          High |
+| RAD-0430.3 | Provide a drop-down list for selecting the source of the risk | Recommended          High |
+| RAD-0430.4 | Provide a suitable prompt in the 'source' field | Mandatory            High |
+| RAD-0430.4.1 | Provide the prompt ‘Enter source of most recent information’ | Recommended          Medium |
+| RAD-0430.5 | Within the drop-down list, present a set list of 'sources' of the risk (data to be determined by a clinical authority (such as the NHS)) | Mandatory            High |
+| RAD-0430.6 | Do not provide a default selection in the 'source' field | Recommended          High |
+| RAD-0440 | Provide a control that allows the clinician to specify that they know that a clinician has witnessed the patient reacting to the causative agent | Recommended            Medium |
+| RAD-0440.1 | The control that allows the clinician to specify that a clinician has witnessed a reaction should be a checkbox | Recommended          Medium |
+| RAD-0440.2 | If the user selects ‘Clinician witnessed reaction’ in the ‘most recent source’ drop- down, the corresponding checkbox becomes automatically ticked | Recommended          Low |
+| Usage Examples |  Provide a control that allow know that a clinician has wi causative agent Provide a drop-down list for The control that allows the has witnessed a reaction sho Note By default, the 'so until the clinician  Allow the user to specify th information (namely, how the Note The options display  If the user selects ‘Clinici recent source’ drop-down, th becomes automatically ticked | s the clinician to specify that they tnessed the patient reacting to the selecting the source of the risk. clinician to specify that a clinician uld be a checkbox urce of information' field is blank selects from it. e most recent source of the risk y discovered the risk) ed here are illustrative only. an witnessed reaction’ in the ‘most e corresponding checkbox |
+| Rationale |  |  |
+| User Research: |  |  |
+| Clinicians expre | ssed how important it is to be able to record the source of the information. In particu | lar, they stressed that it is |
+| important to kno | w if a clinician actually witnessed a reaction. This is reflected in the design. |  |
+| Hazard Risk Anal | ysis Summary: |  |
+| From our Patient | Safety Risk Assessment analyses we identified a number of potential hazards, including | the following key risks which |
+| are mitigated by | the design: |  |
+| Potential Haz | ards:                                        Mitigations: |  |
+|  What if the | allergy was a reported event (rather         Allow the user to enter the source of th | e information, such as whether it |
+| than observ | ation)?                                        came from patient testimony or a reactio | n witnessed by the clinician |
+| .10          Dis | playing ADR Risk Details for the Clinician to Confirm |  |
+| This section cov | ers guidance relating to the system: |  |
+|  Identifyi | ng where the clinician has noted details about an ADR event (for example, as part |  |
+| of a | diagnosis) |  |
+|  Presentin | g the clinician with a dialog that allows the clinician to create a corresponding |  |
+| entry | in the ADR summary |  |
+| This guidance as | sumes that a mechanism is put in place that can identify where an ADR event is |  |
+| being noted and | then triggers a dialog accordingly. The current guidance only addresses the dialog |  |
+| itself (shown on | the right in Figure 6), and not the triggering process. |  |
 
 Figure 6: UI Triggers a Dialog for Entering an ADR Risk into the Summary
 
@@ -1252,47 +1822,36 @@ HSCIC Controlled Document
 
 ##### 7.1 Terms and Abbreviations
 
-ADR Adverse Drug Reaction
 
-CUI Common User Interface
-
-dm+d dictionary of medicines + devices (NHS)
-
-DCR Detailed Clinical Requirements
-
-DSS Decision Support Systems
-
-HL7 Health Language Seven
-
-IT Information Technology
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NPfIT National Programme for Information Technology
-
-SCG Standards Consulting Group
-
-SNOMED CT Systematized Nomenclature of Medical Clinical Terms
-
-UI User Interface
-
-VCR Validating Clinical Requirements:
+| Abbreviation | Definition |
+| --- | --- |
+| ADR | Adverse Drug Reaction |
+| CUI | Common User Interface |
+| dm+d | dictionary of medicines + devices (NHS) |
+| DCR | Detailed Clinical Requirements |
+| DSS | Decision Support Systems |
+| HL7 | Health Language Seven |
+| IT | Information Technology |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPfIT | National Programme for Information Technology |
+| SCG | Standards Consulting Group |
+| SNOMED CT | Systematized Nomenclature of Medical Clinical Terms |
+| UI | User Interface |
+| VCR | Validating Clinical Requirements: |
 
 Table 6: Terms and Abbreviations
 
 ##### 7.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
-
-Summary Care Record Part of the NHS Care Records Service, the Summary Care Record is centrally held patient data that can be uploaded and viewed by different NHS organizations, such as the GP practice and the hospital, and by patients themselves.
-
-Post-coordination Post-coordination is a process which allows the combination of concepts. For example, a focus concept may be qualified to produce a more specific clinical concept. See _SNOMED CT – the_ _language of the NHS Care Records Service_ **{R8}** for further details on post-coordination.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
+| Summary Care Record | Part of the NHS Care Records Service, the Summary Care Record is centrally held patient data that can be uploaded and viewed by different NHS organizations, such as the GP practice and the hospital, and by patients themselves. |
+| Post-coordination | Post-coordination is a process which allows the combination of concepts. For example, a focus concept may be qualified to produce a more specific clinical concept. See SNOMED CT – the language of the NHS Care Records Service {R8} for further details on post-coordination. |
 
 Table 7: Definitions
 
@@ -1308,35 +1867,30 @@ This section shows how to interpret the different styles used in this document t
 
 ###### 7.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 8: Body Text Styles
 
 ###### 7.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 9: Cross Reference Styles
 
@@ -1368,49 +1922,50 @@ Page 54
 
 HSCIC Controlled Document
 
-**R9.** Bentley, S. and Long, R. (NPfIT Standards Consulting Group), SCG Guidance on the Representation of Allergies and Adverse Reaction Information Using NHS Message Templates, 2008
 
-**R10.** NHS Connecting for Health: NHS Care Records Service: [Summary Care Record](http://www.nhscarerecords.nhs.uk/)
-
-**R11.** Jones, T. NPfIT and the International Input into HL7, HL7 UK Annual Conference, 2004: [www.hl7.org.uk/marketing/downloads/HL7UKConference2004/HL7UK%20NPfIT%20presentation.ppt](http://www.nhscarerecords.nhs.uk/)
-
-1.0
-
-**R12.** NPfIT Clinical Statement Message Pattern, NPFIT-FNT-TO-DPM-0053.01, 14 June 2005 1.9
-
-**R13.** Health Language Seven UK: HL7 delivers healthcare interoperability standards: [http://www.hl7.org.uk/](http://www.nhscarerecords.nhs.uk/)
-
-**R14.** Bishop, C. (NPfIT) Clinical Statement Message Pattern Explanatory Notes, NPfIT, 14 June 2005
-
-**R15.** Galitz, W.O., Essential guide to user interface design, 1997
-
-**R16.** Shneiderman, B., Designing the User Interface: Strategies for Effective Human-Computer Interaction, 1998
-
-Third edition
-
-**R17.** NHS CUI Programme – Display of Adverse Drug Reaction Risks – User Interface Design Guidance 2.0.0.0
-
-**R18.** RCP Health Informatics Unit: Validating Clinical Requirements for information systems in secondary care (VCR): Detailed Clinical Requirements (DCR), 23-Oct-2003
-
-**R19.** British Standards Institute: Guide to Presentation of tables and graphs: British Standard BS 7581: 1992
-
-1.1
-
-**R20.** Few, Stephen. Show me the numbers. Designing tables and graphs to enlighten,(2004) First edition
-
-**R21.** The International Health Terminology Standards Development Organisation: SNOMED Clinical Terms User Guide
-
-July 2008
-
-**R22.** NHS CUI Programme – Design Guide Entry – Terminology – Post Coordination 2.0.0.0
-
-**R23.** Pumphrey, R. Anaphylaxis: Can We Tell Who is at Risk of a Fatal Reaction?, Current Opinion in Allergy and Clinical Immunology 4(4): 285-290, 2004
-
-**R24.** NHS CUI Programme – Design Guide Entry – Terminology – Elaboration 2.0.0.0
-
-**R25.** Challen, R., Allergy and Adverse Drug Reaction: Implementation of SNOMED CT in structured electronic records, (NHS Connecting for Health: SSeRP Working Document), 2007
-
-**R26.** NHS CUI Programme – Design Guide Entry – Terminology – Display Standards for Coded Information
+| Reference Document | Version |
+| --- | --- |
+| R1.              Safety in doses: medication safety incidents in the NHS, NHS National Patient Safety Agency, 2007 |  |
+| R2.              World Health Organization: Requirements for adverse reaction reporting, Geneva: Author, 1975. |  |
+| R3.              Thien, F., Practice Essentials: Drug Hypersensitivity, Medical Journal of Australia 2006 |  |
+| R4.              American Academy of Family Physicians: Riedl, M.A. and Casillas, A.M., Adverse Drug Reactions: | 01-Nov-2003 |
+| Types and Treatment Options: |  |
+| www.aafp.org/afp/20031101/1781.html |  |
+| R5.              Horsfield, P. and Sibeko, S., Representation in Electronic Patient Records of Allergic Reactions, | 1.6 |
+| Adverse Reactions, and Intolerance of Pharmaceutical Products, 2008 |  |
+| R6.              NHS CUI Programme – Design Guide Entry – Terminology – Matching | 1.0.0.0 |
+| R7.              NHS CUI Programme – Design Guide Entry – Date Display | 3.0.0.0 |
+| R8.              NHS Connecting for Health, SNOMED CT – the language of the NHS Care Records Service – A |  |
+| guide for NHS staff in England, 2007 |  |
+| R9.             Bentley, S. and Long, R. (NPfIT Standards Consulting Group), SCG Guidance on the Representation 1.0 |  |
+| of Allergies and Adverse Reaction Information Using NHS Message Templates, 2008 |  |
+| R10.            NHS Connecting for Health: NHS Care Records Service: |  |
+| Summary Care Record |  |
+| R11.            Jones, T. NPfIT and the International Input into HL7, HL7 UK Annual Conference, 2004: |  |
+| www.hl7.org.uk/marketing/downloads/HL7UKConference2004/HL7UK%20NPfIT%20presentation.ppt |  |
+| R12.            NPfIT Clinical Statement Message Pattern, NPFIT-FNT-TO-DPM-0053.01, 14 June 2005 | 1.9 |
+| R13.            Health Language Seven UK: HL7 delivers healthcare interoperability standards: |  |
+| http://www.hl7.org.uk/ |  |
+| R14.            Bishop, C. (NPfIT) Clinical Statement Message Pattern Explanatory Notes, NPfIT, 14 June 2005 |  |
+| R15.            Galitz, W.O., Essential guide to user interface design, 1997 |  |
+| R16.            Shneiderman, B., Designing the User Interface: Strategies for Effective Human-Computer | Third edition |
+| Interaction, 1998 |  |
+| R17.            NHS CUI Programme – Display of Adverse Drug Reaction Risks – User Interface Design Guidance | 2.0.0.0 |
+| R18.            RCP Health Informatics Unit: Validating Clinical Requirements for information systems in secondary | 1.1 |
+| care (VCR): Detailed Clinical Requirements (DCR), 23-Oct-2003 |  |
+| R19.            British Standards Institute: Guide to Presentation of tables and graphs: British Standard BS 7581: |  |
+| 1992 |  |
+| R20.            Few, Stephen. Show me the numbers. Designing tables and graphs to enlighten,(2004) | First edition |
+| R21.            The International Health Terminology Standards Development Organisation: SNOMED Clinical | July 2008 |
+| Terms User Guide |  |
+| R22.            NHS CUI Programme – Design Guide Entry – Terminology – Post Coordination | 2.0.0.0 |
+| R23.            Pumphrey, R. Anaphylaxis: Can We Tell Who is at Risk of a Fatal Reaction?, Current Opinion in |  |
+| Allergy and Clinical Immunology 4(4): 285-290, 2004 |  |
+| R24.            NHS CUI Programme – Design Guide Entry – Terminology – Elaboration | 2.0.0.0 |
+| R25.            Challen, R., Allergy and Adverse Drug Reaction: Implementation of SNOMED CT in structured | 0.1 |
+| electronic records, (NHS Connecting for Health: SSeRP Working Document), 2007 |  |
+| R26.            NHS CUI Programme – Design Guide Entry – Terminology – Display Standards for Coded | 2.0.0.0 |
+| Information |  |
 
 Table 10: References
 
@@ -1469,7 +2024,37 @@ Page 57
 
 HSCIC Controlled Document
 
-5
+
+| A.1 | Introduction |
+| --- | --- |
+| This ap | pendix illustrates design aspects that could assist the implementation of the guidelines |
+| outline | d in the main document, but which are still undergoing development and exploration. |
+| Future | planned guidance development work aims to explore the application of these design |
+| aspects | in other areas of clinical noting. |
+| Therefo | re, the designs in this appendix should not be mistaken for actual guidelines: they have not |
+| been te | sted with clinicians to the same degree as the designs that are implied by the guidelines in |
+| the bod | y of this document. Instead of being followed as guidelines, the designs in this appendix are |
+| intende | d to inspire further development. They also provide some context to help readers of this |
+| guidanc | e understand the guidelines themselves. |
+| This ap | pendix is divided into sections pertaining to different functional areas or features, each of |
+| which c | ontains some visual illustrations and lists some UI assumptions. In some cases, there may |
+| be mult | iple designs that are still being considered, but those other designs are not presented here. |
+| A.2 | Adding New Clinical Terms in a Form |
+| The pro | cess of adding new clinical terms within a form has been based largely on previous CUI |
+| guidanc | e (see Design Guide Entry – Terminology – Matching {R6}). The general assumption is that |
+| clinici | ans are presented with a field into which they may type the word or words that they feel |
+| express | es the clinical belief, observation, risk or plan that they wish to record. At that point, the UI |
+| invokes | the matching of these words against a recognized clinical terminology, such as |
+| SNOMED | CT. |
+| Table 1 | 1 shows the possible sequence of steps taken to add new clinical terms in a form: |
+| Step | Design Aspects Being Explored |
+| 1 |  |
+| Step | Design Aspects Being Explored |
+| 2 |  |
+| 3 |  |
+| 4 |  |
+| Step | Design Aspects Being Explored |
+| 5 |  |
 
 Table 11: Adding a New Clinical Term in a Form
 
@@ -1514,17 +2099,44 @@ Page 59
 
 HSCIC Controlled Document
 
-6
 
-7
+| A.3 | Adding Multiple Instances of Clinical Terms into a Form |
+| --- | --- |
+| Another c | ommon requirement will be to add multiple instances of a single category of clinical |
+| content. | For example, the user may want to enter several types of reaction. The terms ‘rash’, |
+| ‘nausea’ | and ‘anaphylaxis’ are all instances of the same clinical category, namely ‘reaction type’. In |
+| these cas | es, there may be no clear limit as to how many such instances of a single category of |
+| clinical | content the clinician may need to enter. Therefore the control must have sufficient flexibility |
+| to allow | the clinician to enter many terms but also clearly show that they are all instances of the |
+| same type | of term. The control must also be efficient enough to meet the space limitations of a |
+| screen-ba | sed form. |
+| The desig | n being explored features a single input field and a list field into which the clinician can |
+| enter mul | tiple instances of a clinical term (such as a type of reaction). After clinicians have matched |
+| a term to | their inputted text, this term automatically populates the next available line in the list. The |
+| clinician | may also then type in additional text next to the term. |
+| Table 12 | shows the possible sequence of steps taken to add multiple clinical terms in a form: |
+| Step | Design Aspects Being Explored |
+| 1 |  |
+| Step | Design Aspects Being Explored |
+| 2 |  |
+| 3 |  |
+| 4 |  |
+| 5 |  |
+| Step | Design Aspects Being Explored |
+| 6 |  |
+| 7 |  |
 
 Table 12: Example of a Sequence of Screens That Allow the Entry of Multiple Concepts
 
 ##### A.4 Displaying Edit History
 
-Displaying the edit history of a data item will be very important to clinicians as it contextualises the current data. Currently, clinicians tend to view this history by paging back through the patient’s record.
 
-Figure 7 shows an example of an ‘edit history’ feature:
+| A.4 | Displaying Edit History |
+| --- | --- |
+| Displayin | g the edit history of a data item will be very important to clinicians as it contextualises the |
+| current d | ata. Currently, clinicians tend to view this history by paging back through the patient’s |
+| record. |  |
+| Figure 7 | shows an example of an ‘edit history’ feature: |
 
 Figure 7: Example of an Edit History Feature
 
@@ -1541,9 +2153,14 @@ HSCIC Controlled Document
 
 ##### A.5 Match Not Found
 
-If the clinician types in a term that is not matched against SNOMED CT, the clinician must be able to record it anyway, albeit formatted in a way that indicates that it is not encoded. The clinician should also be warned that the term has not been matched but informed that they can record it anyway.
 
-Figure 8 shows an example of a message that could appear if a match were not found:
+| A.5 | Match Not Found |
+| --- | --- |
+| If the cl | inician types in a term that is not matched against SNOMED CT, the clinician must be able |
+| to record | it anyway, albeit formatted in a way that indicates that it is not encoded. The clinician |
+| should al | so be warned that the term has not been matched but informed that they can record it |
+| anyway. |  |
+| Figure 8 | shows an example of a message that could appear if a match were not found: |
 
 Figure 8: Example of a 'Match Not Found' Message
 
@@ -1630,21 +2247,65 @@ All interviews were audio recorded to facilitate analysis and to identify quotes
 
 ###### B.4.1 Respondent Descriptions
 
-Five people that had not previously participated in CUI studies were interviewed at their normal place of work between 08-Dec-2008 and 11-Dec-2008. Participants had worked for the NHS for a wide range of durations (from 1 to 29 years). Table 13 provides a summary of the interviewee’s job roles, NHS employment, workplace and main work location:
 
-p1 Consultant Pharmacist for safe medications practice
-
-p2 Consultant Pharmacist for infectious diseases
-
-15 years Hospital London Using Microsoft [®] Office Access™
-
-20 years Hospital London Designing Web pages
-
-p3 Prescribing Pharmacist 4 years GP Surgery South West Using Microsoft [®] Office PowerPoint [®]
-
-p4 F2 – Junior Doctor 1 year GP Surgery South West Using Access
-
-p5 GP (Primary Care Trust prescribing lead)
+| B.1 | Abstract |
+| --- | --- |
+| The UK | National Health Service (NHS) Common User Interface (CUI) programme is a partnership |
+| between | Microsoft® and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Program | me for Information Technology (NPfIT). |
+| As part | of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring |
+| that so | ftware applications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provide | s software developers with user interface design guidelines derived through a user-centric |
+| develop | ment process that includes explicit patient-safety evaluations. |
+| This su | mmary describes the results of interviews conducted with five NHS Health Care |
+| Profess | ionals (HCPs) at their normal place of work. |
+| Purpose | : |
+| To gath | er feedback to enhance static wireframe preliminary design options for recording |
+| informa | tion about Adverse Drug Reactions (ADRs) that will enable patient-safe prescribing |
+| decisio | ns. |
+| Method: |  |
+| Within | an audio-recorded interview, participants were presented with designs arranged in ideal |
+| click-t | hrough routes for five use scenarios and asked to describe what they saw and what they |
+| would d | o next. |
+| Results | : |
+| The des | igns were generally very well received as a significant improvement over paper recording |
+| and pro | mpted responses like: “This might improve the recording of allergies and have an |
+| uninten | ded effect on the quality of care” (p1), “Excellent” (p2), “I think this is probably enough” (p3), |
+| “Perfec | t, a list of drugs and what they cause” (p4). |
+| The mos | t significant design changes suggested by the research are to enable the HCP to: |
+|  R | ecord and discover recorded severity of reactions. Otherwise, the existing data entry fields |
+| w | ere acceptable with a range of information presentation and navigation changes |
+|  V | iew the reaction history of ADR risks before combing them within a drug class |
+|  A | void all those issues identified use issues that represented potential patient safety hazards |
+| B.2 | Research Objectives |
+| This st | udy was designed to gather HCP understandings, preferences and patient safety |
+| assessm | ents of preliminary wireframe design flows. |
+| The spe | cific objectives were: |
+|  U | se the following five use scenarios to assess and refine preliminary design task flows: a. Recording a new ADR risk b. Diagnosing an ADR risk c. Removing an ADR risk d. Recording no known ADR risk e. Combining recorded ADR risks under a parent drug |
+|  | Identify whether the data entry format and fields are appropriate |
+|  | Identify design strengths and weaknesses with specific reference to patient-safety |
+|  | Identify new design requirements |
+| B.3 | Research Design |
+| Design | click-throughs were used to provide a structure to the three interviews with individuals and |
+| the one | interview with two individuals. To assess their understanding of the information represented |
+| in the | design, and whether it supported progression to effectively complete the scenario, HCPs |
+| were as | ked two questions: |
+|  | What do you see? |
+|  | What would you do next?’ |
+| All int | erviews were audio recorded to facilitate analysis and to identify quotes from individual HCPs. |
+| B.4 | Results |
+| B.4.1 | Respondent Descriptions |
+| Five pe | ople that had not previously participated in CUI studies were interviewed at their normal |
+| place o | f work between 08-Dec-2008 and 11-Dec-2008. Participants had worked for the NHS for a |
+| wide ra | nge of durations (from 1 to 29 years). Table 13 provides a summary of the interviewee’s job |
+| roles, | NHS employment, workplace and main work location: |
+| Respond | ent                                    Years Employed                             Computing Job Role                                            Workplace    Location |
+| Identif | ier                                    in the NHS                                 Accomplishments |
+| p1 | Consultant Pharmacist for   15 years         Hospital     London       Using Microsoft® Office safe medications practice                                              Access™ |
+| p2 | Consultant Pharmacist for   20 years         Hospital     London       Designing Web pages infectious diseases |
+| p3 | Prescribing Pharmacist      4 years          GP Surgery   South West   Using Microsoft® Office PowerPoint® |
+| p4 | F2 – Junior Doctor          1 year           GP Surgery   South West   Using Access |
+| p5 | GP (Primary Care Trust      29 years         GP Surgery   South West   Evaluating systems for prescribing lead)                                                      use in clinical practice |
 
 Table 13: Respondent Descriptions
 
@@ -1840,57 +2501,103 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-p5 Pharmacist 20–24 years Other Other Written Software code
 
-p6 Pharmacist 5–9 years Hospital South West Written Software code
-
-p7 Midwife 15–19 years Hospital East Midlands Modified Microsoft Office Access database
-
-p8 Pharmacist 5–9 years Hospital London Modified Microsoft Office Access database
-
-p9 Surgeon 30 years or more Hospital London Written Software code
-
-p10 Pharmacist 25–29 years Hospital Yorkshire and Humberside
-
-Modified Microsoft Office Access database
-
-p11 GP 25–29 years General Practice North West Written Software code
-
-p12 SHO Anaesthetist
-
-3 years General Hospital North East Confident with Microsoft [®] Office System applications
-
-P13 ICU Ward Sister 14 years General Hospital North East Microsoft [®] Office PowerPoint [®]
-
-P14 ICU Staff Nurse 16 months General Hospital North East Microsoft Office PowerPoint
-
-P15 Pre-Assessment Sister
-
-25 years General Hospital North East Providing clinical feedback on beta-trail software
-
-p16 ENP (not given) Walk-in Hospital London Audits using symphony
-
-p17 Staff nurse (not given) Walk-in Hospital London Using Microsoft [®] Office Excel [®] and Microsoft Office PowerPoint
-
-p18 ENP 25 years Walk-in Hospital London Leaning a new program with no training (.ppt)
-
-p19 ENP 15 years Walk-in Hospital London Leaning a new program with no training (.ppt)
-
-p20 ENP 24 years Walk-in Hospital London Leaning a new program with no training (.ppt)
-
-p21 GP Partner 30 years GP Surgery North East System-1
-
-p22 GP Partner 30 years GP Surgery North East System-1
-
-p23 Practice Nurse 21 years GP Surgery North East Entering data to templates
-
-p24 Practice Nurse 23 years GP Surgery North East Entering data to templates
-
-p25 GP registrar 6 years GP Surgery North East Using clinical systems
-
-p26 Principle GP 25 years GP Surgery North East Using Clinical systems
-
-p27 Pharmacist 23 years GP Surgery North East Auditing
+| C.1 | Abstract |
+| --- | --- |
+| The UK | National Health Service (NHS) Common User Interface (CUI) programme is a partnership |
+| between | Microsoft® and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Program | me for Information Technology (NPfIT). |
+| As part | of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring |
+| that so | ftware applications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provide | s software developers with user interface design guidelines derived through a user-centric |
+| develop | ment process that includes explicit patient-safety evaluations. |
+| This su | mmary describes the results of interviews conducted with five NHS Health Care |
+| Profess | ionals (HCPs) at their normal place of work. |
+| Purpose | : |
+| To gath | er feedback to enhance static wireframe preliminary design options for recording |
+| informa | tion about Adverse Drug Reactions (ADRs) that will enable patient-safe prescribing |
+| decisio | ns. |
+| Method: |  |
+| Within | an audio-recorded interview, participants were presented with designs arranged in ideal |
+| click-t | hrough routes for six use scenarios and asked to describe what they saw and what they |
+| would d | o next. |
+| Results | : |
+| Feedbac | k from 27 HCPs was gathered through two cognitive walk-throughs (one with five people |
+| and one | with six people) and work-place interviews (with 16 people). The HCPs were presented |
+| with cl | ick-through screenshots of proposed design solutions to add, remove, combine, reclassify |
+| and edi | t ADR risks, and to record no known ADR risks. |
+| 28 use | actions by the HCPs introduced issues that will lead to design changes. These use actions |
+| primari | ly stem from: |
+|  H | CP uncertainty about what is required in the reactions keyword and details justification |
+| t | ext entry boxes |
+|  C | ommand links not recognised as actionable and command line text being interpreted in |
+| d | iverse ways |
+|  A | n opened ADR risk did not look editable |
+| All HCP | s were able to record no known ADR risk. Many requested the ability to cite the steps they |
+| had tak | en to ascertain the lack of a known risk (for example, asked the patient, reviewed hospital |
+| notes, | called the GP). |
+| Most HC | Ps do not want to remove an ADR risk history from the summary, even when it is proven |
+| to be n | o longer a risk. Removed ADR risks should be available to prescribers and recorders as a |
+| listed | proven non-risk. |
+| The maj | ority of HCPs attempted to combine ADR risks by editing an existing risk. |
+| Most HC | Ps questioned the clinical validity of reclassifying a penicillin ADR risk to a Beta-Lactam |
+| ADR ris | k. No HCP was able to complete this task with the current design, primarily because they |
+| did not | perceive the ADR fields as editable. |
+| C.2 | Research Objectives |
+| This st | udy was designed to gather HCP understandings, preferences and patient safety |
+| assessm | ents of wireframe design flows. |
+| The spe | cific objectives were: |
+|  | Use the following five use scenarios to assess and refine design task flows: a. Add penicillin ADR risk b. Add penicillin ADR risk from clinical notes c. Record No Known ADR Risk d. Remove an ADR risk e. Combine ADR as class risk f.   Edit ADR to class risk |
+|  | Identify whether the data entry format and fields are appropriate |
+|  | Identify design strengths and weaknesses with specific reference to patient-safety |
+|  | Identify new design requirements |
+| C.3 | Research Design |
+| Two str | eamlined cognitive walk-throughs were completed, session one with five technically able |
+| clinica | l advisors and session two with six technically able clinical advisors. |
+| In addi | tion to the cognitive walk-throughs, on-site interviews were conducted with 16 people as |
+| individ | uals, pairs and one threesome in a meeting-room at their normal place of work. |
+| During | the interviews, design click-throughs were used to provide a structure to the three interviews |
+| with in | dividuals and the one interview with two individuals. To assess their understanding of the |
+| informa | tion represented in the design, and whether it supported progression to effectively complete |
+| the sce | nario, HCPs were asked two questions: |
+|  | What do you see? |
+|  | What would you do next?’ |
+| All int | erviews were audio recorded to facilitate analysis and to identify quotes from individual HCPs. |
+| C.4 | Results |
+| C.4.1 | Respondent Descriptions |
+| Table 1 | 4 provides a summary of the interviewee’s job roles, NHS employment, workplace and main |
+| work lo | cation: |
+| Respond | ent                     Years Employed                                  Computing Job Role                           Workplace        Location |
+| Identif | ier                     in the NHS                                      Accomplishments |
+| p1 | Other Nurse    30 years or more   Hospital     West Midlands   Written Software Code |
+| p2 | Pharmacist     10–14 years        Hospital     London          Modified Microsoft® Office Access™ database |
+| p3 | Pharmacist     10–14 years        Hospital     West Midlands   Installed a program |
+| p4 | Pharmacist     10–14 years        Hospital     London          Modified Microsoft Office Access database |
+| Respond | ent                          Years Employed                                        Computing Job Role                                Workplace              Location |
+| Identif | ier                          in the NHS                                            Accomplishments |
+| p5 | Pharmacist        20–24 years        Other              Other           Written Software code |
+| p6 | Pharmacist        5–9 years          Hospital           South West      Written Software code |
+| p7 | Midwife           15–19 years        Hospital           East Midlands   Modified Microsoft Office Access database |
+| p8 | Pharmacist        5–9 years          Hospital           London          Modified Microsoft Office Access database |
+| p9 | Surgeon           30 years or more   Hospital           London          Written Software code |
+| p10 | Pharmacist        25–29 years        Hospital           Yorkshire and   Modified Microsoft Office Humberside      Access database |
+| p11 | GP                25–29 years        General Practice   North West      Written Software code |
+| p12 | SHO               3 years            General Hospital   North East      Confident with Microsoft® Anaesthetist                                                            Office System applications |
+| P13 | ICU Ward Sister 14 years             General Hospital   North East      Microsoft® Office PowerPoint® |
+| P14 | ICU Staff Nurse   16 months          General Hospital   North East      Microsoft Office PowerPoint |
+| P15 | Pre-Assessment 25 years              General Hospital   North East      Providing clinical feedback on Sister                                                                  beta-trail software |
+| p16 | ENP               (not given)        Walk-in Hospital   London          Audits using symphony |
+| p17 | Staff nurse       (not given)        Walk-in Hospital   London          Using Microsoft® Office Excel® and Microsoft Office PowerPoint |
+| p18 | ENP               25 years           Walk-in Hospital   London          Leaning a new program with no training (.ppt) |
+| p19 | ENP               15 years           Walk-in Hospital   London          Leaning a new program with no training (.ppt) |
+| p20 | ENP               24 years           Walk-in Hospital   London          Leaning a new program with no training (.ppt) |
+| p21 | GP Partner        30 years           GP Surgery         North East      System-1 |
+| p22 | GP Partner        30 years           GP Surgery         North East      System-1 |
+| p23 | Practice Nurse    21 years           GP Surgery         North East      Entering data to templates |
+| p24 | Practice Nurse    23 years           GP Surgery         North East      Entering data to templates |
+| p25 | GP registrar      6 years            GP Surgery         North East      Using clinical systems |
+| p26 | Principle GP      25 years           GP Surgery         North East      Using Clinical systems |
+| p27 | Pharmacist        23 years           GP Surgery         North East      Auditing |
 
 Table 14: Respondent Descriptions
 

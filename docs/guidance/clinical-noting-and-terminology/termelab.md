@@ -151,6 +151,23 @@ Figure 1 (below) illustrates all three categories: forms (left), single concept 
 
 ![](termelab_assets/termelab.pdf-4-1.png)
 
+
+|  | The user makes notes by selecting boxes and choosing options, not by entering text. |
+| --- | --- |
+|  | An encoding interface is not needed. The clinical codes should be embedded within the form itself or derived from combinations of entries in the form. |
+| gle c | oncept matching |
+|  | The user makes notes by typing the note for a single concept (such as 'asthma'), and the system returns SNOMED-CT matches. The user can then choose an appropriate match, refine the concept, then elaborate it with a combination of free text, qualifying SNOMED-CT attributes (such as 'severe'), and numerical values. |
+|  | Encoding interfaces require components to match and elaborate SNOMED-CT concepts. |
+| t par | ser matching |
+|  | The user makes notes by writing unconstrained text, while the system matches words and phrases against the SNOMED-CT database, or a constrained subset of the database, and displays the matches. The user then has the option to do one of the following:    Confirm that they want to encode these SNOMED-CT expressions    Browse alternative matches    Refine a selected match    Leave the note un-encoded, in which case it will be saved as unstructured text rather than as a SNOMED-CT expression |
+|  | Encoding interfaces require components to identify and match SNOMED-CT concepts, as well as build post-coordinated SNOMED-CT expressions, based upon attribute relationships, from within the text. The interface must also be able to identify terms and relationships from additional informational models in order to support accurate and comprehensive clinical noting. |
+| (belo | w) illustrates all three categories: forms (left), single concept matching (centre) and |
+| er ma | tching (right). |
+| The | user enters key                                                              As the user types in |
+| word | s and the system                                                             notes, the system |
+| retu | rns matches, which                                                           suggests SNOMED-CT |
+| the | user can elaborate                                                           matches |
+
 Figure 1: Styles of Encoding
 
 A possible fourth hybrid category could be defined where forms may include areas where single concept matching or text parser is used.
@@ -220,15 +237,19 @@ Copyright ©2013 Health and Social Care Information Centre
 ![](termelab_assets/termelab.pdf-6-0.png)
 HSCIC Controlled Document
 
-C1.10 Where users can enter numerical values, appropriate units must be presented to users by the system. Where there is a choice of units, the system must present the choice clearly, and explicitly communicate the user’s choice.
 
-C1.11 The system will encourage users to refine mandatory attributes and values (where appropriate).
-
-C2.3 The system will identify potential elaboration within the typed notes and will offer relevant elaboration options during the encoding process.
-
-C3.3 The system will provide users with a mechanism to enter additional text notes with an encodable concept.
-
-C3.4 The system will warn users if text notes contain qualifications (such as negation) that significantly affect the meaning of a concept or conflict with other specified or assumed qualifiers.
+| Ref | Requirement (See APPENDIX A) |
+| --- | --- |
+| C1.9 | The system will allow users to specify a small set of elaboration values that are not defined by SNOMED-CT nor the Context Model relationships. These will include time values and values defined by additional informational models (such as blood pressure readings and temperature readings). |
+| Ref        R | equirement (See APPENDIX A) |
+| C1.10      W | here users can enter numerical values, appropriate units must be presented to users by the system. Where there is a |
+| c | hoice of units, the system must present the choice clearly, and explicitly communicate the user’s choice. |
+| C1.11      T | he system will encourage users to refine mandatory attributes and values (where appropriate). |
+| C2.3       T | he system will identify potential elaboration within the typed notes and will offer relevant elaboration options during the |
+| e | ncoding process. |
+| C3.3       T | he system will provide users with a mechanism to enter additional text notes with an encodable concept. |
+| C3.4       T | he system will warn users if text notes contain qualifications (such as negation) that significantly affect the meaning of a |
+| c | oncept or conflict with other specified or assumed qualifiers. |
 
 Table 1: NHS CFH Requirements for Terminology Elaboration
 
@@ -396,6 +417,21 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+|  | Must appropriately label the input field for adding free unstructured text |
+| --- | --- |
+|  | Should locate the additional text field in a position that is visible to the user when they are viewing the SNOMED-CT matches |
+|  | How to Use the Design Guide Entry |
+| t | Example                              Comments |
+| Align | the additional text field with the       See above figures                    This should allow the user to scan down |
+| field | displaying the list of matches                                                to the additional text field easily |
+| Provid | e an additional text field for all       See Figure 7                         This is a universal feature that could |
+| defini | tion/elaboration dialogs in the                                               apply to all concepts |
+| ‘Code | and Elaborate’ environment |
+| Retain | the additional text until the user      n/a                                  Although text notes may apply to one |
+| select | s a code or closes the search                                                 concept, but not to another, users may |
+| dialog | be writing a lot of notes and using a concept as a ‘hook’ to hang the notes onto. Therefore, they will want the system to retain the unstructured text even if they change concept |
+
 Table 3: How to Use the Design Guide Entry
 
 _**2.1.1.3**_ _**How Not to Use the Design Guide Entry**_
@@ -410,7 +446,17 @@ formatting to text in the additional text field
 
 ####  Do not provide an additional text field
 
-for the ‘text parser’ approach to encoding
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Do not locate the additional text field in |  |  |
+| the flyout area |  |  |
+|        Do not allow users to apply their own | Users should not be able to apply | Additional formatting would obstruct the |
+| formatting to text in the additional text | styles, such as bold, or highlighting to | communication of confirmed or |
+| field | text in the additional text field | encodable text |
+|        Do not provide an additional text field | n/a | It would be confusing to offer two places |
+| for the ‘text parser’ approach to |  | to add unstructured text notes |
+| encoding |  |  |
 
 Table 4: How Not to Use the Design Guide Entry
 
@@ -452,9 +498,30 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-The text ‘properly’ appears in the suggested matching area, indented to the SNOMED-CT concept. It also features a special icon (currently undefined, but in this example, a ‘pencil’ icon has been shown) to distinguish it from the potential SNOMED-CT matches. Any free text will be displayed in this position (that is, below and indented to the SNOMED-CT expression).
 
-If the free text is divided into two separate strings, these will be displayed as two bullets (that is, they would comprise two separate lines, each with an icon). For example, if the user had typed in ‘David unable to grip properly’, the system would display the concept match ‘Unable to grip’ and below this it would feature one line containing the text ‘David’ and another line containing the text ‘properly’.
+|  | Must appropriately label the input field for adding free unstructured text |
+| --- | --- |
+|  | Should locate the additional text field in a position that is visible to the user when they are viewing the SNOMED-CT matches |
+| T | ext Remaining Unstructured |
+| pars | er approach to matching, free text can be associated with a SNOMED-CT |
+| by no | t encoding text that falls within the expression envelope marquee. This may be the |
+| ce no | t to confirm a potential match for encoding (that is, by not selecting the appropriate |
+| or i | t might be because the text cannot be matched with SNOMED-CT concepts (or data |
+| onal | information modelling). |
+| ple s | hown in Figure 8 (below), the user has typed in ‘Unable to grip properly’, from |
+| ystem | has matched the concept ‘Unable to grip’ (ConceptID 284258001). The remaining |
+| be m | atched, but still falls within the user defined expression envelope (there are no full |
+| rriag | e returns between ‘Unable to grip’ and ‘properly’) and the system has not |
+| the t | ext ‘properly’ with any other matched concepts. |
+| roper | ly’ appears in the suggested matching area, indented to the SNOMED-CT concept. |
+| tures | a special icon (currently undefined, but in this example, a ‘pencil’ icon has been |
+| istin | guish it from the potential SNOMED-CT matches. Any free text will be displayed in |
+| on (t | hat is, below and indented to the SNOMED-CT expression). |
+| text | is divided into two separate strings, these will be displayed as two bullets (that is, |
+| compr | ise two separate lines, each with an icon). For example, if the user had typed in |
+| le to | grip properly’, the system would display the concept match ‘Unable to grip’ and |
+| it wo | uld feature one line containing the text ‘David’ and another line containing the text |
+|  |  |
 
 Figure 8: System Matching the Concept: Unable to Grip
 
@@ -532,7 +599,25 @@ the free text in the suggested match area
 
 ####  Provide an appropriate ToolTip that
 
-appears when the user moves the mouse over the handles of the marquee boundaries
+
+|  | Must distinguish the free text from the matched text      Could feature an icon to communicate that it is free text, rather than matched text      Could indent the free text and display it below the matched text, to show that the free text ‘belongs’ to the matched expression |
+| --- | --- |
+| ld al | low the user to read the free text while they are viewing the possible SNOMED-CT |
+| hes. |  |
+|  | Should display the free text below the list of possible SNOMED-CT matches |
+| allo | w the user to ‘un-associate’ the free text from the matched expression |
+|  | Should allow the user to delete the free text |
+|  | Should allow the user to manipulate the expression envelope boundaries, in order to move the free text outside of the expression envelope, and thus disassociate it from the matched expression |
+|  | Should, conversely, allow the user to associate free text with a matched expression by manipulating the marquee boundaries, that is, dragging the boundaries so that they include text that was not already in the expression envelope |
+|  | How to Use the Design Guide Entry |
+| t | Example                                   Comments |
+| Must | feature an appropriate icon next to We have shown a pencil icon, but we |
+| the f | ree text in the suggested match     believe a better icon can be created |
+| area |  |
+| Provi | de an appropriate ToolTip that   “Drag the handles to include or exclude |
+| appea | rs when the user moves the       text in the expression” |
+| mouse | over the handles of the marquee |
+| bound | aries |
 
 Table 5: How to Use the Design Guide Entry
 
@@ -544,7 +629,12 @@ _**2.1.2.3**_ _**How Not to Use the Design Guide Entry**_
 
 ####  In the text parser approach to matching,
 
-allowing users to edit additional text anywhere but in the text input area
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        In the text parser approach to matching, Pr | oviding an additional text field in the | In the text parser approach to matching, |
+| allowing users to edit additional text   en | coding dialog in the text parser | the user must only be able to edit |
+| anywhere but in the text input area      ap | proach. | additional text in one area, otherwise the interaction may become confusing. |
 
 Table 6: How Not to Use the Design Guide Entry
 
@@ -711,7 +801,22 @@ if they are all attributes of the baseconcept
 
 ####  Allow users to browse related concepts
 
-of an attribute
+
+|  | Should make the noting clear and efficient by using the same field for both the additional text and the input for attributes |
+| --- | --- |
+|  | Should re-use the mechanisms for matching the text parser, namely: highlighting, bolding, featuring a confirmation check box, and featuring a control for viewing alternative matches |
+|  |  |
+| onship | s defined by an external information model would need to be approved by the NHS CFH. |
+| would | be those relationships that are needed for clinical noting, but which do not exist in the SCT, |
+| t or C | ontext Models. An example would be the relationships between measurement values (that is, |
+| ty and | unit values) and the appropriate SNOMED-CT concepts. |
+|  | How to Use the Design Guide Entry |
+| t | Example                                    Comments |
+| Allow | the matching of multiple concepts, The system could match ‘Severe’ and |
+| if the | y are all attributes of the base-  ‘Sudden onset’ when the base-concept |
+| concep | t                                  is ‘Asthma’ |
+| Allow | users to browse related concepts          The user may wish to see what other |
+| of an | attribute                                 levels of severity there are to choose from |
 
 Table 7: How to Use the Design Guide Entry
 
@@ -729,7 +834,12 @@ _**2.2.1.3**_ _**How Not to Use the Design Guide Entry**_
 
 ####  Matching concepts that are not
 
-attributes of the base-concept (which is selected in the main list of matches)
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Matching concepts that are not | Matching the concept ‘Foot’ if the user |  |
+| attributes of the base-concept (which is | has selected the concept ‘Fever’ in the |  |
+| selected in the main list of matches) | list above |  |
 
 Table 8: How Not to Use the Design Guide Entry
 
@@ -773,9 +883,23 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-However, if the user fails to confirm the encoding of this axis modifier, the system should warn the user that they have not done so, and offer them a quick control to confirm it.
 
-In the example shown in Figure 16 (below), the user has typed that the patient’s mother had asthma. The clinician could be trying to communicate that both the user and their mother have asthma, or they could mean that only the patient’s mother is known to have asthma.
+|  | Should make the noting clear and efficient by using the same field for both the additional text and the input for attributes |
+| --- | --- |
+|  | Should re-use the mechanisms for matching the text parser, namely: highlighting, bolding, featuring a confirmation check box, and featuring a control for viewing alternative matches |
+| test | ed the use of the additional text field in this way. |
+| W | arning of Important Unconfirmed Elaboration |
+| e all | owed to type in free text, the system must identify important words that can modify |
+| of t | he concept. If the user has typed in a word in the additional text field that is |
+| to be | an axis modifier, such as negation or a relation to the patient (meaning that the |
+| y mem | ber is suffering from the disorder rather than the patient themselves), the system |
+| his t | o the user in the same way as for the qualifier, namely with a highlight and a check |
+|  |  |
+| the | user fails to confirm the encoding of this axis modifier, the system should warn the |
+| hey h | ave not done so, and offer them a quick control to confirm it. |
+| ple s | hown in Figure 16 (below), the user has typed that the patient’s mother had |
+| clin | ician could be trying to communicate that both the user and their mother have |
+| they | could mean that only the patient’s mother is known to have asthma. |
 
 Figure 16: Presenting a Control for Confirming an Axis Modifier in Additional Text for Encoding
 
@@ -814,7 +938,12 @@ _**2.2.2.2**_ _**How to Use the Design Guide Entry**_
 
 ####  Clearly outline the problem and the way
 
-in which the user may resolve the problem
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         Clearly outline the problem and the way | See text in Figure 17 |  |
+| in which the user may resolve the |  |  |
+| problem |  |  |
 
 Table 9: How to Use the Design Guide Entry
 
@@ -824,7 +953,11 @@ _**2.2.2.3**_ _**How Not to Use the Design Guide Entry**_
 
 ####  Present the user with an array of
 
-options in the warning message.
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Present the user with an array of | Do not offer users the choice of ‘Yes’, |  |
+| options in the warning message. | ‘No’ and ‘Cancel’ |  |
 
 Table 10: How Not to Use the Design Guide Entry
 
@@ -959,7 +1092,30 @@ the initial view of the selection field
 
 ####  Provide a key that communicates how
 
-mandatory fields are displayed
+
+|  | Could feature a drop-down list box |
+| --- | --- |
+|  | Should associate the control with the individual match      Should feature the control in the match’s flyout |
+| commu | nicate to the user that they must select the mandatory qualifier in order to |
+| irm/sa | ve the note |
+|  | Should feature a warning message in the suggested match area (in the left-hand pane) that appears when the user moves the mouse over the area |
+|  | Should feature the words ‘Please specify’ in the mandatory qualifier selection control |
+|  | Should make the mandatory qualifier selection control sufficiently prominent      Could feature the mandatory qualifier selection control in yellow, until the user selects an option from it |
+| not a | llow the user to un-confirm the mandatory qualifier value independently from the |
+| conce | pt |
+|  |  |
+| entifi | cation of mandatory elaboration would imply the creation of appropriate meta-data by the NHS |
+|  |  |
+| H | ow to Use the Design Guide Entry |
+| t | Example                                      Comments |
+| Highli | ght the mandatory elaboration with See Figure 20 |
+| a brig | ht colour |
+| Provid | e a hover-over message that          The message could read “You must |
+| indica | tes that the field is mandatory      select from this list to be able to encode ‘name of the concept’” |
+| Featur | e the text ‘Please specify’ within   See Figure 20 |
+| the in | itial view of the selection field |
+| Provid | e a key that communicates how        See Figure 20 |
+| mandat | ory fields are displayed |
 
 Table 11: How to Use the Design Guide Entry
 
@@ -975,7 +1131,11 @@ _**2.2.3.3**_ _**How Not to Use the Design Guide Entry**_
 
 ####  Do not allow users to encode a term
 
-without selecting all its mandatory fields
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Do not allow users to encode a term | n/a |  |
+| without selecting all its mandatory fields |  |  |
 
 Table 12: How Not to Use the Design Guide Entry
 
@@ -1051,6 +1211,57 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+|  | Could feature a drop-down list box |
+| --- | --- |
+|  | Should associate the control with the individual match      Should feature the control in the match’s flyout |
+| not | allow the user to un-confirm the mandatory qualifier value independently from the |
+| conc | ept |
+| comm | unicate to the user that they must select the mandatory qualifier in order to |
+| irm/s | ave the note |
+|  |  |
+| disab | le the control for confirming a match (text parser matching approach) or the |
+| ol fo | r saving the note (single concept matching approach) if there is a mandatory |
+| fier | that remains unresolved |
+| d fea | ture the words ‘Please specify’ in the mandatory qualifier selection control |
+| d mak | e the mandatory qualifier selection control sufficiently prominent |
+| Co | uld feature the mandatory qualifier selection control in yellow, until the user selects |
+| an | option from it |
+|  |  |
+| Sh | ould feature a warning message in the suggested match area (in the left-hand pane) |
+| th | at appears when the user moves the mouse over the area |
+| orati | on with Additional Values |
+| be ad | ditional values that SNOMED-CT does not contain, but which will be crucial to |
+| meani | ngful note. These may be time values, such as months, hours or dates (there are |
+| e dat | es in SNOMED-CT; the system would need to distinguish expressions of date |
+| dable | in SNOMED-CT from those which are not); or values for an observable entity |
+| ch as | temperature or blood pressure. |
+| must | be able to recognise these values and any specified units from within the user’s |
+| , and | where there are not appropriate units identified, the system must suggest an |
+| defa | ult unit. The relationships between the concepts and the value, plus the values |
+| must | be taken from an external information model if they are not present in SNOMED- |
+|  |  |
+| H com | pletion of information model definitions for these composite statements, further |
+| dance | will need to be issued. The information that follows is preliminary guidance. |
+| Ide | ntifying Values Within Text |
+| impor | tant for the clinician to be able to type numerical values into their notes, and for the |
+| ecogn | ise these values and to associate them with the correct concept. These values are |
+| d in | SNOMED-CT, and will be derived from an external information model, but the |
+| ensu | re that, from the user’s point of view, the interaction appears seamless. |
+| impor | tant that the system can derive the appropriate measurement unit, based upon the |
+| the | concept (SNOMED-CT or non-SNOMED-CT) with which they are associated. It is |
+| l tha | t the system can validate the numbers, for example, to avoid decimal points in the |
+| , or | the user entering too few digits. We would expect to employ an information model |
+| ned i | nformation about the formats and ranges of the measurement types covered. |
+| will | allow the user to type values into the text input area. In the example shown in |
+| the u | ser types in a temperature of ’39.8°C’. Meanwhile, the system has matched the text |
+| e’ wi | th the SNOMED-CT observable entity concept, ‘Body temperature’. Drawing from |
+| ate i | nformation model, the system recognises that, for the concept of ‘Body |
+| ’, th | e figure ’39.8’ falls within a range that would imply that this was a measurement |
+| grees | centigrade. In its match, therefore, the system adds the unit, ‘°C’. It also inserts |
+| ture | value after the SNOMED-CT match, with an equals (‘=’) sign between concept and |
+|  |  |
+
 Figure 23: Entering Text that Contains Measurement Values
 
 If the user expands the encoding dialog for the match, the system presents fields in the flyout for the value and the value’s unit, pre-populated with ’39.8’ and ‘°C’ respectively as shown in Figure
@@ -1090,7 +1301,11 @@ _**2.3.1.2**_ _**How to Use the Design Guide Entry**_
 
 ####  Deduce the appropriate unit and display
 
-this with the value
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         Deduce the appropriate unit and display See | Figure 23 |  |
+| this with the value |  |  |
 
 Table 13: How to Use the Design Guide Entry
 
@@ -1100,7 +1315,12 @@ _**2.3.1.3**_ _**How Not to Use the Design Guide Entry**_
 
 ####  Interpret a full stop character as a full
 
-stop if it has digits immediately both sides of it.
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Interpret a full stop character as a full | 39.8 should not be interpreted by the |  |
+| stop if it has digits immediately both | system as two sentences |  |
+| sides of it. |  |  |
 
 Table 14: How Not to Use the Design Guide Entry
 
@@ -1218,13 +1438,36 @@ _**2.3.2.2**_ _**How to Use the Design Guide Entry**_
 
 ####  Offer default units See Figure 27
 
+
+|  | Could provide fields into which users can enter these values |
+| --- | --- |
+|  | Could provide a process whereby it marks those expressions which could require values and display a floating dialog when the focus moves to these expressions |
+| ld pre | -populate the template with any values it has identified during the text parsing |
+| ess |  |
+| ld ide | ntify elements of composites and communicate them as a single composite (in |
+| tion t | o the individual elements), such as ‘Blood pressure’ |
+| ld be | able to recognise composite values entered alongside a concept |
+| ld enc | ourage users to enter in further values that comprise the composite by offering |
+| y fiel | ds where appropriate |
+|  |  |
+| Quanti | ty and unit values, and their relationships with appropriate SNOMED-CT concepts, in the main, |
+| will r | equire additional information model data. |
+| Compos | ites do not exist in the SNOMED-CT Concept Model. Expressing these relationships requires |
+| metada | ta. |
+| H | ow to Use the Design Guide Entry |
+| t | Example                     Comments |
+| Offer | default units                    See Figure 27 |
+
 Table 15: How to Use the Design Guide Entry
 
 _**2.3.2.3**_ _**How Not to Use the Design Guide Entry**_
 
 ####  Offer default values n/a This could lead to the system encoding
 
-values that the user had not entered
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Offer default values | n/a | This could lead to the system encoding values that the user had not entered |
 
 Table 16: How Not to Use the Design Guide Entry
 
@@ -1260,33 +1503,29 @@ HSCIC Controlled Document
 
 #### 3.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-FSN Fully Specified Name
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-SCT Systematised Nomenclature of Medicine – Clinical Terms
-
-SNOMED-CT Systematised Nomenclature of Medicine-Clinical Terms
-
-TLC Top Level Concept
-
-UI User Interface
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| FSN | Fully Specified Name |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| SCT | Systematised Nomenclature of Medicine – Clinical Terms |
+| SNOMED-CT | Systematised Nomenclature of Medicine-Clinical Terms |
+| TLC | Top Level Concept |
+| UI | User Interface |
 
 Table 17: Terms and Abbreviations
 
 #### 3.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health)
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
-
-Context Model A model that specifies relationships relating to semantic context that has been defined outside of the SNOMED-CT Concept Model
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health) |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
+| Context Model | A model that specifies relationships relating to semantic context that has been defined outside of the SNOMED-CT Concept Model |
 
 Table 18: Definitions
 
@@ -1306,13 +1545,16 @@ HSCIC Controlled Document
 
 #### 3.4 References
 
-**R1.** NHS CUI Design Guide Workstream - Table of Contents 2.0.0.0 30-Oct-2006
 
-**R2.** NHS CUI Design Guide Workstream - Design Guide Entry - Terminology Matching
-
-**R3.** NHS CUI Design Guide Workstream - Design Guide Entry - Terminology - Display Standards for Coded Information
-
-**R4.** NHS CUI Design Guide Workstream - Design Guide Entry - Terminology - PostCoordination
+| Reference Document | Version | Date |
+| --- | --- | --- |
+| R1.              NHS CUI Design Guide Workstream - Table of Contents | 2.0.0.0 | 30-Oct-2006 |
+| R2.              NHS CUI Design Guide Workstream - Design Guide Entry - Terminology - | 1.0.0.0 | 27-Mar-2007 |
+| Matching |  |  |
+| R3.              NHS CUI Design Guide Workstream - Design Guide Entry - Terminology - Display | 2.0.0.0 | 27-Mar-2007 |
+| Standards for Coded Information |  |  |
+| R4.              NHS CUI Design Guide Workstream - Design Guide Entry - Terminology - Post- | 2.0.0.0 | 27-Mar-2007 |
+| Coordination |  |  |
 
 Table 19: References
 
@@ -1718,7 +1960,231 @@ assessment, including a redefinition of the NHS CUI Design Guide Workstream stra
 
 #### Open Issues Summary
 
-None
+
+| PART I | General |
+| --- | --- |
+| A1             Ge | neral |
+| A1.1           Th | e system will support encoding solely from keyboard-driven interaction. |
+| A1.2           Th | e system will not prevent effective and efficient encoding with other entry devices, such as voice recognition or touch |
+| pa | d. |
+| A1.3           Th | e system will facilitate the collection of valid, unambiguous clinical statements (these will be SNOMED codes with |
+| ad | ditional context as necessary), potentially covering all parts of the care process. |
+| A1.4           Th | e system will respond to the changing coding requirements of differing clinical noting contexts, and will communicate |
+| th | ese to the user. |
+| A1.5           Th | e system will be able to deal with the following noting contexts: |
+|  | Free-form noting without any, or very little context |
+|  | Free-form noting within a workflow context |
+|  | Free-form noting under headings |
+|  | Heavily contextualised free-form noting within a structured form |
+| A1.6           Th | e system will be able to deal with form creation (that is, finding relevant SNOMED-CT codes during form authoring, |
+| su | ch as by a GP. Note This is not involved in the noting process itself. |
+| PART II | Searching |
+| B1             Se | tting Context |
+| B1.1           Th | e system will provide users with a means of limiting a search to contextually relevant portions of SNOMED-CT. |
+| B1.2           Th | e system will clearly communicate which contextually relevant portions of SNOMED-CT the users are searching. |
+| B1.3           Th | e system will be capable of automatically setting context. This automatic contextual filtering could be in response to |
+| pr | eviously entered text/encoded terms. |
+| B1.4           Th | e system will assist users’ searches by allowing them to expand, contract, or sort a set of search results according to |
+| me | aningful contextual categories (such as 'symptoms' or 'procedures'). |
+| B2              E | nter and Select Text |
+| B2.1            T | he system will be able to handle free-form text entry, according to context. |
+| B2.2            T | he system will attempt to structure (that is, ‘parse’) as much of the free text that it can, but will give users the option of |
+| s | aving it as free-form text, according to context. |
+| B2.3            T | he system will offer users an efficient way of triggering an encoding interaction. |
+| B2.4            U | sers will be able to modify the search term quickly and easily. |
+| B2.5            T | he system will be capable of fuzzy matching text (such as in the event of a spelling error) and of offering a ‘best guess’ |
+| p | lus a means of viewing alternative matches. |
+| B2             En | ter and Select Text |
+| B2.6           Th | e system will not commit to the record any encoded terms that have not been confirmed by the user. |
+| B2.7           Th | e system will provide ‘best guess’ concepts for words within the free text. |
+| B2.8           Th | e system will be able to handle a limited range of structured shorthand that exists outside of SNOMED-CT. |
+| B2.9           Th | e system will be able to offer predictive matching of SNOMED-CT concepts (including both single words and phrases). |
+| B2.10          Th | e system will give users flexibility as to when they encode text prior to committing it to the record. |
+| B3             Sh | ortcuts and Abbreviations |
+| B3.1           Us | ers will be able to search on abbreviations found within SNOMED-CT. |
+| B3.2           Us | ers will be able to define and search their own abbreviations ('shortcodes'). |
+| B3.3           Th | e system will display, in the encoded notes, both the abbreviation entered by users, and its expansion (either preferred |
+| te | rm or synonym). |
+| B3.4           Us | ers will be able to enter codes by means of keyboard shortcuts. |
+| B3.5           Us | ers will be able to search on single or multiple word prefixes, independent of order. |
+| B3.6           Us | ers will be able to define their own keyboard shortcuts. |
+| B3.7           Wh | en displaying results, matches from all types of abbreviations will be shown and will be clearly distinguished from |
+| ea | ch other. |
+| B4             Li | sting Matching Concepts |
+| B4.1           Th | e system will display categories, (for example, TLCs), to which the term belongs, where appropriate, to ensure that |
+| us | ers can distinguish between similar sounding results. |
+| B4.2           Th | e system will ensure that users can easily navigate through long lists of results. |
+| B4.3           Th | e system will allow users to move from a search result item to related terms (for example, a more specific term). |
+| B4.4           Th | e system will ensure that users see a clear definition of, and the preferred term for, a concept, before committing it to |
+| th | e record. |
+| B4.5           Th | e system will provide access to the full text of a SNOMED-CT term (up to 255 characters). |
+| B4.6           Th | e system will be able to communicate multiple kinds of search results ranking within the same list, where there is |
+| ex | ceptional ranking. |
+| B4.7           Th | e system will allow users to reorder search lists according to a method of ranking that is distinct from the default order. |
+| B4.8           Th | e system will discriminate between the results returned, according to relevance (if known). |
+| B4.9           Th | e system will communicate if truncation has occurred. |
+| B5             Ca | nnot Find a Good Match |
+| B5.1           Th | e system will allow users to specify that a term is only nearly correct. |
+| B5.2           Th | e system will allow users to record that they have given up trying to encode a concept. |
+| B5.3           Th | e system will be able to log approximate codes so that NHS CFH can determine whether changes are required to the |
+| te | rminology or the terminology user interface. |
+| B5.4           Th | e system will allow users to qualify a ‘nearly correct’ term with additional text. |
+| B5.5           Th | e system will allow users to record ‘unencodable’ concepts as free text. |
+| B5.6           In | the event of a poor match (indicated by the user), the system will allow and encourage users to navigate back up the |
+| hi | erarchy to a more general term. |
+| PART III           E | laboration and Post Coordination |
+| C1             Ge | neral |
+| C1.1           Us | ers will be able to refine/select certain key attributes of a concept. |
+| Th | ese attributes may be based on SNOMED-CT relationships such as qualifiers, surgical procedures, and (body) finding |
+| si | tes. They may include axis modifiers (based on the Context Model). |
+| C1.2           Th | e system will allow users to negate disorder concepts. |
+| We | will outline the issues involved with the system handling user attempts to negate concepts that are not disorders. We |
+| sh | ould illustrate the issues of negation of findings. This will probably lead to SCT authoring requirements, or more |
+| me | tadata. |
+| C1.3           If | users have included negation text in a search, the system should be able to identify pre-coordinated negated concepts |
+| in | search results and present them differently (or omit them). |
+| C1.4           Us | ers will be able to refine the original concept without necessarily losing the refined attributes. |
+| Fo | r example, they start off with ‘muscle injury’, by searching on the text ‘musc’: |
+|  | muscle injury |
+|  | Finding site = muscle structure |
+|  | skeletal muscle structure |
+|  | skeletal muscle part |
+|  | tendon structure |
+|  | hamstring tendon |
+| At | this point, the user may wish to refine the original concept ‘muscle injury’ to ‘muscle strain’, but will not want to lose the |
+| re | fined, ‘hamstring tendon’. |
+| C1.5           Th | e system will need to handle (‘error’) situations where the refinement causes mismatches with other attribute values. |
+| C1.6           Us | ers will be able to simultaneously refine multiple attribute concepts of a given concept. |
+| Fo | r example, in addition to specifying the body site, the user may also want to specify severity (such as ‘moderate’). |
+| C1.7           Th | e system will present all the appropriate attribute concepts for a given concept. This may need to be a subset, or even |
+| a | superset, of all the attribute relations currently 'allowable' in the published Terminology data. |
+| C1.8           Wh | ere appropriate and feasible, the system will provide graphical navigation of body sites. |
+| C1.9           Th | e system will allow users to specify a small set of elaboration values that are not defined by SNOMED-CT nor Context |
+| Mo | del relationships. These will include time values and values defined by additional Informational models (such as blood |
+| pr | essure readings and temperature readings). |
+| C1.10          Wh | ere users can enter numerical values, appropriate units must be presented to users by the system. Where there is a |
+| ch | oice of units, the system must present the choice clearly and explicitly to communicate the user’s choice. |
+| C1.11          Th | e system will encourage users to refine mandatory attributes and values (where appropriate). |
+| Th | is may arise when the user selects a certain attribute which must be refined in order to make sense (for example, the |
+| us | er could not select the attribute ‘severities’ without refining it further). |
+| C1.12          Th | e system will allow users to hierarchically refine an attribute through multiple levels. |
+| C1.13          Th | e system will allow users to hierarchically refine multiple attributes simultaneously. |
+| C1.14          Us | ers will have the flexibility to be able to undo and/or re-refine any elaboration, whether it be proposed by the system or |
+| se | lected by the user. |
+| C1.15          Us | ers will be able to apply elaboration to more than one concept if the relationship is allowed. |
+| C1.16          Us | ers will be able to move elaboration from one concept to another if the relationship is allowed. |
+| C1.17          Th | e system will attempt to render concepts and their elaboration in a meaningful way. |
+| C1.18          Th | e system will clearly communicate attribute relationships, both in a structured view and in a ‘narrative’ view. |
+| C2             Sy | stem Identifies Elaboration Within Text |
+| C2.1           Th | e system will identify potential attribute relationships between concept matches in free text, and will promote them in |
+| th | e search process. |
+| C2.2           Th | e scope for any system-led search for attribute relationship matches or other elaboration in a passage of text will be |
+| li | mited (by the system) and limitable (by the user). |
+| Fo | r example, the system may only be required to search within a marquee, which in turn is automatically defined by full |
+| st | ops. |
+| Fu | rther limitations may be required to reduce performance demands, such as only allowing up to four potential codes |
+| wi | thin a grouping marquee. |
+| C2.3           Th | e system will identify potential elaboration within the typed notes and will offer relevant elaboration options during the |
+| en | coding process. |
+| Fo | r example, by presenting and pre-populating elaboration fields. |
+| C2.4           Th | e system will capture ‘free’ text that has been associated with an encodable term, but has not been encoded. |
+| C3             Us | ers Associate Free Text with Encodable Items |
+| C3.1           Th | e system will provide users with a mechanism for associating free-text notes that they have entered with an encodable |
+| co | ncept. |
+| C3.2           Th | e system will allow users to adjust what text is converted into structured elaboration for a concept. |
+| C3.3           Th | e system will provide users with a mechanism to enter additional text notes with an encodable concept. |
+| C3.4           Th | e system will warn users if text notes contain qualifications (such as negation) that significantly affect the meaning of a |
+| co | ncept, or conflict with other specified or assumed qualifiers. |
+| C4             Co | mposites |
+| C4.1           Th | e system will prompt users to select related concepts that form meaningful composites. |
+| PART IV            D | isplay of Coded Information |
+| D1             Ge | neral |
+| D1.1           Th | e display will be flexible, so that it can fit in a number of different spaces and sizes. |
+| D1.2           Th | e system will have the capability to display both SNOMED-CT-encoded and unencoded notes. |
+| D1.3           Th | e system will clearly distinguish between free text that, upon committing to the record, will be SNOMED-CT encoded |
+| an | d that which will not. |
+| D1.4           Th | e system will allow users to edit SNOMED-CT-encoded terms (that is, re-encode them) before committing them to the |
+| re | cord. |
+| D1.5           Th | e system will display polished ‘prose’ as well as the structured view for post-coordinated concept. |
+| D1.6           Th | e system will ensure that the display of ‘prose’ and ‘encoded’ notes are consistent with each other. |
+| D1.7           Th | e system will be able account for a number of application real estate sizes and shapes. |
+| D1.8           Th | e system will allow users to view their original text entry, that is, the last edit of the text they entered prior to encoding. |
+| D2             Co | mmunicating What Can be Encoded |
+| D2.1           Th | e system will communicate which text is potentially SNOMED-CT encodable. |
+| D2             Co | mmunicating What Can be Encoded |
+| D2.2           Th | e system will distinguish between text that can be encoded as a standalone SNOMED-CT concept, and text that can |
+| be | encoded only as elaboration to a concept. |
+| Fo | r example, we would want the system to indicate that qualifier text, such as ‘mild’ can be encoded in a structure |
+| ma | nner, but only as elaboration to another concept (for example, ‘gastroenteritis’); we would not want the user to be able |
+| to | encode ‘mild’ by itself. |
+| D2.3           Th | e system will clearly distinguish between potentially encodable text and encoded text. Potentially encodable text will be |
+| co | mmitted to the record as free text if users do not encode it. |
+| Th | is becomes even more critical if the system displays ‘best matches’ (that is, predictive code matching). Users must be |
+| fu | lly aware of what will be saved as a code and what will be saved as free text, and we have a requirement that all |
+| in | stances of encoded concepts must be confirmed by the user prior to committing them to the record; if not, the |
+| ‘c | oncepts’ will remain as unstructured text. |
+| D2.4           Th | e system will display the top match for each potentially encodable concept, in addition to the text typed in by the user. |
+| D3             Sh | owing Structure |
+| D3.1           Th | e system will communicate the relationship between codes and their elaboration on display. |
+| D3.2           Th | e system will communicate potential relationships between concepts. |
+| D3.3           Th | e system will distinguish between potential relationships and user-confirmed relationships between concepts. |
+| REVISION AND SIGNOFF | SHEET |
+| Change Record |  |
+| Date           Au | thor             Version      Change Reference |
+| 20-Jun-2006    Gi | les Colborne     0.0.0.1      Initial draft for review/discussion |
+| 26-Jul-2006    La | ura Dromundo     0.0.0.2      Updates to incorporate final Deliverable information |
+| Be | n Luff |
+| 28-Jul-2006    Pa | ul Robinson      0.0.0.3      Formatting updates |
+| 02-Aug-2006    Vi | vienne Jones     0.0.0.4      Copyedit |
+| 10-Aug-2006    La | ura Dromundo     0.0.0.5      Final Updates |
+| Be | n Luff |
+| 14-Aug-2006    Vi | vienne Jones     0.0.0.6      Copyedited following updates from informal review with the Authority. |
+| 15-Aug-2006    Be | n Luff           0.0.0.7      Changes in response to copy edit |
+| La | ura Dromundo |
+| 15-Aug-2006    Vi | vienne Jones     0.0.0.8      Copyedit on updates. |
+| 15-Aug-2006    Be | n Luff           0.0.0.9      Changes in response to copy edit |
+| 16-Aug-2006    Pa | ul Robinson      0.0.0.10     Final check of document |
+| 16-Aug-2006    Vi | vienne Jones     0.1.0.0      Document cleansed. Informal reviews carried out with the Authority, hence, Working Baseline not used previously. Moved to Baseline Candidate. |
+| 18-Aug-2006    Vi | vienne Jones     1.0.0.0      Baseline following Acceptance |
+| 26-Feb-2007    Be | n Luff           1.0.0.1      Update Release 3 document |
+| 27-Feb-2007    Ma | rc Brown         1.0.0.2      Copyedit |
+| 27-Feb-2007    Ig | or Laketic       1.0.0.3      Accepted changes |
+| 01-Mar-2007    Ma | rc Brown         1.0.1.0      Document cleansed |
+| 12-Mar-2007    Be | n Luff           1.0.1.1      Changes post audience review |
+| 13-Mar-2007    Vi | vienne Jones     1.0.1.2      Copyedited updates |
+| 13-Mar-2007    Ig | or Laketic       1.0.1.3      Accepted changes |
+| 13-Mar-2007    Vi | vienne Jones     1.1.0.0      Document cleansed |
+| 20-Mar-2007    Be | n Luff           1.1.0.1      Changes post audience review |
+| 20-Mar-2007    Ma | rc Brown         1.1.0.2      Copyedit of changes |
+| 20-Mar-2007    Ig | or Laketic       1.1.0.3      Accepted changes |
+| 21-Mar-2007    Ma | rc Brown         1.2.0.0      Cleansed, Baseline Candidate |
+| 27-Mar-2007    Vi | vienne Jones     2.0.0.0      Baseline following Acceptance |
+| 25-Jul-2007    Vi | vienne Jones     2.0.0.0      Preface added so the document can be released to the Distribution Mechanism. The date fields were changed to static text as the original acceptance date needs to maintained from a cross-reference point of view. |
+| Document Status h | as the following meaning: |
+|  Drafts 0.0. | 0.X – Draft document reviewed by the Microsoft CUI project team and the |
+| Authority d | esignate for the appropriate Workstream. The document is liable to change. |
+|  Working Ba | seline 0.0.X.0 – The document has reached the end of the review phase and |
+| may only h | ave minor changes. The document will be submitted to the Authority CUI project |
+| team for w | ider review by stakeholders, ensuring buy-in and to assist in communication. |
+|  Baseline C | andidate 0.X.0.0 – The document has reached the end of the review phase and |
+| it is read | y to be frozen on formal agreement between the Authority and the Company |
+|  Baseline X | .0.0.0 – The document has been formally agreed between the Authority and the |
+| Company |  |
+| Note that minor u | pdates or corrections to a document may lead to multiple versions at a particular |
+| status. |  |
+| Audience |  |
+| The audience for | this document includes: |
+|  Authority | CUI Manager / Project Sponsor. Overall Project Manager and sponsor for the |
+| NHS CUI Pr | oject within the Authority. |
+|  Authority | NHS CUI Design Guide Workstream Project Manager. Responsible for |
+| ongoing ma | nagement and administration of the Workstream. |
+|  The Author | ity Project Team. This document defines the approach to be taken during this |
+| assessment | and therefore must be agreed by the Authority. |
+|  Microsoft | NHS CUI Team. This document defines the approach to be taken during this |
+| assessment | , including a redefinition of the NHS CUI Design Guide Workstream strategy. |
+| Open Issues Summary |  |
+| Issue | Raised By   Action to Resolve |
+| None |  |
 
 Table 20: Open Issues Summary
 

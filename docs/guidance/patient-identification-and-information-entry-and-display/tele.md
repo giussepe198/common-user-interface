@@ -107,15 +107,12 @@ Figure 2: Country Selector Assisted Text Entry Box
 
 **Note**
 
-Elements used within a software application are commonly referred to as a ‘control’. These can take many forms but the types referred to in this document will either be ‘input controls’ that can receive input from a user, such as a button, text box, option button (radio button) or check box, or ‘display controls’ such as a label, which can only display information.
 
-Table 1 describes the changes made since the previous version of this guidance (Baseline version 3.0.0.0 dated 25 June 2009):
-
-**Deleted** Brackets around area codes (throughout document)
-
-**Amended** Text within paragraphs to reflect removal of brackets (throughout document)
-
-**Added** Incorrect usage example (section 2.2.1.5)
+| Change | IDs | Change Description |
+| --- | --- | --- |
+| Deleted |  | Brackets around area codes (throughout document) |
+| Amended |  | Text within paragraphs to reflect removal of brackets (throughout document) |
+| Added |  | Incorrect usage example (section 2.2.1.5) |
 
 Table 1: Changes Since the Last Baseline Version
 
@@ -198,6 +195,33 @@ HSCIC Controlled Document
 ![](tele_assets/tele.pdf-6-0.png)
 
 ![](tele_assets/tele.pdf-6-1.png)
+
+
+|  | Optimal visibility of the values |
+| --- | --- |
+|  | Easy recognition of the values in the context of the wider clinical application |
+|  | Easy recognition of data type requested for input |
+|  | Reduction of invalid entries |
+|  | Optimal size of input fields |
+| O | ut of Scope |
+| ion d | efines areas that are not covered in this guidance. Although there may be specific |
+| ociat | ed with these areas that are not addressed in this guidance, it is likely that the |
+| s in | this guidance will extend to the aspects of the input and display of telephone numbers |
+| f the | areas listed below. |
+| wing | items are out of scope: |
+| a sto | rage – This guidance does not prescribe the format for storing data that is input or |
+| playe | d |
+| ms of | use – This guidance does not define when an input field or display should be |
+| sente | d within a system |
+| m des | ign – This guidance does not prescribe the correct layout for a form or the |
+| igati | on around a form |
+| numb | ers – This guidance does not prescribe the format for fax numbers |
+| a inp | ut control types – This document does not specify how the input controls should |
+| label | led, for example, ‘Home number’ or ‘Preferred contact’. The concept of types and |
+| text | are not explicitly supported. However, the flexible behaviour of the input control and |
+| excl | usion of a control-level label enable the developer to reuse the same input control |
+| mult | iple situations. Figure 3 displays an example of the controls used for multiple ‘types’ |
+| telep | hone data: Telephone Details Home e.g. 01234 567890 Work e.g. 020 7890 1234 x9999 |
 
 Figure 3: Example of Two Single Entry Boxes Used for Different Contexts
 
@@ -325,6 +349,51 @@ Figure 4 shows an example of the recommended telephone number format:
 
 ![](tele_assets/tele.pdf-8-1.png)
 
+
+|  | UK Government Office of Communications (Ofcom) |
+| --- | --- |
+|  | UK Government Data Standards ® |
+|  | Microsoft Corporation ® |
+|  | IBM Corporation ® |
+|  | Dell |
+| esk-b | ased research project looking at a range of information entry Web pages and |
+| nical | applications |
+| eb-ba | sed survey of 41 respondents from NHS clinicians and administrative staff, |
+| epend | ent Software Vendors (ISVs), community pharmacists, and NHS Connecting for |
+| lth ( | CFH) |
+| atien | t Safety Assessment |
+| tant |  |
+| isual | representations used within this document to display the guidance are illustrative only. They |
+| impli | fied in order to support understanding of the guidance points. Stylistic choices, such as colours, |
+| or i | cons are not part of the guidance and unless otherwise specified are not mandatory requirements |
+| ompli | ance with the guidance in this document. |
+| lepho | ne Number Display |
+| tion | defines the recommendations for displaying telephone numbers in NHS clinical |
+| ions. | NHS clinical applications should display telephone numbers in this format to facilitate |
+| by te | lephone with patients, clinicians, hospitals or surgeries. |
+| en la | yout provides the best display format because it shows a complete, unambiguous |
+| tion | of telephone contact details, which includes all information and clearly identifies |
+| digi | ts. |
+|  |  |
+| reco | gnised that most telephone numbers stored within NHS clinical applications will relate to UK |
+| ions. | In these cases, the international code element is not required. |
+| e num | bers in NHS clinical applications can comprise up to four elements, are separated |
+| s and | are displayed in the following order: |
+| ernat | ional Code (optional) – Is represented by a plus (+) symbol followed by the |
+| evant | numeric country code (which will be between two and four digits) |
+| a Cod | e (mandatory) – The entire area code (including optional digits such as a leading |
+| o) mu | st not be enclosed within brackets. This code is usually a sequence of between |
+| ee an | d six digits. Where the international code is displayed, optional digits within the |
+| a cod | e should be omitted |
+| N | ote Ofcom holds responsibility for UK telecommunications. Ofcom manages the UK telephone numbering plan, including area codes, and this may change from time to time. |
+| cal N | umber (mandatory) – If the local number (typically a sequence of between four |
+| d eig | ht digits) contains more than six digits, then a single space should precede the final |
+| ur di | gits |
+| tensi | on Number (optional) – Is validly represented by either: |
+|  | A single input box including an ‘x’ character displayed directly after the telephone number followed by a numeric extension code (typically four digits in length) The full telephone number then displays as: +International Code Area Code Local Number xExtension Number |
+|  | Display in a separate extension input box adjacent to the telephone number input box The full telephone number then displays as: +International Code Area Code Local Number [Extension Extension Number] |
+| shows | an example of the recommended telephone number format: Home        0118 496 0123 Work        020 7946 0472 Next of Kin     +1 212 555 2368 |
+
 Figure 4: Recommended Telephone Number Formats Showing Telephone and Extension Number Within a Single Input Box
 
 ##### 2.1.1 Guidance
@@ -363,9 +432,21 @@ Page 5
 
 HSCIC Controlled Document
 
-TID-0009 For UK telephone numbers, if there are more than six digits in the local number, (in other words, not the country code, area code or extension number), then a space must be inserted before the final four digits.
 
-TID-0010 The telephone number should be formatted for display according to the rules detailed in APPENDIX A.
+| ID | Guideline | Status |
+| --- | --- | --- |
+| TID-0001 | If the country code is for the UK, for example, ‘+44’ or ‘0044’, then it must not be displayed. | Mandatory |
+| TID-0002 | When displayed, the country code must always be displayed with a ‘+’ sign in front of it. | Mandatory |
+| TID-0003 | When displayed, the country code must not display any leading zeros. | Mandatory |
+| TID-0004 | When displayed, the country code must be separated from the rest of the telephone number by a single space. | Mandatory |
+| TID-0005 | For UK telephone numbers, the area code must not be displayed with brackets around it. | Mandatory |
+| TID-0006 | For UK telephone numbers, the area code must be separated from subsequent numbers by a space. | Mandatory |
+| TID-0007 | For UK telephone numbers, extension numbers can be displayed with an ‘x’ preceding and adjacent to the number. | Recommended |
+| TID-0008 | For UK telephone numbers where the telephone and extension numbers are displayed within a Mandator single input box, the extension number must be separated from the rest of telephone number by a single space that precedes the ‘x’. | y |
+| TID-0026 | For UK telephone numbers where the extension number is displayed in a separate input box, a label must be shown above the input box to indicate the content | Recommended |
+| ID | Guideline                                                                                        S | tatus |
+| TID-0009 | For UK telephone numbers, if there are more than six digits in the local number, (in other words, not the country code, area code or extension number), then a space must be inserted before the final four digits. | Mandatory |
+| TID-0010 | The telephone number should be formatted for display according to the rules detailed in          R APPENDIX A. | ecommended |
 
 Table 2: Guidance for Telephone Number Display
 
@@ -397,9 +478,14 @@ Use this format to display telephone numbers within a clinical application.
 
 #### 
 
-[International Code <space>] Area Code <space> Local Number [‘x’ Extension Number]
 
-Local numbers with more than six digits include a space before the final four digits
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+| [International Code <space>] Area Code | 029 2018 0928 | Use this format to display telephone numbers |
+|         <space> Local Number [‘x’ Extension | 0151 496 0947 | within a clinical application. |
+| Number] | 01632 96032601632 |  |
+| Local numbers with more than six digits | 96029 |  |
+| include a space before the final four digits | 016329 60541 016329 6054 020 7946 0472 x1234 +1 555 323 1020 +356 8437 4667 +91 645623 4576 7898 |  |
 
 Table 3: Correct Telephone Number Formatting Examples
 
@@ -478,19 +564,19 @@ This example lacks readability due to the omission of the separators between ele
 
 ####  
 
-International Code Area Code Local Number
 
-Area Code Local Number 02920180928
-
-01514960947
-
-01632960326
-
-0163296029
-
-01632960541
-
-0163296054
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+| Where optional digits are omitted | (029) 2018 0928 | Examples incorrectly shown with brackets around |
+|  | (0151) 496 0947 (01632) 960326 (01632) 96029 (016329) 60541 (016329) 6054 | the area codes. |
+| International Code <space> Area Code | +44 029 2018 0928 | This example lacks clarity because there is no |
+|      <space> Local Number | +44 0151 496 0947 +44 01632 960326 +44 01632 96029 +44 016329 60541 +44 016329 6054 | distinction between optional and mandatory digits (such as leading zeros). It includes the unnecessary International Code for the UK. |
+| International Code <space> (Area Code) | +44 29 2018 0928 | This example includes the unnecessary |
+|      <space> Local Number | +44 151 496 0947 +44 1632 960326 +44 1632 96029 +44 16329 60541 +44 16329 6054 | international code for the UK, and the leading zero from the area code is missing. |
+| International Code Area Code Local | +442920180928 | This example lacks completeness and readability |
+|        Number | +441514960947 +441632960326 +44163296029 +441632960541 +44163296054 | due to the inclusion of the international code for the UK, the omission of the optional leading zero from the area code and omission of the separators between elements. |
+| Area Code Local Number | 02920180928 | This example lacks readability due to the omission |
+|  | 01514960947 01632960326 0163296029 01632960541 0163296054 | of the separators between elements. |
 
 Table 4: Incorrect Telephone Number Formatting Examples
 
@@ -506,13 +592,9 @@ An inherent problem with screen reader software is that the form that numbers ta
 
 - **01632 960154** dictated as “zero sixteen thirty two nine hundred sixty thousand one hundred
 
-fifty four”
 
-It is unfortunate that the audible reading patterns differ according to the specific number. However, this is considered acceptable because screen reader users are accustomed to dealing with such numbers.
-
-_**2.1.4.2**_ _**Patient Safety**_
-
-A Telephone number display affects patient safety when it appears in close proximity to the NHS Number within a screen. In such cases, the numbers could be confused, resulting in the user accessing the wrong patient record details. Therefore, the format of each number should provide a clear distinction between the relevant value types. This is illustrated in Figure 5:
+|  |  |
+| --- | --- |
 
 Figure 5: Example of a Telephone Number Format in Close Proximity to an NHS Number
 
@@ -599,7 +681,17 @@ committed
 
 - All other country codes are retained (as detailed in APPENDIX A.)
 
-A number of different use cases are displayed from Figure 8 to Figure 15:
+
+|  | Places spaces in logical locations for readability purposes |
+| --- | --- |
+| he num | ber cannot be identified as a valid type (as per the rules in CFH NPFIT CSA – |
+| commun | ication Address Display Requirements for CSA {R3}) then: |
+|  | The input box leaves the entry as it was entered |
+|  | The input box displays the entry to the user as it was entered |
+| UK cou | ntry code can be entered but is removed from display after it has been |
+| itted |  |
+| other | country codes are retained (as detailed in APPENDIX A.) |
+| diffe | rent use cases are displayed from Figure 8 to Figure 15: |
 
 Figure 8: User Is Presented with a Plain Single Entry Box Without Prompt but with ISV Supplied Labels
 
@@ -638,6 +730,11 @@ Figure 13: Example of a Reformatted Extension Number Within a Single Text Entry 
 
 Figure 14: Entry of a Number and an Extension Number in Separate Input Boxes
 
+
+| Telephone Number | Extension |
+| --- | --- |
+| 9 8765 | 1234 |
+
 Figure 15: Example of a Reformatted Number and Extension Number Boxes
 
 _**2.2.1.1**_ _**Prompts**_
@@ -673,37 +770,19 @@ number, add an ‘x’ to the front of the extension number
 
 - ‘Work’ label, for example ‘Enter the ‘work’ telephone number. To include an extension
 
-number, enter the number into the extension number box’
 
-_**2.2.1.3**_ _**Guidance**_
-
-TID-0011 Use a free-text input box for the entry of telephone number. Mandatory
-
-TID-0027 Use a free-text input box where extension number is input into a separate input box Mandatory
-
-TID-0012 Ensure the input box accepts formatted and unformatted entries. Mandatory
-
-TID-0013 If the number can be identified as a valid type (as detailed in APPENDIX A), the input box should strip out formatting upon losing focus and replace it with a reformatted equivalent.
-
-TID-0014 Display a reformatted entry to the user which:
-
- Places spaces in logical locations for readability
-
-TID-0015 If the number cannot be identified as a valid type (as detailed in APPENDIX A), display the entry to the user as it was entered.
-
-Mandatory
-
-Mandatory
-
-Mandatory
-
-TID-0016 Remove the UK country code from display after it is committed. Mandatory
-
-TID-0017 Retain all other country codes. Mandatory
-
-TID-0018 Do not display UK numbers with the international prefix. Mandatory
-
-TID-0019 Display non-UK numbers with a + prefixed to the country code. Mandatory
+| ID | Guideline | Status |
+| --- | --- | --- |
+| TID-0011 | Use a free-text input box for the entry of telephone number. | Mandatory |
+| TID-0027 | Use a free-text input box where extension number is input into a separate input box | Mandatory |
+| TID-0012 | Ensure the input box accepts formatted and unformatted entries. | Mandatory |
+| TID-0013 | If the number can be identified as a valid type (as detailed in APPENDIX A), the input box should strip out formatting upon losing focus and replace it with a reformatted equivalent. | Mandatory |
+| TID-0014 | Display a reformatted entry to the user which:  Places spaces in logical locations for readability | Mandatory |
+| TID-0015 | If the number cannot be identified as a valid type (as detailed in APPENDIX A), display the entry to the user as it was entered. | Mandatory |
+| TID-0016 | Remove the UK country code from display after it is committed. | Mandatory |
+| TID-0017 | Retain all other country codes. | Mandatory |
+| TID-0018 | Do not display UK numbers with the international prefix. | Mandatory |
+| TID-0019 | Display non-UK numbers with a + prefixed to the country code. | Mandatory |
 
 Table 5: Guidance for Unassisted Telephone Number Input
 
@@ -737,17 +816,28 @@ HSCIC Controlled Document
 
 ####  Can identify and
 
-reformat telephone number with extension number displayed in separate input box
 
-An extension number maybe displayed using a separate input box
-
-Telephone Number
-
-0118 909 8765
-
-Extension
-
-1234
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|      A single free-text |  | The user should be able to input whatever data value |
+| input box design |  | they feel is most appropriate. |
+|      Can identify and | 020 7654 3210 | The input should intelligently reformat for readability |
+| reformat |  | (as detailed in APPENDIX A). |
+| telephone |  |  |
+| numbers |  |  |
+|      Can identify and | 0118 909 8765 x1234 | The input box should be able to handle extension |
+| reformat |  | numbers. |
+| telephone |  |  |
+| numbers with |  |  |
+| extensions |  |  |
+| Usage Format | Examples                                    Com | ments |
+|         Can identify and | Telephone Number              Extension   An | extension number maybe displayed using a |
+| reformat | sep 0118 909 8765                1234 | arate input box |
+| telephone number |  |  |
+| with extension |  |  |
+| number displayed |  |  |
+| in separate input |  |  |
+| box |  |  |
 
 Table 6: Correct Examples of Unassisted Telephone Number Input
 
@@ -761,7 +851,12 @@ A separate input box for the area code can cause users to incorrectly guess the 
 
 ####  Brackets are shown around the area code on a
 
-formatted number.
+
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|         Separate input |  | A separate input box for the area code can cause |
+| box for area code |  | users to incorrectly guess the area code. |
+|  |  | Brackets are shown around the area code on a formatted number. |
 
 Table 7: Incorrect Examples of Unassisted Telephone Number Input
 
@@ -826,7 +921,15 @@ TID-0025 Populate the country selector list with the three elements below and in
 
 3. Country abbreviation (right-aligned, two-character code, enclosed in single brackets and
 
-vertically aligned to all rows).
+
+| ID | Guideline | Status |
+| --- | --- | --- |
+| TID-0020 | Use a default value of +44 (UK) for the country code. | Mandatory |
+| TID-0021 | Use the ISO 3166 names in the first column, the Ofcom list of dialling codes in the second column and the ISO 3166 abbreviated country codes in the third column. Use the abbreviation ‘UK’ instead of the ISO 3166 code of ‘GB’. | Mandatory |
+| TID-0022 | Order the country names alphabetically. Include United Kingdom once at the top of the list and once in its appropriate alphabetical location. | Mandatory |
+| TID-0023 | Use an editable drop-down list for country codes. | Recommended |
+| TID-0024 | Allow the country codes to be navigated using free-text entry. | Recommended |
+| TID-0025 | Populate the country selector list with the three elements below and in this exact order: 1. Country name (left-aligned and vertically aligned to all rows). 2. Country dialling code (right-aligned using the '+' format, for example, ‘+44'). 3. Country abbreviation (right-aligned, two-character code, enclosed in single brackets and vertically aligned to all rows). | Recommended |
 
 Table 8: Guidance for Assisted Telephone Number Input
 
@@ -906,31 +1009,28 @@ HSCIC Controlled Document
 
 #### 3.1 Terms and Abbreviations
 
-CSA Clinical Spine Application
 
-CUI Common User Interface
-
-ISV Independent Software Vendor
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-Ofcom UK Government’s Office of Communications
-
-PDA Personal Digital Assistant
-
-UI User Interface
+| Abbreviation | Definition |
+| --- | --- |
+| CSA | Clinical Spine Application |
+| CUI | Common User Interface |
+| ISV | Independent Software Vendor |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| Ofcom | UK Government’s Office of Communications |
+| PDA | Personal Digital Assistant |
+| UI | User Interface |
 
 Table 11: Terms and Abbreviations
 
 #### 3.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
 
 Table 12: Definitions
 
@@ -940,21 +1040,17 @@ This section shows how to interpret the different styles used in this document t
 
 ##### 3.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names title case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | title case |
+| File names |  |
 
 Table 13: Body Text Styles
 
@@ -966,25 +1062,25 @@ HSCIC Controlled Document
 
 ##### 3.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 14: Cross Reference Styles
 
 #### 3.4 References
 
-**R1.** NHS CUI Design Guide Workstream – Accessibility Checkpoints for NHS Clinical Applications 1.0.0.0
 
-**R2.** NHS CUI Design Guide Workstream – Accessibility for Clinical Applications 1.0.0.0
-
-**R3.** CFH NPFIT CSA – Telecommunication Address Display Requirements for CSA 0.0.0.3
+| Reference | Document | Version |
+| --- | --- | --- |
+| R1. | NHS CUI Design Guide Workstream – Accessibility Checkpoints for NHS Clinical Applications | 1.0.0.0 |
+| R2. | NHS CUI Design Guide Workstream – Accessibility for Clinical Applications | 1.0.0.0 |
+| R3. | CFH NPFIT CSA – Telecommunication Address Display Requirements for CSA | 0.0.0.3 |
 
 Table 15: References
 

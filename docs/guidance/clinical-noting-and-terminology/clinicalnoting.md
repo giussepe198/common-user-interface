@@ -142,45 +142,11 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-To indicate their relative importance, each guideline in this document is ranked by **Conformance** and by **Evidence Rating** . Table 1 defines those terms:
 
-Conformance Indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:
-
- **Mandatory**         - An implementation should follow the guideline
-
- **Recommended**         - An implementation is advised to follow the guideline
-
-Evidence Rating Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):
-
- **Low:**
-
- Does not mitigate specific patient safety hazards
-
- User research findings unclear and with few participants
-
- Unreferenced usability principles indicate the design is not significantly better than alternatives
-
- **Medium:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear but with few participants
-
- References old authoritative guidance (for example, from National Patient Safety Agency (NPSA),
-
-Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
- **High:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear and with a significant number of participants
-
- References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
-
- Referenced usability principles indicate the design is significantly better than alternatives
+| Term | Definition |
+| --- | --- |
+| Conformance | Indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:  Mandatory – An implementation should follow the guideline  Recommended – An implementation is advised to follow the guideline |
+| Evidence Rating | Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):  Low:  Does not mitigate specific patient safety hazards  User research findings unclear and with few participants  Unreferenced usability principles indicate the design is not significantly better than alternatives  Medium:  Mitigates specific patient safety hazards  User research findings clear but with few participants  References old authoritative guidance (for example, from National Patient Safety Agency (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded  Referenced usability principles indicate the design is significantly better than alternatives  High:  Mitigates specific patient safety hazards  User research findings clear and with a significant number of participants  References recent authoritative guidance (for example, from NPSA, ISMP or WHO)  Referenced usability principles indicate the design is significantly better than alternatives |
 
 Table 1: Conformance and Evidence Rating Definitions
 
@@ -248,23 +214,17 @@ However, this does not aim to prohibit future development of data entry controls
 
 ###### 1.2.1 In Scope
 
-Table 2 lists the functional areas covered in this guidance:
 
-Entering a list of note entries How to enable the clinician to enter lists of information quickly and safely
-
-Revealing or hiding sections of a set of data
-
-How to show that further fields for capturing related data are available for a particular type of data
-
-Required fields How you indicate that data must be entered into a particular section or field on the form
-
-Displaying previous values For example, how to show previously taken Blood Pressure reading(s) when recording a current reading for the same patient
-
-Automatic calculations How to distinguish between data which has been entered by the user from data that has been automatically calculated by the system. Also how to indicate the source of the data used in an automatically calculated field, such as Body Mass Index (BMI)
-
-Adding free text How to enable the clinician to add free text notes to any item on the form
-
-General form designs How to employ standard controls in a form
+| In Scope Item | Details |
+| --- | --- |
+| Entering a list of note entries | How to enable the clinician to enter lists of information quickly and safely |
+| Revealing or hiding sections of | How to show that further fields for capturing related data are available for a particular type of data |
+| a set of data |  |
+| Required fields | How you indicate that data must be entered into a particular section or field on the form |
+| Displaying previous values | For example, how to show previously taken Blood Pressure reading(s) when recording a current reading for the same patient |
+| Automatic calculations | How to distinguish between data which has been entered by the user from data that has been automatically calculated by the system. Also how to indicate the source of the data used in an automatically calculated field, such as Body Mass Index (BMI) |
+| Adding free text | How to enable the clinician to add free text notes to any item on the form |
+| General form designs | How to employ standard controls in a form |
 
 Table 2: In Scope Requirements
 
@@ -292,21 +252,18 @@ Page 4
 
 HSCIC Controlled Document
 
-Displaying edit history For each item of data, display:
 
- If it has been edited (after having been saved to record)
-
- The previous versions of the edits
-
- The relevant context of the edits, such as the date and author of the edit
-
-Browsing terminology hierarchy Allowing the clinician to browse for SNOMED CT terms by navigating through its hierarchical structure. For example, the clinician could select ‘fracture of forearm’, and then browse down to a more specific instance of the term, such as ‘fracture of radius’.
-
-Manipulating subsets (R4 guidance update) Allowing the clinician to choose which subsets the system searches when they enter clinical phrases to be matched against SNOMED CT terms.
-
-Linking between concepts Allowing the clinician to indicate links between concepts. For example, linking a patient’s diabetes with their ketoacidosis.
-
-‘Free text parsing’ Allowing the clinician to enter text from which the system matches SNOMED CT expressions.
+| Out of Scope Item | Details |
+| --- | --- |
+| Entering frequencies | Entering the frequency with which clinical events occur, such as ‘weekly’ or ‘three times a day’. |
+| Summarising multiple occurrences of a | Instead of entering multiple occurrences of a clinical situation multiple times into the |
+| clinical situation | form, the clinician can just enter the term once and record next to it how many times it occurred. For example, instead of recording ‘myocardial infarction, 1994’, ‘myocardial infarction 1998’, record ‘myocardial infarction x 2, 1994, 1998’. |
+| Entering tabular data | Entering data into cells in a table. |
+| Displaying edit history | For each item of data, display:  If it has been edited (after having been saved to record)  The previous versions of the edits  The relevant context of the edits, such as the date and author of the edit |
+| Browsing terminology hierarchy | Allowing the clinician to browse for SNOMED CT terms by navigating through its hierarchical structure. For example, the clinician could select ‘fracture of forearm’, and then browse down to a more specific instance of the term, such as ‘fracture of radius’. |
+| Manipulating subsets (R4 guidance update) | Allowing the clinician to choose which subsets the system searches when they enter clinical phrases to be matched against SNOMED CT terms. |
+| Linking between concepts | Allowing the clinician to indicate links between concepts. For example, linking a patient’s diabetes with their ketoacidosis. |
+| ‘Free text parsing’ | Allowing the clinician to enter text from which the system matches SNOMED CT expressions. |
 
 Table 3: Out of Scope Requirements
 
@@ -330,6 +287,17 @@ Listing an item as out of scope does not classify it as unimportant. Project tim
 
 **A7** Suppliers who implement this guidance in their designs should also follow relevant national or international accessibility standards and guidelines. For further details see _Design Guide Entry - Accessibility Principles_ **{R4}.**
 
+
+| ID | Assumption |
+| --- | --- |
+| A1 | The structured terminology used for this guidance will be SNOMED CT. |
+| A2 | Appropriate subsets within SNOMED CT will be available. |
+| A3 | This guidance applies to computer-screen-based applications that allow dynamically changing screen views, linked into a database. It does not apply to mobile devices, electronic paper or voice-recognition software although some of the principles that apply in the current guidance could also apply to applications delivered by those types of mechanism. |
+| A4 | The RCP standards addressing record keeping in acute admissions will be applied to the creation of a pro-forma (A Clinician’s Guide to Record Standards – Part 2 {R1} and Hospital Admission Pro-forma Headings and Definitions {R2}). |
+| A5 | The data fields and options populating the form will be provided by an appropriate clinical authority. |
+| A6 | The clinician records the data in front of the patient or soon afterwards at a workstation. |
+| A7 | Suppliers who implement this guidance in their designs should also follow relevant national or international accessibility standards and guidelines. For further details see Design Guide Entry - Accessibility Principles {R4}. |
+
 Table 4: Assumptions
 
 Page 5
@@ -340,23 +308,11 @@ HSCIC Controlled Document
 
 ##### 1.4 Dependencies
 
-**D1** The availability of appropriate data sets, for example, SNOMED CT subsets and clinical content service archetypes.
 
-**D2** The following design guidance documents (changes in these documents may affect the current guidance):
-
- Design Guide Entry – Terminology – Matching
-
- Design Guide Entry – Terminology – Elaboration
-
- Design Guide Entry – Terminology – Display Standards for Coded Information
-
- Design Guide Entry – Date and Time Input
-
- Design Guide Entry – Date Display
-
- Display of Adverse Drug Reaction Risks – User Interface Design Guidance
-
- Recording Adverse Drug Reaction Risks – User Interface Design Guidance
+| ID | Dependency |
+| --- | --- |
+| D1 | The availability of appropriate data sets, for example, SNOMED CT subsets and clinical content service archetypes. |
+| D2 | The following design guidance documents (changes in these documents may affect the current guidance):  Design Guide Entry – Terminology – Matching  Design Guide Entry – Terminology – Elaboration  Design Guide Entry – Terminology – Display Standards for Coded Information  Design Guide Entry – Date and Time Input  Design Guide Entry – Date Display  Display of Adverse Drug Reaction Risks – User Interface Design Guidance  Recording Adverse Drug Reaction Risks – User Interface Design Guidance |
 
 Table 5: Dependencies
 
@@ -519,57 +475,94 @@ Copyright ©2013 Health and Social Care Information Centre
 ![](clinicalnoting_assets/clinicalnoting.pdf-13-3.png)
 HSCIC Controlled Document
 
-Section 5 – Required Fields
 
-Possible clerking data:
-
- Presenting complaint
-
- History of presenting complaint
-
-Section 6 – Displaying Previous Values
-
-Possible clerking data:
-
- Vital signs
-
-Section 7 – Automatic Calculations Data
-
-Possible clerking data:
-
- Glasgow Coma Scale
-
- BMI
-
- Vital signs
-
- Duration/date
-
-Section 8 – Adding Free Text
-
-Possible clerking data:
-
- Observations/ findings
-
- Cardiovascular system
-
- Respiratory system
-
- Abdomen
-
- Genitourinary
-
- Nervous system
-
- Musculoskeletal system
-
- Skin
-
-Section 9 – General Form Designs
-
-Possible clerking data:
-
- Any of the data areas
+|  | Existing guidelines and standards |
+| --- | --- |
+|  | UI best practice |
+|  | Clinical noting practice |
+| mary | research: |
+|  | Interviews with health care professionals, including doctors |
+|  | A series of usability tests where we iteratively updated our designs (implemented in a set of prototypes) and tested them, a process often labelled Rapid Iterative Test Evaluation (RITE). Each design underwent up to five iterations, with a range of clinicians participating in each set of tests |
+| ular | consultation with experts: |
+|  | A panel of clinical experts |
+|  | A technical audience (developers) |
+| Prin | ciples (see APPENDIX A for details on these principles): |
+| lsen’ | s usability heuristics |
+| eider | man’s eight golden rules of interface design |
+| 9241 | : Characteristics of presented information (taken from ISO 9241-10: 1996 |
+| onomi | c requirements for office work with visual display terminals (VDTs) -- Part 10: |
+| logue | s principles {R9}) |
+| Stand | ards: |
+| ISO 9 | 241-14:1997 Ergonomic requirements for office work with visual display terminals |
+| Ts) - | - Part 14: Menu dialogues {R6} |
+| ISO 9 | 241-17:1998 Ergonomic requirements for office work with visual display terminals |
+| Ts) - | - Part 17: Form-filling dialogues {R7} |
+| ISO 9 | 241-12:1999 Ergonomic requirements for office work with visual display terminals |
+| Ts) - | - Part 12: Presentation of information {R8} |
+| ISO 9 | 241-10:1996 Ergonomic requirements for office work with visual display terminals |
+| Ts) - | - Part 10: Dialogues principles {R9} |
+| Stand | ards: |
+| ign G | uide Entry – Date Display {R12} |
+| ign G | uide Entry – Date and Time Input {R13} |
+| ign G | uide Entry – Terminology – Matching {R14} |
+| ign G | uide Entry – Terminology – Elaboration {R15} |
+| ign G | uide Entry – Terminology – Display Standards for Coded Information {R16} |
+| ordin | g Adverse Drug Reaction Risks – User Interface Design Guidance {R17} |
+| play | of Adverse Drug Reaction Risks – User Interface Design Guidance {R18} |
+| Summa | ry of Guidance |
+| ummar | ises the content of this document by outlining each area of guidance (along with a |
+| erenc | e to the relevant section) and providing a visual example to illustrate how it might be |
+| ed. |  |
+| s |  |
+| ble 6 | lists possible clerking data to which the guidelines may apply. These are not intended to be |
+| exha | ustive. The guidance may apply to other data which is not outlined in the table. |
+| sign | illustrations are best viewed on a screen in colour. |
+| Guida | nce                     Visual Summary |
+| – En | tering a list of note |
+|  |  |
+| clerk | ing data: |
+| dical | History |
+| list |  |
+| – Re | vealing and Hiding |
+| of a | Set of Data |
+| clerk | ing data: |
+| tions | / findings |
+| iovas | cular system |
+| irato | ry system |
+| men |  |
+| touri | nary |
+| ous s | ystem |
+| ulosk | eletal system |
+|  |  |
+| Guida | nce                   Visual Summary |
+| – Re | quired Fields |
+| clerk | ing data: |
+| ing c | omplaint |
+| of p | resenting complaint |
+| – Di | splaying Previous |
+|  |  |
+| clerk | ing data: |
+| igns |  |
+| – Au | tomatic |
+| ons D | ata |
+| clerk | ing data: |
+| Coma | Scale |
+|  |  |
+| igns |  |
+| n/dat | e |
+| – Ad | ding Free Text |
+| clerk | ing data: |
+| tions | / findings |
+| iovas | cular system |
+| irato | ry system |
+| men |  |
+| touri | nary |
+| ous s | ystem |
+| ulosk | eletal system |
+|  |  |
+| – Ge | neral Form Designs |
+| clerk | ing data: |
+| the d | ata areas |
 
 Table 6: Summary of Guidance
 
@@ -1937,37 +1930,25 @@ HSCIC Controlled Document
 
 ##### 10.1 Terms and Abbreviations
 
-BMI Body Mass Index
 
-CATR Clinical Authority to Release
-
-CSG Clinical Safety Group
-
-CUI Common User Interface
-
-CVS Cardiovascular System
-
-HIU Health Informatics Unit
-
-ISMP Institute for Safe Medication Practices
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NPSA National Patient Safety Agency
-
-PMH Past Medical History
-
-RCP Royal College of Physicians
-
-RITE Rapid Iterative Testing Evaluation
-
-SNOMED CT Systematized Nomenclature of Medicine Clinical Terms
-
-UI User Interface
-
-WHO World Health Organization
+| Abbreviation | Definition |
+| --- | --- |
+| BMI | Body Mass Index |
+| CATR | Clinical Authority to Release |
+| CSG | Clinical Safety Group |
+| CUI | Common User Interface |
+| CVS | Cardiovascular System |
+| HIU | Health Informatics Unit |
+| ISMP | Institute for Safe Medication Practices |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPSA | National Patient Safety Agency |
+| PMH | Past Medical History |
+| RCP | Royal College of Physicians |
+| RITE | Rapid Iterative Testing Evaluation |
+| SNOMED CT | Systematized Nomenclature of Medicine Clinical Terms |
+| UI | User Interface |
+| WHO | World Health Organization |
 
 Table 7: Terms and Abbreviations
 
@@ -1987,59 +1968,36 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Conformance In the guidance tables, indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:
 
- **Mandatory**          - An implementation should follow the guideline
-
- **Recommended**          - An implementation is advised to follow the guideline
-
-Evidence Rating In the guidance tables, summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):
-
- **Low:**
-
- Does not mitigate specific patient safety hazards
-
- User research findings unclear and with few participants
-
- Unreferenced usability principles indicate the design is not significantly better than alternatives
-
- **Medium:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear but with few participants
-
- References old authoritative guidance (for example, from National Patient Safety Agency (NPSA),
-
-Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
- **High:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear and with a significant number of participants
-
- References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
-Field Area on a screen display in which data is entered or presented.
-
-Form Structured display with labelled fields that the user reads, fills in, selects entries for (for example, through choice buttons or radio buttons) or modifies.
-
-Label Short descriptive title for an entry or read-only field, table, control or object.
-
-Navigation Ability to move from field to field within a form, to proceed forward and backward through a form and move from form to form.
-
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
-
-Optional field Field that not necessarily needs to be filled in or modified by the user.
-
-Read-only field Field that contains data that cannot be modified by the user.
-
-Required field Field that must be completed by the user if it does not already have a value.
+| Term | Definition |
+| --- | --- |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice Cu | rrent best practice is used rather than best practice, as over time best practice guidance may change or be |
+| re | vised due to changes to products, changes in technology, or simply the additional field deployment |
+| ex | perience that comes over time. |
+| Entry field | Type of field in which data is entered. Entry fields may be optional fields or required fields. |
+| Term                   D | efinition |
+| Conformance            I | n the guidance tables, indicates the extent to which you should follow the guideline when defining your UI |
+| i | mplementation. There are two levels: |
+|  | Mandatory – An implementation should follow the guideline |
+|  | Recommended – An implementation is advised to follow the guideline |
+| Evidence Rating        I | n the guidance tables, summarises the strength of the research defining the guideline and the extent to which |
+| i | t mitigates patient safety hazards. There are three ratings (with example factors used to determine the |
+| a | ppropriate rating): |
+|  | Low:  Does not mitigate specific patient safety hazards  User research findings unclear and with few participants  Unreferenced usability principles indicate the design is not significantly better than alternatives |
+|  | Medium:  Mitigates specific patient safety hazards  User research findings clear but with few participants  References old authoritative guidance (for example, from National Patient Safety Agency (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded  Referenced usability principles indicate the design is significantly better than alternatives |
+|  | High:  Mitigates specific patient safety hazards  User research findings clear and with a significant number of participants  References recent authoritative guidance (for example, from NPSA, ISMP or WHO)  Referenced usability principles indicate the design is significantly better than alternatives |
+| Field                  A | rea on a screen display in which data is entered or presented. |
+| Form                   S | tructured display with labelled fields that the user reads, fills in, selects entries for (for example, through |
+| c | hoice buttons or radio buttons) or modifies. |
+| Label                  S | hort descriptive title for an entry or read-only field, table, control or object. |
+| Navigation             A | bility to move from field to field within a form, to proceed forward and backward through a form and move |
+| f | rom form to form. |
+| NHS Entity             W | ithin this document, defined as a single NHS organisation or group that is operated within a single technical |
+| i | nfrastructure environment by a defined group of IT administrators. |
+| Optional field         F | ield that not necessarily needs to be filled in or modified by the user. |
+| Read-only field        F | ield that contains data that cannot be modified by the user. |
+| Required field         F | ield that must be completed by the user if it does not already have a value. |
 
 Table 8: Definitions
 
@@ -2055,35 +2013,30 @@ This section shows how to interpret the different styles used in this document t
 
 ###### 10.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 9: Body Text Styles
 
 ###### 10.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents Italics and possibly a footnote
-
-Publicly available documents Italics with a footnote
-
-External Web-based content Italics and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 10: Cross Reference Styles
 
@@ -2120,59 +2073,49 @@ Page 70
 
 HSCIC Controlled Document
 
-**R7.** British Standards Institute, BS EN ISO 9241-17: 1998 Ergonomic requirements for office work with visual display terminals (VDTs) _--_ Part 17: Form-filling dialogues
 
-**R8.** British Standards Institute, BS EN ISO 9241-12: 1999 Ergonomic requirements for office work with visual display terminals (VDTs) _--_ Part 12: Presentation of information
-
-**R9.** British Standards Institute, BS EN ISO 9241-10: 1996 Ergonomic requirements for office work with visual display terminals (VDTs) _--_ Part 10: Dialogues principles
-
-**R10.** British Standards Institute, BS EN ISO 9241-13: 1999 Ergonomic requirements for office work with visual display terminals (VDTs) _--_ Part 13: User guidance
-
-1998
-
-1999
-
-1996
-
-1999
-
-**R11.** British Standards Institute, BS 7581:1992 Guide to Presentation of tables and graphs 1992
-
-**R12.** NHS CUI Programme – Design Guide Entry – Date Display 3.0.0.0
-
-**R13.** NHS CUI Programme – Design Guide Entry – Date and Time Input 2.0.0.0
-
-**R14.** NHS CUI Programme – Design Guide Entry – Terminology – Matching 1.0.0.0
-
-**R15.** NHS CUI Programme – Design Guide Entry – Terminology – Elaboration 2.0.0.0
-
-**R16.** NHS CUI Programme – Design Guide Entry – Terminology – Display Standards for Coded Information
-
-**R17.** NHS CUI Programme – Recording Adverse Drug Reaction Risks – User Interface Design Guidance
-
-**R18.** NHS CUI Programme – Display of Adverse Drug Reaction Risks – User Interface Design Guidance
-
-2.0.0.0
-
-1.0.0.0
-
-1.0.0.0
-
-**R19.** Nielsen, J: Usability Engineering, 1993 1993
-
-**R20.** Shneiderman, B: Designing the User Interface – Strategies for Effective Human-Computer Interaction, 1998
-
-**R21.** Galitz, W.O: Essential guide to user interface design. An introduction to GUI design principles and techniques, 1997
-
-Third Edition
-
-1997
-
-**R22.** Windows User Experience Interaction Guidelines 2008
-
-**R23.** Apple Human Interface Guidelines: User Experience 2008
-
-**R24.** Jarrett, Caroline: Forms that work 2009
+| Reference Document | Version |
+| --- | --- |
+| R1.              Royal College of Physicians (Health Informatics Unit): A Clinician’s Guide to Record Standards | 2008 |
+| – Part 2: Standards for the structure and content of medical records and communications when |  |
+| patients are admitted to hospital, October 2008 |  |
+| R2.              Royal College of Physicians (Health Informatics Unit): Hospital Admission Pro-forma Headings 1 | .0 |
+| and Definitions, April 2008 |  |
+| R3.              NHS Connecting for Health Clinical Content Development: Hospital Admission, September | 1.0 |
+| 2008 |  |
+| R4.              NHS CUI Programme - Design Guide Entry - Accessibility Principles | 1.0.0.0 |
+| R5.              Bates, et al: Ten Commandments for Effective Clinical Decision Support: Making the Practice | 2003 |
+| of Evidence-based Medicine a Reality, Journal of the American Medical Informatics |  |
+| Association, Vol. 10 Number 6 Nov / Dec 2003 |  |
+| R6.              British Standards Institute, BS EN ISO 9241-14: 1997 Ergonomic requirements for office work | 1997 |
+| with visual display terminals (VDTs) -- Part 14: Menu dialogues |  |
+| R7.              British Standards Institute, BS EN ISO 9241-17: 1998 Ergonomic requirements for office work | 1998 |
+| with visual display terminals (VDTs) -- Part 17: Form-filling dialogues |  |
+| R8.              British Standards Institute, BS EN ISO 9241-12: 1999 Ergonomic requirements for office work | 1999 |
+| with visual display terminals (VDTs) -- Part 12: Presentation of information |  |
+| R9.              British Standards Institute, BS EN ISO 9241-10: 1996 Ergonomic requirements for office work | 1996 |
+| with visual display terminals (VDTs) -- Part 10: Dialogues principles |  |
+| R10.             British Standards Institute, BS EN ISO 9241-13: 1999 Ergonomic requirements for office work | 1999 |
+| with visual display terminals (VDTs) -- Part 13: User guidance |  |
+| R11.             British Standards Institute, BS 7581:1992 Guide to Presentation of tables and graphs | 1992 |
+| R12.             NHS CUI Programme – Design Guide Entry – Date Display | 3.0.0.0 |
+| R13.             NHS CUI Programme – Design Guide Entry – Date and Time Input | 2.0.0.0 |
+| R14.             NHS CUI Programme – Design Guide Entry – Terminology – Matching | 1.0.0.0 |
+| R15.             NHS CUI Programme – Design Guide Entry – Terminology – Elaboration | 2.0.0.0 |
+| R16.             NHS CUI Programme – Design Guide Entry – Terminology – Display Standards for Coded | 2.0.0.0 |
+| Information |  |
+| R17.             NHS CUI Programme – Recording Adverse Drug Reaction Risks – User Interface Design | 1.0.0.0 |
+| Guidance |  |
+| R18.             NHS CUI Programme – Display of Adverse Drug Reaction Risks – User Interface Design | 1.0.0.0 |
+| Guidance |  |
+| R19.             Nielsen, J: Usability Engineering, 1993 | 1993 |
+| R20.             Shneiderman, B: Designing the User Interface – Strategies for Effective Human-Computer | Third Edition |
+| Interaction, 1998 |  |
+| R21.             Galitz, W.O: Essential guide to user interface design. An introduction to GUI design principle | s   1997 |
+| and techniques, 1997 |  |
+| R22.             Windows User Experience Interaction Guidelines | 2008 |
+| R23.             Apple Human Interface Guidelines: User Experience | 2008 |
+| R24.             Jarrett, Caroline: Forms that work | 2009 |
 
 Table 11: References
 
@@ -2360,67 +2303,100 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Each participant had either volunteered through the NHS CFH Events Management System (EMS) signup or had been recruited by an HCP who had volunteered. None of the respondents had previously taken part in CUI clinical engagement for other work areas
 
-Table 12 shows a summary of the participants’ profiles:
-
-1 Doctor Plastic surgery Y4 Registrar Royal Free Hospital High: HTML, ASP, SQL, developed in-house mini-EPR
-
-2 Health Care Assistant
-
-MAU Band 2 Basingstoke and North Hampshire Hospital
-
-3 Nurse MAU RGN Basingstoke and North Hampshire Hospital
-
-4 Nurse Practitioner
-
-Pain Band 7 Basingstoke and North Hampshire Hospital
-
-5 Doctor Medicine FY2 Basingstoke and North Hampshire Hospital
-
-6 Nurse (Pain Sister)
-
-7a Ward Manager
-
-Pain Band 6 Basingstoke and North Hampshire Hospital
-
-Surgical Assessment Unit Band 7 Birmingham City Hospital Medium: iSoft [®] Lorenzo [®] RCM (transferring patients, scanning notes). Microsoft [®] Office Word, Excel, PowerPoint, Internet
-
-Low: Sage, Email, Internet (four hours a week)
-
-Low: Pathology results, Internet shopping, ECDL
-
-Medium: Email, recording statistics for clinics, booking, National Audit database, Hospital PMS
-
-Unknown
-
-Medium: Hospital intranet, Microsoft [®] Office Outlook [®], blood results, PMS system, Google™, Microsoft [®] Office Excel [®], record data for audits
-
-7b Nurse Surgical Assessment Unit Band 6 Birmingham City Hospital Medium: Lorenzo RCM (transferring patients, scanning notes). Word, Excel, Microsoft [®] Office PowerPoint [®], Internet
-
-8 Nurse Medicine MSSU Band 7 Birmingham City Hospital Medium: ICM – patient finder, results, discharge, the Microsoft [®] Office System
-
-9 Doctor Poisons FY2 Birmingham City Hospital High: In-house ICM, Web client (clinical data archive), x-rays. previous professional IT experience
-
-10 Nurse A&E Band 7 Birmingham City Hospital Low: IPM Lorenzo PAS, x-rays
-
-11 Doctor Rotating: Cardiology, Neurology, Breast Surgery (current)
-
-12a Doctor Rotating:
-
-Diabetes, General Medicine, Elderly, Cardiovascular
-
-12b Doctor Rotating:
-
-General Medicine, Endocrinology
-
-FY1 Whipps Cross Medium: In-house blood system, PACS (Agfa [®] ), PAS, Excel, GraphPad Prism [®], email, Microsoft Office
-
-FY1 Royal London Hospital Medium: CRS, EPR, PACS, Word, PPT, Internet, email
-
-FY1 Royal London Hospital Medium: CRS, EPR, PACS, Word, PPT, Internet, email
-
-13 Doctor ICU FY1 Homerton n/a
+| B.1 | Abstract |
+| --- | --- |
+| The UK | National Health Service (NHS) Common User Interface (CUI) Programme is a partnership ® |
+| between | Microsoft and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Program | me for Information Technology (NPfIT). |
+| As part | of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring |
+| that so | ftware applications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provide | s software developers with user interface design guidelines derived through a user-centric |
+| develop | ment process that includes explicit patient-safety evaluations. |
+| This su | mmary describes key findings from user research carried out in April 2009 by the CUI CAPS |
+| team on | the clinical noting required for hospital admissions clerking. |
+| Purpose | : |
+| To hone | a set of designs in terms of their usability that would then form the basis for user interface |
+| design | guidelines for admissions clerking. Over the series of iterations, the Design Team aimed to |
+| reduce | the number of errors being made by the clinical participants and to improve the designs’ |
+| ease of | , and suitability for, use in a clinical environment. |
+| Method: |  |
+| Over a | series of five stages of usability testing, the Design Team iteratively tested the prototypes, |
+| quickly | analysed the data and updated the designs in response to the findings. |
+| Key Res | ults: |
+| Key fin | dings included: |
+|  T | he need for progressive matching of clinical concepts |
+|  T | he need to capture durations in a colloquial format |
+|  T | he need for common matches to be distinguished when searching for clinical concepts |
+| B.2 | Research Objectives |
+| The obj | ectives of the research were to test a set of design features based on the following areas: |
+|  G | eneral form design (standard controls) |
+|  E | ntering summary lists |
+|  R | equired fields |
+|  D | urations |
+|  D | isplaying calculated values |
+|  D | isplaying previous values |
+|  A | dding free text |
+| The res | earch was intended to result in a final set of designs plus a list of any outstanding issues |
+| that co | uld not be resolved during the test period. |
+| B.3 | Research Design |
+| Rapid I | terative Testing and Evaluation (RITE) testing: 13 sessions (15 participants), plus pilot |
+| testing | , with Health Care Professionals (HCPs) working within the UK National Health Service |
+| (NHS). | Prototypes embodying the potential guidelines were constructed in a range of media: ® |
+|  M | icrosoft Silverlight™ ® |
+|  M | icrosoft Expression Blend™ ®                   ®                                                   ® |
+|  M | icrosoft Office PowerPoint slides featuring static designs created in Microsoft Office Visio® with some animation |
+| The tes | t sessions were grouped into five sequential stages. Largely, participant allocation to each |
+| stage w | as determined by the location of the testing; for example, all the participants tested in |
+| Birming | ham City Hospital were part of Stage Three. Before each stage in the testing, the |
+| prototy | pes were updated (if necessary), based upon the findings of the previous stage. |
+| Partici | pants were tested individually, with the exception of two sessions where participants doubled |
+| up and | addressed the component tasks in turn. |
+| In each | test session, the participant was given a set of typical clinical noting tasks to perform using |
+| the var | ious prototypes, with one prototype per task: |
+|  W | here the prototype was interactive, the participant was asked to perform the task by using the keyboard and/or the mouse. |
+|  W | here the prototype was not interactive, the researcher presented it screen-by-screen and asked the participant what they understood and what they would do next at each stage in the screen flow. |
+| The tas | ks were presented in the form of brief written scenarios that set the scene and gave the |
+| partici | pant goals to achieve with the prototype. After each task, the participant would be asked |
+| questio | ns about their experience of the prototype, including how suitable they thought the design |
+| would b | e in a real clinical situation. |
+| Followi | ng each stage in the testing, the researcher collaborated with the Design Team in analysing |
+| the fin | dings and planning updates to be implemented before the next testing stage. In this way, the |
+| prototy | pes were incrementally improved over the five stages, with these changes being tested at |
+| each su | bsequent stage. |
+| In the | case of the ‘entry of summary list’ design, alternative designs were presented to the |
+| partici | pant as part of the post-task discussion. However, this was the only exception: in all other |
+| cases, | alternative designs were not tested or discussed. |
+| If a pr | ototype was deemed sufficiently capable of enabling the participant to perform the task easily |
+| and wit | hout error, it was dropped from the testing. This was because of time constraints: stopping |
+| tests o | n a successful prototype released time for tests on a previously untested prototype. |
+| B.4 | Results |
+| B.4.1 | Participant Description |
+| 15 part | icipants took part in the user research, although in two cases participants ‘doubled up’, |
+| taking | it in turns to perform user tasks (marked as 7a/7b and 12a/12b in Table 12). In total, testing |
+| took pa | rt in six different hospitals throughout London, the South East and the West Midlands. The |
+| partici | pants had varying levels of IT experience, although everyone had a basic level of computer |
+| profici | ency, and all used computers to varying degrees in a clinical context. |
+| Each pa | rticipant had either volunteered through the NHS CFH Events Management System (EMS) |
+| signup | or had been recruited by an HCP who had volunteered. None of the respondents had |
+| previou | sly taken part in CUI clinical engagement for other work areas |
+| Table 1 | 2 shows a summary of the participants’ profiles: |
+| # | Job Role         Specialty                     Level        Site                       Computer Experience |
+| 1 | Doctor           Plastic surgery               Y4 Registrar Royal Free Hospital        High: HTML, ASP, SQL, developed in-house mini-EPR |
+| 2 | Health Care      MAU                           Band 2       Basingstoke and North      Low: Sage, Email, Internet (four Assistant                                                   Hampshire Hospital         hours a week) |
+| 3 | Nurse            MAU                           RGN          Basingstoke and North      Low: Pathology results, Internet Hampshire Hospital         shopping, ECDL |
+| 4 | Nurse            Pain                          Band 7       Basingstoke and North      Medium: Email, recording statistics Practitioner                                                Hampshire Hospital         for clinics, booking, National Audit database, Hospital PMS |
+| 5 | Doctor           Medicine                      FY2          Basingstoke and North      Unknown Hampshire Hospital |
+| 6 | Nurse (Pain      Pain                          Band 6       Basingstoke and North      Medium: Hospital intranet, Microsoft® Sister)                                                     Hampshire Hospital         Office Outlook®, blood results, PMS system, Google™, Microsoft® Office Excel®, record data for audits |
+| 7a | Ward             Surgical Assessment Unit      Band 7       Birmingham City Hospital   Medium: iSoft® Lorenzo® RCM Manager                                                                                (transferring patients, scanning notes). Microsoft® Office Word, Excel, PowerPoint, Internet |
+| 7b | Nurse            Surgical Assessment Unit      Band 6       Birmingham City Hospital   Medium: Lorenzo RCM (transferring patients, scanning notes). Word, Excel, Microsoft® Office PowerPoint®, Internet |
+| 8 | Nurse            Medicine MSSU                 Band 7       Birmingham City Hospital   Medium: ICM – patient finder, results, discharge, the Microsoft® Office System |
+| 9 | Doctor           Poisons                       FY2          Birmingham City Hospital   High: In-house ICM, Web client (clinical data archive), x-rays. previous professional IT experience |
+| 10 | Nurse            A&E                           Band 7       Birmingham City Hospital   Low: IPM Lorenzo PAS, x-rays |
+| 11 | Doctor           Rotating: Cardiology,         FY1          Whipps Cross               Medium: In-house blood system, Neurology, Breast Surgery                                             PACS (Agfa®), PAS, Excel, (current)                                                             GraphPad Prism®, email, Microsoft Office |
+| 12a | Doctor           Rotating:                     FY1          Royal London Hospital      Medium: CRS, EPR, PACS, Word, Diabetes, General Medicine,                                           PPT, Internet, email Elderly, Cardiovascular |
+| 12b | Doctor           Rotating:                     FY1          Royal London Hospital      Medium: CRS, EPR, PACS, Word, General Medicine,                                                     PPT, Internet, email Endocrinology |
+| 13 | Doctor           ICU                           FY1          Homerton                   n/a |
 
 Table 12: Testing Participants
 
@@ -2560,75 +2536,82 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-1 Too time consuming
 
-Don’t always want to add a date
-
-Wants to write everything in ‘additional text’
-
-Wants to be able to add natural terms that are how he would write them
-
-Clinician does not like systems that require codes or exact text
-
-2 Clinicians tried to enter everything in the first field
-
-Clinicians tried to type all information in the ‘additional text’ field
-
-Too many search results returned
-
-Time consuming/too much detail required/over-complicated
-
-It is strange separating the concept from its details, but it does make sense
-
-More emphasis on date rather than details
-
-‘Current problem’ is ambiguous
-
-Want to be able to sort by date
-
-Depending upon the situation, either the ‘natural language’ or the calculated date would be most appropriate in the final display
-
-3 Need to indicate that dates are approximate
-
-Clinician tries to select from date drop-down without typing
-
-Clinician finds it hard to find the ‘next’ entry field
-
-Clinician cannot find items at the top of the list
-
-Must be able to use familiar nomenclature
-
-Not hard, but long-winded
-
-SNOMED CT limitations – “gangrenous toes”
-
-Did not notice ‘Current problem’ check box
-
-4 Entered ‘ketoacidosis’ as part of the ‘diabetes’ entry
-
-Too many results returned
-
-Would expect a shortlist of common matches
-
-Typed in the duration/date(s), but did not select it
-
-Did not understand the ‘Current problem’ field
-
-5 Clinician confused as to whether to type into the search field or click on the button
-
-Missed the ‘Current problem’ field
-
-Would like to enter a problem and then, below it, list the associated complications
-
-Clinicians claimed that the data entry process seemed ‘time consuming’, although they did complete the tasks quickly and without major problems
-
-Types in date, but does not select it
-
-Colours and alignment are not good
-
-Wants to be able to change the order (for example. by ‘drag and drop’)
-
-Some shorthand not recognised in the SNOMED CT search
+| B.4.2 | Key Findings |
+| --- | --- |
+|  Clini | cians understood how to enter observation data into a form using standard controls, |
+| su | ch as drop-downs and radio buttons |
+|  Howev | er, clinicians felt that it would be too time-consuming to enter data in this way |
+|  Clini | cians understood how to reveal hidden fields with the check box control and/or by |
+| se | lecting a data item, as long as there is sufficient labelling and prompts |
+|  Clini | cians may try to enter too much information into a search field (such as for Past |
+| Me | dical History (PMH)) unless there is progressive matching |
+|  Clini | cians do not want to navigate to a tab in order to enter a duration or date |
+|  Clini | cians quickly learn how to type in data into the ‘natural language’ ‘duration/date(s)’ |
+| fi | eld |
+|  Clini | cians find it unclear and time-consuming to search a long list of search results for a |
+| fa | irly common clinical concept |
+|  Some | clinicians find a ‘Current problem’ field ambiguous and unclear, whereas others find |
+| it | easy to understand |
+|  If th | e ‘Current problem’ field is located immediately below the additional text field, the |
+| cl | inician may not notice it |
+|  Clini | cians want to be able to reorder a summary list (such as a PMH) |
+|  Faced | with a ‘search’ or ‘drop-down’ button alongside a search entry field (or combo box), |
+| so | me clinicians may click the button without entering any text. |
+|  Clini | cians understand red asterisks mean that a field is required |
+|  Clini | cians understand the usefulness of providing a right-hand panel that indicates missed |
+| fi | elds, but some clinicians do not notice it: clinicians find it easier to notice in-line |
+| in | dications, such as yellow shading in the missed fields |
+|  Clini | cians expected in-line indications for the data that contributed to a calculated value, |
+| wh | ere appropriate (in this case, where the values are ‘out-of-range’) |
+|  Clini | cians need the label to be visually distinct in order to know that they can click on it to |
+| fi | nd further information about the calculation. However, after they realise that further |
+| in | formation about the calculation may be available, they indicate that clicking on the label |
+| is | intuitive |
+|  Clini | cians expect the same ‘auto-complete’ mechanism in a date dialog as is employed in |
+| th | e summary list entry control, which allows the entry of words such as ‘past’ |
+|  Clini | cians found the button for adding free text to be insufficiently prominent |
+|  Clini | cians expect to be able to access a graphical representation of previous values |
+| B.4.3 | Conclusions |
+|  Altho | ugh the guidance should clearly show how standard controls should be used in |
+| el | ectronic forms, further work should be done to make the process more intuitive and less |
+| ti | me-consuming |
+|  In or | der to simply reveal fields on a form, provide a check box control in addition to |
+| pr | oviding a mechanism that automatically reveals fields when a certain data item is |
+| se | lected |
+|  Provi | de progressive matching where technology supports it |
+|  In th | e control for entering summary lists, do not hide fields behind a tab |
+|  Provi | de a ‘natural language’ entry field which matches duration and date phrases and |
+| nu | mbers as they are entered, and provide a ‘play back’ of what they have entered in a |
+| mo | re formal structure |
+|  Disti | nguish common matches in the search results |
+|  If a | ‘Current problem’ field is to be featured, locate it next to the ‘duration/date(s)’ field |
+|  Provi | de a feature to reorder the summary list |
+|  Do no | t feature a search button if the matching is done progressively. Feature a search icon |
+| wh | ere appropriate |
+|  Do no | t feature a drop-down button in the ‘duration/date(s)’ entry field |
+|  Featu | re red asterisks next to the labels of required fields |
+|  Shade | required fields in yellow where they have been missed by the clinician (that is, |
+| wh | ere the clinician has moved the focus to a field that is after the required field in the |
+| ta | bbing order) |
+|  Provi | de a right-hand panel that lists missed fields in addition to in-line indications of |
+| mi | ssed fields |
+|  Where | appropriate, feature in-line indications of values that contribute to a calculated |
+| sc | ore |
+|  Ensur | e that the label of the calculated score visually communicates that it can be clicked |
+|  Ensur | e that the button for adding free text is sufficiently prominent |
+|  In a | previous values dialog, provide access to a graphical representation of previous values |
+| B.5       Desi | gn Iterations: Findings and Design Updates |
+| Table 13 to | Table 19 describe the design iterations in each area of testing, including the findings |
+| and changes | made in each case. The left-hand columns indicate the number of design iterations |
+| performed. |  |
+| Table 13 de | scribes the design iterations for entering summary lists: |
+| Iteration H | eadline Findings and Comments                                                      Changes |
+| 1 | Too time consuming                                                               Remove ‘attribute’ tabs: feature Don’t always want to add a date                                                  ‘duration/dates’ and ‘current problem’ fields in the same area as the additional text field Wants to write everything in ‘additional text’ Provide ‘natural’ date input Wants to be able to add natural terms that are how he would write them Clinician does not like systems that require codes or exact text |
+| 2 | Clinicians tried to enter everything in the first field                          Improve visual appearance, including Clinicians tried to type all information in the ‘additional text’ field          removing fields from around the calculated date Too many search results returned Time consuming/too much detail required/over-complicated It is strange separating the concept from its details, but it does make sense More emphasis on date rather than details ‘Current problem’ is ambiguous Want to be able to sort by date Depending upon the situation, either the ‘natural language’ or the calculated date would be most appropriate in the final display |
+| 3 | Need to indicate that dates are approximate                                      Remove date drop-down button Clinician tries to select from date drop-down without typing                     Remove frames Clinician finds it hard to find the ‘next’ entry field Clinician cannot find items at the top of the list Must be able to use familiar nomenclature Not hard, but long-winded SNOMED CT limitations – “gangrenous toes” Did not notice ‘Current problem’ check box |
+| 4 | Entered ‘ketoacidosis’ as part of the ‘diabetes’ entry                           Provide ‘progressive’ matching Too many results returned                                                        Provide a common matches ‘shortlist’ Would expect a shortlist of common matches Typed in the duration/date(s), but did not select it Did not understand the ‘Current problem’ field |
+| 5 | Clinician confused as to whether to type into the search field or click on the   Replace the ‘Search’ button with a non- button                                                                           clickable icon Missed the ‘Current problem’ field                                               Remove the ‘Current problem’ field Would like to enter a problem and then, below it, list the associated            Improved alignment and slightly indented complications                                                                    the attribute fields. Clinicians claimed that the data entry process seemed ‘time consuming’, although they did complete the tasks quickly and without major problems Types in date, but does not select it Colours and alignment are not good Wants to be able to change the order (for example. by ‘drag and drop’) Some shorthand not recognised in the SNOMED CT search |
 
 Table 13: Entering Summary Lists
 
@@ -2660,65 +2643,49 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-1 Red asterisks are very clear and understandable
 
-Indifferent to the side panel
-
-Expect such validation upon clicking the final ‘Submit’
-
-2 Red asterisks are very clear and understandable
-
-3 Did not notice the right-hand side panel Replace right-hand panel with in-line indication of having missed a field: yellow shading in the field
-
-4 Did not notice the red asterisks Reintroduced the right-hand panel
+| Iteration Headline Findings and Comments | Changes |
+| --- | --- |
+| 1            Red asterisks are very clear and understandable |  |
+| Indifferent to the side panel |  |
+| Expect such validation upon clicking the final ‘Submit’ |  |
+| 2            Red asterisks are very clear and understandable |  |
+| 3            Did not notice the right-hand side panel | Replace right-hand panel with in-line indication of having missed a field: yellow shading in the field |
+| 4            Did not notice the red asterisks | Reintroduced the right-hand panel |
 
 Table 14: Required Fields
 
-Table 15 describes the design iterations for displaying automatic calculations:
 
-1 Expected visual cues for ‘out-of-range’ values
-
-Label/value do not seem ‘clickable’
-
-2 Expected visual cue for ‘out-of-range’ values
-
-Over-complicated
-
-Alerts are not sufficiently obvious
-
-3 Lots of comments relating to EWS alerts rather than calculated values
-
-Some clinicians needed prompting to click on the label to find more information
-
-Generally participants had no problems with understanding what was calculated and what had been entered, and found it intuitive to click on an item to find further information
-
-4 Clinician would expect a standard action plan to appear if they click on the ‘details of scoring’ button
+| Iteration Headline Findings and Comments | Changes |
+| --- | --- |
+| 1            Expected visual cues for ‘out-of-range’ values |  |
+| Label/value do not seem ‘clickable’ |  |
+| 2            Expected visual cue for ‘out-of-range’ values | Added visual cues for ‘out-of-range’ values |
+| Over-complicated |  |
+| Alerts are not sufficiently obvious |  |
+| 3            Lots of comments relating to EWS alerts rather than calculated values | Replaced the ‘calculated’ icon with an |
+| Some clinicians needed prompting to click on the label to find more | underline for the label |
+| information |  |
+| Generally participants had no problems with understanding what was |  |
+| calculated and what had been entered, and found it intuitive to click on an |  |
+| item to find further information |  |
+| 4            Clinician would expect a standard action plan to appear if they click on the |  |
+| ‘details of scoring’ button |  |
 
 Table 15: Displaying Automatic Calculations
 
-Table 16 describes the design iterations for entering durations:
 
-Added visual cues for ‘out-of-range’ values
-
-Replaced the ‘calculated’ icon with an underline for the label
-
-1 Limited applicability
-
-Concerns over spurious accuracy
-
-Would like ‘asap’ option
-
-2 Would expect to use shorthand
-
-Would like auto-complete
-
-Concerns over spurious accuracy
-
-Expects to be able to enter ‘past 22 years’
-
-Limited in expression, in that you cannot express frequency
-
-3 Limited applicability: this concept “falls between two stools”
+| Iteration Headline Findings and Comments | Changes |
+| --- | --- |
+| 1            Limited applicability |  |
+| Concerns over spurious accuracy |  |
+| Would like ‘asap’ option |  |
+| 2            Would expect to use shorthand | Provide auto-complete |
+| Would like auto-complete | Allow the entry of words such as ‘past’ |
+| Concerns over spurious accuracy |  |
+| Expects to be able to enter ‘past 22 years’ |  |
+| Limited in expression, in that you cannot express frequency |  |
+| 3            Limited applicability: this concept “falls between two stools” |  |
 
 Table 16: Entering Durations
 
@@ -2734,51 +2701,41 @@ Page 80
 
 HSCIC Controlled Document
 
-1 Would expect to type a single line, for example ‘HS 1+2+0=Clear, Otherwise normal’
 
-Does not think ‘Not examined’ is a good default
-
-Wants progressive disclosure of fields
-
-2 Free text would easier than making selections
-
-Might not know that there are fields for further details
-
-Negative statements are useful
-
-3 Free text would be easier than making selections
-
-Want drawings/annotations
-
-Clinician does not realise they should click ‘No’ for further details
-
-Buttons are too small
-
-Must be able to use familiar nomenclature
-
-4 Need the ability to add free text
-
-Text is too small
-
-Laborious: would prefer tick boxes
+| Iteration Headline Findings and Comments | Changes |
+| --- | --- |
+| 1            Would expect to type a single line, for example ‘HS 1+2+0=Clear, Otherwise | Implemented the progressive disclosure |
+| normal’ |  |
+| Does not think ‘Not examined’ is a good default |  |
+| Wants progressive disclosure of fields |  |
+| 2            Free text would easier than making selections |  |
+| Might not know that there are fields for further details |  |
+| Negative statements are useful |  |
+| 3            Free text would be easier than making selections |  |
+| Want drawings/annotations |  |
+| Clinician does not realise they should click ‘No’ for further details |  |
+| Buttons are too small |  |
+| Must be able to use familiar nomenclature |  |
+| 4            Need the ability to add free text |  |
+| Text is too small |  |
+| Laborious: would prefer tick boxes |  |
 
 Table 17: General Form Design
 
-Table 18 describes the design iteration for adding free text:
 
-Implemented the progressive disclosure
-
-1 Clinician expected to be able to find what they wanted to enter as fixed choice widgets
-
-Button was not sufficiently prominent
+| Iteration Headline Findings and Comments | Changes |
+| --- | --- |
+| 1            Clinician expected to be able to find what they wanted to enter as fixed |  |
+| choice widgets |  |
+| Button was not sufficiently prominent |  |
 
 Table 18: Adding Free Text
 
-Table 19 describes the design iteration for displaying previous values _:_
 
-1 Clinicians liked this feature and would find it useful
-
-Seeing a graph would be more useful
+| Iteration Headline Findings and Comments | Changes |
+| --- | --- |
+| 1            Clinicians liked this feature and would find it useful |  |
+| Seeing a graph would be more useful |  |
 
 Table 19: Displaying Previous Values
 

@@ -11,6 +11,29 @@ theme:
   variant: modern
   language: en
   font: false
+  logo: assets/cui-logo.svg
+  favicon: assets/cui-favicon.svg
+  palette:
+    - media: "(prefers-color-scheme)"
+      primary: custom
+      accent: custom
+      toggle:
+        icon: lucide/sun-moon
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: lucide/sun
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: lucide/moon
+        name: Switch to system preference
 extra_css:
   - stylesheets/extra.css
 # Preserve literal clinical notation: do not enable smart-symbol substitution.

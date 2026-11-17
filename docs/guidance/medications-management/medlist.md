@@ -222,9 +222,85 @@ Page 2
 
 HSCIC Controlled Document
 
-**Added** MEDv-141 to MEDv-201
 
-These guidance points have been added
+| Change IDs | Change Description |
+| --- | --- |
+| Deleted    MEDv-001 to Del | eted to remove constraints that relate to specific views other than a medication list, navigation between |
+| MEDv-015    vie | ws and guidance relating to a framework of views |
+| MEDv-016 to Rem | oved because they are general versions of the more specific guidance in the sections on Current and |
+| MEDv-018    Pas | t (MEDv-063), Past Filters (MEDv-066) and Grouping (MEDv-084) respectively |
+| MEDv-019 | Removed as further research is being carried out that may inform the production of guidance for the display of and navigation between different sets of medications information (Levels of Detail) |
+| MEDv-033 | Removed because decision support alerts need to be considered as part of a larger framework |
+| MEDv-034 | Superseded by more detailed guidance in Medications Management – Medication Line {R2} guidance |
+| MEDv-040 | document, section 3.3.4 |
+| MEDv-039 | Replaced by MEDi-001 in Medications Management – Medication Line {R2} guidance document |
+| MEDv-041 | Replaced by MEDi-018 in Medications Management – Medication Line {R2} guidance document |
+| MEDv-026 | Removed because the formatting defined in MEDv-024 and MEDv-025 is sufficient to distinguish medications with a different status |
+| MEDv-046 | Replaced by MEDv-179, MEDv-180 and MEDv-181 as the look-ahead scroll bar (LASB) is now displayed in a reserved space |
+| MEDv-047 | Replaced by the more specific MEDv-181 |
+| MEDv-057 | Deleted because medication lines are no longer shown within a recent past notification |
+| MEDv-060 | Superseded by MEDv-182 because the LASB is no longer recommended as a navigation tool |
+| MEDv-061 |  |
+| MEDv-073 | Removed because this is covered by MEDv-068 |
+| MEDv-076    Rem | oved to mitigate UI design and technical issues associated with the display of recent past medications |
+| MEDv-078 to wit | hin the current medications list |
+| MEDv-082 |  |
+| MEDv-088 | Removed to allow the user to control the grouping and group states (expanded or collapsed) in each of Current and Past medications respectively and independently |
+| MEDv-093 to Rel | ate to the duplication of medications that belong in more than one group. Removed as this approach is |
+| MEDv-098    no | longer recommended since guidance cannot effectively mitigate the risks that it has been found to |
+| int | roduce. |
+| MEDv-106 | This sorting restriction (do not allow sorting by hidden attributes) has been removed to allow the provision of mechanisms that can support sorting other than by clicking on visible column headings |
+| MEDv-107 to Rel | ate to the control and display of Levels of Detail. Removed because guidance can only assess risks by |
+| hange IDs                C | hange Description |
+| MEDv-121       d | efining the whole view (all of the information displayed for one level of detail). By removing the guidance |
+| r | ather than extending it, we hope to encourage innovation in this area |
+| MEDv-134       R | emoved to avoid the implication that the context menu should be used to display information about the |
+| s | elected medications |
+| MEDv-137 to Rela | te to display of detailed information about a single medication. These guidance points have been |
+| MEDv-140    remo | ved because further work is needed to identify guidance in this area. If all details for one medication |
+| are | displayed in such a way that occludes the information in the list, there is a risk that the partially visible |
+| medi | cations information may be used to inform clinical judgement. This risk needs further assessment and |
+| furt | her design exploration is needed to explore the provision of information without occluding the |
+| medi | cations in the list. These risks are best addressed as part of a more comprehensive design for the |
+| disp | lay of all details for one medication. |
+| odified   MEDv-020       R | ephrased and extended to clarify that each line represents one medication |
+| MEDv-025       R | ephrased to remove the potential for it to be interpreted as supporting the display of current and past |
+| m | edications concurrently in the same list |
+| MEDv-028 to Repl | aced with new guidance that is provides principles for the ordering and formatting of columns and for |
+| MEDv-032    wrap | ping rather than requiring the display of specific columns in a set order |
+| MEDv-034 to |  |
+| MEDv-038 |  |
+| MEDv-049       R | ephrased to clarify that the order of drugs in the look-ahead notifications must be consistent with the |
+| o | rder of medications in the list |
+| MEDv-056       R | ephrased to clarify that the black dot in the look-ahead scroll bar notifications should have a space either |
+| s | ide |
+| MEDv-067       R | ephrased to clarify that a ‘show all past’ (or equivalent) option should be available in the list of filters for |
+| p | ast medications |
+| MEDv-068       R | ephrased to differentiate it from MEDv-070 and to clarify that it refers specifically to the presence and |
+| l | ocation of a control for removing a filter |
+| MEDv-072       C | onformance rating changed from Mandatory to Recommended to allow for brevity in filter notification |
+| m | essages |
+| MEDv-083       C | onformance rating changed from Mandatory to Recommended to allow for the default presentation of |
+| g | rouping to support users focused solely on a specific task |
+| MEDv-084       R | ephrased to replace to ‘combo-box’ with the more accurate ‘drop-down box’ |
+| MEDv-089       C | hanged so that it only requires counts to be shown in group headings for groups that are collapsed |
+| MEDv-090       C | onformance rating changed from mandatory to recommended in order to allow for the display of group |
+| h | eadings for empty groups when the grouping scheme has few groups and is used for specific tasks that |
+| r | equire explicit confirmation of empty groups |
+| MEDv-099       R | ephrased to clarify that ‘start date’ and ‘end date’ are not necessarily the correct definitions or column |
+| MEDv-100       l | abels for the dates to which the default sorts are applied |
+| MEDv-103       C | onformance rating changed from Mandatory to Recommended since it is supplementary to the use of an |
+| i | con to indicate the sort order in a column heading |
+| MEDv-104       R | ephrased to clarify that a text symbol such as a triangle could be used instead of an icon |
+| MEDv-105       R | ephrased to refer to the default sort rather than reference an explicit sort order |
+| MEDv-127       E | xtended to describe the keyboard shortcuts explicitly |
+| MEDv-022       W | ording revised for clarity, without altering the meaning |
+| MEDv-059 |  |
+| MEDv-064 |  |
+| MEDv-074 |  |
+| hange IDs | Change Description |
+| dded        MEDv-141 to Th | ese guidance points have been added |
+| MEDv-201 |  |
 
 Table 1: Changes Since the Last Baseline Version
 
@@ -264,49 +340,18 @@ This guidance has been designed for the display of medications for a single pati
 
 ##### 1.2.1 In Scope
 
-Users Hospital-based doctors, nurses and pharmacists
 
-Care settings In-patient, hospital ward environment only
-
-Tasks Reviewing medications that have been prescribed for a single patient and checking the accuracy of scripts
-
-Medications  Oral solids and liquids
-
- Inhalers and sprays
-
- Eye, ear and nose drops
-
- Topical liquids
-
- Creams, ointments and gels
-
- Enemas and rectal solutions
-
- Granules and powders
-
- Insulin
-
- Suppositories and pessaries
-
- Topical patches
-
- Nebuliser solutions
-
- Simple infusions (by example only)
-
- Injections (insulin example only)
-
- Unlicensed medications
-
-Grouping Controls for applying and changing sorting and grouping respectively. The display of group headers, expanding and collapsing groups and handling medications that belong in more than one group
-
-Notifications General notifications, such as ‘Patient nil by mouth’ and recent past medications
-
-Look-ahead scroll bars Generic guidance for the display of a look-ahead scroll bar in any view and guidance that is specific to the display of current medications and past medications. See section 3.3.20 for a description of the lookahead scroll bar.
-
-List structure Structure and layout of a list of medications
-
-Filtering Filtering to display current or past medications respectively and filters to display subsets of past medications
+| Guidance Areas | Details |
+| --- | --- |
+| Users | Hospital-based doctors, nurses and pharmacists |
+| Care settings | In-patient, hospital ward environment only |
+| Tasks | Reviewing medications that have been prescribed for a single patient and checking the accuracy of scripts |
+| Medications |  Oral solids and liquids                   Insulin  Inhalers and sprays                       Suppositories and pessaries  Eye, ear and nose drops                   Topical patches  Topical liquids                           Nebuliser solutions  Creams, ointments and gels                Simple infusions (by example only)  Enemas and rectal solutions               Injections (insulin example only)  Granules and powders                      Unlicensed medications |
+| Grouping | Controls for applying and changing sorting and grouping respectively. The display of group headers, expanding and collapsing groups and handling medications that belong in more than one group |
+| Notifications | General notifications, such as ‘Patient nil by mouth’ and recent past medications |
+| Look-ahead scroll bars | Generic guidance for the display of a look-ahead scroll bar in any view and guidance that is specific to the display of current medications and past medications. See section 3.3.20 for a description of the look- ahead scroll bar. |
+| List structure | Structure and layout of a list of medications |
+| Filtering | Filtering to display current or past medications respectively and filters to display subsets of past medications |
 
 Table 2: In Scope
 
@@ -446,25 +491,49 @@ HSCIC Controlled Document
 
 **Guidance Areas** **Details**
 
-Other  Sealed envelopes
 
- Supply and dispensing
-
- Guidance (other than notifications) that might be needed for when a patient is ‘Nil by Mouth’
+| Guidance Areas | Details |
+| --- | --- |
+| Users | Non-clinical staff, patients and other health care professionals not listed in the in scope section (that is, only hospital-based doctors, nurses and pharmacists are in scope). |
+| Care settings | Care settings other than in-patient, hospital ward environments, including: outpatients, clinics, pharmacies, emergency services and departments, intensive care, High Dependency Unit (HDU), primary care, including general practice, community and home visits, ward management, multi-patient tasks. |
+| Tasks |  Reviewing administration events to gain an understanding of the degree to which the medication has been successfully administered  Relating medications to information elsewhere in the patient record, including the linking of information in a plan or notes to medications  Medications reconciliation |
+| Medications |  Enteral feeds                                           Foams  Dressings and devices                                   Radioactive agents |
+| Although these |  Implants and sticks                                     Regimens and order sets |
+| medications can be |  Intrauterine devices (IUDs)                             Advisory Committee on Borderline Substances |
+| displayed in the list view | (ACBS) products  Cements |
+| defined by this guidance, |  Homeopathic products (including                         Over the counter (OTC) medications |
+| they may have additional |  |
+| requirements or introduce | complementary and alternative therapies)                Recreational drugs |
+| specific risks that are not |  Dialysis solutions                                      Medications with titrating doses |
+| explicitly addressed by |  Injections (except by specific example)                 Discharge medications – to take out (TTO) |
+| the guidance. |  Infusions and fluids (except by specific                Patient’s own drugs (PODs) examples)                                               Epidurals and patient controlled analgesia  Combination infusions                                   Extemporaneous prescriptions  Total Parental Nutrition (TPN)                          Medication administered or supplied as part of a  Gases                                                    Patient Group Direction (PGD)  Blood and platelet products                             Medication prescribed by supplementary  Radio-pharmacy                                           prescribers  Variable dose medications |
+| Identity of a medication | Definition of which attributes can be changed without the need for a new medication line to be represented (in the UI). |
+| All details for one | The layout and structure for the presentation of all information about one medication from the selection of |
+| medication | a medication anywhere in a clinical application. This includes the selection of a medication to present a separate window or area with more detailed information about that medication. |
+| Specific Properties of | Guidance for the indication (as text or as an icon) of specific attributes of a medication, including: |
+| Individual Medications |  Indicating medications that were added when they were already ‘past’ medications in order to complete missing information in a past medical history  Indicating an owner for each medication (for within multi-disciplinary cross boundary records) |
+| Decision and knowledge | All forms of decision support, including alerting for allergies and drug-to-drug interactions. Knowledge |
+| support | support such as browsing drugs by classification and looking up information about medications. |
+| Allergies | The display and recording of allergy information and adverse drug reaction risks is covered in a separate guidance document. |
+| Patient consent and | Patient preference, such as for a particular drug form. Patient consent, particularly in a mental health |
+| preference | context. |
+| Guidance Areas              De | tails |
+| Other                        | Sealed envelopes |
+|  | Supply and dispensing |
+|  | Guidance (other than notifications) that might be needed for when a patient is ‘Nil by Mouth’ |
 
 Table 3: Out of Scope
 
 #### 1.3 Dependencies
 
-**D1** This guidance is informed by ongoing and unpublished work by the NHS National Programme for IT (NPfIT) that is referred to in this document as NHS Connecting for Health (NHS CFH) Medication Types Rules. The NHS CFH Medication Types Rules is still evolving and is based on extensive research and consultation. Changes to this work may trigger changes to this guidance.
 
-**D2** This guidance is informed by the NHS NPfIT _ePrescribing Functional Specification_ _[3]_
-
-**D3** This guidance uses the concepts ‘generic drug’ and ‘brand name’ and depends on access to, or creation of, a database or dictionary, that can support these concepts, such as the _Dictionary of Medicines and Devices_ (known as ‘dm+d’) [4].
-
-**D4** This guidance includes guidance points for filtering, sorting and grouping that are expected to be included in a separate guidance document for this area. Availability of such a document may trigger changes to this guidance.
-
-**D5** This guidance assumes that a list of medications is provided as part of a larger framework of medications that collectively provide enough information to support a review of the current and past medications of a single patient. A comprehensive understanding of the current status of a patient’s medications is expected to be gained from the use of more than one medications view.
+| ID | Dependency |
+| --- | --- |
+| D1 | This guidance is informed by ongoing and unpublished work by the NHS National Programme for IT (NPfIT) that is referred to in this document as NHS Connecting for Health (NHS CFH) Medication Types Rules. The NHS CFH Medication Types Rules is still evolving and is based on extensive research and consultation. Changes to this work may trigger changes to this guidance. |
+| D2 | This guidance is informed by the NHS NPfIT ePrescribing Functional Specification3 |
+| D3 | This guidance uses the concepts ‘generic drug’ and ‘brand name’ and depends on access to, or creation of, a database or dictionary, that can support these concepts, such as the Dictionary of Medicines and Devices (known as ‘dm+d’)4. |
+| D4 | This guidance includes guidance points for filtering, sorting and grouping that are expected to be included in a separate guidance document for this area. Availability of such a document may trigger changes to this guidance. |
+| D5 | This guidance assumes that a list of medications is provided as part of a larger framework of medications that collectively provide enough information to support a review of the current and past medications of a single patient. A comprehensive understanding of the current status of a patient’s medications is expected to be gained from the use of more than one medications view. |
 
 Table 4: Dependencies
 
@@ -2087,53 +2156,33 @@ HSCIC Controlled Document
 
 #### 4.1 Terms and Abbreviations
 
-ACBS Advisory Committee on Borderline Substances
 
-AMP Actual Medicinal Product
-
-CATR Clinical Authority to Release
-
-CSG Clinical Safety Group
-
-CSMS Clinical Safety Management System
-
-CUI Common User Interface
-
-dm+d Dictionary of Medicines and Devices
-
-HDU High Dependency Unit
-
-ISMP The Institute for Safe Medication Practices
-
-IUD Intrauterine Device
-
-LASB Look-Ahead Scroll Bar
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NPfIT National Programme for IT
-
-NPSA National Patient Safety Agency
-
-OTC Over the Counter
-
-PGD Patient Group Direction
-
-PODs Patient’s Own Drugs
-
-TFN Trade Family Name
-
-TPN Total Parental Nutrition
-
-TTO To Take Out
-
-UI User Interface
-
-VTM Virtual Therapeutic Moiety
-
-W3C World Wide Web Consortium
+| Abbreviation | Definition |
+| --- | --- |
+| ACBS | Advisory Committee on Borderline Substances |
+| AMP | Actual Medicinal Product |
+| CATR | Clinical Authority to Release |
+| CSG | Clinical Safety Group |
+| CSMS | Clinical Safety Management System |
+| CUI | Common User Interface |
+| dm+d | Dictionary of Medicines and Devices |
+| HDU | High Dependency Unit |
+| ISMP | The Institute for Safe Medication Practices |
+| IUD | Intrauterine Device |
+| LASB | Look-Ahead Scroll Bar |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPfIT | National Programme for IT |
+| NPSA | National Patient Safety Agency |
+| OTC | Over the Counter |
+| PGD | Patient Group Direction |
+| PODs | Patient’s Own Drugs |
+| TFN | Trade Family Name |
+| TPN | Total Parental Nutrition |
+| TTO | To Take Out |
+| UI | User Interface |
+| VTM | Virtual Therapeutic Moiety |
+| W3C | World Wide Web Consortium |
 
 Table 6: Terms and Abbreviations
 
@@ -2145,15 +2194,14 @@ HSCIC Controlled Document
 
 #### 4.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
-
-Generic drug name This can be a single drug name that refers to a single active ingredient or it can be multiple active ingredients that are prescribed as one drug. In the structure of the dm+d **{R10}**, this generally equates to a Virtual Therapeutic Moiety (VTM)
-
-Brand name A brand name for a product containing medication. A brand name may be associated with many products. In some cases, the same brand name may be associated with different generic drugs. Future versions of the dm+d **{R10}** are expected to include a separate entity for brand name, known as Trade Family Name (TFN). In the meantime, the brand name is part of the Actual Medicinal Product (AMP)
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
+| Generic drug name | This can be a single drug name that refers to a single active ingredient or it can be multiple active ingredients that are prescribed as one drug. In the structure of the dm+d {R10}, this generally equates to a Virtual Therapeutic Moiety (VTM) |
+| Brand name | A brand name for a product containing medication. A brand name may be associated with many products. In some cases, the same brand name may be associated with different generic drugs. Future versions of the dm+d {R10} are expected to include a separate entity for brand name, known as Trade Family Name (TFN). In the meantime, the brand name is part of the Actual Medicinal Product (AMP) |
 
 Table 7: Definitions
 
@@ -2163,35 +2211,30 @@ This section shows how to interpret the different styles used in this document t
 
 ##### 4.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 8: Body Text Styles
 
 ##### 4.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 9: Cross Reference Styles
 
@@ -2203,53 +2246,25 @@ HSCIC Controlled Document
 
 #### 4.4 References
 
-**R1.** NHS CUI Programme – Design Guide Entry – Medications Management – Medication Views 2.0.0.0
 
-**R2.** NHS CUI Programme – Medications Management – Medication Line – User Interface Design Guidance
-
-**R3.** NPSA – Safety in doses: medication safety incidents in the NHS http://www.npsa.nhs.uk/nrls/alerts-and-directives/directives-guidance/safety-in-doses/
-
-**R4.** Medication Errors – Causes, Prevention, and Risk Management – Cohen M R (Ed) – Jones and Bartlett Publishers
-
-**R5.** To Err is Human _–_ Building a Safer Health System – Kohn L, Corrigan J, Donaldson M – Washington, DC: National Academy Press, 2000
-
-2.0.0.0
-
-2007
-
-2004
-
-2000
-
-**R6.** Understanding Patient Safety – Wachter R M – The McGraw-Hill Companies, Inc, 2008 2008
-
-**R7.** Healthcare Commission Patient Survey – Room for Review: a Guide to Medication Review 2004
-
-**R8.** National service framework for older people – Department of Health [http://www.dh.gov.uk/en/publicationsandstatistics/publications/publicationspolicyandguidance/DH_4](http://www.dh.gov.uk/en/publicationsandstatistics/publications/publicationspolicyandguidance/DH_4003066) [003066](http://www.dh.gov.uk/en/publicationsandstatistics/publications/publicationspolicyandguidance/DH_4003066)
-
-**R9.** NHS NPfIT – ePrescribing Functional Specification [http://www.connectingforhealth.nhs.uk/newsroom/news-stories/eprescfunctspec](http://www.connectingforhealth.nhs.uk/newsroom/news-stories/eprescfunctspec)
-
-**R10.** NHS – dictionary of medicines + devices [http://www.dmd.nhs.uk/](http://www.dmd.nhs.uk/)
-
-**R11.** NHS CUI Programme – Medications Management – Drug Administration – User Interface Design Guidance
-
-2001
-
-1.0
-
-Release 2.3
-
-3.0.0.0
-
-**R12.** The Visual Display of Quantitative Information – Tufte E, 2001, Cheshire, CT – Graphics Press Second Edition 2001
-
-**R13.** Web Content Accessibility Guidelines 1.0 – W3C Recommendation 5-May-1999 [http://www.w3.org/TR/WAI-WEBCONTENT/](http://www.w3.org/TR/WAI-WEBCONTENT/)
-
-**R14.** Techniques for Accessibility Evaluation and Repair Tools – W3C Working Draft – 26 April 2000 – Technique 2.2.1 [priority 3] Test the colour attributes of the following elements for visibility: [http://www.w3.org/TR/AERT#color-contrast](http://www.w3.org/TR/AERT#color-contrast)
-
-**R15.** NHS NPfIT – Guidelines for the Design and Presentation of Medication Elements Required in Electronic Prescribing or Medication Ordering Systems – NPfIT-EP-DB-0003.01
-
-**R16.** ISMP – ISMP MedicationSafetyAlert! – It’s Time for Standards to Improve Safety with Electronic Communication of Medication Orders – Draft Guidelines for Safe Electronic Communication of Medication Orders [http://www.ismp.org/Newsletters/acutecare/articles/20030220.asp](http://www.ismp.org/Newsletters/acutecare/articles/20030220.asp)
+| Reference | Document | Version |
+| --- | --- | --- |
+| R1. | NHS CUI Programme – Design Guide Entry – Medications Management – Medication Views | 2.0.0.0 |
+| R2. | NHS CUI Programme – Medications Management – Medication Line – User Interface Design Guidance | 2.0.0.0 |
+| R3. | NPSA – Safety in doses: medication safety incidents in the NHS http://www.npsa.nhs.uk/nrls/alerts-and-directives/directives-guidance/safety-in-doses/ | 2007 |
+| R4. | Medication Errors – Causes, Prevention, and Risk Management – Cohen M R (Ed) – Jones and Bartlett Publishers | 2004 |
+| R5. | To Err is Human – Building a Safer Health System – Kohn L, Corrigan J, Donaldson M – Washington, DC: National Academy Press, 2000 | 2000 |
+| R6. | Understanding Patient Safety – Wachter R M – The McGraw-Hill Companies, Inc, 2008 | 2008 |
+| R7. | Healthcare Commission Patient Survey – Room for Review: a Guide to Medication Review | 2004 |
+| R8. | National service framework for older people – Department of Health http://www.dh.gov.uk/en/publicationsandstatistics/publications/publicationspolicyandguidance/DH_4 003066 | 2001 |
+| R9. | NHS NPfIT – ePrescribing Functional Specification http://www.connectingforhealth.nhs.uk/newsroom/news-stories/eprescfunctspec | 1.0 |
+| R10. | NHS – dictionary of medicines + devices http://www.dmd.nhs.uk/ | Release 2.3 |
+| R11. | NHS CUI Programme – Medications Management – Drug Administration – User Interface Design Guidance | 3.0.0.0 |
+| R12. | The Visual Display of Quantitative Information – Tufte E, 2001, Cheshire, CT – Graphics Press | Second Edition 2001 |
+| R13. | Web Content Accessibility Guidelines 1.0 – W3C Recommendation 5-May-1999 http://www.w3.org/TR/WAI-WEBCONTENT/ | 1999 |
+| R14. | Techniques for Accessibility Evaluation and Repair Tools – W3C Working Draft – 26 April 2000 – Technique 2.2.1 [priority 3] Test the colour attributes of the following elements for visibility: http://www.w3.org/TR/AERT#color-contrast | 2000 |
+| R15. | NHS NPfIT – Guidelines for the Design and Presentation of Medication Elements Required in Electronic Prescribing or Medication Ordering Systems – NPfIT-EP-DB-0003.01 | 2005 |
+| R16. | ISMP – ISMP MedicationSafetyAlert! – It’s Time for Standards to Improve Safety with Electronic Communication of Medication Orders – Draft Guidelines for Safe Electronic Communication of Medication Orders http://www.ismp.org/Newsletters/acutecare/articles/20030220.asp | 20-Feb-2003 |
 
 Table 10: References
 

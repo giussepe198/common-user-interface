@@ -788,9 +788,29 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-ALT+0 Access Key Details (Government AccessKey standards)
 
-ALT+S Skip Navigation (Government AccessKey standards)
+| Key | Functionality |
+| --- | --- |
+| ALT+F4 | Quit Application |
+| ALT+V | View Menu |
+| ALT+E | Edit Menu |
+| ALT+F | File Menu |
+| ALT+H | Help Menu |
+| ALT+HOME | First/Homepage |
+| ALT+TAB | Switch Windows |
+| ALT+ESC | Display Next |
+| ALT+1 | Homepage (Government AccessKey standards) |
+| ALT+2 | What's New (Government AccessKey standards) |
+| ALT+3 | Site Map (Government AccessKey standards) |
+| ALT+4 | Search (Government AccessKey standards) |
+| ALT+5 | FAQs (Government AccessKey standards) |
+| ALT+6 | Help (Government AccessKey standards) |
+| ALT+7 | Complaints Procedure (Government AccessKey standards) |
+| ALT+8 | Terms and Conditions (Government AccessKey standards) |
+| ALT+9 | Feedback Form (Government AccessKey standards) |
+| ey | Functionality |
+| LT+0 | Access Key Details (Government AccessKey standards) |
+| LT+S | Skip Navigation (Government AccessKey standards) |
 
 Figure 4: ALT Key Shortcuts
 
@@ -843,25 +863,25 @@ _**4.1.1.3**_ _**Drawbacks**_
 
 ##### 4.1.2 Function Key Shortcuts
 
-The following tables list recommended Function key shortcuts.
 
-_**General Function Key Shortcuts**_
-
-Use the following Function keys for all applications and in most contexts:
-
-F1 Help
+|  | ALT+number – potential conflicts with Government AccessKeys (and other applications) |
+| --- | --- |
+| F | unction Key Shortcuts |
+| ng ta | bles list recommended Function key shortcuts. |
+| ction | Key Shortcuts |
+| lowin | g Function keys for all applications and in most contexts: |
+|  | Functionality |
+|  | Help |
 
 Figure 6: General Function Key Shortcuts
 
 Figure 7: Recommended Function Key Shortcuts (General)
 
-_**Browser Function Key Shortcuts**_
 
-In addition to the general function key shortcuts, for browsers we recommend using the following keys for the listed functions, based on general user expectations.
-
-F5 Refresh/reload
-
-F11 Full Screen
+| Key | Functionality |
+| --- | --- |
+| F5 | Refresh/reload |
+| F11 | Full Screen |
 
 Figure 8: Browser Function Key Shortcuts
 
@@ -923,7 +943,23 @@ Copyright ©2013 Health and Social Care Information Centre
 ![](keyshorts_assets/keyshorts.pdf-21-0.png)
 HSCIC Controlled Document
 
-CTRL+F4 Close
+
+| Key | Functionality |
+| --- | --- |
+| CTRL+A | Select All |
+| CTRL+S | Save |
+| CTRL+F | Find/Search |
+| CTRL+Z | Undo |
+| CTRL+X | Cut |
+| CTRL+C | Copy |
+| CTRL+V | Paste |
+| CTRL+N | New |
+| CTRL+W | Close |
+| CTRL+Y | Redo/Repeat |
+| CTRL+O | Open |
+| CTRL+P | Print |
+| Key                        F | unctionality |
+| CTRL+F4 | Close |
 
 Figure 10: Recommended CTRL Key Shortcuts (General)
 
@@ -958,23 +994,31 @@ Copyright ©2013 Health and Social Care Information Centre
 ![](keyshorts_assets/keyshorts.pdf-22-1.png)
 HSCIC Controlled Document
 
+
+| Key | Functionality |
+| --- | --- |
+| CTRL+E | Centre |
+| CTR+R | Right align |
+| CTRL+T | Indent |
+| CTRL+U | Underline |
+| CTRL+I | Italics |
+| CTRL+G | Go to |
+| CTRL+J | Justify |
+| CTRL+K | Hyperlink |
+| CTRL+L | Left align |
+| CTRL+B | Bold |
+
 Figure 11: Recommended CTRL Key Shortcuts (Text Editing)
 
-_**Browser Control Key Shortcuts**_
 
-In addition to the general control key shortcuts, for browsers it is recommended the following keys are used for the listed functions, based on general user expectations.
-
-CTRL+Q Exit
-
-CTR+E Web search
-
-CTRL+R Refresh
-
-CTRL+U View Source
-
-CTRL+H History
-
-CTRL+L New Location
+| Key | Functionality |
+| --- | --- |
+| CTRL+Q | Exit |
+| CTR+E | Web search |
+| CTRL+R | Refresh |
+| CTRL+U | View Source |
+| CTRL+H | History |
+| CTRL+L | New Location |
 
 Figure 12: Browser Control Key Shortcuts
 
@@ -1001,19 +1045,13 @@ HSCIC Controlled Document
 
 - Browsers
 
-Differentiating these categories helps reduce unnecessary conflicts and provides better guidance to developers. Splitting into these categories also helps to consider assistive technology applications which have specific usage contexts and which might otherwise appear as conflicts with general application use.
 
-_**Other General Shortcuts**_
-
-The following tables list other recognized common shortcuts:
-
-TAB Move through fields on the screen
-
-SHIFT+TAB Move through fields on the screen (opposite direction)
-
-ARROW KEYS Move through patient records
-
-ESC Cancel action
+| Key | Functionality |
+| --- | --- |
+| TAB | Move through fields on the screen |
+| SHIFT+TAB | Move through fields on the screen (opposite direction) |
+| ARROW KEYS | Move through patient records |
+| ESC | Cancel action |
 
 Figure 14: Other Recognized Shortcuts
 
@@ -1150,9 +1188,62 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-_**Preferred Shortcuts**_
 
-The preferred keyboard shortcuts are probably going to be those that favour short, intuitive key presses reached comfortably with the left hand. As the left hand rests naturally at the bottom left of the keyboard these will be key presses using the CTRL and ALT keys (also these are commonly recognised keys used to invoke shortcuts).
+|  | F1 for Help |
+| --- | --- |
+|  | CTRL+C for Copy |
+|  | CTRL+V for Paste |
+| onfl | icts That Cause Confusion |
+| HS u | ses a large number of applications, which is likely to lead to shortcut conflicts. |
+| cre | ating more confusion by only employing shortcuts that do not conflict with other |
+| cati | ons. |
+| er r | esearch needs to be undertaken to determine the significance of conflicts. |
+| ange | rous Conflicts |
+| rtic | ular, do not use shortcuts that will conflict with any shortcuts used for opposite or |
+| adic | tory features in existing applications, for example, do not use a shortcut for Close |
+| ave | if an identical shortcut for Close without Saving exists in another application. |
+| er r | esearch needs to be undertaken to determine the significance of conflicts. |
+| ossi | ble, use single key press shortcuts |
+| peed | and efficiency, make use of single key press shortcuts (for example, the function |
+| for | application specific functionality as much as possible. |
+| xcep | tion is F1 which should always invoke a help function of some description. |
+| ple | CTRL and ALT shortcut combinations |
+| unda | ne and general application specific tasks, where possible use simple CTRL and |
+| hort | cut combinations. These are the keys most comfortably accessed using smallest |
+| r fo | r depressing CTRL or ALT key and then index finger or thumb for second key press |
+| ming | left hand usage). See later justification of recommendations. |
+| LT+l | etter for recognized functions such as opening menus. These are generally |
+| cati | on specific but some are recognized, such as ALT+F for file, ALT+H for Help. |
+| TRL+ | letter for recognized functions, for example, in text editing mode use CTRL+C |
+| opy, | etc. |
+| e cl | inically significant functions from the mundane |
+| pos | sible spatially separate clinically significant functions on the keyboard from |
+| ne a | nd general application specific features, to avoid unnecessary clinical errors. |
+| e th | e user has to move their hand from its natural comfort zone to perform these |
+| . |  |
+| tifi | cation |
+| racy | are central to NHS work. Consequently, the keyboard manipulation that is |
+| ter | and work with data, such as patient records, is at the heart of efficiency and |
+|  |  |
+| dict | ates: |
+| d ea | sily remembered shortcuts |
+| e ma | ppings of shortcuts to functions |
+| nt m | appings of shortcuts to existing functions where possible |
+| tion |  |
+| appl | ications users probably prefer one handed execution of keyboard shortcuts, as |
+| . Mo | st users are right handed (9 out of 10 people are right handed), so for these |
+| ral | inclination is to use the left hand to execute keyboard shortcuts. The right hand |
+| oing | other things like jotting notes, using mouse in tandem, etc. |
+| ment | is also a consideration. Within the office setting where the patient and clinician |
+| geth | er, the orientation of their bodies will affect the availability of hands to execute |
+| nat | ural inclination is to have the patient to the right of the clinician with the clinician's |
+| ight | ly towards the patient. This setup lends itself also to left handed execution of |
+|  |  |
+| tcut | s |
+| keyb | oard shortcuts are probably going to be those that favour short, intuitive key |
+| d co | mfortably with the left hand. As the left hand rests naturally at the bottom left of |
+| hese | will be key presses using the CTRL and ALT keys (also these are commonly |
+| s us | ed to invoke shortcuts). |
 
 Figure 16: Keyboard Hotspots
 
@@ -1269,6 +1360,23 @@ HSCIC Controlled Document
 
 ![](keyshorts_assets/keyshorts.pdf-30-5.png)
 
+
+| Establish clinical patterns of actual keyboard | • | Real world usage logs |
+| --- | --- | --- |
+| usage | • • • | Observational notes User preference feedback Statistics of keyboard shortcut |
+| Gather feedback about general keyboard |  | knowledge, gathered across a range of |
+| shortcut awareness |  | different IT users |
+| Determine the usage of adaptive technologies | • | Statistics for adaptive technologies use |
+| within the NHS | • | within the NHS Priorities for adaptive technologies keyboard shortcuts |
+| Incorporate ISV keyboard shortcuts into the | • | More comprehensive spreadsheet |
+| master spreadsheet | • | incorporating important additional shortcut keys from ISVs Updated recommendations based on ISV shortcut keys |
+| Categorise applications according to | • | Applications priorities based on current |
+| importance/clinical safety and usage | • | deployments Applications priorities based on clinical sensitivity |
+| Perform further research into ergonomics of |  |  |
+| keyboard usage | • • | Ergonomic report Feeds into final recommendations report |
+| Produce developing and refined | • | Recommended shortcut mappings |
+| recommendation lists | • • | Shortcuts to avoid (conflicts) Available key combinations |
+
 Figure 19: Summary of Future Research Steps
 
 #### 5.1 Establish Clinical Patterns of Actual Keyboard Usage
@@ -1336,6 +1444,40 @@ Page 29
 Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
+
+
+|  | What keyboard shortcuts are used for? |
+| --- | --- |
+|  | What shortcuts map to what functions? |
+| Wi | th what application? |
+| do use | rs execute shortcut commands, what is the preferred method: |
+| On | e hand? |
+| Tw | o hands? |
+| Is | sues with change from normal hand position? |
+| diffi | culties are encountered, record and ask why |
+| erred | usage (one/two hands, left/right hand), record and question why |
+| Thi | s will help to confirm both established and optimally efficient shortcuts. |
+| her Fe | edback about Keyboard Shortcut Awareness |
+| estion | naires to establish usage and familiarity. The questionnaires will be presented to: |
+| oss-se | ction of the target users (NHS staff) |
+| oss-se | ction of other general users of IT Applications (non-NHS staff) |
+| Thi | s will help establish which keyboard shortcuts are commonly known and |
+| the | proportion of users using these on a regular basis. |
+| ermine | Usage of Adaptive Technologies |
+| tablis | hed adaptive technology users and other relevant sources within the NHS to |
+|  |  |
+| % of | staff use adaptive technologies within the NHS? |
+| are t | he most commonly used technologies, for example: |
+| Sc | reen readers – JAWS, WindowEyes |
+| Sc | reen magnifiers – ZoomText, SuperNova |
+|  |  |
+| t that | the most commonly used screen reader in the NHS is JAWS, it is by far the most popular |
+| lly. A | ccording to the research so far, JAWS conflicts minimally with other applications and uses |
+| l keys | trokes - so should not cause too many problems with conflicts. WindowEyes on the other |
+| onflic | ts far more frequently; however it is not a widely used screenreader. Research needs to be |
+| d out | to confirm real world usage. |
+| Wil | l help establish priorities for adaptive technologies keyboard shortcuts which |
+| wil | l influence the final recommendations. Conflicts, important? |
 
 Figure 20: Conflicts
 
@@ -1422,6 +1564,23 @@ Page 31
 Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
+
+
+|  | CTRL Z and CTRL X easy |
+| --- | --- |
+|  | CTRL O, CTRL P difficult |
+|  | Preferred method – one handed or two handed |
+|  | Change of resting/normal hand position to perform the shortcut |
+|  | Effectiveness of alternate keyboard layouts – not everyone uses a standard keyboard |
+| W | ill extend recommendations based on existing research. |
+| oduce | Developing and Refined Recommendation Lists |
+| tended | and refined recommendation lists based on the research. These lists will |
+|  |  |
+| only u | sed keyboard shortcuts which must maintain a consistent mapping to existing |
+| tions |  |
+| ntial | areas of concern regarding existing conflicts |
+| oard s | hortcuts that are available for as yet undefined application specific use |
+| R | efined recommendation lists will develop in parallel to research undertaken. Refine and develop recommendations lists |
 
 Figure 22: Recommendations Lists
 
@@ -1511,41 +1670,33 @@ HSCIC Controlled Document
 
 #### 6.1 Terms and Abbreviations
 
-CSA Clinical Spine Application
 
-CUI Common User Interface
-
-DDA Disability Discrimination Act
-
-ISV Independent Software Vendor
-
-LSP Local Service Provider
-
-NDA Irish National Disability Authority
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-PDAs Personal Digital Assistants
-
-WAI Web Accessibility Initiative
-
-WCAG Web Content Accessibility Guidelines
-
-WOD Wireless Optical Desktop
-
-DDA Disability Discrimination Act 1995
+| Abbreviation | Definition |
+| --- | --- |
+| CSA | Clinical Spine Application |
+| CUI | Common User Interface |
+| DDA | Disability Discrimination Act |
+| ISV | Independent Software Vendor |
+| LSP | Local Service Provider |
+| NDA | Irish National Disability Authority |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| PDAs | Personal Digital Assistants |
+| WAI | Web Accessibility Initiative |
+| WCAG | Web Content Accessibility Guidelines |
+| WOD | Wireless Optical Desktop |
+| DDA | Disability Discrimination Act 1995 |
 
 Table 1: Terms and Abbreviations
 
 #### 6.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health)
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health) |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
 
 Table 2: Definitions
 

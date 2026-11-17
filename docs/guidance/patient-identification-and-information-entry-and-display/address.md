@@ -18,7 +18,6 @@ _Prepared by_
 
 - [PREFACE](#preface)
 - [1 INTRODUCTION](#1-introduction)
-  - [1.1 Customer Need](#11-customer-need)
   - [1.2 Scope](#12-scope)
     - [1.2.1 In Scope](#121-in-scope)
     - [1.2.2 Out of Scope](#122-out-of-scope)
@@ -125,56 +124,19 @@ To distinguish their relative importance, each guideline in this document is ran
 
 **Note**
 
-Refer to section 3.2 for definitions of the specific terminology used in this document.
 
-Table 1 describes the changes made since the previous version of this guidance (Baseline version 2.0.0.0 dated 12-Mar-2008):
-
-**Deleted** None
-
-**Modified** Enhanced context setting for guideline status (section 1)
-
-Enhanced context setting for out of scope text (section 1.2.2)
-
-Reference to NHS Data Model and Dictionary Service (section 2.3.5.3)
-
-Text moved to section 2.2 (section 2.3.5.4)
-
-Text moved to section 2.2 (section 2.3.5.5)
-
-Text moved to section 2.2 (section 2.3.5.6)
-
-Reference to NHS Data Model and Dictionary Service (section 2.4.5.2)
-
-Reference to Patient Demographics Service (PDS) (section 3)
-
-**Added** Patient Safety Process note
-
-Address Input Data Elements (section 2.2)
+| ID | Guideline | Status |
+| --- | --- | --- |
+| ADR-0001 | When displaying an address horizontally, only use a single comma and a single space, in that order, to delimit the different fields | Mandatory |
+| ADR-0002 | When displaying an address vertically, do not use a comma at the end of a line | Recommended |
+| ADR-0003 | When displaying an address vertically, left-align the text for ease of reading | Recommended |
+| ADR-0004 | When truncating an address, add an ellipsis to indicate that the address is not displayed in and, where appropriate, provide a means for the user to access the full address | full Recommended |
+| ADR-0005 | Do not split an address element when wrapping an address across multiple lines | Recommended |
+| ADR-0006 | Where part of an address is not available, do not display an empty string in its place | Recommended |
+| ADR-0007 | Display the postcode in all caps with a space between the first part (the outcode) and the second part (the incode) | Mandatory |
+| ADR-0008 | Do not display labels for individual address elements | Recommended |
 
 Table 1: Changes Since the Last Baseline Version
-
-Page 1
-
-Copyright ©2013 Health and Social Care Information Centre
-
-HSCIC Controlled Document
-
-#### 1.1 Customer Need
-
-NHS clinical applications store and display addresses in various contexts. For example, the address may be a patient’s residential address, or the address of a doctor's surgery.
-
-Addresses play an important, though secondary, part in patient identification. Where only a patient’s name and gender are known, the address can help identify the correct patient from a list of matching results. The address must therefore be easily accessed, such as from the Patient Banner, as described in _Design Guide Entry – Patient Banner_ **{R1}** .
-
-Addresses need to be stored by clinical applications, displayed on monitors and printed on referral letters and envelopes. There is therefore a need to identify best practice regarding address input and display and to promote its correct usage across all NHS clinical applications. This ensures that users have a consistent experience and maintains a high standard of data quality across the NHS.
-
-Addresses must be accurate to enable delivery to, collection from or visits at the correct location. Therefore, it is essential that all NHS clinical applications provide an easily-readable and consistent display format for address information. Promoting patient safety is of primary importance, so it is critical that addresses are presented in a clear form that minimises ambiguity and reading and transcribing errors.
-
-An address that is not displayed in a clear form can be misread, or not understood at all. This could have patient safety issues if, for example:
-
-- A patient needs to be sent a letter about an appointment
-
-- Test results need to be sent to a hospital or General Practitioner (GP) surgery
-
 - A next of kin needs to be contacted about the patient
 
 - A consultant needs to be contacted about a patient
@@ -388,7 +350,17 @@ correct sequence
 
 ####  Partial address display horizontally in
 
-the correct sequence
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         All elements vertically in correct |  | The address is displayed correctly in full |
+| sequence |  |  |
+|         All elements horizontally in correct | See Figure 2 | The address is displayed correctly in full |
+| sequence |  |  |
+|         Partial address display vertically in the |  | The user can see that the address is |
+| correct sequence |  | incomplete |
+|         Partial address display horizontally in | See Figure 5 | The user can see that the address is |
+| the correct sequence |  | incomplete |
 
 Table 2: Correct Address Display Examples
 
@@ -413,7 +385,12 @@ The labels consume space but are not helpful: the address can be intuitively und
 ![](address_assets/address.pdf-10-4.png)
 ####  Showing empty address elements See Figure 7 The address looks incomplete yet may
 
-not be: the user cannot tell
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Splitting address elements |  | It is difficult to read the address and distinguish the fields correctly |
+|        Displaying labels |  | The labels consume space but are not helpful: the address can be intuitively understood and address elements easily distinguished, without the labels |
+|        Showing empty address elements | See Figure 7 | The address looks incomplete yet may not be: the user cannot tell |
 
 Table 3: Incorrect Address Display Examples
 
@@ -646,15 +623,31 @@ Page 12
 
 HSCIC Controlled Document
 
-ADR-0021 Permit the following characters in the address: uppercase and lowercase letters, numbers 0 to 9, the full stop, forward slash, comma, colon, apostrophe space and the hyphen
+
+| ID | Guideline | Status |
+| --- | --- | --- |
+| ADR-0011 | Provide the following text input boxes, in the stated order, for UK address input:  Three boxes for input of all details up to and including the street name  One box for input of the town or city  One box for input of the county  One box for input of the postcode | Recommended |
+| ADR-0012 | Where text input boxes are used, they must be labelled as follows:  The three boxes for input of all details up to and including the street name, must be labelled ‘Line 1’, ‘Line 2’ and ‘Line 3’ respectively  The box for input of the town or city should be labelled ‘Town/City’  The box for input of the county should be labelled ‘County’  The box for input of the postcode should be labelled ‘Postcode’ | Mandatory |
+| ADR-0013 | Provide a means to find a postcode, to enhance data quality | Recommended |
+| ADR-0014 | Display a means to find a postcode only if such a service is supported, positioning it after the postcode input box, and labelling it ‘Find Postcode’ | Recommended |
+| ADR-0015 | Set the length of the postcode input box to 8 characters | Mandatory |
+| ADR-0016 | Set the length of the county input box to 18 characters | Recommended |
+| ADR-0017 | Set the height of each text input box to the largest character height in the currently active display font, taking the user’s settings into account | Recommended |
+| ADR-0018 | Display the text input boxes vertically with left alignment | Recommended |
+| ADR-0019 | Display the labels immediately to the left of their corresponding text input box, mutually right-aligning the labels | Recommended |
+| ADR-0020 | Permit address input via all the mechanisms supported on a platform such as, but not limited to, typing on a keyboard, copy and paste, and handwriting with a stylus | Recommended |
+| ID | Guideline                                                                                       Sta | tus |
+| ADR-0021 | Permit the following characters in the address: uppercase and lowercase letters, numbers 0      Rec to 9, the full stop, forward slash, comma, colon, apostrophe space and the hyphen | ommended |
 
 Table 4: Guidance for UK Address Input
 
 ##### 2.3.3 Examples of Correct Usage
 
-Recommended
 
-for. The labels are aligned to their respective boxes. All the boxes are present. These factors together contribute to complete and error-free address entry
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         The text input boxes are left-aligned, |  | The boxes are sized to give some |
+| their labels are right-aligned |  | indication of the input they are suited for. The labels are aligned to their respective boxes. All the boxes are present. These factors together contribute to complete and error-free address entry |
 
 Table 5: Correct UK Address Input Example
 
@@ -667,6 +660,16 @@ for example, the postcode box is much too large. This could mislead the user int
 ‘County’ input box
 
 ####  There is no ‘Postcode' input box
+
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|      The text input boxes are of the same |  | These boxes do not bear any relation to |
+| size |  | the size of data to be input into them, for example, the postcode box is much too large. This could mislead the user into entering incorrect data |
+|      The labels are left-aligned |  | Left-alignment makes it difficult to relate the labels to their boxes and the wrong data may be entered, for example the county may be entered in the ‘Postcode’ box |
+|      The ‘Postcode’ input box precedes the |  | The postcode must be the last item of a |
+| ‘County’ input box |  | UK address as that is the Royal Mail’s recommendation for efficient sorting |
+|      There is no ‘Postcode' input box |  | The postcode must be entered for efficient sorting and to minimise the risk to patient confidentiality that will occur if information is sent to the wrong address |
 
 Table 6: Incorrect UK Address Input Examples
 
@@ -808,41 +811,17 @@ Figure 26: Examples of an Address Finder Control with Tooltips
 
 ![](address_assets/address.pdf-22-1.png)
 
-ADR-0031 Provide the following text input boxes, in the stated order, for input of a UK address:
 
- One box for input of house or building number
-
- One box for input of house or building name
-
- One box for input of the postcode
-
-ADR-0032 Where text input boxes are used, they must be labelled as follows:
-
- The box for input of house or building number should be labelled ‘House/Building Number’
-
- The box for input of house or building name should be labelled ‘House/Building Name’
-
- The box for input of the postcode should be labelled ‘Postcode’
-
-ADR-0033 Display a means to find an address only if such a service is supported, positioning it after the postcode input box and labelling it ‘Find Address’
-
-Recommended
-
-Mandatory
-
-Recommended
-
-ADR-0034 Set the length of the postcode input box to 8 characters Mandatory
-
-ADR-0035 Set the height of each text input box to the largest character height in the currently active display font, taking the user’s settings into account
-
-Recommended
-
-ADR-0036 Display the text input boxes vertically with left alignment Recommended
-
-ADR-0037 Display the labels immediately to the left of their corresponding text input box, mutually right-aligning the labels
-
-ADR-0038 Permit address input via all the mechanisms supported on a platform such as, but not limited to, typing on a keyboard, copy and paste, and handwriting with a stylus
+| ID | Guideline | Status |
+| --- | --- | --- |
+| ADR-0031 | Provide the following text input boxes, in the stated order, for input of a UK address:  One box for input of house or building number  One box for input of house or building name  One box for input of the postcode | Recommended |
+| ADR-0032 | Where text input boxes are used, they must be labelled as follows:  The box for input of house or building number should be labelled ‘House/Building Number’  The box for input of house or building name should be labelled ‘House/Building Name’  The box for input of the postcode should be labelled ‘Postcode’ | Mandatory |
+| ADR-0033 | Display a means to find an address only if such a service is supported, positioning it after the postcode input box and labelling it ‘Find Address’ | Recommended |
+| ADR-0034 | Set the length of the postcode input box to 8 characters | Mandatory |
+| ADR-0035 | Set the height of each text input box to the largest character height in the currently active display font, taking the user’s settings into account | Recommended |
+| ADR-0036 | Display the text input boxes vertically with left alignment | Recommended |
+| ADR-0037 | Display the labels immediately to the left of their corresponding text input box, mutually right-aligning the labels | Recommended |
+| ADR-0038 | Permit address input via all the mechanisms supported on a platform such as, but not limited to, typing on a keyboard, copy and paste, and handwriting with a stylus | Recommended |
 
 Table 7: Guidance for UK Address Finder
 
@@ -858,9 +837,12 @@ HSCIC Controlled Document
 
 ##### 2.4.3 Examples of Correct Usage
 
-sizes, are in the right order, and are indication of the input they are suited correctly aligned with their labels for. The labels are aligned to their
 
-respective boxes. All the boxes are present. These factors together contribute to complete and error-free address entry
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         The boxes have the correct relative | See Figure 23 | The boxes are sized to give some |
+| sizes, are in the right order, and are |  | indication of the input they are suited |
+| correctly aligned with their labels |  | for. The labels are aligned to their respective boxes. All the boxes are present. These factors together contribute to complete and error-free address entry |
 
 Table 8: Correct UK Address Finder Example
 
@@ -879,6 +861,14 @@ leading to a larger resulting set from which an address will need to be selected
 Data input must precede the search for an address, but this design implies the opposite and is therefore confusing
 
 ![](address_assets/address.pdf-23-2.png)
+
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        The house/building name and number | See Figure 27 | This design does not encourage the |
+| fields are merged |  | user to provide both number and name leading to a larger resulting set from which an address will need to be selected |
+|        The ‘Find Address’ button is positioned |  | Data input must precede the search for |
+| at the top |  | an address, but this design implies the opposite and is therefore confusing |
 
 Table 9: Incorrect UK Address Finder Examples
 
@@ -944,55 +934,19 @@ Figure 30: The Non-UK Address Input Control
 
 ![](address_assets/address.pdf-25-0.png)
 
-ADR-0050 Provide the following boxes, in the stated order, for input of a non-UK address:
 
- One editable combo box for country selection
-
- Four boxes for input of all details up to and including the street name
-
- One box for input of the town or city
-
- One box for input of the postal code
-
-ADR-0051 Where used, the boxes must be labelled as follows:
-
- The editable combo box for country selection should be labelled ‘Country’
-
- The four boxes for input of all details up to and including the street name, should be
-
-labelled ‘Line 1’, ‘Line 2’, ‘Line 3’ and ‘Line 4’ respectively
-
- The box for input of the town or city should be labelled ‘Town/City’
-
- The box for input of the postal code should be labelled ‘Postal Code’
-
-ADR-0052 Set the height of each text input box to the largest character height in the currently active display font, taking the user’s settings into account
-
-Recommended
-
-Mandatory
-
-Recommended
-
-ADR-0053 Display the text input boxes vertically with left alignment Recommended
-
-ADR-0054 Display the labels immediately to the left of their corresponding text input box, mutually right-aligning the labels
-
-ADR-0055 Permit address input via all the mechanisms supported on a platform such as, but not limited to, typing on a keyboard, copy and paste, and handwriting with a stylus
-
-Recommended
-
-Recommended
-
-ADR-0056 Use an editable drop-down combo box for country names Recommended
-
-ADR-0057 Use the list of country names in ISO 3166-1 **{R8}** for the country selector drop-down combo box
-
-Mandatory
-
-ADR-0058 Display the country names in alphabetic order Recommended
-
-ADR-0059 Display the country names with left alignment Recommended
+| ID | Guideline | Status |
+| --- | --- | --- |
+| ADR-0050 | Provide the following boxes, in the stated order, for input of a non-UK address:  One editable combo box for country selection  Four boxes for input of all details up to and including the street name  One box for input of the town or city  One box for input of the postal code | Recommended |
+| ADR-0051 | Where used, the boxes must be labelled as follows:  The editable combo box for country selection should be labelled ‘Country’  The four boxes for input of all details up to and including the street name, should be labelled ‘Line 1’, ‘Line 2’, ‘Line 3’ and ‘Line 4’ respectively  The box for input of the town or city should be labelled ‘Town/City’  The box for input of the postal code should be labelled ‘Postal Code’ | Mandatory |
+| ADR-0052 | Set the height of each text input box to the largest character height in the currently active display font, taking the user’s settings into account | Recommended |
+| ADR-0053 | Display the text input boxes vertically with left alignment | Recommended |
+| ADR-0054 | Display the labels immediately to the left of their corresponding text input box, mutually right-aligning the labels | Recommended |
+| ADR-0055 | Permit address input via all the mechanisms supported on a platform such as, but not limited to, typing on a keyboard, copy and paste, and handwriting with a stylus | Recommended |
+| ADR-0056 | Use an editable drop-down combo box for country names | Recommended |
+| ADR-0057 | Use the list of country names in ISO 3166-1 {R8} for the country selector drop-down combo box | Mandatory |
+| ADR-0058 | Display the country names in alphabetic order | Recommended |
+| ADR-0059 | Display the country names with left alignment | Recommended |
 
 Table 10: Guidance for non-UK Address Input
 
@@ -1025,6 +979,21 @@ they are entering a non-UK address
 boxes is wrong
 
 ####  There is no input box for postal code
+
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        The boxes have the correct relative | See Figure 30 | The boxes are sized to give some |
+| sizes, are in the right order, and are |  | indication of the input they are suited |
+| correctly aligned with their labels |  | for. The labels are aligned to their respective boxes. All the boxes are present. These factors together contribute to complete and error-free address entry |
+|        Ordering of country names |  | The country names are taken from ISO 3166-1 {R8}, are displayed in alphabetical order and are left-aligned. With the use of the ISO list, there will always be an entry for any country a user wishes to select, and it will be found in the same place in the list in all ISV applications. These factors promote data quality and a consistent user experience |
+| Table11: Correct Non-UK Address Input Examples |  |  |
+| .3          Examples of Incorrect Usage |  |  |
+|       The country combo box is the last input |  | Country selection must be the first item |
+| box |  | so users are aware from the outset that they are entering a non-UK address |
+|       The alignment of the labels and input |  | The extra spacing between the labels |
+| boxes is wrong |  | and the boxes may cause a user to enter the wrong data in a box, compromising data quality |
+|       There is no input box for postal code |  | The postal code makes for efficient and correct delivery and must always be sought from the user. The absence of a postal code input box compromises data quality and potentially patient confidentiality |
 
 Table 12: Incorrect Non-UK Address Input Examples
 
@@ -1089,41 +1058,31 @@ HSCIC Controlled Document
 
 #### 3.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-GP General Practitioner
-
-ISV Independent Software Vendor
-
-LSP Local Service Provider
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NPSA National Patient Safety Agency
-
-PDA Personal Digital Assistant
-
-PDS Personal Demographic Service
-
-UI User Interface
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| GP | General Practitioner |
+| ISV | Independent Software Vendor |
+| LSP | Local Service Provider |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPSA | National Patient Safety Agency |
+| PDA | Personal Digital Assistant |
+| PDS | Personal Demographic Service |
+| UI | User Interface |
 
 Table 13: Terms and Abbreviations
 
 #### 3.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health)
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
-
-Status Indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:
-
- **Mandatory**             - An implementation should follow the guideline
-
- **Recommended**             - An implementation is advised to follow the guideline
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health) |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
+| Status | Indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:  Mandatory – An implementation should follow the guideline  Recommended – An implementation is advised to follow the guideline |
 
 Table 14: Definitions
 
@@ -1145,51 +1104,48 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Interface dialog names **Bold**
 
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| ext                                                                   S | tyle |
+| nterface dialog names                                                 B | old |
+| ield names |  |
+| ontrols |  |
+| older names                                                           T | itle Case |
+| ile names |  |
 
 Table 15: Body Text Styles
 
 ##### 3.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 16: Cross Reference Styles
 
 #### 3.4 References
 
-**R1.** NHS CUI Programme – Design Guide Entry – Patient Banner 4.0.0.0
 
-**R2.** NHS CUI Programme – Accessibility Checkpoints for NHS Applications 1.0.0.0
-
-**R3.** NHS CUI Programme – Accessibility for Clinical Applications 1.0.0.0
-
-**R4.** NHS Data Model and Dictionary [http://www.datadictionary.nhs.uk/index.asp](http://www.datadictionary.nhs.uk/index.asp)
-
-**R5.** NHS CFH – The Personal Demographics Service [http://www.connectingforhealth.nhs.uk/systemsandservices/demographics/pds/](http://www.connectingforhealth.nhs.uk/systemsandservices/demographics/pds/)
-
-**R6.** Cabinet Office: UK Government Data Standards Catalogue [http://www.govtalk.gov.uk/gdsc/html/noframes/PostCode-2-1-Release.htm](http://www.govtalk.gov.uk/gdsc/html/noframes/PostCode-2-1-Release.htm)
-
-**R7.** Royal Mail: Find a Postcode [http://postcode.royalmail.com/portal/rm/postcodefinder?catId=400145&pageId=pcaf_pc_searc](http://postcode.royalmail.com/portal/rm/postcodefinder?catId=400145&pageId=pcaf_pc_search&gear=postcode) [h&gear=postcode](http://postcode.royalmail.com/portal/rm/postcodefinder?catId=400145&pageId=pcaf_pc_search&gear=postcode)
-
-**R8.** ISO 3166-1: 2006 Codes for the representation of names of countries and their subdivisions -Part 1: Country codes [http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code](http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm) [_elements.htm](http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code_elements.htm) and [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=2130](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=2130)
-
-**R9.** NHS CUI Programme – Telephone Number Input and Display – User Interface Design Guidance
+| Reference | Document | Version |
+| --- | --- | --- |
+| R1. | NHS CUI Programme – Design Guide Entry – Patient Banner | 4.0.0.0 |
+| R2. | NHS CUI Programme – Accessibility Checkpoints for NHS Applications | 1.0.0.0 |
+| R3. | NHS CUI Programme – Accessibility for Clinical Applications | 1.0.0.0 |
+| R4. | NHS Data Model and Dictionary http://www.datadictionary.nhs.uk/index.asp | Version 3 |
+| R5. | NHS CFH – The Personal Demographics Service http://www.connectingforhealth.nhs.uk/systemsandservices/demographics/pds/ |  |
+| R6. | Cabinet Office: UK Government Data Standards Catalogue http://www.govtalk.gov.uk/gdsc/html/noframes/PostCode-2-1-Release.htm |  |
+| R7. | Royal Mail: Find a Postcode http://postcode.royalmail.com/portal/rm/postcodefinder?catId=400145&pageId=pcaf_pc_searc h&gear=postcode |  |
+| R8. | ISO 3166-1: 2006 Codes for the representation of names of countries and their subdivisions -- Part 1: Country codes http://www.iso.org/iso/country_codes/iso_3166_code_lists/english_country_names_and_code _elements.htm and http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=2130 |  |
+| R9. | NHS CUI Programme – Telephone Number Input and Display – User Interface Design Guidance | 3.0.0.0 |
 
 Table 17: References
 

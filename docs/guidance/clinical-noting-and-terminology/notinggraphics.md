@@ -427,6 +427,80 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+|  | Annotated graphics used by clinicians in the medical areas of assessment, examination and treatment of patients |
+| --- | --- |
+|  Gu | idance for producing an electronic version of the graphics currently created by hand-drawing, those pre-printed on a pro-forma sheet, or those created by rubber ink stamps |
+| Cr | eating an Annotated Graphic |
+|   T | he user interface associated with creating the annotated graphic |
+|   A | nnotating graphics with text |
+|   A | nnotating graphics with hand-drawn symbols (e.g. symbols created by free-drawing with a mouse or |
+| l | ight-pen) |
+|  An | notating graphics with ready-made symbols |
+|  In | dicating specific localised findings on the graphic |
+|  In | dicating spread-out regions on the graphic |
+|  Co | nsideration of the type of annotating tools & functionality that can be used |
+|  Sh | owing and displaying graphics that are pre-drawn and taken from a library or collection of images Viewing an annotated graphic |
+|  | The user interface associated with viewing the annotated graphic Searching for and loading a graphic to be annotated |
+|  | Simple search techniques for locating the desired graphic |
+| Co | nventions and practice of creating an annotated graphic |
+|   C | onsideration of what constitutes a ‘good quality’ text annotation on a graphic (such as the avoidance of |
+| e | xcessive free text, the position of the note in relation to the graphic and so on) |
+|  Co | nsideration of current annotating conventions and practice |
+| Out | of Scope This section defines areas that are not covered by this guidance. Any specific hazards associated with these areas are not addressed in this guidance. It should also be noted that listing an item as out of scope does not classify it as unimportant. Project time and resource constraints inevitably restrict what can be in scope for a particular release. It is possible that items out of scope for this release may be considered for a future release. Graphic types |
+|  | 3D graphics |
+|  | X-rays or photographs |
+|  | Detailed or complex graphics, such as those used in operation notes |
+|  | Non-body graphics (such as drains or catheters etc) |
+|  | Graphics of internal systems (cardio-vascular, bone, central nervous systems) |
+|  | Non-annotated graphics used for informing patients or reference Graphic and symbol libraries or collections |
+|  | Determining which graphics should be available to clinicians |
+|  | Determining which symbols should be available to annotate the graphics |
+|  | Altering or selecting for annotation only part of a loaded graphic |
+|  | Enabling clinicians to create their own graphics |
+|  | Enabling clinicians to upload and use their own graphics Manipulating and further handling of the graphic |
+|  | The adding of rulers or dimensions to the annotated graphic |
+|  | Zooming or re-sizing of the graphic |
+|  | Printing of the annotated graphic Searching for and loading a graphic to be annotated |
+|  | Advanced graphic selection techniques (such as selecting a graphic by navigating round a larger graphic and selecting the body-part of interest) Toolbar layout and contents |
+|  | The precise layout of the toolbar containing the annotating tools |
+|  | The exact contents of the toolbar containing the annotating tools Terminology Encoding |
+|  | Consideration of identifying, matching and entering coded SNOMED CT terms |
+|  | Consideration of deriving the coded SNOMED CT body site automatically from the selection area of the graphic |
+| GUID | ANCE INTRODUCTION This section provides a brief introduction to the Noting with Graphics guidance. It describes how the guidance was created, how it should be used, outlines the structure & composition of the Noting with Graphics module and lists assumptions made whilst compiling the guidance. |
+| Guid | ance Creation Three main sources were used in order to create the guidance presented in this document. These were research, patient safety assessments and CUI CAPS clinical advisors. These are described in more detail below. |
+| Guid | ance Creation - Research A programme of research has been carried out in order to produce this guidance. This research has included the following:- |
+|  | User interviews and observations – in order to understand the clinical users, their current processes and clinical workflow |
+|  | Site visits – to understand the context and environment in which the users perform the noting with graphics work |
+|  | User-based evaluations – done with various clinicians to get feedback on early designs and prototypes |
+|  | Examination of existing (clinical and non-clinical) software and technologies implementing a form of graphical annotating |
+|  | Examination of annotated graphics in medical records / pro-formas in speciality areas where graphics are commonly used |
+|  | Literature review of areas relating to clinical annotating of graphics. |
+| Guid | ance Creation - Patient Safety Assessment During the development of this guidance document, a number of clinicians from various disciplines attended workshops to explore their current practices in order to identify and record patient safety hazards associated with annotating graphics as part of clinical documenting. In addition to workshops, relevant known patient safety incidents have been researched and reviewed. Any new research findings were assessed for new hazards or contribution to existing hazards throughout the development cycle. |
+| Guid | ance Creation - CUI CAPS Clinical Advisors The CUI CAPS Team includes several clinical advisors who worked on the Noting with Graphics guidance project and have provided significant clinical input throughout the creation of the guidance. |
+| Conf | ormance Rating To indicate their relative importance, each guideline in this document is ranked by a Conformance value. This should be used by software vendors when deciding whether or not to implement a guideline into their software implementation. The conformance value can be one of two values, namely:- Mandatory – an implementation should follow the guideline |
+| R | ecommended – an implementation is advised to follow the guideline |
+| Styl | istic Choices |
+| S | ome of the guidance points in this document are presented with a diagram to aid understanding. The |
+| v | isual representation of these diagrams is for illustrative purposes only. Stylistic choices (for example, |
+| d | isplay font and colours used) unless otherwise specified, are not part of the guidance and are therefore |
+| n | ot mandatory requirements. |
+| Stru | cture & Composition |
+| T | his section introduces the structure of the Noting with Graphics module and the terminology used to |
+| d | escribe its constituent parts. Figure 2 shows an example representation of how the Noting with Graphics |
+| m | odule might look when it is embedded in an electronic patient record. |
+| A | s can be seen from Figure 2, the Noting with Graphics module comprises 2 main parts: the canvas and the |
+| t | oolbar. The canvas is the container for the graphic and any text or symbol annotations added to it. The |
+| t | oolbar is the container for the drawing tools and function buttons used in the annotating process. |
+| T | he graphic is made up of one or more images. So in Figure 2, the graphic comprises 2 full-body images (i.e. |
+| a | front full-body and a rear full-body image). The clinical findings that the clinician wants to document then |
+| f | orm the annotations that are added to the graphic. These annotations are made by adding text and |
+| s | ymbols to the graphic. The text is added to the graphic through the use of annotating text-boxes. Symbols |
+| a | re added to the graphic by either the user hand drawing them (using a drawing tool), or by adding one of |
+| t | he pre-defined ready-made symbols. |
+| F | or each symbol added to the graphic an associated text-box is displayed that houses any annotating text |
+| n | eeded for that symbol. This text then points to its associated symbol with an arrow. |
+
 Figure 2: Structure and composition of the Noting with Graphics module.
 
 #### Assumptions

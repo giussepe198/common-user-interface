@@ -130,15 +130,15 @@ Figure 1: Icon Examples
 
 #### 2.1.2 Icon Types
 
-An icon can be categorised in three ways:
 
-**Image-related icons** (also referred to as metaphoric icons)
-
-These icons are highly pictorial representations the object or action they represent Printer icon
-
-**Concept-related icons** These icons are based on an example or property of a real-world object or action House icon to denote a patient’s address
-
-**Arbitrary icons** (also referred to as abstract icons)
+| Category | Description | Example | Reference |
+| --- | --- | --- | --- |
+| Image-related icons | These icons are highly pictorial representations the |  | {R3}, {R4} |
+| (also referred to as metaphoric | object or action they represent | Printer icon |  |
+| icons) |  |  |  |
+| Concept-related icons | These icons are based on an example or property of a real-world object or action | House icon         to denote a patient’s address | {R3}, {R4} |
+| Arbitrary icons | These icons do not resemble the object or action | Bow tie icon        to | {R3}, {R4} |
+| (also referred to as abstract icons) | they represent, but become meaningful only through convention or education | denote a referral to a specialist |  |
 
 Table 2: Icon Types
 
@@ -375,25 +375,115 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+|  | Patterns in the background should be avoided |
+| --- | --- |
+|  | The image should be clearly displayed in front of the background |
+|  | The background must be static. If anything blinks or moves, the user perceives it as a foreground image |
+|  | The background should use unsaturated, cool colours and the foreground image should use saturated, warm colours |
+|  | The background image should be limited to a simple rendition of a recognisable, concrete object |
+|  | Complex backgrounds that do not offer a sufficient colour contrast should be avoided |
+| bol |  |
+|  | Commonly accepted or standardised elements should be used wherever possible |
+| t Labe | l (see section 2.2.4 for more details on labels) |
+|  | Text labels should only be used when necessary (such as, when an icon is concept- related or arbitrary) |
+|  | Text labels should be no more than two to three words |
+| In | ternationalisation Issues |
+| diffe | rent cultures may interpret icons differently. There are a number of key guidelines |
+| in com | plying with internationalisation requirements. |
+|  | Guidance |
+| ds, ey | es and faces should not be used in icons. This type of imagery can be interpreted |
+| te dif | ferently among a variety of cultures {R4}, {R5}, {R6} If representations of people or |
+| rs are | needed, depict them as generically as possible {R6} |
+| sidera | tion should be given to cultural differences when using arrows or indicating |
+| ection | ality. Make sure there is text that explains the directionality. If arrows are used, |
+| n asse | ssment must be made in determining whether or not a bi-directional version of the |
+| n is n | eeded {R4}, {R5} |
+| sidera | tion should be given to cultural differences when using certain colours (for |
+| mple, | white, black, and/or red can be sensitive colours for certain cultures {R4}, {R5}) |
+| id usi | ng anti-aliased text in an icon, as the text will not be translatable if it is a graphic |
+| } |  |
+| Acc | essibility Issues |
+| a numb | er of key guidelines to follow in complying with accessibility standards {R8}. |
+| Gu | idance |
+| con sh | ould be accompanied with explanatory text either displayed on the page (such |
+| text l | abel) or accessible by HTML attributes (such as, the "alt" tag for images) |
+| HTML c | ode should use the "alt" attribute to the "img src" tag to describe the graphic. If |
+| image | is not available (for example, the users' browsers preferences are set to not |
+| lay gr | aphics) or a screen reader is reading the page, the “alt” tag will be used in place |
+| he ima | ge |
+| ur sho | uld not be the only indicator used to denote meaning and importance of icons |
+| hing i | n the 2-59Hz range must be avoided |
+| Ben | efits and Rationale |
+| desig | ned icons will: |
+| ove us | ability by making objects and actions easier to identify, learn and find {R6} |
+| w user | s to understand the function being represented which will helps users understand |
+| nterfa | ce |
+| ove re | cognition and visual communication, because icons are visually more distinctive |
+| words | {R6} |
+| ngly i | nfluence the user’s overall impression of the application’s visual design {R6} |
+| Con | fidence Level |
+|  |  |
+| Im | age-related icons are directly comprehended and should be used wherever possible |
+| Co | ncept-related icons can be used if the user can be expected to understand the |
+| co | ntext in which the icon is presented |
+| Ar | bitrary icons can be difficult to recognise, hard to learn and remember |
+| Pa | tterns in the background should be avoided |
+| Th | e image should be clearly displayed in front of the background |
+| um |  |
+| Th | e background must be static. If anything blinks or moves, the user perceives it as a |
+| fo | reground image |
+| Th | e background should use unsaturated, cool colours and the foreground image should |
+| us | e saturated, warm colours |
+| Th | e background image should be limited to a simple rendition of a recognisable, |
+| co | ncrete object |
+| Co | mplex backgrounds that do not offer a sufficient colour contrast should be avoided |
+| Co | mmonly accepted or standardised elements should be used wherever possible |
+| Te | xt labels should only be used when necessary |
+| Te | xt labels should be no more than two to three words |
+| An | icon should be accompanied with explanatory text |
+|  | Avoid using anti-aliased text in an icon, as the text will not be translatable if it is a graphic |
+|  | The HTML code should use the "alt" attribute to the "img src" tag to describe the graphic |
+|  | Colour should not be the only indicator used to denote meaning and importance of icons |
+|  | Flashing in the 2-59Hz range must be avoided |
+|  |  |
+|  | Hands, eyes and faces should not be used in icons |
+|  | Consideration should be given to cultural differences when using arrows or indicating directionality |
+|  | Consideration should be given to cultural differences when using certain colours |
+| nce is | currently classified as ‘Initial Guidance’. Further usability testing is expected and |
+| update | s to the guidance may be completed following this usability testing. |
+| Icon D | esign |
+|  | Level of Detail and Realism |
+| approp | riate level of detail and realism makes an icon easier to recognise. However, |
+| distr | act and clutter (for example, excessive detail makes it harder to see a pattern of |
+| ips). | An icon can be designed with five different degrees of detail and realism (see Table |
+|  |  |
+|  | Guidance |
+| ealism | Example           Design Style                        When to Use |
+| ic rea | lism                          Photographs and photographic        Use for presenting complex symbols with a lot of detail |
+| drawi | ng                            Outline with distinct interior details Use for presenting complex symbols with small significant parts, especially when the objects have similar profiles |
+|  | Exaggerations of crucial details    Use for presenting symbols that have a small, crucial feature or for simplifying complex details |
+|  | Outline with only prominent         Use for presenting small symbols that details                             represent a familiar object with a distinct profile |
+|  | Shape filled with solid colour      Use for presenting symbols that are too thin to contrasting with background         show in outline format and for symbols that have a very distinct profile and do not require details for recognition |
+
 Table 3: Five Different Degrees of Detail and Realism **{R3}**
 
 #### 2.2.2 Size
 
-The size of an icon determines how easy it is to notice, understand and select. The recommended size depends on many factors, including the device controlling the cursor, the manual dexterity of the user, and the required level of performance **{R3}**, **{R9}**, **{R10}**, **{R12}** . Figure 3 shows the popular icon sizes used by Microsoft [®] Windows [®].
+
+| ® | ® |
+| --- | --- |
+| indows . |  |
 
 Figure 3: Popular Icon Sizes
 
-_**2.2.2.1**_ _**Guidance**_
 
-Table 4 provides guidance on the recommended icon sizes for common interface components.
-
-Taskbar, detailed lists 16x16
-
-Windows XP menus 24x24
-
-Desktop, lists 32x32
-
-Windows XP Explorer, system lists 48x48
+| Component | Size (Pixels) |
+| --- | --- |
+| Taskbar, detailed lists | 16x16 |
+| Windows XP menus | 24x24 |
+| Desktop, lists | 32x32 |
+| Windows XP Explorer, system lists 48x48 |  |
 
 Table 4: Recommended Icon Sizes
 
@@ -484,13 +574,22 @@ the interpretation clear
 
 #### 2.2.5 Shape
 
-The use of shape facilitates the recognition of warnings and intended actions and can help support the user’s ability to discriminate between categories of icons **{R10}** .
 
-Arrows pointing left and right are now commonly understood to mean “Back” and “Forward” respectively
-
-Two arrows pointing left are now commonly understood as “rewind”. Two arrows pointing right are understood as “fast forward”
-
-Warning is indicated by a combination of shape (triangle) and colour (yellow)
+|  | Highly saturated colours, particularly from different parts of the spectrum (for example, saturated red and blue and saturated red and green) can cause unwanted visual effects |
+| --- | --- |
+|  | Pure blue, as it can be difficult to read or resolve on small objects |
+|  | The contrast between a symbol and background should be sufficient to enhance colour perception and perceive image resolution |
+| e ele | ments overlap, the foreground should be brighter than the background to make |
+| inter | pretation clear |
+| S | hape |
+| shape | facilitates the recognition of warnings and intended actions and can help support |
+| abili | ty to discriminate between categories of icons {R10}. |
+|  | Examples |
+| ting | left and right are now commonly understood to mean “Back” and |
+| espec | tively |
+| point | ing left are now commonly understood as “rewind”. Two arrows pointing |
+| nders | tood as “fast forward” |
+| indic | ated by a combination of shape (triangle) and colour (yellow) |
 
 Table 5: Examples of Different Shape Icons
 
@@ -696,71 +795,64 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Global Buttons
 
-Toolbar
-
-Buttons
-
-A global button contains an iconic representation of the functional or Help content global area
-
-Exit
-
-Search
-
-Toolbar buttons appear at the top of many applications. The function of the window determines which buttons appear
-
-Information Information icons are used to visually describe a page's content, or a section of the page's content
-
-Functional Functional icons when selected, either perform an action, or the user navigates to another page to perform an action
-
-Save
-
-Cancel
-
-Clear
-
-Edit
-
-Add to List
-
-Add to Patient List
-
-Component There are multiple icons used in
-
-Show/Hide icons different components
-
-Locator elements: Previous/Next
-
-Enabled
-
-Active
-
-Disabled
-
-Enabled
-
-Disabled
-
-[Display ]
-
-only
-
-Enabled
-
-Disabled
-
-Active
-
-Status
-
-Inline Inline icons are used throughout a page. They can be seen next to a label, a field, data, in a table, associated with text in a paragraph and so on. Inline icons may be active or just status icons. Selecting an active icon (by clicking on it) will reveal more information or functionality. Depending on an application's functionality, inline active icons can also have multiple states (enabled or disabled). Status icons denote a state only and can not be clicked on for further information.
-
-Issue Drug
-
-Repeat Drug
-
-Last Treatment
+|  | Use of labels should be considered when:    Icons are abstract and have no conventional, or broadly understood, meaning    The icon is safety-critical unless it is self-explanatory    The icon represents a message that is particularly important or warns of a particular situation    The task is complex |
+| --- | --- |
+|  | When labels are used they should:    Be brief, no more than two or three words    Be used sparingly    Use a clear and simple sans serif typeface    Not use boldface, italics, underline or differences of colour to emphasise words    Be consistent in the location and format of text labels    Use sentence-style capitalisation    Icons should first be designed in black and white to focus on shape and maximise legibility    Colour coding should only be used when well-established conventions exist |
+|  | If colour is used that does not follow well-established meanings, a colour key should be readily accessible for the user |
+|  | Colour should not be the only indicator used to denote the meaning and importance of an icon |
+|  | Where elements overlap, the foreground should be brighter than the background to make the interpretation clear |
+|  | Shapes should be clearly discernable from one another, avoiding similar geometric forms |
+|  | Icon groups should be based on user tasks, rather than the architecture of the system |
+|  | Related icons should be displayed close together |
+|  | If an icon fits into more than one group, the icon should be duplicated for each group |
+|  | A border or extra space should be used to differentiate between icon groups |
+|  | A common background colour or icon element should be used to distinguish between icon groups |
+|  | Within a group of icons, similar style, level of realism, and level of detail should be used |
+|  | The arrangement of icons on the screen should support the user’s spatial memory capacity |
+|  |  |
+|  | Certain colours or colour combinations should be avoided:    Highly saturated colours, particularly from different parts of the spectrum    Pure blue, as it can be difficult to read or resolve on small objects    The contrast between a symbol and the background should be sufficient to enhance colour perception and perceive image resolution |
+| ance | is currently classified as ‘Initial Guidance’. Further usability testing is expected and |
+| upda | tes to the guidance may be completed following this usability testing. |
+| on Us | age |
+| W | hen to Use Icons |
+| ion c | onsiders the criteria and issues that should be considered when determining whether |
+| icon | is the appropriate display element to use within a clinical application. Determining |
+| se an | icon is an extremely important design decision. |
+|  | Guidance |
+| uld b | e used when: |
+| ck an | d accurate recognition is necessary (for example, warnings, alerts and so on) |
+| amou | nt of space on the display is limited and presenting the information textually will |
+| e up | more space than is available (for example, using a toolbar) {R5}, {R7}. However, |
+| ns sh | ould not be the only method to access UI functionality |
+| uitab | le icon already exists and has a generally accepted meaning (for example, Search, |
+| e, Ba | ck, Forward, Exit, Help and so on). However, generic icons (for example, |
+| dows) | should not be used to denote clinical information as this will cause confusion and |
+| strat | ion |
+| uld b | e used to: |
+| hligh | t bounded lists (for example, medication types “Regular”, “One-off” or “As required”) |
+| her t | han unbounded lists |
+| resen | t ‘information scent’ for high risk actions and/or highlight sensitive information (for |
+| mple, | “sealed envelope” information and so on) |
+| hligh | t critical or important information (for example, allergies, risks, medical conditions |
+| so o | n). However, too many icons on a particular display can burden user memory and |
+| se co | nfusion as important information does not stand out. Studies have shown that the |
+| ber o | f icons with which a user is required to interact can affect user performance. The |
+| ger t | he number of icons, the greater the demand placed on the user memory, leading to |
+| rease | d performance {R10} |
+| C | urrent NPfIT Icon Usage |
+| hows | the wide variety in which icons are used within clinical applications to facilitate |
+| on. I | cons can help users take appropriate actions when used to label controls. |
+|  | Description                                   Examples                                         States |
+|  | A global button contains an iconic                                                             Enabled |
+|  | representation of the functional or                       Help                                 Active content global area Disabled Exit Search |
+|  | Toolbar buttons appear at the top of                                                           Enabled |
+|  | many applications. The function of the                                                         Disabled window determines which buttons appear |
+| on | Information icons are used to visually                                                         Display describe a page's content, or a section                                                        only of the page's content |
+| l | Functional icons when selected, either                                                         Enabled perform an action, or the user                        Save Disabled navigates to another page to perform an action                                             Cancel Clear Edit Add to List Add to Patient List |
+| Ther | e are multiple icons used in |
+| diff | erent components                                              Show/Hide icons Locator elements: Previous/Next |
+|  | Inline icons are used throughout a                                                             Active page. They can be seen next to a label,                                                        Status a field, data, in a table, associated with           Issue Drug text in a paragraph and so on. Inline Repeat Drug icons may be active or just status icons. Selecting an active icon (by clicking on it) will reveal more                          Last Treatment information or functionality. Depending on an application's functionality, inline active icons can also have multiple states (enabled or disabled). Status icons denote a state only and can not be clicked on for further information. |
 
 Table 6: Examples of Icons Currently Used Within Clinical Applications
 
@@ -888,6 +980,52 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+|  | Icons should be used when:    Quick and accurate recognition is necessary    The amount of space on the display is limited    A suitable icon already exists and has a generally accepted meaning |
+| --- | --- |
+|  | Icons should be used to:    Highlight bounded lists rather than unbounded lists    Represent ‘information scent’ for high risk actions and/or highlight sensitive information    Highlight critical or important information |
+|  |  |
+|  | To increase the perceived importance of an icon:    Increase font size of labels to identify icons of greater importance (see section 2.2.3 for more information on labels)    Increase white space around the label    Increase line weight of the border    Increase relative size of the high urgency icon (see section 2.2.2 for more information on icon size)    Do not use blue or green coloration, as those convey low urgency (see section 2.2.4 for more information on colour) |
+| ance | is currently classified as ‘Initial Guidance’. Further usability testing is expected and |
+| upda | tes to the guidance may be completed following this usability testing. |
+| Gramm | ar for Icon Design |
+| used | to communicate information, and in that respect they can be said to exhibit some of |
+| cteri | stics of human language. For example, icons can be used as symbols to represent |
+| in th | e real world, analogous to words in a language. A picture of a printer can be said to |
+| much | information about its referent (that is, the object to which it refers) as the word |
+| itse | lf (perhaps more, in some cases). Likewise, a set of icons representing the key |
+| in a | domain can be thought of as a visual vocabulary for that universe of discourse. |
+| re, i | conic concepts can be combined to produce a composite meaning; analogous to |
+| anged | within a sentence. For example, a picture of a printer with a large “plus” symbol in |
+| round | might reasonably be construed to mean “Add printer”. In this respect, the process of |
+| gn be | comes one of developing composite icons from more basic “iconic primitives” which |
+| atom | ic units of meaning. |
+| once | concepts are combined in this manner, the limitations of the approach become |
+| Lang | uage is more than just the arbitrary combination of symbols, as there are strict rules |
+| that | govern how and where they may be combined. Moreover, it is only through a |
+| derst | anding of these rules that native speakers are able to converse fluently. Without a |
+| o res | olve the structural ambiguities that arise when concepts are combined, composite |
+| are i | nherently ambiguous, and only simple atomic concepts can be communicated |
+| ly. |  |
+| tly, | much has been written about the notion of building a “grammar” for icons {R11}. |
+| here | would be clear benefits in developing such a framework: |
+| n des | igners would have a clear set of rules to follow, thereby promoting icon reusability |
+| cons | istency |
+| rule | s could also be applied “in reverse”, to determine if a given icon is well-formed |
+| e a u | ser has learnt this language, their comprehension of the icons (and the context in |
+| ch th | ey are used) will be enhanced |
+| se of | this section is to review some of the issues involved in developing a grammar for |
+| d to | explore the possibilities of applying such a grammar within clinical applications. |
+| Dev | eloping an Icon Grammar |
+| ee, t | he idea of developing an icon grammar has already been partially explored in |
+| NHS C | UI work, in particular the Alert Symbol Design {R1}, in which an attempt was made |
+| a “v | isual syntax” for alert symbols. For example, an alert such as that shown in Figure 5 |
+| said | to be composed of the following components: |
+| objec | tive symbol (the telephone icon) |
+| odifi | er (the number 3 next to the telephone icon) |
+| ontai | ner (bounding the objective symbol) |
+| ormat | ional text (describe the symbol) |
+
 Figure 5: Visual Syntax for an Alert Symbol
 
 However, whilst this work did succeed in enumerating some of the key properties of icons and articulating them as design dimensions, it stopped short of actually trying to define the rules by which iconic primitives could be combined into meaningful composite units. In other words, it alluded to the existence of a grammar, but did not try to define it.
@@ -960,6 +1098,14 @@ Edit
 ![](iconssymb_assets/iconssymb.pdf-16-7.png)
 
 ![](iconssymb_assets/iconssymb.pdf-16-8.png)
+
+
+| Object | Action Search | Composite |
+| --- | --- | --- |
+| Patient | Sea Add | rch for Patient |
+| Patient | Delete | Add Patient |
+| Patient | De Edit | lete Patient |
+| Patient |  | Edit Patient |
 
 Table 7: Composite Meanings Created from Basic Icons
 
@@ -1107,27 +1253,26 @@ HSCIC Controlled Document
 
 ### 3.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NPfIT National Programme for IT
-
-UI User Interface
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPfIT | National Programme for IT |
+| UI | User Interface |
 
 Table 8: Terms and Abbreviations
 
 ### 3.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health)
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
-
-Anti-aliasing A technique of minimizing distortions created when representing a high-resolution signal at a lower resolution
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health) |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
+| Anti-aliasing | A technique of minimizing distortions created when representing a high-resolution signal at a lower resolution |
 
 Table 9: Definitions
 
@@ -1163,49 +1308,33 @@ At the time of writing this document, websites are referenced using active hyper
 
 ### 3.4 References
 
-**R1.** NHS CUI Design Guide Workstream - Alert Symbol Design 1.0.0.0 31-May-2006
 
-**R2.** NHS CUI Design Guide Workstream - Table of Contents 2.0.0.0 30-Oct-2006
-
-**R3.** Horton, W. K. The icon book: Visual symbols for computer systems and
-
-documentation. New York: J. Wiley & Sons.
-
-1994
-
-**R4.** Cooper, A & Reimann, R, About Face 2.0 The Essentials of Interaction Design 2.0 2003
-
-**R5.** McDougall, S. & Curry, M. More than just a picture: Icon Interpretation in context
-
-**R6.** Microsoft Windows Vista Icon Development Guidelines 2006
-
-**R7.** Mullet, K. & Sano, D. Designing Visual Interfaces 1995
-
-**R8.** [www.w3.org/WAI/](http://www.w3.org/WAI/) This is the Web site for Web Accessibility Initiative (WAI) by the W3C
-
-**R9.** Designing for Small Screens 2005
-
-**R10.** A Catalog of Graphic Symbols Used at Maintenance Control Centres: Toward a Symbol Standardization Process
-
-**R11.** Snyder, R, Designing Icons for Web Sites
-
-[http://www.hci.iastate.edu/TRS/REPORTS/ISU-HCI-2005-03.pdf](http://www.hci.iastate.edu/TRS/REPORTS/ISU-HCI-2005-03.pdf)
-
-April 2002
-
-April 3005
-
-**R12.** Holzinger, A. Lessons Learned from Mobile Application Design for Health Care 2005
-
-**R13.** Chu, J. et al. Icon Size As a Function of Display Screen May 1999
-
-**R14.** Cano, D. & Mullet, K. Designing Visual Interfaces, USA 1995
-
-**R15.** Haramundanis, K. Why Icons Cannot Stand Alone
-
-[http://delivery.acm.org/10.1145/390000/381819/p1-](http://delivery.acm.org/10.1145/390000/381819/p1-haramundanis.pdf?key1=381819&key2=8340422711&coll=&dl=GUIDE&CFID=15151515&CFTOKEN=6184618) [haramundanis.pdf?key1=381819&key2=8340422711&coll=&dl=GUIDE&CFID](http://delivery.acm.org/10.1145/390000/381819/p1-haramundanis.pdf?key1=381819&key2=8340422711&coll=&dl=GUIDE&CFID=15151515&CFTOKEN=6184618) [=15151515&CFTOKEN=6184618](http://delivery.acm.org/10.1145/390000/381819/p1-haramundanis.pdf?key1=381819&key2=8340422711&coll=&dl=GUIDE&CFID=15151515&CFTOKEN=6184618)
-
-**R16.** Tufte, E. The Visual Display of Quantitative Information, 2 [nd] Edition, USA 2000
+| Reference Document | Version | Date |
+| --- | --- | --- |
+| R1.              NHS CUI Design Guide Workstream - Alert Symbol Design | 1.0.0.0 | 31-May-2006 |
+| R2.              NHS CUI Design Guide Workstream - Table of Contents | 2.0.0.0 | 30-Oct-2006 |
+| R3.              Horton, W. K. The icon book: Visual symbols for computer systems and |  | 1994 |
+| documentation. New York: J. Wiley & Sons. |  |  |
+| R4.              Cooper, A & Reimann, R, About Face 2.0 The Essentials of Interaction Design 2.0 |  | 2003 |
+| R5.              McDougall, S. & Curry, M. More than just a picture: Icon Interpretation in |  |  |
+| context |  |  |
+| R6.              Microsoft Windows Vista Icon Development Guidelines |  | 2006 |
+| R7.              Mullet, K. & Sano, D. Designing Visual Interfaces |  | 1995 |
+| R8.              www.w3.org/WAI/ |  |  |
+| This is the Web site for Web Accessibility Initiative (WAI) by the W3C |  |  |
+| R9.              Designing for Small Screens |  | 2005 |
+| R10.             A Catalog of Graphic Symbols Used at Maintenance Control Centres: Toward |  | April 2002 |
+| a Symbol Standardization Process |  |  |
+| R11.             Snyder, R, Designing Icons for Web Sites |  | April 3005 |
+| http://www.hci.iastate.edu/TRS/REPORTS/ISU-HCI-2005-03.pdf |  |  |
+| R12.             Holzinger, A. Lessons Learned from Mobile Application Design for Health Care |  | 2005 |
+| R13.             Chu, J. et al. Icon Size As a Function of Display Screen |  | May 1999 |
+| R14.             Cano, D. & Mullet, K. Designing Visual Interfaces, USA |  | 1995 |
+| R15.             Haramundanis, K. Why Icons Cannot Stand Alone |  |  |
+| http://delivery.acm.org/10.1145/390000/381819/p1- |  |  |
+| haramundanis.pdf?key1=381819&key2=8340422711&coll=&dl=GUIDE&CFID |  |  |
+| =15151515&CFTOKEN=6184618 |  |  |
+| R16.             Tufte, E. The Visual Display of Quantitative Information, 2nd Edition, USA |  | 2000 |
 
 Table 10: References
 

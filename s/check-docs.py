@@ -14,16 +14,22 @@ from urllib.parse import unquote, urlsplit
 
 NAV_PAGE = re.compile(r"^[ \t]*-[ \t]+[^\n]+:[ \t]+([^\n]+\.md)[ \t]*$", re.MULTILINE)
 INLINE_LINK = re.compile(r"!?\[[^\]\n]*\]\(([^\)\n]+)\)")
+BRAND_ASSET = re.compile(r"^[ \t]+(?:logo|favicon):[ \t]+([^\n]+)$", re.MULTILINE)
 
 
 def check(root: Path) -> list[str]:
     docs = (root / "docs").resolve()
-    nav = NAV_PAGE.findall((root / "mkdocs.yml").read_text())
+    config = (root / "mkdocs.yml").read_text()
+    nav = NAV_PAGE.findall(config)
     pages = {p.relative_to(docs).as_posix() for p in docs.rglob("*.md")}
     errors = [f"Not in nav: {p}" for p in sorted(pages - set(nav))]
     errors += [f"Nav target missing: {p}" for p in sorted(set(nav) - pages)]
     if len(nav) != len(set(nav)):
         errors.append("Duplicate page in nav")
+    for asset in BRAND_ASSET.findall(config):
+        path = (docs / asset.strip()).resolve()
+        if not path.is_relative_to(docs) or not path.is_file():
+            errors.append(f"Branding asset missing: {asset}")
     for page in sorted(docs.rglob("*.md")):
         for raw in INLINE_LINK.findall(page.read_text()):
             # Optional quoted Markdown titles are not part of the target URL.

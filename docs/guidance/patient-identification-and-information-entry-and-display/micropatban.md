@@ -106,17 +106,12 @@ Copyright ©2013 Health and Social Care Information Centre
 ![](micropatban_assets/micropatban.pdf-4-0.png)
 HSCIC Controlled Document
 
-Table 1 describes the changes made since the previous version of this guidance (Baseline version 1.0.0.0 dated 12-Aug-2008):
 
-**Deleted** None
-
-**Modified** Enhanced out of scope context setting (section 1.2.2)
-
-Enhanced illustrations context setting (section2)
-
-Length of name changed from 40 to 35 characters in Rationale (section 3.3.2)
-
-**Added** Patient Safety Process note
+| Change | IDs | Change Description |
+| --- | --- | --- |
+| Deleted |  | None |
+| Modified |  | Enhanced out of scope context setting (section 1.2.2) Enhanced illustrations context setting (section2) Length of name changed from 40 to 35 characters in Rationale (section 3.3.2) |
+| Added |  | Patient Safety Process note |
 
 Table 1: Changes Since the Last Baseline Version
 
@@ -228,29 +223,27 @@ Listing an item as out of scope does not classify it as unimportant. Project tim
 
 #### 1.3 Assumptions
 
-**A1** Existing CUI Guidance on the Patient Banner is targeted at desktop monitors and is an important reference document but is not automatically applicable to the MPB
 
-**A2** The ‘log in’ dialogue is out of scope and users are assumed to have logged in successfully to the application running on the PDA in order to view the patient record and MPB
-
-**A3** All aspects relating to security, privacy and data protection are out of scope of the MPB work
-
-**A4** A MPB is not to be used within a Patient List, but is displayed after a single patient has been selected from a Patient List
-
-**A5** In line with NHS policy, use of the NHS Number is to be encouraged, hence the MPB will not display any local patient identification numbers
-
-**A6** Whilst the MPB has not been designed for use by patients, health care staff may at their discretion, show an MPB to patients
-
-**A7** This guidance is equally applicable on devices used in portrait and in landscape display modes
+| ID | Assumption |
+| --- | --- |
+| A1 | Existing CUI Guidance on the Patient Banner is targeted at desktop monitors and is an important reference document but is not automatically applicable to the MPB |
+| A2 | The ‘log in’ dialogue is out of scope and users are assumed to have logged in successfully to the application running on the PDA in order to view the patient record and MPB |
+| A3 | All aspects relating to security, privacy and data protection are out of scope of the MPB work |
+| A4 | A MPB is not to be used within a Patient List, but is displayed after a single patient has been selected from a Patient List |
+| A5 | In line with NHS policy, use of the NHS Number is to be encouraged, hence the MPB will not display any local patient identification numbers |
+| A6 | Whilst the MPB has not been designed for use by patients, health care staff may at their discretion, show an MPB to patients |
+| A7 | This guidance is equally applicable on devices used in portrait and in landscape display modes |
 
 Table 2: Assumptions
 
 #### 1.4 Dependencies
 
-**D1** Ongoing and unpublished work by the NHS National Programme for IT (NPfIT) that is referred to in this document as NHS Connecting for Health (NHS CFH), such as on the display of gender and sex
 
-**D2** Changes to the information defined in the Personal Demographics Service (PDS [3] )
-
-**D3** Changes to any of the documents listed in the References section in this guidance document
+| ID | Dependency |
+| --- | --- |
+| D1 | Ongoing and unpublished work by the NHS National Programme for IT (NPfIT) that is referred to in this document as NHS Connecting for Health (NHS CFH), such as on the display of gender and sex |
+| D2 | Changes to the information defined in the Personal Demographics Service (PDS3) |
+| D3 | Changes to any of the documents listed in the References section in this guidance document |
 
 Table 3: Dependencies
 
@@ -392,21 +385,74 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-MPB-0056 3.3.7 The choice of both background colour and pattern must be such as to differentiate a Micro Patient Banner of a deceased patient from that of a living patient
 
-MPB-0057 3.3.7 Display the date of death along with its label
-
-MPB-0058 3.3.7 Display the date of death below the date of birth
-
-MPB-0059 3.3.7 Display the age at death, preceded by its label, immediately after the date of death
-
-MPB-0060 3.3.7 Display the age at death without parentheses
-
-MPB-0061 3.3.8 Display the patient’s preferred name (if available) immediately below the given name, with both items left-aligned
-
-MPB-0062 3.3.8 When a patient’s preferred name is not available, the patient’s name must be centred vertically and left-aligned in Zone 1
-
-MPB-0063 3.3.8 For a deceased patient, display the date of death and age at death labels and values in that order, immediately below the label corresponding to the date of birth. Left-align both date labels
+| Reference | Section | Description |
+| --- | --- | --- |
+| MPB-0001 | 3.3.1 | A Micro Patient Banner always consists of one zone, referred to in this guidance as Zone 1, and may optionally also contain an additional zone, Zone 2 |
+| MPB-0002 | 3.3.1 | Display of Zone 2 is optional |
+| MPB-0003 | 3.3.1 | Display information that facilitates patient identification in Zone 1 |
+| MPB-0004 | 3.3.1 | Display supplementary information that may support patient identification in Zone 2 |
+| MPB-0005 | 3.3.1 | Do not display any clinical information in a Micro Patient Banner |
+| MPB-0006 | 3.3.1 | In the default display of a Micro Patient Banner, show Zone 1; if Zone 2 is to be displayed in this default state, show Zone 2 in the collapsed state |
+| MPB-0007 | 3.3.1 | Provide visual indication that information is occluded, while Zone 2 is expanded, if appropriate |
+| MPB-0008 | 3.3.1 | A Micro Patient Banner will only support data display, not data input |
+| MPB-0009 | 3.3.2 | Display a Micro Patient Banner at the top of the screen |
+| MPB-0010 | 3.3.2 | Display a Micro Patient Banner horizontally rather than vertically |
+| MPB-0011 | 3.3.2 | Display a Micro Patient Banner in a fixed position, unmovable by the user |
+| MPB-0012 | 3.3.2 | Display a Micro Patient Banner so that it occupies the full width of the application window |
+| MPB-0013 | 3.3.2 | Do not obscure a Micro Patient Banner with other elements of the screen |
+| MPB-0014 | 3.3.2 | Apply visual styling to a Micro Patient Banner (such as a thick border or distinguishing background colour) in contrast to other elements of the application’s user interface |
+| MPB-0015 | 3.3.2 | Do not display a Micro Patient Banner on screens that contain information relating to more than one patient |
+| MPB-0016 | 3.3.2 | Do not display a Micro Patient Banner in or alongside a Patient List |
+| MPB-0017 | 3.3.3 | Always display the patient’s name (family name and given name), date of birth, and NHS number in a Micro Patient Banner |
+| MPB-0018 | 3.3.3 | An MPB may optionally display the patient’s title |
+| MPB-0019 | 3.3.3 | An MPB may optionally display the patient’s age |
+| MPB-0020 | 3.3.3 | Do not display the patient’s location (such as ward and bed), in an MPB |
+| MPB-0021 | 3.3.3 | For a deceased patient, an MPB additionally displays the date of death and age at death |
+| MPB-0022 | 3.3.3 | If an individual data item is not known or is otherwise unavailable, appropriate self-explanatory text or a blank string (but not a ‘?’), are to be displayed immediately after the corresponding data label |
+| MPB-0023 | 3.3.3 | Display the preferred name if available |
+| MPB-0024 | 3.3.3 | Do not display the patient’s photograph in a MPB |
+| MPB-0025 | 3.3.4 | Display the elements of the patient name, date of birth and NHS number in Zone 1 |
+| eference | Section | Description |
+| PB-0026 | 3.3.4 | Where the age of a living patient is being displayed, display the age in Zone 1 |
+| PB-0027 | 3.3.4 | For a deceased patient, display the date of death and the age at death in Zone 1 |
+| PB-0028 | 3.3.4 | Display the full address (including the postcode) and gender in the expanded Zone 2 |
+| PB-0029 | 3.3.4 | In the expanded Zone 2, precede the full address with the label ‘Usual address’, ’Temporary address’, or one of the types of temporary address, as appropriate, and as defined in the PDS |
+| PB-0030 | 3.3.4 | In the expanded Zone 2, provide a means to access all addresses available in the record |
+| PB-0031 | 3.3.5 | Precede the date of birth with the label ‘Born’ |
+| PB-0032 | 3.3.5 | When displaying the age use only two abbreviated units, a lower and an upper unit, without any intermediate units (as described in the rationale) |
+| PB-0033 | 3.3.5 | Precede the gender with the label ‘Gender’ |
+| PB-0034 | 3.3.5 | Display the gender value in full (that is, do not display the gender value using a symbol, icon, pictogram or a textual abbreviation) |
+| PB-0035 | 3.3.5 | Precede the NHS number with the label ‘NHS No.’ |
+| PB-0036 | 3.3.5 | Precede the preferred name with the label ‘Preferred name’ |
+| PB-0037 | 3.3.5 | Precede the date of death with the label ‘Died’ |
+| PB-0038 | 3.3.5 | Precede the age at death with the label ‘Age at Death’ |
+| PB-0039 | 3.3.5 | Do not add a colon after the label text |
+| PB-0040 | 3.3.5 | Do not include unnecessary punctuation in a label |
+| PB-0041 | 3.3.5 | Display labels in the style given to label text |
+| PB-0042 | 3.3.5 | Display values in the style given to data text |
+| PB-0043 | 3.3.5 | Use text styles for labels and for values so that more visual emphasis is given to the value text relative to the label text |
+| PB-0044 | 3.3.5 | For each label in Zone 1, provide a definition and a means to access the definition (for example, by a tooltip) |
+| PB-0045 | 3.3.5 | Provide a means to inform the user that gender should only be used to identify and address the patient correctly, not for clinical judgements |
+| PB-0046 | 3.3.5 | Provide a means to access the record for all data items in Zone 1 and Zone 2 |
+| PB-0047 | 3.3.5 | Provide a means to enable users to adjust font properties for all text displayed in a Micro Patient Banner, particularly the font family, size and colour |
+| PB-0048 | 3.3.6 | Display the patient name elements and title, in the following order: family name, given name, title |
+| PB-0049 | 3.3.6 | Do not include labels for the patient name elements and title |
+| PB-0050 | 3.3.6 | Display a comma after the family name |
+| PB-0051 | 3.3.6 | Display the title in parentheses, omitting the parentheses if the title is not being displayed |
+| PB-0052 | 3.3.6 | Display the patient’s family name in upper case and the patient’s given name and title in title case |
+| PB-0053 | 3.3.6 | Display the patient’s preferred name, if available, immediately below the family name |
+| PB-0054 | 3.3.6 | Display the family name and the given name in full (that is, without truncation), splitting across lines if absolutely necessary |
+| PB-0055 | 3.3.7 | For a deceased patient, use a background area for Zone 1 in which both the colour and the pattern are substantially different from those used for a living patient |
+| eference | Section | Description |
+| PB-0056 | 3.3.7 | The choice of both background colour and pattern must be such as to differentiate a Micro Patient Banner of a deceased patient from that of a living patient |
+| PB-0057 | 3.3.7 | Display the date of death along with its label |
+| PB-0058 | 3.3.7 | Display the date of death below the date of birth |
+| PB-0059 | 3.3.7 | Display the age at death, preceded by its label, immediately after the date of death |
+| PB-0060 | 3.3.7 | Display the age at death without parentheses |
+| PB-0061 | 3.3.8 | Display the patient’s preferred name (if available) immediately below the given name, with both items left-aligned |
+| PB-0062 | 3.3.8 | When a patient’s preferred name is not available, the patient’s name must be centred vertically and left-aligned in Zone 1 |
+| PB-0063 | 3.3.8 | For a deceased patient, display the date of death and age at death labels and values in that order, immediately below the label corresponding to the date of birth. Left-align both date labels |
 
 Table 4: Summary of Guidance
 
@@ -694,43 +740,34 @@ HSCIC Controlled Document
 
 #### 4.1 Terms and Abbreviations
 
-CSA Clinical Spine Application
 
-CUI Common User Interface
-
-MPB Micro Patient Banner
-
-NPfIT National Programme for Information Technology
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NPSA National Patient Safety Agency
-
-PAB Patient Banner
-
-PC Personal Computer
-
-PDA Personal Digital Assistant
-
-PDS Personal Demographics Service
-
-RFID Radio Frequency Identification
-
-UI User Interface
-
-WHO World Health Organization
+| Abbreviation | Definition |
+| --- | --- |
+| CSA | Clinical Spine Application |
+| CUI | Common User Interface |
+| MPB | Micro Patient Banner |
+| NPfIT | National Programme for Information Technology |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPSA | National Patient Safety Agency |
+| PAB | Patient Banner |
+| PC | Personal Computer |
+| PDA | Personal Digital Assistant |
+| PDS | Personal Demographics Service |
+| RFID | Radio Frequency Identification |
+| UI | User Interface |
+| WHO | World Health Organization |
 
 Table 5: Terms and Abbreviations
 
 #### 4.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
 
 Table 6: Definitions
 
@@ -746,35 +783,30 @@ This section shows how to interpret the different styles used in this document t
 
 ##### 4.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 7: Body Text Styles
 
 ##### 4.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 8: Cross Reference Styles
 
@@ -810,41 +842,49 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-**R9.** NHS CUI Design Guide Workstream – Design Guide Entry – Time Display 4.0.0.0
 
-**R10.** NHS CUI Design Guide Workstream – Patient Name Input and Display – User Interface Design Guidance 2.0.0.0
-
-**R11.** NHS CUI Design Guide Workstream – Sex and Current Gender Input and Display — User Interface Design Guidance
-
-4.0.0.0
-
-**R12.** NHS CUI Design Guide Workstream – NHS Number Input and Display – User Interface Design Guidance 3.0.0.0
-
-**R13.** NHS CUI Design Guide Workstream – Address Input and Display – User Interface Design Guidance 3.0.0.0
-
-**R14.** NHS CUI Design Guide Workstream – Accessibility Checkpoints for NHS Applications 1.0.0.0
-
-**R15.** NHS CUI Design Guide Workstream – Accessibility for Clinical Applications 1.0.0.0
-
-**R16.** NHS CUI Micro Patient Banner User Research – Online Survey 1.0.0.0
-
-**R17.** NHS CUI Micro Patient Banner User Research – Interviews 1.0.0.0
-
-**R18.** NHS CUI Patient Banner User Research 2006-12-07 0.0.0.5
-
-**R19.** NHS CUI Patient Banner Survey Results 2007-08-06 1.0.0.0
-
-**R20.** NHS CUI Micro Patient Banner Hazard Log 1.0.0.0
-
-**R21.** Koyani et al, Research-Based Web Design and Usability Guidelines: U.S. Department of Health and Human Services: [http://www.usability.gov/pdfs/guidelines.html](http://www.usability.gov/pdfs/guidelines.html)
-
-**R22.** Tidwell J, Designing Interfaces: [www.designinginterfaces.com](http://www.designinginterfaces.com/)
-
-**R23.** Wright, P. C. Jansen, JC. Wyatt. (1998): How to limit clinical error in interpretation of data: Lancet 352: 1539-43: [http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Retrieve&list_uids=9820319&dopt=Citati](http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Retrieve&list_uids=9820319&dopt=Citation) [on](http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Retrieve&list_uids=9820319&dopt=Citation)
-
-**R24.** The Personal Demographics Service [The Personal Demographics Service — NHS Connecting for Health](http://www.connectingforhealth.nhs.uk/systemsandservices/demographics/pds)
-
-**R25.** National Health Service (NHS) Data Model and Dictionary: [http://www.datadictionary.nhs.uk/index.asp](http://www.datadictionary.nhs.uk/index.asp)
+| Reference Document | Version |
+| --- | --- |
+| R1.             NHS CUI Design Guide Workstream – Design Guide Entry – Patient Banner | 4.0.0.0 |
+| R2.             Right patient - right care, NPSA:                                                                2004 |  |
+| http://www.npsa.nhs.uk/EasySiteWeb/getresource.axd?AssetID=3234&type=full&servicetype=Attachment |  |
+| R3.                 Standardising wristbands improves patient safety, NPSA Safer Practice Notice: | 2007 |
+| Standardising wristbands improves patient safety |  |
+| R4.             WHO Collaborating Centre for Patient Safety Releases - Patient Safety Solutions – Volume 1, Solution 2: | 2007 |
+| http://www.jcipatientsafety.org/fpdf/Presskit/PS-Solution2.pdf |  |
+| R5.             The Joint Commission - National Patient Safety Goals – Goal 1: | 2007 |
+| http://www.jointcommission.org/PatientSafety/NationalPatientSafetyGoals/08_npsg_facts.htm |  |
+| R6.             Mohammad Al-Ubaydli, Handheld Computers, BMJ 2004;328;1181-1184 |  |
+| R7.             Chantelle Garritty and Khaled El Emam: Who’s Using PDAs? Estimates of PDA Use by Health Care |  |
+| Providers: A Systematic Review of Surveys: J Med Internet Res 2006;8(2):e7: |  |
+| http://www.jmir.org/2006/2/e7/ |  |
+| R8.             NHS CUI Design Guide Workstream – Design Guide Entry – Date Display | 4.0.0.0 |
+| R9.            NHS CUI Design Guide Workstream – Design Guide Entry – Time Display | 4.0.0.0 |
+| R10.           NHS CUI Design Guide Workstream – Patient Name Input and Display – User Interface Design Guidance | 2.0.0.0 |
+| R11.           NHS CUI Design Guide Workstream – Sex and Current Gender Input and Display — User Interface | 4.0.0.0 |
+| Design Guidance |  |
+| R12.           NHS CUI Design Guide Workstream – NHS Number Input and Display – User Interface Design Guidance | 3.0.0.0 |
+| R13.           NHS CUI Design Guide Workstream – Address Input and Display – User Interface Design Guidance | 3.0.0.0 |
+| R14.           NHS CUI Design Guide Workstream – Accessibility Checkpoints for NHS Applications | 1.0.0.0 |
+| R15.           NHS CUI Design Guide Workstream – Accessibility for Clinical Applications | 1.0.0.0 |
+| R16.           NHS CUI Micro Patient Banner User Research – Online Survey | 1.0.0.0 |
+| R17.           NHS CUI Micro Patient Banner User Research – Interviews | 1.0.0.0 |
+| R18.           NHS CUI Patient Banner User Research 2006-12-07 | 0.0.0.5 |
+| R19.           NHS CUI Patient Banner Survey Results 2007-08-06 | 1.0.0.0 |
+| R20.           NHS CUI Micro Patient Banner Hazard Log | 1.0.0.0 |
+| R21.           Koyani et al, Research-Based Web Design and Usability Guidelines: U.S. Department of Health and | 2006 |
+| Human Services: |  |
+| http://www.usability.gov/pdfs/guidelines.html |  |
+| R22.           Tidwell J, Designing Interfaces: | First |
+| www.designinginterfaces.com | Edition |
+| R23.           Wright, P. C. Jansen, JC. Wyatt. (1998): How to limit clinical error in interpretation of data: Lancet 352: | 1998 |
+| 1539-43: |  |
+| http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Retrieve&list_uids=9820319&dopt=Citati |  |
+| on |  |
+| R24.           The Personal Demographics Service |  |
+| The Personal Demographics Service — NHS Connecting for Health |  |
+| R25.           National Health Service (NHS) Data Model and Dictionary: |  |
+| http://www.datadictionary.nhs.uk/index.asp |  |
 
 Table 9: References
 

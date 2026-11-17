@@ -84,17 +84,12 @@ Additionally, users implementing applications that follow this design guide’s 
 [Refer to www.cui.nhs.uk](https://emea.mail.microsoft.com/OWA/redir.aspx?C=2aab7991b0924c8f92c4e2824ab8a971&URL=http%3a%2f%2fwww.cui.nhs.uk) for further information on the patient safety process and for the safety status and any relevant accompanying safety documentation for this design guide.
 ### 1 INTRODUCTION
 
-This document provides the design guidance for date display. It describes the area of focus, provides guidance and recommendations, and explains the rationale behind the guidance and recommendations.
 
-This document is intended for the use of anyone whose role includes screen design, or the implementation or assessment of NHS clinical applications. This document can be used as guidance for the specification of display of dates within the user interface of a clinical application.
-
-**Modified** Adjusted the text within rationale to reflect D+Ta-0005 (section 2.1.2)
-
-D+Ta-0005 Removed reference to right alignment – recommending alignment only without speciftying left or right
-
-**Deleted** Reference to Approximate Time as in scope (section 1.2.1)
-
-**Added** Reference to Approximate Time as out of scope (section 1.2.2)
+| Modified | Adjusted the text within rationale to reflect D+Ta-0005 (section 2.1.2) |
+| --- | --- |
+| D+Ta-0005 | Removed reference to right alignment – recommending alignment only without speciftying left or right |
+| Deleted | Reference to Approximate Time as in scope (section 1.2.1) |
+| Added | Reference to Approximate Time as out of scope (section 1.2.2) |
 
 Table 1: Changes Since the Last Baseline Version describes the changes made since the previous version of this guidance (Baseline version 4.0.0.0 dated 24-Jun-2009):
 
@@ -244,15 +239,16 @@ D+Ta-0005 Align dates when displaying dates in a vertical column, such as in a t
 
 ![](datedisplay_assets/datedisplay.pdf-7-1.png)
 
-D+Ta-0016 When displaying the day of the week, use one of the following abbreviations: Mon, Tue, Wed, Thu, Fri, Sat and Sun
 
-D+Ta-0017 Displaying the day of the week is optional, but when displayed, it must be placed immediately before the day value, with a single space separating the permitted abbreviated form of the day, from the day value
-
-Recommended
-
-Recommended
-
-D+Ta-0022 Display null date using an appropriate value (for example, ‘Unknown’ or ‘Not recorded’) Mandatory
+| ID | Guideline | Status |
+| --- | --- | --- |
+| D+Ta-0002 | Display the month textually, not numerically | Mandatory |
+| D+Ta-0003 | Display the month with only the first letter in capitals | Mandatory |
+| D+Ta-0004 | Display the year value numerically using four digits | Mandatory |
+| D+Ta-0005 | Align dates when displaying dates in a vertical column, such as in a table | Recommended |
+| D+Ta-0016 | When displaying the day of the week, use one of the following abbreviations: Mon, Tue, Wed, Thu, R Fri, Sat and Sun | ecommended |
+| D+Ta-0017 | Displaying the day of the week is optional, but when displayed, it must be placed immediately before the day value, with a single space separating the permitted abbreviated form of the day, from the day value | Recommended |
+| D+Ta-0022 | Display null date using an appropriate value (for example, ‘Unknown’ or ‘Not recorded’) | Mandatory |
 
 Table 2: Guidance – Date Formatting
 
@@ -326,7 +322,51 @@ In all instances of clinical usage affecting patient treatment, including patien
 
 - YYYY is the four-digit year
 
-Figure 3 shows examples of the recommended short date format.
+
+|  | Providing certainty for the year element by enforcing a four-digit format |
+| --- | --- |
+|  | Providing certainty for the day element by inclusion of a leading zero |
+|  | Removing ambiguity between the day and month elements through the use of words to represent the month |
+|  | Providing confirmation of the date by showing the day of the week alongside it |
+| rity |  |
+|  | Providing a clear distinction between elements through the inclusion of a single hyphen as a separator |
+|  | Increasing clarity through the use of words to represent the month |
+| dabil | ity |
+|  | Providing a more comfortable user experience:    Through a natural reading pattern, and    By displaying month names where only the first letter is capitalised (for example, April and May), as studies have shown this to be the best readable form and uppercase (for example, APRIL and MAY) to be the least readable form |
+| organ | isations have existing standards for displaying date information in applications. |
+| e cre | ation of this guidance, the following sources were consulted: |
+| ernat | ional Standards Organization (ISO), standard ISO 8601:2004 {R6} |
+| ld Wi | de Web Consortium (W3C), Dates and Time {R3 and R7} |
+| Euro | pean Union |
+| Gover | nment Data Standards Catalogue {R8} ® |
+| rosof | t Corporation, Microsoft Manual of Style for Technical Publications, Third Edition |
+| } |  |
+| ot ad | opted the ISO standard because it presents date elements in an unfamiliar |
+| for u | sers brought up in the UK, and allows ambiguity between date and month elements |
+| re re | presented numerically. We have taken the W3C standard as the basis for this |
+| but | extended it by requiring the day element to be two digits, and for a separator to be |
+| betwe | en date elements. |
+| f the | week can be a useful item to have in a range of scenarios (such as, when |
+| g app | ointments, arranging handover and so on) as it is a natural way for people to think |
+| d ord | er, their commitments. Knowing the day of the week can help reduce the likelihood |
+| bein | g mis-interpreted. Additionally, the day of the week is more easily remembered by |
+| le. T | hese factors can contribute to greater efficiencies,therefore, the use of the day of |
+| is en | couraged where appropriate. Examples where the day of the week is not relevant, |
+| d not | be displayed, are when displaying a patient’s date of birth or date of death. |
+| recom | mending the alignment of dates displayed in a tabular form is included to |
+| cons | istency of data presentation and enhance readability when a user scans for |
+| list | of dates. No guidance is included mandating or recommending specific alignment to |
+| or ri | ght because there is a need to give developers of clinical applications some flexibility in |
+| n of | their systems. If right alignment was mandatory it is recognised that certain data, for |
+| onths | may not be perfectly aligned. This would not be an issue were monospaced fonts |
+|  |  |
+| Short | Date Format |
+| stanc | es of clinical usage affecting patient treatment, including patient identification, NHS |
+| ons m | ust display dates as short dates in the form DD-MMM-YYYY, where: |
+| is t | he two-digit day |
+| M is | the correctly abbreviated month name |
+| YY is | the four-digit year |
+| shows | examples of the recommended short date format. |
 
 Figure 3: Short Date Format
 
@@ -336,23 +376,15 @@ Figure 3: Short Date Format
 
 ![](datedisplay_assets/datedisplay.pdf-9-1.png)
 
-D+Ta-0006 Display dates using the short date format in all instances of clinical usage affecting patient treatment, including patient identification
 
-D+Ta-0018 Display the day value using two digits (values less than 10 should appear with a zero in the first position)
-
-D+Ta-0007 Display the month as a three letter abbreviation: Jan, Feb, Mar, Apr, Jun, Jul, Aug, Sep, Oct, Nov, and Dec, with May being displayed in full
-
-Mandatory
-
-Mandatory
-
-Mandatory
-
-D+Ta-0008 When displaying the month, do not include any punctuation, such as a full stop Mandatory
-
-D+Ta-0009 Use a single hyphen to separate the day and month, and the month and year Mandatory
-
-D+Ta-0010 When using the short date format, ignore the user's regional settings Mandatory
+| ID | Guideline | Status |
+| --- | --- | --- |
+| D+Ta-0006 | Display dates using the short date format in all instances of clinical usage affecting patient treatment, including patient identification | Mandatory |
+| D+Ta-0018 | Display the day value using two digits (values less than 10 should appear with a zero in the first position) | Mandatory |
+| D+Ta-0007 | Display the month as a three letter abbreviation: Jan, Feb, Mar, Apr, Jun, Jul, Aug, Sep, Oct, Nov, and Dec, with May being displayed in full | Mandatory |
+| D+Ta-0008 | When displaying the month, do not include any punctuation, such as a full stop | Mandatory |
+| D+Ta-0009 | Use a single hyphen to separate the day and month, and the month and year | Mandatory |
+| D+Ta-0010 | When using the short date format, ignore the user's regional settings | Mandatory |
 
 Table 3: Short Date Formatting Guidance
 
@@ -366,19 +398,10 @@ HSCIC Controlled Document
 
 ####  DD-MMM-YYYY 01-Jan-2008
 
-Tue 01-Jan-2008
 
-28-Feb-2008
-
-Thu 28-Feb-2008
-
-05-Apr-2008
-
-Sat 05-Apr-2008
-
-31-Dec-2008
-
-Wed 31-Dec-2008
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | DD-MMM-YYYY | 01-Jan-2008 Tue 01-Jan-2008 28-Feb-2008 Thu 28-Feb-2008 05-Apr-2008 Sat 05-Apr-2008 31-Dec-2008 Wed 31-Dec-2008 | The date is complete, clear, and unambiguous. |
 
 Table 4: Correct Date Formatting Examples
 
@@ -407,6 +430,14 @@ D-MMM-YY
 DD.MMM.YYYY
 
 ####  DD MMM YYYY
+
+
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | D-MM-YY DD-MM-YYYY DD/MM/YYYY DD.MM.YYYY DD MM YYYY | 8-04-08 08-04-2008 08/04/2008 08.04.2008 08 04 2008 | Patient Safety Critical These examples lack certainty. The day and month elements are ambiguous causing confusion and a high chance of misinterpretation errors. |
+|  | D-MMM-YYYY DD-MMM-YY D-MMM-YY | 8-Apr-2008 08-Apr-08 8-Apr-08 | Lack of Completeness These examples lack clarity because the day and/or year elements do not display complete information. |
+|  | DD/MMM/YYYY DD.MMM.YYYY | 08/Apr/2008 08.Apr.2008 | Lack of Readability These examples lack readability because the separator is unlikely to be noticed. |
+|  | DD MMM YYYY | 08 Apr 2008 | Lack of Distinctiveness This example lacks clarity when displayed in a banner context with other data types, such as NHS Number. The following examples illustrate this issue: 401 023 2137 08 Apr 2008 08 Apr 2008 401 023 2137 |
 
 Table 5: Incorrect Date Formatting Examples
 
@@ -496,23 +527,17 @@ D+Ta-0011 Use the long date format when communicating with the patient Mandatory
 
 ![](datedisplay_assets/datedisplay.pdf-11-2.png)
 
-D+Ta-0019 Display the day value using two digits (values less than 10 should appear with a zero in the first position, unless the day value is displayed in ordinal form)
 
-Mandatory
-
-D+Ta-0012 Display the month name in full Mandatory
-
-D+Ta-0013 Use a single whitespace to separate the day and month, and the month and year Mandatory
-
-D+Ta-0014 When using the long date format, follow the user's default regional settings ignoring any changes made by the user to these default settings
-
-Mandatory
-
-D+Ta-0015 Use the long date format when interacting with screen readers Recommended
-
-D+Ta-0020 When displaying the day value as an ordinal number, the suffix used must be one of the following: st, nd, rd, th
-
-D+Ta-0021 When displaying the day value as an ordinal number, the two-letter suffix must be displayed in lower case and as a superscript immediately after the number
+| ID | Guideline | Status |
+| --- | --- | --- |
+| D+Ta-0011 | Use the long date format when communicating with the patient | Mandatory |
+| D+Ta-0019 | Display the day value using two digits (values less than 10 should appear with a zero in the first position, unless the day value is displayed in ordinal form) | Mandatory |
+| D+Ta-0012 | Display the month name in full | Mandatory |
+| D+Ta-0013 | Use a single whitespace to separate the day and month, and the month and year | Mandatory |
+| D+Ta-0014 | When using the long date format, follow the user's default regional settings ignoring any changes made by the user to these default settings | Mandatory |
+| D+Ta-0015 | Use the long date format when interacting with screen readers | Recommended |
+| D+Ta-0020 | When displaying the day value as an ordinal number, the suffix used must be one of the following: st, nd, rd, th | Mandatory |
+| D+Ta-0021 | When displaying the day value as an ordinal number, the two-letter suffix must be displayed in lower case and as a superscript immediately after the number | Mandatory |
 
 Table 6: Guidance – Long Date Formatting
 
@@ -530,19 +555,10 @@ HSCIC Controlled Document
 
 ####  DD Month YYYY 01 January 2008
 
-1 [st] January 2008
 
-22 February 2008
-
-22 [nd] February 2008
-
-03 April 2008
-
-3 [rd] April 2008
-
-14 December 2008
-
-14 [th] December 2008
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | DD Month YYYY | 01 January 2008 1st January 2008 22 February 2008 22nd February 2008 03 April 2008 3rd April 2008 14 December 2008 14th December 2008 | The date is complete, clear, and unambiguous. |
 
 Table 7: Correct Date Formatting Examples
 
@@ -592,27 +608,13 @@ DD.Month.YYYY
 
 ####  DD MM YYYY 08th April 2008
 
-2ND April 2008
 
-1sT April 2008
-
-23Rd April 2008
-
-Patient Safety Critical
-
-These examples lack certainty. The day and month elements are ambiguous causing confusion and a high chance of misinterpretation errors.
-
-Lack of Completeness
-
-These examples lack clarity because the day and/or year elements do not display complete information.
-
-Lack of Readability
-
-These examples lack readability because the separator is unlikely to be noticed.
-
-Patient Safety Critical
-
-These examples may be confused with medication. As the abbreviation is not in superscript form, the number may be misinterpreted as unit of measurement of a medication.
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | DD MM YYYY DD-MM-YYYY DD/MM/YYYY DD.MM.YYYY DD MM YYYY | 08 04 2008 08-04-2008 08/04/2008 08.04.2008 08 04 2008 | Patient Safety Critical These examples lack certainty. The day and month elements are ambiguous causing confusion and a high chance of misinterpretation errors. |
+|  | D Month YYYY DD Month YY D Month YY | 8 Apr 2008 08 April 08 8 Apr 08 | Lack of Completeness These examples lack clarity because the day and/or year elements do not display complete information. |
+|  | DD/Month/YYYY DD.Month.YYYY | 08/April/2008 08.April.2008 | Lack of Readability These examples lack readability because the separator is unlikely to be noticed. |
+|  | DD MM YYYY | 08th April 2008 2ND April 2008 1sT April 2008 23Rd April 2008 | Patient Safety Critical These examples may be confused with medication. As the abbreviation is not in superscript form, the number may be misinterpreted as unit of measurement of a medication. |
 
 Table 8: Incorrect Date Formatting Examples
 
@@ -650,25 +652,25 @@ HSCIC Controlled Document
 
 #### 3.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-ISO International Organization for Standardization
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-W3C World Wide Web Consortium
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| ISO | International Organization for Standardization |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| W3C | World Wide Web Consortium |
 
 Table 9: Terms and Abbreviations
 
 #### 3.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
 
 Table 10: Definitions
 
@@ -678,21 +680,17 @@ This section shows how to interpret the different styles used in this document t
 
 ##### 3.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 11: Body Text Styles
 
@@ -704,39 +702,40 @@ HSCIC Controlled Document
 
 ##### 3.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 12: Cross Reference Styles
 
 #### 3.4 References
 
-**R1.** World Wide Web Consortium (W3C) [http://www.w3.org](http://www.w3.org/)
 
-**R2.** International Organization for Standardization (ISO) [http://www.iso.org](http://www.iso.org/)
-
-**R3.** World Wide Web Consortium (W3C) FAQ: Date formats [http://www.w3.org/International/questions/qa-date-format](http://www.w3.org/International/questions/qa-date-format)
-
-**R4.** NHS CUI Design Guide Workstream – Design Guide Entry – Date and Time Input 3.0.0.0
-
-**R5.** NHS CUI Design Guide Workstream – Design Guide Entry – Time Display 4.0.0.0
-
-**R6.** ISO 8601:2004 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=40874](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=40874)
-
-(See also Numeric representation of Dates and Time – [http://www.iso.org/iso/en/prods-](http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html) [services/popstds/datesandtime.html)](http://www.iso.org/iso/en/prods-services/popstds/datesandtime.html)
-
-**R7.** World Wide Web Consortium (W3C): Dates and Time [http://www.w3.org/International/O-time](http://www.w3.org/International/O-time)
-
-**R8.** UK Government Data Standards Catalogue [http://www.govtalk.gov.uk/gdsc/html/noframes/Date-1-0-Release.htm](http://www.govtalk.gov.uk/gdsc/html/noframes/Date-1-0-Release.htm)
-
-**R9.** Microsoft Manual of Style for Technical Publications, Third Edition [http://www.microsoft.com/mspress/books/6074.aspx](http://www.microsoft.com/mspress/books/6074.aspx)
+| Reference Document | Version |
+| --- | --- |
+| R1.              World Wide Web Consortium (W3C) |  |
+| http://www.w3.org |  |
+| R2.              International Organization for Standardization (ISO) |  |
+| http://www.iso.org |  |
+| R3.              World Wide Web Consortium (W3C) FAQ: Date formats |  |
+| http://www.w3.org/International/questions/qa-date-format |  |
+| R4.              NHS CUI Design Guide Workstream – Design Guide Entry – Date and Time Input | 3.0.0.0 |
+| R5.              NHS CUI Design Guide Workstream – Design Guide Entry – Time Display | 4.0.0.0 |
+| R6.              ISO 8601:2004 |  |
+| http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=40874 |  |
+| (See also Numeric representation of Dates and Time – http://www.iso.org/iso/en/prods- |  |
+| services/popstds/datesandtime.html) |  |
+| R7.              World Wide Web Consortium (W3C): Dates and Time |  |
+| http://www.w3.org/International/O-time |  |
+| R8.              UK Government Data Standards Catalogue |  |
+| http://www.govtalk.gov.uk/gdsc/html/noframes/Date-1-0-Release.htm |  |
+| R9.              Microsoft Manual of Style for Technical Publications, Third Edition |  |
+| http://www.microsoft.com/mspress/books/6074.aspx |  |
 
 Table 13: References
 

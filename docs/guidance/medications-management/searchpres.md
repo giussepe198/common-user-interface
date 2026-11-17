@@ -22,9 +22,6 @@ _Prepared by_
   - [1.2 Scope](#12-scope)
     - [1.2.1 In Scope](#121-in-scope)
     - [1.2.2 Out of Scope](#122-out-of-scope)
-  - [1.3 Assumptions](#13-assumptions)
-  - [1.4 Dependencies](#14-dependencies)
-- [2 SEARCH AND PRESCRIBE GUIDANCE OVERVIEW](#2-search-and-prescribe-guidance-overview)
   - [2.1 Rationale Summary](#21-rationale-summary)
   - [2.2 Summary of Guidance](#22-summary-of-guidance)
 - [3 GUIDANCE DETAILS FOR A PRESCRIBING AREA](#3-guidance-details-for-a-prescribing-area)
@@ -106,11 +103,6 @@ _Prepared by_
     - [10.3.2 Presenting Controls for Authorising a Prescription](#1032-presenting-controls-for-authorising-a-prescription)
 - [11 DOCUMENT INFORMATION](#11-document-information)
   - [11.1 Terms and Abbreviations](#111-terms-and-abbreviations)
-  - [11.2 Definitions](#112-definitions)
-  - [11.3 Nomenclature](#113-nomenclature)
-    - [11.3.1 Body Text](#1131-body-text)
-    - [11.3.2 Cross References](#1132-cross-references)
-  - [11.4 References](#114-references)
 - [APPENDIX A USABILITY PRINCIPLES](#appendix-a-usability-principles)
   - [A.1 Nielsen’s Usability Heuristics](#a1-nielsens-usability-heuristics)
   - [A.2 Shneiderman’s Eight Golden Rules of Interface Design](#a2-shneidermans-eight-golden-rules-of-interface-design)
@@ -142,14 +134,12 @@ _Prepared by_
   - [E.3 Research Design](#e3-research-design)
   - [E.4 Results](#e4-results)
     - [E.4.1 Participant Description](#e41-participant-description)
-    - [E.4.2 Design Areas](#e42-design-areas)
 - [APPENDIX F STUDY ID 37: EXECUTIVE SUMMARY](#appendix-f-study-id-37-executive-summary)
   - [F.1 Abstract](#f1-abstract)
   - [F.2 Research Objectives](#f2-research-objectives)
   - [F.3 Research Design](#f3-research-design)
   - [F.4 Results](#f4-results)
     - [F.4.1 Participant Description](#f41-participant-description)
-    - [F.4.2 Design Areas](#f42-design-areas)
 - [REVISION AND SIGNOFF SHEET](#revision-and-signoff-sheet)
   - [Change Record](#change-record)
   - [Open Issues Summary](#open-issues-summary)
@@ -223,47 +213,11 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-guidance is not followed it is the responsibility of the providers of alternative solutions to ensure that known risks are addressed.
 
-To indicate their relative importance, each guideline in this document is ranked by **Conformance** and by **Evidence Rating** . Table 1 defines those terms:
-
-Conformance Indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:
-
-**Mandatory**           - An implementation should follow the guideline
-
-**Recommended**         - An implementation is advised to follow the guideline
-
-Evidence Rating Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):
-
- **Low** :
-
- Does not mitigate specific patient safety hazards
-
- User research findings unclear and with few participants
-
- Unreferenced usability principles indicate the design is not significantly better than alternatives
-
- **Medium** :
-
- Mitigates specific patient safety hazards
-
- User research findings clear but with few participants
-
- References old authoritative guidance (for example, from National Patient Safety Agency (NPSA),
-
-Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
- **High** :
-
- Mitigates specific patient safety hazards
-
- User research findings clear and with a significant number of participants
-
- References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
-
- Referenced usability principles indicate the design is significantly better than alternatives
+| Term | Definition |
+| --- | --- |
+| Conformance | Indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels: Mandatory – An implementation should follow the guideline Recommended – An implementation is advised to follow the guideline |
+| Evidence Rating | Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):  Low:  Does not mitigate specific patient safety hazards  User research findings unclear and with few participants  Unreferenced usability principles indicate the design is not significantly better than alternatives  Medium:  Mitigates specific patient safety hazards  User research findings clear but with few participants  References old authoritative guidance (for example, from National Patient Safety Agency (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded  Referenced usability principles indicate the design is significantly better than alternatives  High:  Mitigates specific patient safety hazards  User research findings clear and with a significant number of participants  References recent authoritative guidance (for example, from NPSA, ISMP or WHO)  Referenced usability principles indicate the design is significantly better than alternatives |
 
 Table 1: Conformance and Evidence Rating Definitions
 
@@ -295,43 +249,38 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-3.3.8 Limiting the Height of a Results List (three guidance points), 3.3.10 Defining the Height of Search Results Lists (one guidance point)
 
-5.3.5 Limiting the Height of a Search Results List
-
-3.3.9 Displaying a Longer Results List (three guidance points) 5.3.6 Extending the Search Results List
-
-3.3.11 Providing Cascading Lists (three guidance points) 6.3.1 Providing Cascading Lists
-
-3.3.12 Displaying Cascading Lists (three guidance points) 3.3.13 Displaying Selections in Cascading Lists (one guidance point)
-
-6.3.2 Displaying Cascading Lists
-
-3.3.13 Displaying Selections in Cascading Lists (one guidance point) 6.3.3 Contents of Cascading Lists
-
-3.3.14 Matching Input Text to Results (three guidance points) 5.3.7 Matching Input Text to Results
-
-3.3.15 Ordering the Results (one guidance point) 5.3.8 Ordering Search Results
-
-3.3.16 Using Groups to Limit Search Results (two guidance points) 5.3.9 Using Groups to Limit Search Results
-
-3.3.17 Supporting Spelling Matches (two guidance points) 5.3.10 Supporting Spelling Matches
-
-3.3.18 Co-drugs and Their Ingredients (two guidance points) 5.3.11 Co-Drugs and Their Ingredients
-
-3.3.19 Prioritising Results (five guidance points) and 3.3.20 Displaying Results without Prioritised Matches (one guidance point)
-
-5.3.12 Prioritising Results
-
-3.3.21 Defining Shortcut Keys for Prioritised Results (three guidance points) 5.3.13 Shortcut Keys in Search Results
-
-3.3.22 Formatting Commonly Mis-Selected Matches (three guidance points) 5.3.14 Formatting Commonly Mis-Selected Matches
-
-3.3.23 Formatting Spelling Matches (three guidance points) 5.3.15 Formatting Spelling Matches
-
-3.3.24 Formatting List Results (three guidance points) 5.3.16 Formatting Search Results Lists
-
-3.3.25 Generic Drug Names and Brand Names (four guidance points) 3.3.26 Supporting Selection of Brand Names (one guidance point)
+| Previous Section | New Section |
+| --- | --- |
+| 3.3.1 Relating Drug Search to Context (two guidance points) | 3.3.1 Relating Drug Search to Context |
+| 3.3.2 Positioning the Text Input Box (one guidance point) | 5.3.1 Positioning the Search Text Input Box |
+| 3.3.3 Communicating the Scope of the Search (one guidance point) |  |
+| 3.3.4 Defining Text Input Box Behaviour (two guidance points) | 5.3.2 Defining Text Input Box Behaviour |
+| 3.3.5 Moving from text Input Box to Results List (two guidance points) |  |
+| 3.3.6 Displaying Results with Progressive Matching (two guidance points) | 5.3.3 Displaying Results with Progressive Matching |
+| 3.3.7 Providing Feedback for a Progressive Search (five guidance points) | 5.3.4 Providing Feedback for a Progressive Search |
+| 3.3.10 Defining the Height of Search Results Lists (two guidance points) |  |
+| Previous Section                                                                New | Section |
+| 3.3.8 Limiting the Height of a Results List (three guidance points),            5.3 | .5 Limiting the Height of a Search Results List |
+| 3.3.10 Defining the Height of Search Results Lists (one guidance point) |  |
+| 3.3.9 Displaying a Longer Results List (three guidance points)                  5.3 | .6 Extending the Search Results List |
+| 3.3.11 Providing Cascading Lists (three guidance points)                        6.3 | .1 Providing Cascading Lists |
+| 3.3.12 Displaying Cascading Lists (three guidance points)                       6.3 | .2 Displaying Cascading Lists |
+| 3.3.13 Displaying Selections in Cascading Lists (one guidance point) |  |
+| 3.3.13 Displaying Selections in Cascading Lists (one guidance point)            6.3 | .3 Contents of Cascading Lists |
+| 3.3.14 Matching Input Text to Results (three guidance points)                   5.3 | .7 Matching Input Text to Results |
+| 3.3.15 Ordering the Results (one guidance point)                                5.3 | .8 Ordering Search Results |
+| 3.3.16 Using Groups to Limit Search Results (two guidance points)               5.3 | .9 Using Groups to Limit Search Results |
+| 3.3.17 Supporting Spelling Matches (two guidance points)                        5.3 | .10 Supporting Spelling Matches |
+| 3.3.18 Co-drugs and Their Ingredients (two guidance points)                     5.3 | .11 Co-Drugs and Their Ingredients |
+| 3.3.19 Prioritising Results (five guidance points) and                          5.3 | .12 Prioritising Results |
+| 3.3.20 Displaying Results without Prioritised Matches (one guidance point) |  |
+| 3.3.21 Defining Shortcut Keys for Prioritised Results (three guidance points)   5.3 | .13 Shortcut Keys in Search Results |
+| 3.3.22 Formatting Commonly Mis-Selected Matches (three guidance points)         5.3 | .14 Formatting Commonly Mis-Selected Matches |
+| 3.3.23 Formatting Spelling Matches (three guidance points)                      5.3 | .15 Formatting Spelling Matches |
+| 3.3.24 Formatting List Results (three guidance points)                          5.3 | .16 Formatting Search Results Lists |
+| 3.3.25 Generic Drug Names and Brand Names (four guidance points)                5.3 | .17 Generic Drug Names and Brand Names |
+| 3.3.26 Supporting Selection of Brand Names (one guidance point) |  |
 
 Table 2: Changes Since the Last Baseline Version
 
@@ -389,65 +338,20 @@ This guidance informs the design of a user interface for prescribing a medicatio
 
 ##### 1.2.1 In Scope
 
-Users Hospital-based doctors, nurses and pharmacists who prescribe medications
 
-Care settings Inpatient, hospital ward environment only
-
-Tasks Prescribing individual medications
-
-Medications  Oral solids and liquids
-
- Inhalers and sprays
-
- Eye, ear and nose drops
-
- Topical liquids
-
- Creams, ointments and gels
-
- Enemas and rectal solutions
-
- Granules and powders
-
- Suppositories and pessaries
-
- Topical patches
-
- Nebuliser solutions
-
- Injections (insulin example only)
-
- Unlicensed medications (chloramphenicol example only)
-
-Finding a Drug  Text entry searching for generic or brand name
-
- Pick lists (called ‘Quick Lists’)
-
-Search Results  Differentiating between generic drugs and brand names in lists
-
- Displaying, ordering and formatting search results lists
-
- Navigating within and between search results lists
-
- Interacting with search result list items
-
- Indicating non-formulary drugs in search results lists
-
-Template Prescriptions Presentation of lists of predefined prescriptions
-
-Defining a Prescription  Structure and layout of the prescription form
-
- Presentation of required and optional attributes
-
- Guidance for efficiently prescribing commonly prescribed medications
-
- Guidance for prescribing less commonly prescribed and more detailed medications
-
-Administration Schedules Selection from a predefined set of administration times or the definition of an individual administrative
-
-event for a once only medication.
-
-Previewing a Prescription Guidance for supporting the review of a prescription before it is authorised
+| Guidance Areas | Details |
+| --- | --- |
+| Users | Hospital-based doctors, nurses and pharmacists who prescribe medications |
+| Care settings | Inpatient, hospital ward environment only |
+| Tasks | Prescribing individual medications |
+| Medications |  Oral solids and liquids                    Granules and powders  Inhalers and sprays                        Suppositories and pessaries  Eye, ear and nose drops                    Topical patches  Topical liquids                            Nebuliser solutions  Creams, ointments and gels                 Injections (insulin example only)  Enemas and rectal solutions                Unlicensed medications (chloramphenicol example only) |
+| Finding a Drug |  Text entry searching for generic or brand name  Pick lists (called ‘Quick Lists’) |
+| Search Results |  Differentiating between generic drugs and brand names in lists  Displaying, ordering and formatting search results lists  Navigating within and between search results lists  Interacting with search result list items  Indicating non-formulary drugs in search results lists |
+| Template Prescriptions | Presentation of lists of predefined prescriptions |
+| Defining a Prescription |  Structure and layout of the prescription form  Presentation of required and optional attributes  Guidance for efficiently prescribing commonly prescribed medications  Guidance for prescribing less commonly prescribed and more detailed medications |
+| Administration Schedules Sel | ection from a predefined set of administration times or the definition of an individual administrative |
+| eve | nt for a once only medication. |
+| Previewing a Prescription Gu | idance for supporting the review of a prescription before it is authorised |
 
 Table 3: In Scope
 
@@ -647,90 +551,24 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Guidance Areas Details
 
-Dose Calculation  Automatic calculation of doses
-
- Display and input of height, weight and mass
-
-Authorisation  Any part of the user interface process that follows the activation of a control that authorises a
-
-prescription
-
- Cancelling, closing or otherwise exiting a prescription before it is complete
-
-Decision and knowledge support
-
- Decision support alerting for allergies
-
- Decision support for drug-to-drug interactions
-
- Decision support alerting based on patient medical history, demographics or other information held in
-
-the patient record
-
- Knowledge support for browsing drugs by classification
-
- Knowledge support for looking up information about medications.
-
-Allergies The display and recording of allergy information and adverse drug reaction risks is covered in a separate guidance document.
-
-Patient consent and preference
-
-Patient preference, such as for a particular drug form. Patient consent, particularly in a mental health context.
-
-Other  Sealed envelopes
-
- Supply and dispensing
-
- Guidance (other than notifications) that might be needed for when a patient is ‘Nil by Mouth’
+| Select | Search and |
+| --- | --- |
+| om the | select from |
+| ick List | results |
+| Select oth | er |
+| fields |  |
+| Select a |  |
+| Template |  |
+| Prescripti | on Complete fields Step by Step |
+| Required |  |
+| fields |  |
+| completed |  |
+| rm |  |
+|  |  |
+|  |  |
 
 Table 4: Out of Scope
-
-#### 1.3 Assumptions
-
-A1 The majority of medications prescribed by any given clinician will come from a short list of medications that are regularly prescribed by that clinician.
-
-A2 The majority of prescriptions (about 80%) can be prescribed by selecting a predefined template prescription.
-
-A3 When prescribers initiate the prescribing process, they know what they want to prescribe and are ready to prescribe it.
-
-A4 When using the prescribing interface, the Common User Interface (CUI) Patient Banner remains visible throughout the prescribing process.
-
-A5 In general (with known exceptions) prescribing by generic drug name should be encouraged in preference to prescribing by products or brand names.
-
-Table 5: Assumptions
-
-#### 1.4 Dependencies
-
-D1 This guidance is informed by the NHS NPfIT _dm+d Implementation Guide (Secondary Care)_ **{R4}**
-
-D2 This guidance is informed by the NHS NPfIT _ePrescribing Functional Specification_ _[5]_
-
-5 NHS NPfIT – ePrescribing Functional Specification **{R12}** : [http://www.connectingforhealth.nhs.uk/newsroom/news-stories/eprescfunctspec](http://www.connectingforhealth.nhs.uk/newsroom/news-stories/eprescfunctspec)
-
-Page 8
-
-Copyright ©2013 Health and Social Care Information Centre
-
-HSCIC Controlled Document
-
-D3 This guidance uses the concepts ‘generic drug’ and ‘brand name’ and depends on access to, or creation of, a database or dictionary, that can support these concepts. In the _Dictionary of Medicines and Devices_ **{R5}** (known as ‘dm+d’), the concept Virtual Therapeutic Moiety (VTM) equates to generic drug name and the recently created Trade Family Name (TFN) equates to brand name.
-
-D4 The display of drug names and medications is defined by the document _Medications Management –_ _Medication Line_ **{R3}** .
-
-D5 The display and entry of dates is defined by the documents _Time Display_ **{R13}**, _Date Display_ **{R14}** and _Date and Time_ _Input_ **{R15}**
-
-Table 6: Dependencies
-
-Page 9
-
-Copyright ©2013 Health and Social Care Information Centre
-
-HSCIC Controlled Document
-
-### 2 SEARCH AND PRESCRIBE GUIDANCE OVERVIEW
-
 The guidance is divided into sections that are organised such that they follow the prescribing process from initiation through to authorisation. Within each section are a number of tables containing guidance points, usage examples and rationale for specific aspects of the user interface.
 
 The guidance assumes a flexible prescribing process that can support both a quick prescribing process for the most commonly prescribed drugs and a more detailed prescribing process for less common prescribing practices, whilst mitigating known risks and meeting a high standard of patient safety.
@@ -2953,19 +2791,405 @@ dio
 
 ![](searchpres_assets/searchpres.pdf-100-0.png)
 
+
+|  | Lists can be kept open so that feedback for selections is maximised |
+| --- | --- |
+|  | The contents of lists are limited by the previous selection, so a mis-selection is more likely to be noticed because of the contents of the following list |
+| urage | simplicity of design by promoting user interface approaches that help to avoid |
+| overly | complex displays and interactions that require many controls: |
+|  | Cascading lists allow the majority of a prescription to be defined using a series of identical user input controls |
+| re tha | t the prescribing process can be supported in multiple layouts and is flexible |
+| enough | to be presented in different screen dimensions: |
+|  | Cascading lists can be displayed opened or closed depending on the available space and can wrap onto a new line if necessary |
+| re to | a user interface strategy that gives the impression of making progress within a |
+| single | space (which has all the necessary information immediately or readily available) and |
+| avoids | the impression of needing to move between many different spaces: |
+|  | Cascading lists are presented within the same space, with each list supplementing the last |
+| elines |  |
+| Provid | ing Cascading Lists |
+| ant |  |
+| ection | contains guidance for which there may be alternative solutions. Accordingly, the conformance |
+| s in t | his section apply only where the guidance is adopted. |
+| tional | e section contains a summary of the known risks which are addressed in this section and |
+| must b | e addressed by any alternative solution. For more information, see the Alternative Design |
+| ons no | te in section 1. Evidence |
+| Gui | deline                                                                              Conformance Rating |
+| Dis | play a cascading list on the selection of drug name and up to two further           Mandatory              High |
+| cas | cading lists for basic prescription attributes |
+| Pre | sent a second list when a selection is made in the search results list              Mandatory              Medium |
+| All | ow the width of the search results list to extend into available space to           Mandatory              High |
+| acc | ommodate the longest entry when first presented |
+| All | ow different cascading lists (such as route and form or route and strength) to be Recommended              Medium |
+| pre | sented depending on the drug selected |
+| Lim | it the options presented within cascading lists to those that are relevant to the   Mandatory              High |
+| pre | vious selection |
+| les | In this sequence of correct examples (MSP-0850): |
+| drug |  |
+| drug | 1. A list of search results is |
+| drug | 1    2    3                            displayed |
+| drug | 2. A cascading list is displayed |
+| drug | when a drug name is selected |
+| drug | in the search results list 3. A second cascading list that is |
+| drug | option 1                                                             displayed when a selection is |
+|  | made in the first cascading list |
+| drug | option 2 |
+| drug | option 3 |
+| drug |  |
+| drug |  |
+| drug |  |
+| drug | option 1              option 1 |
+| drug | option 2              option 2 |
+| drug | option 3 |
+| drug |  |
+| drug |  |
+| drug | In this sequence of correct examples (MSP-0860): |
+|  | 1. A cascading list is displayed |
+|  | when the drug diltiazem is 1   2 selected from the search |
+| azem | oral                                                       results list cutaneous                                               2. The selection of a route causes display of a cascaded list of other...                                                   forms |
+|  |  |
+|  |  |
+| azem | oral                  modified-release cutaneous             oral liquid other...              other... In this correct example of the lower part of a search results list, the list width accommodates the longest |
+| ehyde | search results entry (MSP-0870) oavailable spaceo |
+| yroid | hormone |
+| tamol | + sodium salicylate |
+| g 10 o | f 40 matches.                            Show all This example of the lower part of a search results list is incorrect |
+| ehyde | because it has not used available |
+| yroid | hormone oavailable spaceo space to expand in width to |
+| tamol | + sodium salicylate                                                                   accommodate the longest search results entry (MSP-0870) |
+| 10 of | 40 matches.       Show all In this sequence of correct |
+|  | examples (MSP-0880): 1. Selecting a drug name in |
+|  | search results displays a 1    2      cascading list |
+| utamol | inhaled – breath-actuated inhaler paracetamol                                           2. Selecting in that cascading list displays template prescriptions inhaled – dry powder inhaler . inhaled – metered dose inhaler inhaled – nebuliser oral oral – modified-release other... |
+|  |  |
+| utamol | inhaled – nebuliser |
+| .5 mg | four times a day |
+| mg | four times a day |
+| ... | In this sequence of correct |
+|  | examples (in which there is enough room to display the |
+|  | template prescriptions to the right 1    2 |
+| amol | inhaled – breath-actuated inhaler paracetamol of the cascading lists) (MSP-0880): 1. Selecting a drug name in inhaled – dry powder inhaler search results displays a inhaled – metered dose inhaler                                  cascading list 2. Selecting in that cascading list inhaled – nebuliser displays template prescriptions oral oral – modified-release other... |
+|  |  |
+| amol | inhaled – nebuliser   DOSE 2.5 mg     four times a day DOSE 5 mg       four times a day other... In this sequence of correct |
+|  | examples (MSP-0880): 1. Selecting a drug name in the |
+|  | search results displays a 1   2   3 cascading list |
+| tamol | paracetamol inhaled 2. Selecting in that cascading list oral                                                     displays template prescriptions other... |
+|  |  |
+|  |  |
+| tamol | paracetamol inhaled             breath-actuated oral                 dry powder other...             metered dose nebuliser other... |
+|  |  |
+|  |  |
+| tamol | paracetamol inhaled              tablets and capsules oral                modified-release preparations other...             liquids and solutions other... This example is incorrect because |
+|  | the options displayed in the cascading list have not been |
+| tamol | paracetamol inhaled            breath-actuated                     limited to those that are relevant to the previous selection (MSP-0890) oral               dry powder other...           metered dose nebuliser tablets and capsules modified-release preparations liquids and solutions |
+|  |  |
+| ysis: |  |
+| ists a | llow the most important aspects of a prescription to be defined by making a few selections from short lists |
+| MSP-08 | 60). They achieve the following: |
+| import | ant information for a large percentage of prescriptions can be defined with a few selections |
+| s are | easier to make because they are part of a short list |
+| nce an | d structure of cascading lists is consistent |
+| nts of | cascading lists will become familiar very quickly |
+| ding l | ists can be likened to ‘multiple choice answers’ whereas a set of empty fields is more like a set of ‘questions’ and |
+| tive w | eight of the former is considered to be much lighter |
+| and c | ontents can change depending on previous selections (MSP-0880) |
+| usage | examples in this section show routes or combinations of route and form in cascading lists. Cascading lists could |
+| d to s | elect from other sets of options (such as regular oral, one-off injections, continuous infusions and regular injections). |
+| y are | divided, the information presented in cascading lists should be enough to determine the type of medication and thus |
+| elevan | t template prescriptions and a set of required fields. |
+| ists a | re most effective at mitigating the risk of mis-selection when they are kept open. However, they can also be treated as |
+| th sel | ection lists (MSP-0870) and presented using sentence layout (see section 7.3.7). This means that the cascading lists |
+| e enou | gh to work with most layout schemes and in spaces with restricted widths or heights. |
+| ch: |  |
+| quires | the options that are displayed in cascading lists to be limited according to the previous selections (MSP-0890). This |
+| equire | ment (GEN.OS.094) in the ePrescribing Functional Specification {R12} to limit administration routes for specific |
+| as vi | nca alkaloids). |
+| ibing | Guidelines for hazard review of ePrescribing systems17 advises that when drug forms are selectable, they should be |
+| those | appropriate for the drug name selected (guideline 4.1) and that route selections should be limited to those that are |
+| o the | medicine combinations selected (guideline 4.4) |
+| in Th | e Use of Tall Man Lettering to Minimise Selection Errors of Medicine Names in Computer Prescribing and Dispensing |
+| e disp | lay of drug names combined with dose and strength is associated with greater incidence of mis-selection errors than |
+| on of | drug name alone {R24}. The combination of guidance on Drug Search (see section 5) and Cascading Lists (see |
+| ensure | s that the drug name and attributes needed to define the type of medication being prescribed are selected before |
+| rength | options are presented. This also means that the dose and strength options presented can be limited to those |
+| r the | medication type and the specific drug name that has been selected. |
+| this | section is informed by the following Nielsen heuristics {R17}: |
+| ty and | efficiency – Cascading lists help to focus on entering the relevant information in the right order without having to |
+| much l | arge set of fields and determine which need to be completed |
+| ventio | n – By presenting limited lists whose contents are tailored according to previous selections, the opportunities for |
+| tions | are reduced |
+| s reco | gnise, diagnose and recover from errors – By keeping the cascading lists open even when a selection has been |
+| rs can | see their selection within the context of the list it was selected from and have a greater opportunity to notice when |
+| mis-s | elected |
+|  |  |
+| cribin | g: Guidelines for hazard review of ePrescribing systems {R31}: |
+| connec | tingforhealth.nhs.uk/systemsandservices/eprescribing/hazard_framework.pdf |
+| Analy | sis Summary: |
+| tient | Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks, |
+| ch are | mitigated and some partially mitigated by the guidance: |
+| ial Ha | zards:                   Mitigations: |
+| name o | f the drug being          The options presented after a drug is selected are filtered to be relevant to that drug |
+| cribed | is not noticed at the     (MSP-0850) |
+| of the | form and is not the      The drug name remains at the top of the form when switching to a detailed prescription |
+| nded d | rug                        and is visible throughout, even when the prescription is long enough to need a scroll bar (see section 8.3.3) |
+| ctions | in the search results  This risk is not wholly mitigated by guidance |
+| and c | ascading lists are mis-  The cascading list that is displayed on selection contains only options that are relevant to |
+| rprete | d because they are        the selection and thus may not contain the expected options (MSP-0880, MSP-0890) in |
+| (or ma | y not be) horizontally    the event of a mis-selection |
+| ned |  Cascading lists are presented one at a time after a selection has been made in the previous list (MSP-0860)  When space is limited such that cascading lists obscure other information, the list collapses (see section 6.3.2) |
+| st ite | m is mis-selected         Search results lists contain only drug names (generic and brand) (see section 5.3.7) |
+| use a | drug name appears         Results are ordered such that a brand drug is less likely to appear next to an equivalent |
+| than | once in a list             generic drug (see section 5.3.8)  Cascading lists are not displayed until a drug name has been selected (MSP-0850) |
+| Disp | laying Cascading Lists Evidence |
+| G | uideline                                                                             Conformance Rating |
+| W | hen a cascaded list is displayed and the search results list remains open, reduce Recommended               Medium |
+| t | he width of the search results list as necessary (following Medications |
+| M | anagement – Medication Line {R3} for wrapping) |
+| D | o not allow any of the results or cascaded lists to obscure one another              Mandatory              High |
+| M | aintain visibility of selections, and the list from which they were selected         Recommended            Medium |
+| ( | including the search results), throughout the cascade select, as long as there is |
+| e | nough space to do so without obscuring other information |
+| W | hen the width of the search results list is reduced and a scroll bar is displayed,   Recommended            Low |
+| e | xpand the list to show all results |
+| les | In this correct example (in which |
+| mmonly | prescribed matches oral                          the search results list is kept open |
+| mol | after a selection), the width of the rectal                        search results list has been |
+| ne | restricted to accommodate the intravenous infusion          cascaded list (MSP-0900) |
+| mol + | tramadol other... |
+| mol + |  |
+| hedrin | e |
+| mol + |  |
+| hrine |  |
+| + para | cetamol Standard matches |
+| acid | + |
+| mol |  |
+| + par | acetamol |
+| dramin | e + |
+| mol |  |
+| of 32 | matches. Show all This example is incorrect because Commonly prescribed matches                    the width of the search results list oral                          has not been reduced to |
+| cetamo | l                                                          accommodate the next cascading rectal list (MSP-0900) and because the |
+| xetine | cascaded list obscures the search intravenous infusion results list (MSP-0910) |
+| rin + | paracetamol other... |
+| cetamo | l + tramadol |
+| cetamo | l + pseudoephedrine |
+| cetamo | l + phenylephrine Standard matches |
+| rbic a | cid + paracetamol |
+| eine + | paracetamol |
+| enhydr | amine + paracetamol |
+| g 9 of | 32 matches.                Show all In this sequence of correct |
+|  | examples: 1. A list of search results is Commonly prescribed matches          1   2         displayed |
+| tamol | 2. A cascading list is displayed on selection of a drug, causing the |
+| tine | width of the search results list to be reduced. The search |
+| n + pa | racetamol                                                     results list is automatically expanded (MSP-0930) and has |
+| tamol | + tramadol                                                    a scroll bar so that the selection can be kept in view |
+| tamol | + pseudoephedrine                                             (MSP-0920). |
+| tamol | + phenylephrine Standard matches |
+| ic aci | d + paracetamol |
+| ne + p | aracetamol |
+| hydram | ine + paracetamol |
+| idone | + paracetamol |
+| hepten | e + paracetamol |
+| 9 of | 32 matches. Show all |
+|  |  |
+| tine | oral |
+| amol + |  |
+| phrine | other... |
+| amol + |  |
+| phedri | ne |
+| amol + | tramadol |
+| + par | acetamol Standard matches |
+| ic aci | d + |
+| tamol |  |
+| ne + p | aracetamol |
+| hydram | ine + |
+| tamol |  |
+| idone | + |
+| tamol |  |
+| eptene | + |
+| amol | This example is not recommended |
+| ommonl | y prescribed matches       oral                           because the selected drug is not visible and the user would have to |
+| amol | rectal                         scroll down in the first list to see it |
+| ine | (MSP-0920) intravenous infusion |
+| amol + | other... |
+| phrine |  |
+| amol + |  |
+| phedri | ne |
+| amol + | tramadol |
+| + par | acetamol |
+| tine S | tandard matches |
+| ne + p | aracetamol |
+| ic aci | d + |
+| tamol |  |
+| hydram | ine + |
+| tamol |  |
+| idone | + |
+| tamol | In this correct example, the lists |
+|  | from which ‘diltiazem’ and ‘oral’ were selected are visible |
+|  | throughout the cascade selection 1     2 |
+| Commo | nly prescribed matches                                                   (MSP-0920) oral |
+| iazem | rectal Standard matches intravenous infusion |
+| xanide | other... |
+| iazem | – DILCARDIA |
+| iazem | – DILZEM SR |
+| iazem | – DILZEM XL |
+|  |  |
+| s | oral                               modified-release oral solid rectal                             oral liquid |
+| s | intravenous infusion               other... other... This example is not recommended |
+|  | because the lists from which ‘diltiazem’ and ‘oral’ were selected |
+|  | are not visible (MSP-0920) |
+| Commo | nly prescribed matches                                         1     2 oral |
+| iazem | rectal intravenous infusion other... |
+|  |  |
+| s | oral                                modified-release oral solid oral liquid other... This example is not recommended because the lists from which |
+|  | ‘diltiazem’ and ‘oral’ were selected are not visible (MSP-0920) |
+| tiazem |  |
+| l |  |
+| ified- | release oral solid |
+| l liqu | id |
+| am, ge | l or ointment |
+| er... |  |
+|  |  |
+| ysis – | List Widths: |
+| ch res | ults list is displayed without a cascaded list, there is no need to restrict the width of the list to accommodate the |
+| ists t | hat are not yet displayed. By allowing the full width available in the prescribing area to be used, the risks associated |
+| ng dru | g names are mitigated as far as possible. Once a selection has been made, and a cascaded list is displayed, the |
+| lts co | lumn can narrow so that the cascaded list can appear in a consistent place (MSP-0900). When this narrowing |
+| e drug | selected in the search results should remain visible. In some unusual cases, this may require a scroll bar to be |
+| (as if | the list had been manually extended, see section 5.3.6) and the drugs originally at the top of the list may be scrolled |
+| . |  |
+| e widt | h of the search results list may cause drug names to wrap and the limited height may then cause fewer matches to |
+| than b | efore the cascaded list appeared. The loss of visibility of the last few items in that search results list is outweighed by |
+| of pr | oviding visibility of, and access to, the search results list whilst selections are made in the cascading lists. It is |
+| at a p | rescriber will rarely return to the search results list to select an alternative drug after already selecting options in the |
+| ists. |  |
+| ch to | managing the width of the search results lists avoids the following potential risks: |
+| n of d | rug names (see Medications Management – Medication Line {R3}) or items in cascading lists |
+| essary | partial display (partially off-screen) of a cascading list as a result of limited screen space, when a reduced width |
+| sults | list would bring the cascading list back into view |
+| ading | list is presented with options that are not expected (because of a mis-selection) the intended selection is still |
+| us all | owing the mistakes to be confirmed |
+| ysis – | Maintaining Visibility of Selections: |
+| selec | tion lists open as prescribers make their selections allows them to continue seeing their selections in context |
+| MSP-09 | 20). Visibility of both the list and their selection may improve the speed at which prescribers notice when they |
+| lected | . The list that is presented after a selection has been made is also providing visual feedback. When this list does not |
+| optio | ns expected, it is even more likely to help the prescriber spot a mis-selection. |
+| casca | ding lists open so that selections are displayed within the list from which they were selected achieves the following: |
+| positi | ve feedback for the selection |
+| feedba | ck for mis-selections since the intended selection is still visible (but not selected or highlighted) |
+| scadin | g list is presented with options that are not expected (because of a mis-selection) the intended selection is still |
+| thus a | llowing the mistakes to be confirmed and corrected quickly |
+| lists | also enhance a sense of place and provide feedback for progress through the simple two to three-step selections |
+| selec | t approach is designed to keep the right balance between: |
+| that a | llows medications to be prescribed with an absolute minimum of interaction |
+| that m | itigates the risks of being able to complete a prescription without paying enough attention to the details |
+| ists g | uide selections in such a way that reduces the potential for mistakes and inappropriate selections. |
+| ch: |  |
+| this | section is informed by the following Nielsen heuristic {R17}: |
+| s reco | gnise, diagnose and recover from errors – By retaining the cascading lists open even when a selection has been |
+| ensur | ing that they are not obscured, users can see their selection within the context of the list it was selected from and |
+| eater | opportunity to notice when they have mis-selected |
+| Analy | sis Summary: |
+| tient | Safety Risk Assessment analyses, we identified a number of potential hazards, including the following key risks, |
+| ch are | mitigated and some partially mitigated by the guidance: |
+| l Haza | rds:                             Mitigations: |
+| criber | mis-selects a prescription       MSP-0920 requires that selections in cascading lists remain visible until the last |
+| t beca | use lists contain too many         cascading list (until template prescriptions are presented or fields are presented |
+| r opti | ons                                step by step) |
+| ction | list in the prescribing area      Pressing the ESC key or clicking outside of a list are mechanisms that can be |
+| scure | important information in a         used to close a list without making a selection (see section 9.3.1) |
+| f curr | ent medications                   Selection lists can collapse once a selection has been made if necessary to preserve visibility of other information (MSP-0920) |
+| ions i | n the search results list and     This risk is not wholly mitigated by guidance |
+| ing li | sts are mis-interpreted           The cascading list that is displayed on selection contains only options that are |
+| e they | are not (or may not be)           relevant to the selection and thus may not contain the expected options (see |
+| ntally | aligned                           section 6.3.1) in the event of a mis-selection  Cascading lists are presented one at a time after a selection has been made in the previous list (see section 6.3.1)  When space is limited such that cascading lists obscure other information, the list collapses (MSP-0920) |
+| Conten | ts of Cascading Lists |
+| resul | ts, cascading lists and other selection lists can be divided into sections in order to |
+| itised | list items to the top of a list. See section 5.3.12 for guidance on prioritisation within |
+| sults | list and section 9.3.3 for guidance on prioritisation within selection lists used as |
+| ols. | Evidence |
+| Gui | deline                                                                                 Conformance Rating |
+| Inc | lude a list item in each cascading list that provides access to values that are not Mandatory                 Medium |
+| in | the list (where they exist) |
+| Pla | ce the list item that provides access to values that are not in the list last in the   Mandatory              Medium |
+| lis | t and separate it from the rest of the list items with a horizontal line |
+| Do | not provide keyboard shortcuts for the item that provides access to values that        Mandatory              Medium |
+| are | not in the list |
+| Whe | re relevant, allow a selection to be made from a cascading list that                   Recommended            Medium |
+| dif | ferentiates preparations with different bio-availability properties (such as |
+| mod | ified release) |
+| les | In this correct example, the cascading list includes a list item |
+|  | (‘other…’) that provides access to other values that are not in the list |
+| al | and this list item is separated from the main list with a horizontal line |
+| avenou | s infusion (MSP-0940, MSP-0950) |
+| r... | This example is incorrect because the cascading list does not include |
+|  | a list item (‘other…’) that provides |
+| al | access to other values that are not in the list (MSP-0940) |
+| avenou | s infusion This example is incorrect because the list item (‘other…’) that |
+|  | provides access to other values that are not in the list is not |
+| al | separated from the other options in the list with a horizontal line |
+| avenou | s infusion (MSP-0950) |
+| ialist | routes... In this correct example, the |
+|  | selection list differentiates between |
+| azem | oral              tablets and capsules modified-release and non-modified release preparations (MSP-0970) cutaneous         modified-release other...          liquid other... |
+|  |  |
+| ysis: |  |
+| ists a | re designed for quick and safe selection of drugs and other attributes. Supplementing these lists with a ‘catch-all’ |
+| ws the | same process to remain effective for unusual and specialist prescribing. This approach allows the selection of |
+| tions | or unusual combinations (for example, unusual route and form combinations) at every step of the process. |
+| on of | a list item that provides access to values that are not in the list (MSP-0940) provides an exit from the step-by-step |
+| the c | ascading lists that takes the prescriber directly to a detailed prescription form. This approach allows unusual and |
+| prescr | ibing to be accommodated within the same process as more common prescribing. |
+| ists s | hould be used to differentiate modified-release preparations from non-modified-release preparations (MSP-0970). |
+| the d | isplay of a list of template prescriptions that contains a mixture of modified-release preparations and non-modified- |
+| parati | ons. |
+| ch: |  |
+| this | section is informed by the following Nielsen heuristic {R17}: |
+| rol an | d freedom – The ‘catch all’ option allows the user to access less frequently used options and to switch to viewing a |
+| ion fo | rm earlier in the process |
+| ch: |  |
+| (see | APPENDIX E) recommends avoiding the display of lists containing both modified-release and non-modified-release |
+|  |  |
+| Prov | iding Cascading Lists for Brands |
+| criber | selects a brand name from a search results list, there are three possible types of |
+| affect | the options that should be available from the subsequent cascading list: |
+| select | ion of a brand name that does not have a generic name (such as DIORALYTE or |
+| GAVIS | CON) cascading lists (such as route and form) will be displayed in the same way as |
+| those | presented for generic drugs. A cascading list may not need to be presented if the |
+| brand | name is for a single drug or group of drugs that do not need further attributes in |
+| order | to determine the type of medication (and thus which fields are required). See Figure |
+| 13 |  |
+| select | ion of a brand name that does have a generic equivalent, a cascading list |
+| conta | ining both the brand selected and generic equivalents should be displayed. See |
+| Figur | e 14 |
+| select | ion of a brand name for which the display (and selection) of a generic equivalent |
+| is no | t recommended (for example, because an equivalent may not be truly bio- |
+| equiv | alent), cascading lists will be displayed for the brand only. See Figure 15 |
+| cases | are illustrated in Figure 13, Figure 14 and Figure 15: |
+|  |  |
+| ide – | DIOCALM ULTRA                                                            DIORALYTE – oral |
+| ide – | DIOCAPS                                                                  other... |
+| e – DI | OCTYL |
+| rtison | e – DIODERM |
+| an – D | IOVAN |
+|  |  |
+| COMPL | ETE |
+| TE |  |
+| TE EFF | ERVESCENT |
+| TE REL | IEF |
+
 Figure 13: Selection of a Brand Name That Does Not Have a Generic Name
 
 teno
 
 ![](searchpres_assets/searchpres.pdf-100-1.png)
 
-other...
 
-**atenolol**  - oral
-
-TENORMIN - oral
-
-other...
+| tenofovir | atenolol – oral |
+| --- | --- |
+| tenoxicam | TENORMIN – oral |
+| emtricitabine + tenofovir | other... |
+| chlortalidone + atenolol + co-tenidone – TENORET |  |
+| chlortalidone + atenolol + co-tenidone – TENORETIC |  |
+| atenolol – TENORMIN |  |
 
 Figure 14: Selection of a Brand Name That Has a Generic Equivalent (That Is Recommended to Display)
 
@@ -3491,88 +3715,31 @@ type of medication (such as ‘oral — modified-release’) and use this to dis
 
 4. When enough attributes have been defined by selecting a template prescription (or by
 
-completing fields such as dose and frequency step by step), the remaining required fields can be presented. The required fields are determined based on the type of medication. For example, an ‘oral — modified-release’ medication may have the following required fields:
 
-a. Drug name
-
-b. Brand name
-
-c. Route
-
-d. Dose
-
-e. Frequency
-
-f. Administration times
-
-g. Time of first dose
-
-h. Duration
-
-Table 8 shows a notional example of the different sets of required fields that might be identified for four types of medication. The four types are determined by the combination of drug name and selections made in cascading lists.
-
-Generic Drug Name **Required** **Required** **Required** **Required**
-
-Brand name _Optional_ **Required** _Optional_ _Optional_
-
-Route **Required** **Required** **Required** **Required**
-
-Strength _Optional_ _Optional_ **Required** **Required**
-
-Dose **Required** **Required** **Required** **Required**
-
-Method _N/A_ _N/A_ _N/A_ **Required**
-
-Frequency **Required** **Required** **Required** **Required**
-
-Administration Times **Required** **Required** **Required** _N/A_
-
-Time of First Dose **Required** **Required** **Required** _N/A_
-
-Start Date and Time _N/A_ _N/A_ _N/A_ **Required**
-
-Duration **Required** **Required** **Required** _Optional_
+| c. | Route |
+| --- | --- |
+| d. Dos | e |
+| e. Fre | quency |
+| f. | Administration times |
+| g. Tim | e of first dose |
+| h. Dur | ation |
+| ws a n | otional example of the different sets of required fields that might be identified for |
+| of med | ication. The four types are determined by the combination of drug name and |
+| made i | n cascading lists. |
+|  | Drug A                Drug B            Drug C     Drug D |
+| g Name | Required             Required           Required   Required |
+|  | Optional             Required           Optional   Optional |
+|  | Required             Required           Required   Required |
+|  | Optional              Optional          Required   Required |
+|  | Required             Required           Required   Required |
+|  | N/A                  N/A               N/A      Required |
+|  | Required             Required           Required   Required |
+| ion Ti | mes                 Required             Required           Required     N/A |
+| st Dos | e                   Required             Required           Required     N/A |
+| and Ti | me                     N/A                  N/A               N/A      Required |
+|  | Required             Required           Required   Optional |
 
 Table 8: Examples of Required Fields for Four Notional Types of Medication
-
-Page 116
-
-Copyright ©2013 Health and Social Care Information Centre
-
-HSCIC Controlled Document
-
-The majority of prescriptions have only a few required fields and thus, in most cases, a prescription can be completed in a small number of steps. A more detailed prescription is only necessary when additional (optional) information or a less common set of attributes needs to be defined.
-
-In most cases, a template prescription can be selected and the set of required fields can then be displayed. However, in the absence of template prescriptions, a step-by-step process can be used to encourage the selection of important attributes (such as dose) from predefined, limited lists.
-
-**Important**
-
-This section contains guidance for which there may be alternative solutions. Accordingly, the conformance ratings in this section apply only where the guidance is adopted.
-
-The Rationale section contains a summary of the known risks which are addressed in this section and which must be addressed by any alternative solution. For more information, see the Alternative Design Solutions note in section 1.
-
-![](searchpres_assets/searchpres.pdf-122-0.png)
-
-Page 117
-
-Copyright ©2013 Health and Social Care Information Centre
-
-HSCIC Controlled Document
-
-![](searchpres_assets/searchpres.pdf-123-0.png)
-
-Page 118
-
-|clarithromycin|poraarlacetamol<br>oral – modified-release<br>intravenous – infusion|
-|---|---|
-|**clarithromycin**|other...|
-
-Copyright ©2013 Health and Social Care Information Centre
-
-HSCIC Controlled Document
-
-![](searchpres_assets/searchpres.pdf-124-1.png)
-
 ![](searchpres_assets/searchpres.pdf-124-0.png)
 
 Page 119
@@ -3696,6 +3863,175 @@ completed one by one (MSP-1320)
 Sentence layout is the display of input fields as if they were words in a sentence. Display rules (such as those for width and wrapping) that might apply to words in a sentence are applied to the dynamic display of input fields. This means that input fields can grow in width as values are entered into them and wrap onto a new line as necessary. Figure 19 illustrates wrapping in sentence layout, showing the wrapping of an input control such that it is placed at the beginning of a new line and followed by the next input control:
 
 ![](searchpres_assets/searchpres.pdf-127-0.png)
+
+
+| ID | Guideline | Conformance Rating |
+| --- | --- | --- |
+| MSP-1310 | Require the selection of at least drug name and route (or attributes from which Mand the type of medication can be derived) before presenting input controls for any other values | atory         Medium |
+| MSP-1320 | After selections have been made in all cascading lists, if there are no template Man prescriptions, display any required fields that will not be pre-filled in sequence such that a field is displayed when the previous one has been completed | datory        Medium |
+| MSP-1330 | If a selection from a cascading list (such as a frequency of ‘as required’) requires a further field to be completed, display that field before the remaining required fields | Recommended   Low |
+| MSP-1340 | Provide a control (such as a button) for switching to a detailed view from which Man input controls for all valid fields for this prescription can be accessed | datory        Medium |
+| MSP-1350 | Disable the control for displaying all valid input controls until at least a drug name and route (or attributes from which the type of medication can be derived) have been selected | Recommended   Medium |
+| MSP-1360 | Provide a control that allows the switch to a more detailed prescription form to Man be undone, thus returning to the previous view containing only the required fields | datory        Medium |
+| MSP-1370 | Restrict the number of input controls to the minimum required to enter information needed to complete the prescription | Recommended   Medium |
+| MSP-1380 | When presenting fields step by step, support pre-filling of one or more of the fields that are already displayed when a selection is made in a related field | Recommended   Medium |
+| MSP-1390 | When presenting fields step by step, allow the contents of all fields to be reselected such that a pre-filled value, previous choice or text entry can be changed (even if the associated selection list has only one option) | Recommended   Medium |
+| MSP-1400 | Do not display optional fields, or controls for accessing optional fields (apart from the button for accessing a more detailed prescription form) | Recommended   Medium |
+| MSP-1410 | Ensure that no data is lost whilst switching from one form to another | Mandatory     Medium |
+| MSP-1420 | Minimise the number of controls that are needed for navigation | Recommended   Medium |
+| MSP-1430 | Ensure that no data is lost whilst switching from one form to another | Recommended   Medium |
+| MSP-1440 | Minimise the number of controls that are needed to navigate between forms | Recommended   Medium |
+| Usage Example | s 1       2   3 | In this sequence of correct examples (MSP-1320): 1. A cascading list is displayed after a drug name has been selected |
+| 1 |  | 2. A template prescription is selected from the list |
+| c | larithromycin             paracetamol oral oral – modified-release intravenous – infusion | 3. Input controls for the remaining required fields are displayed. |
+| F | ull Prescription Form                                     Preview other... |  |
+| 2 |  |  |
+| o | ral       DOSE 250 mg                twice a day DOSE 500 mg                twice a day other... |  |
+| orm | Authorise |  |
+| 3 |  |  |
+| c | larithromycin            oral      DOSE 250 mg         twice a day |  |
+| a | t these times        08:00; 20:00         first dose Today 20:00         durati |  |
+| F | ull Prescription Form                                     Preview            Author | In this correct example, a list (‘Give when...’) has been presented because an ‘as required’ |
+| ol       i | nhaled     100 micrograms per puff            DOSE 1 to 2 puffs | frequency has been selected (MSP-1330) |
+| day as req | uired                   Give when... Breathless Authorise |  |
+| on Form | PEFR is below 200 other... | In this correct example, a ‘Full Prescription Form’ button is provided for opening a view |
+| clarithrom | ycin             oral        DOSE 250 mg           twice a day | from which input controls for all valid fields |
+| at these t | imes          08:00; 20:00            first dose Today 20:00 durati | (required and optional) can be accessed (MSP-1340) |
+| Full Presc | ription Form                                          Preview         Author In ope | this correct example, the control for ning a more detailed prescription (‘Full |
+| clarithro | mycin             paracetamol oral                                                           Pre oral – modified-release                                        rou intravenous – infusion | scription Form’) is disabled because the te has not yet been selected (MSP-1350) |
+| Full Presc | ription Form                                            Preview other... Thi for | s example is incorrect because the button displaying all valid input controls (‘Full |
+| clarithro | mycin             paracetamol oral                                                           Pre has oral – modified-release intravenous – infusion | scription Form’) is enabled before a route been selected (MSP-1350) |
+| Full Presc | ription Form                                              Preview other... In inp Go Back Bac | this correct example, in which all valid ut controls are displayed a button (‘Go k’) is provided for undoing the display of |
+| clar | ithromycin – oral                Add a Reason for Prescribing                    all the | valid fields, thus returning to a view of only required fields (MSP-1360) |
+| Se | lect a Strength        Select a Form |  |
+| DOSE |  |  |
+| Sele | ct a frequency                      As Required Thi has | s example is incorrect because a route not yet been selected and there are input |
+| clarithro | mycin             Select a route           DOSE       Enter a dose               con | trols for other values (MSP-1310) |
+| at these | times Select                    first dose Select                      dur |  |
+| Full Presc | ription Form In tim | this correct example, the administration es can be edited (even though there is |
+| clarithrom | ycin        oral       DOSE 250 mg            twice a day onl | y one option that can be selected in the |
+| at these t | imes     08:00; 20:00           first dose Today 20:00            durati lis | t) (MSP-1390) |
+| 08:00; 20 | :00 |  |
+| More Option | s ▼                                                Preview          Author |  |
+| Edit Admi | nistration Times... Thi inc | s example is not recommended because it ludes ‘Select a Strength’ and ‘Select a |
+| rithromycin | oral               Select a Strength       Select a Form         DOS   For opt | m’, which are controls for accessing ional fields (MSP-1400) |
+| these time | s       08:00; 20:00             first dose Today 20:00 |  |
+| Full Pre | scription Form |  |
+| Rationale |  |  |
+| Design Analys | is: |  |
+| The contents | of the prescription form are constrained (by keeping the input controls to a minimum | (MSP-1370, MSP-1320) in order to |
+| promote more | efficient prescribing. Limited choices in selection lists and sets of predefined val | ues are used to speed up the process |
+| within parame | ters that are more likely to be safe. This step-by-step or ‘progressive disclosure’ | approach is similar to a wizard, except |
+| that only a f | ew selections (and, in most cases, only drug name and route) need to be made before | other fields are also presented and |
+| before there | is an option to switch to a more detailed prescription form. |  |
+| Guidance for | prescription forms strikes a balance between: |  |
+|  Giving the | user control (by providing access to controls that allow all fields to be modified) |  |
+|  Speeding up | the process of prescribing (by presenting only a few fields) |  |
+|  Keeping sel | ection lists short |  |
+|  Tailoring s | election lists according to the previous selections |  |
+|  Pre-filling | fields where appropriate |  |
+| See also sect | ion 9.3.5 for general guidance on pre-filling input controls and section 9.3.6 for g | uidance on the pre-filling of specific input |
+| controls. |  |  |
+| Since it is a | n aspiration of this guidance that the majority of prescriptions (an estimated 80%) | can be completed by defining only a few |
+| attributes (s | ee section 1.3), there is no need to present a prescription form with many input con | trols for all prescriptions. Presenting a |
+| prescription | form that is designed to elicit the minimum set of information necessary (MSP-1320) | achieves the following: |
+|  Reduces the | ‘cognitive load’ on the user by presenting short lists of choices that are refined | based on a previous choice |
+|  Speeds up t | he process of prescribing for the majority of prescriptions by removing the need to | scan the prescription form to find the |
+| input contr | ols that are needed |  |
+|  Reduces the | presentation of controls that are displayed to a minimum thus focusing attention mo | re effectively on the important |
+| information | on screen |  |
+|  Reduces opp | ortunity for errors by presenting limited choices for attributes that must be comple | ted and by presenting them one at a |
+| time |  |  |
+|  Ensures a d | egree of security when providing access to less frequent and potentially dangerous c | hoices |
+| Access to all | other valid input controls must also be available so that users remain in control o | f the information they want to specify for |
+| their prescri | ption (MSP-1340, MSP-1350, MSP-1360). A prescriber who normally prescribes using onl | y the required input controls may |
+| still need oc | casional access to controls for medications that he or she prescribes less frequentl | y. |
+| In anecdotal | evidence from a feedback session with clinicians in which wireframes were reviewed, | a doctor preferred prescription |
+| forms that on | ly showed required fields because it appeared to be more efficient to use. A nurse p | referred the full screen and more |
+| detailed pres | cription form because it removed the distractions of optional fields and other views | that can be seen simultaneously. |
+| The guidance | is written such that it can be extended to support moving between detailed and more | concise views of the prescription, |
+| where appropr | iate (such as those presented after a template prescription has been selected or dur | ing a step-by-step process) |
+| (MSP-1340, MS | P-1350, MSP-1360). For example, a more detailed prescription form could be accessed | to specify an optional attribute |
+| before return | ing to the original prescription form to preview and authorise. Whilst the principle | s of ensuring that no data is lost when |
+| switching bet | ween forms (MSP-1430) and minimising the number of controls needed for navigation (M | SP-1440) are both well |
+| supported by | usability literature, the details of this approach would require further design expl | oration, analysis and user testing. |
+| Presenting th | e minimum (and thus, probably, the only required) fields by default (MSP-1370): |  |
+|  Discourages | the unnecessary completion and viewing of optional fields and in turn speeds up the | prescribing process |
+|  Removes the | risk that optional fields are completed unnecessarily, thus removing the need for l | ater clarification of the reasons for |
+| the unneces | sarily completed optional fields |  |
+|  Removes the | need to mark which fields are required and which are optional since the intention i | s that they will all be completed |
+| (see also t | he rationale in section 8.1 for the placement of field labels) |  |
+| The presentat | ion of the minimum set of fields depends on first selecting drug name and route (at | least) before the type of medication |
+| can be determ | ined and therefore the remaining required fields presented (MSP-1310). This approach | is dependent on a medications |
+| types framewo | rk such as that defined in dm+d Implementation Guide (Secondary Care) {R4}. |  |
+| After a minim | al set of fields has been completed, the presentation of other fields then completes | the minimum total set of fields before |
+| a prescriptio | n can be authorised. Even though some of these fields may be pre-filled, all fields | should still be editable so that the user |
+| is in control | . Although some fields are only presented when other selections are made (MSP-1330), | there is no reason to prevent the |
+| user from goi | ng back a couple of steps to change a selection he or she made previously. Thus it s | hould be possible to interact with all |
+| fields to cha | nge their values. |  |
+| Desk Research | : |  |
+| The paper The | Impact of Computerized Physician Order Entry on Medication Error Prevention {R38} r | eports the findings of a study of |
+| medications e | rrors before and after implementation of an electronic prescribing system. The study | (which excluded ‘missed dose’ |
+| errors from i | ts analysis) reported a significant reduction (80%) in medication errors. Three quar | ters of this reduction was achieved with |
+| a relatively | simple system that structured the entry of prescriptions (the paper refers to them a | s ‘orders’) and included rudimentary |
+| ‘order checki | ng’. The default prescription form reduces the possibility of errors by providing a | highly structured approach to entering |
+| prescriptions | and reducing the possibilities for error by limiting the options available based on | values that must be entered in a |
+| particular or | der, thus providing a more pro-active approach to ‘order checking’. |  |
+| An earlier st | udy, Effect of Computerised Physician Order Entry and a Team Intervention on Prevent | ion of Serious Medication Errors |
+| {R39} reports | that implementing even a modest electronic prescribing system can result in importa | nt error reduction if the system |
+| includes a do | se selection menu, simple drug-allergy and drug-drug checking and the requirement th | at clinicians indicate the route and |
+| frequency of | drug doses. The prescription form first presents doses as part of a template prescri | ption or as a selection menu when |
+| there are no | template prescriptions. (A more detailed prescription form can then also present dos | es within a selection menu but may in |
+| some cases su | pport the entry of a dose amount in figures, see section 9.3.1.) |  |
+| The provision | of a default prescription form that only presents fields that are relevant to the s | elections made so far, depends on the |
+| availability | of a framework of medications types that can use a drug name and route (or form or s | imilar attribute) to determine what |
+| other informa | tion is needed to safely describe that medication. In the UK, a framework for using | the dm+d in the NHS is defined in |
+| dm+d Implemen | tation Guide (Secondary Care) {R4}. |  |
+| Guidance in t | his section is informed by the following Nielsen heuristics {R17}: |  |
+|  User contro | l and freedom – The provision of a control that allows the user to switch to a more | detailed prescription form as soon as |
+| possible (M | SP-1340) allows the user to decide whether to continue with the default prescription | form or to switch to a detailed |
+| approach to | prescribing. MSP-1360 ensures that the user can undo the action of switching from d | efault to more detailed |
+| prescriptio | n forms without losing any information entered or selected so far |  |
+|  Flexibility | and efficiency of use – By presenting a step-by-step prescription form first (MSP-1 | 320), efficiency is improved for most |
+| prescriptio | ns whilst also providing the flexibility needed to prescribed more detailed prescrip | tions |
+|  Aesthetic a | nd minimalist design – In the default prescription form, input controls are kept to | a minimum, are presented one at a |
+| time for cr | itical information and are presented such that information that is rarely needed is | hidden, thus increasing the relative |
+| visibility | of important information |  |
+| Hazard Risk A | nalysis Summary: |  |
+| From our Pati | ent Safety Risk Assessment analyses, we identified a number of potential hazards, in | cluding the following key risks |
+| which are mit | igated by the guidance: |  |
+| Potential | Hazards:                           Mitigations: |  |
+|  The syst | em presents a prescription     MSP-1320 ensures that explicit selections are made f | or the most important parts of |
+| form com | plete with default values and   a prescription (and see section 6 for selections in | cascading lists) |
+| the pres | criber is unaware of other     Template prescriptions (see section 7) are presented | as a list so that the prescriber |
+| prescrip | tion regimens                   can see commonly prescribed regimens |  |
+|  Individu | al administration times have to  Where appropriate, pre-fill one or more fields whe | n a selection is made in a related |
+| be defin | ed by the prescriber and result   field (MSP-1380) |  |
+| in non-s | tandard times                    Pre-filling administration times when the frequenc  Providing a selection list of (common) administ  Restricting the definition of individual admini view (see section 9.3.6) | y is defined (see section 9.3.5) ration schedules (see section 9.3.6) stration event times to a more detailed |
+|  A prescr | iption is authorised with a         The contents of all fields can be changed such | that a pre-filled value can be |
+| value th | at was not the intended value        changed (MSP-1390) |  |
+| because | it had been automatically           Guidance requires the use of formatting to draw | attention to a field whose contents |
+| updated | when a value was defined in          have changed automatically (see section 9.3.5) |  |
+| another | field |  |
+|  An inp | ut control for a dose is           Dose and strength can be entered by selecting a | template prescription (see |
+| displa | yed adjacent to an input control    section 7.3.4) or by selecting values for indivi | dual fields that are presented in |
+| for a | strength and causes the dose        sequence (MSP-1320). Thus they only appear adjac | ent after they have already |
+| value | to be interpreted as the strength   been completed |  |
+| or vic | e versa                            In sentence layout (when dose and strength are m guidance recommends that labels are incorporated immediately precedes the dose value (see section  Guidance recommends that labels are used for al interpreted as belonging to a different control  The dose field is always labelled (see section | ost likely to appear adjacent), into fields, so the dose label 7.3.7) l fields whose contents could be (see section 7.3.7) 9.3.6) |
+|  A pres | criber selects a template           When there are no template prescriptions, the r | equired fields can be presented and |
+| prescr | iption in order to avoid using the   completed one by one (MSP-1320) |  |
+| more d | etailed prescription form |  |
+| becaus | e it is too complicated |  |
+| .7 | Using Sentence Layout |  |
+| Sentence layo | ut is the display of input fields as if they were words in a sentence. Display rules |  |
+| (such as thos | e for width and wrapping) that might apply to words in a sentence are applied to the |  |
+| dynamic displ | ay of input fields. This means that input fields can grow in width as values are ent | ered |
+| into them and | wrap onto a new line as necessary. Figure 19 illustrates wrapping in sentence layou | t, |
+| showing the w | rapping of an input control such that it is placed at the beginning of a new line an | d |
+| followed by t | he next input control: |  |
+| drug | route   dose     frequency |  |
+| give | when...       admin times    first dose |  |
+| durat | ion |  |
 
 Figure 19: Wrapping in Sentence Layout
 
@@ -4260,6 +4596,18 @@ HSCIC Controlled Document
 
 ![](searchpres_assets/searchpres.pdf-149-2.png)
 
+
+| Calculate Dose | Area 3 |
+| --- | --- |
+|  | Field 10                Field 11 |
+| Area 2 |  |
+|  | Field 20                Field 21 |
+| Area 3 |  |
+|  | Field 30                Field 31 |
+| Area 4 |  |
+|  | Field 40                Field 41 |
+| Area 5 | Close |
+
 Figure 25: Using a Button to Access a Large Set of Fields
 
 ![](searchpres_assets/searchpres.pdf-149-4.png)
@@ -4496,6 +4844,14 @@ The oral — modified-release medication in Figure 28 requires a brand name and 
 
 ![](searchpres_assets/searchpres.pdf-158-0.png)
 
+
+| Drug Name and Route | diltiazem – DILZEM SR – oral – modified release | Add a Reason for Prescribing |
+| --- | --- | --- |
+| Strength, Form and Device | Select a Strength    modified-release capsules |  |
+| Dose and Frequency | DOSE 60 mg twice a day             As Required |  |
+| Administration | at these times 08:00; 20:00 first dose Today 20:00                For Self Administration |  |
+| Duration | ongoing           Add a Start Condition       Add a Review Date Add Special Instructions Patient’s own medication | Preview      Authorise |
+
 Figure 28: Detailed Prescription Showing a Set of Fields for an Oral — Modified-Release Medication
 
 The topical medication in Figure 29 does not require a brand name but does require a method, a strength and site:
@@ -4503,6 +4859,14 @@ The topical medication in Figure 29 does not require a brand name but does requi
 ![](searchpres_assets/searchpres.pdf-158-3.png)
 
 ![](searchpres_assets/searchpres.pdf-158-2.png)
+
+
+| Drug Name and Route | hydrocortisone – cutaneous | Add a Reason for Prescribing |
+| --- | --- | --- |
+| Strength, Form and Device | 1%                      cream |  |
+| Dose and Frequency | METHOD Apply as directed                  Left kn once a day | ee |
+| Administration | at night start Today            For Self Administration |  |
+| Duration | ongoing           Add a Start Condition       Add Add Special Instructions Patient’s own medication | a Review Date Preview       Authorise |
 
 Figure 29: Detailed Prescription Showing a Set of Fields for a Topical Medication (Unlicensed Route)
 
@@ -4631,6 +4995,106 @@ This section includes illustrations (such as those in Table 9) that show dose un
 **`DOSE`** **500 mg**
 
 **`DOSE`** **60 mg**
+
+
+|  | Since options available in selection lists are dependent on values in other input fields, the opportunity for inappropriate selections or invalid combinations is reduced |
+| --- | --- |
+| ourag | e simplicity of design by promoting user interface approaches that help to avoid |
+| overl | y complex displays and interactions that require many controls: |
+|  | Prescribing forms are initially presented with as few controls as possible and it is up to the prescriber to progressively reveal the less frequently used options and controls associated with them |
+| imise | flexibility and scalability of both the way that the prescribing process is |
+| suppo | rted by the user interface and the dimensions of the spaces in which prescribing |
+| takes | place: |
+|  | The prescribing process is flexible so that it can support a short path through the process and many potential different longer paths |
+|  | Additional screens can be incorporated into a detailed prescription form so that many sets of input controls can be included in a prescription if necessary |
+| age u | sers expectations and improve their efficiency by providing a clear framework |
+| with | consistent logic for the placement of user interface elements and the interactions |
+| that | they support: |
+|  | In the absence of template prescriptions, the parts that might make up a template prescription are simply revealed step by step |
+|  | Input fields in a prescription form are placed using the same logic that is used to place drug search results, cascading lists and template prescriptions |
+|  | As far as possible, all input controls use the interaction model that is familiar from selection list interaction model similar to that of drop-down lists, combo boxes, menus with submenus (see Windows User Experience Interaction Guidelines {R26}) or column views (see Apple Human Interface Guidelines {R44}) |
+| imise | the potential for important information to be hidden from view: |
+|  | Prescription forms begin by presenting input controls for the minimum required information and progressively reveal further input controls on demand |
+| ere t | o a user interface strategy that gives the impression of making progress within a |
+| singl | e space (which has all the necessary information immediately or readily available) and |
+| avoid | s the impression of needing to move between many different spaces: |
+|  | The prescription allows most prescriptions to be completed within a small space whilst providing access to a more detailed view at any point after the type of medication has been established      Navigation to additional spaces is only necessary for more complex prescriptions, detailed editing of administration schedules or for unusual attributes or combinations of attributes |
+| Gui | delines |
+| porta | nt |
+| e usa | ge examples in this section include examples of sets of fields, some of which are shown as |
+| quire | d and some as optional. These examples are illustrative only and are not intended to provide |
+| idanc | e on which fields should be available for specific types of medication nor which fields should be |
+| quire | d or optional. |
+|  | Using Dynamic Controls Evidence |
+|  | Guideline                                                                            Conformance Rating |
+|  | Allow some input controls to be defined that are only displayed when certain         Mandatory             Medium values are selected in another input control |
+|  | When determining the order in which to display input controls, prioritise the     Recommended              Low placement of fields whose values determine which other fields may be displayed in the form |
+|  | When determining the order in which to display input controls, prioritise the        Recommended           Medium grouping together of controls whose values affect the options available in other controls |
+|  | When an input causes new input control(s) to appear, allow other input controls to   Recommended           Low move so that the new one can be placed correctly and consistently |
+|  | When an input causes new input control(s) to appear, place the new input controls Recommended              Low next (at least in sequence if not in layout) to the control that caused it to appear |
+| mples | In this correct example, the attribute ‘Give when...’ is only |
+| inh | aled            100 micrograms per puff         DOSE 1 to 2 puffs                         displayed when a frequency including ‘as required’ has been |
+| as re | quired                   Give when...                                                     selected (MSP-1820, MSP-1830) Breathless Authorise PEFR is below 200 other... This example is not recommended because the field ‘Give when...’ |
+| butam | ol          inhaled     100 micrograms per puff                                           does not appear next (in sequence) to the field that caused |
+| E 1 t | o 2 puffs           four times a day as required        starting from Today 11:00         it to appear (frequency, containing ‘as required’). (MSP-1860) |
+| ratio | n ongoing          Give when... Breathless |
+| Pres | cription Form                                        Cancel    Authorise      Cancel PEFR is below 200 other... In this sequence of correct examples (MSP-1850, MSP-1860): 1. The field ‘Give when...’ only |
+|  | 1     2            appears when an ‘as required’ frequency is selected and has |
+| tamol | inhaled   100 micrograms per puff                                                  already been completed by the prescriber |
+| 1 to | 2 puffs         four times a day as required       Give when breathless 2. When a regular frequency is |
+| ing f | rom Today 11:04        duration ongoing                                                      selected, the field containing ‘Give when breathless’ is |
+| rescr | iption Form                                    Preview      Authorise         Cancel removed |
+|  |  |
+| tamol | inhaled    100 micrograms per puff |
+| 1 to | 2 puffs         four times a day |
+| ing f | rom Today 11:04        duration ongoing |
+| rescr | iption Form                                    Preview      Authorise         Cancel |
+|  |  |
+| alysi | s: |
+| ting | some fields only when a specific value has been selected in a previous list (MSP-1820), the prescription form can |
+| ly di | splay dynamic fields that would otherwise not be displayed. For example, when a frequency of ‘as required’ is selected, a |
+| be p | resented for the selection (or entry) of a description for the conditions in which to give the medication. |
+| c inp | ut controls are not used, the prescription form has to display all fields for all types of medications at all times and those |
+| en ha | ve to be enabled or disabled as values are entered in other fields. This approach is not effective at prioritising fields and |
+| to r | esult in the required fields being spread over a larger area. |
+| layou | t depends on dynamic width controls in order to reduce the space between each prescription element so that it can be |
+| sent | ence. |
+| arch: |  |
+| in th | is section is informed by the following Nielsen heuristics {R17}: |
+| lity | and efficiency of use – By dynamically presenting fields based on information in other fields, the number of fields |
+| ed ca | n be kept to a minimum whilst still providing access to various additional fields that are displayed only when they are |
+|  |  |
+| ic an | d minimalist design – The dynamic presentation of fields allows some fields to be displayed only when they are |
+| thus | keeping the remainder of fields to a minimum |
+| arch: |  |
+| 68 (s | ee APPENDIX C) identified some scenarios in which a prescription with an ‘as required’ frequency would need one or |
+| tiona | l fields to be displayed. Guidance allows the additional fields to be presented when such a frequency is selected |
+| on ( | at least) the drug and route. This study also identified the need to clearly label the time from which the ‘as required’ |
+| n can | be administered and to differentiate this from the label used for a first dose for regular medications. |
+|  | Presenting Selection Lists in Prescription forms |
+| list | s can be used to speed up the entry of prescription information by presenting |
+| d set | s of choices in a list that might otherwise have to be presented as a series of |
+| input | controls. For example, when entering a dose, a selection list could contain a |
+| d lis | t of dose values and units. Alternatively, it could present a free-text box for the dose |
+| d a s | election list for the dose units. If the predefined sets of doses are appropriate, the |
+| proac | h is faster and potentially safer than the latter approach of typing in the amount in |
+| d the | n selecting a unit (such as milligrams or grams). |
+| ion i | ncludes illustrations (such as those in Table 9) that show dose units (such as ‘mg’ and |
+| ists | that are not ordered alphabetically. The display of dose values in alphanumeric order |
+| t in | selection lists with options such as those in Figure 30. This illustration shows a high |
+| e (su | ch as 1 g) listed next to a much lower value dose (such as 15 mg) and highlights the |
+| afety | risks associated with lists ordered in this way. The research necessary to provide |
+| for t | his area is not within the scope of this work so there is no guidance in this document |
+| ating | this risk. |
+| 120 m | g |
+| 125 m | g |
+| 15 mg |  |
+| 1 g |  |
+| 240 m | g |
+| 250 m | g |
+| 30 mg |  |
+| 500 m | g |
+| 60 mg |  |
 
 Figure 30: Example of a List of Dose Values in Alphanumeric Order
 
@@ -5244,6 +5708,16 @@ Figure 32 is an extract from Figure 31 to illustrate the user interface prescrib
 
 ![](searchpres_assets/searchpres.pdf-187-0.png)
 
+
+| from | from |
+| --- | --- |
+| cription Form                Required F | ields Completed |
+| Preview |  |
+| drug – strength – form – |  |
+| DOSE dose – route – |  |
+| frequency |  |
+| Authorise |  |
+
 Figure 32: User Interface Prescribing Steps–- Preview and Authorise
 
 #### 10.2 Principles
@@ -5369,246 +5843,41 @@ HSCIC Controlled Document
 
 #### 11.1 Terms and Abbreviations
 
-ACBS Advisory Committee on Borderline Substances
 
-BNF British National Formulary
-
-CATR Clinical Authority to Release
-
-CDER Center for Drug Evaluation and Research
-
-Co-Drugs Combination Drugs
-
-CSG Clinical Safety Group
-
-CUI Common User Interface
-
-dm+d Dictionary of Medicines and Devices
-
-FDA US Food and Drug Administration
-
-HDU High Dependency Unit
-
-INR International Normalized Ratio
-
-ISMP Institute for Safe Medication Practices
-
-ISV Independent Software Vendor
-
-IUD Intrauterine Devices
-
-KLM-GOMS Keyboard-Level Model — Goals, Objects, Methods and Selection
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NPfIT National Programme for Information Technology
-
-NPSA National Patient Safety Agency
-
-OTC Over the Counter
-
-PGD Patient Group Direction
-
-POD Patient’s Own Drugs
-
-PRN ‘As required’ medication
-
-TFN Trade Family Name
-
-TPN Total Parenteral Nutrition
-
-TTO To Take Out
-
-VDT Visual Display Terminal
-
-VTM Virtual Therapeutic Moiety
-
-W3C World-Wide Web Consortium
-
-WHO World Health Organization
+| Abbreviation | Definition |
+| --- | --- |
+| ACBS | Advisory Committee on Borderline Substances |
+| BNF | British National Formulary |
+| CATR | Clinical Authority to Release |
+| CDER | Center for Drug Evaluation and Research |
+| Co-Drugs | Combination Drugs |
+| CSG | Clinical Safety Group |
+| CUI | Common User Interface |
+| dm+d | Dictionary of Medicines and Devices |
+| FDA | US Food and Drug Administration |
+| HDU | High Dependency Unit |
+| INR | International Normalized Ratio |
+| ISMP | Institute for Safe Medication Practices |
+| ISV | Independent Software Vendor |
+| IUD | Intrauterine Devices |
+| KLM-GOMS | Keyboard-Level Model — Goals, Objects, Methods and Selection |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPfIT | National Programme for Information Technology |
+| NPSA | National Patient Safety Agency |
+| OTC | Over the Counter |
+| PGD | Patient Group Direction |
+| POD | Patient’s Own Drugs |
+| PRN | ‘As required’ medication |
+| TFN | Trade Family Name |
+| TPN | Total Parenteral Nutrition |
+| TTO | To Take Out |
+| VDT | Visual Display Terminal |
+| VTM | Virtual Therapeutic Moiety |
+| W3C | World-Wide Web Consortium |
+| WHO | World Health Organization |
 
 Table 10: Terms and Abbreviations
-
-Copyright ©2013 Health and Social Care Information Centre
-
-Page 188
-
-HSCIC Controlled Document
-
-#### 11.2 Definitions
-
-Authorise Equivalent to signing a prescription
-
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
-
-Brand name Proprietary drug name for a product (as used by the brand originator)
-
-Conformance In the guidance tables, indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:
-
-**Mandatory**           - An implementation should follow the guideline
-
-**Recommended**          - An implementation is advised to follow the guideline
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be
-
-revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
-
-Evidence Rating In the guidance tables, summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):
-
- **Low:**
-
- Does not mitigate specific patient safety hazards
-
- User research findings unclear and with few participants
-
- Unreferenced usability principles indicate the design is not significantly better than alternatives
-
- **Medium:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear but with few participants
-
- References old authoritative guidance (for example, from National Patient Safety Agency (NPSA),
-
-Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
- **High:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear and with a significant number of participants
-
- References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
-Generic drug name The chemical or approved name of a product as opposed to the proprietary name often used by the brand originator
-
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
-
-Template prescriptions
-
-Table 11: Definitions
-
-Predefined and partially completed prescriptions that allow several attributes to be defined with a single selection from a list
-
-Page 189
-
-Copyright ©2013 Health and Social Care Information Centre
-
-HSCIC Controlled Document
-
-#### 11.3 Nomenclature
-
-This section shows how to interpret the different styles used in this document to denote various types of information.
-
-##### 11.3.1 Body Text
-
-Code `Monospace`
-
-Script
-
-Other markup languages
-
-Interface dialog names Bold
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
-
-Table 12: Body Text Styles
-
-##### 11.3.2 Cross References
-
-Current document – sections Section number only
-
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
-
-Table 13: Cross Reference Styles
-
-#### 11.4 References
-
-**R1.** NHS CUI Programme – Medications Management – Medications List – User Interface Design Guidance
-
-**R2.** NHS CUI Programme – Medications Management – Drug Administration – User Interface Design Guidance
-
-**R3.** NHS CUI Programme – Medications Management – Medication Line – User Interface Design Guidance
-
-**R4.** NHS NPfIT – dm+d Implementation Guide (Secondary Care): [http://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/refdocs/dmd_guidance.](http://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/refdocs/dmd_guidance.doc) [doc](http://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/refdocs/dmd_guidance.doc)
-
-**R5.** NHS – dictionary of medicines + devices: [http://www.dmd.nhs.uk/](http://www.dmd.nhs.uk/)
-
-**R6.** NHS NPSA – The fourth report from the Patient Safety Observatory – PSO/4 – Safety in doses: medication safety incidents in the NHS: [http://www.npsa.nhs.uk/nrls/alerts-and-directives/directives-guidance/safety-in-doses/](http://www.npsa.nhs.uk/nrls/alerts-and-directives/directives-guidance/safety-in-doses/)
-
-Copyright ©2013 Health and Social Care Information Centre
-
-1.0.0.0
-
-4.0.0.0
-
-2.0.0.0
-
-29-May-2009
-
-Release 2.3
-
-2007-08
-
-Page 190
-
-HSCIC Controlled Document
-
-**R7.** Cohen M R (Ed) – Medication Errors – Causes, Prevention, and Risk Management – Jones and Bartlett Publishers
-
-**R8.** Kohn L, Corrigan J, Donaldson M – To Err is Human _–_ Building a Safer Health System – Washington, DC: National Academy Press, 2000
-
-2004
-
-2000
-
-**R9.** Wachter R M – Understanding Patient Safety – The McGraw-Hill Companies, Inc, 2008 2008
-
-**R10.** Ash JS, Sittig DF, Poon EG, Guappone K, Campbell E, Dykstra RH – JAMA – The Extent and Importance of Unintended Consequences Related to Computerized Provider Order Entry –Vol 14, No. 4, p415
-
-**R11.** Koppel R, Metlay JP, Cohen A, Abaluck B, Localio AR, Kimmel SE, Strom BL – Role of Computerized Physician Order Entry Systems in Facilitating Medication Errors – JAMA – Vol 293, No. 10, p1197
-
-**R12.** NHS NPfIT – ePrescribing Functional Specification: [http://www.connectingforhealth.nhs.uk/newsroom/news-stories/eprescfunctspec](http://www.connectingforhealth.nhs.uk/newsroom/news-stories/eprescfunctspec)
-
-July / August 2007
-
-09-Mar-2005
-
-1.0
-
-**R13.** NHS CUI Programme – Design Guide Entry – Time Display 4.0.0.0
-
-**R14.** NHS CUI Programme – Design Guide Entry – Date Display 4.0.0.0
-
-**R15.** NHS CUI Programme – Design Guide Entry – Date and Time Input 3.0.0.0
-
-**R16.** British National Formulary: [http://www.bnf.org/bnf/](http://www.bnf.org/bnf/)
-
-**R17.** Nielsen, J – Ten Usability Heuristics: [http://www.useit.com/papers/heuristic/heuristic_list.html](http://www.useit.com/papers/heuristic/heuristic_list.html)
-
-**R18.** Shneiderman, B and Reading, MA – Designing the user interface: Strategies for effective humancomputer interaction – Addison-Wesley Publishing
-
-**R19.** British Standards Institute – BS EN ISO 9241-12: 1999 Ergonomic requirements for office work with visual display terminals (VDTs) – Part 12: Presentation of information
-
 **R20.** NHS NPfIT – Guidelines for the Design and Presentation of Medication Elements Required in Electronic Prescribing or Medication Ordering Systems – NPfIT-EP-DB-0003.01
 
 **R21.** ISMP – ISMP Medication Safety Alert! – It’s Time for Standards to Improve Safety with Electronic Communication of Medication Orders – Draft Guidelines for Safe Electronic Communication of Medication Orders: [http://www.ismp.org/Newsletters/acutecare/articles/20030220.asp](http://www.ismp.org/Newsletters/acutecare/articles/20030220.asp)
@@ -5653,67 +5922,101 @@ Page 191
 
 HSCIC Controlled Document
 
-**R28.** ISMP – List of Confused Drug Names: [http://www.ismp.org/tools/confuseddrugnames.pdf](http://www.ismp.org/tools/confuseddrugnames.pdf)
 
-**R29.** The Joint Commission International – WHO Collaborating Centre for Patient Safety Releases – Nine Life-Saving Patient Safety Solutions: [http://www.ccforpatientsafety.org/patient-safety-solutions/](http://www.ccforpatientsafety.org/patient-safety-solutions/)
-
-**R30.** US FDA Center for Drug Evaluation and Research – Name Differentiation Project: [http://www.fda.gov/Drugs/DrugSafety/MedicationErrors/ucm164587.htm](http://www.fda.gov/Drugs/DrugSafety/MedicationErrors/ucm164587.htm)
-
-**R31.** NHS CFH – Guidelines for hazard review of ePrescribing systems: [http://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/hazard_framework.pdf](http://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/hazard_framework.pdf)
-
-**R32.** Bates DW – Using information technology to reduce rates of medication errors in hospitals – BMJ 2000; 320:788-91
-
-**R33.** Dean B, Schachter M, Vincent C, Barber N – Prescribing errors in hospital inpatients: their incidence and clinical significance – Quality Healthcare – 2002:11:340-344
-
-**R34.** Cooper A, Reimann R, Cronin, D – About Face 3: The Essentials of Interaction Design – Wiley Publishing Inc – 2007
-
-**R35.** Johnson J – GUI Bloopers: Don’ts and Do’s for Software Developers and Web Designers – Morgan Kaufmann Publishers – 2000
-
-**R36.** Dean B, Schachter M, Vincent C, Barber N – Causes of prescribing errors in hospital inpatients: a prospective study –The Lancet – Vol 359
-
-2009
-
-May 2001
-
-1.0
-
-2000
-
-2002
-
-2007
-
-2000
-
-20-Apr-2002
-
-**R37.** Reason J – Human Error –Cambridge 1990
-
-**R38.** Bates DW, Teich JM, Lee J, Seger D, Kuperman GJ, Ma’Luff N, Boyle D, Leape L – The Impact of Computerized Physician Order Entry on Medication Error Prevention –JAMIA – 1999;6:313321
-
-**R39.** Bates DW, Leape LL, Cullen DJ, Laird N, Petersen LA, Teich JM, Burdick E, Hickey M, Kleefield S, Shea B, Vander Vliet M, Seger DL – Effect of Computerised Physician Order Entry and a Team Intervention on Prevention of Serious Medication Errors –JAMA – 1998;280:1311-1316
-
-**R40.** Penzo M – Label Placement in Forms –UX Matters: [http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php](http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)
-
-**R41.** Miller S, Jarrett C – Should I use a drop-down? Four steps for choosing form elements on the Web: [http://www.formsthatwork.com/files/Articles/dropdown.pdf](http://www.formsthatwork.com/files/Articles/dropdown.pdf)
-
-**R42.** Jarrett C – Label Placement in Forms – What’s Best? –British Computer Society Conference on Human-Computer Interaction – Proceedings of the 22 [nd] British CHI Group Annual Conference on HCI 2008: People and Computers XXII: Culture, Creativity, Interaction – Volume 2, pp229-30
-
-1999
-
-1998
-
-12-Jul-2006
-
-2001
-
-Sept-2008
-
-**R43.** Tufte E, Cheshire, CT – The Visual Display of Quantitative Information – Graphics Press, 2001 Second Edition 2001
-
-**R44.** Apple Inc – Apple Human Interface Guidelines June 2008
-
-**R45.** Singh H, Mani S, Espadas D, Petersen N, Franklin V, Petersen LA – Prescription Errors and Outcomes Related to Inconsistent Information Transmitted Through Computerized Order Entry – Arch Intern Med– Vol 169, No.10, p982-989
+| Reference | Document | Version |
+| --- | --- | --- |
+| R1. | NHS CUI Programme – Medications Management – Medications List – User Interface Design Guidance | 1.0.0.0 |
+| R2. | NHS CUI Programme – Medications Management – Drug Administration – User Interface Design 4.0.0 Guidance | .0 |
+| R3. | NHS CUI Programme – Medications Management – Medication Line – User Interface Design Guidance | 2.0.0.0 |
+| R4. | NHS NPfIT – dm+d Implementation Guide (Secondary Care):                                     29 http://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/refdocs/dmd_guidance. doc | -May-2009 |
+| R5. | NHS – dictionary of medicines + devices: http://www.dmd.nhs.uk/ | Release 2.3 |
+| R6. | NHS NPSA – The fourth report from the Patient Safety Observatory – PSO/4 – Safety in doses: medication safety incidents in the NHS: http://www.npsa.nhs.uk/nrls/alerts-and-directives/directives-guidance/safety-in-doses/ | 2007-08 |
+| Reference     Doc | ument                                                                                       Ve | rsion |
+| R7.           Coh | en M R (Ed) – Medication Errors – Causes, Prevention, and Risk Management – Jones and       20 | 04 |
+| Bar | tlett Publishers |  |
+| R8.           Koh | n L, Corrigan J, Donaldson M – To Err is Human – Building a Safer Health System –           20 | 00 |
+| Was | hington, DC: National Academy Press, 2000 |  |
+| R9.           Wac | hter R M – Understanding Patient Safety – The McGraw-Hill Companies, Inc, 2008              20 | 08 |
+| R10.          Ash | JS, Sittig DF, Poon EG, Guappone K, Campbell E, Dykstra RH – JAMA – The Extent and         Ju | ly / August 2007 |
+| Imp | ortance of Unintended Consequences Related to Computerized Provider Order Entry –Vol |  |
+| 14, | No. 4, p415 |  |
+| R11.          Kop | pel R, Metlay JP, Cohen A, Abaluck B, Localio AR, Kimmel SE, Strom BL – Role of             09 | -Mar-2005 |
+| Com | puterized Physician Order Entry Systems in Facilitating Medication Errors – JAMA – Vol |  |
+| 293 | , No. 10, p1197 |  |
+| R12.          NHS | NPfIT – ePrescribing Functional Specification:                                             1. | 0 |
+| htt | p://www.connectingforhealth.nhs.uk/newsroom/news-stories/eprescfunctspec |  |
+| R13.          NHS | CUI Programme – Design Guide Entry – Time Display                                          4. | 0.0.0 |
+| R14.          NHS | CUI Programme – Design Guide Entry – Date Display                                          4. | 0.0.0 |
+| R15.          NHS | CUI Programme – Design Guide Entry – Date and Time Input                                   3. | 0.0.0 |
+| R16.          Bri | tish National Formulary:                                                                    58 |  |
+| htt | p://www.bnf.org/bnf/                                                                        (S | eptember 2009) |
+| R17.          Nie | lsen, J – Ten Usability Heuristics:                                                         19 | 94 |
+| htt | p://www.useit.com/papers/heuristic/heuristic_list.html |  |
+| R18.          Shn | eiderman, B and Reading, MA – Designing the user interface: Strategies for effective human- Th | ird Edition,1998 |
+| com | puter interaction – Addison-Wesley Publishing |  |
+| R19.          Bri | tish Standards Institute – BS EN ISO 9241-12: 1999 Ergonomic requirements for office work   19 | 99 |
+| wit | h visual display terminals (VDTs) – Part 12: Presentation of information |  |
+| R20.          NHS | NPfIT – Guidelines for the Design and Presentation of Medication Elements Required in      20 | 05 |
+| Ele | ctronic Prescribing or Medication Ordering Systems – NPfIT-EP-DB-0003.01 |  |
+| R21.          ISM | P – ISMP Medication Safety Alert! – It’s Time for Standards to Improve Safety with Electronic | 20-Feb-2003 |
+| Com | munication of Medication Orders – Draft Guidelines for Safe Electronic Communication of |  |
+| Med | ication Orders: |  |
+| htt | p://www.ismp.org/Newsletters/acutecare/articles/20030220.asp |  |
+| R22.          NHS | CUI Programme – Design Guide Entry – Patient Banner                                        4. | 0.0.0 |
+| R23.          The | Joint Commission – National Patient Safety Goals – NPSG.03.03.01 – Look-alike/sound-       De | c-2009 |
+| ali | ke drugs: |  |
+| htt | p://www.jointcommission.org/AccreditationPrograms/BehavioralHealthCare/Standards/09_FA |  |
+| Qs/ | NPSG/Medication_safety/NPSG.03.03.01/look_alike_sound_alike_drugs.htm |  |
+| R24.          NHS | CFH – The Use of Tall Man Lettering to Minimise Selection Errors of Medicine Names in      Ju | ly 2009 |
+| Com | puter Prescribing and Dispensing Systems – Loughborough University Enterprises Ltd: |  |
+| htt | p://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/refdocs/tallman.pdf |  |
+| R25.          W3C | – Web Content Accessibility Guidelines – W3C Recommendation 5-May-1999:                    1. | 0 |
+| htt | p://www.w3.org/TR/WAI-WEBCONTENT/ |  |
+| R26.          Mic | rosoft – Windows User Experience Interaction Guidelines – Guidelines, Controls, Command     20 | 09 |
+| But | tons: |  |
+| htt | p://msdn.microsoft.com/en-us/library/aa511453.aspx#defaults |  |
+| R27.          Car | d SK, Moran TP, Newell A – The Keystroke-Level Model for User Performance Time with         19 | 80 |
+| Int | eractive Systems – Palo Alto Research Center |  |
+| Reference       D | ocument | Version |
+| R28.            I | SMP – List of Confused Drug Names: | 2009 |
+| h | ttp://www.ismp.org/tools/confuseddrugnames.pdf |  |
+| R29.            T | he Joint Commission International – WHO Collaborating Centre for Patient Safety Releases – |  |
+| N | ine Life-Saving Patient Safety Solutions: |  |
+| h | ttp://www.ccforpatientsafety.org/patient-safety-solutions/ |  |
+| R30.            U | S FDA Center for Drug Evaluation and Research – Name Differentiation Project: | May 2001 |
+| h | ttp://www.fda.gov/Drugs/DrugSafety/MedicationErrors/ucm164587.htm |  |
+| R31.            N | HS CFH – Guidelines for hazard review of ePrescribing systems: | 1.0 |
+| h | ttp://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/hazard_framework.pdf |  |
+| R32.            B | ates DW – Using information technology to reduce rates of medication errors in hospitals – BMJ | 2000 |
+| 2 | 000; 320:788-91 |  |
+| R33.            D | ean B, Schachter M, Vincent C, Barber N – Prescribing errors in hospital inpatients: their | 2002 |
+| i | ncidence and clinical significance – Quality Healthcare – 2002:11:340-344 |  |
+| R34.            C | ooper A, Reimann R, Cronin, D – About Face 3: The Essentials of Interaction Design – Wiley | 2007 |
+| P | ublishing Inc – 2007 |  |
+| R35.            J | ohnson J – GUI Bloopers: Don’ts and Do’s for Software Developers and Web Designers – | 2000 |
+| M | organ Kaufmann Publishers – 2000 |  |
+| R36.            D | ean B, Schachter M, Vincent C, Barber N – Causes of prescribing errors in hospital inpatients: | 20-Apr-2002 |
+| a | prospective study –The Lancet – Vol 359 |  |
+| R37.            R | eason J – Human Error –Cambridge | 1990 |
+| R38.            B | ates DW, Teich JM, Lee J, Seger D, Kuperman GJ, Ma’Luff N, Boyle D, Leape L – The Impact | 1999 |
+| o | f Computerized Physician Order Entry on Medication Error Prevention –JAMIA – 1999;6:313- |  |
+| 3 | 21 |  |
+| R39.            B | ates DW, Leape LL, Cullen DJ, Laird N, Petersen LA, Teich JM, Burdick E, Hickey M, Kleefield | 1998 |
+| S | , Shea B, Vander Vliet M, Seger DL – Effect of Computerised Physician Order Entry and a |  |
+| T | eam Intervention on Prevention of Serious Medication Errors –JAMA – 1998;280:1311-1316 |  |
+| R40.            P | enzo M – Label Placement in Forms –UX Matters: | 12-Jul-2006 |
+| h | ttp://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php |  |
+| R41.            M | iller S, Jarrett C – Should I use a drop-down? Four steps for choosing form elements on the | 2001 |
+| W | eb: |  |
+| h | ttp://www.formsthatwork.com/files/Articles/dropdown.pdf |  |
+| R42.            J | arrett C – Label Placement in Forms – What’s Best? –British Computer Society Conference on Sep | t-2008 |
+| H | uman-Computer Interaction – Proceedings of the 22nd British CHI Group Annual Conference on |  |
+| H | CI 2008: People and Computers XXII: Culture, Creativity, Interaction – Volume 2, pp229-30 |  |
+| R43.            T | ufte E, Cheshire, CT – The Visual Display of Quantitative Information – Graphics Press, 2001 | Second Edition 2001 |
+| R44.            A | pple Inc – Apple Human Interface Guidelines | June 2008 |
+| R45.            S | ingh H, Mani S, Espadas D, Petersen N, Franklin V, Petersen LA – Prescription Errors and   25- | May-2009 |
+| O | utcomes Related to Inconsistent Information Transmitted Through Computerized Order Entry – |  |
+| A | rch Intern Med– Vol 169, No.10, p982-989 |  |
 
 Table 14: References
 
@@ -5879,75 +6182,72 @@ Detailed notes from the interviews were qualitatively analysed using thematic co
 
 ##### B.4.1 Participant Description
 
-14 participants were interviewed in 12 sessions. Each had either volunteered through the NHS CFH Event Management System (EMS) signup or had been recruited by an HCP who had volunteered. 7 out of 14 respondents had previously taken part in CUI clinical engagement for other work areas. Table 5 shows a summary of the participants’ profiles:
 
-402 Doctor FY1 Teaching Hospital A Yes eTTAs
-
-403 Doctor
-
-Doctor
-
-FY1
-
-FY1
-
-Teaching Hospital A Yes
-
-Yes
-
-eTTAs
-
-eTTAs
-
-404 Doctor Surgery ST1 Teaching Hospital B Yes eTTAs
-
-405 Doctor Endocrine and General Medicine
-
-FY1 Teaching Hospital C Yes PICS
-
-406 Doctor Endocrine FY2 Teaching Hospital C Yes PICS
-
-407 Doctor
-
-Doctor
-
-408 Clinical Pharmacologist
-
-Acute Medicine
-
-Acute Medicine
-
-FY1
-
-ST2
-
-Teaching Hospital C Yes
-
-Yes
-
-PICS
-
-PICS
-
-ePrescribing Consultant Teaching Hospital C Yes PICS
-
-409 Pharmacist Oncology Teaching Hospital D No CIS Healthcare ChemoCare [®]
-
-410 Pharmacist Paediatrics and Women’s Services
-
-411 Pharmacist Oncology and Haematology
-
-Teaching Hospital D No No
-
-Principle Teaching Hospital D Independent CIS Healthcare ChemoCare, Cerner Millennium [® ] LC1, Local databases and spreadsheets
-
-Teaching Hospital D No CIS Healthcare ChemoCare
-
-412 Pharmacy technician
-
-Oncology and Haematology
-
-413 Pharmacist Renal Teaching Hospital D No Local databases and spreadsheets
+| B.1 | Abstract |
+| --- | --- |
+| The UK | National Health Service (NHS) Common User Interface (CUI) programme is a partnership ® |
+| between | Microsoft and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Program | me for Information Technology (NPfIT). |
+| As part | of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring |
+| that so | ftware applications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provide | s software developers with user interface design guidelines derived through a user-centric |
+| develop | ment process that includes explicit patient-safety evaluations. |
+| This su | mmary describes key findings from user research carried out in April 2009 by the CUI CAPS |
+| team on | course definition in Medications Search and Prescribe. These findings are a subset from a |
+| larger | internal report prepared for the CUI CAPS Search and Prescribe team. |
+| Purpose | : |
+| To gain | clinical feedback on design concepts for prescribing medications in electronic systems. |
+| Method: |  |
+| Intervi | ews: structured interviews with 14 Health Care Professionals (HCPs) eliciting HCP |
+| prefere | nces and qualitative feedback on design alternatives. |
+| Key Res | ults: |
+| Based o | n clinician preference and rationale: |
+|  F | orm layout and prescribing pane orientation should not (as yet) be mandated by the CUI, |
+| a | s there was no clear preference or concrete safety risks elicited for the contrasting designs |
+| s | hown |
+|  F | ields on the full form should be grouped by ‘field type’ rather than ‘mandatory-ness’ |
+|  S | eeing the medications list while prescribing is favourable but not essential |
+|  A | field strategy like ‘dynamic mandatory’ was supported, as opposed to a display whereby |
+| a | ll possible fields are displayed and then the mandatory fields varied based on the drug |
+| t | ype |
+|  A | n authorisation ‘safety catch’ cannot be mandated without further evidence |
+| B.2 | Research Objectives |
+| To gath | er HCP preferences and qualitative feedback on, and to identify possible patient safety |
+| hazards | with, CUI course definition designs. |
+| B.3 | Research Design |
+| Structu | red one hour interviews carried out in person. Using three common prescribing tasks |
+| partici | pants were taken through: |
+| 1. | Wireframe design alternatives for each design area |
+| 2. | An interactive prototype for one of the tasks |
+| Partici | pants were then asked for preferences based on patient safety criteria. Other qualitative |
+| feedbac | k was elicited covering: |
+|  | Rationale for preference |
+|  | Design fit with current and best practice |
+|  | Design understandability |
+|  | Any potential hazards resulting from the designs |
+| Design | alternatives were order-balanced per task (in that, they were presented in differing orders to |
+| differe | nt participants to try and minimise an order effect), and all designs were shown as a full |
+| prescri | bing sequence, beginning and ending in the Medication List View. |
+| Detaile | d notes from the interviews were qualitatively analysed using thematic coding. |
+| B.4 | Results |
+| B.4.1 | Participant Description |
+| 14 part | icipants were interviewed in 12 sessions. Each had either volunteered through the NHS |
+| CFH Eve | nt Management System (EMS) signup or had been recruited by an HCP who had |
+| volunte | ered. 7 out of 14 respondents had previously taken part in CUI clinical engagement for other |
+| work ar | eas. Table 5 shows a summary of the participants’ profiles: |
+| Session | Job Role                   Specialty          Level       Site                  Prescriber?   Used ePrescribing? |
+| 402 | Doctor                                  FY1         Teaching Hospital A   Yes           eTTAs |
+| 403 | Doctor                                  FY1         Teaching Hospital A   Yes           eTTAs Doctor                                  FY1                               Yes           eTTAs |
+| 404 | Doctor               Surgery            ST1         Teaching Hospital B   Yes           eTTAs |
+| 405 | Doctor               Endocrine and      FY1         Teaching Hospital C   Yes           PICS General Medicine |
+| 406 | Doctor               Endocrine          FY2         Teaching Hospital C   Yes           PICS |
+| 407 | Doctor               Acute Medicine     FY1         Teaching Hospital C   Yes           PICS Doctor               Acute Medicine     ST2                               Yes           PICS |
+| 408 | Clinical             ePrescribing       Consultant Teaching Hospital C    Yes           PICS Pharmacologist |
+| 409 | Pharmacist           Oncology                       Teaching Hospital D   No            CIS Healthcare ChemoCare® |
+| 410 | Pharmacist           Paediatrics and                Teaching Hospital D   No            No Women’s Services |
+| 411 | Pharmacist           Oncology and       Principle   Teaching Hospital D   Independent   CIS Healthcare Haematology                                                        ChemoCare, Cerner Millennium® LC1, Local databases and spreadsheets |
+| 412 | Pharmacy             Oncology and                   Teaching Hospital D   No            CIS Healthcare technician           Haematology                                                        ChemoCare |
+| 413 | Pharmacist           Renal                          Teaching Hospital D   No            Local databases and spreadsheets |
 
 Table 15: Interview Participants
 
@@ -6207,57 +6507,53 @@ HSCIC Controlled Document
 
 ##### C.4.1 Participant Description
 
-14 participants were interviewed in 7 sessions. Each participant had either volunteered through the NHS CFH Event Management System (EMS) signup or had been recruited by an HCP who had volunteered. Table 15: Interview Participants Shows a summary of the participants’ profiles:
 
-374 Pharmacist ENT? No PCIS Medium
-
-360 EPR Pharmacist
-
-EPR Nurse
-
-EPR Nurse
-
-Senior
-
-Senior
-
-Senior
-
-All deal with ePrescribing and eMAR aspect of system
-
-Customised i.CM (full ePrescribing and eMAR)
-
-No
-
-Yes
-
-Yes
-
-High
-
-Medium
-
-Medium
-
-361 Pharmacist? Senior Yes Electronic TTOs Yes Medium
-
-362 Doctor? F1 Yes Electronic TTOs No High
-
-363 Doctor
-
-Doctor
-
-364 Doctor
-
-Nurse Practitioner
-
-Nurse Practitioner
-
-365 Nurse Practitioner
-
-Nurse Practitioner
-
-Nurse Practitioner
+| C.1 | Abstract |
+| --- | --- |
+| The UK | National Health Service (NHS) Common User Interface (CUI) programme is a partnership |
+| between | Microsoft® and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Program | me for Information Technology (NPfIT). |
+| As part | of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring |
+| that so | ftware applications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provide | s software developers with user interface design guidelines derived through a user-centric |
+| develop | ment process that includes explicit patient-safety evaluations. |
+| This su | mmary describes key findings from user research carried out in November 2008 by the CUI |
+| CAPS te | am on Course Definition (part of the Search and Prescribe work). These findings are a |
+| subset | of those in a larger internal report prepared for the CUI CAPS Search and Prescribe team. |
+| Purpose | : |
+| To furt | her understand existing hazards and requirements relating to medication course definition. |
+| Method: |  |
+| Intervi | ews: structured interviews with 14 Healthcare Professionals (HCPs) using paper drug charts |
+| and exi | sting CUI designs as a stimulus for discussion. |
+| Require | ments analysis: requirements relating to course definition identified from the existing NHS |
+| CFH ePr | escribing requirements documents. |
+| C.2 | Research Objectives |
+| To furt | her understand existing hazards and requirements relating to medication course definition |
+| focusin | g on the areas of: |
+|  S | cheduling and ‘time’ attributes |
+|  C | onditions |
+| C.3 | Research Design |
+| Intervi | ews were structured, lasted 30—60 minutes and carried out in person, with one to three |
+| partici | pants per interview. Participants were shown existing paper drug charts and old CUI course |
+| definit | ion designs to help elicit risks and uncover further requirements. |
+| Detaile | d notes from the interviews were qualitatively analysed using thematic coding. |
+| The NHS | CFH ePrescribing requirements were searched for a set of keywords relating to course |
+| definit | ion. Once a requirement was flagged, relevance to CUI scope was assessed and the |
+| require | ment categorised. The output was a spreadsheet of ePrescribing requirements that can be |
+| filtere | d by category relating to course definition thus aiding later analysis and retrieval. |
+| C.4 | Results |
+| C.4.1 | Participant Description |
+| 14 part | icipants were interviewed in 7 sessions. Each participant had either volunteered through the |
+| NHS CFH | Event Management System (EMS) signup or had been recruited by an HCP who had |
+| volunte | ered. Table 15: Interview Participants Shows a summary of the participants’ profiles: CUI             Computer |
+| Session | Job Role                       Specialty    Level     Prescriber? Systems Used Feedback?       Experience |
+| 374 | Pharmacist               ENT          ?         No              PCIS                                Medium |
+| 360 | EPR Pharmacist                        Senior    All deal with   Customised i.CM No                  High EPR Nurse                             Senior    ePrescribing    (full ePrescribing Yes              Medium and eMAR        and eMAR) EPR Nurse                             Senior                                       Yes              Medium aspect of system |
+| 361 | Pharmacist               ?            Senior    Yes             Electronic TTOs     Yes             Medium |
+| 362 | Doctor                   ?            F1        Yes             Electronic TTOs     No              High |
+| 363 | Doctor                   ?            F1        Yes             Electronic TTOs     No              High Doctor                   ?            F1        Yes             Electronic TTOs     No              Medium |
+| 364 | Doctor                   Emergency ST3          Yes             Electronic TTOs     No              Medium Nurse Practitioner       Emergency Senior       PGD             No                  No              Medium Nurse Practitioner       Emergency Senior       PGD             No                  No              Medium |
+| 365 | Nurse Practitioner       Emergency Senior       PGD             No                  No              Medium Nurse Practitioner       Emergency Senior       PGD             No                  No              Medium Nurse Practitioner       Emergency Senior       PGD             Seen several        Yes             High systems |
 
 Table 16: Interview Participants
 
@@ -6641,37 +6937,120 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-59 Therapeutic
 
-Intent
-
-Treatment goals may not be perceived to be 'necessary' for some medications in some contexts (for example, PDG medications in ED)
-
-60 Variation Nurses changing heparin dose based on results (is this allowed?)
-
-61 Variation Warfarin prescription unclear as to whether it is to continue each day as it is prescribed as a separate prescription for every day without a clear indication of the 'overall' course duration
-
-62 Variation If a medication line identity is such that prescribed variations in dose, frequency and so on (either during a day or over days) are displayed as separate medication lines, there is a chance that:
-
-The lines become separated and disassociated
-
-It becomes harder for the user (and system?) to perform operations aggregating the lines
-
-For example, working out 'how much drug X the patient is getting?' or 'how long have they been getting drug X for?'
-
-63 Variation If a medication varies either during a day or over days, there is a chance that the variations will get mixed up either at the time of prescribing or of administration (for example, prescribing the dose intended for 22:00 at 8:00 and vice versa)
-
-64 Variation Prescribers may desire a templated prescription that defines a schedule of varying doses over several days, which cannot be supported by the template UI (for example, ‘10 mg 1 day, 10 mg 1 day, 5 mg 1 day, then as per INR value’)
-
-65 Attributes Basic dropdowns may not be the most appropriate input mechanism for a field (for example, an ISV may have a very large number of possible frequencies or some fields will require 'other' options to access unlicensed routes) (partially from CUI Search and Prescribe user feedback 2006)
-
-66 Schedule Some workflows may have the schedule set by the administerer rather than the prescriber (from CUI Search and Prescribe user feedback 2006)
-
-67 Attributes Different contexts may require different default settings for attributes (for example, the Emergency Department may default its medication frequency to 'stat' (or its equivalent)
-
-68 Attributes Form design: the user may accidentally scroll a dropdown and be unaware that they have changed one of the values on the form
-
-69 Attributes After a template has populated a form, the prescriber may make alterations to some fields that imply other fields should be checked and/or changed (for example, if changing route what should happen to a prefilled dose?)
+| C.4.2 | Hazards |
+| --- | --- |
+| Table 17 list | s and describes the hazards identified: |
+| ID Keywords | Hazards |
+| 1 | Cannot specify prescription-specific logic as all orders are treated the same (for example, cannot do different mandatory fields for as-required prescriptions) |
+| 2 | Cannot specify medication-order-specific logic as medications are treated as just another kind of order (for example, cannot do Adverse Drug Reaction (ADR) checking on medications) |
+| 3 | Delay in first dose as the doctor is not communicating new (or changed) prescriptions |
+| ID Keywords | Hazards |
+| 4   Additiona | l           If the prescriber (or verifier) relies on the administerer reading the relevant knowledge support, |
+| Instructi | ons         instead of highlighting it to them by recording notes in 'additional instructions', then the administerer may not attend to these instructions |
+| 5   Additiona | l           If, during prescribing, the prescriber does not have access to the same knowledge support as the |
+| Instructi | ons         administer has, then the prescriber may add information in 'additional instructions' that is contradicted by this knowledge support thereby confusing the administerer |
+| 6   Attribute | s           Prescribers may be confused by the difference between 'strength' and 'dose' at the point of course definition |
+| 7   Attribute | s           Presenting non-mandatory fields by default may be: distracting, confusing, unnecessarily filled in |
+| 8   Attribute | s           Due to the large number of potential optional fields that could be displayed on the course definition form, those that are chosen to be displayed (either by default or on demand) may be suboptimal in some circumstances (for example, how do you choose which optional fields get displayed or are accessible?) |
+| 9   Condition | s           Administration conditions not documented or not 'formalised' in a system may be missed, misinterpreted, or cannot take advantage of system functions (for example, done through free text, ‘additional instructions’ or given verbally) |
+| 10 Have Sight | Of         If the prescriber is not prompted to consider previous prescriptions for the patient for the same medication or class (especially reasons for discontinuation) they may prescribe suboptimally |
+| 11 Have Sight | Of,        If prescribers only see the medications and administration schedule for the day of prescribing (or a |
+| Schedule | few days around it) before, during or after prescribing, they may not be aware of all the patient's current medications. Administration views in systems are likely to show a few days by default (though should provide access to the other current medications) |
+| 12 Have Sight | Of,        If, during prescribing, prescribers do not have access to current (and past?) medication details, |
+| Schedule | including their schedule, they may not have the necessary information to accurately complete the prescription |
+| 13 PRN | PRN has indication recorded rather than the symptom as the condition for giving (for example, asthma not wheeze) |
+| 14 PRN | PRN prescription does not record he conditions under which it was given (currently poorly documented on paper) |
+| 15 PRN | As most people know what the PRN will be for, being forced to record the reason is unnecessary (unlikely to be a view shared by pharmacists) |
+| 16 PRN | Clinicians may expect PRN to have an indication of maximum dose in 24 hours, maximum frequency, and/or minimum interval. A course definition label for 'frequency' associated with PRN may be misinterpreted as one of these rather than as an indicative frequency |
+| 17 PRN | Though it may be theoretically correct for a PRN to always have an indicative frequency, prescribers may not want to specify one as long as the eventual administration schedule conforms to the minimum and/or maximum restrictions (that is, the schedule that results from the administerer administering the PRN) For some medications, an indicative frequency might seem odd (for example, nappy rash cream 'apply as required') |
+| 18 PRN | A start date and time for PRN is likely to be confusing as the start date and time usually refers to the first intended administration (which is not known with a PRN) (though it could be changed to 'valid from' for PRN?) |
+| ID Keywords | Hazards |
+| 19 PRN | Prescribers may feel they have to provide maximum and/or minimum restrictions on PRN administration if they do not realise that these are provided by the system (if indeed they are, though they should be according to the CUI Drug Administration guidance) |
+| 20 Record | Some medications administered in some contexts (for example, entonox or lignocaine in ED) may be written up as part of the documentation of care and not duplicated into the medication’s record |
+| 21 Record | A patient may self administer in A&E and this is not being recorded or is not recorded in the medications record (perhaps as it is deemed to be irrelevant to the presenting complaint) |
+| 22 Review and | /or         ‘Review’ and/or ‘stop’ date is missed as it has a ‘point’ value and is not followed up. That is, it is |
+| Stop Date | not ‘sticky’ or persistent over time if it is not completed (for example, if the review date falls on a weekend) |
+| 23 Review and | /or         No review criteria specified at time of prescribing makes it hard to subsequently review |
+| Stop Date |  |
+| 24 Review and | /or         Medications stopped rather than reviewed |
+| Stop Date |  |
+| 25 Review and | /or         The term 'review' is interpreted in different ways (for example, 'review after 2 days of 7 day course’ |
+| Stop Date | versus ‘to be followed by a review at end of 7 days', for example 'let's see how they get on after 5 days' versus 'hard stop after 5 days'). Therefore potential confusion about what it means to schedule 'a review' |
+| 26 Review and | /or         Implied requirement to be able to schedule a review during a course as well as at the end of one |
+| Stop Date |  |
+| 27 Schedule | Scheduling information has to be inferred from chart graphical mark-up ‘hieroglyphics’ which may be non-standard. Some staff may use more ‘certain’ mark-up than others (for example, blocking out days not to administer is a pretty clear mark-up) |
+| 28 Schedule | Scheduling and frequency information ‘trapped’ in graphical section of paper chart rather than conveyed in prescription text on the left-hand side of a paper chart can be missed when transcribing for discharge, (and at other times too) |
+| 29 Schedule | The prescriber schedules administration at a suboptimal time for that medication (for example, breaking ward conventions to administer warfarin at 18:00 or simvastatin in the morning rather than at night) |
+| 30 Schedule | Not clear that the administration time has been changed from standard times when done by crossing out usual time on paper |
+| 31 Schedule | Medications that do not have an obvious default schedule (for example, ‘bd’ and ‘tds’) are 'automatically' scheduled to times that are either unexpected by the prescriber or do not take into account all the relevant factors. ‘od’ and ‘qds’ are more obvious as ‘od’ is likely to be scheduled at 08:00 or a medication-specific default time and ‘qds’ will fill the usual four drug-round slots |
+| 32 Schedule | Self administered drugs may not be administered according to a schedule that was suggested to the patient at the time of prescribing. Therefore if the system 'schedules' the administration according to this suggestion, and then does not require the actual times to be recorded, the administration record may be misleading |
+| 33 Schedule | If the scheduling (either automatic or manual) does not take account of local ward conventions beyond 'normal' drug rounds (such as IV rounds at slightly different times to non-IV rounds), certain medications will systematically be administered 'too early' or 'too late' (according to the system's schedule) |
+| ID Keywords | Hazards |
+| 34 Schedule, | Non-time dependant conditions scheduled with spurious time specificness and/or and incorrect |
+| Conditions | time (for example, with food in evening, pre-meds) This might be solved by having a long time tolerance administration, plus a conditional ‘IF’, if it cannot have formalised conditions |
+| 35 Schedule, | Dose        Double administration as the first dose was given in A&E, but was not recorded on the inpatient |
+| Interval | chart, then another dose given on admission to the ward. This is solved if all administrations are recorded and A&E and ward have interoperable medication record |
+| 36 Schedule, | Dose        Dose administered in A&E and to maintain the dose interval the prescriber therefore schedules |
+| Interval | the next dose at a non-drug round time. Then, on admission to the ward, nurses get another prescriber to alter the time of administration to be more convenient to drug rounds, which may then break the dose interval with the first dose given in A&E |
+| 37 Schedule, | Dose        Breaking strict dose intervals due to set round times or administration non-compliance with strict |
+| Interval | dose interval schedule (for example, antibiotic prescribing) has historically never been administered 'correctly' at exact time intervals |
+| 38 Schedule, | Dose        System does not alert users if they are trying to schedule doses of the same medication (including |
+| Interval | those in other prescriptions) within a minimum dose interval (especially for 'stat' followed by regular schedule) |
+| 39 Schedule, | Dose        Prescriber has become used to accepted practice of scheduling certain medications (for example, |
+| Interval | antibiotics) at standard drug round times, rather than at recommended dose intervals. Another hazard is that prescribers may not realise that in some contexts (for example, serious infection in ITU) they must prescribe at strict dose intervals or they mistakenly do not use the strict dose interval frequency option |
+| 40 Schedule, | Dose        Prescribers may need to schedule administration such that it breaks a minimum interval. They |
+| Interval | should probably be forced to record a reason (from CUI Drug Administration Feedback Study ID 40) |
+| 41 Schedule, | Dose        Breaking of dose interval as the ‘stat’ dose is ‘too quickly’ followed by the first regular dose |
+| Interval, | Once |
+| Only |  |
+| 42 Schedule, | Duration is calculated as calendar days (either by system or by user) rather than days of doses |
+| Duration | (for example, if the first dose of a five day course is given at night, this is not a whole day of treatment so the patient needs to continue onto the sixth day of treatment) |
+| 43 Schedule, | Have        If prescribers do not see the administration schedule represented graphically before authorising a |
+| Sight Of | prescription (as on the paper drug chart), they may not notice a scheduling error or suboptimal scheduling as the textual expression of the frequency and schedule is less familiar (and perhaps more open to error) (for example, that the first dose is not due for a longer time than they intended, such as on the next day) |
+| 44 Schedule, | Once        ‘Double’ administration of ‘first’ dose as ‘stat’ and the first regular dose both given at same time |
+| Only | (especially if ‘stat’ is added automatically by the system?) |
+| 45 Schedule, | Once        Delay in first dose until the next day as the default schedule is for a time that has already passed |
+| Only | that day (so is scheduled for the next day) and no ‘stat’ created for today (known cause of death from a long delay in the first administration of meningitis medication) |
+| 46 Schedule, | Once        Delay in first dose until the next round as it was not scheduled ‘due’ until the next round that day |
+| Only | and no ‘stat’ was created for now |
+| ID Keywords | Hazards |
+| 47 Schedule, | Once        Prescribing a 'stat' followed by a regular schedule may subsequently give a false impression of |
+| Only | when that medication started if 'separated' from each other on the chart (that is, medication line identity question) |
+| 48 Schedule, | Once        If prescribers have to prescribe a regular medication, started with a ‘stat’, as separate |
+| Only | prescriptions in two unlinked steps they may: Forget to do one of the steps (probably by being distracted in between) Make a mistake when scheduling them together Not have the correct total duration for that medication (for example, total duration = stat plus four days minus one dose of regular medication) |
+| 49 Schedule, | Once        Correct urgency of a once only prescription is not communicated. Either because of a spurious |
+| Only | urgency by treating all once only prescriptions as 'stat' (causing unnecessary disruption) or a genuinely urgent once only is not administered on time (could be a problem for other types as well, for example, once a day medication?) |
+| 50 Schedule, | Once        Correct degree of time-specificness of a ‘stat’ is not communicated. Either because of a spurious |
+| Only, Time | specificness by specifying a time when it does not really matter or by being administered outside |
+| Tolerance | of a correct narrow time tolerance (could be a problem for other types as well, for example, once a day medication?) |
+| 51 Schedule, | Antibiotic issues: often continued inappropriately as they do not have a stop date (or accurate stop |
+| Review and | /or         date), prescribed inappropriately as a wrong indication and so on |
+| Stop Date |  |
+| 52 Schedule, | Delay in ‘stat’ and/or first dose due to supply issues (for example, the prescriber did not know that |
+| Supply | the product was not in the ward stock) |
+| 53 Start Date | CUI design: course 'Start' is ambiguous as to whether it means prescription date or intended first dose date and/or time. All that the Wales chart says is: 'Time to be given' for its once only prescriptions. We could try: 'first dose', 'first administration', 'Start on'. |
+| 54 Start Date | CUI Design: The 'Approx' flag on start date and time is confusing. It might imply it is a non-specific way to alter the administration time tolerance (and it might not be). It might also imply that if it is not checked then the start date and/or time has a very low time tolerance (which it might not do). It might also imply that all administration events for this prescription are affected by this control (which they might not be). |
+| 55 Supply | Prescribers are often unaware of patients not getting medications due to supply issues |
+| 56 Therapeuti | c           Prescribers may not know the exact reason for prescribing as they are just following the |
+| Intent | consultant's orders (and they may have not provided the rationale). Also, they may be prescribing some time after the consultant requested the prescription. |
+| 57 Therapeuti | c           If the therapeutic intent and/or rationale for treatment is not recorded by the prescriber, |
+| Intent | subsequent clinicians may not be able to review the prescription as effectively as the prescriber (especially after discharge or for antibiotics) |
+| 58 Therapeuti | c           A clinician's answer for 'reason' could be described in multiple ways, which may miss out key |
+| Intent | information for a subsequent reviewer or decision support trying to act on it (for example, ‘animal bite’ versus 'laceration' versus 'infected wound', where the fact it is an animal that caused the injury is the important factor, and 'for infection' versus 'based on microbiology reports', where the authoritative recommendation is important) |
+| ID Keywords | Hazards |
+| 59 Therapeuti | c                 Treatment goals may not be perceived to be 'necessary' for some medications in some contexts |
+| Intent | (for example, PDG medications in ED) |
+| 60 Variation | Nurses changing heparin dose based on results (is this allowed?) |
+| 61 Variation | Warfarin prescription unclear as to whether it is to continue each day as it is prescribed as a separate prescription for every day without a clear indication of the 'overall' course duration |
+| 62 Variation | If a medication line identity is such that prescribed variations in dose, frequency and so on (either during a day or over days) are displayed as separate medication lines, there is a chance that: The lines become separated and disassociated It becomes harder for the user (and system?) to perform operations aggregating the lines For example, working out 'how much drug X the patient is getting?' or 'how long have they been getting drug X for?' |
+| 63 Variation | If a medication varies either during a day or over days, there is a chance that the variations will get mixed up either at the time of prescribing or of administration (for example, prescribing the dose intended for 22:00 at 8:00 and vice versa) |
+| 64 Variation | Prescribers may desire a templated prescription that defines a schedule of varying doses over several days, which cannot be supported by the template UI (for example, ‘10 mg 1 day, 10 mg 1 day, 5 mg 1 day, then as per INR value’) |
+| 65 Attributes | Basic dropdowns may not be the most appropriate input mechanism for a field (for example, an ISV may have a very large number of possible frequencies or some fields will require 'other' options to access unlicensed routes) (partially from CUI Search and Prescribe user feedback 2006) |
+| 66 Schedule | Some workflows may have the schedule set by the administerer rather than the prescriber (from CUI Search and Prescribe user feedback 2006) |
+| 67 Attributes | Different contexts may require different default settings for attributes (for example, the Emergency Department may default its medication frequency to 'stat' (or its equivalent) |
+| 68 Attributes | Form design: the user may accidentally scroll a dropdown and be unaware that they have changed one of the values on the form |
+| 69 Attributes | After a template has populated a form, the prescriber may make alterations to some fields that imply other fields should be checked and/or changed (for example, if changing route what should happen to a prefilled dose?) |
 
 Table 17: Hazards Identified
 
@@ -6759,41 +7138,79 @@ Detailed notes from the interviews and workshops were qualitatively analysed usi
 
 ##### D.4.1 Participant Description
 
-_**Interviews**_
 
-Sixteen participants were interviewed in thirteen sessions. Each participant had either volunteered through the NHS CFH EMS signup or had been recruited by an HCP who had volunteered. Four out of sixteen participants had previously taken part in CUI clinical engagement for other work areas. Table 5 shows a summary of the participants’ profiles:
-
-374 Pharmacist ENT? No PCIS Medium
-
-375 Pharmacist and Analyst
-
-Systems? ? PCIS High
-
-376 Pharmacist Various? No PCIS Medium
-
-377 Pharmacist Medication Safety Senior Yes eTTOs – McKesson Medium/High
-
-378 Pharmacist Care of Elderly? Yes eTTOs – McKesson Med
-
-379 Doctor Endocrine F1 Yes eTTOs – McKesson High
-
-381 Pharmacist? Lead No eTTOs and seen various?
-
-382 Doctor Stroke Consultant Yes PICCS Medium/High
-
-383 Doctor Care of Elderly SpR Yes PICCS?
-
-384 Doctor
-
-Doctor
-
-385 Doctor
-
-Doctor
-
-386 Doctor
-
-Pharmacist
+| D.1 | Abstract |
+| --- | --- |
+| The UK | National Health Service (NHS) Common User Interface (CUI) programme is a partnership |
+| between | Microsoft® and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Program | me for Information Technology (NPfIT). |
+| As part | of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring |
+| that so | ftware applications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provide | s software developers with user interface design guidelines derived through a user-centric |
+| develop | ment process that includes explicit patient-safety evaluations. |
+| This su | mmary describes key findings from user research carried out in January 2009 by the CUI |
+| CAPS te | am on defining a medication’s course (part of the Search and Prescribe work). These |
+| finding | s are a subset of those in a larger internal report prepared for the CUI CAPS Search and |
+| Prescri | be team. |
+| Purpose | : |
+| To gain | clinical feedback on design concepts for defining a medication’s course in electronic |
+| systems | . |
+| Method: |  |
+| Intervi | ews: structured interviews with 16 Healthcare Professionals (HCPs) eliciting HCP |
+| prefere | nces and qualitative feedback on design alternatives. |
+| Worksho | ps: two workshops with six HCPs per workshop, eliciting HCP preferences and qualitative |
+| feedbac | k on the same design alternatives as used in interview. |
+| Key Res | ults: |
+| Based o | n clinician preference and rationale: |
+|  F | irst dose, the administration schedule and any extra system or user-defined attributes |
+| s | hould be clearly visible to the prescriber before authorising the prescription |
+|  P | articipant opinion and perception of risk was divided on whether a mandatory preview step |
+| w | ould be safer than not having one, though the arguments against having one were made |
+| o | n efficiency rather than safety grounds |
+|  T | he horizontal administration schedule format was disliked compared to a vertical or |
+| ‘ | calendar-style’ format |
+|  E | ven with a ‘mandatory only’ model of displaying fields on the main prescribing form, some |
+| o | ptional fields may also need to be displayed on the main form either for all prescriptions or |
+| o | n a per case basis |
+| D.2 | Research Objectives |
+| To gath | er HCP design preferences, qualitative feedback and possible patient safety hazards of CUI |
+| drug se | arch designs focusing on the areas of: |
+|  I | nformation and workflow required before prescription authorisation (also known as ‘the |
+| P | review’) |
+|  O | verall design of the course definition form (that is, dealing with mandatory versus optional |
+| a | ttributes) |
+| D.3 | Research Design |
+| Intervi | ews were structured, lasted one hour and carried out in person. Participants were taken |
+| through | wireframe design alternatives for each area of investigation and asked for preference |
+| based o | n patient safety criteria. Other qualitative feedback was elicited covering: |
+|  | Rationale for preference |
+|  | Design fit with current and best practice |
+|  | Design understandability |
+|  | Any potential hazards resulting from the designs |
+| Worksho | ps lasted 2.5 hours and were similar to the interviews except that they focused on |
+| qualita | tive feedback and involved group discussion. |
+| Detaile | d notes from the interviews and workshops were qualitatively analysed using thematic |
+| coding. |  |
+| D.4 | Results |
+| D.4.1 | Participant Description |
+| Intervi | ews |
+| Sixteen | participants were interviewed in thirteen sessions. Each participant had either volunteered |
+| through | the NHS CFH EMS signup or had been recruited by an HCP who had volunteered. Four |
+| out of | sixteen participants had previously taken part in CUI clinical engagement for other work |
+| areas. | Table 5 shows a summary of the participants’ profiles: Computer |
+| Session | Job Role                   Specialty           Level        Prescriber?   Systems Used Experience |
+| 374 | Pharmacist           ENT                 ?            No            PCIS                     Medium |
+| 375 | Pharmacist and       Systems             ?            ?             PCIS                     High Analyst |
+| 376 | Pharmacist           Various             ?            No            PCIS                     Medium |
+| 377 | Pharmacist           Medication Safety   Senior       Yes           eTTOs – McKesson         Medium/High |
+| 378 | Pharmacist           Care of Elderly     ?            Yes           eTTOs – McKesson         Med |
+| 379 | Doctor               Endocrine           F1           Yes           eTTOs – McKesson         High |
+| 381 | Pharmacist           ?                   Lead         No            eTTOs and seen various   ? |
+| 382 | Doctor               Stroke              Consultant   Yes           PICCS                    Medium/High |
+| 383 | Doctor               Care of Elderly     SpR          Yes           PICCS                    ? |
+| 384 | Doctor               Acute Medicine      ST2          Yes           PICCS                    ? Doctor                                   FY2 |
+| 385 | Doctor               Respiratory and     Consultant   Yes           PICCS                    Medium Doctor               Transplant          Consultant |
+| 386 | Doctor               Renal               Consultant   Yes           PICCS                    High Pharmacist           Systems             Consultant |
 
 Table 18: Interview Participants
 
@@ -6827,39 +7244,23 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-All interview participants were clinical staff, either prescribers and/or pharmacists. All participants were from acute secondary care, from three different trusts with diverse geographical locations.
 
-12 interview participants had used electronic prescribing before, and the remaining 4 had used an electronic To Take Out (TTO) system with very basic prescribing functionality. The majority had medium or high computer experience, where high experience includes items such as being familiar with spreadsheet calculation functions and having an understanding of databases.
-
-_**Workshops**_
-
-12 participants were interviewed in 2 workshops (sessions 387 and 388). Each participant had volunteered through the NHS CFH Event Management System (EMS) signup. All 12 participants had previously taken part in CUI clinical engagement. Table 19 shows a summary of the participants’ profiles:
-
-387a Pharmacist Systems? ? JAC High
-
-387b Doctor Paediatrics Consultant Yes Trust Developed Medium/High
-
-387c Midwife and Patient Safety Officer
-
-Midwifery Senior Yes No Medium/High
-
-387d Pharmacist? Senior Yes Lorenzo, JAC, Ascribe [®] High
-
-387e Doctor General Practice GP Yes Vision High
-
-387f Pharmacist? Senior? Cerner Millennium [®] Medium/High
-
-388a Pharmacist Systems Senior? Cerner, Lorenzo High
-
-388b Pharmacist Medication Safety Senior? eTTO Medium/High
-
-388c Nurse Mental Health Senior? No High
-
-388d Nurse? Senior? eTTO?
-
-388e Pharmacist Medication Safety Senior? JAC, eTTO Medium
-
-388f Pharmacist Systems Senior? JAC Medium/High
+| Session Job Role | Specialty | Level | Prescriber? | Systems Used Experience |
+| --- | --- | --- | --- | --- |
+| 387a         Pharmacist | Systems | ? | ? | JAC                      High |
+| 387b         Doctor | Paediatrics | Consultant | Yes | Trust Developed          Medium/High |
+| 387c         Midwife and | Midwifery | Senior | Yes | No                       Medium/High |
+| Patient Safety |  |  |  |  |
+| Officer |  |  |  |  |
+| 387d         Pharmacist | ? | Senior | Yes | Lorenzo, JAC, Ascribe®   High |
+| 387e         Doctor | General Practice | GP | Yes | Vision                   High |
+| 387f         Pharmacist | ? | Senior | ? | Cerner Millennium®       Medium/High |
+| 388a         Pharmacist | Systems | Senior | ? | Cerner, Lorenzo          High |
+| 388b         Pharmacist | Medication Safety | Senior | ? | eTTO                     Medium/High |
+| 388c         Nurse | Mental Health | Senior | ? | No                       High |
+| 388d         Nurse | ? | Senior | ? | eTTO                     ? |
+| 388e         Pharmacist | Medication Safety | Senior | ? | JAC, eTTO                Medium |
+| 388f         Pharmacist | Systems | Senior | ? | JAC                      Medium/High |
 
 Table 19: Workshop Participants
 
@@ -7119,89 +7520,70 @@ Detailed notes from the interviews were qualitatively analysed using thematic co
 
 ##### E.4.1 Participant Description
 
-_**Interviews**_
 
-14 participants were interviewed in 11 sessions. Each participant had either volunteered through the NHS CFH Event Management System (EMS) signup or had been recruited by an HCP who had volunteered. 8 out of 14 participants had previously taken part in CUI clinical engagement for other work areas. Table 5 shows a summary of the participants’ profiles:
-
-342 Pharmacy Technician
-
-Pharmacist
-
-343 Pharmacist and Governance
-
-Pharmacist
-
-Pharmacist
-
-?
-
-Cancer Services
-
-?
-
-Renal
-
-Cancer Services
-
-?
-
-Senior
-
-Senior
-
-?
-
-?
-
-Drug history
-
-Independent
-
-Supplementary
-
-Independent
-
-?
-
-Discharge
-
-Discharge
-
-Discharge
-
-Discharge
-
-Chemotherapy System
-
-No
-
-No
-
-Yes
-
-No
-
-No
-
-344 Nurse Analyst? Senior Limited PCIS Yes
-
-345 Nurse Analyst Diabetes Senior Limited PCIS Yes
-
-346 Doctor Paediatrics Consultant Yes PCIS Yes
-
-347 Pharmacist Paediatrics Consultant Independent PCIS No
-
-348 Pharmacist and System Manager
-
-? Senior Independent PCIS Yes
-
-349 Doctor Psychiatry SpR Yes JAC, HIS Yes
-
-350 Doctor Psychiatry Consultant Yes No Yes
-
-351 Nurse Oncology Senior Limited No No
-
-352 Doctor SpR Elderly care Yes Discharge Yes
+| E.1 | Abstract |
+| --- | --- |
+| The UK | National Health Service (NHS) Common User Interface (CUI) programme is a partnership |
+| between | Microsoft® and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Program | me for Information Technology (NPfIT). |
+| As part | of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring |
+| that so | ftware applications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provide | s software developers with user interface design guidelines derived through a user-centric |
+| develop | ment process that includes explicit patient-safety evaluations. |
+| This su | mmary describes key findings from user research carried out in October 2008 by the CUI |
+| CAPS te | am on drug search (part of the Search and Prescribe work). These findings are a subset of |
+| those i | n a larger internal report prepared for the CUI CAPS Search and Prescribe team. |
+| Purpose | : |
+| To gain | clinical feedback on design concepts for drug search in electronic systems. |
+| Method: |  |
+| Intervi | ews: structured interviews with 14 Healthcare Professionals (HCPs) eliciting HCP |
+| prefere | nces and qualitative feedback on design alternatives. |
+| Survey: | online survey with 48 HCPs using open and closed questions. |
+| Key Res | ults: |
+| Based o | n clinician preference and rationale: |
+|  T | emplating should be used rather than default values |
+|  A | tabular template layout should be used |
+|  T | he number of templates presented to the user should be cut down by a prior selection of |
+| r | oute |
+|  G | eneric versus branded designs require some improvements |
+| E.2 | Research Objectives |
+| To gath | er HCP design preferences, qualitative feedback and possible patient safety hazards of CUI |
+| drug se | arch designs focusing on the areas of: |
+|  T | emplate prescriptions |
+|  G | eneric versus branded issues |
+|  G | eneral usability issues |
+| E.3 | Research Design |
+| Intervi | ews were structured, lasted one hour and carried out in person. Participants were taken |
+| through | wireframe design alternatives for each area of investigation and asked for preference |
+| based o | n patient safety criteria. Other qualitative feedback was elicited covering: |
+|  | Rationale for preference |
+|  | Design fit with current and best practice |
+|  | Design understandability |
+|  | Any potential hazards resulting from the designs. |
+| The onl | ine survey used open and closed questions, generally took 20—40 minutes for respondents |
+| to comp | lete and focused only the template prescription issues. As with the interviews, respondents |
+| were sh | own design alternatives and asked for preferences and rationale based on patient safety |
+| criteri | a. |
+| Detaile | d notes from the interviews were qualitatively analysed using thematic coding. |
+| E.4 | Results |
+| E.4.1 | Participant Description |
+| Intervi | ews |
+| 14 part | icipants were interviewed in 11 sessions. Each participant had either volunteered through |
+| the NHS | CFH Event Management System (EMS) signup or had been recruited by an HCP who had |
+| volunte | ered. 8 out of 14 participants had previously taken part in CUI clinical engagement for other |
+| work ar | eas. Table 5 shows a summary of the participants’ profiles: CUI |
+| Session | Job Role                          Specialty         Level          Prescriber? Systems Used Feedback? |
+| 342 | Pharmacy Technician         ?                 ?              Drug history   Discharge      No Pharmacist                  Cancer Services   Senior         Independent    Discharge      No |
+| 343 | Pharmacist and Governance   ?                 Senior         Supplementary Discharge       Yes Pharmacist                  Renal             ?              Independent    Discharge      No Pharmacist                  Cancer Services   ?              ?              Chemotherapy   No System |
+| 344 | Nurse Analyst               ?                 Senior         Limited        PCIS           Yes |
+| 345 | Nurse Analyst               Diabetes          Senior         Limited        PCIS           Yes |
+| 346 | Doctor                      Paediatrics       Consultant     Yes            PCIS           Yes |
+| 347 | Pharmacist                  Paediatrics       Consultant     Independent    PCIS           No |
+| 348 | Pharmacist and System       ?                 Senior         Independent    PCIS           Yes Manager |
+| 349 | Doctor                      Psychiatry        SpR            Yes            JAC, HIS       Yes |
+| 350 | Doctor                      Psychiatry        Consultant     Yes            No             Yes |
+| 351 | Nurse                       Oncology          Senior         Limited        No             No |
+| 352 | Doctor                      SpR               Elderly care   Yes            Discharge      Yes |
 
 Table 20: Interview Participants
 
@@ -7211,68 +7593,23 @@ Page 215
 
 HSCIC Controlled Document
 
-All interview participants were clinical staff and were from five different trusts with diverse geographical locations.
 
-Seven interview participants had used electronic prescribing before and a further five had used an electronic To Take Out (TTO) system with very basic prescribing functionality.
-
-_**Online Survey**_
-
-Survey respondents had either volunteered through the NHS CFH EMS signup or had previously participated in a CUI clinical engagement. Responses were anonymous. Table 21 shows a summary of the respondents’ job roles:
-
-Community Nurse 1
-
-Other Nurse 2
-
-Junior Doctor 4
-
-Consultant (Medical) 9
-
-Surgeon 1
-
-Anaesthetist 2
-
-Pharmacist 23
-
-Healthcare Scientist 1
-
-Pharmacy Technicians 2
-
-Healthcare Informatician 1
-
-Healthcare Manager 1
-
-Change Agent 1
+| Job Role | Number of Respondents |
+| --- | --- |
+| Community Nurse | 1 |
+| Other Nurse | 2 |
+| Junior Doctor | 4 |
+| Consultant (Medical) | 9 |
+| Surgeon | 1 |
+| Anaesthetist | 2 |
+| Pharmacist | 23 |
+| Healthcare Scientist | 1 |
+| Pharmacy Technicians | 2 |
+| Healthcare Informatician | 1 |
+| Healthcare Manager | 1 |
+| Change Agent | 1 |
 
 Table 21: Online Survey Respondents
-
-The total number of respondents was 48. 70% of respondents described themselves as patient facing and 48% had never used an ePrescribing system before.
-
-##### E.4.2 Design Areas
-
-_**Defaults and Templates**_
-
-- When comparing defaulting values versus template prescriptions:
-
- 60% preferred templating
-
- 14% preferred defaulting
-
- Other respondents answered: ‘no preference’ (10%), ‘it depends’ (8%) or ‘none are safe’(8%)
-
-- Though disadvantages were raised with both approaches, on balance the rationale given by
-
-interview participants and survey respondents suggested that templates were the safer and more scalable solution:
-
- For example, when compared with defaulting, templates forced a choice (rather than unconscious acceptance) and the presence of alternatives prompted (though did not ensure) thinking
-
-- If a template approach were to be used, consideration would have to be given as to
-
-whether the order of presentation was by ‘commoness’ or by having the ‘lowest’ first
-
-Page 216
-
-Copyright ©2013 Health and Social Care Information Centre
-
 HSCIC Controlled Document
 
 - A number of other issues were raised with the approach of suggesting values to prescribers
@@ -7487,224 +7824,72 @@ Detailed notes from the interviews were qualitatively analysed using thematic co
 
 ##### F.4.1 Participant Description
 
-15 participants were interviewed in 11 sessions. Each had either volunteered through the NHS CFH Event Management System (EMS) signup or had been recruited by an HCP who had volunteered. 4 out of 15 respondents had previously taken part in CUI clinical engagement for other work areas. Table 5 shows a summary of the participants’ profiles:
 
-280 Pharmacist
-
-Nurse Analyst
-
-Systems
-
-?
-
-Senior
-
-? Junior
-
-Yes
-
-No (but trains doctors)
-
-PCIS
-
-?
-
-High
-
-Medium
-
-281 Doctor Diabetes and Endocrinology
-
-SpR Yes PCIS Medium
-
-282 Doctor Paediatrics Consultant Yes PCIS Medium
-
-284 Nurse Analyst? ? Yes (trains doctors) PCIS Medium
-
-285 Pharmacist and Analyst
-
-Systems? Yes (manages system) PCIS High
-
-286 Nurse Critical Care Senior Yes PICCS Medium
-
-287 Doctor
-
-Doctor
-
-Pharmacist
-
-Intensive Care
-
-Anaesthetics
-
-Systems
-
-Consultant
-
-Consultant
-
-Consultant
-
-Yes
-
-Yes
-
-Yes
-
-PICCS
-
-PICCS
-
-PICCS
-
-Medium
-
-Medium
-
-High
-
-288 Doctor Elderly Medicine SpR No - Medium
-
-289 Pharmacist Paediatric Oncology
-
-Senior Yes Chemotherapy one
-
-Medium
-
-Medium
-
-Medium
-
-290 Nurse
-
-Pharmacist
-
-Nephrology
-
-Nephrology
-
-?
-
-Senior
-
-A little
-
-Yes
-
-Proton
-
-Proton
-
-291 Doctor Paediatrics Associate Specialist
+| F.1 | Abstract |
+| --- | --- |
+| The UK | National Health Service (NHS) Common User Interface (CUI) programme is a partnership |
+| between | Microsoft® and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Program | me for Information Technology (NPfIT). |
+| As part | of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring |
+| that so | ftware applications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provide | s software developers with user interface design guidelines derived through a user-centric |
+| develop | ment process that includes explicit patient-safety evaluations. |
+| This su | mmary describes key findings from user research carried out in July 2008 by the CUI CAPS |
+| team on | searching for drugs to prescribe. These findings are a subset of those in a larger internal |
+| report | prepared for the CUI CAPS Search and Prescribe team. |
+| Purpose | : |
+| To gain | clinical feedback on design concepts for searching for drugs to prescribe in electronic |
+| systems | . |
+| Method: |  |
+| Intervi | ews: structured interviews with 15 Healthcare Professionals (HCPs) eliciting HCP |
+| prefere | nces and qualitative feedback on design alternatives. |
+| Key Res | ults: |
+| Based o | n clinician preference and rationale: |
+|  T | he current method of searching for brands is inappropriate |
+|  T | he ‘Commonly Prescribed’ grouping was well received though questions remain about |
+| w | here this is ‘common’ to |
+|  T | here are several suggestions for improving aspects of the search interaction |
+|  T | he number of characters to trigger results display is still unclear. Current preferences are |
+| b | ased on speculation of possible error, which might be clarified either with real data or more |
+| r | obust experimentation |
+| F.2 | Research Objectives |
+| To gath | er HCP design preferences, qualitative feedback and possible patient safety hazards of CUI |
+| course | definition designs focusing on the areas of: |
+|  C | haracter trigger level |
+|  G | eneric versus brand search |
+| F.3 | Research Design |
+| Intervi | ews were structured, lasted on average one hour and carried out in person. Using a variety |
+| of pres | cribing tasks, participants were taken through: |
+| 1. | An interactive prototype for drug searching |
+| 2. | Static wireframes for some aspects of design |
+| Partici | pants were then asked for preferences based on patient safety criteria. Other qualitative |
+| feedbac | k was elicited covering: |
+|  | Rationale for preference |
+|  | Design fit with current and best practice |
+|  | Design understandability |
+|  | Any potential hazards resulting from the designs. |
+| Design | alternatives were order balanced per task. |
+| Detaile | d notes from the interviews were qualitatively analysed using thematic coding. |
+| F.4 | Results |
+| F.4.1 | Participant Description |
+| 15 part | icipants were interviewed in 11 sessions. Each had either volunteered through the NHS |
+| CFH Eve | nt Management System (EMS) signup or had been recruited by an HCP who had |
+| volunte | ered. 4 out of 15 respondents had previously taken part in CUI clinical engagement for other |
+| work ar | eas. Table 5 shows a summary of the participants’ profiles: Used a Drug Search             Computer |
+| Session | Job Role                   Specialty          Level                           System Used before?                        Experience |
+| 280 | Pharmacist           Systems            Senior       Yes                       PCIS           High Nurse Analyst        ?                  ? Junior     No (but trains doctors)   ?              Medium |
+| 281 | Doctor               Diabetes and       SpR          Yes                       PCIS           Medium Endocrinology |
+| 282 | Doctor               Paediatrics        Consultant   Yes                       PCIS           Medium |
+| 284 | Nurse Analyst        ?                  ?            Yes (trains doctors)      PCIS           Medium |
+| 285 | Pharmacist and       Systems            ?            Yes (manages system)      PCIS           High Analyst |
+| 286 | Nurse                Critical Care      Senior       Yes                       PICCS          Medium |
+| 287 | Doctor               Intensive Care     Consultant   Yes                       PICCS          Medium Doctor               Anaesthetics       Consultant   Yes                       PICCS          Medium Pharmacist           Systems            Consultant   Yes                       PICCS          High |
+| 288 | Doctor               Elderly Medicine   SpR          No                        -              Medium |
+| 289 | Pharmacist           Paediatric         Senior       Yes                       Chemotherapy   Medium Oncology                                                  one |
+| 290 | Nurse                Nephrology         ?            A little                  Proton         Medium Pharmacist           Nephrology         Senior       Yes                       Proton         Medium |
+| 291 | Doctor               Paediatrics        Associate    No                        -              Medium Specialist |
 
 Table 22: Interview Participants
-
-No - Medium
-
-All participants were clinical staff who prescribe as part of their role, or are involved with prescribing and are aware of related medication safety issues. All participants were from acute secondary care. The participants were from a number of different trusts, with diverse geographical locations.
-
-12 out of 15 participants had used some kind of electronic search to find drugs for prescribing. The majority had medium computer experience as they had to use computers as part of their clinical
-
-Page 220
-
-Copyright ©2013 Health and Social Care Information Centre
-
-HSCIC Controlled Document
-
-work. High experience includes items such as being familiar with spreadsheet calculation functions and having an understanding of databases.
-
-##### F.4.2 Design Areas
-
-_**Advantages of Current System Drug Search**_
-
-- Find a medication through generic or brand name, or local synonym
-
-- Results filtered based on context (for example, filtered to those generally used in current
-
-specialty)
-
-- Indication matched to drug selected at start of prescribing process as part of decision
-
-support check
-
-_**‘Commonly Prescribed’ Grouping**_
-
-- Participants were supportive of the feature
-
-- Questions were raised about to whom the results were ‘common’. That is, if it meant
-
-‘commonly prescribed in this trust’ is the set of commonly prescribed medications across all contexts in that trust a small enough set to be useful?
-
-- While some participants suggested ‘commoness’ could be per context (for example, per
-
-specialty), this would pose problems for people working cross-speciality such as junior doctors at night
-
-- Some degree of banner blindness observed as four participants did not initially see the
-
-group
-
-_**Co-Drug Search**_
-
-- All participants struggled to find co-drugs as missing hyphens were not tolerated by the
-
-search
-
-_**Naming Issues**_
-
-- Due to the search matching on the first word in a term, participants struggled to find results
-
-such as ‘yellow soft paraffin’ and ‘aspirin + paracetamol’ because their search key was not at the start of the term
-
-- Brands which have the first few letters the same as the generic drug are likely to be
-
-promoted, as both would be returned by searches on the first few characters
-
-_**Insulin**_
-
-- Participants described insulin prescribing as a difficult problem, with the implication that
-
-certain drugs such as insulin and heparin may require special handling in the search (for example, using ‘insulin’ to return a set of related insulins)
-
-_**Generic and Brand Search**_
-
-- All participants felt the current design was incorrect. That is, if you search using a brand,
-
-they felt having to re-enter the generic name in order to prescribe the generic drug was too time-consuming
-
-- Suggested solutions were split between:
-
- Returning both brand and generic names if searching on a brand name (four sessions)
-
- Directly diverting the prescriber to the generic name if searching on a brand name, apart from where branded prescribing is mandatory (four sessions)
-
-Page 221
-
-Copyright ©2013 Health and Social Care Information Centre
-
-HSCIC Controlled Document
-
-_**Co-Drugs**_
-
-- All participants liked and understood the idea of displaying the ingredients of co-drugs
-
-- Of 11 participants asked, 9 were confused by the co-drug search and felt it was problematic
-
-(consequently, this feature has been removed from CUI designs)
-
-_**Quick List**_
-
-- The majority of participants felt the Quick List would be useful, though all assumed it would
-
-be a list customised to their clinical context (team, department or specialty) rather than a trust-wide list
-
-- From their explanations of why it would be useful, participants confirmed that for many
-
-clinical contexts, or individuals, the number of medications used is small (at least for those that are commonly prescribed)
-
-- Participants raised concerns about mis-selection if the list slowly changed, and also
-
-questioned how the Quick List was different to the ‘common matches’ at the top of the search results
-
 _**Character Trigger**_
 
 - After performing a number of prescribing tasks on the prototype using two and four

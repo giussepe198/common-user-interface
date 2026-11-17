@@ -7,9 +7,26 @@
   --md-text-font-family: Arial, "Helvetica Neue", sans-serif;
 }
 
+[data-md-color-scheme="slate"] {
+  --md-hue: 210;
+  --md-primary-fg-color: #80bfff;
+  --md-primary-fg-color--light: #b8dbff;
+  --md-primary-fg-color--dark: #4f9de8;
+  --md-accent-fg-color: #80bfff;
+}
+
+.md-header__button.md-logo img,
+.md-nav__button.md-logo img {
+  width: auto;
+  height: 1.5rem;
+}
+
 .md-typeset img {
   height: auto;
   max-width: 100%;
+  /* Original figures use dark text, sometimes on transparent backgrounds.
+     Keep their source colours legible; never invert clinical illustrations. */
+  background: #fff;
 }
 
 /* Extracted tables can be wider than a phone. Keep scrolling local to the table. */

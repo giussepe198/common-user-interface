@@ -177,25 +177,12 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Shift handover Ward nurse to ward nurse
 
-Day medical team to night on-call doctor
-
-Geographic transfer From A&E to ward
-
-From ward to ward
-
-Ward to theatre and back
-
-Ward to investigation and back
-
-GP to acute setting (A&E, out of hours and so on)
-
-Care transfer Paramedic to A&E
-
-Ward to theatre and back
-
-GP to acute setting (A&E, out of hours and so on)
+| Handover Type Example | Example Instance |
+| --- | --- |
+| Shift handover | Ward nurse to ward nurse Day medical team to night on-call doctor |
+| Geographic transfer | From A&E to ward From ward to ward Ward to theatre and back Ward to investigation and back GP to acute setting (A&E, out of hours and so on) |
+| Care transfer | Paramedic to A&E Ward to theatre and back GP to acute setting (A&E, out of hours and so on) |
 
 Table 1: Handover Types
 
@@ -275,17 +262,62 @@ HSCIC Controlled Document
 
 #### 2.5 Stages of Handover
 
-Figure 1 below shows the simplest breakdown of the handover process by dividing it into conceptual stages:
 
-Before During After
+|  | Multiple patients handed over communally with a summary only, followed by a small number of patients handed over individually in more detail |
+| --- | --- |
+|  | Between the two nurses responsible (within roles) |
+|  | Co-located (face-to-face) |
+|  | Synchronous |
+|  | Planned |
+| ical pa | ramedic to A&E handover: |
+|     Si | ngle patient handed over with full detail (as full as possible). |
+|     Be | tween paramedic and A&E nurse (between roles) |
+|     Pa | tient changing location and care type |
+|     Co | -located (face-to-face) |
+|     Sy | nchronous |
+|     Ad | -hoc |
+| at a sp | ecific handover is carried out in terms of: the roles present, specific location, |
+| n trans | ferred, supporting documentation, importance placed on it, duration, patient |
+| nd so o | n, varies greatly within the NHS due to a lack of handover standardisation. |
+| commend | ations for standardisation have been made for various contexts (London |
+| Service | guidelines, Royal College of Physicians Guidelines, Nursing training), with |
+| degrees | of enforcement. However, to a larger extent handovers happen according to local |
+| s. |  |
+| ences b | etween types of handover will have implications for different system design. For |
+| n a par | amedic to A&E situation, greater consideration will have to be given to the ad-hoc |
+| rushed | nature of the handover. This can also result in the documentation of the handover |
+| some ti | me after the actual handover event. |
+| ers Inv | olved in Handover |
+| n to th | e central role of the patient, whenever possible, handover will always involve at |
+| users, | or two sets of users. In general, these can be referred to as the ‘giver of handover’ |
+| ver of | handover’. In a specific kind of handover such as shift handover, a more specific |
+| e given | , for example, ‘incoming users’ and ‘outgoing users’. However, for the sake of |
+| ross al | l types of handover, the terms ‘giver’ of handover and ‘receiver’ of handover will be |
+| is docu | ment, as well as in the Requirements Spreadsheet. An example of where the giver |
+| er can | both be sets of individuals is ward nursing handovers where one team will go |
+| eir ind | ividual patients communally, and the other team will listen and question the givers. |
+| n, ther | e may be users in handover who are involved on both sides of the handover. For |
+| n shift | handover, other staff that are on a different shift pattern may be present, and |
+| they ha | ve worked on the shift now leaving, and will also be working with the new shift. |
+| er of h | andover doesn’t necessarily only receive information about the situation being |
+| r. In s | hift handovers, it is likely that the receiver of handover (incoming users) will have |
+| the sam | e location during their previous shift as the giver of handover (outgoing users), |
+| herefor | e be able to add information about the handover items that have been the |
+| lity of | the system for more than one shift. For example, the receiver may have been on |
+| the pa | tient was admitted and can give a more accurate description of the patient’s |
+| on admi | ssion. Giver of Handover                      Receiver of Handover |
+| tages o | f Handover |
+| elow sh | ows the simplest breakdown of the handover process by dividing it into |
+| aration |  |
+| stages | :                Negotiation               Re-engagement |
+| Bef | ore                                During                   After Initiation                       Acceptance |
 
 Figure 1: Stages of Handover - Simple Breakdown
 
-Figure 2 below shows the stages of handover in more detail.
 
-Preparation Negotiation Re-engagement
-
-Initiation Acceptance
+| Preparation | Negotiation | Re-engagement |
+| --- | --- | --- |
+| Initiation | Acceptan | ce |
 
 Figure 2: Stages of Handover - In Detail
 
@@ -315,13 +347,17 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Figure 3 below shows an idealised view of who has the responsibility for items being handed over during the handover. Whether the responsibility is transferred at the beginning of handover, or at the end of the acceptance is a detail which is outside of the scope of the NHS CUI work. In addition, there may be context-specific legal positions regarding the point at which the receiver of handover becomes responsible for the items being handed over.
 
-Giver of Handover Receiver of Handover
-
-Preparation Negotiation Re-engagement
-
-Initiation Acceptance
+| Before | During | After |
+| --- | --- | --- |
+| w shows an idealised view of who has the re | sponsibility for items being ha | nded over |
+| ndover. Whether the responsibility is trans | ferred at the beginning of hand | over, or at |
+| e acceptance is a detail which is outside o | f the scope of the NHS CUI work | . In |
+| re may be context-specific legal positions | regarding the point at which th | e receiver of |
+| mes responsible for the items being handed | over. |  |
+| Giver of Handover | Receive | r of Handover |
+| aration                               Negot | iation                    Re-en | gagement |
+| Initiation | Acceptance |  |
 
 Figure 3: Users who are Responsible for Items during Stages of Handover
 
@@ -399,19 +435,46 @@ HSCIC Controlled Document
 
 ##### 3.2.1 Staff Members Involved
 
-NHS CUI Project Lead (Junior doctor) Henry Dowlen
 
-NHS CUI Project Manager Igor Laketic
-
-Clinical advisor (District nurse) David Allan-Smith
-
-Clinical advisor (Senior doctor) Kate Verrier Jones
-
-NHS CFH Design Guide Workstream Lead Tim Chearman
-
-NHS CFH Design Guide Workstream Lead Kit Lewis
-
-NHS CUI Researcher James Fone
+|  | Task management across handover |
+| --- | --- |
+|  | Ongoing care on the wards |
+|  | Ongoing care in the community |
+|  | Paramedic to A&E handover |
+| graph | ic transfer |
+|  | From A&E to a ward |
+|  | From ward to a ward |
+|  | To and from the operating theatre |
+|  | To and from investigations |
+| urgen | t transfer to acute setting |
+|  | To A&E |
+|  | To out of hours |
+|  | To ambulance |
+| O | ut of Scope |
+| refer | ral to specialist (‘blind’ referral) |
+| uest | for consultations or other service |
+| charg | e from hospital to community for follow up |
+| erral | to hospital (except urgent community to hospital transfer) |
+| erral | s |
+| initi | on of datasets for handover |
+| D | iscussion of Scope |
+| were | not considered to be within the scope of the handover project during the NHS CUI |
+| tion | (as shown in section 3.1). Although many types of handover were within scope, and |
+| s of | handover were studied, (see list of site visits in APPENDIX A), there was an |
+| on sh | ift handover in hospitals, and towards multi-patient doctor’s shift handover in |
+| r. Th | is bias was due to two factors: the perception of a greater need for a handover- |
+| inter | face for these kinds of handover, and the previous experience of the NHS CUI |
+| orkin | g on the handover project. |
+| ork C | arried Out |
+|  | Staff Members Involved |
+|  | Name |
+| oject | Lead (Junior doctor)                     Henry Dowlen |
+| oject | Manager                                  Igor Laketic |
+| dviso | r (District nurse)                        David Allan-Smith |
+| dviso | r (Senior doctor)                         Kate Verrier Jones |
+| sign | Guide Workstream Lead                     Tim Chearman |
+| sign | Guide Workstream Lead                     Kit Lewis |
+| searc | her                                       James Fone |
 
 Table 2: Staff Members Involved in Handover Work
 
@@ -537,19 +600,15 @@ HSCIC Controlled Document
 
 #### 4.2 Terminology Used in the Requirement Spreadsheet
 
-**Users** Refers to any of the staff members who are involved with handover, whether they are using a computer system or not. It refers to both the givers and receivers of handover.
 
-**Item** Handovers in a clinical context are usually about patients. However, handovers can also include non-patient items such as “please check the resus trolley”, ”please contact pharmacy about low stock in the ward drug cabinets”. An item is a conceptual unit about which individual bits of information refer. Where the item is a patient then the information handed over about them will be attributes such as: name, age, diagnosis, current tasks and so on. Figure 4 illustrates the difference between a dataset and an item.
-
-**Dataset** Each item that is handed over will have a ‘dataset’ associated with it. This is the actual information that is handed over about the item. For a patient item, an example ‘dataset’ for shift handover might be: name, age, bed number, diagnosis, current tasks, recently completed tasks, and dependency score. An individual bit of a ‘dataset’ is referred to in the requirements as an ‘attribute’ or ‘dataset part’. For an illustration of the difference between a dataset and an item, see Figure 4 below. This investigation did not attempt to define the datasets for use in handover due to the wide variation between different handover contexts.
-
-**Snapshot** Refers to a static view of the documentation used in handover, at the point at which the handover was accepted. It therefore represents the recorded information that the receiver of handover accepted responsibility for at the time of handover.
-
-**Handshake** Refers to the process of accepting (or rejecting) the transfer of responsibility at the end of the handover. This process involves both the giver and the receiver of the handover. This term has been taken from other industry’s descriptions of handover process.
-
-**Handover event** Refers to the entire handover, from initiation to acceptance. A record of the handover event might include a record
-
-that the event took place as well as certain other details (for example, date and time, location, attendees and their handover role, status of the handshake). May also refer to a live recording of the entire event (for example, an audio recording).
+| Term | Definition |
+| --- | --- |
+| Users | Refers to any of the staff members who are involved with handover, whether they are using a computer system or not. It refers to both the givers and receivers of handover. |
+| Item | Handovers in a clinical context are usually about patients. However, handovers can also include non-patient items such as “please check the resus trolley” , ”please contact pharmacy about low stock in the ward drug cabinets”. An item is a conceptual unit about which individual bits of information refer. Where the item is a patient then the information handed over about them will be attributes such as: name, age, diagnosis, current tasks and so on. Figure 4 illustrates the difference between a dataset and an item. |
+| Dataset | Each item that is handed over will have a ‘dataset’ associated with it. This is the actual information that is handed over about the item. For a patient item, an example ‘dataset’ for shift handover might be: name, age, bed number, diagnosis, current tasks, recently completed tasks, and dependency score. An individual bit of a ‘dataset’ is referred to in the requirements as an ‘attribute’ or ‘dataset part’. For an illustration of the difference between a dataset and an item, see Figure 4 below. This investigation did not attempt to define the datasets for use in handover due to the wide variation between different handover contexts. |
+| Snapshot | Refers to a static view of the documentation used in handover, at the point at which the handover was accepted. It therefore represents the recorded information that the receiver of handover accepted responsibility for at the time of handover. |
+| Handshake | Refers to the process of accepting (or rejecting) the transfer of responsibility at the end of the handover. This process involves both the giver and the receiver of the handover. This term has been taken from other industry’s descriptions of handover process. |
+| Handover event | Refers to the entire handover, from initiation to acceptance. A record of the handover event might include a record that the event took place as well as certain other details (for example, date and time, location, attendees and their handover role, status of the handshake). May also refer to a live recording of the entire event (for example, an audio recording). |
 
 Table 3: Terminology Used in the Requirements Spreadsheet
 
@@ -744,21 +803,23 @@ HSCIC Controlled Document
 
 #### 6.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
 
 Table 4: Terms and Abbreviations
 
 #### 6.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
 
 Table 5: Definitions
 
@@ -792,15 +853,22 @@ HSCIC Controlled Document
 
 #### 6.4 References
 
-**R1.** NHS CUI Design Guide R4 Handover Requirements Spreadsheet 1.0.0.0 01-Mar-2007
 
-**R2.** BMA and Junior Doctors’ Committee (2004). Safe handover: safe patients. [http://www.bma.org.uk/ap.nsf/Content/Handover](http://www.bma.org.uk/ap.nsf/Content/Handover)
-
-**R3.** Lardner, R. (1996) Effective shift handover. Prepared for Health and Safety Executive Offshore Safety Division. [http://www.hse.gov.uk/research/otopdf/1996/oto96003.pdf](http://www.hse.gov.uk/research/otopdf/1996/oto96003.pdf)
-
-**R4.** Wears RL, Perry SJ, Shapiro M, Beach C, Croskerry P. and Behara R (2003). Shift Changes Among Emergency Physicians: Best of Times, Worst of Times. In Proceedings of the Human Factors and Ergonomics Society 47 [th] Annual Meeting, Human Factors and Ergonomics Society, 1420-1423.
-
-**R5.** [Wilson S, Galliers J, and Fone J (2005). Medical Handover: A Study and](http://hcid.soi.city.ac.uk/research/Wilson-heps2005) [Implications for Information Technology. Healthcare Systems, Ergonomics and](http://hcid.soi.city.ac.uk/research/Wilson-heps2005) Patient Safety (HEPS 2005), Florence, Italy, April 2005.
+| Reference Document | Version | Date |
+| --- | --- | --- |
+| R1.              NHS CUI Design Guide R4 Handover Requirements Spreadsheet | 1.0.0.0 | 01-Mar-2007 |
+| R2.              BMA and Junior Doctors’ Committee (2004). Safe handover: safe patients. |  |  |
+| http://www.bma.org.uk/ap.nsf/Content/Handover |  |  |
+| R3.              Lardner, R. (1996) Effective shift handover. Prepared for Health and Safety |  |  |
+| Executive Offshore Safety Division. |  |  |
+| http://www.hse.gov.uk/research/otopdf/1996/oto96003.pdf |  |  |
+| R4.              Wears RL, Perry SJ, Shapiro M, Beach C, Croskerry P. and Behara R (2003). |  |  |
+| Shift Changes Among Emergency Physicians: Best of Times, Worst of Times. |  |  |
+| In Proceedings of the Human Factors and Ergonomics Society 47th Annual |  |  |
+| Meeting, Human Factors and Ergonomics Society, 1420-1423. |  |  |
+| R5.              Wilson S, Galliers J, and Fone J (2005). Medical Handover: A Study and |  |  |
+| Implications for Information Technology. Healthcare Systems, Ergonomics and |  |  |
+| Patient Safety (HEPS 2005), Florence, Italy, April 2005. |  |  |
 
 Table 6: References
 
@@ -814,61 +882,37 @@ HSCIC Controlled Document
 
 ![](handoverintro_assets/handoverintro.pdf-22-0.png)
 
-V1 Birmingham Heartlands x x
 
-V2 Birmingham Defence Medical Services x x
-
-V3 Blackpool Hospital x x
-
-V4 Kingston Hospital x x x x x
-
-V5 Charing Cross Hospital x x x x x
-
-V6 Manchester Royal Infirmary x
-
-V7 St. Mary’s Hospital Paddington x x
-
-V8 West Middlesex Hospital x
-
-V9 Wexham Park Hospital x
-
-V10 Chelsea Westminster x x x
-
-V11 South Tees Trust x x
-
-V12 Portsmouth Hospital x x x
-
-V13 Royal Free Hospital x
-
-V14 London Ambulance Service x x
-
-V15 National Air Traffic Services x
-
-V16 St. George’s Hospital x
-
-V17 District Nurse (site unknown) x
-
-V18 A&E Department x x
-
-V20 GP Practice Putney
-
-V21 GP Surgery Surbiton x x x
-
-V22 GP Surgery Cardiff x x
-
-V23 GP Surgery Redhill x x x
-
-V24 Guildford Hospital x x
-
-V25 Poole Hospital x
-
-V26 Brighton Hospital x x
-
-V27 Helicopter Emergency Medical Service
-
-V33 Physiotherapist, Royal Marines x
-
-V35 Community Physiotherapist x
+| Visit ID | Site Name Doctor   Nurse       AHP         IT   Other |
+| --- | --- |
+| V1 | Birmingham Heartlands                    x                              x |
+| V2 | Birmingham Defence Medical Services      x                              x |
+| V3 | Blackpool Hospital                       x        x |
+| V4 | Kingston Hospital                        x        x           x         x       x |
+| V5 | Charing Cross Hospital                   x        x           x         x       x |
+| V6 | Manchester Royal Infirmary                                                      x |
+| V7 | St. Mary’s Hospital Paddington           x        x |
+| V8 | West Middlesex Hospital                                                 x |
+| V9 | Wexham Park Hospital                              x |
+| V10 | Chelsea Westminster                      x        x                     x |
+| V11 | South Tees Trust                         x                              x |
+| V12 | Portsmouth Hospital                      x        x                     x |
+| V13 | Royal Free Hospital                                                     x |
+| V14 | London Ambulance Service                 x                                      x |
+| V15 | National Air Traffic Services                                                   x |
+| V16 | St. George’s Hospital                                                   x |
+| V17 | District Nurse (site unknown)                     x |
+| V18 | A&E Department                           x        x |
+| V20 | GP Practice Putney |
+| V21 | GP Surgery Surbiton                      x        x           x |
+| V22 | GP Surgery Cardiff                       x        x |
+| V23 | GP Surgery Redhill                       x        x                     x |
+| V24 | Guildford Hospital                       x                    x |
+| V25 | Poole Hospital                           x |
+| V26 | Brighton Hospital                        x        x |
+| V27 | Helicopter Emergency Medical Service |
+| V33 | Physiotherapist, Royal Marines                                x |
+| V35 | Community Physiotherapist                                     x |
 
 Table 7: Site Visits
 
@@ -980,19 +1024,17 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-NOC BIU nurses Room and bed, patient name, age, consultants and teams under, diagnosis and PMH, case details, plan, dependency score, physiotherapist/OT
 
-Image 1 Current length of stay, bed, patient number, surname, forename, sex, problems, jobs, AEP score, name and time last updated
-
-Image 2 PMH, current problems, management plan, interested consultants, name of person updating
-
-Image 4 Room, age, consultant, free text inc diagnosis and plan
-
-Image 5 Name, age, diagnosis, op and date, X-ray, wound, Hb, medical, social
-
-Image 7 Ward, bed, surname, first name, dob, sex, PMI number, consultant, speciality, priority, free text clinical summary inc: current problem, PMH, interventions, social and so on
-
-Image 8 Name, age, diagnosis, op and date, X-ray, wound, Hb, medical, social
+| Source | Appropriate for | Dataset |
+| --- | --- | --- |
+| London Ambulance | Paramedic / A&E | Vital signs, history, injuries, name, age. Followed by: social circumstances to |
+| Service |  | help with discharge planning, relevant drugs and medical information M.I.S.T. Cause, treatment and expectations – patient ID, Hx, Tx |
+| National Air Traffic |  | W.E.S.T. |
+| Service |  |  |
+| Handover workshop | Doctor ITU Nurse to Nurse Nurse Weekend doctors Doctors Nurse to theatre Surgical theatre Doctors at night GP from out of hours GP | Age, sex, and other personal details. Current problems, significant past, jobs to be done, progress since last handover, major changes, for example, drugs, plan, significant results, important details for example, DNR Name, age, test results, current status, major changes, chronic conditions, jobs, DNR status, obs frequency, social background, discharge projection, eating and drinking, dependency Name, age, why in hospital, current chronic conditions, tests, results Name, dob, presenting complaint, infection status, current interventions such as, ‘jobs’, plans of care, any problems occurred or risks highlighted High level summary: name, team (consultant under), dob and hospital number, PMH – v brief and summarised (with more detail available ‘on expansion’), current problems, progress – relevant Multi-disciplinary team input, plan/jobs relevant to current problem Names, consultant, basic diagnosis and any relevant problems Patient details, consultant or GP responsible, PMH (may be coded), current problem for example, pneumonia, progress for example, had 7 days IV Abcs, converted to oral. Jobs Pt name, dob, number, named doctor (GP or consultant), current problem (to include admission reason and any other problems since admission), progress, plan (to discharge in 1 week on arrangement of services, jobs) Patient details, main current problems (not long PMH), progress to date, plan, main jobs that need to be done by the person being handed over to. Jobs specific to person Much more detailed including observations Patient’s personal details. Procedure to be carried out. Patient’s history, care carried out, tests to be completed or undergone (maybe currently ongoing), medications (maybe just current), allergies, social background. Incomplete jobs, follow up to be done, future jobs Summary and demographics, current situation, other health Professionals involved: DGN, relatives, next of kin |
+| Clinical site observations | HDU Hospital 24/7 Ward clerks Surgical ward A&E communal display Hospital – nurse (V13) London Ambulance Service Control District nurse A&E communal display Hospital (V27) Midwifery Hospital physiotherapi Hospital occupational therapist Surgical handover | Time-based observations Bed, ward, consultant, last name, first name, hospital ID, priority, clinical summary, doctor’s tasks, nurse’s tasks, nurse’s notes and doctor’s handover notes Cut-down version of hospital 24/7 Demographics, current problems summary, task lists with pertinent tasks highlighted AND role/speciality-based information Current patients plus: basic demographics, time to breech, outstanding tasks Forename, surname, dob, NHS number, ward, consultant, diagnosis, clinical priority, clinical instructions, results to be reviewed, investigations to be requested, outcome, audit: user and time stamps. Patient details and address. Some clinical information and an assessment of severity. Medical information is free text Patient details, correct location, brief summary, task to be performed Handing over clinical summary, intended tasks, intended outcomes, breech times Name/Age, MOI/Location, GCS/Limb movements, Injuries top to toe, Interventions/Drugs, Volume Issues Y/N, Immediate needs Patient id, progress and risk factors inc: number of previous pregnancies, results of exams, future care Colour to indicate risk status st    Same as dataset for ward nurse, plus which patients need to be seen and why Same as Hospital physiotherapist plus dependency and mobility status Patient’s name, location (ward and bed number), date of admission, diagnosis, procedure (with date), complications and progress, management plan, resuscitation plan, consultant availability (and instructions if not available), expected need for review, with name of doctor completing handover and date to confirm that information is current |
+| Artefact analysis | Doctors (Student BMJ) Paediatric renal hospi doctors Generic (pharmacist clinical advisor) Hospital at Night ward view CCOT St Marys nurses | Patient name, age and location, presenting complaint, working diagnosis, treatment given. When relevant extra items: results of investigations or results pending, past medical history and drugs, key clinical findings, social issues, tasks which need to be done tal   Patient identifier, age, diagnosis, management/problems, plan (all free text) Patient name / number (links to more details), handover comments (free text), exceptions (problems and issues), patient information (allergies and so on) Ward level information: beds total, beds free, dependency ward level actions. Patient level information: status (illness), expected discharge, hospital number, surname, sex, dob, consultant, infection risk, dependency, merlin forms, order/results, HAN link Name, number, dob, ward and consultant, diagnosis and PMH, adjuvant therapies, referred by and referred date, triggers for PART, interventions required, outcomes, last updated , days on list , information about discharge Patient ID, age, diagnosis and PMH, nursing needs/intervention, (plan), social circumstance, additional notes |
+| Source | Appropriate for     Data NOC BIU nurses      Room PMH, Image 1             Curr jobs Image 2             PMH, pers Image 4             Room Image 5             Name Image 7             Ward prio soci Image 8             Name | set and bed, patient name, age, consultants and teams under, diagnosis and case details, plan, dependency score, physiotherapist/OT ent length of stay, bed, patient number, surname, forename, sex, problems, , AEP score, name and time last updated current problems, management plan, interested consultants, name of on updating , age, consultant, free text inc diagnosis and plan , age, diagnosis, op and date, X-ray, wound, Hb, medical, social , bed, surname, first name, dob, sex, PMI number, consultant, speciality, rity, free text clinical summary inc: current problem, PMH, interventions, al and so on , age, diagnosis, op and date, X-ray, wound, Hb, medical, social |
 
 Table 8: Example Handover Datasets
 
@@ -1021,6 +1063,14 @@ Project Manager: Mala Bridgelal Ram (c/o Valerie Porter)
 [http://hcid.soi.city.ac.uk/research/Ghandi.html](http://hcid.soi.city.ac.uk/research/Ghandi.html)
 
 Page 23
+
+
+| Project | Organisation | Contact |
+| --- | --- | --- |
+| Handover datasets | Clinical Risk Minimisation – Connecting for Health | Handover Project Manager: Sarah Crossland |
+| Records Standards work | Heath Informatics Unit – Royal College of Physicians | Project Manager: Mala Bridgelal Ram (c/o Valerie Porter) |
+| ‘Ghandi’ Generic | City University Human Computer Interaction | http://hcid.soi.city.ac.uk/research/Ghandi.html |
+| Handover Investigation | Design Department |  |
 
 Table 9: Handover Research Projects
 
@@ -1152,47 +1202,65 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-L36 National Air Traffic Services. "Guidance on handover." Personal Communication.
 
-L37 Common User Interface Internal Document
-
-L38 Common User Interface Internal Document
-
-L39 Common User Interface Internal Document
-
-L40 Common User Interface Internal Document
-
-L41 Common User Interface Internal Document
-
-L42 Common User Interface Internal Document
-
-L43 Common User Interface Internal Document
-
-L44 Common User Interface Internal Document
-
-L45 Common User Interface Internal Document
-
-L46 Common User Interface Internal Document
-
-L47 Common User Interface Internal Document
-
-L48 Nace, S.G., Graumlish, J.F. and Aldag, J.C. (2006) "Software design to facilitate information transfer at hospital discharge." Informatics in Primary Care 2006;14:109–19
-
-L49 Common User Interface Internal Document
-
-L50 Common User Interface Internal Document
-
-L51 Common User Interface Internal Document
-
-L52 Wilson, S., Galliers, J. and Fone, J. (2005) "Medical Handover: A Study and Implications for Information Technology." Healthcare Systems, Ergonomics and Patient Safety (HEPS 2005), Florence, Italy, April 2005.
-
-[http://www-hcid.soi.city.ac.uk/research/Ace.html (Accessed on 09-Mar-2007)](http://www-hcid.soi.city.ac.uk/research/Ace.html)
-
-L53 Morris. K. (2006). "i Handover: A new process and web-based system for clinical handovers."
-
-[http://www.archi.net.au/__data/assets/pdf_file/33866/ihandover.pdf](http://www.archi.net.au/__data/assets/pdf_file/33866/ihandover.pdf) (Accessed 09-Mar-2007)
-
-L54 Wears RL, Perry SJ, Shapiro M, Beach C, Croskerry P. and Behara R (2003). “Shift Changes Among Emergency Physicians: Best of Times, Worst of Times.” In Proceedings of the Human Factors and Ergonomics Society 47 [th] Annual Meeting, Human Factors and Ergonomics Society, 1420-1423.
+| L1 | Perry, S. (2004) "Transitions in Care: Studying Safety in Emergency Department Signovers." Focus On Patient Safety, Volume 7, pp 1-3 http://www.npsf.org/download/Focus2004Vol7No2.pdf (Accessed 09-Mar-2007) |
+| --- | --- |
+| L2 | Wilson, S., Galliers, J. and Fone, J. (2006) "Not All Sharing Is Equal: Investigating the Impact of a Large Display on Small Group Collaborative Work." To appear in Proceedings CSCW2006. |
+| L3 | Wears, R.L., Shawna J., Perry, S., Wilson, S., Galliers, J. and Fone, J. (2006) "Emergency department status boards: user-evolved artefacts for inter- and intra-group coordination." To appear in Cognition Technology and Work. |
+| L4 | Sexton, A. (2004) "Nursing handovers: do we really need them?" Journal of Nursing Management., 2004 12(1):37- 42. |
+| L5 | Royal College of Physicians (2000) “GPT Handbook: Guidelines on effective patient handover for physicians” |
+| L6 | Corbett, B. (2003) Proposal for “The Hospital at night in a large teaching hospital." http://www.campus.ncl.ac.uk/pimd/documents/MMC/propJamesCook.pdf#search=%22handover%20South%20Tee s%22 (Accessed 09-Mar-2007) |
+| L7 | Nemeth, C.P., Kowalsky, J., Brandwijk, M., O'Connor, M.F., Nunnally, M.E., Klock, P.A. and Cook, R.I. (2005) "Distributed Cognition: How Hand-Off Communication Actually Works." http://ctlab.protectedsite.net/documents/ASA2005%20Handoffs%20POSTER.pdf |
+| L8 | Miller, A., Venkatesh, B. and Limpus, A. (2004) "Thematic Threads: Unlocking the mystery of communication breakdown in clinical handovers." ARCHI Clinical Handover Conference, Adelaide 2004. |
+| L9 | Behara, R., Wears, R.L., Perry, S., Eisenberg, E., Murphy, L., VanderHoeff, M., Shapiro, M., Beach, C., Croskerry, P. and Cosby, K. (2005) "A Conceptual Framework for Studying the Safety of Transitions in Emergency Care." Advances in Patient Safety: From Research to Implementation. Vol 2 http://www.ahrq.gov/qual/advances (Accessed 09-Mar-2007) |
+| L10 | Australian Council for Safety and Quality in Healthcare (2005) "Clinical Handover and Patient Safety - Literature Review Report." http://www.safetyandquality.org/internet/safety/publishing.nsf/Content/AA1369AD4AC5FC2ACA2571BF0081CD95/ $File/clinhovrlitrev.pdf (Accessed 09-Mar-2007) |
+| L11 | Cheah, L.P., Amott, D.H., Pollard, J. and Watters, D.A.K. (2005) "Electronic medical handover: towards safer medical care." MJA 2005; 183 (7): 369-372. http://www.mja.com.au/public/issues/183_07_031005/che10928_fm.html (Accessed 09-Mar-2007) |
+| L12 | Roy, S. (2005) "My Patient hospital handover system," contained within Delivering Front Line Clinical Engagement in Health Informatics, by Dr Robin Mann: http://hiu.rcplondon.ac.uk/documents/HC2005-presentations.pdf (Accessed 09-Mar-2007) |
+| L13 | Wilson, S., Fone, J. and Galliers, J. (2004) "Clinical Handover Appliance (CHA): A Prototype Design. Technical Report, ACE/TR3/V1." HCI Design, City University. http://www-hcid.soi.city.ac.uk/research/Ace.html (Accessed 09-Mar-2007) |
+| L14 | Wilson, S., Galliers, J. and Fone, J. (2006) "Cognitive Artefacts In Support Of Medical Shift Handover: An In-Use, In-Situ Evaluation." To appear in International Journal of Human-Computer Interaction. |
+| L15 | Patterson, E. (2007). "Handovers". http://csel.eng.ohio-state.edu/patterson//Handovers.html (Accessed 09-Mar-2007) |
+| L16 | BMA and NPSA (2004) "Safe handover: safe patients". http://www.npsa.nhs.uk/site/media/documents/1037_Handover.pdf (Accessed 09-Mar-2007) |
+| Literature |  |
+| Liter | ature Reference |
+| Reference ID |  |
+| L17 | Various Authors (2006) "That's all I got handed over." BMJ 2006;332(7539):496 http://www.bmj.com/cgi/content/extract/332/7539/496 (Review, accessed 09-Mar-2007) |
+| L18 | Lardner, R. (1996) "Effective Shift Handover: A Literature Review." Health and Safety Executive. June 1996. Offshore technology report-OTO 96 003. http://www.hse.gov.uk/research/otopdf/1996/oto96003.pdf (Accessed 09-Mar-2007) |
+| L20 | Cavendish, S., Gallen, D. (2006) "Investigation into the use of PDAs in Hospitals for Safe Handover". Personal Communication. Leicestershire, Northamptonshire and Rutland Healthcare Workforce Deanery. |
+| L21 | Bernau, S., Aldington, S., Robinson, G. and Beasley, R. (2006) "From medical student to junior doctor: The medical handover - a good habit to cultivate." studentBMJ 2006;14:177 – 220 http://www.studentbmj.com/search/pdf/06/05/sbmj188.pdf (Accessed 09-Mar-2007) |
+| L22 | Barthelmes, L. (2006) "The Wales Handover Survey: junior doctors take charge." http://www.saferhealthcare.org.uk/IHI/Topics/ManagingChange/SafetyStories/TheWalesHandoverSurvey.htm (Accessed 09-Mar-2007) |
+| L23 | Gulati, G. (2006) "Safe handover in psychiatry: is it time to set standards?" http://www.saferhealthcare.org.uk/IHI/Topics/ManagingChange/SafetyStories/SafeHandoverInPsychiatry.htm (Accessed 09-Mar-2007) |
+| L24 | Ottewill, M. (2006) "Critical points on the patient pathway: a story from Brighton" http://www.saferhealthcare.org.uk/IHI/Topics/IntheRealWorld/TransferofCare/SafetyStories/CriticalPoints.htm (Accessed 09-Mar-2007) |
+| L26 | Forster, A., Witherington, E. (2006)"Transfers of Care: Mapping the Terrain." http://www.saferhealthcare.org.uk/IHI/Topics/AnalysisandTheory/Features/6130_TransfersofCare_MappingtheTerra in.htm (Accessed 09-Mar-2007) |
+| L27 | Healey, K., Wyatt, M. (2006) "Are you are working at full STEAM? A clinical assessment system to escalate and monitor activity." http://www.saferhealthcare.org.uk/IHI/Topics/ManagingChange/SafetyStories/FullSTEAM.htm (Accessed 09-Mar- 2007) |
+| L28 | Dods, V. (2006) "The community matron: a vital link between hospital and community care." http://www.saferhealthcare.org.uk/IHI/Topics/IntheRealWorld/TransferofCare/SafetyStories/TheCommunityMatronVi talLinkBetweenHospitalAndCommunityCare.htm (Accessed 09-Mar-2007) |
+| L30 | Various Authors (2006) "Rapid Responses to: REVIEWS: Myooran Sithamparanathan 'That's all I got handed over.'" http://www.bmj.com/cgi/eletters/332/7539/496 (Accessed 09-Mar-2007) |
+| L31 | Healthcare Workforce (2006). “Hospital at Night Baseline Report.” http://www.healthcareworkforce.nhs.uk/working_time_directive/wtd_projects/baseline_report.html (Accessed 09- Mar-2007) |
+| L32 | Various Authors (2006) "Rapid Responses to: LETTERS: Mathew Tokode, Breden O'Riordan, and Ludger Barthelmes 'That's all I got handed over': Missed opportunities and opportunity for near misses in Wales" http://www.bmj.com/cgi/eletters/332/7541/610-a (Accessed 09-Mar-2007) |
+| L33 | Muppala, H., Clarke, F. (2006) "Burnley General Hospital's team approach to improve handover of care." http://www.saferhealthcare.org.uk/IHI/Topics/IntheRealWorld/TransferofCare/SafetyStories/BurnleyGeneralHospital. htm (Accessed 09-Mar-2007) |
+| L34 | London Ambulance Service NHS Trust (2002) "Procedure on the Handover of Patients." Personal Communication. |
+| L35 | Innes, M. (2003) "Audit Report of the London Ambulance Service NHS Trust Handover Procedure." LAS Operational Standards Unit. |
+| Literature |  |
+| Liter | ature Reference |
+| Reference ID |  |
+| L36 | National Air Traffic Services. "Guidance on handover." Personal Communication. |
+| L37 | Common User Interface Internal Document |
+| L38 | Common User Interface Internal Document |
+| L39 | Common User Interface Internal Document |
+| L40 | Common User Interface Internal Document |
+| L41 | Common User Interface Internal Document |
+| L42 | Common User Interface Internal Document |
+| L43 | Common User Interface Internal Document |
+| L44 | Common User Interface Internal Document |
+| L45 | Common User Interface Internal Document |
+| L46 | Common User Interface Internal Document |
+| L47 | Common User Interface Internal Document |
+| L48 | Nace, S.G., Graumlish, J.F. and Aldag, J.C. (2006) "Software design to facilitate information transfer at hospital discharge." Informatics in Primary Care 2006;14:109–19 |
+| L49 | Common User Interface Internal Document |
+| L50 | Common User Interface Internal Document |
+| L51 | Common User Interface Internal Document |
+| L52 | Wilson, S., Galliers, J. and Fone, J. (2005) "Medical Handover: A Study and Implications for Information Technology." Healthcare Systems, Ergonomics and Patient Safety (HEPS 2005), Florence, Italy, April 2005. http://www-hcid.soi.city.ac.uk/research/Ace.html (Accessed on 09-Mar-2007) |
+| L53 | Morris. K. (2006). "i Handover: A new process and web-based system for clinical handovers." http://www.archi.net.au/__data/assets/pdf_file/33866/ihandover.pdf (Accessed 09-Mar-2007) |
+| L54 | Wears RL, Perry SJ, Shapiro M, Beach C, Croskerry P. and Behara R (2003). “Shift Changes Among Emergency Physicians: Best of Times, Worst of Times.” In Proceedings of the Human Factors and Ergonomics Society 47th Annual Meeting, Human Factors and Ergonomics Society, 1420-1423. |
 
 Table 10: Literature References
 

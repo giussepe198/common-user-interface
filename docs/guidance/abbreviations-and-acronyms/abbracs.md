@@ -414,23 +414,15 @@ HSCIC Controlled Document
 
 ### 5 TAXONOMY OF ABBREVIATION AND ACRONYM USAGE
 
-It is helpful in thinking about abbreviation and acronym usage to organize their potential uses into categories for consideration, each of which has its own set of requirements and issues. The following table presents a simple taxonomy for observations in relation to abbreviations and acronyms.
 
-Input Free Text (for example, Note Taking)
-
-Input Constrained Text (for example, drop down boxes, radio button lists etc)
-
-Any text may be entered. Impeding the flow of text input to expand abbreviations will dramatically reduce usability.
-
-Rules can be similar to display of label text. Capable of being much more inherently safe than free text input of the same data with respect to abbreviation risks.
-
-Display Label text Often possible to avoid abbreviation altogether, and always possible to provide assistance to explain those abbreviations which are necessary.
-
-Display User-input text Reduction of ambiguity hinges on good input validation to remove ambiguity and highlight the remaining ambiguous text.
-
-Special Drug-related information (for example, units of measure, dosages etc)
-
-Scenarios where this data type is frequently exchanged (for example prescribing) should be considered for special UI treatment to avoid some of the most common hazardous abbreviations. However this sort of data often finds its way into free text notes where constraints are more difficult to enforce.
+| Major | Sub-Category | Observations |
+| --- | --- | --- |
+| Category |  |  |
+| Input | Free Text (for example, Note Taking) | Any text may be entered. Impeding the flow of text input to expand abbreviations will dramatically reduce usability. |
+| Input | Constrained Text (for example, drop down boxes, radio button lists etc) | Rules can be similar to display of label text. Capable of being much more inherently safe than free text input of the same data with respect to abbreviation risks. |
+| Display | Label text | Often possible to avoid abbreviation altogether, and always possible to provide assistance to explain those abbreviations which are necessary. |
+| Display | User-input text | Reduction of ambiguity hinges on good input validation to remove ambiguity and highlight the remaining ambiguous text. |
+| Special | Drug-related information (for example, units of measure, dosages etc) | Scenarios where this data type is frequently exchanged (for example prescribing) should be considered for special UI treatment to avoid some of the most common hazardous abbreviations. However this sort of data often finds its way into free text notes where constraints are more difficult to enforce. |
 
 Table 1: Simple taxonomy for observations in relation to abbreviations and acronyms
 
@@ -542,27 +534,18 @@ HSCIC Controlled Document
 
 ##### OF HEALTHCARE ORGANIZATIONS (US)
 
-[The following information is from the Official "Do Not Use" List from the Joint Commission on](http://www.jcaho.org/accredited+organizations/patient+safety/06_dnu_list.pdf) [Accreditation of Healthcare Organizations Web site, at](http://www.jcaho.org/accredited+organizations/patient+safety/06_dnu_list.pdf) [http://www.jcaho.org/accredited+organizations/patient+safety/06_dnu_list.pdf](http://www.jcaho.org/accredited+organizations/patient+safety/06_dnu_list.pdf)
 
-U (unit) Mistaken for “0” (zero), the
-
-number “4” (four) or “cc”
-
-Write "unit"
-
-IU (International Unit) Mistaken for IV (intravenous) or the number 10 (ten) Write "International Unit"
-
-Q.D., QD, q.d., qd (daily) Q.O.D., QOD, q.o.d, qod
-
-(every other day)
-
-Trailing zero (X.0 mg)\*
-
-Lack of leading zero (.X mg)
-
-MS
-
-MSO4 and MgSO4
+| Do Not Use | Potential Problem | Preferred Term |
+| --- | --- | --- |
+| U (unit) | Mistaken for “0” (zero), the number “4” (four) or “cc” | Write "unit" |
+| IU (International Unit) | Mistaken for IV (intravenous) or the number 10 (ten) | Write "International Unit" |
+| Q.D., QD, q.d., qd (daily) Q.O.D., QOD, q.o.d, | Mistaken for each other | Write "daily" |
+| qod | Period after the Q mistaken for "I" and the "O" mistaken | Write "every other day" |
+| (every other day) | for "I" |  |
+| Trailing zero (X.0 mg)* | Decimal point is missed | Write X mg |
+| Lack of leading zero (.X mg) |  | Write 0.X mg |
+| MS | Can mean morphine sulfate or magnesium sulfate | Write "morphine sulfate" |
+| MSO4 and MgSO4 | Confused for one another | Write "magnesium sulfate" |
 
 Table 2: Excerpt from the Official "Do Not Use" list
 
@@ -590,49 +573,16 @@ Additional abbreviations, acronyms and symbols (for possible future inclusion in
 
 - (greater than)
 
-< (less than)
 
-Misinterpreted as the number “7” (seven) or the letter “L”
-
-Confused for one another
-
-Write “greater than”
-
-Write “less than”
-
-Write drug names in full
-
-Use metric units
-
-Write “at”
-
-Write "ml" or “millilitres”
-
-Write "mcg" or “micrograms”
-
-Abbreviations for drug names Misinterpreted due to similar
-
-abbreviations for
-
-multiple drugs
-
-Apothecary units Unfamiliar to many practitioners
-
-Confused with metric units
-
-@ Mistaken for the number
-
-“2” (two)
-
-cc Mistaken for U (units) when
-
-poorly written
-
-μg Mistaken for mg (milligrams)
-
-resulting in one thousand-fold
-
-overdose
+| Do Not Use | Potential Problem | Use Instead |
+| --- | --- | --- |
+| > (greater than) | Misinterpreted as the number “7” (seven) or the letter “L” Write “g | reater than” |
+| < (less than) | Confused for one another | Write “less than” |
+| Abbreviations for drug names Misinte | rpreted due to similar abbreviations for multiple drugs | Write drug names in full |
+| Apothecary units | Unfamiliar to many practitioners Confused with metric units | Use metric units |
+| @ | Mistaken for the number “2” (two) | Write “at” |
+| cc | Mistaken for U (units) when poorly written | Write "ml" or “millilitres” |
+| μg | Mistaken for mg (milligrams) resulting in one thousand-fold overdose | Write "mcg" or “micrograms” |
 
 Table 3: Additional abbreviations and acronyms for possible future inclusion in the Official "Do Not Use" list
 
@@ -747,29 +697,58 @@ BT bedtime Mistaken as “BID” (twice daily). Use “hs.”
 ss sliding scale (insulin) or ½ (apothecary)
 
 - and < greater than and less
-than
 
-/ (slash mark) separates two doses or indicates “per”
-
-Mistaken for “55.” Spell out “sliding scale.” Use “one-half” or use “½.”
-
-Mistakenly used opposite of intended. Use “greater than” or “less than.”
-
-Misunderstood as the number 1 (“25 unit/10 units” read as “110” units.
-
-Do not use a slash mark to separate doses. Use “per.”
-
-Name letters and dose numbers run together (for example, Inderal40 mg)
-
-Zero after decimal point (1.0)
-
-No zero before decimal dose (.5 mg)
-
-Inderal 40 mg Misread as Inderal 140 mg. Always use space between drug name, dose and unit of measure.
-
-1 mg Misread as 10 mg if the decimal point is not seen. Do not use terminal zeros for doses expressed in whole numbers.
-
-0.5 mg Misread as 5 mg. Always use zero before a decimal when the dose is less than a whole unit.
+| Abbreviation/ | Intended Meaning Misinterpretation | Correction |
+| --- | --- | --- |
+| Dose Expression |  |  |
+| Apothecary symbo | ls       dram                     Misunderstood or misread (symbol for dram misread minim                    for “3” and minim misread as “mL”). | Use the metric system. |
+| AU | aurio uterque (each ear) Mistaken for OU (oculo uterque—each eye). | Don’t use this abbreviation. |
+| D/C | discharge                Premature discontinuation of medications when D/C discontinue              (intended to mean “discharge”) has been misinterpreted as “discontinued” when followed by a list of drugs. | Use “discharge” and “discontinue.” |
+| Drug names |  | Use the complete spelling for drug names. |
+| ARAºA | vidarabine               cytarabineARAºC |  |
+| AZT | zidovudine               azathioprine (RETROVIR) |  |
+| CPZ | COMPAZINE                chlorpromazine (prochlorperazine) |  |
+| DPT | DEMEROL-                 diphtheria-pertussis-tetanus (vaccine) PHENERGAN- THORAZINE |  |
+| HCl | hydrochloric acid        potassium chloride (The “H” is misinterpreted as “K.”) |  |
+| HCT | hydrocortisone           hydrochlorothiazide |  |
+| HCTZ | hydrochlorothiazide      hydrocortisone (seen as HCT250 mg) |  |
+| MgSO4 | magnesium sulfate        morphine sulfate |  |
+| MSO4 | morphine sulfate         magnesium sulfate |  |
+| MTX | methotrexate             mitoxantrone |  |
+| TAC | triamcinolone            tetracaine, ADRENALIN,cocaine |  |
+| ZnSO4 | zinc sulfate             morphine sulfate |  |
+| Stemmed names |  |  |
+| “Nitro” drip | nitroglycerin infusion   sodium nitroprusside infusion |  |
+| “Norflox” | norfloxacin              NORFLEX |  |
+| mg | microgram                Mistaken for “mg” when handwritten. | Use “mcg.” |
+| o.d. or OD | once daily               Misinterpreted as “right eye” (OD—oculus dexter) and administration of oral medications in the eye. | Use “daily.” |
+| TIW or tiw | three times a week.      Mistaken as “three times a day.” | Don’t use this abbreviation. |
+| per os | orally                   The “os” can be mistaken for “left eye.” | Use “PO,” “by mouth,” or “orally.” |
+| q.d. or QD | every day                Mistaken as q.i.d., especially if the period after the “q” | Use “daily” or “every day.” |
+| Dose Expression | or the tail of the “q” is misunderstood as an “i.” |  |
+| qn | nightly or at bedtime        Misinterpreted as “qh” (every hour). | Use “nightly.” |
+| qhs | nightly at bedtime           Misread as every hour. | Use “nightly.” |
+| q6PM, etc. | every evening at 6 PM        Misread as every six hours. | Use 6 PM “nightly.” |
+| q.o.d. or QOD | every other day              Misinterpreted as “q.d.” (daily) or “q.i.d. (four ti daily) if the “o” is poorly written. | mes   Use “every other day.” |
+| sub q | subcutaneous                 The “q” has been mistaken for “every” (for example, one heparin dose ordered “sub q 2 hours before surgery” misunderstood as every 2 hours before surgery). | Use “subcut.” or write “subcutaneous.” |
+| SC | subcutaneous                 Mistaken for SL (sublingual). | Use “subcut.” or write “subcutaneous.” |
+| U or u | unit                         Read as a zero (0) or a four (4), causing a 10-fold overdose or greater (4U seen as “40” or 4u seen as 44”). | “Unit” has no acceptable abbreviation. Use “unit.” |
+| IU | international unit           Misread as IV (intravenous). | Use “units.” |
+| cc | cubic centimetres            Misread as “U” (units). | Use “mL.” |
+| x3d | for three days               Mistaken for “three doses.” | Use “for three days.” |
+| BT | bedtime                      Mistaken as “BID” (twice daily). | Use “hs.” |
+| ss | sliding scale (insulin) or Mistaken for “55.” ½ (apothecary) | Spell out “sliding scale.” Use “one-half” or use “½.” |
+| > and < | greater than and less        Mistakenly used opposite of intended. than | Use “greater than” or “less than.” |
+| / (slash mark) | separates two doses or Misunderstood as the number 1 (“25 unit/10 units” indicates “per”        read as “110” units. | Do not use a slash mark to separate doses. Use “per.” |
+| Name letters and | dose Inderal 40 mg                     Misread as Inderal 140 mg. | Always use space between |
+| numbers run toge | ther | drug name, dose and unit |
+| (for example, In | deral40 | of measure. |
+| mg) |  |  |
+| Zero after decim | al point 1 mg                           Misread as 10 mg if the decimal point is not seen. | Do not use terminal zeros |
+| (1.0) |  | for doses expressed in whole numbers. |
+| No zero before d | ecimal 0.5 mg                           Misread as 5 mg. | Always use zero before a |
+| dose |  | decimal when the dose is |
+| (.5 mg) |  | less than a whole unit. |
 
 Table 4: Dangerous abbreviations or dose designations
 
@@ -943,63 +922,86 @@ Page 17
 
 HSCIC Controlled Document
 
-PNF Proprioceptive neuromuscular facilitation
 
-Chartered Society of Physiotherapy
-
-PTB Partial thickness burn Chartered Society of Physiotherapy
-
-PTB Patella tendon bearing Chartered Society of Physiotherapy
-
-PV Cisplatin, vinblastine www.show.scot.nhs.uk/sign/pdf/sign28.pdf
-
-PV Per vagina Chartered Society of Physiotherapy
-
-PV Plasma viscosity Chartered Society of Physiotherapy
-
-PV Pulmonary Vein Chartered Society of Physiotherapy
-
-RA Rheumatoid arthritis www.kneeguru.co.uk/html/dictionary/abbreviations.html,
-
-www.show.scot.nhs.uk/sign/guidelines/fulltext/48/abbreviations.html,
-
-Chartered Society of Physiotherapy
-
-RA Right Atrium Chartered Society of Physiotherapy
-
-RR Respiratory Rate Chartered Society of Physiotherapy
-
-RR Righting Reaction Chartered Society of Physiotherapy
-
-SB Sinus bradycardia Chartered Society of Physiotherapy
-
-SB Spina Bifida Chartered Society of Physiotherapy
-
-SCC Spinal Cord Compression
-
-SCC Squamous cell carcinoma
-
-Chartered Society of Physiotherapy
-
-Chartered Society of Physiotherapy
-
-ST Sinus tachycardia Chartered Society of Physiotherapy
-
-ST Soft Tissue Chartered Society of Physiotherapy
-
-st standing Chartered Society of Physiotherapy
-
-TKA Through knee amputation
-
-TKA Total knee arthroplasty
-
-Chartered Society of Physiotherapy
-
-www.show.scot.nhs.uk/sign/guidelines/fulltext/54/abbreviations.html
-
-VL Vastus Lateralis Chartered Society of Physiotherapy
-
-vl vial(s) [www.dmd.nhs.uk/documentation.asp](http://www.trentdeanery.nottingham.ac.uk/gen_acronym.htm)
+| Abbr | Meaning | Sources |
+| --- | --- | --- |
+| AE | Adverse Event | www.ukmi.nhs.uk/research/common_abreviations.asp |
+| AE | Air entry | Chartered Society of Physiotherapy |
+| amp | ampoule | www.dmd.nhs.uk/documentation.asp |
+| AMP | Austin Moore Prosthesis | Chartered Society of Physiotherapy |
+| BTL | Bilateral tubal ligation | Chartered Society of Physiotherapy |
+| btl | bottle | www.dmd.nhs.uk/documentation.asp |
+| CMV | Controlled mandatory ventilation | Chartered Society of Physiotherapy |
+| CMV | Cytomegalovirus | www.dmd.nhs.uk/documentation.asp |
+| CNS | Central nervous system | www.show.scot.nhs.uk/sign/guidelines/fulltext/53/abbreviations.html www.bwhct.nhs.uk/index/about-clinicalreport/about-clinicalreport-abbreviations.htm www.show.scot.nhs.uk/sign/pdf/sign28.pdf Chartered Society of Physiotherapy |
+| CNS | Coagulase negative streptococci | www.show.scot.nhs.uk/sign/guidelines/fulltext/45/abbreviations.html |
+| CP | Cerebral palsy | Chartered Society of Physiotherapy |
+| CP | Chondromalacia patellae | www.kneeguru.co.uk/html/dictionary/abbreviations.html |
+| CRC | Colorectal cancer | www.show.scot.nhs.uk/sign/guidelines/fulltext/67/abbreviations.html |
+| CRC | Concentrated red cells www. | show.scot.nhs.uk/sign/guidelines/fulltext/54/abbreviations.html |
+| CRM | Circumferential resection margin | www.show.scot.nhs.uk/sign/guidelines/fulltext/67/abbreviations.html |
+| crm | cream | www.dmd.nhs.uk/documentation.asp |
+| CVS | Cardio Vascular System | Chartered Society of Physiotherapy |
+| CVS | Chorionic Villus biopsy www | .bwhct.nhs.uk/index/about-clinicalreport/about-clinicalreport-abbreviations.htm |
+| ER | Equilibrium Reaction | Chartered Society of Physiotherapy |
+| ER | Oestrogen receptor | www.show.scot.nhs.uk/sign/guidelines/fulltext/29/abbreviations.html |
+| ES | Electrical stimulation | www.show.scot.nhs.uk/sign/guidelines/fulltext/64/abbreviations.html |
+| ES | Embryonic Stem | www.bwhct.nhs.uk/index/about-clinicalreport/about-clinicalreport-abbreviations.htm |
+| FET | Forced expiration technique | Chartered Society of Physiotherapy |
+| FET | Frozen Embryo Transfer | www.bwhct.nhs.uk/index/about-clinicalreport/about-clinicalreport-abbreviations.htm |
+| FH | Familial | www.show.scot.nhs.uk/sign/guidelines/fulltext/40/abbreviations.html |
+| Abbr | Meaning                 Sou hypercholesterolaemia | rces |
+| FH | Family History          Cha | rtered Society of Physiotherapy |
+| IUD | Inter uterine death     Cha | rtered Society of Physiotherapy |
+| IUD | Intra Uterine Device    www abb | .bwhct.nhs.uk/index/about-clinicalreport/about-clinicalreport- reviations.htm,www.show.scot.nhs.uk/sign/guidelines/fulltext/42/abbreviations.html |
+| LA | Left Atrium             Cha | rtered Society of Physiotherapy |
+| LA | Local anaesthetic       www | .show.scot.nhs.uk/sign/guidelines/fulltext/53/abbreviations.html |
+| LDH | Lactate                 www dehydrogenase | .show.scot.nhs.uk/sign/pdf/sign28.pdf |
+| LDH | Low dose heparin        www | .show.scot.nhs.uk/sign/guidelines/fulltext/56/abbreviations.html |
+| MR | Medial reefing          www | .kneeguru.co.uk/html/dictionary/abbreviations.html |
+| MR | modified-release        www | .dmd.nhs.uk/documentation.asp |
+| P | Pain                    Cha | rtered Society of Physiotherapy |
+| P | Plan treatment          Cha | rtered Society of Physiotherapy |
+| P | Pulse                   Cha | rtered Society of Physiotherapy |
+| PD | Parkinsons Disease      Cha | rtered Society of Physiotherapy |
+| PD | Postural drainage       Cha | rtered Society of Physiotherapy |
+| PE | Phenytoin equivalent    www | .show.scot.nhs.uk/sign/guidelines/fulltext/70/abbreviations.html |
+| PE | Pulmonary embolism      www www | .show.scot.nhs.uk/sign/guidelines/fulltext/56/abbreviations.html, .show.scot.nhs.uk/sign/guidelines/fulltext/36/abbreviations.html |
+| PE | Pulmonary Embolus       Cha | rtered Society of Physiotherapy |
+| PEP | Positive Expiratory     Cha Pressure | rtered Society of Physiotherapy |
+| PEP | Pulmonary Embolism      www Prevention | .show.scot.nhs.uk/sign/guidelines/fulltext/56/abbreviations.html |
+| PF | Patello-femoral         www Cha | .kneeguru.co.uk/html/dictionary/abbreviations.html, rtered Society of Physiotherapy |
+| PF | Pelvic Floor            Cha | rtered Society of Physiotherapy |
+| PF | Plantarflexion          Cha | rtered Society of Physiotherapy |
+| PFS | Patello-femoral         www syndrome | .kneeguru.co.uk/html/dictionary/abbreviations.html |
+| pfs | pre-filled syringe(s)   www | .dmd.nhs.uk/documentation.asp |
+| PH | Past History            Cha | rtered Society of Physiotherapy |
+| pH | percentage hydrogen     Cha | rtered Society of Physiotherapy |
+| PID | Pelvic inflammatory     www disease                 Cha | .show.scot.nhs.uk/sign/guidelines/fulltext/42/abbreviations.html, rtered Society of Physiotherapy |
+| PID | Prolapsed               Cha intervertebral disc | rtered Society of Physiotherapy |
+| PNF | Passive neck flexion    Cha | rtered Society of Physiotherapy |
+| PNF | Proprioceptive neuro- muscular facilitation | Chartered Society of Physiotherapy |
+| PTB | Partial thickness burn | Chartered Society of Physiotherapy |
+| PTB | Patella tendon bearing Cha | rtered Society of Physiotherapy |
+| PV | Cisplatin, vinblastine | www.show.scot.nhs.uk/sign/pdf/sign28.pdf |
+| PV | Per vagina | Chartered Society of Physiotherapy |
+| PV | Plasma viscosity | Chartered Society of Physiotherapy |
+| PV | Pulmonary Vein | Chartered Society of Physiotherapy |
+| RA | Rheumatoid arthritis | www.kneeguru.co.uk/html/dictionary/abbreviations.html, www.show.scot.nhs.uk/sign/guidelines/fulltext/48/abbreviations.html, Chartered Society of Physiotherapy |
+| RA | Right Atrium | Chartered Society of Physiotherapy |
+| RR | Respiratory Rate | Chartered Society of Physiotherapy |
+| RR | Righting Reaction | Chartered Society of Physiotherapy |
+| SB | Sinus bradycardia | Chartered Society of Physiotherapy |
+| SB | Spina Bifida | Chartered Society of Physiotherapy |
+| SCC | Spinal Cord Compression | Chartered Society of Physiotherapy |
+| SCC | Squamous cell carcinoma | Chartered Society of Physiotherapy |
+| ST | Sinus tachycardia | Chartered Society of Physiotherapy |
+| ST | Soft Tissue | Chartered Society of Physiotherapy |
+| st | standing | Chartered Society of Physiotherapy |
+| TKA | Through knee amputation | Chartered Society of Physiotherapy |
+| TKA | Total knee arthroplasty | www.show.scot.nhs.uk/sign/guidelines/fulltext/54/abbreviations.html |
+| VL | Vastus Lateralis | Chartered Society of Physiotherapy |
+| vl | vial(s) | www.dmd.nhs.uk/documentation.asp |
 
 Table 5: Potentially dangerous abbreviations and acronyms
 

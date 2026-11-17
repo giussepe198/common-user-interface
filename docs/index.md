@@ -17,6 +17,8 @@ This site supplies the historical, illustrated source layer. The repository's [g
 
 The transcriptions and image recovery were contributed from [Marcus Baw's NHS CUI restoration project](https://github.com/pacharanero/nhs-cui). The PDFs remain in this repository's existing source-document archive, not a second tracked collection.
 
+The header's appearance control cycles between automatic (system preference), light and dark. The CUI wordmark and favicon are independent archive branding. Historical illustrations keep their original colours and a white backing for legibility in both themes.
+
 ## Historical guidance, not current policy
 
 Some wording, references and illustrations are dated; some documents are consultations rather than baselined guidance. Transcription can introduce errors. Check the original PDF and current standards when interpreting a rule. Neither the archive nor a passing build establishes clinical safety, accessibility or implementation compliance.

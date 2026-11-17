@@ -96,15 +96,12 @@ application user interface
 
 **Note**
 
-Elements used within a software application are commonly referred to as a ‘control’. These can take many forms but the types referred to in this document will either be ‘input controls’ that can receive input from a user, such as a button, text box, option button (radio button) or check box, or ‘display controls’ such as a label, which can only display information.
 
-Table 1 describes the changes made since the previous version of this guidance (Baseline version 3.0.0.0 dated 24-Jun-2009):
-
-**Deleted** None
-
-**Modified** None
-
-**Added** Reference R10 (section 1.1)
+| Change | IDs | Change Description |
+| --- | --- | --- |
+| Deleted |  | None |
+| Modified |  | None |
+| Added |  | Reference R10 (section 1.1) |
 
 Table 1: Changes Since the Last Baseline Version
 
@@ -270,27 +267,21 @@ NHS Numbers will be read frequently by healthcare professionals and by patients,
 
 ##### 2.1.1 Guidance
 
-NUM-0001 Display the NHS Number in full, on a single line, without truncation or splitting it over multiple lines
 
-NUM-0002 Display the NHS Number as three groups, with a single space included as a separator between groups, as follows:
-
- The first group must consist of the first, second and third digits in order
-
- The second group must consist of the fourth, fifth and sixth digits in order
-
- The third group must consist of the seventh, eighth, ninth and tenth digits in order
-
-Mandatory
-
-Mandatory
-
-NUM-0003 Support the copying of NHS Numbers by the user as part of the ‘Copy and Paste’ task Recommended
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NUM-0001 | Display the NHS Number in full, on a single line, without truncation or splitting it over multiple lines | Mandatory |
+| NUM-0002 | Display the NHS Number as three groups, with a single space included as a separator between groups, as follows:  The first group must consist of the first, second and third digits in order  The second group must consist of the fourth, fifth and sixth digits in order  The third group must consist of the seventh, eighth, ninth and tenth digits in order | Mandatory |
+| NUM-0003 | Support the copying of NHS Numbers by the user as part of the ‘Copy and Paste’ task | Recommended |
 
 Table 2: Guidance for NHS Number Display
 
 ##### 2.1.2 Examples of Correct Usage
 
-with numbers grouped to improve screen reader performance
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        999 999 9999 | 123 456 7890 | The NHS Number is displayed in the required format with numbers grouped to improve screen reader performance |
 
 Table 3: Correct NHS Number Display Examples
 
@@ -318,23 +309,17 @@ likely that users will not read all ten digits or assume that the hyphen is part
 more than three groups does not make best use of short-term memory
 ####  999/999/9999 123/456/7890 Poor Readability
 
-9999
 
-7890
-
-12345 67890
-
-Lack of Intuitive Structure
-
-99 99 99 99 99
-
-12 34 56 78 90
-
-Poor Readability
-
-A space provides better separation; it also assists in differentiating the NHS Number from other numeric data items, such as dates and telephone numbers
-
-999.999.9999
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|     9999999999 | 1234567890 | Patient Safety Critical This example displays a very poor reading pattern because a single ten-digit number is beyond the normal capacity of short-term memory. This representation is likely to cause errors |
+| sage Format                                     Exampl | e          Comments |  |
+|       999999-                                123456 | -          Patient Safety Criti | cal |
+| 9999                                   7890 | The NHS Number is sp likely that users wi that the hyphen is p | lit over two lines making it ll not read all ten digits or assume art of the number |
+|       99999 99999                            12345 | 67890      Lack of Intuitive St | ructure |
+| 99 99 99 99 99                         12 34 | 56 78 90   The display of more more than three grou short-term memory | than four digits in a group or of ps does not make best use of |
+|       999/999/9999                           123/45 | 6/7890     Poor Readability |  |
+| 999.999.9999                           123.45 | 6.7890     A space provides bet differentiating the data items, such as | ter separation; it also assists in NHS Number from other numeric dates and telephone numbers |
 
 Table 4: Incorrect NHS Number Display Examples
 
@@ -425,47 +410,27 @@ NUM-0012 Set the length of the NHS Number input box such that the NHS Number is 
 
 ![](inputdisplay_assets/inputdisplay.pdf-11-0.png)
 
-NUM-0013 Set the height of the NHS Number input box to the largest character height in the currently active display font, taking the user’s settings into account
 
-NUM-0014 Permit NHS Number input via all the mechanisms supported on a platform such as, but not limited to, typing on a keyboard, copy and paste, and handwriting with a stylus
-
-NUM-0015 During input, reformat the numbers entered as per the NHS Number display format, namely three numbers, space, the next three numbers, space, the last four numbers
-
-NUM-0016 Ensure the NHS Number only consists of 10 digits and two spaces as described in NUM-0015
-
-NUM-0017 During input, permit only the single space character to act as a separator within the NHS Number, discarding all other non-numeric user input, including but not limited to:
-
- Hyphens
-
- Dashes
-
- Forward slashes
-
- Back slashes
-
- Full stop
-
- Comma
-
- Colon
-
-Recommended
-
-Recommended
-
-Recommended
-
-Mandatory
-
-Mandatory
-
-NUM-0018 Do not permit input of old format and temporary NHS Numbers Mandatory
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NUM-0010 | Provide a single text input box for NHS Number entry | Recommended |
+| NUM-0011 | Permit only one NHS Number to be entered in an NHS Number input box | Mandatory |
+| NUM-0012 | Set the length of the NHS Number input box such that the NHS Number is visible in full | Recommended |
+| NUM-0013 | Set the height of the NHS Number input box to the largest character height in the currently active display font, taking the user’s settings into account | Recommended |
+| NUM-0014 | Permit NHS Number input via all the mechanisms supported on a platform such as, but not limited to, typing on a keyboard, copy and paste, and handwriting with a stylus | Recommended |
+| NUM-0015 | During input, reformat the numbers entered as per the NHS Number display format, namely three numbers, space, the next three numbers, space, the last four numbers | Recommended |
+| NUM-0016 | Ensure the NHS Number only consists of 10 digits and two spaces as described in NUM-0015 | Mandatory |
+| NUM-0017 | During input, permit only the single space character to act as a separator within the NHS Number, discarding all other non-numeric user input, including but not limited to:  Hyphens  Dashes  Forward slashes  Back slashes  Full stop  Comma  Colon | Mandatory |
+| NUM-0018 | Do not permit input of old format and temporary NHS Numbers | Mandatory |
 
 Table 5: Guidance for the Input of the NHS Number
 
 ##### 2.2.3 Examples of Correct Usage
 
-accommodate a single NHS Number; it must be no bigger and no smaller
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         Sufficiently-sized input box |  | The input box is the right size to accommodate a single NHS Number; it must be no bigger and no smaller |
 
 Table 6: Correct NHS Number Display Examples
 
@@ -482,8 +447,22 @@ more data than a single NHS Number can be entered, while also unnecessarily cons
 
 ####  Long input box A long input box incorrectly implies
 
-that more data than a single NHS Number must be entered
 
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| GP | General Practitioner |
+| ISV | Independent Software Vendor |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPfIT | National Programme for IT |
+| NPSA | National Patient Safety Agency |
+| PAS | Patient Administration System |
+| PCT | Primary Care Trust |
+| PDA | Personal Digital Assistant |
+| UI | User Interface |
+
+Table 7: Incorrect NHS Number Display Examples
 Table 7: Incorrect NHS Number Display Examples
 
 ##### 2.2.5 Rationale
@@ -573,11 +552,12 @@ Table 7: Terms and Abbreviations
 
 #### 3.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health)
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health) |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
 
 Table 8: Definitions
 
@@ -603,65 +583,49 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Controls
 
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| ext                                                                  S | tyle |
+| ontrols |  |
+| older names                                                          T | itle Case |
+| ile names |  |
 
 Table 9: Body Text Styles
 
 ##### 3.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 10: Cross Reference Styles
 
 #### 3.4 References
 
-**R1.** NHS Connecting for Health: NHS Number
 
-[http://www.connectingforhealth.nhs.uk/systemsandservices/nhsnumber](http://www.connectingforhealth.nhs.uk/systemsandservices/nhsnumber)
-
-**R2.** NPSA Safer Practice Notice: Standardising wristbands improves patient safety:
-
-[http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=5346](http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=5346)
-
-**R3.** Department of Health: General principles in the use of the NHS number
-
-[http://www.dh.gov.uk/en/Publicationsandstatistics/Publications/PublicationsPolicyAndGuidanc](http://www.dh.gov.uk/en/Publicationsandstatistics/Publications/PublicationsPolicyAndGuidance/DH_4006813) [e/DH_4006813](http://www.dh.gov.uk/en/Publicationsandstatistics/Publications/PublicationsPolicyAndGuidance/DH_4006813)
-
-**R4.** NHS Connecting for Health: When should I use the NHS Number?
-
-[http://www.connectingforhealth.nhs.uk/systemsandservices/nhsnumber/whenusenhsnumber](http://www.connectingforhealth.nhs.uk/systemsandservices/nhsnumber/whenusenhsnumber)
-
-**R5.** Cabinet Office: UK Government Data Standards Catalogue
-
-[http://www.govtalk.gov.uk/gdsc/html/noframes/NHSnumber-2-0-Release.htm](http://www.govtalk.gov.uk/gdsc/html/noframes/NHSnumber-2-0-Release.htm)
-
-2007
-
-April 1998
-
-**R6.** NHS CUI Design Guide Workstream – Accessibility Checkpoints for NHS Applications 1.0.0.0
-
-**R7.** NHS CUI Design Guide Workstream – Accessibility for Clinical Applications 1.0.0.0
-
-**R8.** Overview of 2008 - A Demographics Business Process, NPFIT-FNT-TO-DSD-0027.12 August 2007
-
-**R9.** Personal Communication, Davie Hay, Standards Consulting Group, NHS CFH January 2008
-
-**R10.** NHS Connecting for Health/Department of Health: NHS Number Standard for General Practice (England)
-
-[http://www.connectingforhealth.nhs.uk/dscn/dscn2009/data-set-change/312008v1_1.pdf](http://www.connectingforhealth.nhs.uk/dscn/dscn2009/data-set-change/312008v1_1.pdf)
+| Reference | Document | Version |
+| --- | --- | --- |
+| R1. | NHS Connecting for Health: NHS Number http://www.connectingforhealth.nhs.uk/systemsandservices/nhsnumber |  |
+| R2. | NPSA Safer Practice Notice: Standardising wristbands improves patient safety: http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=5346 | 2007 |
+| R3. | Department of Health: General principles in the use of the NHS number http://www.dh.gov.uk/en/Publicationsandstatistics/Publications/PublicationsPolicyAndGuidanc e/DH_4006813 | April 1998 |
+| R4. | NHS Connecting for Health: When should I use the NHS Number? http://www.connectingforhealth.nhs.uk/systemsandservices/nhsnumber/whenusenhsnumber |  |
+| R5. | Cabinet Office: UK Government Data Standards Catalogue http://www.govtalk.gov.uk/gdsc/html/noframes/NHSnumber-2-0-Release.htm |  |
+| R6. | NHS CUI Design Guide Workstream – Accessibility Checkpoints for NHS Applications | 1.0.0.0 |
+| R7. | NHS CUI Design Guide Workstream – Accessibility for Clinical Applications | 1.0.0.0 |
+| R8. | Overview of 2008 - A Demographics Business Process, NPFIT-FNT-TO-DSD-0027.12 | August 2007 |
+| R9. | Personal Communication, Davie Hay, Standards Consulting Group, NHS CFH | January 2008 |
+| R10. | NHS Connecting for Health/Department of Health: NHS Number Standard for General Practice (England) http://www.connectingforhealth.nhs.uk/dscn/dscn2009/data-set-change/312008v1_1.pdf | Version 1.1 March 2009 |
 
 Table 11: References
 

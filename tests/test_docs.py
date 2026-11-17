@@ -55,6 +55,13 @@ class DocumentationChecks(unittest.TestCase):
         (self.root / "mkdocs.yml").write_text("nav:\n  - A group:\n      - Home: index.md\n")
         self.assertEqual(check(self.root), [])
 
+    def test_logo_and_favicon_must_exist(self):
+        (self.root / "mkdocs.yml").write_text("theme:\n  logo: logo.svg\n  favicon: favicon.svg\nnav:\n  - Home: index.md\n")
+        self.assertEqual(len(check(self.root)), 2)
+        (self.docs / "logo.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg"/>')
+        (self.docs / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg"/>')
+        self.assertEqual(check(self.root), [])
+
 
 if __name__ == "__main__":
     unittest.main()

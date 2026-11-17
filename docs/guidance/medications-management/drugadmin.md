@@ -86,8 +86,6 @@ _Prepared by_
     - [4.3.1 Body Text](#431-body-text)
     - [4.3.2 Cross References](#432-cross-references)
   - [4.4 References](#44-references)
-- [APPENDIX A STUDY ID 8: EXECUTIVE SUMMARY](#appendix-a-study-id-8-executive-summary)
-  - [A.1 Abstract](#a1-abstract)
   - [A.2 Research Objectives](#a2-research-objectives)
   - [A.3 Research Design](#a3-research-design)
     - [A.3.1 Interviews](#a31-interviews)
@@ -105,7 +103,6 @@ _Prepared by_
   - [B.4 Results](#b4-results)
     - [B.4.1 Interview Participant Description](#b41-interview-participant-description)
     - [B.4.2 Survey Respondent Description](#b42-survey-respondent-description)
-    - [B.4.3 Design Areas](#b43-design-areas)
 - [APPENDIX C CHANGES SINCE PREVIOUS VERSION](#appendix-c-changes-since-previous-version)
 - [REVISION AND SIGNOFF SHEET](#revision-and-signoff-sheet)
   - [Change Record](#change-record)
@@ -148,47 +145,11 @@ Additionally, users implementing applications that follow this design guide’s 
 [Refer to www.cui.nhs.uk](http://www.cui.nhs.uk/) for further information on the patient safety process and for the safety status and any relevant accompanying safety documentation for this design guide.
 #### 1 INTRODUCTION
 
-This document provides design guidance for Drug Administration. It describes the area of focus, provides guidance and recommendations and explains the rationale behind the guidance and recommendations.
 
-To indicate their relative importance, each guideline in this document is ranked by **Conformance** and by **Evidence Rating** . Table 1 defines those terms:
-
-Conformance Indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:
-
- **Mandatory**         - An implementation should follow the guideline
-
- **Recommended**         - An implementation is advised to follow the guideline
-
-Evidence Rating Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):
-
- **Low:**
-
- Does not mitigate specific patient safety hazards
-
- User research findings unclear and with few participants
-
- Unreferenced usability principles indicate the design is not significantly better than alternatives
-
- **Medium:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear but with few participants
-
- References old authoritative guidance (for example, from National Patient Safety Agency (NPSA),
-
-Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
- **High:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear and with a significant number of participants
-
- References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
-
- Referenced usability principles indicate the design is significantly better than alternatives
+| Term | Definition |
+| --- | --- |
+| Conformance | Indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:  Mandatory – An implementation should follow the guideline  Recommended – An implementation is advised to follow the guideline |
+| Evidence Rating | Summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):  Low:  Does not mitigate specific patient safety hazards  User research findings unclear and with few participants  Unreferenced usability principles indicate the design is not significantly better than alternatives  Medium:  Mitigates specific patient safety hazards  User research findings clear but with few participants  References old authoritative guidance (for example, from National Patient Safety Agency (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded  Referenced usability principles indicate the design is significantly better than alternatives  High:  Mitigates specific patient safety hazards  User research findings clear and with a significant number of participants  References recent authoritative guidance (for example, from NPSA, ISMP or WHO)  Referenced usability principles indicate the design is significantly better than alternatives |
 
 Table 1: Conformance and Evidence Rating Definitions
 
@@ -211,6 +172,13 @@ Table 2 describes the changes made since the previous version of this guidance (
 **Deleted** This document has been significantly enhanced since the previous version. Many guidelines have **Modified** been deleted, modified and added as have their associated Usage Examples and Rationales. In consequence, the list of changes is very extensive and has been relocated to APPENDIX C.
 
 **Added**
+
+
+| Change | IDs | Change Description |
+| --- | --- | --- |
+| Deleted |  | This document has been significantly enhanced since the previous version. Many guidelines have |
+| Modified |  | been deleted, modified and added as have their associated Usage Examples and Rationales. In consequence, the list of changes is very extensive and has been relocated to APPENDIX C. |
+| Added |  |  |
 
 Table 2: Updates since the Last Baseline Version
 
@@ -289,6 +257,44 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+|  | Once Only |
+| --- | --- |
+|  | Regular |
+|  | As Required (also known as ‘PRN’, referencing the Latin Pro Re Nata) |
+|  | Infusions |
+| ere a | re often additional categories (such as ‘Oral Anticoagulants’ and ‘Insulin’) that have |
+| dicat | ed areas on the chart or are recorded on subsidiary charts |
+| syste | ms – The display formats for medicines administration information within |
+| syste | ms are much less consistent than the formats of paper charts. These differences |
+| the | review and task completion functions referred to above and will become a safety |
+| elect | ronic systems become more widely available. The challenge for developers of |
+| syste | ms is particularly great in this area, as there are no universally-accepted, paper- |
+| ards | to refer to and computer screens are not capable of displaying the same density |
+| ion a | s a sheet of A4 paper (let alone a fold-out chart, which may cover up to three |
+| is ‘i | nformation density problem’ is one of the primary reasons why designers of |
+| syste | ms resort to ‘creative solutions’ and why display solutions inevitably diverge. The |
+| f thi | s guidance is to use design principles that are common across paper drug charts so |
+| is a | familiarity with aspects of the current paper drug charts, thus reducing the training |
+| move | to these electronic systems. |
+|  | 2 |
+| see | the ePrescribing System Evaluations document . |
+| cope |  |
+| e in | this document is for the Drug Administration View. This view is envisaged as being |
+| linic | al system that includes a series of views, some of which present medications |
+| for | each patient. Guidance for the display of a patient's medications is defined in |
+| Mana | gement – Medications List – User Interface Design Guidance {R3}, and more |
+| idanc | e for the layout and formatting of individual medications is defined in Medications |
+| – Med | ication Line – User Interface Design Guidance {R4}. Medications may also be |
+| ithin | another view, such as a Timeline View as defined in Timeline View – User |
+| esign | Guidance {R5}. |
+| ows a | simple outline of the structure and layout of elements within the Drug |
+| ion V | iew. This illustration is used throughout the document, with shaded sections |
+| g the | area to which the guidance in that section applies. |
+|  |  |
+| : ePr | escribing System Evaluations {R2}: http://nww.connectingforhealth.nhs.uk/eprescribing |
+| ires | an N3 connection. If you do not have an N3 connection, email eprescribing@nhs.net for help. |
+
 Figure 2: Drug Administration View Outline
 
 Figure 3 contains an example of how this outline may appear when implemented in a styled application:
@@ -330,6 +336,12 @@ Figure 5 provides an overview of the Drug Administration View structure. **Drugs
 
 ![](drugadmin_assets/drugadmin.pdf-9-10.png)
 
+
+| Toolbar | and Column Headings Notification Area (for example, ‘Nil by Mouth’) Look- Ahead Scroll Bar |
+| --- | --- |
+|  | (LASB) Scroll Bar Currently      Look-Ahead |
+| e Scale Column | selected day   Scroll Bar (LASB) |
+
 Figure 5: Overview of the Drug Administration View Areas
 
 Copyright ©2013 Health and Social Care Information Centre
@@ -338,9 +350,9 @@ Page 5
 
 HSCIC Controlled Document
 
-Figure 6 indicates two key areas of the Drug Administration View: the **Left-Hand Panel** (LHP) and the **Chart Area** . Broadly speaking, information about the drug’s prescription is displayed in the Left-Hand Panel and the drug’s administration schedule is represented in the Chart Area.
 
-Left-Hand Panel Chart Area
+| Left-Hand Panel | Chart Area |
+| --- | --- |
 
 Figure 6: The Left-Hand Panel and Chart Area in the Drug Administration View
 
@@ -642,11 +654,12 @@ Some of the guidance points in this document might be interpreted as implying th
 
 ##### 1.3 Assumptions
 
-A1 The Drug Administration View is one of a set of drugs views within a medications framework that assumes the presence of a drugs section within a patient record.
 
-A2 This guidance assumes that the clinical application will have a complete record of drugs for each patient and that the application can access and combine information about current and previous drugs.
-
-A3 This guidance assumes that the user can access any allergy information recorded about the patient.
+| ID | Assumption |
+| --- | --- |
+| A1 | The Drug Administration View is one of a set of drugs views within a medications framework that assumes the presence of a drugs section within a patient record. |
+| A2 | This guidance assumes that the clinical application will have a complete record of drugs for each patient and that the application can access and combine information about current and previous drugs. |
+| A3 | This guidance assumes that the user can access any allergy information recorded about the patient. |
 
 Table 3: Assumptions
 
@@ -658,15 +671,14 @@ HSCIC Controlled Document
 
 ##### 1.4 Dependencies
 
-D1 The display of dates and time and the controls used to input them are defined by the guidance in the _Time Display_ **{R6}**, _Date Display_ **{R7}** and _Date and Time Input_ **{R8}** documents.
 
-D2 This guidance is informed by the NHS National Programme for Information Technology (NPfIT) document _dm+d_ _Implementation Guide (Secondary Care)_ _[3]_ referred to in this document as the NHS Connecting for Health (NHS CFH) Medication Types Rules. Changes to this work may trigger changes to this guidance
-
-D3 This guidance is informed by the NHS CFH _ePrescribing Functional Specification_ _[4]_
-
-D4 This project is in turn informed by _The Dictionary of Medicines + Devices_ _[5]_ (referred to as ‘dm+d’).
-
-D5 The display of the drug details (name, dose, form, route, frequency and so on) in the Left-Hand Panel conforms to the guidance in the _Medication Line_ **{R4}** document.
+| ID | Dependency |
+| --- | --- |
+| D1 | The display of dates and time and the controls used to input them are defined by the guidance in the Time Display {R6}, Date Display {R7} and Date and Time Input {R8} documents. |
+| D2 | This guidance is informed by the NHS National Programme for Information Technology (NPfIT) document dm+d Implementation Guide (Secondary Care)3 referred to in this document as the NHS Connecting for Health (NHS CFH) Medication Types Rules. Changes to this work may trigger changes to this guidance |
+| D3 | This guidance is informed by the NHS CFH ePrescribing Functional Specification4 |
+| D4 | This project is in turn informed by The Dictionary of Medicines + Devices5 (referred to as ‘dm+d’). |
+| D5 | The display of the drug details (name, dose, form, route, frequency and so on) in the Left-Hand Panel conforms to the guidance in the Medication Line {R4} document. |
 
 Table 4: Dependencies
 
@@ -923,11 +935,56 @@ Page 19
 ![](drugadmin_assets/drugadmin.pdf-23-6.png)
 HSCIC Controlled Document
 
-3.16.2 Structure of the Form
 
-3.16.3 Recording Administrations
-
-3.17 Medication Updates No Visual Summary associated with this guidance
+| Areas of Guidance | Visual Summary |
+| --- | --- |
+| 3.3.1 Composition of the Drug Administration View |  |
+| 3.3.2 Inclusion Criteria |  |
+| 3.4 List Order |  |
+| 3.5.1 Controls in the Drug Administration View |  |
+| 6 |  |
+| Standards for medicines management {R12}: http:/ | /www.nmc-uk.org/aDisplayDocument.aspx?DocumentID=6228 |
+| Areas of Guidance                              Visua | l Summary |
+| 3.5.2 Grouping |  |
+| 3.5.3 Status Bar |  |
+| 3.6 Navigation |  |
+| 3.7 The Look-Ahead Scroll Bar |  |
+| 3.8.1 LHP Structure and Contents |  |
+| 3.8.2 LHP Icons |  |
+| 3.8.3 LHP Information Panel |  |
+| Areas of Guidance                                 Vi | sual Summary |
+| 3.9.1 Chart Area Structure and Layout |  |
+| 3.9.2 Time Scale |  |
+| 3.9.3 Indicating Past and Future |  |
+| 3.9.4 Indicating Today |  |
+| 3.9.5 Indicating the Currently-Selected Day |  |
+| 3.9.6 Information Display |  |
+| 3.9.7 Information Display for the Currently-Selected | Day |
+| 3.9.8 Chart Area Access to More Details |  |
+| 3.9.9 Symbols and Icons |  |
+| 3.10.1 Overdue Drugs |  |
+| 3.10.2 Past Overdue |  |
+| 3.11 Displaying As Required Administration Events |  |
+| Areas of Guidance                                 Vi | sual Summary |
+| 3.12 Displaying Once Only Administration Events |  |
+| 3.13.1 Displaying Significant Duration Drugs |  |
+| 3.13.2 Status Box |  |
+| 3.13.3 Detailed View |  |
+| 3.13.4 Recording Significant Duration Drug |  |
+| Administrations |  |
+| 3.14.1 Displaying Nil by Mouth Status |  |
+| 3.14.2 Supporting Administrations While a Patient is | Nil |
+| by Mouth |  |
+| 3.15.1 Variable Dose Drugs |  |
+| 3.15.2 Preconditions |  |
+| 3.15.3 Time-Critical Administration Events |  |
+| 3.15.4 Witnessed, Role-Specific and Self- |  |
+| Administrations |  |
+| 3.16.1 Recording Administration Events |  |
+| Areas of Guidance                               Visu | al Summary |
+| 3.16.2 Structure of the Form |  |
+| 3.16.3 Recording Administrations |  |
+| 3.17 Medication Updates                         No V | isual Summary associated with this guidance |
 
 Table 5: Summary of Guidance
 
@@ -1086,37 +1143,32 @@ Copyright ©2013 Health and Social Care Information Centre
 ![](drugadmin_assets/drugadmin.pdf-30-1.png)
 HSCIC Controlled Document
 
-Empty Future The event is scheduled but is not Due, Overdue or Next
 
-Next Next event to be Given The event is the Next chronological event for that drug that is not Due or Overdue
-
-Due Ready to be Given The event is within the tolerances for the drug administration schedule (example time tolerances could be one hour before and after the scheduled administration time)
-
-Overdue Should have been Given by now
-
-Begun Drug administration underway
-
-Depends on context
-
-If administered while Next, the administration might be categorised as Given Early
-
-If administered while Due, the administration might be categorised as Given
-
-If administered while Overdue, the administration might be categorised as Given Late.
-
-Depends on context
-
-If administered As Required, the administration might be categorised as Given
-
-Unscheduled As Required
-
-A drug that is administered according to patient need
-
-The event is later than the time constraints of the drug administration schedule
-
-A Significant Duration drug such as an infusion (see section 3.13), for which a start date and time have been recorded, is scheduled to still be running and has nothing recorded to indicate that it has stopped.
-
-A drug that has not been given a regular schedule and therefore is only given on an ad-hoc basis based on clinical judgement and preset criteria. For more on As Required medication see section 3.9.1.
+| Event Schedule | Possible Administration |
+| --- | --- |
+| Quick Definition                       Description |  |
+| State | Status If Recorded |
+| Empty                   Future                        The event is scheduled but is not Due, | Depends on context |
+| Overdue or Next |  |
+| Next                    Next event to be Given        The event is the Next chronological event | If administered while Next, the |
+| for that drug that is not Due or Overdue | administration might be categorised as Given Early |
+| Due                     Ready to be Given             The event is within the tolerances for the If | administered while Due, the |
+| drug administration schedule (example time ad | ministration might be |
+| tolerances could be one hour before and    ca | tegorised as Given |
+| after the scheduled administration time) |  |
+| Overdue                 Should have been Given by The event is later than the time constraints | If administered while Overdue, the |
+| now                       of the drug administration schedule | administration might be categorised as Given Late. |
+| Begun                   Drug administration           A Significant Duration drug such as an | Depends on context |
+| underway                      infusion (see section 3.13), for which a star | t |
+| date and time have been recorded, is |  |
+| scheduled to still be running and has |  |
+| nothing recorded to indicate that it has |  |
+| stopped. |  |
+| Unscheduled             A drug that is administered   A drug that has not been given a regular | If administered As Required, the |
+| As Required             according to patient need     schedule and therefore is only given on an | administration might be |
+| ad-hoc basis based on clinical judgement | categorised as Given |
+| and preset criteria. For more on As |  |
+| Required medication see section 3.9.1. |  |
 
 Table 6: Scheduled Administration Terms
 
@@ -2178,7 +2230,31 @@ HSCIC Controlled Document
 
 ###### 3.13.4 Recording Significant Duration Drug Administrations
 
-The guidance points in this section relate to the recording of administration events for Significant Duration drugs in the Chart Area of the Drug Administration View. Figure 117 highlights an example of where this could be located:
+
+| ID | Description | Conformance Rating |
+| --- | --- | --- |
+| MEDa-0152 In the | detailed view for a Significant Duration drug, display information such as bag Recomme | nded                   Medium |
+| change | s, rates, pump settings, changes, administration issues and notes |  |
+| MEDa-0153 In the | detailed view of a Significant Duration drug, display a graphic on which  Recommended | Medium |
+| timing | s of notes, observations and issues are marked and made distinct from each |  |
+| other |  |  |
+| MEDa-0157 In the | detailed view of a Significant Duration drug, where applicable display where | Recommended            Medium |
+| checks | have been made and show the recorded volumes or rates |  |
+| MEDa-0159 In the | detailed view of a Significant Duration drug, where applicable indicate | Recommended            Medium |
+| outsta | nding issues and provide appropriate instructions and action buttons |  |
+| Usage Examples |  |  |
+| No usage example | s for this guidance |  |
+| Rationale |  |  |
+| MEDa-0152, MEDa- | 0153, MEDa-0157, MEDa-0159 |  |
+| Multiple rounds | of user feedback indicated further suggestions for extra details that should be present | in a detailed view of Significant |
+| Duration drugs { | R13, R14, R15, R16}. |  |
+| Two rounds of us | er feedback supported the guidance that actual and estimated/intended dates and Infusio | n progress should be clearly |
+| distinguished {R | 13, R14}. It was also indicated that summary indications of ‘idealised’ Infusion progre | ss (as opposed to actual |
+| progress) were p | otentially dangerous {R13}. |  |
+| 3.4         Reco | rding Significant Duration Drug Administrations |  |
+| The guidance poi | nts in this section relate to the recording of administration events for Significant |  |
+| Duration drugs i | n the Chart Area of the Drug Administration View. Figure 117 highlights an example |  |
+| of where this co | uld be located: |  |
 
 Figure 117: Example Significant Duration Drugs Recording Area
 
@@ -2198,7 +2274,28 @@ HSCIC Controlled Document
 
 ###### 3.14.1 Displaying Nil by Mouth Status
 
-The guidance points in this section relate to the display of the Nil by Mouth status in the Drug Administration View. Figure 118 highlights an example of where this could be located:
+
+| ID | Description | Conformance Rating |
+| --- | --- | --- |
+| MEDa-0160 For S | ignificant Duration drugs in the Drug Administration View, provide access to | Recommended           Medium |
+| contr | ols for recording the administration within the detailed view. Do not allow |  |
+| recor | ding of administration in the main view |  |
+| MEDa-0161 When | volumes are recorded, indicate whether they are approximate | Recommended           Medium |
+| MEDa-0162 Requi | re the recording of administration issues, notes and changes for Significant | Recommended           Medium |
+| Durat | ion drugs to be classified by selecting an option from a limited list |  |
+| Usage Examples |  |  |
+| No usage exampl | es for this guidance |  |
+| Rationale |  |  |
+| MEDa-0160 |  |  |
+| Recording Signi | ficant Duration administration events in the main view is not recommended as it is likel | y to require visibility of |
+| information onl | y present in the detailed view. |  |
+| MEDa-0162 |  |  |
+| Compared to usi | ng unstructured free text, using structured options will speed up input of these excepti | ons and provide more consistent |
+| data for displa | y and subsequent audit. |  |
+| 4 When a Patien | t is Nil by Mouth |  |
+| 4.1         Dis | playing Nil by Mouth Status |  |
+| The guidance po | ints in this section relate to the display of the Nil by Mouth status in the Drug |  |
+| Administration | View. Figure 118 highlights an example of where this could be located: |  |
 
 Figure 118: Example Nil by Mouth Display Area
 
@@ -2265,17 +2362,15 @@ There are a number of ways that a dose may vary. Table 7 describes the ways a do
 
 ![](drugadmin_assets/drugadmin.pdf-93-0.png)
 
-Conditional Dose Dosage likely to vary per administration or per day based on criteria such as drug levels
 
-Dose Range Dosage range specified by the prescriber within which those administering it can choose a dose depending on patient need
-
-Constant Dose–Pattern Dosage variations repeating either within or between days based on a schedule defined by the prescriber
-
-Varying Dose–Pattern Dosage schedule defined by the prescriber that does not fall into a repeating pattern
-
-Loading Dose An initial higher dosage at the start of a course that reduces to a regular, consistent dose
-
-Adjusted Dose Dosage changed by a prescriber after the initial prescription where this change was not specified by the original prescriber. (This is not counted as a variable dose by this guidance).
+| Type of Dose | Description | Examples Guidance? |
+| --- | --- | --- |
+| Conditional Dose | Dosage likely to vary per administration or per day based on criteria such as drug levels | warfarin, insulin,          Yes gentamicin |
+| Dose Range | Dosage range specified by the prescriber within which those administering it can choose a dose depending on patient need | As Required                 Yes analgesia |
+| Constant Dose–Pattern | Dosage variations repeating either within or between days based on a schedule defined by the prescriber | furosemide morning          Yes and evening |
+| Varying Dose–Pattern | Dosage schedule defined by the prescriber that does not fall into a repeating pattern | prednisolone tapering       Yes dose |
+| Loading Dose | An initial higher dosage at the start of a course that reduces to a regular, consistent dose | amiodarone                   No |
+| Adjusted Dose | Dosage changed by a prescriber after the initial prescription where this change was not specified by the original prescriber. (This is not counted as a variable dose by this guidance). | enalapril 2.5 mg             No changed to enalapril 5 mg |
 
 Table 7: Ways a Dose May Vary
 
@@ -2586,45 +2681,29 @@ HSCIC Controlled Document
 
 ##### 4.1 Terms and Abbreviations
 
-ACBS Advisory Committee on Borderline Substances
 
-CUI Common User Interface
-
-INR International Normalized Ratio
-
-IUD Intrauterine Device
-
-LASB Look-Ahead Scroll Bar
-
-LHP Left-Hand Panel
-
-HDU High-Dependency Unit
-
-MRI Magnetic Resonance Imaging
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NMC Nursing and Midwifery Council
-
-NPfIT National Programme for Information Technology
-
-OTC Over the Counter
-
-PGD Patient Group Direction
-
-POD Patient’s Own Drugs
-
-PRN Pro Re Nata (‘As Required’)
-
-PSD Patient Specific Direction
-
-TGP Typical Generic Paper
-
-TPN Total Parental Nutrition
-
-TTO To Take Out
+| Abbreviation | Definition |
+| --- | --- |
+| ACBS | Advisory Committee on Borderline Substances |
+| CUI | Common User Interface |
+| INR | International Normalized Ratio |
+| IUD | Intrauterine Device |
+| LASB | Look-Ahead Scroll Bar |
+| LHP | Left-Hand Panel |
+| HDU | High-Dependency Unit |
+| MRI | Magnetic Resonance Imaging |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NMC | Nursing and Midwifery Council |
+| NPfIT | National Programme for Information Technology |
+| OTC | Over the Counter |
+| PGD | Patient Group Direction |
+| POD | Patient’s Own Drugs |
+| PRN | Pro Re Nata (‘As Required’) |
+| PSD | Patient Specific Direction |
+| TGP | Typical Generic Paper |
+| TPN | Total Parental Nutrition |
+| TTO | To Take Out |
 
 Table 8: Terms and Abbreviations
 
@@ -2648,51 +2727,32 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Current medication Current medications refer to those that have been prescribed to a patient and have not yet been discontinued or completed. A medication can also be termed current with reference to a time in the past when the medication was current for the patient
 
-Due Within the time constraints that allow the administration to be recorded as given successfully (‘Given’).
-
-Evidence Rating In the guidance tables, summarises the strength of the research defining the guideline and the extent to which it mitigates patient safety hazards. There are three ratings (with example factors used to determine the appropriate rating):
-
- **Low:**
-
- Does not mitigate specific patient safety hazards
-
- User research findings unclear and with few participants
-
- Unreferenced usability principles indicate the design is not significantly better than alternatives
-
- **Medium:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear but with few participants
-
- References old authoritative guidance (for example, from National Patient Safety Agency (NPSA),
-
-Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
- **High:**
-
- Mitigates specific patient safety hazards
-
- User research findings clear and with a significant number of participants
-
- References recent authoritative guidance (for example, from NPSA, ISMP or WHO)
-
- Referenced usability principles indicate the design is significantly better than alternatives
-
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
-
-Overdue Outside the time constraints for recording an administration as ‘Given’ but still within time constraints for recording a late administration (‘Given Late’).
-
-Past drugs Drugs that have been prescribed and subsequently have either been discontinued or completed at the time the list is being viewed
-
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
-
-White Space Area of user interface left clear and unused
+| Term | Definition |
+| --- | --- |
+| As Required | A drug that has not been given a regular schedule and therefore is only given on an ad-hoc basis based on clinical judgement and preset criteria. |
+| Begun | A Significant Duration drug, for which a start date and time have been recorded, is scheduled to still be running and has nothing recorded to indicate that it has stopped. |
+| Conformance | In the guidance tables, indicates the extent to which you should follow the guideline when defining your UI implementation. There are two levels:  Mandatory – An implementation should follow the guideline  Recommended – An implementation is advised to follow the guideline |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
+| erm                     Def | inition |
+| urrent medication       Cur | rent medications refer to those that have been prescribed to a patient and have not yet been discontinued |
+| or | completed. A medication can also be termed current with reference to a time in the past when the |
+| med | ication was current for the patient |
+| ue                      Wit | hin the time constraints that allow the administration to be recorded as given successfully (‘Given’). |
+| vidence Rating          In | the guidance tables, summarises the strength of the research defining the guideline and the extent to |
+| whi | ch it mitigates patient safety hazards. There are three ratings (with example factors used to determine the |
+| app | ropriate rating): |
+|  L | ow:  Does not mitigate specific patient safety hazards  User research findings unclear and with few participants  Unreferenced usability principles indicate the design is not significantly better than alternatives |
+|  M | edium:  Mitigates specific patient safety hazards  User research findings clear but with few participants  References old authoritative guidance (for example, from National Patient Safety Agency (NPSA), Institute for Safe Medication Practices (ISMP) or World Health Organization (WHO)) that is potentially soon to be superseded  Referenced usability principles indicate the design is significantly better than alternatives |
+|  H | igh:  Mitigates specific patient safety hazards  User research findings clear and with a significant number of participants  References recent authoritative guidance (for example, from NPSA, ISMP or WHO)  Referenced usability principles indicate the design is significantly better than alternatives |
+| HS Entity               Wit | hin this document, defined as a single NHS organisation or group that is operated within a single technical |
+| inf | rastructure environment by a defined group of IT administrators. |
+| verdue                  Out | side the time constraints for recording an administration as ‘Given’ but still within time constraints for |
+| rec | ording a late administration (‘Given Late’). |
+| ast drugs               Dru | gs that have been prescribed and subsequently have either been discontinued or completed at the time |
+| the | list is being viewed |
+| he Authority            The | organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| hite Space              Are | a of user interface left clear and unused |
 
 Table 9: Definitions
 
@@ -2714,29 +2774,30 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Interface dialog names **Bold**
 
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 10: Body Text Styles
 
 ###### 4.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 11: Cross Reference Styles
 
@@ -2786,32 +2847,30 @@ Page 106
 
 HSCIC Controlled Document
 
-**R12.** Nursing and Midwifery Council – Standards for medicines management [http://www.nmc-uk.org/aDisplayDocument.aspx?DocumentID=6228](http://www.nmc-uk.org/aDisplayDocument.aspx?DocumentID=6228)
 
-2008
-
-**R13.** NHS CUI Design Guide Medications Overview and Administration User Feedback 2007-08-20 20-Aug-2007
-
-**R14.** NHS CUI Design Guide R4 Medications Overview and Admin User Feedback 2007-02-12 12-Feb-2007
-
-**R15.** NHS CUI Design Guide R4 Medications Admin and Overview User Feedback 2007-01-18 18-Jan-2007
-
-**R16.** NHS CUI Design Guide Medications Admin and Overview User Feedback 2006-11-13 13-Nov-2006
-
-**R17.** Sanders, M. and McCormick, E., Human Factors In Engineering and Design Seventh Edition
+| Reference | Document | Version |
+| --- | --- | --- |
+| R1. | Department of Health – Building a safer NHS for patients: Improving Medication Safety              2 http://www.dh.gov.uk/en/Publicationsandstatistics/Publications/PublicationsPolicyAndGuidance/DH_40 71443 | 2-Jan-2004 |
+| R2. | NHS CFH: ePrescribing System Evaluations: http://nww.connectingforhealth.nhs.uk/eprescribing Access requires an N3 connection. If you do not have an N3 connection, email eprescribing@nhs.net for help. | November 2008 |
+| R3. | NHS CUI Programme – Medications Management – Medications List – User Interface Design Guidance | 1.0.0.0 |
+| R4. | NHS CUI Programme – Medications Management – Medication Line – User Interface Design Guidance | 2.0.0.0 |
+| R5. | NHS CUI Programme – Timeline View –User Interface Design Guidance | 1.0.0.0 |
+| R6. | NHS CUI Programme – Design Guide Entry – Time Display | 4.0.0.0 |
+| R7. | NHS CUI Programme – Design Guide Entry – Date Display | 4.0.0.0 |
+| R8. | NHS CUI Programme – Design Guide Entry – Date and Time Input | 3.0.0.0 |
+| R9. | NHS NPfIT – dm+d Implementation Guide (Secondary Care) http://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/refdocs/index_html | May 2009 |
+| R10. | NHS CFH – ePrescribing Functional Specification for NHS Trusts http://www.connectingforhealth.nhs.uk/systemsandservices/eprescribing/baselinefunctspec.pdf | 1.0 |
+| R11. | NHS – The Dictionary of Medicines and Devices http://www.dmd.nhs.uk/ | 2.3 |
+| Reference        D | ocument                                                                                Version |  |
+| R12.             N | ursing and Midwifery Council – Standards for medicines management                      2008 |  |
+| h | ttp://www.nmc-uk.org/aDisplayDocument.aspx?DocumentID=6228 |  |
+| R13.             N | HS CUI Design Guide Medications Overview and Administration User Feedback 2007-08-20   20-Aug-2007 |  |
+| R14.             N | HS CUI Design Guide R4 Medications Overview and Admin User Feedback 2007-02-12         12-Feb-2007 |  |
+| R15.             N | HS CUI Design Guide R4 Medications Admin and Overview User Feedback 2007-01-18         18-Jan-2007 |  |
+| R16.             N | HS CUI Design Guide Medications Admin and Overview User Feedback 2006-11-13            13-Nov-2006 |  |
+| R17.             S | anders, M. and McCormick, E., Human Factors In Engineering and Design                  Seventh Edition |  |
 
 Table 12: References
-
-Page 107
-
-Copyright ©2013 Health and Social Care Information Centre
-
-HSCIC Controlled Document
-
-#### APPENDIX A STUDY ID 8: EXECUTIVE SUMMARY
-
-##### A.1 Abstract
-
 The UK National Health Service (NHS) Common User Interface (CUI) programme is a partnership between Microsoft [®] and NHS Connecting for Health (NHS CFH), which is part the NHS National Programme for Information Technology (NPfIT).
 
 As part of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring that software applications used by the NHS enhance patient safety. To achieve this, CAPS provides software developers with user interface design guidelines derived through a user-centric development process that includes explicit patient-safety evaluations.
@@ -2870,63 +2929,67 @@ Respondents completed a 30 minute online survey containing a subset of the image
 
 ###### A.4.1 Interview Participant Description
 
-15 participants were interviewed in 13 sessions. Each had either volunteered through the NHS CFH Event Management System (EMS) signup or had been recruited by an HCP who had volunteered. Table 3 shows a summary of the participants’ profiles:
 
-240 Pharmacy Technician - Yes?
-
-241 Pharmacist? Yes?
-
-242 Pharmacist Specialist Medicine No?
-
-243 Pharmacist Clinical Systems Yes High
-
-244 Pharmacist Intensive care and Surgery Yes?
-
-246 Pharmacist
-
-Senior sister
-
-Clinical Systems
-
-Care of the Elderly
-
-Yes
-
-Yes
-
-High
-
-Medium
-
-247 Pharmacist Department and Clinical System Management
-
-Yes High
-
-248 Ward Manager Care of the Elderly No Medium
-
-249 Ward Manager Cardiology No Medium/High
-
-250 Pharmacist
-
-Chief Pharmacist
-
-Discharge
-
-Oncology and Management
-
-No
-
-No
-
-?
-
-?
-
-251 Senior nurse Critical Care and Practice Development Yes Medium/High
-
-252 Pharmacist ‘Interface’ with PCT No High
-
-253 Senior Nurse Care of the Elderly and Practice Development
+| A.1 | Abstract |
+| --- | --- |
+| The UK | National Health Service (NHS) Common User Interface (CUI) programme is a partnership ® |
+| between | Microsoft and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Program | me for Information Technology (NPfIT). |
+| As part | of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring |
+| that so | ftware applications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provide | s software developers with user interface design guidelines derived through a user-centric |
+| develop | ment process that includes explicit patient-safety evaluations. |
+| This su | mmary describes key findings from user research carried out in June 2008 by the CUI |
+| CAPS te | am on Drug Administration. These findings are a subset of those in a larger internal report |
+| prepare | d for the CUI CAPS Drug Administration team. |
+| Purpose | : |
+| To gain | clinical feedback on design concepts for Drug Administration in electronic systems. |
+| Method: |  |
+| Intervi | ews: structured interviews with 15 Health Care Professionals (HCPs) eliciting HCP |
+| prefere | nces and qualitative feedback on design alternatives. |
+| Survey: | six respondents answered open and closed questions on a subset of the same designs |
+| shown i | n the interviews. |
+| Key Res | ults: |
+| Based o | n clinician preference and rationale: |
+|  S | orting by ‘dueness’ seems appropriate for the task of drug administration. However, |
+| c | oncerns were raised that this was not the most appropriate sort order for |
+| n | on-administration tasks |
+|  T | here was mixed feedback on whether to group drugs by default or not |
+|  T | he current model for pharmacist verification was supported |
+|  T | he notional 'dueness' state transition model was supported (though alternatives were not |
+| c | onsidered) |
+| A.2 | Research Objectives |
+| To gath | er HCP preferences and qualitative feedback on, and to identify possible patient safety |
+| hazards | with, CUI Drug Administration designs. |
+| A.3 | Research Design |
+| A.3.1 | Interviews |
+| Intervi | ews were structured, lasted one hour and were carried out in person. Participants were taken |
+| through | design alternatives for each area and asked for preferences based on patient safety |
+| rationa | le. Qualitative feedback was also elicited. |
+| Detaile | d notes from the interviews were qualitatively analysed using thematic coding. |
+| A.3.2 | Survey |
+| Respond | ents completed a 30 minute online survey containing a subset of the images used in the |
+| intervi | ews. As with the interviews, respondents were asked for preferences among the design |
+| alterna | tives, based on patient safety rationale, and asked for qualitative feedback. |
+| A.4 | Results |
+| A.4.1 | Interview Participant Description |
+| 15 part | icipants were interviewed in 13 sessions. Each had either volunteered through the NHS |
+| CFH Eve | nt Management System (EMS) signup or had been recruited by an HCP who had |
+| volunte | ered. Table 3 shows a summary of the participants’ profiles: |
+| Session | Job Role              Specialty                                Used eMAR?   Computer Experience |
+| 240 | Pharmacy Technician -                                          Yes          ? |
+| 241 | Pharmacist            ?                                        Yes          ? |
+| 242 | Pharmacist            Specialist Medicine                      No           ? |
+| 243 | Pharmacist            Clinical Systems                         Yes          High |
+| 244 | Pharmacist            Intensive care and Surgery               Yes          ? |
+| 246 | Pharmacist            Clinical Systems                         Yes          High Senior sister         Care of the Elderly                      Yes          Medium |
+| 247 | Pharmacist            Department and Clinical System           Yes          High Management |
+| 248 | Ward Manager          Care of the Elderly                      No           Medium |
+| 249 | Ward Manager          Cardiology                               No           Medium/High |
+| 250 | Pharmacist            Discharge                                No           ? Chief Pharmacist      Oncology and Management                  No           ? |
+| 251 | Senior nurse          Critical Care and Practice Development   Yes          Medium/High |
+| 252 | Pharmacist            ‘Interface’ with PCT                     No           High |
+| 253 | Senior Nurse          Care of the Elderly and Practice         No           Medium Development |
 
 Table 13: Interview Participants
 
@@ -2944,27 +3007,17 @@ HSCIC Controlled Document
 
 ###### A.4.2 Survey Respondent Description
 
-Six respondents completed the survey. All had either taken part in previous CUI feedback or were forwarded the survey by a colleague. Table 2 shows a summary of the respondents:
 
-1 Nurse
-
-Nurse
-
-EPR
-
-eMAR
-
-Yes Medium
-
-Medium
-
-2 Pharmacist? No Medium
-
-3 Pharmacist? Yes High
-
-4 UI Designer (NHS CFH) Clinical Software No High
-
-5 Pharmacist? Yes Medium
+| A.4.2 | Survey Respondent Description |
+| --- | --- |
+| Six respondent | s completed the survey. All had either taken part in previous CUI feedback or were |
+| forwarded the | survey by a colleague. Table 2 shows a summary of the respondents: |
+| Respondent | Job Role                Specialty           Used eMAR?   Computer Experience |
+| 1 | Nurse                   EPR                 Yes          Medium Nurse                   eMAR                             Medium |
+| 2 | Pharmacist              ?                   No           Medium |
+| 3 | Pharmacist              ?                   Yes          High |
+| 4 | UI Designer (NHS CFH)   Clinical Software   No           High |
+| 5 | Pharmacist              ?                   Yes          Medium |
 
 Table 14: Survey Respondents
 
@@ -3215,35 +3268,65 @@ Respondents completed a 30 minute online survey containing a subset of the image
 
 ###### B.4.1 Interview Participant Description
 
-14 participants were interviewed in 12 sessions. Each had either volunteered through the NHS CFH Event Management System (EMS) signup or had been recruited by an HCP who had volunteered. Table 3 shows a summary of the participants’ profiles:
 
-292 Doctor Anaesthetist SpR No Medium No
-
-293 Nurse Acute pain Sister No Medium No
-
-294 Pharmacist? ? HIS Medium No
-
-295 Resus Officer Resuscitation Senior No High No
-
-296 Doctor Obstetrics and Gynaecology
-
-297 Doctor Obstetrics and Gynaecology
-
-FY2 No Medium No
-
-FY2 No Medium No
-
-298 Nurse Gynaecology Staff Nurse No Medium / Low No
-
-299 Nurse Gynaecology Staff Nurse No Medium / Low No
-
-300 Nurse Gynaecology Junior Sister No Medium No
-
-301 Pharmacist? Senior ServeRx™ High Yes
-
-302 Nurse
-
-Pharmacist
+| B.1 | Abstract |
+| --- | --- |
+| The UK | National Health Service (NHS) Common User Interface (CUI) programme is a partnership ® |
+| between | Microsoft and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Program | me for Information Technology (NPfIT). |
+| As part | of CUI, the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring |
+| that so | ftware applications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provide | s software developers with user interface design guidelines derived through a user-centric |
+| develop | ment process that includes explicit patient-safety evaluations. |
+| This su | mmary describes key findings from user research carried out in August 2008 by the CUI |
+| CAPS te | am on designs for Drug Administration. These findings are a subset of those in a larger |
+| interna | l report prepared for the CUI CAPS Drug Administration team. |
+| Purpose | : |
+| To gain | clinical feedback on design concepts for Drug Administrations in electronic systems. |
+| Method: |  |
+| Intervi | ews: structured interviews with 14 Health Care Professionals (HCPs) eliciting HCP |
+| prefere | nces and qualitative feedback on design alternatives. |
+| Survey: | 45 respondents answered open and closed questions on a subset of the same design |
+| images | used in the interviews. |
+| Key Res | ults: |
+| Based o | n clinician preference and rationale: |
+|  ‘ | Long’ Overdue administration events should not re-sort in the list until after clinician action |
+|  ‘ | Long’ Overdue administration events probably should not change to another state (for |
+| e | xample, Not Recorded) without clinician action |
+|  A | less mis-interpretable description for a Not Recorded state might be ‘Unknown’ |
+|  T | he Status Bar refresh control does not need to display multiple times and can simply |
+| i | ndicate that the list order needs updating |
+| B.2 | Research Objectives |
+| To gath | er HCP preferences and qualitative feedback on, and to identify possible patient safety |
+| hazards | with, CUI Medication Administration designs focusing on unfinished scope areas such as |
+| dealing | with Not Recorded. |
+| B.3 | Research Design |
+| B.3.1 | Interviews (Study ID 40) |
+| Intervi | ews were structured, lasted one hour and carried out in person. Participants were taken |
+| through | design alternatives for each area and asked for preferences based on patient safety |
+| rationa | le. Qualitative feedback was also elicited. |
+| Detaile | d notes from the interviews were qualitatively analysed using thematic coding. |
+| B.3.2 | Survey (Study ID 14) |
+| Respond | ents completed a 30 minute online survey containing a subset of the images used in the |
+| intervi | ews. As with the interviews, respondents were asked for preferences among the design |
+| alterna | tive, based on patient safety rationale, and asked for qualitative feedback. |
+| B.4 | Results |
+| B.4.1 | Interview Participant Description |
+| 14 part | icipants were interviewed in 12 sessions. Each had either volunteered through the NHS |
+| CFH Eve | nt Management System (EMS) signup or had been recruited by an HCP who had |
+| volunte | ered. Table 3 shows a summary of the participants’ profiles: Computer        CUI Feedback |
+| Session | Job Role                   Specialty        Level           Used eMAR? Experience      Before? |
+| 292 | Doctor               Anaesthetist     SpR             No           Medium          No |
+| 293 | Nurse                Acute pain       Sister          No           Medium          No |
+| 294 | Pharmacist           ?                ?               HIS          Medium          No |
+| 295 | Resus Officer        Resuscitation    Senior          No           High            No |
+| 296 | Doctor               Obstetrics and   FY2             No           Medium          No Gynaecology |
+| 297 | Doctor               Obstetrics and   FY2             No           Medium          No Gynaecology |
+| 298 | Nurse                Gynaecology      Staff Nurse     No           Medium / Low    No |
+| 299 | Nurse                Gynaecology      Staff Nurse     No           Medium / Low    No |
+| 300 | Nurse                Gynaecology      Junior Sister   No           Medium          No |
+| 301 | Pharmacist           ?                Senior          ServeRx™     High            Yes |
+| 302 | Nurse                Surgery          Sister          ServeRx      Medium / Low    No Pharmacist           Safety           ?               ServeRx      Medium / High   No |
 
 Table 15: Interview Participants
 
@@ -3289,36 +3372,27 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Medical Consultant 6
 
-Anaesthetist 2
-
-Pharmacist 23
-
-Healthcare Manager 1
-
-Software Analyst 1
-
-Change Agent 1
-
-Healthcare IT Clinician 1
-
-TOTAL 45
+| B.4.2 | Survey Respondent Description |
+| --- | --- |
+| 45 respondent | s completed the survey. All had either taken part in previous CUI feedback or were |
+| forwarded the | survey by a colleague. Table 16 shows a summary of the respondent’s job roles: |
+| Job Role | Respondents |
+| Hospital Staf | f Nurse         2 |
+| Ward Manager | 1 |
+| Other Nurse | 5 |
+| Junior Doctor | 2 |
+| Job Role | Respondents |
+| Medical Consu | ltant        6 |
+| Anaesthetist | 2 |
+| Pharmacist | 23 |
+| Healthcare Ma | nager        1 |
+| Software Anal | yst          1 |
+| Change Agent | 1 |
+| Healthcare IT | Clinician   1 |
+| TOTAL | 45 |
 
 Table 16: Survey Respondents
-
-53% of respondents had used some kind of ePrescribing and 27% had used some kind of electronic drug administration. Most respondents had medium to high computer experience.
-
-###### B.4.3 Design Areas
-
-Bullet text _in italics_ represents researcher recommendations or comments in order to distinguish them from user feedback.
-
-Results from the interviews and survey have been combined where they covered the same design areas.
-
-_**Not Recorded: Indication**_
-
-- Only 45% of interview participants and 64% of survey respondents correctly interpreted
-
 what the Not Recorded indicator would mean (the label was supplemented with a cross):
 
  _Implying that the label and cross symbol are not safe for use to represent this concept_
@@ -3367,19 +3441,42 @@ should re-sort so that other Due events came to the top of the list (as the list
 
 - Table 17 shows participant’s and respondent’s preferences for the behaviour of an
 
-Overdue event after two hours:
 
-Option 1 – Change to Not Recorded and re-sort 0 8%
-
-Option 2 – Change to Not Recorded and not re-sort 36%
-
-*If longer time till change
-
-22%
-
-Option 3 – No change and not re-sort 64% 67%
-
-Don’t know 0 2%
+| B.4.3 | Design Areas |
+| --- | --- |
+| Bullet text in | italics represents researcher recommendations or comments in order to distinguish |
+| them from user | feedback. |
+| Results from t | he interviews and survey have been combined where they covered the same design |
+| areas. |  |
+| Not Recorded: | Indication |
+|  Only 45 | % of interview participants and 64% of survey respondents correctly interpreted |
+| what | the Not Recorded indicator would mean (the label was supplemented with a cross): |
+|  | Implying that the label and cross symbol are not safe for use to represent this concept |
+|  | ‘Unknown’ was suggested as a more appropriate term |
+| Not Recorded: | Current Practice |
+|  Pharmac | ists described unrecorded administration as a very common problem, expecting |
+| to s | ee several a day on their rounds: |
+|  | “Very serious, very prevalent and universal.....not catastrophic but it is the insidious nature of the problem” |
+|  Partici | pants felt that it was very unusual not to be able to discover what actually |
+| happ | ened to the administration |
+|  Partici | pants speculated that blanks are often caused by interruptions in drugs rounds |
+| Not Recorded: | Time Change |
+|  When sh | own an example of what might happen to an event that had been Overdue for |
+| two | hours, the majority of participants and respondents: |
+|  | Anticipated it would stay Overdue |
+|  | Reasoned that it should stay Overdue |
+|  | Or saw problems with it changing to a Not Recorded state after two hours |
+| Not Recorded: | Sorting and Changing |
+|  As well | as changing state, participants were asked about whether the ‘long’ Overdue event |
+| shoul | d re-sort so that other Due events came to the top of the list (as the list is ordered by |
+| duene | ss) |
+|  Table 17 | shows participant’s and respondent’s preferences for the behaviour of an |
+| Overd | ue event after two hours: |
+| W | hich Option is Safest?                                  Interviews (n=11)             Survey (n=45) |
+| O | ption 1 – Change to Not Recorded and re-sort            0                             8% |
+| O | ption 2 – Change to Not Recorded and not re-sort        36%                           22% *If longer time till change |
+| O | ption 3 – No change and not re-sort                     64%                           67% |
+| D | on’t know                                               0                             2% |
 
 Table 17: Preferences for Behaviour of an Event Over Two Hours Overdue
 
@@ -3446,17 +3543,37 @@ which did not support it
 
 - Table 18 shows survey respondent’s preferences for assessing compliance with Level 3
 
-self-administration:
 
-Nurse makes no documentation 0%
-
-Nurse documents stated compliance daily 29%
-
-Nurse documents stated compliance per drug round 55%
-
-Other practice 10%
-
-Don’t know 6%
+|  | However, an important risk raised was that if ‘unrecorded’ events did remain as Overdue an administerer might administer BOTH doses in quick succession |
+| --- | --- |
+| ded: R | ecommendations |
+| il aft | er clinician action, administration events that have gone beyond Overdue should: |
+|  | Not re-sort automatically |
+|  | Remain prominent in the display (perhaps through the Status Bar, label or visual design) |
+|  | Indicate the original Due time |
+|  | Not use a mis-interpretable label or icon (for example, do not use Not Recorded or a cross) |
+|  | Be very clear that there has NOT been any user-initiated change (perhaps by remaining Overdue) |
+|  | Strongly encourage a user to deal with that administration event before any others for that medication |
+| linici | an should be able to record that the administration status of an event is unknown |
+| (as an | exceptional circumstance) |
+| sider | whether an automatic change of state (that does not violate the above |
+| recomm | endation) after either a ‘longer’ period of time or ‘when the Next event becomes |
+| Due’ i | s feasible, compared to just remaining Overdue |
+| ustrat | e all administration states on days not in focus on the administration view, |
+| ensuri | ng that they are still interpretable |
+| ress t | he risk that multiple Overdue events are mistakenly administered in quick |
+| succes | sion |
+| nistra | tion |
+| ticipa | nts described a variety of practice around self-administration, including one trust |
+| which | did not support it |
+| le 18 | shows survey respondent’s preferences for assessing compliance with Level 3 |
+| self-a | dministration: |
+| Wh | at Should Level 3 Practice Be?                           Survey (n=49) |
+| Nu | rse makes no documentation                               0% |
+| Nu | rse documents stated compliance daily                    29% |
+| Nu | rse documents stated compliance per drug round           55% |
+| Ot | her practice                                             10% |
+| Do | n’t know                                                 6% |
 
 Table 18: Preferences for Self-Administration Level 3 Compliance Documentation
 
@@ -3619,73 +3736,68 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-**3.9.6** **Deleted** MEDa-0088, MEDa-0092
 
-**Modified** MEDa-0085, MEDa-0086, MEDa-0087, MEDa-0089, MEDa-0095, MEDa-0096, MEDa-0258
-
-**Added** MEDa-0278
-
-**3.9.7** **Modified** MEDa-0099, MEDa-0256
-
-**Added** MEDa-0299
-
-**3.9.8** **Modified** MEDa-0108, MEDa-0109, MEDa-0111, MEDa-0112
-
-**Deleted** MEDa-0110
-
-**3.9.9** **Modified** MEDa-0117, MEDa-0119
-
-**3.10.1** **Added** MEDa-0279
-
-**3.10.2** **Deleted** MEDa-0124, MEDa-0125, MEDa-0126, MEDa-0127, MEDa-0240
-
-**Added** MEDa-0280, MEDa-0281, MEDa-0282, MEDa-0283, MEDa-0284
-
-**3.10.3** **Deleted** Section deleted (MEDa-0128, MEDa-0129, MEDa-0130, MEDa-0131)
-
-**3.11** **Modified** MEDa-0134
-
-**3.12** **Deleted** MEDa-0242, MEDa-0243
-
-**3.13.1** **Modified** MEDa-0142, MEDa-0143, MEDa-0145, MEDa-0146, MEDa-0147
-
-**Added** MEDa-0285, MEDa-0286, MEDa-0287
-
-**3.13.2** **Modified** MEDa-0148, MEDa-0149, MEDa-0150, MEDa-0151
-
-**3.13.3** **Deleted** MEDa-0154, MEDa-0155, MEDa-0156
-
-**Modified** MEDa-0152, MEDa-0153, MEDa-0157, MEDa-0159
-
-**3.13.4** **Modified** MEDa-0160, MEDa-0161, MEDa-0162
-
-**3.14.1** **Modified** MEDa-0163, MEDa-0164
-
-**3.14.2** **Modified** MEDa-0165, MEDa-0166, MEDa-0167
-
-**3.15.1** **Deleted** MEDa-0165, MEDa-0166, MEDa-0167, MEDa-0169
-
-**Added** MEDa-0288, MEDa-0289, MEDa-0290, MEDa-0291, MEDa-0292, MEDa-0293
-
-**3.15.2** **Modified** MEDa-0177
-
-**3.15.3** **Modified** MEDa-0179
-
-**3.15.4** **Modified** MEDa-0181, MEDa-0182, MEDa-0186
-
-**3.15.5** **Deleted** Section deleted except for informational note (MEDa-0187, MEDa-0188, MEDa-0189)
-
-**3.16.1** **Modified** MEDa-0194
-
-**3.16.2** **Deleted** MEDa-0198, MEDa-0202
-
-**Modified** MEDa-0196, MEDa-0201, MEDa-0203
-
-**3.16.3** **Modified** MEDa-0204, MEDa-0207, MEDa-0208, MEDa-0209, MEDa-0210, MEDa-0211, MEDa-0212, MEDa-0239
-
-**3.16.4** **Deleted** Section deleted (MEDa-0213, MEDa-0214, MEDa-0215, MEDa-0217)
-
-**3.17** **Added** New section (MEDa-0294, MEDa-0295, MEDa-0296, MEDa-0297)
+| Section Change | IDs |
+| --- | --- |
+| 3.3.1         Modified | MEDa-0001, MEDa-0003, MEDa-0246 |
+| 3.3.2         Deleted | MEDa-0005, MEDa-0006 |
+| Added | MEDa-0262, MEDa-0263 |
+| 3.4           Deleted | MEDa-0024 |
+| Modified | MEDa-00023, MEDa-0025, MEDa-0026, MEDa-0027, MEDa-0028, MEDa-0029, MEDa-0252 |
+| Added | MEDa-0264 |
+| 3.5.1         Modified | MEDa-0248 |
+| 3.5.2         Modified | MEDa-0218, MEDa-0219, MEDa-0249 |
+| 3.5.3         Deleted | MEDa-0221 |
+| Modified | MEDa-0016, MEDa-0021, MEDa-0257 |
+| 3.6           Modified | MEDa-0036 |
+| 3.7           Modified | MEDa-0039 |
+| 3.8.1         Modified | MEDa-0043, MEDa-0044, MEDa-0224, MEDa-0225, MEDa-0251 |
+| Added | MEDa-0265 |
+| 3.8.2         Deleted | MEDa-0055, MEDa-0228, MEDa-0230 |
+| Modified | MEDa-0051, MEDa-0050, MEDa-0053, MEDa-0054, MEDa-0059, MEDa-0058, MEDa-0229 |
+| Added | MEDa-0266, MEDa-0267, MEDa-0268, MEDa-0298 |
+| 3.8.3         Modified | MEDa-0060, MEDa-0061, MEDa-0062 |
+| 3.9.1         Modified | MEDa-0064, MEDa-0065, MEDa-0066, MEDa-0067, MEDa-0232 |
+| Added | MEDa-0269, MEDa-0270, MEDa-0271, MEDa-0272, MEDa-0273, MEDa-0274, MEDa-0275 |
+| 3.9.2         Modified | MEDa-0069, MEDa-0073, MEDa-0234, MEDa-0235, MEDa-0236, MEDa-0237 |
+| Added | MEDa-0276 |
+| 3.9.3         Deleted | MEDa-0077 |
+| Modified | MEDa-0078 |
+| Added | MEDa-0277 |
+| 3.9.6        Deleted | MEDa-0088, MEDa-0092 |
+| Modified | MEDa-0085, MEDa-0086, MEDa-0087, MEDa-0089, MEDa-0095, MEDa-0096, MEDa-0258 |
+| Added | MEDa-0278 |
+| 3.9.7        Modified | MEDa-0099, MEDa-0256 |
+| Added | MEDa-0299 |
+| 3.9.8        Modified | MEDa-0108, MEDa-0109, MEDa-0111, MEDa-0112 |
+| Deleted | MEDa-0110 |
+| 3.9.9        Modified | MEDa-0117, MEDa-0119 |
+| 3.10.1       Added | MEDa-0279 |
+| 3.10.2       Deleted | MEDa-0124, MEDa-0125, MEDa-0126, MEDa-0127, MEDa-0240 |
+| Added | MEDa-0280, MEDa-0281, MEDa-0282, MEDa-0283, MEDa-0284 |
+| 3.10.3       Deleted | Section deleted (MEDa-0128, MEDa-0129, MEDa-0130, MEDa-0131) |
+| 3.11         Modified | MEDa-0134 |
+| 3.12         Deleted | MEDa-0242, MEDa-0243 |
+| 3.13.1       Modified | MEDa-0142, MEDa-0143, MEDa-0145, MEDa-0146, MEDa-0147 |
+| Added | MEDa-0285, MEDa-0286, MEDa-0287 |
+| 3.13.2       Modified | MEDa-0148, MEDa-0149, MEDa-0150, MEDa-0151 |
+| 3.13.3       Deleted | MEDa-0154, MEDa-0155, MEDa-0156 |
+| Modified | MEDa-0152, MEDa-0153, MEDa-0157, MEDa-0159 |
+| 3.13.4       Modified | MEDa-0160, MEDa-0161, MEDa-0162 |
+| 3.14.1       Modified | MEDa-0163, MEDa-0164 |
+| 3.14.2       Modified | MEDa-0165, MEDa-0166, MEDa-0167 |
+| 3.15.1       Deleted | MEDa-0165, MEDa-0166, MEDa-0167, MEDa-0169 |
+| Added | MEDa-0288, MEDa-0289, MEDa-0290, MEDa-0291, MEDa-0292, MEDa-0293 |
+| 3.15.2       Modified | MEDa-0177 |
+| 3.15.3       Modified | MEDa-0179 |
+| 3.15.4       Modified | MEDa-0181, MEDa-0182, MEDa-0186 |
+| 3.15.5       Deleted | Section deleted except for informational note (MEDa-0187, MEDa-0188, MEDa-0189) |
+| 3.16.1       Modified | MEDa-0194 |
+| 3.16.2       Deleted | MEDa-0198, MEDa-0202 |
+| Modified | MEDa-0196, MEDa-0201, MEDa-0203 |
+| 3.16.3       Modified | MEDa-0204, MEDa-0207, MEDa-0208, MEDa-0209, MEDa-0210, MEDa-0211, MEDa-0212, MEDa-0239 |
+| 3.16.4       Deleted | Section deleted (MEDa-0213, MEDa-0214, MEDa-0215, MEDa-0217) |
+| 3.17         Added | New section (MEDa-0294, MEDa-0295, MEDa-0296, MEDa-0297) |
 
 Table 19: Updates since the Last Baseline Version
 

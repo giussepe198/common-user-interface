@@ -103,47 +103,12 @@ Additionally, users implementing applications that follow this design guide’s 
 [Refer to www.cui.nhs.uk](https://emea.mail.microsoft.com/OWA/redir.aspx?C=2aab7991b0924c8f92c4e2824ab8a971&URL=http%3a%2f%2fwww.cui.nhs.uk) for further information on the patient safety process and for the safety status and any relevant accompanying safety documentation for this design guide.
 ### 1 INTRODUCTION
 
-This document provides the design guidance for date and time input. It describes the area of focus, provides guidance and recommendations, and explains the rationale behind the guidance and recommendations.
 
-This document is intended for use by anyone whose role includes screen design, or the implementation or assessment of NHS clinical applications. This document can therefore be used as guidance for the specification of entering date and times through the user interface of a clinical application.
-
-Table 1 describes the changes made since the previous version of this guidance (Baseline version 2.0.0.0 dated 12-Oct-2007):
-
-**Deleted** None
-
-**Modified** D+Tc-0007 Adding arithmetic shortcut operator for week(s)
-
-Adjusting illustration to show ‘Approx’ as an active control (Figure 10)
-
-**Added** Patient Safety Process note
-
-Detail relating to default dates (section 1.2.2)
-
-Detail relating to durations shorter than a second (section 1.2.2)
-
-Principle relating to change between Greenwich Mean Time and British Summer Time(section 1.3)
-
-Note relating to inclusion of visual representations as illustration only (section 2)
-
-D+Tc-0046 Allow users to select whole value
-
-D+Tc-0041 Prevent use of time shortcuts within date input control
-
-D+Tc-0042 Provide users with an example of date
-
-D+Tc-0043 Provide indication that the 24-hour clock is in use
-
-D+Tc-0047 Enabling user to select entire value
-
-D+Tc-0044 Prevent use of date shortcuts within time input control
-
-D+Tc-0045 Provide users with an example of time
-
-D+Tc-0048 Provide indication of GMT/BST duration handling
-
-D+Tc-0049 Provide indication that system handles duration spans between GMT and BST
-
-Adding usage example to show years, months, weeks, days, hours and minutes (section 2.5.2)
+| Change | IDs | Change Description |
+| --- | --- | --- |
+| Deleted |  | None |
+| Modified | D+Tc-0007 | Adding arithmetic shortcut operator for week(s) Adjusting illustration to show ‘Approx’ as an active control (Figure 10) |
+| Added | D+Tc-0046 D+Tc-0041 D+Tc-0042 D+Tc-0043 D+Tc-0047 D+Tc-0044 D+Tc-0045 D+Tc-0048 D+Tc-0049 | Patient Safety Process note Detail relating to default dates (section 1.2.2) Detail relating to durations shorter than a second (section 1.2.2) Principle relating to change between Greenwich Mean Time and British Summer Time(section 1.3) Note relating to inclusion of visual representations as illustration only (section 2) Allow users to select whole value Prevent use of time shortcuts within date input control Provide users with an example of date Provide indication that the 24-hour clock is in use Enabling user to select entire value Prevent use of date shortcuts within time input control Provide users with an example of time Provide indication of GMT/BST duration handling Provide indication that system handles duration spans between GMT and BST Adding usage example to show years, months, weeks, days, hours and minutes (section 2.5.2) |
 
 Table 1: Changes Since the Last Baseline Version
 
@@ -334,21 +299,21 @@ D+Tc-0007 Allow users to enter arithmetic shortcuts, such as, ‘+3m’ for thre
 
 - ‘+’ for later dates (this is optional, as whole numbers should be treated as positive by
 
-default)  ‘-’ for earlier dates  ‘d’ for days  ‘w’ for weeks  ‘m’ for months  ‘y’ for years
 
-Mandatory
-
-Mandatory
-
-Mandatory
-
-D+Tc-0041 Within the date input control, do not allow users to input arithmetic shortcuts relating to time Mandatory
-
-D+Tc-0008 Allow the input of ‘Unknown’ (or similar) to specify dates not known to the user Mandatory
-
-D+Tc-0009 Display a default input within the free text date input control Mandatory
-
-D+Tc-0042 When displaying a default input within the free text input box, provide the user with an example of date with either a non-specific value (such as the input mask) or a date appropriate to the clinical context (for example, ‘today’s date’)
+| ID | Guideline | Status |
+| --- | --- | --- |
+| D+Tc-0001 | Adopt the NHS Common User Interface standard for Date Display {R1} for the format of any dates displayed within the date input control | Mandatory |
+| D+Tc-0002 | Allow for both free text input of dates and the input of dates using a calendar control | Mandatory |
+| D+Tc-0003 | Allow the date elements to be individually edited (day, month and year) | Mandatory |
+| D+Tc-0004 | Include the calendar icon within the boundary of the date input field | Mandatory |
+| D+Tc-0005 | Provide disambiguation of any free text date input | Mandatory |
+| D+Tc-0006 | Provide instructions on how to use the control, for example, via the use of tooltips. The instructions must contain details of the different date types that can be entered | Mandatory |
+| D+Tc-0046 | Within the date input control, allow users to select the entire value to facilitate rapid editing or entr of arithmetic shortcuts relating to date (only) | y Mandatory |
+| D+Tc-0007 | Allow users to enter arithmetic shortcuts, such as, ‘+3m’ for three months later or ‘-2d’ for two days earlier. The relevant operators are:  ‘+’ for later dates (this is optional, as whole numbers should be treated as positive by default)     ‘-’ for earlier dates     ‘d’ for days     ‘w’ for weeks     ‘m’ for months     ‘y’ for years | Mandatory |
+| D+Tc-0041 | Within the date input control, do not allow users to input arithmetic shortcuts relating to time | Mandatory |
+| D+Tc-0008 | Allow the input of ‘Unknown’ (or similar) to specify dates not known to the user | Mandatory |
+| D+Tc-0009 | Display a default input within the free text date input control | Mandatory |
+| D+Tc-0042 | When displaying a default input within the free text input box, provide the user with an example of date with either a non-specific value (such as the input mask) or a date appropriate to the clinical context (for example, ‘today’s date’) | Recommended |
 
 Table 2: Guidance – Free Text Date Input
 
@@ -363,7 +328,12 @@ Recommended
 of the free text area
 ####  Editing of date elements Allow the individual date elements to be edited
 
-Allow the individual date elements to be edited
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         dd-MMM-yyyy |  | Display the date format using the CUI standard |
+|         Free text area and calendar icon |  | Display the calendar icon within the boundary of the free text area |
+|         Editing of date elements |  | Allow the individual date elements to be edited |
 
 Table 3: Correct Examples of Date Using Free Text Input
 
@@ -378,7 +348,11 @@ HSCIC Controlled Document
 place; it must be included within the boundary of the input field
 ####  Inclusion of calendar icon The calendar icon is omitted and it must be
 
-The calendar icon is omitted and it must be included
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|       Location of the calendar icon |  | The calendar icon is displayed in the wrong place; it must be included within the boundary of the input field |
+|       Inclusion of calendar icon |  | The calendar icon is omitted and it must be included |
 
 Table 4: Incorrect Examples of Date Using Free Text Input
 
@@ -419,43 +393,29 @@ D+Tc-0010 Provide access to the calendar control via a calendar icon Mandatory
 
 ![](datetime_assets/datetime.pdf-11-0.png)
 
-D+Tc-0011 Provide the ability to select a month independently, and a year independently. Signify the interactivity of these elements by suitable styling, for example as buttons or links, and ensure that they have descriptive tooltips
 
-Mandatory
-
-D+Tc-0012 Provide a button to allow the user to enter today’s date Mandatory
-
-D+Tc-0013 Provide a link or button to close the control Mandatory
-
-D+Tc-0014 Provide a visual indication of the current date Mandatory
-
-D+Tc-0015 Include the days of the week within the calendar view Mandatory
-
-D+Tc-0016 Provide access to relevant instructional text (for example, via tooltips) on the clickable elements in the calendar header
-
-D+Tc-0017 Allow the calendar to be closed either when the user clicks away from the calendar or clicks on the calendar icon
-
-Mandatory
-
-Mandatory
-
-D+Tc-0018 Display the appropriate value in the free text field following selection of the date Mandatory
-
-D+Tc-0019 Ensure that the control can be operated effectively via the keyboard (for example, using arrow keys)
+| ID | Guideline | Status |
+| --- | --- | --- |
+| D+Tc-0010 | Provide access to the calendar control via a calendar icon | Mandatory |
+| D+Tc-0011 | Provide the ability to select a month independently, and a year independently. Signify the interactivity of these elements by suitable styling, for example as buttons or links, and ensure that they have descriptive tooltips | Mandatory |
+| D+Tc-0012 | Provide a button to allow the user to enter today’s date | Mandatory |
+| D+Tc-0013 | Provide a link or button to close the control | Mandatory |
+| D+Tc-0014 | Provide a visual indication of the current date | Mandatory |
+| D+Tc-0015 | Include the days of the week within the calendar view | Mandatory |
+| D+Tc-0016 | Provide access to relevant instructional text (for example, via tooltips) on the clickable elements in the calendar header | Mandatory |
+| D+Tc-0017 | Allow the calendar to be closed either when the user clicks away from the calendar or clicks on the calendar icon | Mandatory |
+| D+Tc-0018 | Display the appropriate value in the free text field following selection of the date | Mandatory |
+| D+Tc-0019 | Ensure that the control can be operated effectively via the keyboard (for example, using arrow keys) | Mandatory |
 
 Table 5: Guidance – Calendar Date Input
 
 ##### 2.2.2 Examples of Correct Usage
 
-Mandatory
 
- Month
-
- Year
-
- Days of the week
-
- Dates
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         Present complete calendar information |  | The following elements appear in |
+| within the calendar control |  | the control:  Month  Year  Days of the week  Dates |
 
 Table 6: Correct Examples of Date Using Calendar Input
 
@@ -468,7 +428,10 @@ HSCIC Controlled Document
 
 ##### 2.2.3 Examples of Incorrect Usage
 
-be carried out by month. The calendar must provide the ability to independently navigate both forwards and backwards in months and years
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|       Navigation by month only |  | In this example, navigation can only be carried out by month. The calendar must provide the ability to independently navigate both forwards and backwards in months and years |
 
 Table 7: Incorrect Examples of Date Using Calendar Input
 
@@ -563,17 +526,25 @@ D+Tc-0025 Allow users to enter arithmetic shortcuts such as ‘+3h’ for three 
 
 - ‘+’ for later times (this is optional, as whole numbers should be treated as positive by
 
-default)  ‘-’ for earlier times  ‘h’ for hours  ‘m’ for minutes  ‘s’ for seconds
 
-Mandatory
-
-D+Tc-0044 Within the time input control do not allow users to input arithmetic shortcuts relating to date Mandatory
-
-D+Tc-0026 Allow the entry of ‘Unknown’ (or similar) to specify times not known to the user Mandatory
-
-D+Tc-0027 Display a default input within the time input control Mandatory
-
-D+Tc-0045 When displaying a default input within the free text input box, provide the user with an example of time with either a non-specific value (such as the input mask) or a time appropriate to the clinical context
+| ID | Guideline | Status |
+| --- | --- | --- |
+| D+Tc-0020 | Adopt the NHS Common User Interface standard for Time Display {R2} for the format of any times displayed within the time input control | Mandatory |
+| D+Tc-0021 | Use the 24-hour clock only (rather than the 12-hour clock) | Mandatory |
+| D+Tc-0043 | Provide indication to the user that the 24-hour clock is in use | Mandatory |
+| D+Tc-0022 | Use an ‘Approx’ check box to allow the user to indicate an approximate time | Mandatory |
+| D+Tc-0023 | Allow the time elements to be individually edited (hours, minutes and seconds) | Mandatory |
+| D+Tc-0024 | Provide access to instructions on how to use the control, for example, via the use of tooltips. The instructions must contain details of the different time types that can be entered | Mandatory |
+| D+Tc-0047 | Within the time input control, allow users to select the entire value to facilitate rapid editing or entry of arithmetic shortcuts relating to time (only) | Mandatory |
+| ID                G | uideline                                                                                                Statu | s |
+| D+Tc-0025         A | llow users to enter arithmetic shortcuts such as ‘+3h’ for three hours later and ‘-2m’ for two          Manda | tory |
+| m | inutes earlier. The relevant operators are:  ‘+’ for later times (this is optional, as whole numbers should be treated as positive by default)      ‘-’ for earlier times      ‘h’ for hours      ‘m’ for minutes      ‘s’ for seconds |  |
+| D+Tc-0044         W | ithin the time input control do not allow users to input arithmetic shortcuts relating to date          Manda | tory |
+| D+Tc-0026         A | llow the entry of ‘Unknown’ (or similar) to specify times not known to the user                         Manda | tory |
+| D+Tc-0027         D | isplay a default input within the time input control                                                    Manda | tory |
+| D+Tc-0045         W | hen displaying a default input within the free text input box, provide the user with an example of      Recom | mended |
+| t | ime with either a non-specific value (such as the input mask) or a time appropriate to the clinical |  |
+| c | ontext |  |
 
 Table 8: Guidance – Time Input
 
@@ -582,6 +553,12 @@ Table 8: Guidance – Time Input
 Recommended
 
 ####  Time input field, ‘Approx’ check box
+
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         Time input field, ‘Approx’ check box |  | Correct layout |
+|         Time input field, ‘Approx’ check box |  | Use of the ‘Approx’ check box |
 
 Table 9: Correct Examples of Time Input
 
@@ -595,7 +572,12 @@ Approx label requires a capital A
 
 ####  Incorrect position for spin control The spin control is displayed in the wrong
 
-place; it should be within the input field
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|      Time input field, ‘Approx’ check box |  | No default time is displayed |
+|      Time input field, ‘Approx’ check box |  | Approx label requires a capital A |
+|      Incorrect position for spin control |  | The spin control is displayed in the wrong place; it should be within the input field |
 
 Table 10: Incorrect Examples of Time Input
 
@@ -627,25 +609,30 @@ Figure 14: Examples of Individual Time Element Input
 
 ##### 2.4.1 Guidance
 
-D+Tc-0028 Increase/decrease the whole time by the least significant time unit if the entire value is selected or if no unit is selected
 
-Mandatory
-
-D+Tc-0029 Provide the ability to spin individual time units when selected Mandatory
+| ID | Guideline | Status |
+| --- | --- | --- |
+| D+Tc-0028 | Increase/decrease the whole time by the least significant time unit if the entire value is selected or if no unit is selected | Mandatory |
+| D+Tc-0029 | Provide the ability to spin individual time units when selected | Mandatory |
 
 Table 11: Guidance – Spin Control Time Input
 
 ##### 2.4.2 Examples of Correct Usage
 
-focus
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|       Spin increments |  | Increment on the time element which has the focus |
 
 Table 12: Correct Examples of Time Input Using the Spin Control
 
 ##### 2.4.3 Examples of Incorrect Usage
 
-place; it should be within the input field
 
-(hours); the element with focus should be incremented
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|      Incorrect position for spin control |  | The spin control is displayed in the wrong place; it should be within the input field |
+|      Spin increments |  | Incorrect time element being incremented (hours); the element with focus should be incremented |
 
 Table 13: Incorrect Examples of Time Input Using the Spin Control
 
@@ -706,25 +693,28 @@ Page 12
 
 HSCIC Controlled Document
 
-D+Tc-0031 Provide access to instructions on how to use the control, for example, via the use of tooltips. The instructions must contain details of the different units that can be entered
 
-Mandatory
-
-D+Tc-0032 Allow entry of time duration units either singly or in combination Mandatory
-
-D+Tc-0033 Allow editing of the individual elements of a duration Mandatory
-
-D+Tc-0034 Ensure that the following minimal set of duration unit abbreviations is supported: **y** for years, **m** for months, **w** for weeks, **d** for days, **hr** for hours, **min** for minutes and **sec** for seconds
-
-D+Tc-0035 Allow the set of duration unit abbreviations to be extended appropriately, for example, ‘hrs’ as well as ‘hr’. Ensure that any additions are unique within the entire set
-
-D+Tc-0036 Allow the user to optionally enter white space within the duration input, for example, ‘3 hr 5 min’ as well as ‘3hr 5min’
-
-D+Tc-0037 Provide the facility for a user to disambiguate input which could be interpreted in more than one way (see section 2.6), for example, ‘m’ (which could represent months or minutes)
-
-D+Tc-0048 Where a time duration spans the change between GMT and BST, show a pop-up to inform the user that the system will automatically handle the data within the appropriate time zone
-
-D+Tc-0049 Where a user adjusts time manually resulting in a time duration spanning a change between GMT and BST, show a pop-up to inform that user that the system will automatically adjust the data according to the appropriate time zone
+| ID | Guideline | Status |
+| --- | --- | --- |
+| D+Tc-0030 | Adopt the NHS Common User Interface standard for Time Display {R2} for the format of any times displayed within the duration input control | Mandatory |
+| ID                G | uideline | Status |
+| D+Tc-0031         P | rovide access to instructions on how to use the control, for example, via the use of tooltips. Th | e       Mandatory |
+| i | nstructions must contain details of the different units that can be entered |  |
+| D+Tc-0032         A | llow entry of time duration units either singly or in combination | Mandatory |
+| D+Tc-0033         A | llow editing of the individual elements of a duration | Mandatory |
+| D+Tc-0034         E | nsure that the following minimal set of duration unit abbreviations is supported: y for years, m | for     Mandatory |
+| m | onths, w for weeks, d for days, hr for hours, min for minutes and sec for seconds |  |
+| D+Tc-0035         A | llow the set of duration unit abbreviations to be extended appropriately, for example, ‘hrs’ as w | ell     Recommended |
+| a | s ‘hr’. Ensure that any additions are unique within the entire set |  |
+| D+Tc-0036         A | llow the user to optionally enter white space within the duration input, for example, ‘3 hr 5 min | ’ as    Recommended |
+| w | ell as ‘3hr 5min’ |  |
+| D+Tc-0037         P | rovide the facility for a user to disambiguate input which could be interpreted in more than one | Recommended |
+| w | ay (see section 2.6), for example, ‘m’ (which could represent months or minutes) |  |
+| D+Tc-0048         W | here a time duration spans the change between GMT and BST, show a pop-up to inform the user Recom | mended |
+| t | hat the system will automatically handle the data within the appropriate time zone |  |
+| D+Tc-0049         W | here a user adjusts time manually resulting in a time duration spanning a change between GMT | Recommended |
+| a | nd BST, show a pop-up to inform that user that the system will automatically adjust the data |  |
+| a | ccording to the appropriate time zone |  |
 
 Table 14: Guidance – Entering Time Durations
 
@@ -746,7 +736,15 @@ need to enter 05min
 
 ####  NNuuu  Nuuu NNuuu  Nu NNuuu NNuuu  Nu Nu Nu Nu NNuuu
 
-NNuuu
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         Nuuu |  | Single digit input, that is, the user does not need to enter 05min |
+|         NNuuu |  | Double digit input, where applicable |
+|         Nuuu NNuuu |  | Hours and minutes |
+|         Nu NNuuu NNuuu |  | Days, hours and minutes |
+|         Nu Nu Nu Nu NNuuu |  | Years, months, weeks, days, hours and |
+| NNuuu |  | minutes |
 
 Table 15: Correct Examples of Using the Duration Control
 
@@ -768,6 +766,12 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|      Nu Nu Nuu NNu |  | Non-unique units (confusion between months and minutes) |
+|      Nu Nu Nu Nu |  | Unknown units |
+
 Table 16: Incorrect Examples of Using the Duration Control
 
 ##### 2.5.4 Rationale
@@ -788,9 +792,12 @@ D+Tc-0038 Provide the facility for a user to disambiguate a date entered via the
 
 ![](datetime_assets/datetime.pdf-18-1.png)
 
-D+Tc-0039 Display a message dialog box with appropriate instructional text if the data is ambiguous or incomplete
 
-D+Tc-0040 Display a maximum of two suggestions based on the data entered, plus an option to re-enter the value in the input field. Selection of a suggested value enters that value into the control
+| ID | Guideline | Status |
+| --- | --- | --- |
+| D+Tc-0038 | Provide the facility for a user to disambiguate a date entered via the date control | Mandatory |
+| D+Tc-0039 | Display a message dialog box with appropriate instructional text if the data is ambiguous or incomplete | Mandatory |
+| D+Tc-0040 | Display a maximum of two suggestions based on the data entered, plus an option to re-enter the value in the input field. Selection of a suggested value enters that value into the control | Recommended |
 
 Table 17: Guidance – Disambiguation of Date Input
 
@@ -804,7 +811,14 @@ Option 1 or different date date
 
 ####  Meaningful message
 
-Option 1 or Option 2 or different date
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|       Meaningful message |  | One date option plus different |
+| Option 1 or different date |  | date |
+|       Meaningful message |  | Two date options plus different |
+| Option 1 or Option 2 or different |  | date |
+| date |  |  |
 
 Table 18: Correct Examples of Date Disambiguation
 
@@ -828,6 +842,15 @@ This example presents too many options. Up to two options only, plus a different
 
 ![](datetime_assets/datetime.pdf-19-1.png)
 
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Non-descriptive message, no |  | The message does not explain |
+| guidance |  | what has been entered incorrectly. It also does not present options or guide the user to the next step |
+|        Meaningful message |  | This example presents too many |
+| Option 1 or Option 2 or Option 3 |  | options. Up to two options only, |
+| or different time |  | plus a different date, should be displayed |
+
 Table 19: Incorrect Examples of Date Disambiguation
 
 ##### 2.6.4 Rationale
@@ -850,29 +873,27 @@ HSCIC Controlled Document
 
 #### 3.1 Terms and Abbreviations
 
-BST British Summer Time
 
-CUI Common User Interface
-
-GMT Greenwich Mean Time
-
-ISV Independent Software Vendor
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-UI User Interface
+| Abbreviation | Definition |
+| --- | --- |
+| BST | British Summer Time |
+| CUI | Common User Interface |
+| GMT | Greenwich Mean Time |
+| ISV | Independent Software Vendor |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| UI | User Interface |
 
 Table 20: Terms and Abbreviations
 
 #### 3.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
 
 Table 21: Definitions
 
@@ -882,21 +903,17 @@ This section shows how to interpret the different styles used in this document t
 
 ##### 3.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 22: Body Text Styles
 
@@ -908,23 +925,24 @@ HSCIC Controlled Document
 
 ##### 3.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 23: Cross Reference Styles
 
 #### 3.4 References
 
-**R1.** NHS CUI Design Guide Workstream – Design Guide Entry – Date Display 4.0.0.0
 
-**R2.** NHS CUI Design Guide Workstream – Design Guide Entry – Time Display 4.0.0.0
+| Reference Document | Version |
+| --- | --- |
+| R1.              NHS CUI Design Guide Workstream – Design Guide Entry – Date Display | 4.0.0.0 |
+| R2.              NHS CUI Design Guide Workstream – Design Guide Entry – Time Display | 4.0.0.0 |
 
 Table 24: References
 

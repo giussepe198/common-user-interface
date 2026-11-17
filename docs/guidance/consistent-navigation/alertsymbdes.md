@@ -179,6 +179,10 @@ Applying these principles to our observations, we recommend the following symbol
 
 **Prohibited action** **Mandatory action** **Warning**
 
+
+| Prohibited action | Mandatory action | Warning |
+| --- | --- | --- |
+
 Figure 1: Recommended Symbols
 
 _**Suggested Action**_
@@ -883,6 +887,14 @@ _**Other Candidates Considered**_
 
 **Information**
 
+
+| Alert Symbol Type | Candidates | Dismissal Rationale |
+| --- | --- | --- |
+| Warning |  | This symbol is used in international road signs to denote warning, however it has no other context of use. Although its shape is similar to Chemical Hazard Warning signs it is not used to present the same complex meaning. |
+| Mandatory Action |  | Although the octagonal STOP sign is unique it represents only one specific meaning. If used at low resolution or small size it might be mistaken for a circular shape. This sign could also be considered a prohibitive symbol in terms of classification. This symbol is only sighted in Road Traffic regulations. |
+| Prohibitive Action |  | Although this symbol configuration is very similar to the one recommended, without the crucial diagonal line modifier its meaning is somewhat diluted and may even make it ambiguous in some cases. This symbol is only sighted in Road Traffic regulations. Although the octagonal STOP sign is unique it represents only one specific meaning. If used at low resolution or small size it might be mistaken for a circular shape. This sign could also be considered a mandatory symbol in terms of classification. This symbol is only sighted in Road Traffic regulations. |
+| Information |  | Real world information is presented in a rectangular container. This shape is problematic in the real world as it is used to contain the information icon (as a logogram), directional information, explanatory text and modifier text, mandatory signs, and prohibitive signs. This shape is problematic in the software world as it is used to contain application icons in toolbars and it bounds alert messages. |
+
 Table 1: Alert Symbol Candidates
 
 ### Summary
@@ -1081,11 +1093,9 @@ HSCIC Controlled Document
 
 ##### Complex Signs
 
-Complex signs are signs which are comprised of other signs.
 
-For example:
-
-Complex sign Symbol Icon
+| Complex sign | Symbol | Icon |
+| --- | --- | --- |
 
 Figure 5: Components of a Complex Sign
 

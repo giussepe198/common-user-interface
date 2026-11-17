@@ -2,9 +2,9 @@
 name: Source documentation
 on:
   pull_request:
-    paths: ["docs/**", "mkdocs.yml", "requirements.txt", "s/**", "tests/**", ".github/workflows/source-docs.yml"]
+    paths: ["docs/**", "mkdocs.yml", "requirements.txt", "s/**", "tests/**", ".github/dependabot.yml", ".github/workflows/source-docs.yml"]
   push:
-    paths: ["docs/**", "mkdocs.yml", "requirements.txt", "s/**", "tests/**", ".github/workflows/source-docs.yml"]
+    paths: ["docs/**", "mkdocs.yml", "requirements.txt", "s/**", "tests/**", ".github/dependabot.yml", ".github/workflows/source-docs.yml"]
   workflow_dispatch:
 permissions:
   contents: read

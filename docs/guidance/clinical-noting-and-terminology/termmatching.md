@@ -161,6 +161,23 @@ Figure 1 illustrates all three categories: forms (left), single concept matching
 
 ![](termmatching_assets/termmatching.pdf-5-1.png)
 
+
+|  | The user makes notes by selecting options, not by entering text |
+| --- | --- |
+|  | An encoding interface is not needed–the clinical codes should be embedded within the form itself |
+| gle c | oncept matching |
+|  | The user makes notes by typing the note for a single concept (such as 'asthma'), and ® the system returns SNOMED-CT matches. The user can then choose an appropriate match, refine the concept, then elaborate it with a combination of free text, qualifying SNOMED-CT attributes (such as 'severe') and numerical values. |
+|  | Encoding interfaces require components to match and elaborate SNOMED-CT concepts. |
+| t par | ser matching |
+|  | The user makes notes by writing unconstrained text, while the system matches words and phrases against the SNOMED-CT database, or a constrained subset of the database, and displays the matches. The user then has the option to do one of the following:    Confirm that they want to encode these SNOMED-CT expressions      Browse alternative matches      Refine a selected match      Leave the note unencoded, in which case it will be saved as unstructured text rather than as a SNOMED-CT expression |
+|  | Encoding interfaces require components to identify and match SNOMED-CT concepts, as well as build post-coordinated SNOMED-CT expressions, based upon sanctioned attribute relationships, from within the text. The interface must also be able to identify terms and relationships from additional informational models in order to support accurate and comprehensive clinical noting. |
+| illus | trates all three categories: forms (left), single concept matching (centre) and Text |
+| tchin | g (right). |
+| The | user enters key                                                               As the user types in |
+| word | s and the system                                                              notes, the system |
+| retu | rns matches, which                                                            suggests SNOMED-CT |
+| the | user can elaborate                                                            matches |
+
 Figure 1: Styles of Encoding
 
 Medical language is full of abbreviations and jargon, some of which have more than one meaning. By coding clinical statements, they can be shared unambiguously. This should improve patient safety by reducing confusion or errors, due to ambiguity in clinical notes.
@@ -356,9 +373,57 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-C1.1 Users will be able to refine/select certain key attributes of a concept.
 
-C4.1 The system will prompt users to select related concepts that form meaningful composites.
+| Ref | Requirement (See APPENDIX A ) |
+| --- | --- |
+| A1.2 | The system will not prevent effective and efficient encoding with other entry devices, such as voice recognition or touch pad. |
+| A1.3 | The system will facilitate the collection of valid, unambiguous clinical statements (these will be SNOMED codes with additional context as necessary), potentially covering all parts of the care process. |
+| A1.4 | The system will respond to the changing coding requirements of differing clinical noting contexts, and will communicate these to the user. |
+| A1.5 | The system will be able to deal with the following noting contexts:  Free-form noting without any, or very little context  Free-form noting within a workflow context  Free-form noting under headings  Heavily contextualized free-form noting within a structured form |
+| ef        Re | quirement (See APPENDIX A ) |
+| 1.1       Th | e system will provide users with a means of limiting a search to contextually relevant portions of SNOMED-CT. |
+| 1.2       Th | e system will clearly communicate which contextually relevant portions of SNOMED-CT the users are searching. |
+| 1.3       Th | e system will be capable of automatically setting context. This automatic contextual filtering could be in response to |
+| pr | eviously entered text/encoded terms. |
+| 1.4       Th | e system will assist users’ searches by allowing them to expand, contract, or sort a set of search results according to |
+| me | aningful contextual categories (such as 'symptoms' or 'procedures'). |
+| 2.1       Th | e system will be able to handle free-form text entry, according to context. |
+| 2.2       Th | e system will attempt to structure (that is, ‘parse’) as much of the free text that it can, but will give users the option of |
+| sa | ving it as free-form text, according to context. |
+| 2.3       Th | e system will offer users an efficient way of triggering an encoding interaction. |
+| 2.4       Us | ers will be able to modify the search term quickly and easily. |
+| 2.5       Th | e system will be capable of fuzzy matching text (such as in the event of a spelling error) and of offering a ‘best guess’ |
+| pl | us a means of viewing alternative matches. |
+| 2.6       Th | e system will not commit to the record any encoded terms that have not been confirmed by the user. |
+| 2.7       Th | e system will provide ‘best guess’ concepts for words within the free text. |
+| 2.8       Th | e system will be able to handle a limited range of structured shorthand that exists outside of SNOMED-CT. |
+| 2.9       Th | e system will be able to offer predictive matching of SNOMED-CT concepts (including both single words and phrases). |
+| 2.10      Th | e system will give users flexibility as to when they encode text prior to committing it to the record. |
+| 3.1       Us | ers will be able to search on abbreviations found within SNOMED-CT. |
+| 3.3       Th | e system will display, in the encoded notes, both the abbreviation entered by users, and its expansion (either Preferred |
+| te | rm or synonym). |
+| 3.5       Us | ers will be able to search on single or multiple word prefixes, independent of order. |
+| 4.1       Th | e system will display categories (for example, TLCs), to which the term belongs (where appropriate) to ensure that |
+| us | ers can distinguish between similar sounding results. |
+| 4.2       Th | e system will ensure that users can easily navigate through long lists of results. |
+| 4.3       Th | e system will allow users to move from a search result item to related terms (for example, a more specific term). |
+| 4.4       Th | e system will ensure that users see a clear definition of, and the Preferred term for, a concept, before committing it to |
+| th | e record. |
+| 4.5       Th | e system will provide access to the full text of a SNOMED-CT term (up to 255 characters). |
+| 4.6       Th | e system will be able to communicate multiple types of ranking of search results within the same list, where there is |
+| ex | ceptional ranking. |
+| 4.7       Th | e system will allow users to reorder search lists according to a method of ranking distinct from the default order. |
+| 4.8       Th | e system will discriminate between the results returned, according to relevance (if known). |
+| 4.9       Th | e system will communicate if truncation has occurred. |
+| 5.1       Th | e system will allow users to specify that a term is only nearly correct. |
+| 5.2       Th | e system will allow users to record that they have given up trying to encode a concept. |
+| 5.3       Th | e system will be able to log approximate codes so that NHS CFH can determine whether changes are required to the |
+| te | rminology or the terminology user interface. |
+| 5.6       In | the event of a poor match (indicated by the user), the system will allow and encourage users to navigate back up the |
+| hi | erarchy to a more general term. |
+| ef | Requirement (See APPENDIX A ) |
+| 1.1 | Users will be able to refine/select certain key attributes of a concept. |
+| 4.1 | The system will prompt users to select related concepts that form meaningful composites. |
 
 Table 2: NHS CFH Requirements for Matching
 
@@ -384,11 +449,16 @@ matches (‘single concept matching’)
 
 - Must allow the user to add some additional ‘free’ text (that is, unencoded text)
 
- This function must be available as part of a single concept matching process
 
-_**2.1.1.2**_ _**How to Use the Design Guide Entry**_
-
-one SNOMED-CT concept elaboration only with this approach
+|  | This function should be available as a standalone process; or |
+| --- | --- |
+|  | As part of matching refinement in a Text parser approach |
+| st all | ow the user to add some additional ‘free’ text (that is, unencoded text) |
+|  | This function must be available as part of a single concept matching process |
+|  | How to Use the Design Guide Entry |
+| t | Example                           Comments |
+| Ensure | that the user encodes at least        n/a                               The user should not be allowed to record |
+| one SN | OMED-CT concept                                                          elaboration only with this approach |
 
 Table 3: How to Use the Design Guide Entry
 
@@ -406,9 +476,16 @@ HSCIC Controlled Document
 enter a large and rich set of notes typing multiple notes which have a lot of elaboration, especially when the elaboration could apply to multiple concepts. The flexible Text parser matching approach would be better suited for such as situation
 ####  Offer the single concept matching n/a Although the Single concept matching approach
 
-approach if the clinician may wish to may allow post-coordination, users will find it enter notes that will require post- easier to perform such a process using the coordinated SNOMED-CT expressions alternative—Text parser approach. The Single
 
-concept matching approach forces the user to match the ‘base concept’ before inputting and matching attributes. However, it may not always be apparent to the user what is the base and what is the attribute
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Offer the single concept matching | n/a | The process of matching concepts and their |
+| approach if the clinician is expected to |  | elaboration one by one, is not conducive to |
+| enter a large and rich set of notes | typing multiple notes elaboration, especiall could apply to multipl Text parser matching a suited for such as sit | which have a lot of y when the elaboration e concepts. The flexible pproach would be better uation |
+|        Offer the single concept matching       n/a | Although the Single co | ncept matching approach |
+| approach if the clinician may wish to | may allow post-coordin | ation, users will find it |
+| enter notes that will require post- | easier to perform such | a process using the |
+| coordinated SNOMED-CT expressions | alternative—Text parse concept matching appro match the ‘base concep matching attributes. H be apparent to the use what is the attribute | r approach. The Single ach forces the user to t’ before inputting and owever, it may not always r what is the base and |
 
 Table 4: How Not to Use the Design Guide Entry
 
@@ -456,6 +533,23 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+|  | This function should be available as a standalone process; or |
+| --- | --- |
+|  | As part of matching refinement in a Text parser approach |
+| allo | w the user to add some additional ‘free’ text (that is, unencoded text). |
+|  | This function must be available as part of a Single concept matching process |
+| T | ext Parser Approach to Matching |
+| to t | he single concept approach to matching, the system will also allow users the |
+| of t | yping in their notes as a passage of text (rather than sequentially searching for and |
+| ncept | s). |
+| rser | approach to matching is based on the notion that the clinician should be free to |
+| note | s that they feel best describes the clinical encounter, while, at the same time, the |
+| hes t | erms and phrases within their notes. As the system identifies what it considers to |
+| SNOM | ED-CT match for a text string within the notes, it presents this for the user to |
+| irm t | hat the match is correct, or to browse for similarly-worded or semantically-related |
+| e Fig | ure 4). As the user makes notes in the right-hand area, the system suggests possible SNOMED-CT matches. |
+
 Figure 4: Text Parser Approach to Matching
 
 ![](termmatching_assets/termmatching.pdf-13-0.png)
@@ -488,13 +582,20 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         Allow users to type their notes without | n/a | Clinicians must be able to type in what they |
+| constraint |  | want. The system may aim to influence and guide the clinician to achieve clear and consistent noting, but, ultimately, the representation and content of the notes is the responsibility of the individual clinician. The underlying assumption of the current Design guidance is that the clinician knows what they want to note |
+
 Table 5: How to Use the Design Guide Entry
 
-_**2.1.2.3**_ _**How Not to Use the Design Guide Entry**_
 
-concepts to the record without the intelligent as to be able to derive the precise user’s confirmation meaning of the clinicians’ notes without risk of
-
-misinterpretation. Given the potentially dangerous impact of miswriting notes on patient safety, the system must always get the user’s explicit confirmation that a SNOMED-CT is a correct representation of their noting before saving it to the record
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Automatically save SNOMED-CT | n/a | No matching process could be sufficiently |
+| concepts to the record without the |  | intelligent as to be able to derive the precise |
+| user’s confirmation |  | meaning of the clinicians’ notes without risk of misinterpretation. Given the potentially dangerous impact of miswriting notes on patient safety, the system must always get the user’s explicit confirmation that a SNOMED-CT is a correct representation of their noting before saving it to the record |
 
 Table 6: How Not to Use the Design Guide Entry
 
@@ -710,9 +811,99 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-types beyond the 32 character visible limit, the field scrolls from left-to-right (but without a scroll bar), in order to ensure that the last character that the user has typed is visible. The user may scroll back to the first letters in the phrase—which may have been pushed out of the visible area.
 
-The user types in the note here.
+|  | Must ensure that this area is separate from an area in which the system presents suggested SNOMED-CT matches (see section 2.3 for details of concept matching) |
+| --- | --- |
+| allow | users to types in a full range of alphanumeric characters |
+|  | Should allow users to type in punctuation |
+|  | Should allow users to capitalise letters |
+| ld not | allow users to format the text, in particular: |
+|  | Emboldening text |
+|  | Underlining text |
+|  | Highlighting text |
+| allow | users to cut, copy and paste text in the text entry field |
+| Cou | ld allow users to copy/cut/paste text to and from other areas in the Clinical |
+| App | lication or external software/electronic documents |
+| displa | y the text in a readable (for on-screen viewing) and sufficiently sized font, for |
+| le, Ar | ial 10 point as a minimum |
+| clearl | y distinguish the text input field from the area in which suggested SNOMED-CT |
+| es are | displayed |
+| Sho | uld feature a white background in the text input field and a very light off-white or |
+| pal | e blue background in the suggested matches area |
+| clearl | y indicate where the user is to start typing |
+| Sho | uld feature a cursor in the top left-hand corner of the text input field |
+|  | Could feature a flashing cursor (as per standard word processing software packages) |
+| Mus | t feature an appropriate label to communicate to users that they must start typing |
+| int | o the text input field |
+|  | Could feature a label that reads ‘Type your notes here:’ |
+| Mus | t feature a distinct label for the matching area |
+|  | Could feature a label that reads ‘Tick to confirm that this is what you mean:’ |
+|  | Should grey-out this label until the system has matched at least one SNOMED-CT concept and displayed it in the matching area |
+| Sho | uld grey-out the matching area until the system has matched at least one |
+| SNO | MED-CT concept and displayed it in the matching area |
+| Ben | efits and Rationale |
+| ion of | displaying editable text fields with a white background, and non-editable with a |
+| ackgro | und is a fairly universal convention. The left-justification of the text input field, |
+| th the | fact that the suggested matching area is located to the left of the text input field, |
+| the us | er’s typed notes will appear close to the suggested matches, especially if the |
+| a carr | iage return after each phrase (or sentence), which may help them to view their |
+| he mat | ches together. |
+| put fi | eld is also located to the right of the Suggested matches area for the following |
+| e fina | l output of the noting process will be a combination of user-typed and well- |
+| sing m | atched SNOMED-CT expressions), and the suggested matches are a means of |
+| these | final notes. It is a Western convention to read from left-to-right, and this convention |
+| s othe | r activities; for example, people typically fill in forms from left to right. Essentially, |
+| ent no | ting process, the user is ending up with output on the right-hand side, which fits |
+| onvent | ion. In fact, it is a right-to-left-to-right action. |
+| oning | also helps to ensure that the suggested match areas can be expanded from left-to- |
+| the t | op of the text input area) without widening the overall footprint of the noting window |
+| n 2.3. | 3 for details on selecting matches). |
+| g with | both an interactive demonstrator and multiple iterations of wireframes has shown |
+| ians r | espond positively to this input design. For example, in recent testing, a large |
+| of use | rs commented that this method of encoding was either ‘easy’ or, at least, |
+| ’. Les | s than a quarter of the clinicians had any negative comments about the overall |
+| ocess. |  |
+| Con | fidence Level |
+|  |  |
+| provid | e a clearly defined area into which the user may type in text |
+| Mus | t ensure that this area is separate from an area in which the system presents |
+| sug | gested SNOMED-CT matches |
+| allow | users to type in a full range of alphanumeric characters |
+| Sho | uld allow users to type in punctuation |
+| Sho | uld allow users to capitalise letters |
+| d not | allow users to format the text, in particular: |
+| Emb | oldening text |
+| Und | erlining text |
+| Hig | hlighting text |
+| clearl | y distinguish the text input field from the area in which suggested SNOMED-CT |
+| es are | displayed |
+| Sho | uld feature a white background in the text input field and a very light off-white or |
+| pal | e blue background in the suggested matches area |
+| clearl | y indicate where the user is to start typing |
+| Sho | uld feature a cursor in the top left-hand corner of the text input field |
+|  | Could feature a flashing cursor (as per standard word processing software packages) |
+| Mus | t feature an appropriate label to communicate to users that they must start typing |
+| int | o the text input field |
+|  | Could feature a label that reads ’Type your notes here:’ |
+| Mus | t feature a distinct label for the matching area |
+|  | Could feature a label that reads ’Tick to confirm that this is what you mean:’ |
+|  | Should grey-out this label until the system has matched at least one SNOMED-CT concept and displayed it in the matching area |
+| d grey | -out the matching area until the system has matched at least one SNOMED-CT |
+| pt and | displayed it in the matching area |
+| displa | y the text in a readable (for on-screen viewing) and sufficiently sized font, for |
+| le, Ar | ial 10 point as a minimum |
+|  |  |
+| allow | users to cut, copy and paste text in the text entry field |
+| Cou | ld allow users to copy/cut/paste text to and from other areas in the Clinical |
+| App | lication or external software/electronic documents |
+| Inpu | t in the Single Concept Approach |
+| concep | t matching approach demands a slightly different input process. In contrast to |
+| rser a | pproach, the input only requires words or partial words that will be matched |
+| ingle | word or phrase. Therefore, the input area is limited in size. In the example below, |
+| ield c | an accommodate 32 visible characters, and up to 255 characters in total. If the user |
+| d the | 32 character visible limit, the field scrolls from left-to-right (but without a scroll |
+| der to | ensure that the last character that the user has typed is visible. The user may scroll |
+| first | letters in the phrase—which may have been pushed out of the visible area. The user types in the note here. |
 
 Figure 7: Blank Input Field in Single Concept Approach to Matching
 
@@ -831,19 +1022,55 @@ HSCIC Controlled Document
 
 - Must provide a ‘Cancel’ button to close the dialog without saving the matches
 
-_**2.2.2.2**_ _**Benefits and Rationale**_
 
-The visible number of characters recommended in the input field (that is, 32 characters) means that the user may type in the full text of over 65% of SNOMED-CT labels. This length also ties in with the recommended width of the list box containing the matched SNOMED-CT labels returned by the system and which need to accommodate up to 62 characters. This covers 95% of label lengths in SNOMED-CT, which are wrapped (see section 2.3.2), with the second line indented by two characters, thus leaving a width of 32 characters. Also, the maximum length of SNOMED-CT labels is 255 characters and this is reflected in the maximum length of text that can be typed into the input field.
-
-Horizontal scrolling of the nature described above is a standard feature of many text input fields throughout a range of popular software applications.
-
-The ‘progressive’ matching process has been shown to work well when the data is stored at the client end. However, some questions remain about how feasible this solution could be when the system is sending requests to the server each time the user types in a successive character (even with a slight delay), especially if the user has a slow internet connection.
-
-Providing an ‘OK’ button in the main dialog rather than in the fly-out has been implemented, as tests indicated that users could not find an ‘OK’ button in the fly-out. Some users tried to doubleclick on the item to select it and this feature has been implemented in the current design.
-
-If the progressive solution is not feasible, we recommend that a ‘Go’ button is featured immediately to the right of the field (see Figure 13). This could be an icon with a tooltip communicating that it is a button that triggers the matching process. The matching could also be activated by pressing the ENTER key.
-
-The progressive matching could be replaced by a ‘Go’ button triggering the matching process
+|  | Must be distinct from the area that displays the resulting SNOMED-CT matches |
+| --- | --- |
+| allow | users to be able to type multiple words into the input field |
+| allow | users to type in a full range of alphanumeric characters |
+|  | Could allow users to type in punctuation |
+|  | Could allow users to capitalise letters |
+| provi | de a visible space in the input field that can accommodate a text string of 32 |
+| acters | long |
+| allow | users to delete text with in the search input field |
+|  | Must allow a ’Backspace’ deletion |
+|  | Could allow a select and ‘Delete’ deletion |
+| ld not | allow users to format the text, in particular: |
+|  | Emboldening text |
+|  | Underlining text |
+|  | Highlighting text |
+| d allo | w users to cut, copy and paste text in the text entry field |
+|  | Could allow users to copy/cut/paste text to and from other areas in the Clinical Application or external software/electronic documents |
+| displ | ay the text in a readable (for on-screen viewing) and sufficiently sized font, for |
+| ple, A | rial 10 point as a minimum |
+| ld pro | vide a progressive matching algorithm |
+| ld all | ow the user to move just outside of the list item or fly-out area without the fly-out |
+| ppeari | ng |
+| provi | de an ‘OK’ button to close the dialog and save the matches |
+| ld als | o allow the user to close the dialog and save the matches by double-clicking on |
+| list i | tem |
+| provi | de a ‘Cancel’ button to close the dialog without saving the matches |
+|  | Benefits and Rationale |
+| numbe | r of characters recommended in the input field (that is, 32 characters) means that |
+| y type | in the full text of over 65% of SNOMED-CT labels. This length also ties in with |
+| nded w | idth of the list box containing the matched SNOMED-CT labels returned by the |
+| which | need to accommodate up to 62 characters. This covers 95% of label lengths in |
+| which | are wrapped (see section 2.3.2), with the second line indented by two |
+| thus | leaving a width of 32 characters. Also, the maximum length of SNOMED-CT labels |
+| acters | and this is reflected in the maximum length of text that can be typed into the input |
+|  |  |
+| scroll | ing of the nature described above is a standard feature of many text input fields |
+| a rang | e of popular software applications. |
+| ssive’ | matching process has been shown to work well when the data is stored at the |
+| Howev | er, some questions remain about how feasible this solution could be when the |
+| ending | requests to the server each time the user types in a successive character (even |
+| ht del | ay), especially if the user has a slow internet connection. |
+| n ‘OK’ | button in the main dialog rather than in the fly-out has been implemented, as |
+| ated t | hat users could not find an ‘OK’ button in the fly-out. Some users tried to double- |
+| e item | to select it and this feature has been implemented in the current design. |
+| ressiv | e solution is not feasible, we recommend that a ‘Go’ button is featured immediately |
+| t of t | he field (see Figure 13). This could be an icon with a tooltip communicating that it is |
+| at tri | ggers the matching process. The matching could also be activated by pressing the |
+|  | The progressive matching could be replaced by a ‘Go’ button triggering the matching process |
 
 Figure 13: Example of the Design that Features a ‘User-Triggered’ Rather Than ‘Progressive’ Matching Process
 
@@ -929,6 +1156,43 @@ Page 20
 Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
+
+
+|  | Must be distinct from the area that displays the resulting SNOMED-CT matches |
+| --- | --- |
+| allow | users to be able to type multiple words into the input field |
+| allow | users to type in a full range of alphanumeric characters |
+|  | Could allow users to type in punctuation |
+| Cou | ld allow users to capitalise letters |
+| provid | e a visible space in the input field that can accommodate a text string of 32 |
+| cters | long |
+| allow | the user to type up to 255 characters in the input field |
+| allow | users to delete text within the search input field |
+| Mus | t allow a ‘Backspace’ deletion |
+| Cou | ld allow a select and ‘Delete’ deletion |
+| d not | allow users to format the text, in particular: |
+| Emb | oldening text |
+| Und | erlining text |
+| Hig | hlighting text |
+| d allo | w the user to move just outside of the list item or fly-out area without the fly-out |
+| pearin | g |
+| provid | e an ‘OK’ button to close the dialog and save the matches |
+| d also | allow the user to close the dialog and save the matches by double-clicking on |
+| ist it | em |
+| provid | e a ‘Cancel’ button to close the dialog without saving the matches |
+|  |  |
+| allow | users to cut, copy and paste text in the text entry field |
+| Cou | ld allow users to copy/cut/paste text to and from other areas in the Clinical |
+| App | lication or external software/electronic documents |
+| displa | y the text in a readable (for on-screen viewing) and sufficiently sized font, for |
+| le, Ar | ial 10 point as a minimum |
+| d prov | ide a progressive searching algorithm |
+| Addi | tional Text Input |
+| le con | cept approach to matching, the user is presented with a text field, labelled |
+| text’ | , in order to elaborate on the matched concept. This additional text input field should |
+| below | the search input box to indicate to the user that it is for information that further |
+| the se | lected match. Once selected, the match also acts as heading. |
+| Additi | onal text’ is displayed inside the additional text input field, in grey, as shown in |
 
 Figure 14: Additional Text Field
 
@@ -1077,6 +1341,79 @@ As the example, Figure 17 shows how a spelling mistake is highlighted and underl
 
 ![](termmatching_assets/termmatching.pdf-26-0.png)
 
+
+|  | Must provide a clearly defined text field into which the user may type this additional text      Must ensure that this area is clearly distinct from the single concept input field |
+| --- | --- |
+|  | Should clearly label this additional text area |
+| Coul | d label this additional text area as ‘Additional text |
+| Coul | d feature the label in grey text which disappears when the user clicks on it (or tabs |
+| to i | t). The label will reappear if the user moves the focus out of the text box without |
+| typi | ng any text in it |
+| rovide | a visible space in the input field that can accommodate a passage of text of a |
+| m of t | hree lines high |
+| Must | provide a vertical scrolling mechanism if the length of the text that the user types |
+| in e | xceeds the visible space |
+| llow u | sers to delete text within the search input field |
+| Must | allow a ‘Backspace’ deletion |
+| Coul | d allow a select and ‘Delete’ deletion |
+| not a | llow users to format the text, in particular: |
+| Embo | ldening text |
+| Unde | rlining text |
+| High | lighting text |
+| allow | users to cut, copy and paste text in the text entry field |
+| Coul | d allow users to copy/cut/paste text to and from other areas in the Clinical |
+| Appl | ication or external software/electronic documents |
+| isplay | the text in a readable (for on-screen viewing) and sufficiently sized font, for |
+| e, Ari | al 10 point as a minimum |
+| Bene | fits and Rationale |
+| ely im | portant to allow users to add further details about a matched concept, for a couple |
+| The fi | rst is that the range of the SNOMED-CT terminology, although wide, can only |
+| a frac | tion of the terms, and relationships between terms, that are used by clinicians in |
+| . Not | only could the clinician want to express their note with a rich use of English, but |
+| will b | e a large amount of specialist noting that SNOMED-CT will not cover. The second |
+| e may | be a number of occasions when the clinician wants to elaborate a term with free |
+| ey wou | ld not want to encode. They may wish to record a suspicion or a ‘note-to-self’ that |
+| d shou | ld not be treated as a ‘strong’ code, even if it is preceded by the qualifying code |
+|  |  |
+| e fiel | d label within the field area (box) and displaying it in small grey text prevents this |
+| stract | ing the user’s view of the matched SNOMED-CT concept label. There is also the |
+| add f | urther instructive text in the box, such as ‘Add some detail to the matched concept’ |
+| dynam | ic text, such as ‘Type in additional details about the ‘Recurrent anxiety’’. |
+| by fe | aturing it immediately below the matched concept indicates that the field is for |
+| that f | urther relates to the selected match. |
+| Conf | idence Level |
+|  |  |
+| llow t | he user to type in ‘additional’ text that is associated with a selected concept |
+| Must | provide a clearly defined text field into which the user may type this additional text |
+|  | Must ensure that this area is clearly distinct from the single concept input field |
+|  | Should clearly label this additional text area      Could label this additional text area, ‘Additional text’ |
+| M | ust provide a vertical scrolling mechanism if the length of the text that the user types |
+| i | n exceeds the visible space |
+| allow | users to delete text within the search input field |
+| M | ust allow a ‘Backspace’ deletion |
+| C | ould allow a select and ‘Delete’ deletion |
+| d not | allow users to format the text, in particular: |
+| E | mboldening text |
+| U | nderlining text |
+| H | ighlighting text |
+| displa | y the text in a readable (for on-screen viewing) and sufficiently sized font, for |
+| le, Ar | ial 10 point as a minimum |
+|  |  |
+| provid | e a visible space in the input field that can accommodate a passage of text of a |
+| um of | three lines high |
+|  |  |
+| featu | re the label written in grey text that disappears when the user clicks on it (or |
+| to it) | . The label will reappear if the user moves the focus out of the box without typing |
+| ext in | to it. |
+| allow | users to cut, copy and paste text in the text entry field |
+| C | ould allow users to copy/cut/paste text to and from other areas in the Clinical |
+| A | pplication or external software/electronic documents |
+| Spe | ll-Checker Input |
+| stype | or misspell words as they type them. The system should provide a way of |
+| s huma | n error. However, this will only apply when the system employs a full word |
+| partia | l word (that is, ‘prefix’) matching approach. |
+| le, Fi | gure 17 shows how a spelling mistake is highlighted and underlined in red. Misspelling communicated with a standard dashed/ wavy red underline. |
+
 Figure 17: Highlighting Spelling Mistakes
 
 The user then opens the Spell checker dialog by clicking on the word, as shown in Figure 18.
@@ -1141,13 +1478,34 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-database
+
+|  | Should allow the user to select one of the fuzzy-matched words |
+| --- | --- |
+|  | Should allow the user to close the spell-checker dialog without selecting any of the matches |
+| ld rep | lace the unmatched word with a matched word selected by the user |
+| not a | utomatically confirm any matched words selected by the user, in the spell- |
+| ker di | alog |
+| d offe | r these three options (or their equivalents) in the spell-checker dialog: |
+|  | OK – change the word to the word that the user has selected |
+|  | Ignore – to close the dialog and to remove the red underline |
+|  | Cancel – to close the dialog and to keep the red underline |
+|  | How to Use the Design Guide Entry |
+|  | Example            Comments |
+| ature | a red underline (similar to the   See Figure 17      This is a standard feature in a popular word- |
+| crosof | t® Office spelling checker)                          processing package |
+|  | Example            Comments |
+| ell-ch | eck against SNOMED-CT            n/a                n/a |
+| tabase |  |
 
 Table 7: How to Use the Design Guide Entry
 
-_**2.2.4.3**_ _**How Not to Use the Design Guide Entry**_
 
-be resolved by fuzzy matching, do not match (or fuzzy match) has been recognised feature a highlight around the unrecognised word
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Where there is a gross error that cannot | n/a | Do not indicate that a word is encodable until a |
+| be resolved by fuzzy matching, do not |  | match (or fuzzy match) has been recognised |
+| feature a highlight around the |  |  |
+| unrecognised word |  |  |
 
 Table 8: How Not to Use the Design Guide Entry
 
@@ -1201,13 +1559,27 @@ dialog
 
 ##### 2.2.5 Dealing with Clinicians’ Shorthand
 
-Clinicians use a large amount of shorthand when noting. In the Design Guidance, although we will not attempt to identify all shorthand terms in order for the system to deal with every possibility, we need to specify a mechanism for the system to deal with this shorthand.
 
-The design shown below in Figure 19 will identify instances of possible shorthand and will underline the shorthand in the same way as the spell-checker (see section 2.2.4 for details on the spellchecker). It will also feature a small red triangle in the top right-hand corner of the marquee around the words.
-
-Meanwhile, a warning message will appear in the corresponding suggested match (when in focus) in the left-hand column, which communicates that there is a possible example of shorthand to resolve. It also displays the shorthand phrase as free text.
-
-Clicking on the phrase will open the list of possible resolutions for the shorthand. Once the user has selected a resolution, such as ‘3 months’, the system will change the words and will automatically run another post-coordination parse.
+|  | Should allow the user to select one of the fuzzy-matched words |
+| --- | --- |
+|  | Should allow the user to close the spell-checker dialog without selecting any of the matches |
+| ld re | place the unmatched word with a matched word selected by the user |
+| not | automatically confirm any matched words selected by the user in the spell-checker |
+| og |  |
+| Deal | ing with Clinicians’ Shorthand |
+| use a | large amount of shorthand when noting. In the Design Guidance, although we will |
+| to i | dentify all shorthand terms in order for the system to deal with every possibility, we |
+| cify | a mechanism for the system to deal with this shorthand. |
+| shown | below in Figure 19 will identify instances of possible shorthand and will underline |
+| nd in | the same way as the spell-checker (see section 2.2.4 for details on the spell- |
+| t wil | l also feature a small red triangle in the top right-hand corner of the marquee around |
+|  |  |
+| a war | ning message will appear in the corresponding suggested match (when in focus) |
+| -hand | column, which communicates that there is a possible example of shorthand to |
+| also | displays the shorthand phrase as free text. |
+| the | phrase will open the list of possible resolutions for the shorthand. Once the user has |
+| resol | ution, such as ‘3 months’, the system will change the words and will automatically |
+| post | -coordination parse. Clicking on text that the system has communicated in shorthand opens a pop-up menu to disambiguate the shorthand. Clicking away from this pop-up closes it. |
 
 Figure 19: System Underlines Shorthand and Lists Shorthand Options
 
@@ -1224,19 +1596,21 @@ The system:
 
 - Should recognise a limited set of clinicians’ shorthand comprising non-SNOMED-CT
 
-synonyms
 
- Should access these terms from an NHS-maintained database of shorthand terms and their corresponding SNOMED-CT or administrative terms (such as dates).
-
-_**2.2.5.2**_ _**How to Use the Design Guide Entry**_
-
-approved shorthand terms
+|  | Should access these terms from an NHS-maintained database of shorthand terms and their corresponding SNOMED-CT or administrative terms (such as dates). |
+| --- | --- |
+|  | How to Use the Design Guide Entry |
+| t | Example                  Comments |
+| Refer | to an external database of NHS- |
+| appro | ved shorthand terms |
 
 Table 9: How to Use the Design Guide Entry
 
-_**2.2.5.3**_ _**How Not to Use the Design Guide Entry**_
 
-without explicit user actions
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Automatically translate the shorthand |  |  |
+| without explicit user actions |  |  |
 
 Table 10: How Not to Use the Design Guide Entry
 
@@ -1358,9 +1732,113 @@ We are not currently in a position to definitively recommend any of these matchi
 
 - The user experience associated with each issue
 
-Details of feasibility analyses conducted so far can be found in section 2.3.1.3 (‘Benefits and Rationale’).
 
-Figure 20 below shows the system displaying top matches (in the left-hand column) for the text typed in by the user in the right-hand text input area. Each match (or set of matches, where there is possible post-coordination) is displayed within a boundary and has a pale blue background, except where it is ‘in focus’, in which case the background is yellow.
+|  | Should access these terms from an NHS-maintained database of shorthand terms and their corresponding SNOMED-CT or administrative terms (such as dates) |
+| --- | --- |
+| hing |  |
+| Match | ing Input Text Against the SNOMED-CT Database |
+| g pro | cess is the means by which clinicians’ notes are translated into SNOMED-CT |
+| . An | effective and efficient matching process will influence the success of the system. |
+| n out | lines: |
+| nderl | ying matching process(es) |
+| ing i | nterface in the Text parser matching approach |
+| ing i | nterface in the Single concept matching approach |
+| D-CT | interface features |
+| ing M | atching/Searching Algorithms |
+| feat | ure a similarity measure, which calculates the ‘fit’ between the input words and the |
+| e mat | ched SNOMED-CT expression. The benefits of this approach are discussed in the |
+| ectio | ns. The design also features partial or ‘prefix’ matching which allows users to find |
+| typin | g just the first three or four letters of each word in an expression. The solution also |
+| hing | in spite of an inverted ordering of words between the input and the matched |
+| This | approach is based upon the assumption that clinicians will want to search on |
+| ther | than on word endings. There could be an argument for also allowing clinicians to |
+| ord e | ndings (such as ‘…ectomy’), but this has not been addressed by the current |
+| e cou | ld look at this during the development of future guidance (see section 3). |
+| that | all the matching behaviour outlined in this guidance assumes a standard and |
+| exing | of SNOMED-CT. |
+| the | Text Parser Approach |
+| g eve | nt will occur automatically as the user types in their notes. There are a number of |
+| ch th | is may be done, some of which may carry greater performance penalties than |
+| ch in | the case of a Web-based interface could be prohibitive. Further work is being done |
+| nd th | e practical implementation issues associated with the different matching event |
+| eanwh | ile, in the guidance, we will outline the seven main alternatives that we are |
+| : |  |
+| essiv | e matching |
+| ing u | pon the completion of each sentence |
+| ing u | pon the completion of each word |
+| proc | essing |
+| by-li | ne matching |
+| based | matching (that is, periodical triggering) |
+| trigg | ered matching (such as pushing a button) |
+| g eve | nt will not interfere with the user’s typing of their notes. Instead, the top matches |
+| xt st | ring, (where matching is possible), will be displayed to the user to confirm that this is |
+| matc | h (see section 2.3.2 for details). |
+| be di | splayed in the context of the wider ‘expressions’ to which they belong (although an |
+| may o | nly comprise a single concept). This is covered in more detail in the ‘Post |
+| n’ en | try of the Design Guide, {R2}. |
+| desi | gn also excludes certain common words from the searching, including |
+| s, su | ch as ‘for’ or ‘to’. Such an exclusion list would need to be developed and |
+| outsi | de of the released SNOMED-CT data. However, there are further issues that need |
+| ved w | ith such an exclusion list, and so it is not currently recommended guidance (see |
+|  |  |
+| g pro | cess will be subject to a number of text parsing rules which may affect which |
+| e mat | ched. In particular, in the Text parser approach, the system will not match any |
+| at ar | e not drawn from the two major SNOMED-CT Upper Level hierarchies: ‘Clinical |
+| nd ‘P | rocedures’, or from the supporting hierarchies ‘Observable Entities’ or ‘Situations |
+| it co | ntext‘, unless the concept post-coordinates with a concept from one of these |
+| . In | certain contexts, concepts from the category ‘Events’ may also be base concepts. |
+| when | recording the history of a complaint, the clinician may want to record that the |
+| been | involved in a ‘car accident’, which is an event. It is worth noting that, after |
+| on, w | e excluded the category, ‘Pharmaceutical/biological products’, from this list of base |
+| urthe | r work would need to be done to show how concepts from within this category |
+| sambi | guated to determine whether the note refers, for example, to prescription, |
+| ion, | history of administration or supply (see section 3 for an outline of potential next |
+| is ar | ea). The rules that determine such ‘base’ concepts have been devised in light of the |
+| 6 pub | lication of SNOMED-CT, and would need to be revised in light of any changes |
+| data | base. These rules are also discussed in further detail in the ‘Post Coordination’ |
+| e Des | ign Guide {R2}. |
+| ystem | will only return matches that meet a predefined similarity score threshold. This |
+| udes | words from the ‘exclusion’ list (a list which includes very common words, such as |
+| s). F | urther work needs to be devoted to determining this threshold, but currently it could |
+| bout | 70%. |
+| xampl | e, the input text ‘leg’ could potentially be matched against the concepts ‘Leg |
+| ure’ | or ‘Leg injury’, but the system would not return these matches because the input text |
+| not m | eet the similarly threshold, therefore no matches would be returned. In order to get |
+| ch, t | he user must type in more words, for example, ‘leg fracture’. |
+| e red | uces the risk of inappropriate matching, although it cannot guard against the text |
+| retur | ning the match ‘Pain in left leg’ (where the word ‘in’ is excluded). |
+| ing o | f matching in the Text parser approach is still under discussion, but a leading |
+| o all | ow ‘progressive’ matching, whereby a match request is sent upon the insertion or |
+| each | character into the text input area, possibly with a slight delay (of 200 milliseconds) |
+| redu | ce the numbers of requests. However, this approach may be fairly performance- |
+| nd th | erefore further feasibility studies should be conducted. Other methods of triggering |
+| g inc | lude: |
+| ing u | pon the completion of each sentence |
+| ing u | pon the completion of each word |
+| proc | essing |
+| by-li | ne matching |
+| based | matching |
+| trigg | ered matching |
+| se ma | tching processes has their own merits. For example, line-by-line processing |
+| re fe | wer requests to the server, and thus could reduce problems with performance due |
+| raffi | c. Batch processing could also reduce the Web service requests, although if the |
+| e too | big, there could be long delays when the matching is triggered. |
+| rd-by | -word could involve fewer Web service requests than progressive matching. |
+| ogres | sive matching does have the advantage over the other processes in that it allows |
+| see | the concept building up as they type. In this way, the process could help to guide |
+| to ge | tting the right match. Obviously the user would not be able to see the alternative |
+| ess t | hey actually expand the list of matches (see section 2.3.3 for details), but this |
+| them | very useful feedback as they type. |
+| curre | ntly in a position to definitively recommend any of these matching processes, as |
+| k nee | ds to be carried out regarding: |
+| techn | ical and performance issues surrounding each approach |
+| user | experience associated with each issue |
+| feasi | bility analyses conducted so far can be found in section 2.3.1.3 (‘Benefits and |
+| . |  |
+| elow | shows the system displaying top matches (in the left-hand column) for the text |
+| the | user in the right-hand text input area. Each match (or set of matches, where there is |
+| st-co | ordination) is displayed within a boundary and has a pale blue background, except |
+| ‘in | focus’, in which case the background is yellow. Top matches identified by the system appear in the left- hand column. |
 
 Figure 20: Text Parser Approach to Matching
 
@@ -1388,6 +1866,10 @@ HSCIC Controlled Document
 Figure 21: Single Concept Approach to Matching – Step 1
 
 Figure 22: Single Concept Approach to Matching – Step 2
+
+
+| selection. | The selected match appears in bold here. |
+| --- | --- |
 
 Figure 24: Single Concept Approach to Matching – Step 4
 
@@ -1597,7 +2079,53 @@ SNOMED-CT descriptions:
  Fully specified name
 ####  Switching on word equivalence
 
-matching automatically if some matches have been returned
+
+|  | Should employ a statistical word matching algorithm |
+| --- | --- |
+|  | Should feature a vector-space matching algorithm for text that contains multiple words |
+| t com | municate to the user where a match is a synonym |
+|  | Should communicate to the user in the fly-out that a match is a synonym. The fly-out appears when the user moves the mouse over the concept in a list |
+| t all | ow the user to view the Fully specified name for any concept |
+|  | Should allow the user to view the Fully specified name for the concept in a fly-out that appears when the user moves the mouse over the concept in a list |
+| t fea | ture a consistent method of triggering the matching event in the Text parser |
+| roach |  |
+|  | Could invoke a matching event upon input by the user of each new character (‘progressive’ matching) |
+|  | Could invoke a matching event when the user defines a new word boundary (that is, by inserting a space after a text string) |
+|  | Could invoke a matching event when the user defines a new sentence boundary (that is, by typing a full stop or a carriage return) |
+|  | Could invoke a matching event at regular intervals during the noting session (for example, once every 200 milliseconds) |
+| uld f | ilter out false positives by rejecting any match which fails to achieve a threshold of |
+| ilari | ty with the corresponding SNOMED-CT label |
+| uld m | atch text against equivalent SNOMED-CT concepts, as defined in the equivalence |
+| le(s) | in the latest SNOMED-CT release data |
+|  | Must provide two matching states for equivalence matching: ‘on’ and ‘off’    Must provide a control to allow the user to choose whether equivalence matching is switched on or off    Must ensure that the equivalence matching is switched off by default in those situations where the matching is done progressively as the user types (that is, in the Single concept matching and in the encoding dialog in the Text parser approach)    Could ensure that equivalence matching is switched on by default in those situations where matching is not done progressively       Must clearly indicate where equivalence matching is switched on, that is, where the system has attempted to match on equivalent words (i) Should communicate this in a location close to the match results list |
+|  | Must communicate which equivalent words the system is searching    Should display these equivalence words adjacent to the input field |
+| uld f | eature partial, or ‘prefix’, matching in the case of Single concept matching and |
+| ching | within the encoding dialog |
+| ould | feature progressive matching in the case of Single concept matching and matching |
+| thin | the encoding dialog, that is, typing in a new character (or deleting a character) |
+| vokes | a matching event |
+|  | Must display the SNOMED-CT matches close to the input field (in the case of Single concept matching and matching within the encoding dialog)      Should display the SNOMED-CT matches below the input field |
+|  | Must ensure that the matching event invoked during progressive matching is sufficiently timely      Should ensure that the matching event is invoked within 200 milliseconds of the key press |
+| st be | able to match multiple words against a SNOMED-CT description that contains |
+| ltipl | e words |
+|  | Must be able to match words regardless of order |
+| st be | able to match the longest string of adjacent possible, depending also upon the |
+| tcome | of the post-coordination parsing process (see DG-R4-003 Design Guide Entry – |
+| st-co | ordination {R2}) |
+| st di | splay the top match candidates (that is, the ‘suggested matches’) for each text string |
+| here | a viable match can be made), in a location visible to the user when they are typing |
+|  | Should display the suggested matches in an area adjacent to the Text parser input field (in the Text parser matching approach)      Should locate the suggested match area immediately to the left of the Text parser field |
+| st al | low the user to confirm the suggested matches before they are saved to record as |
+| OMED- | CT codes |
+|  | How Not to Use the Design Guide Entry |
+| mat | Example              Comments |
+| Mat | ching input text against the following |
+| SNO | MED-CT descriptions: |
+|  C | oncept ID |
+|  F | ully specified name |
+| Swi | tching on word equivalence |
+| mat | ching automatically if some matches |
+| hav | e been returned |
 
 Table 11: How Not to Use the Design Guide Entry
 
@@ -1762,6 +2290,79 @@ Page 39
 Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
+
+
+|  | Should employ a statistical word matching algorithm |
+| --- | --- |
+| t com | municate to the user where a match is a synonym |
+|  | Should communicate to the user in the fly-out that a match is a synonym. The fly-out appears when the user moves the mouse over the concept in a list |
+| t all | ow the user to view the Fully specified name for any concept |
+|  | Should allow the user to view the Fully specified name for the concept in a fly-out that appears when the user moves the mouse over the concept in a list |
+| t fea | ture a consistent method of triggering the matching event in the Text parser |
+| roach |  |
+| uld f | eature progressive matching in the case of Single concept matching and matching |
+| hin t | he encoding dialog, that is, typing in a new character (or deleting a character) |
+| okes | a matching event |
+|  | Must display the SNOMED-CT matches close to the input field (in the case of Single concept matching and matching within the encoding dialog)    Should display the SNOMED-CT matches below the input field |
+|  | Must ensure that the matching event invoked during progressive matching is sufficiently timely    Should ensure that the matching event is invoked with 200 milliseconds of the key press |
+| t be | able to match multiple words against a SNOMED-CT description that contains |
+| tiple | words |
+|  | Must be able to match words regardless of order |
+| t be | able to match the longest string of adjacent possible, depending also upon the |
+| come | of the post-coordination parsing process (see DG-R4-003 Design Guide Entry – |
+| t-coo | rdination {R2}) |
+| t dis | play the top match candidates (that is, the ‘suggested matches’) for each text string |
+| ere a | viable match can be made), in a location visible to the user when they are typing |
+|  | Should display the suggested matches in an area adjacent to the Text parser input field (in the Text parser matching approach)    Should locate the suggested match area immediately to the left of the Text parser field |
+| t all | ow the user to confirm the suggested matches before they are saved to record as |
+| MED-C | T codes |
+|  |  |
+| ld in | voke a matching event upon input by the user of each new character (‘progressive’ |
+| ching | ) |
+| ld in | voke a matching event when the user defines a new word boundary (that is, by |
+| ertin | g a space after a text string) |
+| ld in | voke a matching event when the user defines a new sentence boundary (that is, by |
+| ing a | full stop or a carriage return) |
+| ld in | voke a matching event at regular intervals during the noting session (for example, |
+| e eve | ry 200 milliseconds) |
+| uld m | atch text against equivalent SNOMED-CT concepts, as defined in the equivalence |
+| le(s) | in the latest SNOMED-CT release data |
+|  | Must provide two matching states for equivalence matching: ‘on’ and ‘off’    Must provide a control to allow the user to choose whether equivalence matching is switched on or off    Must ensure that the equivalence matching is switched off by default in those situations where the matching is done progressively as the user types (that is, in the Single concept matching and in the encoding dialog in the Text parser approach)    Could ensure that equivalence matching is switched on by default in those situations where matching is not done progressively       Must clearly indicate where equivalence matching is switched on, that is, where the system has attempted to match on equivalent words       Should communicate this in a location close to the match results list |
+|  | Must communicate which equivalent words the system is searching    Should display these equivalence words adjacent to the input field |
+| uld f | eature partial, or ‘prefix’, matching in the case of Single concept matching and |
+| ching | within the encoding dialog |
+|  |  |
+| uld f | ilter out false positives by rejecting any match which fails to achieve a threshold of |
+| ilari | ty with the corresponding SNOMED-CT label |
+| P | resenting SNOMED-CT Matches |
+| m mus | t be able to display several aspects derived from the matching process. In the Text |
+| proac | h to matching, the system will initially present ‘top’ matches only, with a control to |
+| top m | atch listed with alternative matches. In the Single concept matching process, the |
+| media | tely displays the full list of matches. Additionally, within both approaches, the |
+| st be | able to display each matched concept’s ‘definition’ to help ensure the user fully |
+| ds th | e matches that they are choosing. This section outlines these types of matching. |
+| Sugg | estions |
+| xt pa | rser approach, the system will display ‘top matches’ for each of the text strings that |
+| has t | yped in. These are to be displayed in such a way that they do not distract the user to |
+| xtent | that they obstruct the typing of further notes. However, they should be easily |
+| e and | readable as they can give users useful feedback that the system is correctly |
+| ng th | eir typed notes. This feedback will be extremely useful if a progressive matching |
+| is i | mplemented as users may type in a few characters of their desired term and can see |
+| ble c | ompleted matches appear as they type; this has the potential to be a very useful |
+| ve to | ol that could save users typing in the full text before confirming the concept match, |
+| ering | the complete text in the notes. For these reasons, the suggested ‘top matches’ must |
+|  |  |
+| ated | in a visible, consistent position that does not obstruct the typed text. We have |
+| wn th | at featuring a column to the left of the text input area is sufficiently visible, but also |
+| btrus | ive. The matches remain close to the typed text as the input text field is left- |
+| tifie | d (the most common form of text justification). |
+| ficie | ntly ordered so that the user can easily see which match is resulting from the text |
+| t the | y are typing. Stacking the matches vertically with the earliest matches at the top of |
+| colu | mn and the most recent at the foot of the column is a well-understood way of |
+| ievin | g this order. |
+| ually | associated with the typed input text strings. We have linked them by colour, and |
+| focu | s will move to the appropriate text expression in the input text depending on the |
+| ch se | lected by the user in the left-hand column. When the user moves the mouse over a match, the area around it turns yellow. |
 
 Figure 30: Top Match Suggestions are Displayed in the Left-Hand Column
 
@@ -1938,15 +2539,29 @@ by two characters
 
 - Should truncate labels that exceed 62 characters and feature an ellipsis to communicate
 
-the truncation
 
-_**2.3.2.2**_ _**How to Use the Design Guide Entry**_
-
-sufficiently promptly 200 milliseconds of the last
-
-Display matches within 200 milliseconds of the last key press
-
-Insufficient responsiveness can cause the user to think that something is wrong, and they may try to type other characters in order to get a response
+|  | Should communicate to the user that they can access these alternative matches by clicking on the suggested match area |
+| --- | --- |
+| t disp | lay the matched synonym description label if the match is with a synonym |
+| cripti | on and the Preferred term description label if the match is with a Preferred term |
+| cripti | on |
+| t dire | ctly expose clinicians to SNOMED-CT labels; Preferred term, synonym (where |
+| ropria | te) and Fully specified names |
+| uld di | splay the highlighted concept’s parent concept labels |
+|  | Should display the highlighted concept’s parent concept labels in the fly-out |
+|  | Should feature appropriate labels next to each parent concept      Should feature the labels ‘Is a’ for the first parent, and ‘And a’ for further parents |
+| t keep | SNOMED-CT Concept IDs hidden from the clinician |
+| uld di | splay nothing if a word or phrase cannot be matched |
+| t prov | ide the user with a method of reporting ‘No matches found’ |
+| t allo | w a width of 32 characters for the matches list |
+| uld wr | ap labels that exceed 32 characters over two lines, with the second line indented |
+| two ch | aracters |
+| uld tr | uncate labels that exceed 62 characters and feature an ellipsis to communicate |
+| trunc | ation |
+|  | How to Use the Design Guide Entry |
+| at | Example                      Comments |
+| Ensur | e that matches are presented        Display matches within       Insufficient responsiveness can cause the user to |
+| suffi | ciently promptly                    200 milliseconds of the last think that something is wrong, and they may try to key press                    type other characters in order to get a response |
 
 Table 12: How to Use the Design Guide Entry
 
@@ -1961,7 +2576,12 @@ next to each match concept labels, especially ‘Clinical finding’
 
 3. Anxiety level’
 
-In testing, users were confused by a system of numbering
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Feature the TLC (Top Level Concepts) | ‘Fever (clinical finding) | In testing, users were confused by the top level |
+| next to each match |  | concept labels, especially ‘Clinical finding’ |
+|        Feature numbering next to each list item | ‘1. Anxiety 2. Anxiety disorder 3. Anxiety level’ | In testing, users were confused by a system of numbering |
 
 Table 13: How Not to Use the Design Guide Entry
 
@@ -2077,9 +2697,35 @@ As outlined earlier, in the Text parser approach to matching (section 2.1.2), th
 
 - Change the text they have typed
 
-As the user moves the mouse down the suggested match areas in the left hand column, the selection areas become yellow. If the user clicks on the yellow area (but not necessarily on a label area) this will move the marquee selection in the right-hand text input area.
 
-Moving the mouse over the marquee does not move the selection area (on either side), but if the user moves the focus in the text input area, the corresponding selected match is highlighted in the left-hand column (see Figure 38).
+|  | Should display the highlighted concept’s parent concept labels in the fly-out |
+| --- | --- |
+|  | Should feature appropriate labels next to each parent concept    Should feature the labels ‘Is a’ for the first parent, and ‘And a’ for further parents |
+| t all | ow a width of 32 characters for the matches list |
+| uld w | rap labels that exceed 32 characters over two lines, with the second line indented |
+| two c | haracters |
+|  |  |
+| t war | n the user if there are very similar alternative matches or matches which constitute |
+| child | ’ (in terms of the SNOMED-CT hierarchy) |
+|  | Should communicate to the user that they can access these alternative matches by clicking on the suggested match area |
+| t pro | vide the user with a method of reporting ‘No matches found’ |
+| uld t | runcate labels that exceed 62 characters and feature an ellipsis to communicate |
+| trun | cation |
+| Se | lecting and Confirming SNOMED-CT Matches |
+| t be | able to select SNOMED-CT matches in a quick and consistent manner. The |
+| outli | nes how this could be achieved. |
+| and | Confirming in the Text Parser Approach |
+| ed ea | rlier, in the Text parser approach to matching (section 2.1.2), the system displays the |
+| es in | the Suggested matches area, in the left-hand column. At this point, the user may: |
+| lect | the check box to confirm that the match is correct |
+| ick o | n the match’s label to view and select alternative matches |
+| ange | the text they have typed |
+| er mo | ves the mouse down the suggested match areas in the left hand column, the |
+| area | s become yellow. If the user clicks on the yellow area (but not necessarily on a label |
+| s wil | l move the marquee selection in the right-hand text input area. |
+| e mou | se over the marquee does not move the selection area (on either side), but if the |
+| s the | focus in the text input area, the corresponding selected match is highlighted in the |
+| colu | mn (see Figure 38). |
 
 Figure 38: Moving the Mouse Over a Suggested Match Highlights the Area in Yellow
 
@@ -2251,6 +2897,65 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+|  | Should provide the user with a clear confirmation control for each suggested match      Should feature a check box to enact confirmation |
+| --- | --- |
+| allow | the user to view the full list of matches for each suggested match |
+|  | Should allow the user to view this full list by clicking on the relevant match label      Could display the relevant match label in orange and emboss it when the user moves the mouse over it, in order to communicate that it is clickable |
+| clear | ly display which match the user has selected |
+|  | Could highlight the suggested match area in yellow when the user moves the mouse over it |
+|  | Should display ‘drop-down’ arrows next to each of the labels in the highlighted area to indicate that there are more matches available |
+| ld ens | ure that the highlight in the left hand ‘suggested matches’ area is reflected by |
+| focus | in the text input area. Clicking on a suggested match highlights that area and also |
+| s the | focus to the corresponding text in the text input area |
+| ld rep | lace the original text in the text input area with the relevant SNOMED-CT |
+| ept la | bel (which will be either a ‘Preferred term’ label or ‘synonym’ label) upon |
+| irmati | on |
+| ld onl | y enable the confirmation control if there are no unselected mandatory |
+| oratio | n fields associated with the match |
+| ld dis | able the confirmation control if there is an alternative match that has the same |
+| ling a | s the top match. The user must view the expanded list of matches prior to |
+| irmati | on |
+| warn | the user where there are very similar matches or matches that are ‘children’ of |
+| top ma | tch |
+| Ben | efits and Rationale |
+| must e | ncourage the user to confirm the matches before saving the note to record, and |
+| e appr | opriate controls for doing this. A vertical stack of check boxes is a clear and easy |
+| g this | , and this follows the standard ‘checklist’ metaphor. User testing has confirmed |
+| ians u | nderstand this. |
+| ystem | must allow users to view the alternative matches as the top match may not be |
+| , and | this could have safety implications if it is wrong. Again, user testing has supported |
+| ce. |  |
+| er tes | ting has shown that users understand the process of ticking the boxes to confirm |
+| is has | not been tested with an interactive prototype. Therefore, further usability testing |
+| , whic | h may result in potential updates. |
+| Con | fidence Level |
+|  |  |
+| allow | the user to confirm, or not confirm suggested matches |
+| allow | the user to view the full list of matches for each suggested match |
+| Sho | uld allow the user to view this full list by clicking on the relevant match label |
+|  | Could display the relevant match label in orange and emboss it when the user moves the mouse over it, in order to communicate that it is clickable |
+|  |  |
+| d prov | ide the user with a clear confirmation control for each suggested match |
+| Sho | uld feature a check box to enact confirmation |
+| clearl | y display which match the user has selected |
+| Cou | ld highlight the suggested match area in yellow when the user moves the mouse |
+| ove | r it |
+| Sho | uld display ‘drop-down’ arrows next to each of the labels in the highlighted area to |
+| ind | icate that there are more matches available |
+| d ensu | re that the highlight in the left hand ‘suggested matches’ area is reflected by |
+| ocus i | n the text input area. Clicking on a suggested match highlights that area and also |
+| the f | ocus to the corresponding text in the text input area |
+| d repl | ace the original text in the text input area with the relevant SNOMED-CT |
+| pt lab | el (which will be either a ‘Preferred term’ label or ‘synonym’ label) upon |
+| rmatio | n |
+| only e | nable the confirmation control if there are no unselected mandatory elaboration |
+| s asso | ciated with the match |
+| Deal | ing with Abbreviations |
+| looks | for matches in synonyms, including abbreviations, from within SNOMED-CT. |
+| er typ | es in an abbreviation; the resulting abbreviation is shown with the Fully specified |
+| and it | s hierarchical parents (see Figure 46). Example of an ‘expanded’ acronym in SNOMED-CT. |
+
 Figure 46: Displaying Abbreviations
 
 ![](termmatching_assets/termmatching.pdf-57-0.png)
@@ -2322,15 +3027,28 @@ HSCIC Controlled Document
 
 ####  Ensure that abbreviations are always
 
-written in capital letters and in bold
+
+|  | Must render the combined acronym/FSN label in the right-hand text input area upon confirmation of the match (this applies only to the Text parser approach) |
+| --- | --- |
+|  | How to Use the Design Guide Entry |
+| t | Example                            Comments |
+| Always | expand the abbreviation in the          See Figure 46                      The user must be made aware of the full term to |
+| search | results list and in the modifier                                           avoid mistakenly choosing an incorrect concept |
+| dialog |  |
+| Ensure | that abbreviations are always      See Figure 46   This ensures that they are prominent, distinct |
+| writte | n in capital letters and in bold                    from normal concept labels and consistently formatted |
 
 Table 14: How to Use the Design Guide Entry
 
-See Figure 46 This ensures that they are prominent, distinct from normal concept labels and consistently formatted
 
-_**2.3.4.3**_ _**How Not to Use the Design Guide Entry**_
-
-abbreviation in capital letters even not force the user to capitalise letters though they are displayed by the system in capitals. Mixed or lower case letter combinations should be recognised too
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Do not force the user to type in the | n/a | This allows an efficient interaction, in that it does |
+| abbreviation in capital letters even |  | not force the user to capitalise letters |
+| though they are displayed by the |  |  |
+| system in capitals. Mixed or lower case |  |  |
+| letter combinations should be |  |  |
+| recognised too |  |  |
 
 Table 15: How Not to Use the Design Guide Entry
 
@@ -2388,9 +3106,17 @@ appropriate encoding dialog with the confirmation check box deselected, or
 
 - Unselecting the check box next to the appropriate match in the ‘Suggested matches’
 
-column
 
-Also, the system should provide ‘undo’ and ‘redo’ buttons that will undo the last matching or parsing action.
+|  | Must render the combined acronym/FSN label in the right-hand text input area upon confirmation of the match (this applies only to the Text parser approach) |
+| --- | --- |
+| ‘ | Undoing’ Matches |
+| y ‘un | do’ confirmed matches, before they are saved to record, by either: |
+| le-cl | icking on the appropriate concept text in the text entry field. This will open up the |
+| opria | te encoding dialog with the confirmation check box deselected, or |
+| lecti | ng the check box next to the appropriate match in the ‘Suggested matches’ |
+| mn |  |
+| ystem | should provide ‘undo’ and ‘redo’ buttons that will undo the last matching or parsing |
+|  | ‘Undo’ and ‘Redo’ buttons |
 
 Figure 48: Undo and Redo Buttons (Top Right Hand Corner)
 
@@ -2518,7 +3244,86 @@ HSCIC Controlled Document
 
 ##### 2.4.1 Optimising Matching by the Use of Contextual Limitation
 
-In the Text parser approach to matching (see Figure 49), the design allows the user, or the workflow, to set the context for matching through the use of ‘clerking headings’.
+
+|  | Should allow the user to undo a confirmed match by deselecting the appropriate check box |
+| --- | --- |
+|  | Should allow the user to undo a confirmed match by clicking on the appropriate text in the text input area |
+| t retu | rn the text to its original form upon un-confirming a matched expression |
+| t prov | ide an ‘undo’ and ‘redo’ function which undoes the effects of the last send |
+| ching | request |
+|  | The controls should be visible from the main window |
+|  | Benefits and Rationale |
+| pract | ice to feature an ‘undo’ function, and users will expect it, given its prevalence in most |
+| ed sof | tware packages. Users should also have the opportunity to un-confirm a confirmed |
+| e savi | ng it to record. |
+|  | Confidence Level |
+|  |  |
+| t allo | w users to undo the confirmation of a matched expression |
+| Sh | ould allow the user to undo a confirmed match by deselecting the appropriate check |
+| bo | x |
+| Sh | ould allow the user to undo a confirmed match by clicking on the appropriate text in |
+| th | e text input area |
+| retur | n the text to its original form upon un-confirming a matched expression |
+|  |  |
+| provi | de an ‘undo’ and ‘redo’ function which undoes the effects of the last send |
+| hing r | equest |
+| Th | e controls should be visible from the main window |
+| text |  |
+| ays an | important role in any kind of clinical noting. In this section, we refer to context in |
+| ct way | s: |
+| ext as | a giver of meaning to an encoded concept (‘semantic context’) |
+| ext as | a filter for improving searches for concepts or for preventing erroneous matches |
+| interp | retations of the term ‘context’ are distinct, but in certain ways, they can be handled |
+| lar me | chanisms in the user interface. |
+| ontext |  |
+| t in w | hich the user has written the note will affect the meaning of the note, and so it is |
+| that t | his context is made explicit, both at the point of encoding and at the point of |
+|  |  |
+| e, if | the clinician were to record the concept ‘Aspirin’, it would not mean much in clinical |
+| ever, | if they recorded this in a field marked ‘Does the patient suffer from any drug |
+| ’, the | y would assume that the patient suffers from a drug allergy, the causative agent |
+| analge | sic. |
+| stance | , it would be meaningless to save the code for the substance ‘Aspirin’ (ConceptID |
+| by it | self. Instead, the system must record the implication that the substance is the |
+| agent | of the allergy which is suffered by the patient. This would require a post- |
+| d expr | ession, such as: |
+| rgic r | eaction to drug (ConceptID 416093006 ) \| Has causative agent (ConceptID |
+| 75003) | \| Aspirin (ConceptID 387458008). |
+| ssion | is canonically equivalent to ‘Aspirin allergy’ (ConceptID 293586001) |
+| e may | be other specific circumstances when a concept is modified by context-attributes. |
+| be set | by: |
+| nature | of the modifying clinical expression |
+| placem | ent of the concept within a record, document or message component |
+| ult co | ntext value settings |
+| a Fil | ter |
+| number | of concepts in the SNOMED-CT Terminology means that restricting the search |
+| to con | text will reduce the load on the user; it should make it easier for the user to get to |
+| d conc | epts that they wish to articulate by avoiding many irrelevant concepts. Sometimes |
+| st be | imposed. For example, in a field for entering details of an allergy, the clinician |
+| preven | ted from entering anything other than an allergen or an allergy (and if they do |
+| llerge | n, the system must ensure that this is saved as a post-coordinated expression with |
+| t of ‘ | allergy’). |
+| would | do this by reducing the number of results presented to the user and by providing |
+| r prio | ritising the search results. This prioritisation would help users to differentiate |
+| by pro | moting the most relevant synonyms up the results list. |
+| so all | ows the system to further reduce the load on the user by selecting and suggesting |
+| lues ( | during the 'elaboration' steps of the interaction). |
+| t of a | n encoding interaction depends on a number of factors, each of which may affect |
+| which | the system filters and presents search results, these are: |
+| corpor | ate requirements (for example, different NHS Trusts or GP practices may have |
+| erent | requirements for encoding) |
+| clinic | al specialities (for example, a diabetes clinic versus a casualty department) |
+| health | care provider (for example, a consultant versus a general practitioner) |
+| patien | t (for example, an infant versus a patient suffering from chronic heart disease) |
+| note-t | aking task (for example, describing family history versus describing planned |
+| edures | ) |
+| ext de | scriptors may be set by the system or by the user. For example, when a user |
+| es und | er a 'Family history' heading, the system may automatically adjust the context |
+| y. Equ | ally, the user could restrict the context by choosing to search only for ‘symptoms’ |
+| n for | the full range of options. |
+| Opt | imising Matching by the Use of Contextual Limitation |
+| t pars | er approach to matching (see Figure 49), the design allows the user, or the |
+| to set | the context for matching through the use of ‘clerking headings’. Clerking headings that filter and provide meaning for the matches below them. The control for inserting these headings (either by the user or by the workflow) is currently undefined. |
 
 Figure 49: Clerking Headings
 
@@ -2793,6 +3598,137 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+|  | Should feature an ‘▼’ icon to open the subset control |
+| --- | --- |
+|  | Must not obscure the listed matches with the control |
+|  | Must display the subset control level with or above the header label, in order to reduce the risk that the control obscures the relevant text |
+|  | Should feature a slider control if there is a linear relationship between the subsets, that is, if the subsets are logically nested |
+|  | Must not display more than three levels of subsets |
+|  | Should not feature a slider control if there is no relationship between the subsets |
+|  | Must feature appropriate instructional text within the control that explains to users what they may do with the control and why they would want to use it    Could feature dynamic instructional text that changes depending upon which level of subsets is currently chosen |
+|  | Could display further information, if such information is made available by the NHS, about the subset if the user clicks on the subset label in the subset control |
+|  | Should close the subset control dialog if the user clicks away from the dialog area |
+| ld re | fer to limiting matches by subsets as ‘Filtering’ |
+| uld e | nsure that adjusting the subset filters has an immediate effect on the matches |
+| playe | d |
+| t dis | play the ‘human readable’ labels for the subsets. |
+|  | Should truncate those labels on the subset button which exceed the button size (without wrapping) and feature an ellipsis (‘’…’) |
+|  | Should display the full ‘human readable’ labels within the subset control |
+| t all | ow multiple subsets to apply simultaneously, if appropriate |
+| uld p | rovide a listing of matches from a ‘common matches’ subset, that is, push them to |
+| top | of the matching list |
+|  | Should distinguish between ‘common’ and other matches in the list (where common matching applies) |
+| uld o | nly display clerking headings in the text input area |
+| t app | ropriately post-coordinate those concepts which derive part of their meaning from |
+| head | ing under which they are written |
+|  | Should display the simplest post-coordination solution, that does not, for example, feature soft status defaults (for example, status of a finding or procedure) that have not been modified by the user |
+| t fil | ter matches to the ‘Core’ set of SNOMED-CT terms, plus UK extension components |
+| t fil | ter to the UK language set |
+| t onl | y match concepts that are ‘current’ or ‘pending move’. |
+|  | Benefits and Rationale |
+| uld b | e able to adjust the subsets in those situations where they cannot match what they |
+| r the | current subset. It is important that the system clearly communicates what subset |
+| bein | g currently applied, so that the user is aware of why the system is matching as it is. |
+| test | ing, users seemed to understand the notion of subsets and understood that certain |
+| would | not be made available in certain concepts. |
+| t con | trol must be located in a prominent position. In previous designs where the subset |
+| as fe | atured immediately below the list, users often did not see it. Therefore, the system |
+| lay t | he control in a highly visible location. Positioning it immediately above the text entry |
+| o mir | rors the use of clerking headings, thus employing a consistent layout of related |
+| (that | is, subset controls and headings). |
+| lts i | ndicated that the subset control must also give an indication of the current subset filter |
+| the | matching. For example ‘Current filter: Lifestyle and Allergens’ was understood, and |
+| to a | label that simply read ‘Filter = On’. |
+| tests | , all users who were questioned indicated that they grasped the idea of the slider |
+| It wa | s preferred to two other alternative designs. However, they were not sure if they were |
+| to na | rrow or widen the matching scope. Therefore, appropriate labelling is necessary to |
+| s con | fidence to adjust these settings. |
+| test | ing, 75% of users who commented on the ‘common matches’ versus ‘other relevant |
+| desig | n feature, immediately understood its presentation. All users who commented on it |
+| ght t | hat it was sensible to feature the most common match results at the top of the list. |
+| headi | ngs is a common noting tool used by clinicians, especially those working in |
+| Care | . |
+| te th | at the latest version of this guidance has not undergone rigorous user testing. |
+| , fur | ther usability testing is expected, which may result in potential updates. It is also |
+| ing t | hat the nature, and potential usage, of the subsets that will be available over the |
+| ars i | s not fully defined. Therefore, the guidance may need to be adapted once this |
+| s cle | arer. |
+|  | Confidence Level |
+|  |  |
+| t fil | ter the concepts considered during the matching process, by subsets, where such |
+| sets | are available |
+| uld e | nsure that adjusting the subset filters has an immediate effect on the matches |
+| uld f | eature an ‘▼’ icon to open the subset control |
+| t not | obscure the listed matches with the control |
+| t dis | play the subset control level with or above the header label, in order to reduce the |
+| k tha | t the control obscures the relevant text |
+| uld n | ot feature a slider control if there is no relationship between the subsets |
+| t fil | ter matches to the ‘Core’ set of SNOMED-CT terms, plus UK extension components |
+| t fil | ter to the UK language set |
+| t onl | y match concepts that are ‘current’ or ‘pending move’. |
+|  |  |
+| t all | ow users to adjust the subset filters |
+| uld p | rovide ‘velocity’ listing of matches from a ‘common matches’ subset, that is, push |
+| m to | the top of the matching list |
+|  | Should distinguish between ‘common’ and other matches in the list (where common matching applies) |
+| uld f | eature a slider control if there is a linear relationship between the subsets, that is, if |
+| subs | ets are logically nested |
+| t fea | ture appropriate instructional text within the control that explains to users what they |
+| do w | ith the control and why they would want to use it |
+|  | Could feature dynamic instructional text that changes depending upon which level of subsets is currently chosen |
+| uld c | lose the subset control dialog if the user clicks away from the dialog area |
+| ld re | fer to limiting matches by subsets as ‘Filtering’ |
+| t dis | play the ‘human readable’ labels for the subsets |
+|  | Should truncate those labels on the subset button which exceed the button size (without wrapping) and feature an ellipsis (‘’…’) |
+|  | Should display the full ‘human readable’ labels within the subset control |
+| t all | ow multiple subsets to apply simultaneously, if appropriate |
+|  |  |
+| ld pr | ovide a control next to the clerking headings and above the encoding dialog |
+| ching | input field |
+| uld o | nly display clerking headings in the text input area |
+| ld di | splay further information, if such information is made available by the NHS, about |
+| subs | et if the user clicks on the subset label in the subset control |
+| t not | display more than three levels of subsets |
+| t app | ropriately post-coordinate those concepts which derive part of their meaning from |
+| head | ing under which they are written |
+|  | Should display the simplest post-coordination solution that does not, for example, feature soft axial modification defaults that have not been modified by the user |
+| finem | ent |
+| Ref | ining a Selected Concept |
+| on to | viewing possible SNOMED-CT matches for a text input, the system will also offer the |
+| oppor | tunity to refine a selected concept by browsing (and selecting) concepts that are |
+| cally | related in the following ways: |
+| ents | of the selected concept |
+| ldren | of the selected concept |
+| lings | of the selected concept (that is, the children of the concepts’ parents) |
+| allo | w the user to select a more general or more specific instance of the concept. This |
+| very | useful in allowing the user to precisely express their notes. It will be especially |
+| when | users are learning the SNOMED-CT terminology or they are noting in an unfamiliar |
+| a, as | they may not be aware of what terms they can match. As they become more familiar |
+| termi | nology, they will be less likely to want to refine concepts as they will type in more |
+| erms | in their notes. |
+| this | will also expose users to the SNOMED-CT hierarchy, which is not particularly user- |
+| in t | hat there may be areas of it which do not fit with the user’s concept of semantic |
+| hips | between concepts. This means that, without proper safeguards, the user could get |
+| in th | e hierarchy. It is for this reason that hierarchy browsing is not the primary method of |
+| atchi | ng, but should be available for those instances where the user cannot find what they |
+| are u | nsure about the precise labelling of what they want. In the design, we have hidden |
+| ure s | o that the user is not exposed to it immediately. Instead the user is firstly presented |
+| match | es, then they can choose to view alternative matches and finally they can choose to |
+| e hie | rarchy itself. |
+| lso b | e allowing the user to refine attribute values, which refer to the defining concepts that |
+| a ful | ly defined SNOMED-CT concept. So, for example, the user may refine the body |
+| that | is the site of a procedure. This is important, given that, in many cases there will not |
+| ilabl | e pre-coordinated term for these refinements. |
+| nemen | t process is relevant to both the Text parser and single concept approaches. |
+| will | be able to access the refinement controls by clicking a button in the selected |
+| fly- | out panel. This will open a modal dialog that appears over the top of the encoding |
+| his d | ialog will provide lists of the parents, siblings and children of the selected concept. |
+| ample | below (Figure 55, Figure 56, Figure 57, Figure 58, Figure 59 and Figure 60) the |
+| ks on | the suggested match to open the expanded list view. They then click on the ‘Browse |
+| ed co | ncepts’ button in the fly-out. This opens the navigation dialog, from which they may |
+| r rel | ated concepts. The user clicks on the label. |
+
 Figure 55: User Moves Mouse Over the Match They Wish to Refine
 
 Figure 56: User Clicks on the 'Browse for related concepts' Button
@@ -2997,31 +3933,28 @@ HSCIC Controlled Document
 
 #### 4.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-FSN Fully Specified Name
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-SCT Systematized Nomenclature of Medicine – Clinical Terms
-
-SNOMED-CT Systematized Nomenclature of Medicine – Clinical Terms
-
-TLC Top Level Concept
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| FSN | Fully Specified Name |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| SCT | Systematized Nomenclature of Medicine – Clinical Terms |
+| SNOMED-CT | Systematized Nomenclature of Medicine – Clinical Terms |
+| TLC | Top Level Concept |
 
 Table 42: Terms and Abbreviations
 
 #### 4.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
-
-Context Model A model that specifies relationships relating to semantic context that has been defined outside of the SNOMED-CT Concept model.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
+| Context Model | A model that specifies relationships relating to semantic context that has been defined outside of the SNOMED-CT Concept model. |
 
 Table 43: Definitions
 
@@ -3041,45 +3974,31 @@ HSCIC Controlled Document
 
 #### 4.4 References
 
-**R1.** NHS CUI Design Guide Workstream - Table of Contents 2.0.0.0 30-Oct-2006
 
-**R2.** NHS CUI Design Guide Workstream - Design Guide Entry - Terminology - Post Coordination
-
-**R3.** NHS CUI Design Guide Workstream - Design Guide Entry - Terminology Display Standards for Coding Information
-
-**R4.** NHS CUI Design Guide Workstream - Design Guide Entry - Terminology Elaboration
-
-**R5.** NHS National Programme for Information Technology’s ‘SNOMED CT Postcoordination rules Guidance’
-
-**R6.** NHS Common User Interface Programme, Release 4 Terminology Jan 2007, User Feedback
-
-**R7.** NHS Common User Interface Programme, Release 4 Terminology, Nov 2006, User Feedback
-
-**R8.** NHS CUI Design Guide Workstream, Terminology Demonstrator and Wireframe User Feedback
-
-**R9.** NHS CUI Design Guide Workstream - Clinical Noting User Interface Vision and Scope
-
-2.0.0.0 27-Mar-2007
-
-2.0.0.0 27-Mar-2007
-
-2.0.0.0 27-Mar-2007
-
-1.0 13-Jan-2005
-
-n/a 29-Jan-2007
-
-n/a 13-Dec-2006
-
-n/a
-
-2.0.0.0 20-Feb-2007
-
-**R10.** NHS CUI Design Guide Workstream – Abbreviations and Acronyms 1.0.0.0 14-Jun-2006
-
-**R11.** NHS Design Guide and Toolkit Workstream – Abbreviations and Acronyms in Free Text Input
-
-**R12.** SNOMED Clinical Terms ® Guide – Abstract logical models and Representational forms
+| Reference Document | Version | Date |
+| --- | --- | --- |
+| R1.              NHS CUI Design Guide Workstream - Table of Contents | 2.0.0.0 | 30-Oct-2006 |
+| R2.              NHS CUI Design Guide Workstream - Design Guide Entry - Terminology - Post 2. | 0.0.0 | 27-Mar-2007 |
+| Coordination |  |  |
+| R3.              NHS CUI Design Guide Workstream - Design Guide Entry - Terminology - | 2.0.0.0 | 27-Mar-2007 |
+| Display Standards for Coding Information |  |  |
+| R4.              NHS CUI Design Guide Workstream - Design Guide Entry - Terminology - | 2.0.0.0 | 27-Mar-2007 |
+| Elaboration |  |  |
+| R5.              NHS National Programme for Information Technology’s ‘SNOMED CT Post- | 1.0 | 13-Jan-2005 |
+| coordination rules Guidance’ |  |  |
+| R6.              NHS Common User Interface Programme, Release 4 Terminology Jan 2007, | n/a | 29-Jan-2007 |
+| User Feedback |  |  |
+| R7.              NHS Common User Interface Programme, Release 4 Terminology, Nov 2006, | n/a | 13-Dec-2006 |
+| User Feedback |  |  |
+| R8.              NHS CUI Design Guide Workstream, Terminology Demonstrator and | n/a |  |
+| Wireframe User Feedback |  |  |
+| R9.              NHS CUI Design Guide Workstream - Clinical Noting User Interface Vision and | 2.0.0.0 | 20-Feb-2007 |
+| Scope |  |  |
+| R10.             NHS CUI Design Guide Workstream – Abbreviations and Acronyms | 1.0.0.0 | 14-Jun-2006 |
+| R11.             NHS Design Guide and Toolkit Workstream – Abbreviations and Acronyms in | 1.0.0.0 | 01-Jun-2006 |
+| Free Text Input |  |  |
+| R12.             SNOMED Clinical Terms ® Guide – Abstract logical models and | Version 5 | Jan-2006 |
+| Representational forms |  |  |
 
 Table 45: References
 

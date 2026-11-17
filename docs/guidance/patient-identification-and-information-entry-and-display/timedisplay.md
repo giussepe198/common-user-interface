@@ -90,35 +90,12 @@ Additionally, users implementing applications that follow this design guide’s 
 [Refer to www.cui.nhs.uk](https://emea.mail.microsoft.com/OWA/redir.aspx?C=2aab7991b0924c8f92c4e2824ab8a971&URL=http%3a%2f%2fwww.cui.nhs.uk) for further information on the patient safety process and for the safety status and any relevant accompanying safety documentation for this design guide.
 ### 1 INTRODUCTION
 
-This document provides the design guidance for time display. It describes the area of focus, provides guidance and recommendations, and explains the rationale behind the guidance and recommendations.
 
-This document is intended for use by anyone whose role includes screen design, or the implementation or assessment of NHS clinical applications. This document can therefore be used as guidance for the specification of time display within the user interface of a clinical application.
-
-Table 1 describes the changes made since the previous version of this guidance (Baseline version 3.0.0.0 dated 12-Oct-2007):
-
-**Deleted** D+Tb-0019 to D+Tb-0025
-
-Replaced by D+Tb-0033 and D+Tb-0034
-
-**Modified** Clarification of definitions for in scope (section 1.2.1)
-
-Context clarification and ‘Durations shorter than a second’ in out of scope (section 1.2.2)
-
-Context clarification for illustrations (section 2)
-
-D+Tb-0001 Added ‘only’
-
-D+Tb-0018 Modified to show 60 as a whole number rather than 90
-
-**Added** Patient Safety Process note
-
-D+Tb-0032 Indicating use of 24-hour clock
-
-D+Tb-0033 D+Tb-0034
-
-Definition of labels for periods of time
-
-Extra usage example for durations over 24-hours (section 2.3.2)
+| Change | IDs | Change Description |
+| --- | --- | --- |
+| Deleted | D+Tb-0019 to D+Tb-0025 | Replaced by D+Tb-0033 and D+Tb-0034 |
+| Modified | D+Tb-0001 D+Tb-0018 | Clarification of definitions for in scope (section 1.2.1) Context clarification and ‘Durations shorter than a second’ in out of scope (section 1.2.2) Context clarification for illustrations (section 2) Added ‘only’ Modified to show 60 as a whole number rather than 90 |
+| Added | D+Tb-0032 D+Tb-0033 D+Tb-0034 | Patient Safety Process note Indicating use of 24-hour clock Definition of labels for periods of time Extra usage example for durations over 24-hours (section 2.3.2) |
 
 Table 1: Changes Since the Last Baseline Version
 
@@ -272,29 +249,25 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-D+Tb-0002 Display an exact time as HH:mm Mandatory
 
-D+Tb-0003 Display hours using two digits (values less than 10 should appear with a zero in the first position) Mandatory
-
-D+Tb-0004 Display minutes using two digits (values less than 10 should appear with a zero in the first position) Mandatory
-
-D+Tb-0005 Display seconds as two digits (values less than 10 should appear with a zero in the first position) Mandatory
-
-D+Tb-0006 Separate the hours and minutes with a colon Mandatory
-
-D+Tb-0007 Separate the minutes and seconds with a colon Mandatory
-
-D+Tb-0008 Separate date and time values with a white space Mandatory
-
-D+Tb-0009 Display midnight as 00:00 Mandatory
-
-D+Tb-0010 Display the last minute in the day as 23:59 Mandatory
-
-D+Tb-0011 Display null times using an appropriate value, for example, ‘Unknown’ and ‘Not recorded’ Mandatory
-
-D+Tb-0012 Display seconds only if required Recommended
-
-D+Tb-0013 Display time ranges as two adjacent time displays, each identified by a contextually appropriate label, such as ‘From’ and ‘To’
+| ID | Guideline | Status |
+| --- | --- | --- |
+| D+Tb-0001 | Display time using the 24-hour clock only | Mandatory |
+| D+Tb-0032 | Provide indication to the user that the 24-hour clock is in use | Mandatory |
+| D                G | uideline | Status |
+| +Tb-0002         D | isplay an exact time as HH:mm | Mandatory |
+| +Tb-0003         D | isplay hours using two digits (values less than 10 should appear with a zero in the first p | osition)    Mandatory |
+| +Tb-0004         D | isplay minutes using two digits (values less than 10 should appear with a zero in the first | position) Mandatory |
+| +Tb-0005         D | isplay seconds as two digits (values less than 10 should appear with a zero in the first po | sition)     Mandatory |
+| +Tb-0006         S | eparate the hours and minutes with a colon | Mandatory |
+| +Tb-0007         S | eparate the minutes and seconds with a colon | Mandatory |
+| +Tb-0008         S | eparate date and time values with a white space | Mandatory |
+| +Tb-0009         D | isplay midnight as 00:00 | Mandatory |
+| +Tb-0010         D | isplay the last minute in the day as 23:59 | Mandatory |
+| +Tb-0011         D | isplay null times using an appropriate value, for example, ‘Unknown’ and ‘Not recorded’ | Mandatory |
+| +Tb-0012         D | isplay seconds only if required | Recommended |
+| +Tb-0013         D | isplay time ranges as two adjacent time displays, each identified by a contextually appropr | iate        Recommended |
+| l | abel, such as ‘From’ and ‘To’ |  |
 
 Table 2: Guidance – Exact Time Display
 
@@ -324,11 +297,13 @@ Sat 01-Dec-1970 00:05
 
 ####  dd-MMM-yyyy HH:mm 12-Jun-2006 02:30
 
-24-Apr-1998 10:45
 
-05-Sep-2000 17:13
-
-01-Dec-1970 00:05
+| Usage | Format | Example | Comments |
+| --- | --- | --- | --- |
+|  | HH:mm | 12:35 04:59 00:25 | Display format for hours and minutes only. Use this format for exact times that are accurate to the minute |
+|  | HH:mm:ss | 12:35:01 04:59:58 00:25:12 | Display format for hours, minutes and seconds. Use this format for exact times that are accurate to the second |
+|  | Day dd-MMM-yyyy HH:mm | Mon 12-Jun-2006 02:30 Fri 24-Apr-1998 10:45 Sun 05-Sep-2000 17:13 Sat 01-Dec-1970 00:05 | Time display combined with long date display |
+|  | dd-MMM-yyyy HH:mm | 12-Jun-2006 02:30 24-Apr-1998 10:45 05-Sep-2000 17:13 01-Dec-1970 00:05 | Time display combined with short date display |
 
 Table 3: Correct Exact Time Formatting Examples
 
@@ -370,9 +345,15 @@ h:m
 h:m:s
 ####  dd-MMM-yyyy-HH:mm
 
-dd-MMM-yyyyHH:mm
 
-dd-Mmm-yyyy:HH:mm
+| Usage | Format | Example | Comments |
+| --- | --- | --- | --- |
+|  | hh:mm AM | 12:35 AM 12:35 PM | Use of the 12-hour clock |
+|  | HH mm HH.mm | 12 35 12.35 | Use of incorrect separator |
+| Usage | Format                               Ex | ample               Comments |  |
+|  | HH:mm                                24 | :00                 Since 00:00 is identical display must never show | to 24:00, the 24:00 |
+|  | HH:m                                 10 h:m                                  1: h:m:s                                3: | :5                  Lack of a leading zero f 7                   than 10 5:8 | or values less |
+|  | dd-MMM-yyyy-HH:mm                    12 dd-MMM-yyyyHH:mm                     24 dd-Mmm-yyyy:HH:mm                    05 01 | -Jun-2006-02:30     Incorrect field separati -Apr-199810:45      examples difficult to re -Sep-2000:17:13 -Dec-1970T00:05 | on makes these ad |
 
 Table 4: Incorrect Exact Time Formatting Examples
 
@@ -440,23 +421,21 @@ Figure 4: Examples of the Recommended Approximate Time Display Format for NHS Cl
 
 ##### 2.2.1 Guidance
 
-D+Tb-0014 Precede the display of an approximate time value with the word ‘Approx’ Mandatory
 
-D+Tb-0015 Display the time value using the guidance for exact time (section 0) Mandatory
-
-D+Tb-0016 Leave a white space between the ‘Approx’ and the HH element of the time display Mandatory
+| ID | Guideline | Status |
+| --- | --- | --- |
+| D+Tb-0014 | Precede the display of an approximate time value with the word ‘Approx’ | Mandatory |
+| D+Tb-0015 | Display the time value using the guidance for exact time (section 0) | Mandatory |
+| D+Tb-0016 | Leave a white space between the ‘Approx’ and the HH element of the time display | Mandatory |
 
 Table 5: Guidance – Approximate Time Display
 
 ##### 2.2.2 Examples of Correct Usage
 
-Approx 12:00
 
-Approx 03:56
-
-Approx 23:47
-
-Display format for approximate (or “fuzzy”) time
+| Usage | Format | Example | Comments |
+| --- | --- | --- | --- |
+|  | Approx HH:mm | Approx 00:00 Approx 12:00 Approx 03:56 Approx 23:47 | Display format for approximate (or “fuzzy”) time |
 
 Table 6: Correct Approximate Time Formatting Examples
 
@@ -464,6 +443,12 @@ Table 6: Correct Approximate Time Formatting Examples
 
 text
 ####  HH:mm Approx 14:47 Approx ‘Approx’ should precede the time value
+
+
+| Usage | Format | Example | Comments |
+| --- | --- | --- | --- |
+|  | near HH:mm | near 00:00 | Failure to use ‘Approx’ as the preceding text |
+|  | HH:mm Approx | 14:47 Approx | ‘Approx’ should precede the time value |
 
 Table 7: Incorrect Approximate Time Formatting Examples
 
@@ -536,9 +521,20 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-D+Tb-0030 Precede the display of an approximate duration value with the word ‘Approx’ Mandatory
 
-D+Tb-0031 Leave a white space between the ‘Approx’ and the first element of an approximate duration value Mandatory
+| ID | Guideline | Status |
+| --- | --- | --- |
+| D+Tb-0017 | Display durations using years, months, weeks, days, hours, minutes and seconds, as appropriate | Mandatory |
+| D+Tb-0018 | Use whole numbers for time duration, for example, 1, 5, and 60. Do not use decimals or fractions, for example, 0.5, 1.5, 3/4 | Mandatory |
+| D+Tb-0033 | Ensure that the following minimal set of duration unit abbreviations is supported: y for years, m for months, w for weeks, d for days, hr for hours, min for minutes and sec for seconds | Mandatory |
+| D+Tb-0034 | Allow the set of duration unit abbreviations to be extended appropriately, for example, ‘hrs’ as well as ‘hr’. Ensure that any additions are unique within the entire set | Recommended |
+| D+Tb-0026 | Omit zero-valued units from the display | Mandatory |
+| D+Tb-0027 | Display duration values and their respective units as pairs, with no intervening whitespace between Mand the value and unit | atory |
+| D+Tb-0028 | Use a white space as the separator when displaying a duration composed of more than one unit | Mandatory |
+| D+Tb-0029 | Display time duration units in decreasing order of significance | Mandatory |
+| ID | Guideline                                                                                          Statu | s |
+| D+Tb-0030 | Precede the display of an approximate duration value with the word ‘Approx’                        Manda | tory |
+| D+Tb-0031 | Leave a white space between the ‘Approx’ and the first element of an approximate duration value    Manda | tory |
 
 Table 8: Guidance – Time Duration Display
 
@@ -557,13 +553,11 @@ Table 8: Guidance – Time Duration Display
 1m 2d 3hr 17min
 ####  Nnu Nnuuu 3d 40min
 
-26w 5d
 
-1m 5d 12hr
-
-26d 5hr 34min
-
-1y 10m 2w 12d 20hr 12min
+| Usage | Format | Example | Comments |
+| --- | --- | --- | --- |
+|  | Nnuuu | 20sec 10min 15min 55sec 23hr 2hr 40min 4hr 32min 16sec 1m 2d 3hr 17min | Time units should be displayed using three characters to avoid confusion, for example, between minutes and months |
+|  | Nnu Nnuuu | 3d 40min 26w 5d 1m 5d 12hr 26d 5hr 34min 1y 10m 2w 12d 20hr 12min | Display of durations greater than 24 hours |
 
 Table 9: Correct Time Duration Formatting Examples
 
@@ -590,7 +584,13 @@ Display of durations greater than 24 hours
 26d5hr34min
 ####  Nnu Nnu 3d 90m
 
-1m 30m
+
+| Usage | Format | Example | Comments |
+| --- | --- | --- | --- |
+|  | N.Nuuu | 0.5min 1.5hr 3/4hr | These examples lack clarity; 0.5min could be interpreted as 5 minutes |
+|  | Nnuuu | 15min55sec 2hr90min 4hr32min16sec | The lack of white space separators makes these examples difficult to read |
+|  | NnuNNuuu | 3d40min 26d5hr 1m05d12hr 26d5hr34min | The lack of white space separators makes these examples difficult to read |
+|  | Nnu Nnu | 3d 90m 1m 30m | The use of the same character to indicate months and minutes gives rise to ambiguity |
 
 Table 10: Incorrect Time Duration Formatting Examples
 
@@ -644,27 +644,26 @@ HSCIC Controlled Document
 
 #### 3.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NPfIT National Programme for IT
-
-NPSA National Patient Safety Agency
-
-UI User Interface
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPfIT | National Programme for IT |
+| NPSA | National Patient Safety Agency |
+| UI | User Interface |
 
 Table 11: Terms and Abbreviations
 
 #### 3.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
 
 Table 12: Definitions
 
@@ -674,21 +673,17 @@ This section shows how to interpret the different styles used in this document t
 
 ##### 3.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 13: Body Text Styles
 
@@ -700,33 +695,36 @@ HSCIC Controlled Document
 
 ##### 3.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 14: Cross Reference Styles
 
 #### 3.4 References
 
-**R1.** NHS CUI Design Guide Workstream – Design Guide Entry – Date and Time Input 3.0.0.0
 
-**R2.** NHS CUI Design Guide Workstream – Design Guide Entry – Date Display 4.0.0.0
-
-**R3.** ISO 8601:2004: Data elements and interchange formats – Information interchange – Representation of dates and times [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=40874](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=40874)
-
-**R4.** World Wide Web Consortium (W3C) Date and Time [http://www.w3.org/International/](http://www.w3.org/International/)
-
-**R5.** UK Government Data Standards (GovTalk) [http://www.govtalk.gov.uk/gdsc/html/noframes/default.htm](http://www.govtalk.gov.uk/gdsc/html/noframes/default.htm)
-
-**R6.** NHS Data Dictionary: [http://www.datadictionary.nhs.uk/web_site_content/pages/domains/time_e_h_gif_de.asp?query=time](http://www.datadictionary.nhs.uk/web_site_content/pages/domains/time_e_h_gif_de.asp?query=time%20format&rank=1&shownav=1) [%20format&rank=1&shownav=1](http://www.datadictionary.nhs.uk/web_site_content/pages/domains/time_e_h_gif_de.asp?query=time%20format&rank=1&shownav=1)
-
-**R7.** NHS CUI Design Guide Workstream – Design Guide Entry – Medications Management – Medication Overview
+| Reference Document | Version |
+| --- | --- |
+| R1.             NHS CUI Design Guide Workstream – Design Guide Entry – Date and Time Input | 3.0.0.0 |
+| R2.             NHS CUI Design Guide Workstream – Design Guide Entry – Date Display | 4.0.0.0 |
+| R3.             ISO 8601:2004: Data elements and interchange formats – Information interchange – Representation |  |
+| of dates and times |  |
+| http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=40874 |  |
+| R4.             World Wide Web Consortium (W3C) Date and Time |  |
+| http://www.w3.org/International/ |  |
+| R5.             UK Government Data Standards (GovTalk) |  |
+| http://www.govtalk.gov.uk/gdsc/html/noframes/default.htm |  |
+| R6.             NHS Data Dictionary: |  |
+| http://www.datadictionary.nhs.uk/web_site_content/pages/domains/time_e_h_gif_de.asp?query=time |  |
+| %20format&rank=1&shownav=1 |  |
+| R7.             NHS CUI Design Guide Workstream – Design Guide Entry – Medications Management – Medication | 2.0.0.0 |
+| Overview |  |
 
 Table 15: References
 

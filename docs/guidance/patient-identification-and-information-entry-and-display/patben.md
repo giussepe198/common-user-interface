@@ -117,29 +117,12 @@ This document is intended for the use of anyone whose role includes screen desig
 
 - Assessment of a patient banner in an NHS clinical application user interface
 
-Table 1 describes the changes made since the previous version of this guidance (Baseline version 3.0.0.0 dated 22-Jan-2008):
 
-**Deleted** None
-
-**Modified** Including text relating to display styles (section 1.2.2)
-
-Enhanced context setting for out of scope text (section 1.2.2)
-
-Including Patient Safety Assessment (section 2)
-
-Correcting field length descriptor for Last Name (2.2.3 Note)
-
-PAB-0016 Modification to wording
-
-**Added** Patient Safety Process note
-
-PAB-0073 Mandatory use of Zone 1
-
-PAB-0074 Recommended use of Zone 2
-
-PAB-0075 Zone 2 expand and collapse capability
-
-PAB-0076 Tabbing order within displayed information
+| Change | IDs | Change Description |
+| --- | --- | --- |
+| Deleted |  | None |
+| Modified | PAB-0016 | Including text relating to display styles (section 1.2.2) Enhanced context setting for out of scope text (section 1.2.2) Including Patient Safety Assessment (section 2) Correcting field length descriptor for Last Name (2.2.3 Note) Modification to wording |
+| Added | PAB-0073 PAB-0074 PAB-0075 PAB-0076 | Patient Safety Process note Mandatory use of Zone 1 Recommended use of Zone 2 Zone 2 expand and collapse capability Tabbing order within displayed information |
 
 Table 1: Changes Since the Last Baseline Version
 
@@ -393,15 +376,23 @@ Page 5
 
 HSCIC Controlled Document
 
-PAB-0005 Zone 2 consists of five sections Mandatory
 
-PAB-0075 Zone 2 must have expand and collapse capability Mandatory
-
-PAB-0006 All five sections in Zone 2 expand and collapse together Mandatory
-
-PAB-0007 Display a tooltip when the mouse is positioned over Zone 2 while Zone 2 is collapsed, stating that Zone 2 can be expanded
-
-PAB-0008 The Patient Banner adheres to role-based access control, for example, do not display clinical information, such as allergy propensities, to non-clinical users
+| ID | Guideline | Status |
+| --- | --- | --- |
+| PAB-0001 | The Patient Banner should consist of two zones, Zone 1 and Zone 2 | Recommended |
+| PAB-0073 | The Patient Banner must include Zone 1 | Mandatory |
+| PAB-0002 | Display information that facilitates patient identification in Zone 1 | Mandatory |
+| PAB-0074 | The Patient Banner should include Zone 2 | Recommended |
+| PAB-0003 | Display supplementary information that either supports patient identification or assists patien care in Zone 2 | t Mandatory |
+| PAB-0004 | Where Zone 2 is used, in the default display of the Patient Banner, show Zone 1 and Zone 2, with Zone 2 in the collapsed state | Mandatory |
+| D                    Gu | ideline                                                                                   Statu | s |
+| AB-0005              Zo | ne 2 consists of five sections                                                            Manda | tory |
+| AB-0075              Zo | ne 2 must have expand and collapse capability                                             Manda | tory |
+| AB-0006              Al | l five sections in Zone 2 expand and collapse together                                    Manda | tory |
+| AB-0007              Di | splay a tooltip when the mouse is positioned over Zone 2 while Zone 2 is collapsed, stating Man | datory |
+| th | at Zone 2 can be expanded |  |
+| AB-0008              Th | e Patient Banner adheres to role-based access control, for example, do not display clinical Man | datory |
+| in | formation, such as allergy propensities, to non-clinical users |  |
 
 Table 2: Guidance – Patient Banner Structure and Composition
 
@@ -461,9 +452,16 @@ PAB-0013 Do not obscure the Patient Banner with other elements of the screen Rec
 
 ![](patben_assets/patben.pdf-11-0.png)
 
-PAB-0014 Apply visual styling such as a thick border or distinguishing background colour, to the Patient Banner in contrast to other elements of the application’s user interface
 
-PAB-0015 Do not display the Patient Banner on screens that contain information relating to more than one patient
+| ID | Guideline | Status |
+| --- | --- | --- |
+| PAB-0009 | Display the Patient Banner at the top of the application window | Mandatory |
+| PAB-0010 | Display the Patient Banner across the width of the screen rather than vertically | Mandatory |
+| PAB-0011 | Display the Patient Banner in a fixed position, unmovable by the user | Mandatory |
+| PAB-0012 | Display the Patient Banner so that it occupies the full width of the application window | Mandatory |
+| PAB-0013 | Do not obscure the Patient Banner with other elements of the screen | Recommended |
+| PAB-0014 | Apply visual styling such as a thick border or distinguishing background colour, to the Patient Banner in contrast to other elements of the application’s user interface | Mandatory |
+| PAB-0015 | Do not display the Patient Banner on screens that contain information relating to more than one patient | Recommended |
 
 Table 3: Guidance – Application Context and Patient Banner Positioning
 
@@ -558,17 +556,19 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-PAB-0018 For a deceased patient, the Patient Banner additionally displays the last known contact details (comprising the address and phone numbers), date of death and age at death
 
-PAB-0019 If an individual data item is not known, or is otherwise unavailable, a blank string or appropriate self explanatory text (such as “Not Known”, but not a “?”) is to be displayed immediately after the corresponding data label
-
-Mandatory
-
-Mandatory
-
-PAB-0020 Display the preferred name if available Recommended
-
-PAB-0021 Do not display the patient’s photograph in the Patient Banner Recommended
+| ID | Guideline | Status |
+| --- | --- | --- |
+| PAB-0016 | Always display the patient’s name (family name, given name and title), date of birth, gender and NHS number in this order within the Patient Banner | Mandatory |
+| PAB-0076 | Enable a user to tab between the patient identification data in the same order as the displayed information as follows: the patient’s name (family name, given name and title), date of birth, gender and NHS number | Mandatory |
+| PAB-0017 | For a patient who is alive, the Patient Banner additionally displays contact details (comprising the | Mandatory |
+| 1 |  |  |
+| NHS Data Mo | del and Dictionary {R11}: http://www.datadictionary.nhs.uk/index.asp |  |
+| ID | Guideline address and phone numbers) and the patient’s age | Status |
+| PAB-0018 | For a deceased patient, the Patient Banner additionally displays the last known contact details (comprising the address and phone numbers), date of death and age at death | Mandatory |
+| PAB-0019 | If an individual data item is not known, or is otherwise unavailable, a blank string or appropriate self explanatory text (such as “Not Known”, but not a “?”) is to be displayed immediately after the corresponding data label | Mandatory |
+| PAB-0020 | Display the preferred name if available | Recommended |
+| PAB-0021 | Do not display the patient’s photograph in the Patient Banner | Recommended |
 
 Table 4: Guidance – Minimum Data Set
 
@@ -642,37 +642,20 @@ This section defines how the data items on the Patient Banner should be logicall
 
 ##### 2.4.1 Guidance
 
-PAB-0022 Display the elements of the patient name, date of birth, gender and NHS number in Zone 1 Mandatory
 
-PAB-0023 Display the age of a living patient in Zone 1 Mandatory
-
-PAB-0024 For a deceased patient, display the date of death and the age at death in Zone 1 Mandatory
-
-PAB-0025 Display as much of the address as possible in a single line, in the title of the first section in Zone 2, displaying an ellipsis to show incomplete display of the address
-
-Mandatory
-
-PAB-0026 Display the full address including the postcode, in the first section of the expanded Zone 2 Mandatory
-
-PAB-0027 Precede the full address with the label “Usual address”, “Temporary address”, or one of the types of temporary address, as appropriate, and as defined in the PDS
-
-PAB-0028 Display as much of a single phone number as possible in a single line, in the title of the second section on Zone 2, displaying an ellipsis to show incomplete display of the phone number
-
-PAB-0029 Display contact numbers and email addresses in the second section of the expanded Zone 2, in the following order: Home, Work, Mobile, Email
-
-PAB-0030 Precede each contact number and email address with the label “Home”, “Work”, “Mobile”, or “Email”, as appropriate
-
-Mandatory
-
-Mandatory
-
-Mandatory
-
-Mandatory
-
-PAB-0031 Optionally, display allergy propensity information in Zone 2 of the Patient Banner Recommended
-
-PAB-0032 Reserve the fifth section of Zone 2 for the display of optional allergy propensity information Mandatory
+| ID | Guideline | Status |
+| --- | --- | --- |
+| PAB-0022 | Display the elements of the patient name, date of birth, gender and NHS number in Zone 1 | Mandatory |
+| PAB-0023 | Display the age of a living patient in Zone 1 | Mandatory |
+| PAB-0024 | For a deceased patient, display the date of death and the age at death in Zone 1 | Mandatory |
+| PAB-0025 | Display as much of the address as possible in a single line, in the title of the first section in Zone 2, displaying an ellipsis to show incomplete display of the address | Mandatory |
+| PAB-0026 | Display the full address including the postcode, in the first section of the expanded Zone 2 | Mandatory |
+| PAB-0027 | Precede the full address with the label “Usual address”, “Temporary address”, or one of the types of temporary address, as appropriate, and as defined in the PDS | Mandatory |
+| PAB-0028 | Display as much of a single phone number as possible in a single line, in the title of the second section on Zone 2, displaying an ellipsis to show incomplete display of the phone number | Mandatory |
+| PAB-0029 | Display contact numbers and email addresses in the second section of the expanded Zone 2, Mandatory in the following order: Home, Work, Mobile, Email |  |
+| PAB-0030 | Precede each contact number and email address with the label “Home”, “Work”, “Mobile”, or “Email”, as appropriate | Mandatory |
+| PAB-0031 | Optionally, display allergy propensity information in Zone 2 of the Patient Banner | Recommended |
+| PAB-0032 | Reserve the fifth section of Zone 2 for the display of optional allergy propensity information | Mandatory |
 
 Table 5: Guidance – Information Groupings
 
@@ -748,17 +731,26 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-PAB-0044 Display labels in the style given to label text Mandatory
 
-PAB-0045 Display values in the style given to data text Mandatory
-
-PAB-0046 Give more emphasis to the value text style relative to the label text style Mandatory
-
-PAB-0047 For each label in Zone 1, provide a definition and a means to access the definition for example, by a tooltip
-
-Recommended
-
-PAB-0048 Provide a means to access the record for all data items in Zone 1 Recommended
+| ID | Guideline | Status |
+| --- | --- | --- |
+| PAB-0033 | Precede the date of birth with the label “Born” | Mandatory |
+| PAB-0034 | When displaying the age of a living patient, place it in parentheses immediately following the date of birth, and without a label | Mandatory |
+| PAB-0035 | Precede the gender with the label “Gender” | Mandatory |
+| PAB-0036 | Precede the NHS number with the label “NHS No.” | Mandatory |
+| PAB-0037 | Precede the preferred name with the label “Preferred name” | Recommended |
+| PAB-0038 | Precede the date of death with the label “Died” | Mandatory |
+| PAB-0039 | Precede the age at death with the label “Age at Death” | Mandatory |
+| PAB-0040 | Precede the address displayed in the title of the first section in Zone 2, with the label “Address” | Recommended |
+| PAB-0041 | Precede the single phone number displayed in the title of the second section in Zone 2, with the Recom label “Phone and email” | mended |
+| PAB-0042 | Do not add a colon after the label text | Mandatory |
+| PAB-0043 | Do not include unnecessary punctuation in a label | Recommended |
+| ID | Guideline                                                                                    Stat | us |
+| PAB-0044 | Display labels in the style given to label text                                              Mand | atory |
+| PAB-0045 | Display values in the style given to data text                                               Mand | atory |
+| PAB-0046 | Give more emphasis to the value text style relative to the label text style                  Mand | atory |
+| PAB-0047 | For each label in Zone 1, provide a definition and a means to access the definition for example, by a tooltip | Recommended |
+| PAB-0048 | Provide a means to access the record for all data items in Zone 1                            Reco | mmended |
 
 Table 6: Guidance – Data Labels and Values
 
@@ -791,49 +783,32 @@ Copyright ©2013 Health and Social Care Information Centre
 ![](patben_assets/patben.pdf-17-2.png)
 HSCIC Controlled Document
 
-The label “Gender” must be displayed rather than “Sex” as, for the patient-identification task, the patient’s current gender classification is more relevant than that recorded at birth.
 
-For a living patient, the patient’s age is displayed in parentheses and a label is not included as displaying the actual age alongside the date of birth makes the value self-explanatory. In addition, the parentheses separate the age from the other text placed nearby and give the age a unique style, helping users to identify this part of the display efficiently.
-
-For a deceased patient, there is again a need to give the age a unique style so as to ensure users do not mistake a deceased patient for one who is alive, nor vice versa. This is achieved by doing the converse to the case of a living patient, namely, by displaying a label with the age, which is displayed without parentheses.
-
-The display of an age value has been considered carefully for the range of patients from babies to adults, and is summarised in Table 7, with examples in Table 8. Short, that is, abbreviated units are used to save on space in the already constrained Patient Banner. Additionally, only two units are used, a lower and an upper unit, without any intermediate units, further economising on space without compromising the displayed value. The permitted abbreviations for the units are listed in the _Design Guide Entry – Time Display_ **{R3}** .
-
-< 2 hours Minutes Minutes
-
-< 2 days Hours Hours
-
-< 4 weeks Days Days
-
-< 1 year Weeks Days
-
-< 2 years Months Days
-
-< 18 years Years Months
-
->= 18 years Years Years
+| Age | Lower Unit | Higher Unit |
+| --- | --- | --- |
+| < 2 hours | Minutes | Minutes |
+| < 2 days | Hours | Hours |
+| < 4 weeks | Days | Days |
+| < 1 year | Weeks | Days |
+| < 2 years | Months | Days |
+| < 18 years | Years | Months |
+| >= 18 years | Years | Years |
 
 Table 7: Units to be Used for Displaying a Patient’s Age
 
-1 hour 30 minutes Minutes Minutes ‘90min’
 
-1 day 2 hours 5 minutes Hours Hours ‘26hrs’
-
-3 days 17 hours 7 minutes Days Days ‘3d’
-
-27 days 5 hours 2 minutes Days Days ‘27d’
-
-28 days 5 hours 2 minutes Weeks Days ‘4w’
-
-29 days 5 hours 2 minutes Weeks Days ‘4w 1d’
-
-1 year 1 day 5 hours Months Days ‘12m 1d’
-
-1 year 8 days 5 hours Months Days ‘12m 8d’
-
-1 year 39 days 5 hours Months Days ‘13m 8d’
-
-4 years 39 days Years Months ‘4y 1m’
+| Age | Lower Unit | Higher Unit | Display |
+| --- | --- | --- | --- |
+| 1 hour 30 minutes | Minutes | Minutes | ‘90min’ |
+| 1 day 2 hours 5 minutes | Hours | Hours | ‘26hrs’ |
+| 3 days 17 hours 7 minutes | Days | Days | ‘3d’ |
+| 27 days 5 hours 2 minutes | Days | Days | ‘27d’ |
+| 28 days 5 hours 2 minutes | Weeks | Days | ‘4w’ |
+| 29 days 5 hours 2 minutes | Weeks | Days | ‘4w 1d’ |
+| 1 year 1 day 5 hours | Months | Days | ‘12m 1d’ |
+| 1 year 8 days 5 hours | Months | Days | ‘12m 8d’ |
+| 1 year 39 days 5 hours | Months | Days | ‘13m 8d’ |
+| 4 years 39 days | Years | Months | ‘4y 1m’ |
 
 Table 8: Examples of the Display of a Patient’s Age
 
@@ -873,21 +848,15 @@ This section provides guidance on displaying the elements that constitute the pa
 
 ##### 2.6.1 Guidance
 
-PAB-0049 Display the patient name elements and the title in the following order: family name, given name, title
 
-Mandatory
-
-PAB-0050 Do not include labels for the patient name elements and the title Mandatory
-
-PAB-0051 Display a comma after the family name Mandatory
-
-PAB-0052 Display the title in parentheses Mandatory
-
-PAB-0053 Display the patient’s family name in upper case and the patient’s given name and title in title case
-
-Mandatory
-
-PAB-0054 Display the patient’s preferred name, if available, immediately below the family name Mandatory
+| ID | Guideline | Status |
+| --- | --- | --- |
+| PAB-0049 | Display the patient name elements and the title in the following order: family name, given name, title | Mandatory |
+| PAB-0050 | Do not include labels for the patient name elements and the title | Mandatory |
+| PAB-0051 | Display a comma after the family name | Mandatory |
+| PAB-0052 | Display the title in parentheses | Mandatory |
+| PAB-0053 | Display the patient’s family name in upper case and the patient’s given name and title in title case | Mandatory |
+| PAB-0054 | Display the patient’s preferred name, if available, immediately below the family name | Mandatory |
 
 Table 9: Guidance – Displaying the Patient Name
 
@@ -909,21 +878,15 @@ This section provides guidance on the composition and visual rendering of the Pa
 
 ##### 2.7.1 Guidance
 
-PAB-0055 For a deceased patient, use a background area for Zone 1 in which both the colour and the pattern are substantially different from those used for a living patient
 
-PAB-0056 The choice of both background colour and pattern must be such as to differentiate the Patient Banner of a deceased patient from that of a living patient, on all display devices, including, but not limited to, desktop monitors and projected images
-
-Mandatory
-
-Mandatory
-
-PAB-0057 Display the date of death along with its label Mandatory
-
-PAB-0058 Display the date of death below the date of birth Mandatory
-
-PAB-0059 Display the age at death, preceded by its label, immediately after the date of death Mandatory
-
-PAB-0060 Display the age at death without parentheses Mandatory
+| ID | Guideline | Status |
+| --- | --- | --- |
+| PAB-0055 | For a deceased patient, use a background area for Zone 1 in which both the colour and the pattern are substantially different from those used for a living patient | Mandatory |
+| PAB-0056 | The choice of both background colour and pattern must be such as to differentiate the Patien Banner of a deceased patient from that of a living patient, on all display devices, includin but not limited to, desktop monitors and projected images | t Mandatory g, |
+| PAB-0057 | Display the date of death along with its label | Mandatory |
+| PAB-0058 | Display the date of death below the date of birth | Mandatory |
+| PAB-0059 | Display the age at death, preceded by its label, immediately after the date of death | Mandatory |
+| PAB-0060 | Display the age at death without parentheses | Mandatory |
 
 Table 10: Guidance – Patient Banner for a Deceased Patient
 
@@ -963,11 +926,12 @@ HSCIC Controlled Document
 
 ##### 2.8.1 Guidance
 
-PAB-0061 Display the patient’s preferred name, if available, immediately below the given name, with both items left-aligned
 
-PAB-0062 When a patient’s preferred name is not available, the patient’s name must be centred vertically and left-aligned in Zone 1
-
-PAB-0063 For a deceased patient, display the data labels and values corresponding to the date of death and age at death in that order, immediately below the label corresponding to the date of birth, with both the date labels being left-aligned
+| ID | Guideline | Status |
+| --- | --- | --- |
+| PAB-0061 | Display the patient’s preferred name, if available, immediately below the given name, with both items left-aligned | Mandatory |
+| PAB-0062 | When a patient’s preferred name is not available, the patient’s name must be centred vertically and left-aligned in Zone 1 | Mandatory |
+| PAB-0063 | For a deceased patient, display the data labels and values corresponding to the date of death Man and age at death in that order, immediately below the label corresponding to the date of birth, with both the date labels being left-aligned | datory |
 
 Table 11: Guidance – Information Alignment
 
@@ -1013,23 +977,18 @@ Page 17
 
 HSCIC Controlled Document
 
-PAB-0066 Provide a means to enable the user to view the section of the record containing Allergy propensity information, for all instances when the section title is one of: “Known allergies”, “No known allergies”, or “Allergies not recorded”
 
-Mandatory
-
-PAB-0067 Emphasise the label “Known allergies” in relation to the other permitted labels Mandatory
-
-PAB-0068 Display the labels “Known allergies” and “No known allergies” in data text style Mandatory
-
-PAB-0069 Precede the label “Known allergies” with a unique icon that gives the label greater emphasis Mandatory
-
-PAB-0070 Precede the labels “No known allergies” and “Allergies not recorded” with a unique icon that gives the label reduced emphasis
-
-Mandatory
-
-PAB-0071 Display the labels “Allergies not recorded” and “Allergies unavailable” in label text style Mandatory
-
-PAB-0072 Precede the label “Allergies unavailable” with a unique icon that gives the label reduced emphasis and that indicates allergies are not available
+| ID | Guideline | Status |
+| --- | --- | --- |
+| PAB-0064 | Use one of the following labels in the title for the Allergies section: “Known allergies”, “No known allergies”, “Allergies not recorded”, and “Allergies unavailable” | Mandatory |
+| PAB-0065 | Display each allergy propensity in the expanded section in Zone 2, along with the date when the record of that propensity was last updated | Mandatory |
+| PAB-0066 | Provide a means to enable the user to view the section of the record containing Allergy propensity information, for all instances when the section title is one of: “Known allergies”, “N known allergies”, or “Allergies not recorded” | Mandatory o |
+| PAB-0067 | Emphasise the label “Known allergies” in relation to the other permitted labels | Mandatory |
+| PAB-0068 | Display the labels “Known allergies” and “No known allergies” in data text style | Mandatory |
+| PAB-0069 | Precede the label “Known allergies” with a unique icon that gives the label greater emphasis | Mandatory |
+| PAB-0070 | Precede the labels “No known allergies” and “Allergies not recorded” with a unique icon that gives the label reduced emphasis | Mandatory |
+| PAB-0071 | Display the labels “Allergies not recorded” and “Allergies unavailable” in label text style | Mandatory |
+| PAB-0072 | Precede the label “Allergies unavailable” with a unique icon that gives the label reduced emphasis and that indicates allergies are not available | Mandatory |
 
 Table 12: Guidance – Allergy Propensities
 
@@ -1103,33 +1062,29 @@ HSCIC Controlled Document
 
 #### 3.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-ISV Independent Software Vendor
-
-LSV Local Service Provider
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-NPSA National Patient Safety Agency
-
-PDA Personal Digital Assistants
-
-PDS Personal Demographic Service
-
-UI User Interface
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| ISV | Independent Software Vendor |
+| LSV | Local Service Provider |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| NPSA | National Patient Safety Agency |
+| PDA | Personal Digital Assistants |
+| PDS | Personal Demographic Service |
+| UI | User Interface |
 
 Table 13: Terms and Abbreviations
 
 #### 3.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health)
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health) |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
 
 Table 14: Definitions
 
@@ -1157,23 +1112,31 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Folder names Title Case
 
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| ext                                                                Styl | e |
+| older names                                                        Titl | e Case |
+| ile names |  |
 
 Table 15: Body Text Styles
 
 ##### 3.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 16: Cross Reference Styles
 
@@ -1237,21 +1200,33 @@ Page 21
 
 HSCIC Controlled Document
 
-**R15.** UK Government Data Standards Catalogue – Person Gender Current
 
-[http://www.govtalk.gov.uk/gdsc/html/noframes/PersonGenderCurrent-2-0-Release.htm](http://www.govtalk.gov.uk/gdsc/html/noframes/PersonGenderCurrent-2-0-Release.htm)
-
-**R16.** UK Government Data Standards Catalogue – NHS Number
-
-[http://www.govtalk.gov.uk/gdsc/html/noframes/NHSnumber-2-0-Release.htm](http://www.govtalk.gov.uk/gdsc/html/noframes/NHSnumber-2-0-Release.htm)
-
-**R17.** Wright, P. C. Jansen, JC. Wyatt. (1998) How to limit clinical error in interpretation of data Lancet 352: 1539-43
-
-[http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Retrieve&list_uids=9820319&](http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Retrieve&list_uids=9820319&dopt=Citation) [dopt=Citation](http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Retrieve&list_uids=9820319&dopt=Citation)
-
-1998
-
-**R18.** NHS CUI Patient Banner Survey Results 2007-08-06 1.0.0.0
+| Reference | Document | Version |
+| --- | --- | --- |
+| R1. | Right Patient, Right Care, NPSA http://www.npsa.nhs.uk/EasysiteWeb/getresource.axd?AssetID=3234&type=Full&servicetype= Attachment | 2004 |
+| R2. | NHS CUI Programme – Design Guide Entry – Date Display | 4.0.0.0 |
+| R3. | NHS CUI Programme – Design Guide Entry – Time Display | 4.0.0.0 |
+| R4. | NHS CUI Programme – Sex and Current Gender Input and Display – User Interface Design Guidance | 4.0.0.0 |
+| R5. | NHS CUI Programme– NHS Number Input and Display – User Interface Design Guidance | 3.0.0.0 |
+| R6. | NHS CUI Programme – Address Input and Display – User Interface Design Guidance | 3.0.0.0 |
+| R7. | NHS CUI Programme – Telephone Number Input and Display – User Interface Design Guidance | 3.0.0.0 |
+| R8. | NHS CUI Programme – Accessibility Checkpoints for NHS Applications | 1.0.0.0 |
+| R9. | NHS CUI Programme – Accessibility for Clinical Applications | 1.0.0.0 |
+| R10. | Koyani et al, Research-Based Web Design & Usability Guidelines. U.S. Department of Health and Human Services http://www.usability.gov/pdfs/guidelines.html | 2006 |
+| R11. | NHS Data Model and Dictionary http://www.datadictionary.nhs.uk/index.asp | Version 3 |
+| R12. | Tidwell J, Designing Interfaces www.designinginterfaces.com | First Edition |
+| R13. | NHS CUI Patient Banner User Research 2006-12-07 | 0.0.0.5 |
+| R14. | Standardising wristbands improves patient safety, NPSA Safer Practice Notice http://www.nrls.npsa.nhs.uk/resources/?entryid45=59824 | 2007 |
+| Reference         D | ocument | Version |
+| R15.              U | K Government Data Standards Catalogue – Person Gender Current |  |
+| h | ttp://www.govtalk.gov.uk/gdsc/html/noframes/PersonGenderCurrent-2-0-Release.htm |  |
+| R16.              U | K Government Data Standards Catalogue – NHS Number |  |
+| h | ttp://www.govtalk.gov.uk/gdsc/html/noframes/NHSnumber-2-0-Release.htm |  |
+| R17.              W | right, P. C. Jansen, JC. Wyatt. (1998) How to limit clinical error in interpretation of data | 1998 |
+| L | ancet 352: 1539-43 |  |
+| h | ttp://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=PubMed&cmd=Retrieve&list_uids=9820319& |  |
+| d | opt=Citation |  |
+| R18.              N | HS CUI Patient Banner Survey Results 2007-08-06 | 1.0.0.0 |
 
 Table 17: References
 

@@ -57,11 +57,8 @@ _Prepared by_
   - [3.8 Guidelines – Grouping](#38-guidelines-grouping)
 - [4 DOCUMENT INFORMATION](#4-document-information)
   - [4.1 Terms and Abbreviations](#41-terms-and-abbreviations)
-  - [4.2 Definitions](#42-definitions)
   - [4.3 Nomenclature](#43-nomenclature)
     - [4.3.1 Body Text](#431-body-text)
-    - [4.3.2 Cross References](#432-cross-references)
-  - [4.4 References](#44-references)
 - [APPENDIX A USER RESEARCH EXECUTIVE SUMMARY](#appendix-a-user-research-executive-summary)
   - [PART I Abstract](#part-i-abstract)
   - [PART II Research Objectives](#part-ii-research-objectives)
@@ -113,13 +110,12 @@ The application of filtering, sorting and grouping covers a very broad range of 
 
 #### 1.1 Definitions
 
-Table 1 defines some of the key terms used throughout this document whose meaning is borne out by the user research conducted during the development of this guidance:
 
-Filtering The selection of a subset of data so as to focus on the data that is relevant to the task at hand (in this case, the clinical task). The application of each filter criterion specifies a subset of data to keep in view.
-
-Sorting To arrange elements of a sequence according to some criterion, such as alphabetically (A to Z), or numerically (1, 2, 3...). A clinical example is: 'Show me all the medications this patient has ever been prescribed, in alphabetic order of medicine name'.
-
-Grouping To arrange elements of a collection into different categories. A clinical example is: 'Show me all of the patient’s current and past medicines, grouped separately by Type such as Antibiotics '.
+| Term | Definition |
+| --- | --- |
+| Filtering | The selection of a subset of data so as to focus on the data that is relevant to the task at hand (in this case, the clinical task). The application of each filter criterion specifies a subset of data to keep in view. |
+| Sorting | To arrange elements of a sequence according to some criterion, such as alphabetically (A to Z), or numerically (1, 2, 3...). A clinical example is: 'Show me all the medications this patient has ever been prescribed, in alphabetic order of medicine name'. |
+| Grouping | To arrange elements of a collection into different categories. A clinical example is: 'Show me all of the patient’s current and past medicines, grouped separately by Type such as Antibiotics '. |
 
 Table 1: Key Definitions
 
@@ -234,11 +230,12 @@ but which the test cannot be precise about, such as those which represent certai
 
 #### 1.4 Assumptions
 
-**A1** The target audience comprises health care staff who need to view and analyse patient data within a single record
 
-**A2** A single user is logged on to the clinical application
-
-**A3** The format and database in which the underlying data is stored does not constrain, or is not relevant to, the data manipulation functions, namely filtering, sorting and grouping
+| ID | Assumption |
+| --- | --- |
+| A1 | The target audience comprises health care staff who need to view and analyse patient data within a single record |
+| A2 | A single user is logged on to the clinical application |
+| A3 | The format and database in which the underlying data is stored does not constrain, or is not relevant to, the data manipulation functions, namely filtering, sorting and grouping |
 
 Table 2: Assumptions
 
@@ -258,6 +255,14 @@ HSCIC Controlled Document
 **D3** Formats for entry of dates and times are dependent on _Design Guide Entry – Date and Time Input_ **{R5}**
 
 **D4** Formats for displaying tables are dependent on _Displaying Graphs and Tables – User Interface Design Guidance_ **{R2}**
+
+
+| ID | Dependency |
+| --- | --- |
+| D1 | Formats for displaying dates are dependent on Design Guide Entry – Date Display {R3} |
+| D2 | Formats for displaying times are dependent on Design Guide Entry – Time Display {R4} |
+| D3 | Formats for entry of dates and times are dependent on Design Guide Entry – Date and Time Input {R5} |
+| D4 | Formats for displaying tables are dependent on Displaying Graphs and Tables – User Interface Design Guidance {R2} |
 
 Table 3: Dependencies
 
@@ -327,13 +332,11 @@ Copyright ©2013 Health and Social Care Information Centre
 ![](filtering_assets/filtering.pdf-10-4.png)
 HSCIC Controlled Document
 
-3.7.2 Attribute Selection Control
 
-3.7.3 Sort Indicator
-
-3.7.6 Progressive Sort
-
-3.8 Guidelines – Grouping
+| Visual Summary | Areas of Guidance 3.5 Guidelines – Controls 3.6.1 Entering and Removing Filter Criteria 3.6.8 Removing Filters 3.6.2 Entering Multiple Criteria 3.6.3 Attribute Selection Control 3.6.4 Operator Selection Control 3.6.6 Permitted Operators |
+| --- | --- |
+| isual Summary | Areas of Guidance 3.6.5 Value Entry Control 3.6.7 Multiple Operators – Component Filter Expression 3.6.9 Displaying Results 3.6.10 Filter Notification 3.7.1 Display 3.7.4 Sort Order Manipulation 3.7.5 Removing Sort |
+| isual Summary | Areas of Guidance 3.7.2 Attribute Selection Control 3.7.3 Sort Indicator 3.7.6 Progressive Sort 3.8 Guidelines – Grouping |
 
 Table 4: Summary of Guidance
 
@@ -418,44 +421,16 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-was taken after a certain date). To facilitate the framing of unambiguous queries, a set of query operators is required for each class of data.
 
-For filtering, Table 5 lists the different data types associated with discrete and continuous data values and the permitted filter operators that can be safely applied to them:
-
-**Discrete** Integers less than less than or equal to equal to greater than or equal to greater than
-
-Ordered set of symbols less than less than or equal to equal to greater than or equal to greater than
-
-Unordered set of symbols (such as diagnosis or problem)
-
-equals
-
-String (free text) equals
-
-Date on before on or before after on or after between (to include both the stated dates)
-
-**Continuous** Real numbers less than greater than
-
-Date and time before after between (to include both the stated dates)
+| ID | Description | Conformance Rating |
+| --- | --- | --- |
+| FSG-0001 | Provide controls for filtering, sorting and grouping, and lay out the controls or menu R items in that order, (that is, first filtering, then sorting and finally grouping) | ecommended             Medium |
+| FSG-0002 | Label the controls ‘Filter’, ‘Sort’ and ‘Group by’ respectively | Recommended            High |
+| FSG-0003 | Provide keyboard commands to access the filtering, sorting and grouping functionality | Mandatory              High |
+| FSG-0004 | Provide multiple entry points to initiate filtering, sorting and grouping, such as through a toolbar, context menu (right mouse click), keyboard commands and direct mouse initiation through right click | Recommended            Medium |
+| Usage Examples | The contr the corre are not s The contr in the co An exampl displayed button, w | ols in the toolbar are displayed in ct order. Additional optional items hown in this illustration. ols in the toolbar are not displayed rrect order. e of a fragment of a context menu on the click of a right mouse hen positioned on a header cell. |
 
 Table 5: Permitted Filter Operators by Data Type
-
-**Note**
-
-The operators permitted for discrete numbers and for continuous numbers differ:
-
-- Discrete numbers are whole numbers. They do not contain decimals or fractions. Therefore, this
-
-guidance permits the use of the equality operator on discrete numbers.
-
-- Continuous numbers are numbers expressed using decimals, such as 6.5 and 6.499. The precision
-
-with which such numbers are stored on computers makes it mathematically inaccurate to ask whether a continuous value is exactly equal to another. Therefore, this guidance prohibits the use of the equality operator on continuous numbers.
-
-Page 9
-
-Copyright ©2013 Health and Social Care Information Centre
-
 HSCIC Controlled Document
 
 ##### 3.3.2 Sorting
@@ -464,21 +439,11 @@ For sorting, Table 6 lists the different data types associated with discrete and
 
 **Value Type** **Data Type** **Sort Order**
 
-**Discrete** Integers Implicit Ascending Descending
 
-Ordered set of symbols Explicit Supplied by Independent Software Vendor (ISV) For example, severity values ‘normal’, ‘mild’, ‘severe’, ‘fatal’, or responsiveness values ‘Alert’, ‘Responds to voice’, ‘Responds to pain’, ‘Unresponsive’ (AVPU designations)
-
-Unordered set of symbols (such as diagnosis or problem)
-
-Implicit Alphabetic Reverse alphabetic
-
-String (free text) Implicit Alphabetic Reverse alphabetic
-
-Date Implicit Chronological Reverse chronological
-
-**Continuous** Real numbers Implicit Ascending Descending
-
-Date and time Implicit Chronological Reverse chronological
+| Value Type | Data Type | Sort Order |
+| --- | --- | --- |
+| Discrete | Integers Ordered set of symbols Unordered set of symbols (such as diagnosis or problem) String (free text) Date | Implicit   Ascending Descending Explicit   Supplied by Independent Software Vendor (ISV) For example, severity values ‘normal’, ‘mild’, ‘severe’, ‘fatal’, or responsiveness values ‘Alert’, ‘Responds to voice’, ‘Responds to pain’, ‘Unresponsive’ (AVPU designations) Implicit   Alphabetic Reverse alphabetic Implicit   Alphabetic Reverse alphabetic Implicit   Chronological Reverse chronological |
+| Continuous | Real numbers Date and time | Implicit   Ascending Descending Implicit   Chronological Reverse chronological |
 
 Table 6: Permitted Sort Orders by Data Type
 
@@ -715,20 +680,103 @@ HSCIC Controlled Document
 
 ##### 3.6.6 Permitted Operators
 
-The filtering functionality can be applied on a number of different data types. Accordingly the filter dialog box must be flexible enough to vary in layout according to the data type in question. When combining multiple filter expressions, logical operators are required to connect the filters being applied.
 
-Before progressing to the guidance, it is important to clarify the use and impact of logical operators when combining multiple filter expressions. In particular, the role of the logical operators ‘AND’ and ‘OR’ needs to be understood. Table 7 defines their meaning:
-
-AND Returns True if all of its component filter expressions are true. Returns False if any of the component filter expressions are false.
-
-OR Returns True if any of its component filter expressions are true. Returns False if all of its component expressions are false.
+| ID | Description | Conformance Rating |
+| --- | --- | --- |
+| FSG-0022 | Permit multiple filters to be applied concurrently | Recommended          Low |
+| FSG-0023 | Provide a button to add an additional filter criterion, labelling this button ‘Add’ | Recommended          Medium |
+| FSG-0024 | Move the ‘Add’ button down one line when it is pressed, displaying the required boxes for entry of a filter criterion (as described in FSG-0008) in the line previously occupied by the ‘Add’ button | Recommended          Medium |
+| FSG-0025 | Display the ‘Add’ button immediately below the last filter criterion and left-aligned with it | Recommended          Medium |
+| FSG-0026 | Provide radio buttons to select between the two ways of applying multiple filters, namely between a logical AND and a logical OR | Mandatory            Medium |
+| FSG-0027 | Make the option for the logical OR the default selection and place this option first in the list of radio buttons | Mandatory            High |
+| FSG-0028 | Label the radio button denoting the logical AND: ‘All must be true’ or 'Match All' | Recommended          High |
+| FSG-0029 | Label the radio button denoting the logical OR: ‘Any of which are true’ or 'Match Any' | Recommended          High |
+| Usage Example | s Shows correct display of t buttons, which appear afte criteria have been entered The default selection is o incorrect radio button. (T has not changed the defaul selection, as the cursor i positioned on the Add butt indicating the user has ju two criteria, and is about third.) Radio buttons are incorrec displayed when only a sing criterion has been entered Additionally, an invalid o namely ‘equal to’, has bee selected whereas it should have been offered to the u is not a valid operator fo continuous values. The radio buttons are corr labelled. This design does not provi user with the capability t how multiple filters are t applied as no radio button present This example shows the fol incorrect uses: 1. The title is incorrect 2. The radio button labels incorrect 3. Each filter criterion i incorrectly preceded wi label 4. Neither label is correc 5. The ‘Add’ button is in location | Shows correct use and location of ‘Add’ button used to insert additional filter criterion. he radio r two in full. n the he user t s on, st entered to enter a tly le . perator, n not ser as it r ectly de the o specify o be s are lowing are s th a t the wrong |
+| Rationale |  |  |
+| Default Selec | tion of a Radio Button: |  |
+| In the user r | esearch, we asked respondents what data they would expect to see when multiple filters w | ere applied, and no radio |
+| buttons were | provided to choose between a logical OR and a logical AND operation. No respondent said | that the behaviour would be |
+| a logical OR. | One remarked that ‘there is no AND before the second filter row’, implying that this is | what they expected, and another |
+| remarked that | OR is the ‘expected behaviour’. When shown a filter dialog box design that featured rad | io buttons to force a selection, |
+| health care s | taff said they preferred this as it made the behaviour ‘much clearer’. Finally, all resp | ondents interpreted the labels |
+| accompanying | the radio buttons correctly, including those who had stated that filtering was not a tas | k they had knowingly done before. |
+| As the World | Wide Web has become pervasive, Web standards and best practices relating to the UI have | become the norm and set |
+| user expectat | ions. It is instructive to be informed by these standards and comply with them, unless t | here are clear reasons from a |
+| patient safet | y perspective not to do so. |  |
+| RFC 1866, on | HTML 21, and the World Wide Web Consortium (W3C) on HTML 42, state: |  |
+| "At all | times, exactly one of the radio buttons in a set is checked. If none of the <INPUT> elem | ents of a set of radio buttons |
+| specifie | s `CHECKED', then the user agent must check the first radio button of the set initially. | " |
+| The internati | onally recognised UI expert, Jakob Nielsen states on useit.com3: |  |
+| “Always | offer a default selection for radio button lists. By definition, radio buttons always ha | ve exactly one option selected, and you |
+| therefor | e shouldn't display them without a default selection. (Checkboxes, in contrast, often de | fault to having none of the options |
+| selected | .) If users might need to refrain from making a selection, you should provide a radio bu | tton for this choice, such as one |
+| labelled | "None". Offering users an explicit, neutral option to click is better than requiring th | e implicit act of not selecting from the list, |
+| especial | ly because doing the latter violates the rule of always having exactly one option chosen | .” |
+| This suggests | that when using radio buttons, always provide a default. The decision on which radio bu | tton should be the default was |
+| made on the b | asis of which option is likely to display more data in most cases. This is the logical O | R option. |
+| 1 |  |  |
+| Hypertext | Markup Language - 2.0 {R7}: http://www.ietf.org/rfc/rfc1866.txt |  |
+| 2 |  |  |
+| Control t | ypes – radio buttons {R8}: http://www.w3.org/TR/html4/interact/forms.html#radio |  |
+| 3 |  |  |
+| Checkboxe | s vs. Radio Buttons {R9}: http://www.useit.com/alertbox/20040927.html |  |
+| .3          A | ttribute Selection Control |  |
+| This section | provides guidance on the use of the Attribute Selection Control. The Attribute |  |
+| Selection Con | trol in the filter dialog box enables the user to select a particular attribute from the |  |
+| data set to w | hich the filtering will be applied. | Evidence |
+| ID | Description                                                                          Co | nformance Rating |
+| FSG-0030 | Only permit attributes displayed in the table to be entered in the Attribute Selection Control | Recommended         Low |
+| FSG-0031 | Display the attribute names as menu items in the Attribute Selection Control menu, Reco listing them in the same order in the menu as they are displayed in the table | mmended             Low |
+| Usage Example | s At it th | tribute Selection Control menu ems listed in the same order as in e currently displayed table. |
+| Rationale |  |  |
+| In the user r | esearch, we presented the respondents with some example filter dialog boxes populated wi | th some sample data. The filter |
+| dialog box co | ntained the Attribute Selection Control as well as the Operator Selection Control and th | e Value Entry Control as shown in |
+| the usage exa | mple. We asked the respondents to explain what results they would expect after the filte | r was applied. Only one |
+| respondent re | plied incorrectly which, given the number of correct responses, suggests that this metho | d of setting out filter criteria |
+| assists a use | r in understanding what filter results will be achieved by using the filter dialog box. |  |
+| .4          O | perator Selection Control |  |
+| This section | provides guidance on the use of the Operator Selection Control. The Operator |  |
+| Selection Con | trol in the filter dialog box enables the user to select an operator relevant to the dat | a |
+| to which the | filter is being applied. The inclusion of the Operator Selection Control enables a user |  |
+| not only to s | earch against an attribute but also narrow the filter to a value range. | Evidence |
+| ID | Description                                                                          Co | nformance Rating |
+| FSG-0032 | Ensure that only operators relevant to the attributes are displayed                  Re | commended            Low |
+| FSG-0033 | Display an Operator Selection Control when the user selects the ‘Filter’ menu item Reco from the header cell’s context menu | mmended              Low |
+| Usage Example | s Op sh se Th fo ty sy | erator Selection Control owing operator relevant to lected attribute. e valid operators are displayed r a real, that is, continuous data pe. The optional mathematical mbols have also been added. |
+| Rationale |  |  |
+| In the user r | esearch, we presented the respondents with some example filter dialog boxes populated wi | th some sample data. The filter |
+| dialog box co | ntained the Operator Selection Control as well as the Attribute Selection Control and th | e Value Entry Control as shown in |
+| the usage exa | mple. We asked the respondents to explain what results they would expect after the filte | r was applied. Only one |
+| respondent re | plied incorrectly which, given the number of correct responses, suggests that this metho | d of setting out filter criteria |
+| assists a use | r in understanding what filter results will be achieved by using the filter dialog box. |  |
+| .5          V | alue Entry Control |  |
+| This section | provides guidance on the use of the Value Entry Control within the filter dialog box. |  |
+| The Value Ent | ry Control in the filter dialog box enables the user to select a particular filter value |  |
+| relevant to t | he attribute and operator previously selected within the filter dialog box. The value en | try |
+| data is taken | directly from the data upon which the filter is being applied. | Evidence |
+| FSG-0034 | Display a Value Entry Control when the user selects the ‘Filter’ menu item from the Rec header cell’s context menu | ommended            Low |
+| FSG-0035 | Display a Value Entry Control that is appropriate to the selected attribute (for example, when filtering by date, display a date input control, or when filtering by an integer, display an integer input control) | Mandatory           Low |
+| FSG-0036 | Upon the user selecting ‘between’ in the Operator Selection Control, provide two Value Entry Controls that are appropriate to the attribute currently selected in the Attribute Selection Control, positioning the Value Entry Controls immediately after the Operator Selection Control | Mandatory           Low |
+| Usage Example | s | Value Entry Control showing data appropriate to the selected attribute. Value Entry Control showing two fields for completion due to inclusion of ‘between’ in the Operator Selection Control. |
+| Rationale |  |  |
+| In the user r | esearch, we presented the respondents with some example filter dialog boxes populated wi | th some sample data. The filter |
+| dialog box co | ntained the Value Entry Control as well as the Attribute Selection Control and the Opera | tor Selection Control as shown in |
+| the usage exa | mple. We asked the respondents to explain what results they would expect after the filte | r was applied. Only one |
+| respondent re | plied incorrectly which, given the number of correct responses, suggests that this metho | d of setting out filter criteria |
+| assists a use | r in understanding what filter results will be achieved by using the filter dialog box. |  |
+| .6 | Permitted Operators |  |
+| The filtering | functionality can be applied on a number of different data types. Accordingly the filte | r |
+| dialog box mu | st be flexible enough to vary in layout according to the data type in question. When |  |
+| combining mul | tiple filter expressions, logical operators are required to connect the filters being |  |
+| applied. |  |  |
+| Before progre | ssing to the guidance, it is important to clarify the use and impact of logical operator | s |
+| when combinin | g multiple filter expressions. In particular, the role of the logical operators ‘AND’ an | d |
+| ‘OR’ needs to | be understood. Table 7 defines their meaning: |  |
+| Logical Opera | tor                 Definition |  |
+| AND | Returns True if all of its component filter expressions are true. Re filter expressions are false. | turns False if any of the component |
+| OR | Returns True if any of its component filter expressions are true. Re expressions are false. | turns False if all of its component |
 
 Table 7: Definition of AND and OR
-
-![](filtering_assets/filtering.pdf-29-1.png)
-
-Page 25
-
 Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
@@ -1080,40 +1128,20 @@ HSCIC Controlled Document
 
 #### 4.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-GP General Practitioner
-
-HCP Health Care Professional
-
-ISV Independent Software Vendor
-
-ITP Information Technology Professional
-
-ITU Intensive Therapy Unit
-
-NHS CFH NHS Connecting for Health
-
-UI User Interface
-
-W3C World Wide Web Consortium
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| GP | General Practitioner |
+| HCP | Health Care Professional |
+| ISV | Independent Software Vendor |
+| ITP | Information Technology Professional |
+| ITU | Intensive Therapy Unit |
+| NHS CFH | NHS Connecting for Health |
+| UI | User Interface |
+| W3C | World Wide Web Consortium |
 
 Table 8: Terms and Abbreviations
-
-#### 4.2 Definitions
-
-AND Returns True if all of its component filter expressions are true. Returns False if any of the component filter expressions are false
-
-Attribute Selection Control A control in the filter dialog and sort dialog boxes that enables the user to select a particular filter or sort attribute.
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
-
-Component filter expressions
-
-Selected criteria built around a logical operator.
-
-Filtering The removal of data from view, so as to focus on a subset of data that is relevant to the task at hand (in this case, the clinical task). The application of each filter criterion specifies a subset of data to keep in view.
-
 Filter Operators Operators that can be applied to both discrete and continuous data values in the filter dialog box.
 
 Grouping To arrange elements of a collection into different categories. A clinical example is: 'Show me all of the patient’s current and past medicines, grouped separately by Type such as Antibiotics and so on'.
@@ -1136,11 +1164,30 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Sorting To arrange elements of a sequence according to some criterion, such as alphabetically (A to Z), or numerically (1, 2, 3...). A clinical example is: 'Show me all the medications this patient has ever been prescribed, in alphabetic order of medicine name'.
 
-Value Entry Control A control in the filter dialog box that enables the user to select a particular filter value.
-
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
+| Term | Definition |
+| --- | --- |
+| AND | Returns True if all of its component filter expressions are true. Returns False if any of the component filter expressions are false |
+| Attribute Selection Control | A control in the filter dialog and sort dialog boxes that enables the user to select a particular filter or sort attribute. |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
+| Component filter | Selected criteria built around a logical operator. |
+| expressions |  |
+| Filtering | The removal of data from view, so as to focus on a subset of data that is relevant to the task at hand (in this case, the clinical task). The application of each filter criterion specifies a subset of data to keep in view. |
+| Filter Operators | Operators that can be applied to both discrete and continuous data values in the filter dialog box. |
+| Grouping | To arrange elements of a collection into different categories. A clinical example is: 'Show me all of the patient’s current and past medicines, grouped separately by Type such as Antibiotics and so on'. |
+| Logical Connective | These operators are provided to unite logical data sets within the filter or sort criterion. |
+| Operators |  |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| Operator Selection Control | A control in the filter dialog box that enables the user to select a particular filter operator. |
+| OR | A logical operator. Returns True if any of its operands are true. Returns False if all of its operands are false. |
+| Progressive Sort | A type of sort where data is sorted by more than one attribute at a time. |
+| erm                           De | finition |
+| orting                        To | arrange elements of a sequence according to some criterion, such as alphabetically (A to Z), or |
+| nu | merically (1, 2, 3...). A clinical example is: 'Show me all the medications this patient has ever been |
+| pr | escribed, in alphabetic order of medicine name'. |
+| alue Entry Control            A | control in the filter dialog box that enables the user to select a particular filter value. |
+| he Authority                  Th | e organisation implementing the NHS National Programme for IT (currently NHS Connecting for |
+| He | alth). |
 
 Table 9: Definitions
 
@@ -1150,71 +1197,19 @@ This section shows how to interpret the different styles used in this document t
 
 ##### 4.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 10: Body Text Styles
-
-##### 4.3.2 Cross References
-
-Current document – sections Section number only
-
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
-
-Table 11: Cross Reference Styles
-
-Page 53
-
-Copyright ©2013 Health and Social Care Information Centre
-
-HSCIC Controlled Document
-
-#### 4.4 References
-
-**R1.** Koyani et al, Research-Based Web Design and Usability Guidelines: U.S. Department of Health and
-
-Human Services: [http://www.usability.gov/pdfs/guidelines.html](http://www.usability.gov/pdfs/guidelines.html)
-
-**R2.** NHS CUI Programme – Displaying Graphs and Tables – User Interface Design Guidance 2.0.0.0
-
-**R3.** NHS CUI Programme – Design Guide Entry – Date Display 3.0.0.0
-
-**R4.** NHS CUI Programme – Design Guide Entry – Time Display 3.0.0.0
-
-**R5.** NHS CUI Programme – Design Guide Entry – Date and Time Input 2.0.0.0
-
-**R6.** NHS CUI Programme – Design Guide Entry – Medications Management – Medications Views 2.0.0.0
-
-**R7.** Hypertext Markup Language - 2.0: [http://www.ietf.org/rfc/rfc1866.txt](http://www.ietf.org/rfc/rfc1866.txt)
-
-**R8.** [Control types – radio buttons: http://www.w3.org/TR/html4/interact/forms.html#radio](http://www.w3.org/TR/html4/interact/forms.html#radio)
-
-**R9.** [Checkboxes vs. Radio Buttons: http://www.useit.com/alertbox/20040927.html](http://www.useit.com/alertbox/20040927.html)
-
-**R10.** NHS CUI Programme – Accessibility Checkpoints for NHS Applications 1.0.0.0
-
-**R11.** NHS CUI Programme – Accessibility for Clinical Applications 1.0.0.0
-
-Table 12: References
 
 Page 54
 
@@ -1294,33 +1289,83 @@ An on-line survey was used to collate responses to gray-scale wireframe static d
 
 ##### Respondent description
 
-Thirteen people completed the survey between and Friday the 18 [th] and Monday 27 [th] October. Respondents had worked for the NHS for diverse time-frames from less than 1 year to between 25 and 19yrs and were based in diverse geographical locations. Respondents were predominantly Hospital based employees (8/13) and included four Junior Doctors, no nurses, no General Practitioners, no community based HCP and no health care administrative staff. Seven respondents were Information Technology Professionals (ITP), three of whom had no direct experience of employment within the NHS. Table 13: respondent descriptions, below, provides a summary of individual respondents job roles, NHS employment, workplace and main work location.
 
-p1 Anaesthetist 20-24 years Hospital South West England
-
-p2 Junior Doctor 1-4 years Hospital London
-
-p3 Junior Doctor 1-4 years Hospital London
-
-p4 Junior Doctor 1-4 years Hospital London
-
-p5 Junior Doctor (Specific Audience) 1-4 years Hospital London
-
-p6 Medical Consultant 5-9 years ISV, also clinician South West England
-
-p7 Healthcare IT manager 25-29 years Hospital Yorkshire and Humber
-
-p8 Senior Information Manager 20-24 years Hospital Yorkshire and Humber
-
-p9 Software - analyst / advisor 10-14 years ISV Nationwide
-
-p10 Software - analyst / advisor Less than 1 year Microsoft ISV London
-
-p11 Software - analyst / advisor Not applicable ISV Other
-
-p12 Software - UI designer / researcher Not applicable Hospital IT South West England
-
-p13 Software - Technical Architect Not applicable ISV North West England
+| PART I | Abstract |
+| --- | --- |
+| The UK National | Health Service (NHS) Common User Interface (CUI) programme is a partnership |
+| between Microsof | t® and NHS Connecting for Health (NHS CFH), which is part the NHS National |
+| Programme for In | formation Technology (NPfIT). |
+| As part of CUI, | the Clinical Applications and Patient Safety (CAPS) project has the goal of ensuring |
+| that software ap | plications used by the NHS enhance patient safety. To achieve this, CAPS |
+| provides softwar | e developers with user interface design guidelines derived through a user-centric |
+| development proc | ess that includes explicit patient-safety evaluations. |
+| This summary des | cribes the results of an online survey completed by 13 people including six |
+| Health Care Prof | essionals (HCPs) and seven Health Care Information Technology Professionals |
+| (ITPs). All resp | ondents were experienced with current computer based sorting behaviours. Two of |
+| the HCPs were no | t experienced with computer based filtering. |
+| Purpose: to asse | ss first iteration static wireframe design options for filtering, sorting and grouping |
+| lists within pat | ient records. Method: to elicit user preferences, understandings and patient safety |
+| expertise throug | h multiple choice questions. |
+| Sorting results: |  |
+|  Preference | for labelling date and numeric sort orders |
+|  Having the | sort order of progressive sorts labelled with a number |
+|  Adding sor | t variables to show in the list display |
+|  Scrolling | the screen to show recently added sort variables |
+| Filtering result | s: |
+|  More respo | ndents found filter-in rather than filter-out useful |
+|  Most respo | ndents want to choose how filter criteria are combined (AND/OR) |
+|  No clearly | preferred design for filter results display |
+|  More HCPs | identified a tab-based filter results display design as patient safe |
+|  Respondent | s preferred models for feedback that a filter is applied where the feedback is |
+| placed abo | ve the list and close to the filter remove mechanism. |
+| Grouping results | : a within-lists display of group was more popular than other designs. |
+| PART II | Research Objectives |
+| This research st | udy was designed to gather HCP preferences and patient safety assessments of |
+| low fidelity wir | eframe design options for filtering, sorting and grouping lists within patient records. |
+| The specific obj | ectives were to identify |
+| 1. Appropri | ate UI terminology for referring to sorting and filtering activities. |
+| 2. An effec | tive design to convey the outcomes of progressive sorts. |
+| 3. User exp | ectations and preferences for sorting by variables within a software application |
+| data-mod | el that are not displayed on screen by default. |
+| 4. A design | that effectively conveys the impact of combining filter criteria. |
+| 5. How to | safely enable the user to know what data has been filtered out and how to re-access |
+| that da | ta. |
+| PART III | Research Design |
+| An on-line surve | y was used to collate responses to gray-scale wireframe static designs. Survey |
+| questions were p | iloted and refined during 3 consecutive interviews with 3 HCP. These interviews |
+| ensured that the | designs, data and questions were sufficiently realistic and could be understood by |
+| HCP. Multiple ch | oice questions were used to collect clear quantitative data. Choice options were |
+| systematically r | andomised per respondent to remove any response biasing due to option ordering. |
+| Each multiple ch | oice question was accompanied by an open-text box inviting the respondent to |
+| describe the rea | sons for their choice. CFH distributed the survey to NHS employees that had |
+| signed-up to par | ticipate via the CFH Events Management System. Recipients were able to forward |
+| the survey to co | lleagues. No remuneration supplied for completing the survey. The survey took 20- |
+| 40 minutes to co | mplete. |
+| PART IV | Results |
+| Respondent descr | iption th                     th |
+| Thirteen people | completed the survey between and Friday the 18 and Monday 27 October. |
+| Respondents had | worked for the NHS for diverse time-frames from less than 1 year to between 25 |
+| and 19yrs and we | re based in diverse geographical locations. Respondents were predominantly |
+| Hospital based e | mployees (8/13) and included four Junior Doctors, no nurses, no General |
+| Practitioners, n | o community based HCP and no health care administrative staff. Seven |
+| respondents were | Information Technology Professionals (ITP), three of whom had no direct |
+| experience of em | ployment within the NHS. Table 13: respondent descriptions, below, provides a |
+| summary of indiv | idual respondents job roles, NHS employment, workplace and main work location. |
+| Respondent Job R | ole                                      Years employed in   Workplace             Location |
+| Identifier | the NHS |
+| p1 | Anaesthetist                          20-24 years         Hospital              South West England |
+| p2 | Junior Doctor                         1-4 years           Hospital              London |
+| p3 | Junior Doctor                         1-4 years           Hospital              London |
+| p4 | Junior Doctor                         1-4 years           Hospital              London |
+| p5 | Junior Doctor (Specific Audience)     1-4 years           Hospital              London |
+| p6 | Medical Consultant                    5-9 years           ISV, also clinician   South West England |
+| p7 | Healthcare IT manager                 25-29 years         Hospital              Yorkshire and Humber |
+| p8 | Senior Information Manager            20-24 years         Hospital              Yorkshire and Humber |
+| p9 | Software - analyst / advisor          10-14 years         ISV                   Nationwide |
+| p10 | Software - analyst / advisor          Less than 1 year    Microsoft ISV         London |
+| p11 | Software - analyst / advisor          Not applicable      ISV                   Other |
+| p12 | Software - UI designer / researcher   Not applicable      Hospital IT           South West England |
+| p13 | Software - Technical Architect        Not applicable      ISV                   North West England |
 
 Table 13: respondent descriptions
 

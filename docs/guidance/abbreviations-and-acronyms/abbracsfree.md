@@ -230,27 +230,26 @@ HSCIC Controlled Document
 
 #### 6.1 Terms and Abbreviations
 
-CSA Clinical Spine Application
 
-CUI Common User Interface
-
-ISV Independent Software Vendor
-
-LSP Local Service Provider
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
+| Abbreviation | Definition |
+| --- | --- |
+| CSA | Clinical Spine Application |
+| CUI | Common User Interface |
+| ISV | Independent Software Vendor |
+| LSP | Local Service Provider |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
 
 Table 1: Terms and Abbreviations
 
 #### 6.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health)
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health) |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
 
 Table 2: Definitions
 
@@ -288,25 +287,29 @@ HSCIC Controlled Document
 
 #### 6.5 Open Issues Summary
 
-~~None~~
+
+| Issue | Raised By | Action to Resolve |
+| --- | --- | --- |
+| None |  |  |
 
 Table 3: Open Issues Summary
 
 #### 6.6 References
 
-**R1.** "How to…handle a handover", Hoban V., The Nursing Times 99(9): 54-5 4 March 2003
 
-**R2.** "Safe handover: safe patients. Guidance on clinical handover for clinicians and managers", Junior Doctors Committee of the BMA, with the National Patient Safety Agency,
-
-[http://www.bma.org.uk/ap.nsf/Content/Handover/$file/Handover.pdf](http://www.bma.org.uk/ap.nsf/Content/Handover/$file/Handover.pdf)
-
-**R3.** "Human error: models and management", James Reason, BMJ 2000;320:768770
-
-[http://bmj.bmjjournals.com/cgi/content/full/320/7237/768](http://bmj.bmjjournals.com/cgi/content/full/320/7237/768)
-
-**R4.** "System changes to improve patient safety", Thomas W Nolan, BMJ 2000;320:771-773
-
-[http://bmj.bmjjournals.com/cgi/content/full/320/7237/771](http://bmj.bmjjournals.com/cgi/content/full/320/7237/771)
+| Reference Document | Version | Date |
+| --- | --- | --- |
+| R1.              "How to…handle a handover", Hoban V., The Nursing Times 99(9): 54-5 |  | 4 March 2003 |
+| R2.              "Safe handover: safe patients. Guidance on clinical handover for clinicians and |  | August 2004 |
+| managers", Junior Doctors Committee of the BMA, with the National Patient |  |  |
+| Safety Agency, |  |  |
+| http://www.bma.org.uk/ap.nsf/Content/Handover/$file/Handover.pdf |  |  |
+| R3.              "Human error: models and management", James Reason, BMJ 2000;320:768- |  | 18 March |
+| 770 |  |  |
+| http://bmj.bmjjournals.com/cgi/content/full/320/7237/768 |  |  |
+| R4.              "System changes to improve patient safety", Thomas W Nolan, BMJ |  | 18 March |
+| 2000;320:771-773 |  |  |
+| http://bmj.bmjjournals.com/cgi/content/full/320/7237/771 |  |  |
 
 Table 4: References
 

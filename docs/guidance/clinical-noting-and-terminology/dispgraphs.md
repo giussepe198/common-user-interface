@@ -111,11 +111,12 @@ Table 1 describes the changes made since the previous version of this document:
 
 ![](dispgraphs_assets/dispgraphs.pdf-4-0.png)
 
-1.0.0.0 15-Sep-2008 The following table summarises updates that have been made to this document:
 
-**Modified** :
-
- GTAB-188 and GTAB-189 have been reworded to further mitigate safety issues
+| Previous | Previous |
+| --- | --- |
+| Baseline | Baseline          Changes Since Previous Baseline |
+| Version | Date |
+| 1.0.0.0 | 15-Sep-2008       The following table summarises updates that have been made to this document: Modified:  GTAB-188 and GTAB-189 have been reworded to further mitigate safety issues |
 
 Table 1: Changes Since the Last Baseline Version
 
@@ -337,33 +338,121 @@ Allowing the user to focus on specific data values
 
 **Note**
 
-This will include separate guidance for graphs and for tables
 
-Special guidance when overlaying graphs
-
-This guidance does not specify in precise detail the mechanism used to access views to numerical values. For example, although it may recommend a hover-over or a toggle switch, it is not going to detail the precise UI interaction required for a hover-over, nor the exact formatting or position of the toggle switch
-
-This guidance does not provide any special guidance for continuous data input. Its focus is on readings that have been made (and entered) by a clinician. Where readings come directly from a medical device, it recommends that these are distinct from manually input readings
-
-This guidance does not specify exact mechanisms for focusing upon data values, nor hotspot dimensions or rules nor the precise user interaction required for selecting a value (for example, the precise look of a fish-eye or a crosshair)
-
-Displaying data overviews or summaries This guidance does not specify the exact form, formatting or interaction of look-head scrolling nor thumbnails.
-
-This guidance does not specify an exhaustive list of summary data that could be displayed
-
-Allowing the user to switch between graphs and tables This guidance does not specify the exact mechanisms for switching between
-
-graphs and tables
-
-This guidance does not cover the display of mean, peak and low values:
-
- When to display peaks and lows
-
- Labelling of peaks and lows
-
- For what range to display peaks and lows
-
- Where to display peaks and lows data
+|  | Not seeing how much it has dropped |
+| --- | --- |
+|  | Not seeing how quickly it has dropped |
+| seei | ng a drop in blood pressure in the context of the oxygen, pulse and temperature |
+| remai | ning constant |
+| seei | ng that the respiratory rate has increased slightly |
+| corr | ectly reading the absolute values of a measure |
+| fact | oring in that the differences in readings may be partially or wholly accounted for |
+| by th | e change in settings in which the readings were taken |
+| seei | ng the current configuration of the vital signs (for example, high, low, rising) |
+| reco | gnising that the data is now showing a new trend |
+| reco | gnising a previous trend |
+| reco | gnising the differences between the two trends |
+| reco | gnising that the change in trend is significant |
+| reco | gnising where the patient’s current blood pressure readings are in relation to the |
+| targe | t range |
+|  |  |
+| ll pa | tients in hospital: Recognition of and response to acute illness in adults in hospital {R1}: |
+| .nice | .org.uk/CG50 |
+| accur | ately reading the patient’s current blood pressure reading |
+| being | able to view the current configuration of the observations data in relation to the |
+| atien | t’s usual levels |
+| ident | ifying the rise in blood pressure and pulse as significant: |
+| N | ot seeing by how much they had risen |
+| N | ot seeing how quickly they had risen |
+| ident | ifying the drop in a measure as significant: |
+| N | ot seeing by how much they had dropped |
+| N | ot seeing how quickly they had dropped |
+| being | able to view the changes in blood pressure and oxygen saturations in relation to |
+| ach o | ther |
+| recog | nising that the blood pressure has stabilised |
+| recog | nising that the patient’s blood pressure readings are in the target range |
+| uence | s for such risks could be: |
+| layed | diagnosis |
+| layed | treatment |
+| ncorr | ect diagnosis |
+| ssed | diagnosis |
+| ncorr | ect treatment |
+| ure t | o comply with treatment regimen |
+| guid | ance points outlined in later sections aim to mitigate these patient risks. |
+| pe |  |
+| urpos | e of this guidance is to allow electronic clinical systems to clearly and effectively |
+| e lev | els and patterns of data to the clinician and patient. |
+| o pro | vide further focus to this guidance, it is primarily restricted to the key physiological |
+| ns th | at serve as fundamental indicators of patient health, otherwise known as ‘vital signs’ |
+| ifica | lly, the guidance addresses these forms of data: |
+| d pre | ssure, comprising systolic and diastolic pressures, measured in millimetres of |
+| ercur | y (mmHg) |
+| temp | erature, measured in degrees centigrade (˚C) |
+| e rat | e, measured in beats per minute |
+| irato | ry rate, measured in breaths per minute |
+| en sa | turation, expressed as a percentage (%) |
+| commo | nly used, individually or in combination with themselves or other measurements, |
+| the | healthcare industry. The regular recording of these measurements is also mandated |
+| ent N | ational Institute for Health and Clinical Excellence (NICE) guidelines for acute care |
+| e gui | delines serve as exemplars for this guidance. It is expected that guidance applying |
+| easur | ements can also be generalised to other data types, although care must be taken |
+| rs wh | en doing so. In some cases, additional design considerations may apply that are |
+| pe fo | r the current guidance. Parts of this guidance expand this set of exemplars to |
+| me bl | ood test results, such as serum creatinine and serum urea levels, but generally the |
+| pon t | he five ‘vital signs’ data listed above. |
+| f cha | nge through time are formed primarily by combinations of four characteristics (taken |
+| en Fe | w {R8}): |
+| nitud | e of change |
+| pe of | change |
+| ocity | of change |
+| ectio | n of change |
+| g gra | phical representations of data in a two dimensional plot area is an effective, efficient |
+| ecogn | ised way of communicating these factors. Time-based scatter plots with |
+| ed da | ta points are currently used throughout the healthcare industry, often in paper form. |
+| ore i | nnovative, but unconventional, data visualisations are available, this guidance |
+| on th | e design of interpolated scatter plots because their understanding is immediate and |
+| litt | le learning is required by the clinician to interpret them. |
+| e of | the guidance is therefore to ensure that this conventional graphing method is as |
+| icien | t and safe as possible when presented electronically, rather than trying to push the |
+| of d | ata visualisation techniques. Additionally, there will be occasions where the clinician |
+| want | to view the data solely as numerical data; if, for example, they are more concerned |
+| bsolu | te values rather than the patterns they form. |
+| thes | e goals, this guidance will identify the basic components of both conventional |
+| tabl | es and will address these in turn. The primary focus is upon the static views of |
+| tabl | es whilst acknowledging that the interaction between the clinician and the data also |
+| act o | n the interpretation of data and needs careful handling. The emphasis is upon |
+| her t | han specific content, although with indication where certain types of content will be |
+|  |  |
+|  |  |
+| ition | s for terms which have a specific meaning in the context of this document are listed in section |
+|  |  |
+| Dat | a Values and Labels |
+|  | Out of Scope |
+| ymbol | s for data glyphs in graphs            This guidance does not specify symbols for specific data types, with the exception of blood pressure. Instead, it outlines the rules that a designer must follow when creating a set of data symbols |
+| g dat | a series                               This guidance does not specify the exact wording of the data series (for example, we will not mandate ‘Heart rate’ over ‘Pulse rate’). However, it recommends that suppliers use standard terms where possible (for example, from the Systematised Nomenclature of Medicine-Clinical Terms (SNOMED-CT) |
+| data | units                                 This guidance does not specify a comprehensive list of units This guidance does not cover translating values from one unit to another |
+| two | data values that are linked together   This guidance does not cover any value linkages that are not blood pressure |
+|  | Out of Scope |
+| pair | ed values, such as systolic and diastolic This guidance does not cover paired values that are not blood pressures |
+| Also, | displaying pairs of paired values, such |
+| nd st | anding blood pressures (which are |
+| pair | s) |
+| nume | rical value labels in graphs              This guidance does not specify exact positions of labels. Also, the precision of data values will not apply to any data variable other than the vital signs data series |
+| nume | rical values in tables |
+| ccess | to numerical (digital) value labels in   This guidance does not specify in precise detail the mechanism used to |
+|  | access views to numerical values. For example, although it may recommend a hover-over or a toggle switch, it is not going to detail the precise UI interaction required for a hover-over, nor the exact formatting or position of the toggle switch |
+| hing | manually input data values from values    This guidance does not provide any special guidance for continuous data |
+| dire | ctly from a machine.                      input. Its focus is on readings that have been made (and entered) by a |
+|  | clinician. Where readings come directly from a medical device, it recommends that these are distinct from manually input readings |
+| ally | input readings include those that have |
+| read | from a machine, but manually entered |
+| he us | er to focus on specific data values       This guidance does not specify exact mechanisms for focusing upon data |
+|  | values, nor hotspot dimensions or rules nor the precise user interaction required for selecting a value (for example, the precise look of a fish-eye or a |
+| will | include separate guidance for graphs     crosshair) |
+| for t | ables |
+| idanc | e when overlaying graphs |
+| data | overviews or summaries                   This guidance does not specify the exact form, formatting or interaction of look-head scrolling nor thumbnails. This guidance does not specify an exhaustive list of summary data that could be displayed |
+| he us | er to switch between graphs and tables This guidance does not specify the exact mechanisms for switching between graphs and tables This guidance does not cover the display of mean, peak and low values:  When to display peaks and lows  Labelling of peaks and lows  For what range to display peaks and lows  Where to display peaks and lows data |
 
 Table 2: Data Values and Labels Scope
 
@@ -381,29 +470,29 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Dynamic scaling This guidance does not cover any data that is not in the list of vital signs
 
-This guidance does not define any mechanism for changing the scaling (for example, a zoom control or a scale slider).
-
-Dealing with extreme values
+| In Scope | Out of Scope |
+| --- | --- |
+| Optimum scaling | This guidance does not cover any data that is not featured in the list of observations data (that is, the vital signs) The guidance may not be able to define precisely an optimum scaling; instead it outlines what factors to consider when setting the scaling and ways to ensure that scaling is kept consistent within any given system |
+| Minimum scales | This guidance does not specify absolute minimum scales (that is, the shallowest that the y-axis can be in relation to the x-axis) |
+| Dynamic scaling | This guidance does not cover any data that is not in the list of vital signs This guidance does not define any mechanism for changing the scaling (for example, a zoom control or a scale slider). |
+| Dealing with extreme values |  |
 
 Table 3: Scaling Scope
 
 ##### 1.3.3 Axes
 
-X-axis and y-axis arrangements This guidance does not recommend default views, but will not go as far as recommending that no other data except for time should appear on the x-axis
 
-Time axis intervals This guidance does not define a mechanism for setting or changing time intervals or scales
-
-Data variable (non-time) axis intervals This guidance does not cover logarithmic data representations
-
-Data variable (non-time) ranges
-
-Gridlines This guidance does not define a mechanism for revealing/hiding gridlines
-
-Axes labels
-
-Special axis considerations in the event of overlaying graphs
+| In Scope | Out of Scope |
+| --- | --- |
+| X-axis and y-axis arrangements | This guidance does not recommend default views, but will not go as far as recommending that no other data except for time should appear on the x-axis |
+| Time axis intervals | This guidance does not define a mechanism for setting or changing time intervals or scales |
+| Data variable (non-time) axis intervals | This guidance does not cover logarithmic data representations |
+| Data variable (non-time) ranges |  |
+| Gridlines | This guidance does not define a mechanism for revealing/hiding gridlines |
+| Axes labels |  |
+| Special axis considerations in the event of overlaying | This guidance does not define the workings of any interactive mechanisms |
+| graphs | for viewing overlaid graphs |
 
 Table 4: Axes Scope
 
@@ -423,17 +512,24 @@ This guidance does not define the optimum or minimum width and height of the gra
 
 **Note**
 
-This may need to be defined in the context of an assumed screen resolution or as a function of screen resolution
+
+| In Scope | Out of Scope |
+| --- | --- |
+| Typefaces |  |
+| Background colours |  |
+| Foreground colours |  |
+| Labelling of graphs and tables | This guidance will only be defining label design, not content This guidance does not define the optimum or minimum width and height of the graphing area Note This may need to be defined in the context of an assumed screen resolution or as a function of screen resolution |
 
 Table 5: Layout Density and Formatting Scope
 
 ##### 1.3.5 Simultaneous Views of Multiple Data Series
 
-Considerations for viewing multiple, non-overlaid graphs
 
-This guidance does not cover mechanisms for adding or removing data series from view. It will not define mechanisms for changing the order of multiple graphs
-
-Considerations for viewing multiple, overlaid graphs This guidance does not define mechanisms for overlaying or semi-overlaying data series
+| In Scope | Out of Scope |
+| --- | --- |
+| Considerations for viewing multiple, non-overlaid | This guidance does not cover mechanisms for adding or removing data |
+| graphs | series from view. It will not define mechanisms for changing the order of multiple graphs |
+| Considerations for viewing multiple, overlaid graphs | This guidance does not define mechanisms for overlaying or semi-overlaying data series |
 
 Table 6: Simultaneous Views of Multiple Data Series Scope
 
@@ -445,51 +541,42 @@ HSCIC Controlled Document
 
 ##### 1.3.6 Interpolation
 
-When to show interpolation This guidance does not specify what to do when interpolation has to cease for a data series (for example, when data is unknown for a given period)
 
-Formatting of interpolation This guidance does not define any algorithms for smoothing interpolation lines
-
-Special formatting in the event of overlaying or semi-overlaying data series
+| In Scope | Out of Scope |
+| --- | --- |
+| When to show interpolation | This guidance does not specify what to do when interpolation has to cease for a data series (for example, when data is unknown for a given period) |
+| Formatting of interpolation | This guidance does not define any algorithms for smoothing interpolation lines |
+| Special formatting in the event of overlaying or |  |
+| semi-overlaying data series |  |
 
 Table 7: Interpolation Scope
 
 ##### 1.3.7 Indicative Ranges
 
-Normal ranges This guidance does not define mechanisms for adjusting normal ranges nor for switching normal ranges on or off
 
-This guidance does not specify the label text for normal ranges.
-
-This guidance does not specify target ranges and critical thresholds:
-
- When to show target ranges, critical ranges or thresholds
-
- Formatting of target ranges, critical ranges or thresholds
-
- Formatting of target ranges, critical ranges or thresholds
-
- Labelling target ranges, critical ranges or thresholds
-
- Changing target ranges, critical ranges or thresholds
-
-It does not define mechanisms for changing target ranges, critical ranges or thresholds, nor does it specify the label text for target ranges, critical ranges or thresholds.
+| In Scope | Out of Scope |
+| --- | --- |
+| Normal ranges | This guidance does not define mechanisms for adjusting normal ranges nor for switching normal ranges on or off This guidance does not specify the label text for normal ranges. This guidance does not specify target ranges and critical thresholds:  When to show target ranges, critical ranges or thresholds  Formatting of target ranges, critical ranges or thresholds  Formatting of target ranges, critical ranges or thresholds  Labelling target ranges, critical ranges or thresholds  Changing target ranges, critical ranges or thresholds It does not define mechanisms for changing target ranges, critical ranges or thresholds, nor does it specify the label text for target ranges, critical ranges or thresholds. |
 
 Table 8: Indicative Ranges Scope
 
 ##### 1.3.8 Tables
 
-Table orientation and scaling This guidance does not define mechanisms for switching the orientation of tables nor the direction of data
 
-It does not address viewing table data and graph data simultaneously
-
-Table formatting This guidance does not define mechanisms for scrolling, sorting and filtering
+| In Scope | Out of Scope |
+| --- | --- |
+| Table orientation and scaling | This guidance does not define mechanisms for switching the orientation of tables nor the direction of data It does not address viewing table data and graph data simultaneously |
+| Table formatting | This guidance does not define mechanisms for scrolling, sorting and filtering |
 
 Table 9: Tables Scope
 
 ##### 1.3.9 Additional Contextual Information
 
-Displaying contextual data This guidance does not list all contextual information to be displayed
 
-Accessing contextual data This guidance does not define the precise mechanisms for accessing contextual data that is not immediately visible
+| In Scope | Out of Scope |
+| --- | --- |
+| Displaying contextual data | This guidance does not list all contextual information to be displayed |
+| Accessing contextual data | This guidance does not define the precise mechanisms for accessing contextual data that is not immediately visible |
 
 Table 10: Additional Contextual Information Scope
 
@@ -507,17 +594,15 @@ However, these are out of scope for the current work. Consideration was given to
 
 #### 1.4 Assumptions
 
-**A1** Absolute space (that is, the dimensions of the screen available for displaying a graph or table) will vary between suppliers.
 
-**A2** Although this guidance focuses upon vital signs data, where they deem it appropriate, suppliers should apply this guidance to other data series
-
-**A3** The interpretation of graphs and tables should be done in the context of early warning scoring systems where applicable (for example, Modified Early Warning Score (MEWS) or Patient At-Risk Scores (PARS))
-
-**A4** Where necessary, indicative or ‘normal’ ranges for a given population should be agreed by the supplier with the appropriate professional bodies or appropriate clinical authority.
-
-**A5** Measurement labels should be expressed in SNOMED-CT terms
-
-**A6** Clinicians may view graphs and tables on a variety of hardware platforms. However, special provision for non-PC platforms is not covered by the current guidance
+| ID | Assumption |
+| --- | --- |
+| A1 | Absolute space (that is, the dimensions of the screen available for displaying a graph or table) will vary between suppliers. |
+| A2 | Although this guidance focuses upon vital signs data, where they deem it appropriate, suppliers should apply this guidance to other data series |
+| A3 | The interpretation of graphs and tables should be done in the context of early warning scoring systems where applicable (for example, Modified Early Warning Score (MEWS) or Patient At-Risk Scores (PARS)) |
+| A4 | Where necessary, indicative or ‘normal’ ranges for a given population should be agreed by the supplier with the appropriate professional bodies or appropriate clinical authority. |
+| A5 | Measurement labels should be expressed in SNOMED-CT terms |
+| A6 | Clinicians may view graphs and tables on a variety of hardware platforms. However, special provision for non-PC platforms is not covered by the current guidance |
 
 Table 11: Assumptions
 
@@ -528,6 +613,13 @@ Table 11: Assumptions
 **D2** The display of dates must conform to the guidance for Date Display **{R3}**
 
 **D3** The display of times must conform to the guidance for Time Display **{R4}**
+
+
+| ID | Dependency |
+| --- | --- |
+| D1 | There exists an accompanying mechanism for entering the observations data (not in scope in the current document) |
+| D2 | The display of dates must conform to the guidance for Date Display {R3} |
+| D3 | The display of times must conform to the guidance for Time Display {R4} |
 
 Table 12: Dependencies
 
@@ -997,37 +1089,237 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-GTAB-206 9.3 Long row headings may be split into two or more lines, with the data aligning with the bottom line (Example 105)
 
-GTAB-207 9.3 Avoid a heading that is significantly wider than the data it is indicating
-
-GTAB-208 9.3 Keep column headings brief
-
-GTAB-209 9.3 Clearly link column headings to their columns
-
-GTAB-210 9.3 Top align column headings
-
-GTAB-211 9.3 In wide tables, row headings may be provided at both ends of the row
-
-GTAB-212 9.3 Allow sufficient space between columns to clearly separate them but no more (excessive space impedes horizontal scanning) (Example 104, Example 106)
-
-GTAB-213 9.3 Do not display column headings vertically
-
-GTAB-214 9.3 Column headings may be displayed at 45º to the column, if the heading is too long to display horizontally and cannot be wrapped adequately
-
-GTAB-215 9.3 Provide special formatting if column headings are displayed at 45º so that it is clear which heading applies to which column (Example 107)
-
-GTAB-216 9.3 Do not alternate between the directions of the 45º oriented text in the same table
-
-GTAB-217 9.3 Always display both column and row headings
-
-GTAB-218 9.3 Ensure that the column and row headings are always visible
-
-GTAB-219 10.1 Provide contextual information about the way in which the reading was taken
-
-GTAB-220 10.1 Make visible the contextual information about how the reading was taken by default
-
-GTAB-221 10.1 Allow the user to interrogate the system to access further contextual information
+| GTAB-001 | 2.1 | Display the time-based observation data as points rather than bar charts or area graphs (Example 1) |
+| --- | --- | --- |
+| GTAB-002 | 2.1 | Each data series should be represented by a different symbol and colour combination (Example 1) |
+| GTAB-003 | 2.1 | There should not be a fixed assignment of symbol-colour combination and data series beyond a viewing session, with the exception of the blood pressure composite. |
+| GTAB-004 | 2.1 | Symbols should be assigned to data points when the data series is added into a view |
+| GTAB-005 | 2.1 | After a data series has been brought into view for a given session, it must retain its symbol-colour combination until the end of the viewing session |
+| GTAB-006 | 2.1 | Each symbol should be distinct according to one or more factors (Example 2) |
+| GTAB-007 | 2.1 | Certain cues should not be used to distinguish a series of data points (Example 4) |
+| Reference Secti | on Descripti | on |
+| GTAB-008     2. | 1         Wh in | ere possible, avoid asymmetrical shapes or shapes that cannot be easily centred upon an x-y tersection (Example 8) |
+| GTAB-009     2. | 1         Fe ye | ature a set of colours that are sufficiently distinct to distinguish series of data points, such as red, green, llow, blue, black, white, pink, cyan, gray, orange, brown, purple |
+| GTAB-010     2. | 1         Th in | e height and width (or diameter) of a data point symbol icon must be larger than the width of the line of terpolation |
+| GTAB-011     2. | 1         Th vi | e height and width (or diameter) of a data point symbol icon must be kept to a minimum size, whilst not olating guideline GTAB-010 |
+| GTAB-012     2. | 1         Th | e centre of the data point must be aligned with its corresponding x and y values |
+| GTAB-013     2. | 1         Do | not overlap symbols for data points (Example 11) |
+| GTAB-014     2. | 1         Wh or | en data points are arranged tightly on the x-axis, reduce the symbols to short, thick vertical lines in der to accommodate more within the space available (Example 9) |
+| GTAB-015     2. | 1         Wh th | en data points become so tightly arranged on the x axis, provide a (for example, hover-over) message at indicates the number of data points and a recommendation to view the data in greater detail |
+| GTAB-016     2. | 1         Sy ov | mbol sizes should remain unchanged, except when the data points are so close as to potentially erlap. Symbols should not increase in size upon zooming in or changing timescales |
+| GTAB-017     2. | 1         Wh ra | ere a data value corresponds to a time that is less specific than the intervals shown in the selected time nge, feature a different symbology (in addition to not interpolating the points) |
+| GTAB-018     2. | 2         Ev | ery individual data series must be labelled (Example 13) |
+| GTAB-019     2. | 2         Da | ta series labels must be visible all the time that the values are displayed on-screen |
+| GTAB-020     2. | 2         Wh la | ere there is only a single data series in a graph space (that is, where there are no data overlays), the belling should be positioned above the graph. |
+| GTAB-021     2. | 2         Po (d | sition the label either to the left of each graph or immediately above, and to the top left of, each graph epending upon the space available) (Example 15, Example 16) |
+| GTAB-022     2. | 2         Mi gr | nimise the height of the labels positioned above the graphs in order to minimise the distance between aphs |
+| GTAB-023     2. | 2         Vi (E | sually associate the label with its corresponding graph by positioning it immediately adjacent to it xample 17) |
+| GTAB-024     2. | 2         Wh ov da | ere there are multiple data series in a graph space (such as where one data series is overlaid or semi- erlaid upon another), the labelling should be positioned immediately next to or very close to the relevant ta series (Example 19) |
+| GTAB-025     2. | 2         Do | not orient labels vertically (Example 18) |
+| GTAB-026     2. | 2         Do | not feature labels as watermarked text on the graph area (Example 20, Example 21) |
+| GTAB-027     2. | 3         Da | ta unit labels must be visible at all times that a data series is graphed ( Example 22) |
+| GTAB-028     2. | 3         Do ca | not display values taken with different units of measurement in the same series of data values. In these ses, separate data value series are required (with separate axes) (Example 26) |
+| GTAB-029     2. | 3         Do di | not display values taken with different units in the same sequence of data values in a table (either splayed in a column or in a row) |
+| GTAB-030     2. | 3         If th | data values have been converted from one unit to another, the system must clearly communicate that is has happened at the level of the data value points |
+| GTAB-031     2. | 3         Da | ta unit labels may be expressed as abbreviations (such as ‘mmHg’) |
+| GTAB-032     2. | 3         Wh | ere they are available, use standard abbreviations (such as ‘°C’) |
+| Reference Secti | on Descripti | on |
+| GTAB-033     2. | 3         Ab sa | breviations for data units should not be used where the abbreviations for two separate data units are the me |
+| GTAB-034     2. | 3         Th | e system should provide definitions of any abbreviated data units upon request (Example 27) |
+| GTAB-035     2. | 3         Th | e system could provide full data unit definitions as hover-overs (Example 27) |
+| GTAB-036     2. | 3         Da | ta units should be displayed alongside the data series labels (Example 23) |
+| GTAB-037     2. | 3         Da (E | ta unit labels can be displayed in a less prominent font size or weight than the data type labels xample 23, Example 25) |
+| GTAB-038     2. | 3         Da | ta units do not need to be displayed next to each data value (Example 24) |
+| GTAB-039     2. | 4         Sy | stolic and diastolic blood pressures should be displayed on the same graph area (Example 28) |
+| GTAB-040     2. | 4         Sy | stolic and diastolic blood pressures should be displayed as opposite ends of a vertical line (Example 28) |
+| GTAB-041     2. | 4         Th pr | e intersection points (that is, the intersection between the x and y axes) for both systolic and diastolic essures should be represented by a short horizontal bar, thus creating a double-ended ‘T’ |
+| GTAB-042     2. | 4         Th be | e short horizontal bar which aligns with the y-axis values of the systolic and diastolic pressures should a little thicker than any gridlines overlaid on the graph area |
+| GTAB-043     2. | 4         Do di | not interpolate the blood pressure data points without the vertical lines connecting the systolic and astolic pressure values |
+| GTAB-044     2. | 4         Wh sy | en data points are positioned tightly together, the symbol becomes a straight vertical line between the stolic and diastolic values |
+| GTAB-045     2. | 5         Di | splay the most recent numerical value for each data series by default |
+| GTAB-046     2. | 5         Di | splay the penultimate numerical value for each data series by default (Example 33) |
+| GTAB-047     2. | 5         Fe (E | ature the most recent numerical value for each data series in a larger and/or heavier font xample 33) |
+| GTAB-048     2. | 5         Do | not display all numerical values for a data series by default |
+| GTAB-049     2. | 5         Al | low the display of all the numerical values for a data series, upon request by the user (Example 34) |
+| GTAB-050     2. | 5         Al | low the display of any single numerical value, upon request by the user |
+| GTAB-051     2. | 5         Di | splay the numerical values adjacent to the graphical data points (Example 34) |
+| GTAB-052     2. | 5         Di | splay the numerical values in a consistent position in relation to the graphical data points (Example 34) |
+| GTAB-053     2. | 5         Di | splay the numerical values above or below the data points |
+| GTAB-054     2. | 5         Di | splay the numerical values to the precision in which they were recorded |
+| GTAB-055     2. | 5         Fe ac | ature the numerical values in a reasonably-sized font, namely based upon the prevailing good cessibility practice |
+| GTAB-056     2. | 5         Fe | ature the numerical values in a clear, undecorated typeface (Example 35) |
+| GTAB-057     2. | 6         Pr li | ovide a visual focus line that spans all data series and that is aligned to a chosen time. When the focus ne crosses a value point, display the appropriate value label (Example 41) |
+| GTAB-058     2. | 6         Al al | low some tolerance in the focus line, so that a data point will be picked up even if does not precisely ign with the vertical line |
+| GTAB-059     2. | 6         Wh ob | en the focus line crosses the value point, provide a background to the value label so that it is not scured by the line |
+| GTAB-060     2. | 6         Fo fo | r each data series, allow the user to reveal the value immediately preceding and the value immediately llowing the specific point in time, within a set tolerance |
+| Reference Secti | on Descripti | on |
+| GTAB-061     2. | 6         Di (E | stinguish the values that are aligned with the focus line from the preceding and following values xample 41) |
+| GTAB-062     2. | 6         Th | e visual focus can be moved between times or time ranges by the user (Example 42) |
+| GTAB-063     2. | 6         Th | e visual focus can be moved by moving the mouse over the top of the graph areas (Example 42) |
+| GTAB-064     2. | 6         Th ta | e visual focus can be moved by button presses and/or key presses: one for tabbing forward and one for bbing back |
+| GTAB-065     2. | 6         Th | e visual focus line should be labelled with the time with which it is aligned (Example 41) |
+| GTAB-066     3. | 1         Th | ere should be a linear relationship between data values and their spatial location (Example 43) |
+| GTAB-067     3. | 1         In | the default view of a graph, the time-axis should be scaled to one of a set of pre-defined time ranges |
+| GTAB-068     3. | 1         En | sure that for each default timescale, there is a ratio of x-axis to y-axis ratio that is consistently applied |
+| GTAB-069     3. | 1         Th | e y-axis scale should be pre-determined by considering a number of factors |
+| GTAB-070     3. | 1         Wh sh | ere a normal range is to be shown on the graph area, the default graph view must be sufficiently high to ow the normal range plus a margin |
+| GTAB-071     3. | 1         En th | sure that, in the default view, the clinically significant changes (rises or falls) are always detectable by e clinician. |
+| GTAB-072     3. | 1         In | the default view, do not optimise the view by maximising the size of the data to fill the graph area |
+| GTAB-073     3. | 1         Al | low the user to choose to optimise the view (that is, maximising the data to fill the graph area) |
+| GTAB-074     3. | 1         If | re-scaling is required, minimise the number of scale gradations and/or the number of re-scaling steps |
+| GTAB-075     3. | 1         Up | on re-scaling from a default view scale, the system should display that the view is re-scaled |
+| GTAB-076     3. | 1         In to | the event that, on a given scaling, the data requires more space than is available, re-display according certain priorities |
+| GTAB-077     3. | 1         If fa | the scaling solution is based upon a shift up or down along an axis, provide a scroll feature when data lls outside of the visible axis range |
+| GTAB-078     3. | 1         If a | the scaling solution is based upon a shift in axis, where data may fall outside of the visible range, provide mechanism that communicates all the data within the given timeframe |
+| GTAB-079     3. | 1         A no | thumbnail can be used to communicate all the data within a given timeframe if the main graph area does t show all the data simultaneously (Example 46) |
+| GTAB-080     3. | 1         Wh da | ere possible, show the data points on the thumbnail, although for large timescales containing much ta this will not be possible and, in those cases, just show interpolation. (Example 46) |
+| GTAB-081     3. | 1         Di | splay the upper and lower axis ‘tick’ marks on the thumbnail (Example 46) |
+| GTAB-082     3. | 1         Do | not position the thumbnail in a position that obstructs the main graph (Example 46) |
+| GTAB-083     3. | 1         Wh th | ere appropriate, overlay an indicative range or line. Display this both on the main graph area and the umbnail |
+| GTAB-084     4. | 1         If (E | time is displayed as one of the axes, it should be displayed along the (horizontal) x-axis xample 48, Example 49) |
+| GTAB-085     4. | 2         As | a default, time must be displayed proportionally in observation graphs (Example 51) |
+| GTAB-086     4. | 2         As | a default, do not display data values non-proportionally along the time axis (Example 50) |
+| GTAB-087     4. | 2         Ma | rk the time intervals (that is, use hour marks, day marks, week marks and so on) (Example 52) |
+| GTAB-088     4. | 2         Gr (E | oup the time intervals into higher units and distinguish these with more prominent markings xample 52) |
+| Reference Secti | on Descripti | on |
+| GTAB-089     4. | 2         Do as | not display tick marks for every possible time interval. Do not mark unconventional time intervals, such every six minutes. (Example 53) |
+| GTAB-090     4. | 2         En | sure that the time interval markings are always visible when graph data is being displayed. |
+| GTAB-091     4. | 3         Fe | ature markings for non-time variables along the (vertical) y-axis. (Example 54) |
+| GTAB-092     4. | 3         Wh up | ere possible, feature y-axis markings according to decimal intervals or intervals that are simple to add (Example 55) |
+| GTAB-093     4. | 3         Wh | en marking the y-axis, mark numbers for which it is easy to compute the mid-points (Example 57) |
+| GTAB-094     4. | 3         Do | not mark arbitrary intervals in an attempt to feature a fixed number of gradations (Example 56) |
+| GTAB-095     4. | 3         Wh ma | ere appropriate, group the data intervals into higher units and distinguish these with more prominent rkings |
+| GTAB-096     4. | 4         By | default, the x-axis should be constrained to one of a set of defined time ranges |
+| GTAB-097     4. | 4         As me th | new data points are added to a graph, do not change the time scaling. If adding the new data point ans that the current data exceeds the time range, shift the time window to include the new data rather an increasing the time range in size. (Example 58) |
+| GTAB-098     4. | 4         Do | not show all data by default, unless there is a specific clinical reason for doing so |
+| GTAB-099     4. | 4         If wh | all data must be shown by default, the data should be shown within the nearest set timescale within ich all the data to be displayed can be shown |
+| GTAB-100     4. | 4         Y- | axis ranges do not need to start from zero (Example 59) |
+| GTAB-101     4. | 5         Fe | ature horizontal gridlines for major gradations on the y-axis |
+| GTAB-102     4. | 5         En | sure that, in the default view of data, horizontal gridlines are featured consistently for each data series |
+| GTAB-103     4. | 5         Us | e gridlines sparingly. Do not feature gridlines for every possible gradation (Example 62) |
+| GTAB-104     4. | 5         Fe | ature vertical gridlines for major gradations on the x-axis (Example 60) |
+| GTAB-105     4. | 5         En | sure that vertical gridlines are featured consistently for each time range window (Example 60) |
+| GTAB-106     4. | 5         Us | e the same vertical gridlines for all graphs in view at the same time (Example 60) |
+| GTAB-107     4. | 5         Of | fer users the option of (temporarily) switching off the gridlines |
+| GTAB-108     4. | 6         La | bel the y-axis markings, not the spaces between them ( Example 64, Example 65) |
+| GTAB-109     4. | 6         La | bel the x-axis markings, not the spaces between them (Example 66) |
+| GTAB-110     4. | 6         Av as | oid diagonally oriented label text unless additional grids are added to mitigate the risk of users sociating a label with the wrong marking |
+| GTAB-111     4. | 6         Av | oid vertically oriented label text (for both the x-axis and the y-axis) |
+| GTAB-112     4. | 6         On | the x-axis, ensure that the full dates are always communicated |
+| GTAB-113     4. | 6         If | possible, communicate days of the week in the x-axis labelling (Example 68) |
+| GTAB-114     4. | 6         Pr | ovide labelling of the time-range (Example 69) |
+| GTAB-115     5. | 1         Di di | splay data points in high saturation colours except in those situations where the system needs to stinguish one data series over others (Example 70, Example 72) |
+| GTAB-116     5. | 1         Th se | e colours of the data series should be approximately equal in terms of saturation except where one data ries is being emphasised over the others |
+| GTAB-117     5. | 1         Wh lo | ere one data series is required to stand out against the other data series, the others can be displayed in wer saturated versions of the same hues |
+| Reference Secti | on Descripti | on |
+| GTAB-118     5. | 1         Wh vi | ere special low-light formatting is not required (that is, where the environment in which the data is to be ewed is well-lit, background colour for the graph area should be white or off-white |
+| GTAB-119     5. | 1         Th | e surrounding background for the graphs should be a neutral low-saturation colour (Example 72) |
+| GTAB-120     5. | 1         En | sure a good contrast between the background colour and the foreground colours (Example 72) |
+| GTAB-121     5. | 1         Pr be | ovide a black border for data points. Reverse to a white border in the event of the colour of the data point ing reversed (Example 73) |
+| GTAB-122     5. | 1         Wh | ere special reverse formatting is required, ensure a good reverse contrast |
+| GTAB-123     5. | 1         Us mo | e only a few colours if they are to be distinct. Using up to twelve colours is acceptable, but do not use re. Only use one of each colour category (Example 70) |
+| GTAB-124     5. | 1         Th co | e first colours to be selected should be blue, red, and yellow, unless there is a background colour that nflicts with any of these colours |
+| GTAB-125     5. | 2         Co | py must be displayed in a sufficiently dark colour to contrast against the background |
+| GTAB-126     5. | 2         Fe | ature a font size of between 2 mm and 6 mm for the x-height of the letter (Example 74) |
+| GTAB-127     5. | 2         Av | oid visually elaborate typefaces (Example 75) |
+| GTAB-128     5. | 2         Us ca | e a typeface or font family where the number 1 is clearly discernable from the lowercase letter ‘l’ or a pital letter ‘J’ |
+| GTAB-129     5. | 2         En | sure that each kind of screen copy is displayed in a consistent typeface, size, colour and weight. |
+| GTAB-130     5. | 2         Av | oid underlines |
+| GTAB-131     5. | 2         Av | oid coloured text highlights |
+| GTAB-132     5. | 2         Av | oid animated or flashing text |
+| GTAB-133     5. | 2         Do | not feature text written vertically (Example 76) |
+| GTAB-134     5. | 2         Av | oid the use of brackets (either round or square) in the numerical value labels |
+| GTAB-135     5. | 3         Fo | rmat gridlines in a light grey colour (Example 77) |
+| GTAB-136     5. | 3         Fo | rmat gridlines in a light weight (Example 77) |
+| GTAB-137     5. | 3         Ma (E | ke gridlines lighter in weight and colour saturation than the data points and the interpolation lines xample 77) |
+| GTAB-138     5. | 3         Fo | rmat axis lines in a light grey colour (Example 77) |
+| GTAB-139     5. | 3         Fo | rmat axis lines in a light or medium weight (Example 77) |
+| GTAB-140     5. | 3         Di | stinguish major axis marks from minor axis marks by weight and/or length |
+| GTAB-141     5. | 4         Do | not feature watermarks or background images on the graph area |
+| GTAB-142     5. | 4         Fe (E | ature solid colours and avoid patterned colours for both background and foreground objects xample 79) |
+| GTAB-143     5. | 4         Av in | oid any non-functional graphical elaboration that is not actual data or a feature that directly supports the terpretation of the data (Example 80) |
+| GTAB-144     5. | 4         Do | not force users to choose format styles each time they view the data |
+| GTAB-145     6. | 1         Di | splay multiple data series vertically stacked unless there is clinical reason to do otherwise (Example 81) |
+| GTAB-146     6. | 1         Ve | rtically align the left-hand axes of all the graphs (Example 81) |
+| GTAB-147     6. | 1         Ve Ex | rtically align time intervals between data series that are being viewed simultaneously (Example 81, ample 82) |
+| Reference Secti | on Descripti | on |
+| GTAB-148     6. | 1         Mi | nimise the space between graphs, though allowing for the inclusion of header labels (Example 81) |
+| GTAB-149     6. | 1         Wh | ere a convention exists, position sets of graphs in the appropriate order (Example 81) |
+| GTAB-150     6. | 1         Wh in | ere no convention exists, the position of graphs in the vertical stacking can be determined by the order which they are added to the view |
+| GTAB-151     6. | 1         Th | e user should be able to change the order in which the graphs are stacked |
+| GTAB-152     6. | 1         Wh me | ere the number of graphs exceeds the vertical space available on screen, provide a suitable chanism to move the viewing window up and down |
+| GTAB-153     6. | 1         Wh me | ere there are graphs that have been chosen for viewing, but are not in view, feature a suitable chanism to communicate that there are further graphs not in view |
+| GTAB-154     6. | 2         Gr | aphs may be overlaid under certain circumstances (Example 83) |
+| GTAB-155     6. | 3         If (E | two data series displayed in the same graph area are measured in different units, show both axes xample 85) |
+| GTAB-156     6. | 3         If | two axes are shown, label each axis (Example 85) |
+| GTAB-157     6. | 3         If sp | two data series displayed in the same graph area are measured in different units and the axes gradation acing is different, do not show horizontal gridlines |
+| GTAB-158     6. | 3         Wh pl | en multiple data series are displayed in the same graph area, label each data series in an appropriate ace (Example 84) |
+| GTAB-159     6. | 3         Av | oid distinguishing multiple data series displayed in the same graph area with varying line styles |
+| GTAB-160     6. | 3         Wh se | en multiple data series are displayed in the same graph area, display the interpolation lines as mi-transparent (Example 84) |
+| GTAB-161     6. | 3         Av | oid relying on the distinction between green and red when displaying multiple data series |
+| GTAB-162     6. | 3         Wh th | ere multiple data series are displayed in the same graph area, feature hollowed symbols, rather than e usual solid symbols bound by a black border (Example 84) |
+| GTAB-163     6. | 3         Wh is | ere data points become tightly packed, reduce their size. However, do not reduce them to a height that the same as or less than the width of the interpolation line (Example 86) |
+| GTAB-164     7. | 1         By | default, with certain exceptions, provide interpolation between data points (Example 87) |
+| GTAB-165     7. | 1         Al | lows users to switch interpolation lines off |
+| GTAB-166     7. | 1         In li | terpolation should comprise straight lines between data points. By default, do not ‘smooth’ interpolation nes (Example 88) |
+| GTAB-167     7. | 2         In | terpolation lines should be solid (Example 89) |
+| GTAB-168     7. | 2         In | terpolation lines should not obscure the data points (Example 90) |
+| GTAB-169     7. | 2         Da | ta value points should define the upper and lower points of the data sequence, not the interpolation lines |
+| GTAB-170     7. | 2         In | terpolation lines should be thinner than the data points they connect (Example 92, Example 93) |
+| GTAB-171     7. | 2         In | terpolation lines should be approximately half the height or diameter of the data points they connect |
+| GTAB-172     7. | 2         In | terpolation lines should be the same colour as the data points they connect (Example 91) |
+| GTAB-173     7. | 2         In | terpolation lines should feature some anti-aliasing |
+| GTAB-174     8. | 1         Di | splay normal ranges, but only where appropriate ranges exist (Example 94) |
+| GTAB-175     8. | 1         Be ra | consistent with how to display normal ranges: either shade the out-of-range areas or shade the in- nge areas. Do not feature both styles in the same system (Example 95) |
+| Reference Secti | on Descripti | on |
+| GTAB-176     8. | 1         Wh me | ere appropriate, graphically display early warning scoring ranges, but only in conjunction with a chanism that displays the numerical scoring as well |
+| GTAB-177     8. | 1         Al | low target ranges and critical thresholds to be displayed in addition to normal ranges |
+| GTAB-178     8. | 1         La | bel indicative ranges with the population to which they refer (Example 94) |
+| GTAB-179     8. | 1         En | sure that the indicative labels do not obstruct any data |
+| GTAB-180     8. | 1         Wh | ere appropriate, normal ranges should be adjusted to suit the specific population |
+| GTAB-181     8. | 1         Do | not overlay multiple normal ranges on top of each other |
+| GTAB-182     8. | 1         Fe | ature normal ranges as areas rather than threshold lines |
+| GTAB-183     8. | 1         Fe | ature normal range overlays in low-saturation colours (Example 95) |
+| GTAB-184     8. | 1         No | rmal range displays should not obscure any graph data |
+| GTAB-185     8. | 1         Fe | ature the systolic and diastolic normal ranges in different shades of colour (Example 95) |
+| GTAB-186     9. | 1         Or | ient tables in a consistent manner, for a given data type and/or clinical setting or procedure |
+| GTAB-187     9. | 1         Ta | bles should follow a conventional orientation if one exists |
+| GTAB-188     9. | 1         If th vi | a table is oriented with time ordered horizontally, by default the most recent data value must appear at e far right-hand side (that is, sorted from left-to-right) while ensuring that the most recent values are sible by default (Example 96) |
+| GTAB-189     9. | 1         If to de | a table is oriented with time ordered vertically, by default the most recent data value must appear at the p of the table (that is, sorted from bottom-to-top) while ensuring that the most recent values are visible by fault (Example 97) |
+| GTAB-190     9. | 1         Us | ers must be able to re-sort data within the columns or rows |
+| GTAB-191     9. | 1         Us | ers must be able to re-orient the table (that is, transpose the rows to columns and vice versa) |
+| GTAB-192     9. | 2         Fe | ature light banding along the rows (Example 99) |
+| GTAB-193     9. | 2         Do | not feature heavy gridlines (Example 102) |
+| GTAB-194     9. | 2         Ro | und data displayed in table cells entries where it is not misleading to do so |
+| GTAB-195     9. | 2         If wh | numeric cell entries are rounded, the table must communicate that the data is rounded and the extent to ich it is rounded |
+| GTAB-196     9. | 2         If | appropriate, allow users to read the full version of any rounded data |
+| GTAB-197     9. | 2         En mo | sure that where there are multiple instance of the same date, or time within a date, the first instance is re visually prominent than the following instances (Example 103) |
+| GTAB-198     9. | 2         Do | not stretch tables to fill available space (this impedes horizontal scanning) |
+| GTAB-199     9. | 2         Fe | ature extra spacing every fifth row (this assists vertical scanning) |
+| GTAB-200     9. | 2         Us | e a constant horizontal spacing for numerals (this ensures vertical alignment) |
+| GTAB-201     9. | 2         Al | ign the decimal marker for all numerals in a column |
+| GTAB-202     9. | 2         If de | some numbers in a column do not feature a decimal place, but others do, do not add an unnecessary cimal place but instead provide padding within cells to allow for decimals (Example 100) |
+| GTAB-203     9. | 3         Al | ign column headings with their associated data (Example 104) |
+| GTAB-204     9. | 3         If | column headings are centred, they should be visually aligned over the column of data |
+| GTAB-205     9. | 3         As | far as possible, word row titles so they are of similar length |
+| Reference Secti | on Descripti | on |
+| GTAB-206 | 9.3 | Long row headings may be split into two or more lines, with the data aligning with the bottom line (Example 105) |
+| GTAB-207 | 9.3 | Avoid a heading that is significantly wider than the data it is indicating |
+| GTAB-208 | 9.3 | Keep column headings brief |
+| GTAB-209 | 9.3 | Clearly link column headings to their columns |
+| GTAB-210 | 9.3 | Top align column headings |
+| GTAB-211 | 9.3 | In wide tables, row headings may be provided at both ends of the row |
+| GTAB-212 | 9.3 | Allow sufficient space between columns to clearly separate them but no more (excessive space impedes horizontal scanning) (Example 104, Example 106) |
+| GTAB-213 | 9.3 | Do not display column headings vertically |
+| GTAB-214 | 9.3 | Column headings may be displayed at 45º to the column, if the heading is too long to display horizontally and cannot be wrapped adequately |
+| GTAB-215 | 9.3 | Provide special formatting if column headings are displayed at 45º so that it is clear which heading applies to which column (Example 107) |
+| GTAB-216 | 9.3 | Do not alternate between the directions of the 45º oriented text in the same table |
+| GTAB-217 | 9.3 | Always display both column and row headings |
+| GTAB-218 | 9.3 | Ensure that the column and row headings are always visible |
+| GTAB-219 | 10.1 | Provide contextual information about the way in which the reading was taken |
+| GTAB-220 | 10.1 | Make visible the contextual information about how the reading was taken by default |
+| GTAB-221 | 10.1 | Allow the user to interrogate the system to access further contextual information |
 
 Table 13: Summary of Guidance
 
@@ -1893,33 +2185,23 @@ HSCIC Controlled Document
 
 #### 11.1 Terms and Abbreviations
 
-A&E Accident and Emergency
 
-BSI British Standards Institution
-
-CUI Common User Interface
-
-ISO International Standards Organization
-
-MEWS Modified Early Warning Score
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-O2 Oxygen
-
-PARS Patient At-Risk Scores
-
-RNIB Royal National Institute of Blind People
-
-SNOMED-CT Systematised Nomenclature of Medicine-Clinical Terms
-
-UI User Interface
-
-WAI Web Availability Initiative
-
-W3C World Wide Web Consortium
+| Abbreviation | Definition |
+| --- | --- |
+| A&E | Accident and Emergency |
+| BSI | British Standards Institution |
+| CUI | Common User Interface |
+| ISO | International Standards Organization |
+| MEWS | Modified Early Warning Score |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| O2 | Oxygen |
+| PARS | Patient At-Risk Scores |
+| RNIB | Royal National Institute of Blind People |
+| SNOMED-CT | Systematised Nomenclature of Medicine-Clinical Terms |
+| UI | User Interface |
+| WAI | Web Availability Initiative |
+| W3C | World Wide Web Consortium |
 
 Table 14: Terms and Abbreviations
 
@@ -1941,39 +2223,48 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Critical range or threshold A range, or a point above or below a threshold, associated with a negative health outcome that is formulated by the care giver when planning and delivering the patient’s care. Typically, if data values fall within such a range (or above or below such a threshold) warnings should be raised, such as a nurse contacting the doctor. This type of range or threshold is patient-specific rather than population-specific.
 
-Reference range A standard range that helps the viewer of a graph understand the absolute values (or at least the significance) of the data points by locating their position in relation to the range. A reference range may comprise a normal range.
-
-Indicative range Same as ‘Reference range’.
-
-Scale The relationship between the physical distances displayed in the graph and the relationships between the underlying data values. For example, an hour may be represented by a distance of 10 mm running from left-to-right along the (horizontal) x-axis plane, while a rise of 10 mmHg of systolic pressure may be represented by 5 mm running from bottom-to-top along the (vertical) y-axis plane.
-
-References to ‘scale’ include both the x-axis and y-axis scales, as it is often the ratio between these two that is important to the clinician’s interpretation of the data.
-
-Axes The orthogonal (perpendicular) planes that represent data continuums, such as ‘pulse rate’. On a two dimensional graph area, there will be a minimum of two axes, the x- and y-axis, one of those being ‘time’. In special cases of overlaid data, there may be three axes in the same graph area.
-
-X-axis The x-axis marks the horizontal scale and is orthogonal to the y-axis.
-
-Y-axis The y-axis marks the vertical scale and is orthogonal to the x-axis.
-
-Axis range The range of potential values shown in the graph along a single axis in a view.
-
-Axis marking Markings of data increments along the axes.
-
-Gridlines Horizontal and/or vertical lines shown on the graph area aligned with regular increments in the data. The purpose of these lines is to help the viewer identify the values of the data points.
-
-Data point A visual representation of a data value.
-
-Data unit The measurement units in which a data series is being expressed, such as ‘beats per minute’.
-
-Data series A set of data of a single measurement type, such as ‘pulse rate’ or ‘body temperature’.
-
-Interpolation Lines added to the graph that sequentially join up the data points. Interpolation assists the perception of the data values and the patterns in which they fall.
-
-Graph area The two-dimensional blank space in which data points may be displayed.
-
-Logarithmic scaling Scaling where a series of numbers are produced by increasing the power of a base number by one for each sequential interval.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
+| Normal range | A clinically relevant range for a data series, defined by an upper and a lower parameter, that expresses the normal values expected for a given healthy population, in isolation to other data series. Values that fall outside of a normal range may potentially indicate a health problem and a cause for concern. Which normal range applies to a given patient may depend upon certain aspects of their individual demography. For example, the age or gender of the patient may determine which normal range applies to them at a given point in time. |
+| Target range or threshold | A range, or a point above or below a threshold, associated with a positive health outcome that is formulated by the care giver when planning and delivering the patient’s care. Unlike normal ranges, target ranges and thresholds are patient-specific, rather than population-specific. |
+| Term                               De | finition |
+| Critical range or threshold        A | range, or a point above or below a threshold, associated with a negative health outcome that is |
+| fo | rmulated by the care giver when planning and delivering the patient’s care. Typically, if data |
+| va | lues fall within such a range (or above or below such a threshold) warnings should be raised, |
+| su | ch as a nurse contacting the doctor. This type of range or threshold is patient-specific rather than |
+| po | pulation-specific. |
+| Reference range                    A | standard range that helps the viewer of a graph understand the absolute values (or at least the |
+| si | gnificance) of the data points by locating their position in relation to the range. A reference range |
+| ma | y comprise a normal range. |
+| Indicative range                   Sa | me as ‘Reference range’. |
+| Scale                              Th | e relationship between the physical distances displayed in the graph and the relationships |
+| be | tween the underlying data values. For example, an hour may be represented by a distance of |
+| 10 | mm running from left-to-right along the (horizontal) x-axis plane, while a rise of 10 mmHg of |
+| sy | stolic pressure may be represented by 5 mm running from bottom-to-top along the (vertical) |
+| y- | axis plane. |
+| Re | ferences to ‘scale’ include both the x-axis and y-axis scales, as it is often the ratio between these |
+| tw | o that is important to the clinician’s interpretation of the data. |
+| Axes                               Th | e orthogonal (perpendicular) planes that represent data continuums, such as ‘pulse rate’. On a |
+| tw | o dimensional graph area, there will be a minimum of two axes, the x- and y-axis, one of those |
+| be | ing ‘time’. In special cases of overlaid data, there may be three axes in the same graph area. |
+| X-axis                             Th | e x-axis marks the horizontal scale and is orthogonal to the y-axis. |
+| Y-axis                             Th | e y-axis marks the vertical scale and is orthogonal to the x-axis. |
+| Axis range                         Th | e range of potential values shown in the graph along a single axis in a view. |
+| Axis marking                       Ma | rkings of data increments along the axes. |
+| Gridlines                          Ho | rizontal and/or vertical lines shown on the graph area aligned with regular increments in the data. |
+| Th | e purpose of these lines is to help the viewer identify the values of the data points. |
+| Data point                         A | visual representation of a data value. |
+| Data unit                          Th | e measurement units in which a data series is being expressed, such as ‘beats per minute’. |
+| Data series                        A | set of data of a single measurement type, such as ‘pulse rate’ or ‘body temperature’. |
+| Interpolation                      Li | nes added to the graph that sequentially join up the data points. Interpolation assists the |
+| pe | rception of the data values and the patterns in which they fall. |
+| Graph area                         Th | e two-dimensional blank space in which data points may be displayed. |
+| Logarithmic scaling                Sc | aling where a series of numbers are produced by increasing the power of a base number by one |
+| fo | r each sequential interval. |
 
 Table 15: Definitions
 
@@ -1989,35 +2280,30 @@ This section shows how to interpret the different styles used in this document t
 
 ##### 11.3.1 Body Text
 
-Code `Monospace`
 
-Script
-
-Other markup languages
-
-Interface dialog names **Bold**
-
-Field names
-
-Controls
-
-Folder names Title Case
-
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| Folder names | Title Case |
+| File names |  |
 
 Table 16: Body Text Styles
 
 ##### 11.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 17: Cross Reference Styles
 
@@ -2049,35 +2335,48 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-**R10.** Douglas, G, Nicol, F and Robertson, C (editors): Macleod’s clinical examination(2005) Eleventh Edition
 
-**R11.** Wright, P, Jansen, C and Wyatt, J C: How to limit clinical errors in interpretation of data: Lancet 1998; 352: 1539-43
-
-**R12.** Wyatt, J and Wright, P: Design should help use of patients’ data: Lancet 1998; 352: 1375-78
-
-**R13.** Nygren, E, Wyatt, J C and Wright, P: Helping clinicians to find data and avoid delays: Lancet 1998; 352: 1462-66
-
-**R14.** Cartmill, R S V and Thornton, J G: Effect of presentation of partogram information on obstetric decision-making: Lancet 1992; 339: 1520-22
-
-**R15.** Chatterjee, M T, Moon, J C, Murphy, R and McCrea, D: The “OBS” chart: an evidence based approach to re-design of the patient observation chart in a district general hospital setting: Postgraduate. Medical Journal. 2005; 81: 662-666
-
-**R16.** Royal National Institute for Blind People: See it Right guidelines: [http://www.rnib.org.uk/xpedio/groups/public/documents/publicwebsite/public_seeitright.hcsp](http://www.rnib.org.uk/xpedio/groups/public/documents/publicwebsite/public_seeitright.hcsp)
-
-**R17.** British Standards Institute: Ergonomic requirements for office work with visual display terminals (VDTs) Part 12: Presentation of information: BS EN ISO 9241-12:1999
-
-**R18.** Bridger, R S: Introduction to Ergonomics (2003) Second Edition
-
-**R19.** Healy, C G, Booth, K S, Enns, J T: High-Speed Visual Estimation using Preattentive Processing: ACM Transactions on Computer-Human Interaction (TOCHI), Vol 3, Issue 2 (1996)
-
-**R20.** Tay, S K, Yong, T T: Visual Effect of Partogram Designs on the Management and Outcome of [Labour: Australian and New Zealand Journal of Obstetrics and Gynaecology, Vol 36, Issue 4](http://www3.interscience.wiley.com/journal/118501330/home) (1996)
-
-**R21.** Chapanis, A: Man-Machine Engineering, London: Tavistock Publications, 1965
-
-**R22.** Berlin, B, Kay, P: Basic Color Terms, their Universality and Evolution, 1969
-
-**R23.** World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI) guidelines: [http://www.w3.org/WAI/](http://www.w3.org/WAI/)
-
-**R24.** Tufte, Edward: Beautiful Evidence, (2006)
+| Reference Document | Version |
+| --- | --- |
+| R1.              National Institute for Health and Clinical Excellence: Acutely ill patients in hospital: Recognition of | July 2007 |
+| and response to acute illness in adults in hospital: |  |
+| http://www.nice.org.uk/CG50 |  |
+| R2.              British Standards Institute: Guide to Presentation of tables and graphs: British Standard BS 7581: |  |
+| 1992 |  |
+| R3.              Design Guide Entry – Date Display | 3.0.0.0 |
+| R4.              Design Guide Entry – Time Display | 3.0.0.0 |
+| R5.              NHS CUI Research Study ID 2 |  |
+| R6.              NHS CUI Research Study ID 39 |  |
+| R7.              Ware, Colin: Information Visualization. Perception for design(2004) | Second Edition |
+| R8.              Few, Stephen: Show me the numbers. Designing tables and graphs to enlighten(2004) | First Edition |
+| R9.              Tufte, Edward: The Visual display of quantitative information (2001) | Second Edition |
+| Reference Document                                                                                                     Vers | ion |
+| R10.             Douglas, G, Nicol, F and Robertson, C (editors): Macleod’s clinical examination(2005)                 Elev | enth Edition |
+| R11.             Wright, P, Jansen, C and Wyatt, J C: How to limit clinical errors in interpretation of data: Lancet |  |
+| 1998; 352: 1539-43 |  |
+| R12.             Wyatt, J and Wright, P: Design should help use of patients’ data: Lancet 1998; 352: 1375-78 |  |
+| R13.             Nygren, E, Wyatt, J C and Wright, P: Helping clinicians to find data and avoid delays: Lancet 1998; |  |
+| 352: 1462-66 |  |
+| R14.             Cartmill, R S V and Thornton, J G: Effect of presentation of partogram information on obstetric |  |
+| decision-making: Lancet 1992; 339: 1520-22 |  |
+| R15.             Chatterjee, M T, Moon, J C, Murphy, R and McCrea, D: The “OBS” chart: an evidence based |  |
+| approach to re-design of the patient observation chart in a district general hospital setting: |  |
+| Postgraduate. Medical Journal. 2005; 81: 662-666 |  |
+| R16.             Royal National Institute for Blind People: See it Right guidelines: |  |
+| http://www.rnib.org.uk/xpedio/groups/public/documents/publicwebsite/public_seeitright.hcsp |  |
+| R17.             British Standards Institute: Ergonomic requirements for office work with visual display terminals |  |
+| (VDTs) Part 12: Presentation of information: BS EN ISO 9241-12:1999 |  |
+| R18.             Bridger, R S: Introduction to Ergonomics (2003)                                                       Seco | nd Edition |
+| R19.             Healy, C G, Booth, K S, Enns, J T: High-Speed Visual Estimation using Preattentive Processing: |  |
+| ACM Transactions on Computer-Human Interaction (TOCHI), Vol 3, Issue 2 (1996) |  |
+| R20.             Tay, S K, Yong, T T: Visual Effect of Partogram Designs on the Management and Outcome of |  |
+| Labour: Australian and New Zealand Journal of Obstetrics and Gynaecology, Vol 36, Issue 4 |  |
+| (1996) |  |
+| R21.             Chapanis, A: Man-Machine Engineering, London: Tavistock Publications, 1965 |  |
+| R22.             Berlin, B, Kay, P: Basic Color Terms, their Universality and Evolution, 1969 |  |
+| R23.             World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI) guidelines: |  |
+| http://www.w3.org/WAI/ |  |
+| R24.             Tufte, Edward: Beautiful Evidence, (2006) |  |
 
 Table 18: References
 

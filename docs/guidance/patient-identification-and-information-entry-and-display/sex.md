@@ -145,15 +145,12 @@ Copyright ©2013 Health and Social Care Information Centre
 ![](sex_assets/sex.pdf-4-0.png)
 HSCIC Controlled Document
 
-Table 1 describes the changes made since the previous version of this guidance (Baseline version 3.0.0.0 dated 07-Apr-2008):
 
-**Deleted** None
-
-**Modified** Enhanced out of scope context setting (section 1.2.2)
-
-Enhanced research setting (section 2)
-
-**Added** Patient Safety Process note
+| Change | IDs | Change Description |
+| --- | --- | --- |
+| Deleted |  | None |
+| Modified |  | Enhanced out of scope context setting (section 1.2.2) Enhanced research setting (section 2) |
+| Added |  | Patient Safety Process note |
 
 Table 1: Changes Since the Last Baseline Version
 
@@ -383,13 +380,35 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-CGS-0006 Do not display the underlying coded representation of the Current Gender data values. For example, the standard code for 'Male' may be the integer 1, but this number should not appear.
 
-Mandatory
-
-CGS-0007 Label the Current Gender status display 'Current Gender'. Recommended
-
-CGS-0008 Use ‘Not Known’ as the Current Gender default value. Recommended
+|  | NHS Connecting for Health Data Dictionary |
+| --- | --- |
+|  | UK Government Data Standards Catalogue (GDSC) |
+|  | NHS Connecting for Health Personal Demographics Service (PDS) |
+|  | NHS Connecting for Health Message Implementation Manual (MIM) |
+| desk- | based research project looking at a range of information entry Web pages and |
+| inica | l applications |
+| Web-b | ased survey of 41 respondents from NHS clinicians and administrative staff, |
+| depen | dent Software Vendors (ISVs), community pharmacists and NHS CFH |
+| Patie | nt Safety Assessment |
+| rrent | Gender Values |
+| nt Ge | nder input or display control is restricted to the predefined set of valid values shown |
+| 1. |  |
+| rtant |  |
+| value | s defined in this document are based upon the current proposed changes to the NHS CFH Data |
+| ionar | y. Should future changes be made to this document, amendments to this guidance will be |
+| ired. |  |
+| G | uidance |
+|  | Guideline                                                                          Status |
+|  | Label the Current Gender input controls 'Current Gender'.                          Mandatory |
+|  | The Current Gender values are:                                                     Mandatory  Male  Female  Other Specific  Not Known  Not Specified |
+|  | The Current Gender status is one the following values:                             Mandatory  Male  Female  Other Specific  Not Known  Not Specified |
+|  | Make the definitions of the Current Gender status values accessible to the user.   Mandatory |
+|  | Do not abbreviate Current Gender data values.                                      Mandatory |
+|  | Guideline                                                                                     Status |
+|  | Do not display the underlying coded representation of the Current Gender data values. For     Mandatory example, the standard code for 'Male' may be the integer 1, but this number should not appear. |
+|  | Label the Current Gender status display 'Current Gender'.                                     Recommended |
+|  | Use ‘Not Known’ as the Current Gender default value.                                          Recommended |
 
 Table 2: Guidance for Current Gender Data Values
 
@@ -397,13 +416,10 @@ Table 2: Guidance for Current Gender Data Values
 
 ####  Alphabetic string Male
 
-Female
 
-Other Specific
-
-Not Known
-
-Not Specified
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Alphabetic string | Male Female Other Specific Not Known Not Specified | Use this format to display patient Current Gender within a clinical application. |
 
 Table 3: Correct Gender Formatting Examples
 
@@ -429,11 +445,11 @@ NS
 
 ####  Numeric code and text 0 Not Known
 
-1 Male
 
-2 Female
-
-9 Not Specified
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Numeric code | 0 1 2 9 NK M F NS | Patient-Safety-Critical This example requires the user to understand and interpret the numeric codes or abbreviations. This representation is likely to cause recognition errors. |
+|  | Numeric code and text | 0 Not Known 1 Male 2 Female 9 Not Specified | Lack of Readability This example lacks clarity and readability by displaying both number and textual values for Current Gender. The relative number values could also cause offence. |
 
 Table 4: Incorrect Gender Formatting Examples
 
@@ -467,43 +483,17 @@ The values defined in this document are based upon the current proposed changes 
 
 ##### 2.2.1 Guidance
 
-CGS-0009 Label the Sex input controls 'Sex'. Mandatory
 
-CGS-0010 The Sex values are:
-
- Male
-
- Female
-
- Not Known
-
- Indeterminate
-
-CGS-0011 The Sex status must only contain one the following values:
-
- Male
-
- Female
-
- Not Known
-
- Indeterminate
-
-Mandatory
-
-Mandatory
-
-CGS-0012 Sex data values must never be abbreviated. Mandatory
-
-CGS-0013 The Sex default state is null. Mandatory
-
-CGS-0014 The application must not display the underlying coded representation of the Sex data values. For example, the standard code for 'Male' may be the integer 1, but this number must not appear.
-
-Mandatory
-
-CGS-0015 Make the definitions of the Sex status values accessible to the user. Mandatory
-
-CGS-0016 Label the Sex status display 'Sex'. Recommended
+| ID | Guideline | Status |
+| --- | --- | --- |
+| CGS-0009 | Label the Sex input controls 'Sex'. | Mandatory |
+| CGS-0010 | The Sex values are:  Male  Female  Not Known  Indeterminate | Mandatory |
+| CGS-0011 | The Sex status must only contain one the following values:  Male  Female  Not Known  Indeterminate | Mandatory |
+| CGS-0012 | Sex data values must never be abbreviated. | Mandatory |
+| CGS-0013 | The Sex default state is null. | Mandatory |
+| CGS-0014 | The application must not display the underlying coded representation of the Sex data values. For example, the standard code for 'Male' may be the integer 1, but this number must not appear. | Mandatory |
+| CGS-0015 | Make the definitions of the Sex status values accessible to the user. | Mandatory |
+| CGS-0016 | Label the Sex status display 'Sex'. | Recommended |
 
 Table 5: Guidance for Sex Data Values
 
@@ -511,11 +501,10 @@ Table 5: Guidance for Sex Data Values
 
 ####  Alphabetic string Male
 
-Female
 
-Not Known
-
-Indeterminate
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Alphabetic string | Male Female Not Known Indeterminate | Use this format to display patient Sex within a clinical application. |
 
 Table 6: Correct Sex Formatting Examples
 
@@ -543,9 +532,11 @@ NS
 
 ####  Numeric code and text 1 Male
 
-2 Female
 
-9 Not Specified
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Numeric code | 1 2 9 M F NS | Patient-Safety-Critical This example requires the user to understand and interpret the numeric codes or abbreviations. This representation is likely to cause recognition errors. |
+|  | Numeric code and text | 1 Male 2 Female 9 Not Specified | Lack of Readability This example lacks clarity and readability by displaying both number and textual values for Sex. |
 
 Table 7: Incorrect Sex Formatting Examples
 
@@ -645,11 +636,12 @@ HSCIC Controlled Document
 
 ##### 2.3.4 Guidance
 
-CGS-0017 Provide definitions for input controls. Mandatory
 
-CGS-0018 Provide access to definitions of the valid values. Mandatory
-
-CGS-0019 Provide a shortened version of the definitions. Recommended
+| ID | Guideline | Status |
+| --- | --- | --- |
+| CGS-0017 | Provide definitions for input controls. | Mandatory |
+| CGS-0018 | Provide access to definitions of the valid values. | Mandatory |
+| CGS-0019 | Provide a shortened version of the definitions. | Recommended |
 
 Table 8: Guidance for Instructional Text
 
@@ -669,51 +661,17 @@ string
 
 ####  Alphabetic
 
-string
 
-Current Gender is a statement by the individual about the gender they currently identify themselves to be (that is, self-assigned). The valid values are:
-
- Male
-
- Female
-
- Other Specific – when the person has a clear idea of
-
-what their gender is, but it is neither discretely male nor female, for example, 'Intersex', 'transgender', 'third gender'
-
- Not Known – used when no information on this subject is
-
-known
-
- Not Specified – when the person is unable to specify their
-
-current gender or does not have a clear idea of their current gender
-
-Sex is the phenotypic sex of the person as recorded by the Registrar on the Register of Births, or other initial registration, or on issue of a full gender recognition certificate under the Gender Recognition Act. Valid values are:
-
- Male
-
- Female
-
- Not Known – used when no information on this subject is
-
-known
-
- Indeterminate – used when the person is unable to be
-
-classified as either male or female
-
-Sex, as recorded at birth or on issue of a full gender recognition certificate
-
-Use this format to define Current Gender within a clinical application.
-
-Use this format to define Sex within a clinical application.
-
-Current Gender, as assigned by the individual to themselves Use this text as a shortened definition of
-
-Current Gender within a clinical application, especially in cases where brevity is paramount.
-
-Use this text as a shortened definition of Sex within a clinical application, especially in cases where brevity is paramount, such as in a tooltip design.
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|         Alphabetic | Current Gender is a statement by the individual about the | Use this format to define Current |
+| string | gender they currently identify themselves to be (that is, self-assigned). The valid values are:  Male  Female  Other Specific – when the person has a clear idea of what their gender is, but it is neither discretely male nor female, for example, 'Intersex', 'transgender', 'third gender'  Not Known – used when no information on this subject is known  Not Specified – when the person is unable to specify their current gender or does not have a clear idea of their current gender | Gender within a clinical application. |
+|         Alphabetic | Sex is the phenotypic sex of the person as recorded by the | Use this format to define Sex within a |
+| string | Registrar on the Register of Births, or other initial registration, or on issue of a full gender recognition certificat under the Gender Recognition Act. Valid values are:  Male  Female  Not Known – used when no information on this subject is known  Indeterminate – used when the person is unable to be classified as either male or female | clinical application. e |
+|         Alphabetic | Current Gender, as assigned by the individual to themselves Use t | his text as a shortened definition of |
+| string | Curre appli brevi | nt Gender within a clinical cation, especially in cases where ty is paramount. |
+|         Alphabetic | Sex, as recorded at birth or on issue of a full gender | Use this text as a shortened definition of |
+| string | recognition certificate | Sex within a clinical application, especially in cases where brevity is paramount, such as in a tooltip design. |
 
 Table 9: Correct Examples of Instructional Text for Status Type and Data Value Definitions
 
@@ -735,7 +693,20 @@ The option button group design is considered to occupy more screen space but pro
 
 ##### 2.4.1 Current Gender Option Button Group
 
-This control will be used when a user needs to enter the Current Gender that the patient has assigned to themselves. It consists of a group of five standard option buttons within a control group, as displayed in Figure 6. It should be used whenever the developer has room in their form design.
+
+| ® | ® |
+| --- | --- |
+| refox W | eb browser truncates after about 90 characters). |
+| and St | ructure |
+| ld be c | onstructed in a manner that supports only the input of a predefined |
+| e, both | an 'Option Button Group’ (also known as a ‘Radio Button Group’) and |
+| design | have been considered. |
+| design | is considered to occupy more screen space but provides better |
+| . |  |
+| nder Op | tion Button Group |
+| ed when | a user needs to enter the Current Gender that the patient has |
+| It con | sists of a group of five standard option buttons within a control group, |
+| 6. It s | hould be used whenever the developer has room in their form design. |
 
 Figure 6: Current Gender Option Button Design (Focus on Male)
 
@@ -773,6 +744,13 @@ CGS-0022 The Current Gender tab order is:
 
 5. Not Specified
 
+
+| ID | Guideline | Status |
+| --- | --- | --- |
+| CGS-0020 | Current Gender option button group input controls must consist of five option buttons. | Mandatory |
+| CGS-0021 | Current Gender option button group labels are in the following order (top to bottom first, followed by left to right): 1. Male 2. Female 3. Other Specific 4. Not Known 5. Not Specified | Mandatory |
+| CGS-0022 | The Current Gender tab order is: 1. Male 2. Female 3. Other Specific 4. Not Known 5. Not Specified | Recommended |
+
 Table 10: Guidance for Current Gender Option Button Design
 
 Copyright ©2013 Health and Social Care Information Centre
@@ -793,7 +771,11 @@ button group
 
 ####  ‘Not Known’ is
 
-the default status
+
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Five option button group |  | Use these five discrete controls with only one selection possible at one time. |
+|  | ‘Not Known’ is the default status |  | Use ‘Not Known’ as the default for Current Gender. |
 
 Table 11: Correct Current Gender Option Button Design Formatting Examples
 
@@ -825,7 +807,15 @@ options (more than five option buttons)
 
 ####  Incorrect control
 
-labelling
+
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Incorrect functionality (non-discrete choices) |  | Data quality This example allows a user to select multiple data values when only one should be assigned. |
+|  | Incorrect input convention |  | User experience This example uses checkboxes, suggesting to users that multiple selections are possible. |
+|  | Incorrect value labelling |  | Data quality This example allows a user to select a value that does not adhere to ISB HaSC standards. |
+|  | Too few options (less than five option buttons) |  | Data quality This example does not allow a user to enter all the possible valid values for this status. |
+|  | Too many options (more than five option buttons) |  | Data quality This example allows a user to select a data value that is not valid. |
+|  | Incorrect control labelling |  | Data quality This example shows a control label that could be misinterpreted as a phenotypic sex status. |
 
 Table 12: Incorrect Current Gender Option Button Design Formatting Examples
 
@@ -911,6 +901,12 @@ CGS-0024 Sex option button group labels are in the following order (top to botto
 
 4. Indeterminate
 
+
+| ID | Guideline | Status |
+| --- | --- | --- |
+| CGS-0023 | Sex option button group input controls must consist of four option buttons. | Mandatory |
+| CGS-0024 | Sex option button group labels are in the following order (top to bottom first followed by left to right): 1. Male 2. Female 3. Not Known 4. Indeterminate | Recommended |
+
 Table 13: Guidance for Sex Option Button Group Design
 
 Copyright ©2013 Health and Social Care Information Centre
@@ -928,6 +924,12 @@ _**2.4.2.2**_ _**Examples of Correct Usage**_
 button group
 
 ####  ‘Null’ default state
+
+
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Four option button group |  | Use these four discrete controls with only one selection possible at one time. |
+|  | ‘Null’ default state |  | This control must have nothing selected for the null default state. |
 
 Table 14: Correct Sex Option Button Grouping Examples
 
@@ -959,7 +961,15 @@ options (more than five radio buttons)
 
 ####  Incorrect control
 
-labelling
+
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Incorrect functionality (non-discrete choices) |  | Data quality This example allows a user to select multiple data values when only one should be assigned. |
+|  | Incorrect input convention |  | User experience This example uses checkboxes, suggesting to users that multiple selections are possible. |
+|  | Incorrect value labelling |  | Data quality This example allows a user to select a value that is not recognisable to ISB HaSC standards. |
+|  | Too few options (less than four option buttons) |  | Data quality This example does not allow a user to enter all the possible valid values for this status. |
+|  | Too many options (more than five radio buttons) |  | Data quality This example allows a user to select a data value that is not valid. |
+|  | Incorrect control labelling |  | Data quality This example shows a control label that could be misinterpreted as a Current Gender status. |
 
 Table 15: Incorrect Sex Option Button Grouping Examples
 
@@ -1035,11 +1045,12 @@ CGS-0025 Current Gender drop-down list box options are in the following order (t
 
 5. Not Specified
 
-Mandatory
 
-CGS-0026 Use a single drop-down list box for the Current Gender control. Mandatory
-
-CGS-0027 Do not use a prompt for the Current Gender control, due to its default value of 'Not Known'. Mandatory
+| ID | Guideline | Status |
+| --- | --- | --- |
+| CGS-0025 | Current Gender drop-down list box options are in the following order (top to bottom): 1. Male 2. Female 3. Other Specific 4. Not Known 5. Not Specified | Mandatory |
+| CGS-0026 | Use a single drop-down list box for the Current Gender control. | Mandatory |
+| CGS-0027 | Do not use a prompt for the Current Gender control, due to its default value of 'Not Known'. | Mandatory |
 
 Table 16: Guidance for Current Gender Drop-Down List Box Design
 
@@ -1057,7 +1068,11 @@ box with five possible values
 
 ####  ‘Not Known’ is
 
-the default status
+
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Drop-down list box with five possible values |  | A single drop-down list box that can be set to one option from the five available. |
+|  | ‘Not Known’ is the default status |  | Use ‘Not Known’ as the default for Current Gender. |
 
 Table 17: Correct Current Gender Drop-Down List Box Examples
 
@@ -1091,7 +1106,15 @@ labelling
 
 ####  Incorrect default
 
-value
+
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Incorrect functionality (non-discrete choices) |  | Data quality This example allows a user to select multiple values when only one should be assigned. |
+|  | Incorrect value labelling |  | Data quality This example allows a user to select a value that is not recognisable to ISB HaSC standards. |
+|  | Too few options (less than five options) |  | Data quality This example does not allow a user to enter all the possible valid values for this status. |
+|  | Too many options (more than five options) |  | Data quality This example allows a user to select a data value that is not valid. |
+|  | Incorrect control labelling |  | Data quality This example shows a control label that could be misinterpreted as a phenotypic sex status. |
+|  | Incorrect default value |  | Data quality This example shows a control with an incorrect default value (Male). |
 
 Table 18: Incorrect Current Gender Drop-Down List Box Examples
 
@@ -1161,13 +1184,12 @@ _**2.4.4.1**_ _**Guidance**_
 
 ![](sex_assets/sex.pdf-20-0.png)
 
-CGS-0028 Ensure that Sex controls have no value selected by default and no method of returning to this ‘null’ state.
 
-Mandatory
-
-CGS-0029 Use a single control for the Sex drop-down list box. Mandatory
-
-CGS-0030 Ensure that the Sex drop-down list box is blank by default and does not contain a prompt. Recommended
+| ID | Guideline | Status |
+| --- | --- | --- |
+| CGS-0028 | Ensure that Sex controls have no value selected by default and no method of returning to thi ‘null’ state. | s Mandatory |
+| CGS-0029 | Use a single control for the Sex drop-down list box. | Mandatory |
+| CGS-0030 | Ensure that the Sex drop-down list box is blank by default and does not contain a prompt. | Recommended |
 
 Table 19: Guidance for Sex Drop-Down List Box Design
 
@@ -1188,7 +1210,11 @@ Use four discrete controls with only one selection possible at one time.
 ![](sex_assets/sex.pdf-21-1.png)
 ####  ‘Null’ default state Default state should be null, which will
 
-display to users as a blank. Once a selection has been made by a user, there is no means of returning to this state for that data item.
+
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Four item drop-down list box |  | Use four discrete controls with only one selection possible at one time. |
+|  | ‘Null’ default state |  | Default state should be null, which will display to users as a blank. Once a selection has been made by a user, there is no means of returning to this state for that data item. |
 
 Table 20: Correct Sex Drop-Down List Box Examples
 
@@ -1216,7 +1242,15 @@ labelling
 
 ####  Incorrect default
 
-value
+
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Incorrect functionality (non-discrete choices) |  | Data quality This example allows a user to select multiple data values when only one should be assigned. |
+|  | Incorrect value labelling |  | Data quality This example allows a user to select a value that is not recognisable to ISB HaSC standards. |
+|  | Too few options (less than four options) |  | Data quality This example does not allow a user to enter all the possible valid values for this status. |
+|  | Too many options (more than four options) |  | Data quality This example allows a user to select a data value that is not valid. |
+|  | Incorrect control labelling |  | Data quality This example shows a control label that could be misinterpreted as a Current Gender status. |
+|  | Incorrect default value |  | Data quality This example shows a control with an incorrect default value (Not Known). |
 
 Table 21: Incorrect Sex Drop-Down List Box Examples
 
@@ -1276,35 +1310,30 @@ HSCIC Controlled Document
 
 #### 3.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-GDSC Government Data Standards Catalogue
-
-ISB HaSC Information Standards Board for Health and Social Care
-
-ISV Independent Software Vendor
-
-MIM Message Implementation Manual
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-PDA Personal Digital Assistants
-
-PDS Personal Demographic Service
-
-UI User Interface
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| GDSC | Government Data Standards Catalogue |
+| ISB HaSC | Information Standards Board for Health and Social Care |
+| ISV | Independent Software Vendor |
+| MIM | Message Implementation Manual |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| PDA | Personal Digital Assistants |
+| PDS | Personal Demographic Service |
+| UI | User Interface |
 
 Table 22: Terms and Abbreviations
 
 #### 3.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health)
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health) |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
 
 Table 23: Definitions
 
@@ -1332,33 +1361,42 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Folder names Title Case
 
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| ext                                                                Styl | e |
+| older names                                                        Titl | e Case |
+| ile names |  |
 
 Table 24: Body Text Styles
 
 ##### 3.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 25: Cross Reference Styles
 
 #### 3.4 References
 
-**R1.** NHS CUI Design Guide Workstream – Accessibility Checkpoints for NHS Clinical Applications 1.0.0.0
 
-**R2.** NHS CUI Design Guide Workstream – Accessibility for Clinical Applications 1.0.0.0
-
-**R3.** UK Government Data Standards Catalogue – Person Gender Current [http://www.govtalk.gov.uk/gdsc/html/noframes/PersonGenderCurrent-2-0-Release.htm](http://www.govtalk.gov.uk/gdsc/html/noframes/PersonGenderCurrent-2-0-Release.htm)
+| Reference | Document | Version |
+| --- | --- | --- |
+| R1. | NHS CUI Design Guide Workstream – Accessibility Checkpoints for NHS Clinical Applications | 1.0.0.0 |
+| R2. | NHS CUI Design Guide Workstream – Accessibility for Clinical Applications | 1.0.0.0 |
+| R3. | UK Government Data Standards Catalogue – Person Gender Current http://www.govtalk.gov.uk/gdsc/html/noframes/PersonGenderCurrent-2-0-Release.htm |  |
 
 Table 26: References
 

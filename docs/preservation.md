@@ -4,9 +4,13 @@
 
 These transcriptions and extracted images were recovered by Marcus Baw in [pacharanero/nhs-cui](https://github.com/pacharanero/nhs-cui) from the National Archives CUI guidance collection. The checked-in [source manifest](source-manifest.json) records the precise source revision, each page and image checksum, the archive URL, copyright/licence information from the existing document inventory, and the canonical local PDF or ZIP member.
 
-The import preserves source-page bytes from the recorded restoration revision and all 2,302 imported PNG bytes. The preceding Zensical migration changed generated page titles and contents links, not transcribed clinical text. Some extraction artefacts remain.
+The import preserves source-page bytes from the recorded restoration revision and all 2,302 imported PNG bytes. It includes the restoration project's table-reconstruction work and the later corrections to generated titles and contents links. These are transcription/presentation changes, not a clinical-policy update. Some extraction artefacts remain.
 
 The original PDFs remain canonical in `nhs-cui-documents/`. During build, `s/prepare-docs.py` verifies their SHA-256 values and copies the 45 matching PDFs into ignored `docs/pdfs/`. It verifies the text/image corpus too and refuses excluded, missing, unlisted or unexpected staged material. The generated directory and `site/` must never be committed.
+
+## PDF duplication: follow-up work
+
+PDF duplication still needs addressing: the same originals exist in both the restoration repository and this repository's source archive, and building the site produces additional local/published copies. This contribution does not add a second tracked PDF collection here, but does not consolidate the existing archives either. Future work should agree a canonical source of truth, deduplicate the archives where appropriate and preserve stable download links, provenance and document-specific rights. The checksum/member mapping in the source manifest provides evidence for that consolidation.
 
 ## Original document rights
 

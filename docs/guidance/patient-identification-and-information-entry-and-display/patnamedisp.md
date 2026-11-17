@@ -157,15 +157,12 @@ Figure 2: Example InForm Style Patient Name Input Control
 
 Figure 3: Example InLine Style Patient Name Input Control with Prompts
 
-Table 1 describes the changes made since the previous version of this guidance (Baseline version 2.0.0.0 dated 25-Jun-2009):
 
-**Deleted** None
-
-**Modified** None
-
-**Added** Additional Text to Note (Section 2)
-
-NPSA Wristband recommendations (section 2.1.4.2)
+| Change | IDs | Change Description |
+| --- | --- | --- |
+| Deleted |  | None |
+| Modified |  | None |
+| Added |  | Additional Text to Note (Section 2) NPSA Wristband recommendations (section 2.1.4.2) |
 
 Table 1: Changes Since the Last Baseline Version
 
@@ -368,47 +365,42 @@ Page 4
 
 HSCIC Controlled Document
 
-NID-0009 The display must allow any free-text (up to 35 characters) to be presented in the Title element.
 
-NID-0010 The display must, in accordance with the UK Government Data Standards Catalogue guidelines, omit a trailing full stop from the Title element (for example, ‘Mr’ not ‘Mr.’).
-
-NID-0011 The display must allow the Family Name, Given Name and Title elements to present at least the maximum field sizes given in the NHS Connecting for Health Personal Demographics Service [3] (PDS) FS 10.00, Issue 1A, 18th January 2005 (CDT D 0222).
-
-NID-0012 The display must allow for the Family Name and Given Name elements to consist of multiple components. Components are constituent parts of the name element that combine with other parts to form the element as a whole. For example, the components of the name LIDMAN-SUN are LIDMAN and SUN and the components of Mary Jane are Mary and Jane. Components have the following features:
-
- Family Name components must consist of UPPERCASE alphabetic characters only, for
-
-example, SMITH.
-
- Multiple Family Name components must be separated by a hyphen or a single space, for
-
-example, LIDMAN-SUN-DEWAR or EVANS WEST.
-
- Given Name components must display in title case, for example, Nadejda.
-
- Multiple Given Name components must be separated by a hyphen or a single space, for
-
-example, Anne-Jorun, Nis Bank.
-
-NID-0013 The display should allow word wrapping to occur in instances where the field length exceeds the width allocated to it on the form. If word wrapping occurs, it should be applied only at the end of a whole field element or at the end of a field element component, if it comprises multiple parts (for example, Middle name(s) field).
-
-Mandatory
-
-Mandatory
-
-Mandatory
-
-Mandatory
-
-Recommended
-
-NID-0062 By default, include a prompt in the input boxes to indicate to a user the information required Recommended
-
-NID-0063 Present the default prompt in an occluded form to prevent confusion with actual data input by a user
-
-Recommended
-
-NID-0064 Remove the default prompt when a user begins to input data Mandatory
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NID-0001 | The display must present the Family Name in all uppercase letters to clearly distinguish it from the Given Name. | Mandatory |
+| NID-0002 | The display must separate the Family Name and Given Name using a comma to further establish that the Family Name is being placed first. | Mandatory |
+| NID-0003 | The display must include parentheses around the Title to separate and distinguish it from the other name elements. | Mandatory |
+| NID-0004 | The display must present the name elements strictly in the order shown. | Mandatory |
+| NID-0005 | The display must present all data for each specified element (Family Name, Given Name and Mandato Title) of the Patient Name in full. Avoid truncation of information where possible. | ry |
+| NID-0006 | The display must separate the presentation of Given Name and Title by a single space. | Mandatory |
+| NID-0007 | The display must present the Title element in title case, for example, Sir not SIR, Mr not MR. | Mandatory |
+| NID-0008 | The display must present a single pair of parentheses around the Title element, for example, (Mr). | Mandatory |
+| D                     Gu | ideline | Status |
+| ID-0009               Th | e display must allow any free-text (up to 35 characters) to be presented in the Title | Mandatory |
+| el | ement. |  |
+| ID-0010               Th | e display must, in accordance with the UK Government Data Standards Catalogue | Mandatory |
+| gu | idelines, omit a trailing full stop from the Title element (for example, ‘Mr’ not ‘Mr.’). |  |
+| ID-0011               Th | e display must allow the Family Name, Given Name and Title elements to present at least | Mandatory |
+| th | e maximum field sizes given in the NHS Connecting for Health Personal Demographics |  |
+| Se | rvice3 (PDS) FS 10.00, Issue 1A, 18th January 2005 (CDT D 0222). |  |
+| ID-0012               Th | e display must allow for the Family Name and Given Name elements to consist of multiple | Mandatory |
+| co | mponents. Components are constituent parts of the name element that combine with other |  |
+| pa | rts to form the element as a whole. For example, the components of the name |  |
+| LI | DMAN-SUN are LIDMAN and SUN and the components of Mary Jane are Mary and Jane. |  |
+| Co | mponents have the following features: |  |
+|  | Family Name components must consist of UPPERCASE alphabetic characters only, for example, SMITH. |  |
+|  | Multiple Family Name components must be separated by a hyphen or a single space, for example, LIDMAN-SUN-DEWAR or EVANS WEST. |  |
+|  | Given Name components must display in title case, for example, Nadejda. |  |
+|  | Multiple Given Name components must be separated by a hyphen or a single space, for example, Anne-Jorun, Nis Bank. |  |
+| ID-0013               Th | e display should allow word wrapping to occur in instances where the field length exceeds | Recommended |
+| th | e width allocated to it on the form. If word wrapping occurs, it should be applied only at the |  |
+| en | d of a whole field element or at the end of a field element component, if it comprises |  |
+| mu | ltiple parts (for example, Middle name(s) field). |  |
+| ID-0062               By | default, include a prompt in the input boxes to indicate to a user the information required | Recommended |
+| ID-0063               Pr | esent the default prompt in an occluded form to prevent confusion with actual data input by Recom | mended |
+| a | user |  |
+| ID-0064               Re | move the default prompt when a user begins to input data | Mandatory |
 
 Table 2: General Guidance for the Use of Patient Name Input Controls
 
@@ -416,9 +408,10 @@ Table 2: General Guidance for the Use of Patient Name Input Controls
 
 ####  Family Name, Given Name (Title) TREETAWTCHAIWONG, Lertchai (Sir)
 
-OLIVER, James (Mr)
 
-RUTH, Anne (Mrs)
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|       Family Name, Given Name (Title) | TREETAWTCHAIWONG, Lertchai (Sir) OLIVER, James (Mr) RUTH, Anne (Mrs) | Use this format to display all Patient Names within a patient banner. |
 
 Table 3: How to Use the Design Guide Entry
 
@@ -502,9 +495,31 @@ Lertchai Sir
 
 ####  Family Name, GIVENNAME (Title) TREETAWTCHAIWONG,
 
-LERTCHAI (SIR)
 
-RUTH, JACOB (MRS)
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|      Family Name Given Name Title | Duke James Earl Oliver Sir | This example does not separate any of the name elements, which contain multiple components. It is impossible to determine the Family Name, Given Name and Title. |
+| 3 |  |  |
+| The Personal Demographics Service: http://www.conne | ctingforhealth.nhs.uk/demographics/pds/index | _html |
+| Usage Format                                     Exampl | es                         Comments |  |
+|       Family Name Given Name                 Ruth J | acob                       This example does Given Name from t provide a Title, determine Given N and correct form | not distinguish the he Family Name or making it difficult to ame, Family Name of address. |
+|       Family Name Given Name (Title)         James | Oliver Jones (Sir)         These examples do | not separate the |
+| Ito Sh | u (Mr)                     Given Name from F making it difficu | amily Name, lt to determine what the |
+| Sario | Esko (Mrs) Given and Family | Names actually are. |
+|       Title Family Name                      Mr Oli | ver                        These examples om | it a Given Name |
+| Family Name (Title)                    Oliver | (Mr)                      element. Without identification is | a Given Name, difficult. |
+|       Title Given Name                       Mrs Ru | th                         These examples om | it a Family Name |
+| Given Name (Title)                     Ruth ( | Mrs)                       element. Without identification is | a Family Name, difficult. |
+|       Family Name, Given Name (Title)        JAMES, | OLIVER (SIR)              These examples sh | ow all elements in |
+| Given Name, Family Name (Title)        James, | Oliver (Sir)              the same case mak visually separate Name elements. Th however, provides Family Name appea | ing it difficult to Given and Family e comma, a visual cue that rs first. |
+|       Family Name, Given Name, Initials,     OLIVER | , James Earl, E, MBE MSc   This example show | s too many name |
+| Suffix (Title)                         BSc (S | ir)                        elements, which h clarity. | inder rather than aid |
+|       Family Name, Given Name                CHARLI | E, Oliver                  This example show Family Name. It d information for a | s only a Given and oes not give enough Title to be assumed. |
+|       Family Name, Given Name Title          TREETA | WTCHAIWONG,                This example show | s a lack of clarity. It |
+| Lertch | ai Sir                     is unclear if the two name componen component is actu | Given Name contains ts or if the second ally the Title. |
+|       Family Name, GIVENNAME (Title)         TREETA | WTCHAIWONG,                These examples ar | e provided in all |
+| LERTCH | AI (SIR)                   uppercase, making read. | them difficult to |
+| RUTH, | JACOB (MRS) |  |
 
 Table 4: How Not to Use the Design Guide Entry
 
@@ -772,9 +787,79 @@ A Patient Name input control can consist of up to six constituent fields with la
 
 ##### 2.2.1 Title
 
-The Title field is designed as a drop-down combo-box (as shown in Figure 5). This design allows the developer to assist the user in the input of a pre-defined set from a drop-down list, whilst also allowing the flexibility of free-text input to augment the complex list of possible options.
 
-Figure 5 displays a Patient Name input control in a default state (for example, an InForm design with prompts and no data entered). Figure 6 displays the Title input element during a simple interaction.
+| ® | 4 |
+| --- | --- |
+| directory services online | ). |
+|  |  |
+| ns on the subject of readi | ng patterns |
+| de that there are benefits | for consistent |
+| nhances familiarity and re | cognition of ® |
+| tion handbook by IBM (2nd | Edition) |
+|  |  |
+| nd no definitive ‘common p | ractice’ or |
+| isplay across NHS clinical | applications |
+|  |  |
+| ha.content/en/search/resid | ential/search.publisha |
+| nciples and the need for c | onsistency, clarity |
+|  |  |
+| wing justifications: |  |
+| in a clear and consistent | format that |
+| t |  |
+|  |  |
+| at are most important for | identification and |
+| ame and Title |  |
+|  |  |
+| the optional data fields. |  |
+|  |  |
+| e not exclusive. It is ack | nowledged that from time to |
+| ch circumstances cannot be | anticipated, this |
+| the applications develope | r concerned to design an |
+| omise of patient safety. |  |
+|  |  |
+| Catalogue (UK GDSC) inclu | de a |
+| he UK GDSC defines Person |  |
+| is different from the valu | es in Title, |
+| would include, for example | , a |
+| en Name. |  |
+|  |  |
+| s/Known As as an element o | f the |
+| or example, a desired alia | s consisting |
+| d as a full name display c | ontrol without |
+| , where the value is more | a single |
+| as an optional field, for | example, ‘Johnny- |
+|  |  |
+|  |  |
+| rve as a primary means of | identifying or |
+| aking up valuable space in | locations such |
+| ., M.B., B.Chir). The incI | usion of such |
+| he important data there. |  |
+| rtant: |  |
+| le, ‘Jnr’ or ‘the third (I | II)’) |
+| a name (for example, in a | letter) |
+| for the optional use of a | suffix. The |
+| b) “use on letterhead” pro | vides a user |
+|  |  |
+|  |  |
+| en required as they: |  |
+| addressing the patient |  |
+| elements |  |
+|  |  |
+| event that the primary ide | ntifiers are not |
+|  |  |
+|  |  |
+| stituent fields with label | s; Title, Family |
+| . The minimum data require | d to |
+| me and Given Name. Middle | name(s), |
+| quality, however they are | not |
+|  |  |
+|  |  |
+| shown in Figure 5). This d | esign allows |
+| fined set from a drop-down | list, whilst also |
+| e complex list of possible | options. |
+| lt state (for example, an | InForm design |
+| Title input element during | a simple |
+|  |  |
 
 Figure 5: InForm Design (All Six Fields are Visible)
 
@@ -791,41 +876,15 @@ Copyright ©2013 Health and Social Care Information Centre
 ![](patnamedisp_assets/patnamedisp.pdf-15-1.png)
 HSCIC Controlled Document
 
-_**2.2.1.1**_ _**Guidance**_
 
-NID-0014 Input control must allow a maximum of 35 characters. Mandatory
-
-NID-0015 Minimum visual width of the input box must display four characters. Mandatory
-
-NID-0016 Suggested values are:
-
- ‘Mr’‘Mrs’
-
- ‘Ms’
-
- ‘Dr’
-
- ‘Rev’
-
- ‘Sir’
-
- ‘Lady’
-
- ‘Lord’
-
- ‘Dame’
-
- ‘Other...’
-
-NID-0017 One value should allow the user to invoke free-text input mode (for example ‘Other...’ in the illustrations).
-
-Recommended
-
-Recommended
-
-NID-0018 Input box should contain a relevant prompt, for example, Mr. Recommended
-
-NID-0019 Input control should be in the form of a drop-down combo-box. Recommended
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NID-0014 | Input control must allow a maximum of 35 characters. | Mandatory |
+| NID-0015 | Minimum visual width of the input box must display four characters. | Mandatory |
+| NID-0016 | Suggested values are:  ‘Mr’‘Mrs’  ‘Ms’  ‘Dr’  ‘Rev’  ‘Sir’  ‘Lady’  ‘Lord’  ‘Dame’  ‘Other...’ | Recommended |
+| NID-0017 | One value should allow the user to invoke free-text input mode (for example ‘Other...’ in the illustrations). | Recommended |
+| NID-0018 | Input box should contain a relevant prompt, for example, Mr. | Recommended |
+| NID-0019 | Input control should be in the form of a drop-down combo-box. | Recommended |
 
 Table 5: Guidance for the Use of Title in Patient Name Input Controls
 
@@ -879,17 +938,15 @@ NID-0021 Family Name input box must accept a maximum of 35 characters. Mandatory
 
 ![](patnamedisp_assets/patnamedisp.pdf-18-2.png)
 
-NID-0022 Family Name input box should be capable of displaying a minimum of eight characters without occlusion.
 
-Recommended
-
-NID-0023 Family Name input box should optimally display 14 characters without occlusion. Recommended
-
-NID-0024 Family Name input box should contain a relevant prompt in its default state (for example, ‘e.g. SMITH’) in occluded form.
-
-Recommended
-
-NID-0025 When displaying a Family Name value, the characters should all be in uppercase. Recommended
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NID-0020 | Family Name input must be via a free-text entry box. | Mandatory |
+| NID-0021 | Family Name input box must accept a maximum of 35 characters. | Mandatory |
+| NID-0022 | Family Name input box should be capable of displaying a minimum of eight characters without occlusion. | Recommended |
+| NID-0023 | Family Name input box should optimally display 14 characters without occlusion. | Recommended |
+| NID-0024 | Family Name input box should contain a relevant prompt in its default state (for example, ‘e.g. SMITH’) in occluded form. | Recommended |
+| NID-0025 | When displaying a Family Name value, the characters should all be in uppercase. | Recommended |
 
 Table 6: Guidance for the Use of Family Name in Patient Name Input Controls
 
@@ -901,45 +958,28 @@ HSCIC Controlled Document
 
 ##### 2.2.3 Given Name
 
-The Given Name input is in the form of a free-text entry box that accepts a maximum of 35 characters. Based upon average UK name length calculations, it is recommended that the box be wide enough to display at least eight characters and should have an optimal width of 14 characters. At this optimal width, the box would be able to fully display over 99% of expected values. At the minimum width, it is expected that over 95% will be fully displayed. The Given Name will be entered in the case chosen by the user (as they enter it), however, when the value is displayed, the first character will be in uppercase.
 
-_**2.2.3.1**_ _**Guidance**_
-
-NID-0026 Given Name input must be via a free-text entry box. Mandatory
-
-NID-0027 Given Name input box must accept a maximum of 35 characters. Mandatory
-
-NID-0028 Given Name input box should be capable of displaying a minimum of eight characters without occlusion.
-
-Recommended
-
-NID-0029 Given Name input box should optimally display 14 characters without occlusion. Recommended
-
-NID-0030 Given Name input box should contain a relevant prompt in its default state (for example, ‘e.g. John’) in occluded form.
-
-Recommended
-
-NID-0031 When displaying a Given Name value the first character should be in uppercase. Recommended
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NID-0026 | Given Name input must be via a free-text entry box. | Mandatory |
+| NID-0027 | Given Name input box must accept a maximum of 35 characters. | Mandatory |
+| NID-0028 | Given Name input box should be capable of displaying a minimum of eight characters witho occlusion. | ut Recommended |
+| NID-0029 | Given Name input box should optimally display 14 characters without occlusion. | Recommended |
+| NID-0030 | Given Name input box should contain a relevant prompt in its default state (for example, ‘e.g. John’) in occluded form. | Recommended |
+| NID-0031 | When displaying a Given Name value the first character should be in uppercase. | Recommended |
 
 Table 7: Guidance for the Use of Given Name in Patient Name Input Controls
 
 ##### 2.2.4 Middle Name(s)
 
-The Middle name input is in the form of a free-text entry box that accepts a maximum of 100 characters. This length has been chosen due to the requirement for this input to accept multiple entries. This maximum allows a significant number of entries (at least 18 of our standard 7-character Given Names) to be entered. The Middle name will be entered and displayed in the case chosen by the user (as they enter it).
 
-_**2.2.4.1**_ _**Guidance**_
-
-NID-0032 Middle name input must be via a free-text entry box. Mandatory
-
-NID-0033 Middle name input box must accept a maximum of 100 characters. Mandatory
-
-NID-0034 Middle name input box should be capable of displaying a minimum of eight characters without occlusion.
-
-Recommended
-
-NID-0035 Middle name input box should optimally display 7 characters without occlusion. Recommended
-
-NID-0036 Middle name input box should contain a relevant prompt in its default state (for example, ‘e.g. David James’) in occluded form.
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NID-0032 | Middle name input must be via a free-text entry box. | Mandatory |
+| NID-0033 | Middle name input box must accept a maximum of 100 characters. | Mandatory |
+| NID-0034 | Middle name input box should be capable of displaying a minimum of eight characters with occlusion. | out Recommended |
+| NID-0035 | Middle name input box should optimally display 7 characters without occlusion. | Recommended |
+| NID-0036 | Middle name input box should contain a relevant prompt in its default state (for example, ‘e.g. David James’) in occluded form. | Recommended |
 
 Table 8: Guidance for the Use of Middle Name(s) in Patient Name Input Controls
 
@@ -955,41 +995,27 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-_**2.2.5.1**_ _**Guidance**_
 
-NID-0037 Suffix input must be via a free-text entry box. Mandatory
-
-NID-0038 Suffix input box must accept a maximum of 35 characters. Mandatory
-
-NID-0039 Suffix input box should be capable of displaying a minimum of eight characters without occlusion.
-
-Recommended
-
-NID-0040 Suffix input box should optimally display 14 characters without occlusion. Recommended
-
-NID-0041 Suffix input box should contain a relevant prompt when in its default state (for example, ‘e.g. Junior’) in occluded form.
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NID-0037 | Suffix input must be via a free-text entry box. | Mandatory |
+| NID-0038 | Suffix input box must accept a maximum of 35 characters. | Mandatory |
+| NID-0039 | Suffix input box should be capable of displaying a minimum of eight characters without occlusion. | Recommended |
+| NID-0040 | Suffix input box should optimally display 14 characters without occlusion. | Recommended |
+| NID-0041 | Suffix input box should contain a relevant prompt when in its default state (for example, ‘e.g. Junior’) in occluded form. | Recommended |
 
 Table 9: Guidance for the Use of Suffix in Patient Name Input Controls
 
 ##### 2.2.6 Preferred Name
 
-Recommended
 
-The Preferred name input is in the form of a free-text entry box that accepts a maximum of 35 characters. The box should be wide enough to display at least eight characters and should have an optimal width of 14 characters. The Preferred name will be entered and displayed in the case chosen by the user (as they enter it).
-
-_**2.2.6.1**_ _**Guidance**_
-
-NID-0042 Preferred name input must be via a free-text entry box. Mandatory
-
-NID-0043 Preferred name input box must accept a maximum of 35 characters. Mandatory
-
-NID-0044 Preferred name input box should be capable of displaying a minimum of eight characters without occlusion.
-
-Recommended
-
-NID-0045 Preferred name input box should optimally display 14 characters without occlusion. Recommended
-
-NID-0046 Preferred name input box should contain a relevant prompt in its default state (for example, ‘e.g. Johnny-Boy’) in occluded form.
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NID-0042 | Preferred name input must be via a free-text entry box. | Mandatory |
+| NID-0043 | Preferred name input box must accept a maximum of 35 characters. | Mandatory |
+| NID-0044 | Preferred name input box should be capable of displaying a minimum of eight characters without occlusion. | Recommended |
+| NID-0045 | Preferred name input box should optimally display 14 characters without occlusion. | Recommended |
+| NID-0046 | Preferred name input box should contain a relevant prompt in its default state (for example, ‘e.g. Johnny-Boy’) in occluded form. | Recommended |
 
 Table 10: Guidance for the Use of Preferred Name in Patient Name Input Controls
 
@@ -1047,9 +1073,30 @@ of; Title, Family Name, and Given Name
 
 **Note**
 
-A desired full name comes under a name type rather than name field.
 
-This data set has been identified as the minimum required to ensure data quality.
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|       Title to accept 35 | ‘abcdefghijklmnopqrstuvwxyzABCDEFGHI’ | Required data length for PDS. |
+| characters |  |  |
+|       Family Name to | ‘abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMN’ | Required data length for PDS. |
+| accept 35 |  |  |
+| characters |  |  |
+|       Given Name to | ‘abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMN’ | Required data length for PDS. |
+| accept 35 |  |  |
+| characters |  |  |
+|       Middle name(s) to | ‘abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ Suggested length | to allow for |
+| accept 100 | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ multiple middle n | ames to be |
+| characters | abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ entered. abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUV’ |  |
+|       Suffix to accept 35 ‘ab | cdefghijklmnopqrstuvwxyzABCDEFGHI’ | Required data length for PDS. |
+| characters |  |  |
+| Usage Format                      E | xamples | Comments |
+|        Preferred name to      ‘ | abcdefghijklmnopqrstuvwxyzABCDEFGHI’ | Suggested field length for a |
+| accept 35 |  | single nickname style entry. |
+| characters |  | Note A desired full name comes under a name type rather than name field. |
+|        Minimum data set |  | This data set has been |
+| of; Title, Family |  | identified as the minimum |
+| Name, and Given |  | required to ensure data |
+| Name |  | quality. |
 
 Table 11: Examples of Correct Implementation of Patient Name Guidance
 
@@ -1069,7 +1116,13 @@ all three fields for the minimum data set (Title, Family Name, and Given Name)
 
 ####  Title drop-down does not have
 
-an option to encourage the user to enter a different entry, if a more applicable one is not in the list
+
+| Usage | Format | Examples | Comments |
+| --- | --- | --- | --- |
+|  | Input fields do not display the majority (over 95%) of inputs, as required |  | The controls will display during and probably after input. Errors could occur in data recognition and input if the user cannot view the full input values. |
+|  | Input fields do not accept the required input characters (for example, 35 characters for Family Name) |  | Many different systems and recognised bodies have defined the maximum limits required for each field that is part of a name. These limits need to be supported in order for systems to work together. |
+|  | Input control does not control all three fields for the minimum data set (Title, Family Name, and Given Name) |  | Not including all of the minimum data set in an input control could compromise patient safety and data quality. |
+|  | Title drop-down does not have an option to encourage the user to enter a different entry, if a more applicable one is not in the list |  | The user should be encouraged to give the best quality of data available. They may not know that free-text entry is possible if an alternative option (for example, ‘Other’) is not in the list, and simply pick the most applicable one there. |
 
 Table 12: Examples of Incorrect Implementation of Patient Name Guidance
 
@@ -1125,19 +1178,11 @@ NID-0047 InForm field controls must be aligned on the left edge of the input box
 
 ![](patnamedisp_assets/patnamedisp.pdf-22-0.png)
 
-NID-0048 InForm field controls (where they exist) must be placed underneath each other in the following order:
 
- Title
-
- Family Name
-
- Given Name
-
- Middle name(s)
-
- Suffix
-
- Known as
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NID-0047 | InForm field controls must be aligned on the left edge of the input boxes. | Mandatory |
+| NID-0048 | InForm field controls (where they exist) must be placed underneath each other in the following order:  Title  Family Name  Given Name  Middle name(s)  Suffix  Known as | Mandatory |
 
 Table 13: Guidance for the Use of InForm Design in Patient Name Input Controls
 
@@ -1153,7 +1198,14 @@ HSCIC Controlled Document
 
 ####  All input fields are
 
-left aligned underneath each other in the specified order
+
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|        All input fields are |  | The InForm control is reported by users to be |
+| left aligned |  | the preferred design for readability, usability, |
+| underneath each |  | and familiarity purposes. |
+| other in the |  |  |
+| specified order |  |  |
 
 Table 14: Correct Patient Name Input InForm Design Examples
 
@@ -1169,7 +1221,14 @@ aligned to each other
 
 ####  Fields not in the
 
-correct order
+
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|        Fields are not left |  | Left aligning the controls aids readability for the |
+| aligned to each |  | user. Not left aligning them makes the control |
+| other |  | difficult to use and understand. |
+|        Fields not in the |  | The order of the fields should reflect the |
+| correct order |  | display and not contradict it. Errors will occur if they are different. |
 
 Table 15: Incorrect Patient Name Input InForm Design Examples
 
@@ -1226,25 +1285,12 @@ Figure 15: InLine Wrapping Behaviour (Examples Show All 6 Input Fields)
 
 ##### 2.4.2 Guidance
 
-NID-0049 Ensure wrapping only occurs on whole fields. Mandatory
 
-NID-0050 Correct presentation order is:
-
- Title
-
- Family Name
-
- Given Name
-
- Middle name(s)
-
- Suffix
-
- Known as
-
-Mandatory
-
-NID-0051 InLine design choice should only be used when InForm has been considered undesirable. Recommended
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NID-0049 | Ensure wrapping only occurs on whole fields. | Mandatory |
+| NID-0050 | Correct presentation order is:  Title  Family Name  Given Name  Middle name(s)  Suffix  Known as | Mandatory |
+| NID-0051 | InLine design choice should only be used when InForm has been considered undesirable. | Recommended |
 
 Table 16: Guidance for the Use of InLine Design in Patient Name Input Controls
 
@@ -1256,7 +1302,16 @@ controls only wrapped at dividing space
 
 ####  Fields in correct
 
-order, to reinforce display format
+
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|       Field input |  | Fields must not be broken because this can |
+| controls only |  | lead to errors in reading the values and |
+| wrapped at |  | understanding the control. |
+| dividing space |  |  |
+|       Fields in correct |  | The user will assume the input and display |
+| order, to reinforce |  | formats will be identical and changing these |
+| display format |  | orders can lead to input error from the user. |
 
 Table 17: Correct Patient Name Input Wrapping and Order Examples
 
@@ -1276,7 +1331,13 @@ across a field
 
 ####  Fields in wrong
 
-order
+
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|       Fields broken |  | Fields must remain intact to assist the user in |
+| across a field |  | understanding the control and the data. |
+|       Fields in wrong |  | The order of the control input should assist the |
+| order |  | user in understanding how it will be displayed, therefore not confusing the user as to the order, for example, Family Name, then Given Name. |
 
 Table 18: Incorrect Patient Name Input Wrapping and Order Examples
 
@@ -1335,25 +1396,12 @@ Copyright ©2013 Health and Social Care Information Centre
 ![](patnamedisp_assets/patnamedisp.pdf-26-1.png)
 HSCIC Controlled Document
 
-_**2.5.1.1**_ _**Guidance**_
 
-NID-0052 Each field in a name input control must have an associated label. Mandatory
-
-NID-0053 Labels must be programmatically linked to their associated input field. Mandatory
-
-NID-0054 Label values should be:
-
- **Title:** "Title"
-
- **Family Name:** "Family Name"
-
- **Given Name:** "Given Name"
-
- **Middle name:** "Middle name(s)"
-
- **Suffix:** "Suffix"
-
- **Preferred name:** "Known as"
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NID-0052 | Each field in a name input control must have an associated label. | Mandatory |
+| NID-0053 | Labels must be programmatically linked to their associated input field. | Mandatory |
+| NID-0054 | Label values should be:  Title: "Title"  Family Name: "Family Name"  Given Name: "Given Name"  Middle name: "Middle name(s)"  Suffix: "Suffix"  Preferred name: "Known as" | Recommended |
 
 Table 19: Guidance for the Use of Field Labels in Patient Name Input Controls
 
@@ -1362,6 +1410,11 @@ _**2.5.1.2**_ _**Examples of Correct Usage**_
 Recommended
 
 ####  Correct labelling
+
+
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|       Correct labelling |  | Labels are correct for the field associated to them. |
 
 Table 20: Correct Patient Name Input Control Label Formatting Examples
 
@@ -1373,7 +1426,12 @@ Labels are correct for the field associated to them.
 
 ####  No label for the
 
-different input fields
+
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|       No label for the |  | Input controls with more than a single input |
+| different input |  | field require the use of labels to ensure the |
+| fields |  | user understands what is required. |
 
 Table 21: Incorrect Patient Name Input Control Label Formatting Examples
 
@@ -1411,31 +1469,14 @@ The controls could utilise a ‘prompt’ style design to give the clearest indi
 
 Figure 18: Example of Input Control with Prompts
 
-_**2.5.2.1**_ _**Guidance**_
 
-NID-0055 Each field in a name input control should have an associated prompt. Recommended
-
-NID-0056 Prompts for Family Name should be capitalised. Recommended
-
-NID-0057 All prompts except Family Name should have sentence style capitalisation. Recommended
-
-NID-0058 Prompt values should be:
-
- **Title:** "e.g. Mr"
-
- **Family Name:** "e.g. SMITH"
-
- **Given Name:** "e.g. John"
-
- **Middle name(s):** "e.g. David James"
-
- **Suffix:** "e.g. Junior"
-
- **Known as:** "e.g. Johnny-Boy"
-
-Recommended
-
-NID-0059 Prompts should be lighter in weight and colour than the input text, and italicised. Recommended
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NID-0055 | Each field in a name input control should have an associated prompt. | Recommended |
+| NID-0056 | Prompts for Family Name should be capitalised. | Recommended |
+| NID-0057 | All prompts except Family Name should have sentence style capitalisation. | Recommended |
+| NID-0058 | Prompt values should be:  Title: "e.g. Mr"  Family Name: "e.g. SMITH"  Given Name: "e.g. John"  Middle name(s): "e.g. David James"  Suffix: "e.g. Junior"  Known as: "e.g. Johnny-Boy" | Recommended |
+| NID-0059 | Prompts should be lighter in weight and colour than the input text, and italicised. | Recommended |
 
 Table 22: Guidance for the Use Of Prompts in Patient Name Input Controls
 
@@ -1471,7 +1512,26 @@ input field has the prompt capitalised
 
 ####  Given Name has
 
-the prompt with the first letter capitalised
+
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|       Each input field |  | The prompt text reinforces the labels as |
+| has an associated |  | instructional text for the user. |
+| prompt |  |  |
+|       Each prompt text |  | Prompts are of a lighter colour to inform the |
+| is in a lighter |  | user that it is a prompt and not a valid data |
+| colour and |  | value. |
+| italicised |  |  |
+|       Each prompt text |  | The italicised format reinforces the fact that it |
+| is italicised |  | is a prompt and not a valid data value. |
+| Usage Format | Examples                                Comments |  |
+|         Family Name | The capitalisa | tion of the Family Name prompt |
+| input field has the | assists the us | er by reinforcing the Family |
+| prompt capitalised | Name format fo | r display. |
+|         Given Name has | The prompts sh | ould reinforce the desired entry |
+| the prompt with | format and for | the UK, an instance of a Given |
+| the first letter | Name beginning | with a lowercase letter has |
+| capitalised | not been disco | vered. |
 
 Table 23: Correct Patient Name Input Control Prompt Formatting Examples
 
@@ -1491,7 +1551,21 @@ input field has the prompt not fully in uppercase
 
 ####  Given Name does
 
-not have the prompt with the first letter in uppercase
+
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|         Prompts are |  | Users may incorrectly think that an entry has |
+| formatted like a |  | been made in the box. |
+| real entry |  |  |
+|         Family Name |  | Users are not informed as to the correct entry |
+| input field has the |  | format of Family Name. |
+| prompt not fully in |  |  |
+| uppercase |  |  |
+|         Given Name does |  | Users are not informed as to the correct entry |
+| not have the |  | format of Given Name. |
+| prompt with the |  |  |
+| first letter in |  |  |
+| uppercase |  |  |
 
 Table 24: Incorrect Patient Name Input Control Prompt Formatting Examples
 
@@ -1525,23 +1599,11 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-_**2.5.3.1**_ _**Guidance**_
 
-NID-0060 Each field in a name input control should have instructional text (for example, a tooltip). Recommended
-
-NID-0061 Tooltip values should be:
-
- **Title:** "Select a Title from the list or simply type in a different Title"
-
- **Family Name:** "Enter the person’s Family Name (surname)"
-
- **Given Name:** "Enter the person’s Given Name (forename or Christian name)"
-
- **Middle name(s):** "Enter the person’s middle name(s)"
-
- **Suffix:** "Enter the person’s suffix name (e.g. ‘Junior’ or ‘The Third’)"
-
- **Known as:** "Enter the name a person likes to referred to as"
+| ID | Guideline | Status |
+| --- | --- | --- |
+| NID-0060 | Each field in a name input control should have instructional text (for example, a tooltip). | Recommended |
+| NID-0061 | Tooltip values should be:  Title: "Select a Title from the list or simply type in a different Title"  Family Name: "Enter the person’s Family Name (surname)"  Given Name: "Enter the person’s Given Name (forename or Christian name)"  Middle name(s): "Enter the person’s middle name(s)"  Suffix: "Enter the person’s suffix name (e.g. ‘Junior’ or ‘The Third’)"  Known as: "Enter the name a person likes to referred to as" | Recommended |
 
 Table 25: Guidance for the Use of Tooltips in Patient Name Input Controls
 
@@ -1555,7 +1617,13 @@ presentation
 
 ####  Recommended
 
-text used
+
+| Usage Format | Examples | Comments |
+| --- | --- | --- |
+|       Standard tooltip |  | Looks and behaves as a conventional tooltip. |
+| presentation |  |  |
+|       Recommended |  | Uses the recommended tooltip value. |
+| text used |  |  |
 
 Table 26: Correct Patient Name Input Control Tooltip Formatting Examples
 
@@ -1573,35 +1641,30 @@ HSCIC Controlled Document
 
 #### 3.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-GDSC Government Data Standards Catalogue
-
-ISV Independent Software Vendor
-
-MIM Message Implementation Manual
-
-NHS National Health Service
-
-NPSA National Patient Safety Agency
-
-NHS CFH NHS Connecting for Health
-
-PDA Personal Digital Assistant
-
-PDS Personal Demographic Service
-
-UI User Interface
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| GDSC | Government Data Standards Catalogue |
+| ISV | Independent Software Vendor |
+| MIM | Message Implementation Manual |
+| NHS | National Health Service |
+| NPSA | National Patient Safety Agency |
+| NHS CFH | NHS Connecting for Health |
+| PDA | Personal Digital Assistant |
+| PDS | Personal Demographic Service |
+| UI | User Interface |
 
 Table 27: Terms and Abbreviations
 
 #### 3.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health)
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health) |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
 
 Table 28: Definitions
 
@@ -1629,39 +1692,45 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Folder names title case
 
-File names
+| Text | Style |
+| --- | --- |
+| Code | Monospace |
+| Script |  |
+| Other markup languages |  |
+| Interface dialog names | Bold |
+| Field names |  |
+| Controls |  |
+| ext                                                                Styl | e |
+| older names                                                        titl | e case |
+| ile names |  |
 
 Table 29: Body Text Styles
 
 ##### 3.3.2 Cross References
 
-Current document – sections Section number only
 
-Current document – figures/tables Caption number only
-
-Other project documents _Italics_ and possibly a footnote
-
-Publicly available documents _Italics_ with a footnote
-
-External Web-based content _Italics_ and a hyperlinked footnote
+| Reference | Style |
+| --- | --- |
+| Current document – sections | Section number only |
+| Current document – figures/tables | Caption number only |
+| Other project documents | Italics and possibly a footnote |
+| Publicly available documents | Italics with a footnote |
+| External Web-based content | Italics and a hyperlinked footnote |
 
 Table 30: Cross Reference Styles
 
 #### 3.4 References
 
-**R1.** NHS CUI Design Guide Workstream – Accessibility Checkpoints for NHS Clinical Applications 1.0.0.0
 
-**R2.** NHS CUI Design Guide Workstream – Accessibility for Clinical Applications 1.0.0.0
-
-**R3.** NPSA, Right patient - right care [http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=3234](http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=3234)
-
-**R4.** NPSA Safer Practice Notice, Standardising wristbands improves patient safety [http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=5346](http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=5346)
-
-**R5.** BS EN ISO 9241-17:1998 Incorporating Amendment No. 1 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=16889](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=16889)
-
-**R6.** Developing Quality Technical Information: A Handbook for Writers and Editors, IBM Press, ISBN: 0-13-147749-8
+| Reference | Document | Version |
+| --- | --- | --- |
+| R1. | NHS CUI Design Guide Workstream – Accessibility Checkpoints for NHS Clinical Applications | 1.0.0.0 |
+| R2. | NHS CUI Design Guide Workstream – Accessibility for Clinical Applications | 1.0.0.0 |
+| R3. | NPSA, Right patient - right care http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=3234 | 2004 |
+| R4. | NPSA Safer Practice Notice, Standardising wristbands improves patient safety http://www.npsa.nhs.uk/EasySiteWeb/GatewayLink.aspx?alId=5346 | 2007 |
+| R5. | BS EN ISO 9241-17:1998 Incorporating Amendment No. 1 http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=16889 | 2.0.0.0 |
+| R6. | Developing Quality Technical Information: A Handbook for Writers and Editors, IBM Press, ISBN: 0-13-147749-8 | 2nd Edition |
 
 Table 31: References
 

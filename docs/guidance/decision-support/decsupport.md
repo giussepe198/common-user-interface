@@ -300,13 +300,12 @@ in its original context
 
 #### 1.4 References to Table of Contents Document
 
-The document _Table of Contents_ **{R1}** outlines every specific area of focus to be covered by the Design Guide. Table 1 indicates the areas of focus covered by this Design Guide Entry.
 
-5.3 Display of Choice Lists with Preferences
-
-5.4 Display of and Interaction with Unprompted Notifications
-
-5.5 Communication of Decision Support Capability
+| Table of Contents Reference | Description |
+| --- | --- |
+| 5.3 | Display of Choice Lists with Preferences |
+| 5.4 | Display of and Interaction with Unprompted Notifications |
+| 5.5 | Communication of Decision Support Capability |
 
 Table 1: References to Table of Contents Document
 
@@ -378,27 +377,41 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
- The pop-up should appear in close proximity to the title to visually suggest a connection between the message and the decision support functionality
 
- The pop-up should display the date and time of the change, according to the existing _NHS CUI Design Guide Workstream – Design Guide Entry - Time_ _Display_ **{R2}** and _NHS CUI Design Guide Workstream – Design Guide Entry - Date Display_ **{R3}** guidance
-
- The pop-up should display a textual description of the change (for example, “Dose Calculations and Formulary Management are not running”)
-
- The pop-up should visually fade out over a period of time (approximately 5-10 seconds) as it should not obstruct the view of the clinical application
+|  | The title should be displayed against a neutral colour (for example, grey) |
+| --- | --- |
+| ecisio | n support is not running with full functionality for this local system: |
+|  | The title should be displayed against a colour that captures attention (for example, orange) |
+|  | The title could be used as a flashing animation to attract immediate attention |
+|  | The title should also be supported by an icon to indicate that there has been a change since last viewed |
+| every | change in availability of a decision support service, a pop-up should be displayed |
+| ing a | message which summarises the change, as illustrated in Figure 4. |
+| Th | e pop-up should appear in close proximity to the title to visually suggest a connection |
+| be | tween the message and the decision support functionality |
+| Th | e pop-up should display the date and time of the change, according to the existing |
+| NH | S CUI Design Guide Workstream – Design Guide Entry - Time Display {R2} and |
+| NH | S CUI Design Guide Workstream – Design Guide Entry - Date Display {R3} |
+| gu | idance |
+| Th | e pop-up should display a textual description of the change (for example, “Dose |
+| Ca | lculations and Formulary Management are not running”) |
+| Th | e pop-up should visually fade out over a period of time (approximately 5-10 seconds) |
+| as | it should not obstruct the view of the clinical application |
 
 Figure 4: Example of a Pop-up
 
-_**2.1.1.2**_ _**How to Use the Guidance**_
 
-the same box displayed next to the title to suggest
-
-detailed information is available on a click
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         Arrow or Chevron next to the title within |  | An arrow or chevron should be |
+| the same box |  | displayed next to the title to suggest detailed information is available on a click |
 
 Table 2: How to Use the Design Guide Entry
 
-_**2.1.1.3**_ _**How Not to Use the Guidance**_
 
-outside the title box display
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Arrow or Chevron next to the title |  | Incorrect format for arrow or chevron |
+| outside the title box |  | display |
 
 Table 3: How Not to Use the Design Guide Entry
 
@@ -487,6 +500,29 @@ outside the scope of this document.
 
 ![](decsupport_assets/decsupport.pdf-10-0.png)
 
+
+|  | Contain services from the standard NHS CFH catalogue |
+| --- | --- |
+|  | Be displayed in alphabetical order |
+|  | Be visually treated to help distinguish between services that are available and not available. This means the two states should be obvious to the user when the user scans through the list |
+|  | Display available services in black, bold font. The status of the service should be reinforced with an icon (for example, a green tick) |
+|  | Display services that are available but not running in black, bold font. The status of the service should be reinforced with an icon (for example, a red cross) |
+|  | Display unavailable services in light grey, regular font |
+|  | Display the status of any service in a tooltip (with date and time) according to the existing NHS CUI Design Guide Workstream – Design Guide Entry – Time Display {R2} and NHS CUI Design Guide Workstream – Design Guide Entry – Date Display{R3} guidance (for example, ‘This service has been unavailable since 12-Jan-2007; 10:42’) |
+|     D | isplay the Help file when any service is clicked. The Help file should automatically |
+| s | croll to the location of the selected service |
+| rtical | scroll bar should be introduced if the list grows beyond the designated screen |
+| e. |  |
+| nk to | configure the states of individual services should be provided. This is currently |
+| ide th | e scope of this document. |
+| cognis | ed link to the Help file should be provided, which could be an icon (see Figure 6): |
+|     T | he Help file should display information in alphabetical order, in the same way as the |
+| l | ist of services |
+|     A | brief description of each service should be displayed |
+|     T | he Help file should be accessible through the Help link as well as by clicking on an |
+| i | ndividual service |
+|     W | here possible the Help system should be integrated with the generic Help. The user can click on a service/ Help icon to access Help details |
+
 Figure 6: Example of a Help Glossary
 
 _**2.1.2.2**_ _**How to Use the Guidance**_
@@ -496,7 +532,11 @@ A recognised link to the Help file (such as an icon)
 in black, bold font. The status of the service should be reinforced with an icon (for example, a tick)
 ####  Displaying unavailable services Unavailable services should be
 
-displayed in light grey, regular font
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         Displaying available services |  | Available services should be displayed in black, bold font. The status of the service should be reinforced with an icon (for example, a tick) |
+|         Displaying unavailable services |  | Unavailable services should be displayed in light grey, regular font |
 
 Table 4: How to Use the Design Guide Entry
 
@@ -511,7 +551,11 @@ _**2.1.2.3**_ _**How Not to Use the Guidance**_
 services using a selected check box
 ####  Displaying unavailable services Incorrect format for displaying
 
-unavailable services using an unselected check box
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Displaying available services |  | Incorrect format for displaying available services using a selected check box |
+|        Displaying unavailable services |  | Incorrect format for displaying unavailable services using an unselected check box |
 
 Table 5: How Not to Use the Design Guide Entry
 
@@ -610,6 +654,16 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
+
+|  | By default, the ‘Actions’ label should be displayed with a chevron next to it. This area should be displayed in a collapsed state by default. The chevron should act as an interactive element, expanding the Actions when clicked |
+| --- | --- |
+|  | On expansion, this area should display a list of recommended actions (see Figure 8) |
+|  | The actions should be displayed in order of preference, with the most preferred first |
+|  | The preference rating for actions should be visually supported by icons, which should be placed on the left side of every action. On mouse-over of this icon a tooltip explaining the preference should be displayed (for example, ‘High Preference Option’) |
+|  | An action can be selected by clicking its option button |
+|  | An action could have multiple sub options which should be selectable by check boxes or option buttons. For example, ‘Option 3’ is an action and the associated options are ‘Sub Option 1, Sub Option 2 and Sub Option 3’ |
+|  | If decision support is not recommending any actions, elements including the label and the chevron should not be displayed (see Figure 9) A placeholder for the preference icon Actions area expanded Multiple options for an action |
+
 Figure 8: Anatomy of an Information Window – When Decision Support Recommends Actions
 
 ![](decsupport_assets/decsupport.pdf-13-0.png)
@@ -680,6 +734,12 @@ the summary information
 ![](decsupport_assets/decsupport.pdf-15-1.png)
 ####  Showing no actions available
 
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         Displaying an icon |  | The icon should be placed to the left of the summary information |
+|         Showing no actions available |  | If decision support is not recommending any actions, elements including the label and chevron should not be displayed |
+
 Table 6: How to Use the Design Guide Entry
 
 ##### 2.2.3 How Not to Use the Guidance
@@ -692,6 +752,12 @@ within the information window
 
 ![](decsupport_assets/decsupport.pdf-15-4.png)
 ####  Showing no actions available
+
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Displaying an icon |  | Incorrect format for displaying an icon within the information window |
+|        Showing no actions available |  | Incorrect format for displaying no actions recommended |
 
 Table 7: How Not to Use the Design Guide Entry
 
@@ -846,7 +912,14 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-summaries within the same information window
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|       Displaying an icon |  | The preference rating icon should be placed to the left side of the option in the choice list |
+|       Displaying multiple information |  | If there are multiple reasons for a low |
+| summaries |  | preferential rating, on mouse-over all information summaries should be listed as bullet points |
+|         Displaying details of multiple information |  | If there are multiple summaries for the |
+| summaries |  | same preferential rating, display all the summaries within the same information window |
 
 Table 8: How to Use the Design Guide Entry
 
@@ -862,6 +935,14 @@ the choice list
 summaries
 
 ####  Displaying multiple information
+
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Displaying an icon |  | Do not display the icon to the right of the choice list |
+|        Displaying multiple information |  | Do not display the multiple summaries |
+| summaries |  | without bullet points |
+|        Displaying multiple information |  | Do not divide the information into individual information windows |
 
 Table 9: How Not to Use the Design Guide Entry
 
@@ -970,15 +1051,10 @@ Copyright ©2013 Health and Social Care Information Centre
 
 HSCIC Controlled Document
 
-Icon suggests there are no active alerts
 
-Icon suggests there is one or more active Priority alert which has not been viewed
-
-Icon suggests there is one or more active Priority alert which has been viewed
-
-Icon suggests there is one or more High Priority active alert and a possible number of Priority alerts which have not been viewed
-
-Icon suggests there is one or more High Priority active alert and a possible number of Priority alerts which have been viewed
+| Exemplar | Icon Description |
+| --- | --- |
+| Representation of Icon | Icon suggests there are no active alerts Icon suggests there is one or more active Priority alert which has not been viewed Icon suggests there is one or more active Priority alert which has been viewed Icon suggests there is one or more High Priority active alert and a possible number of Priority alerts which have not been viewed Icon suggests there is one or more High Priority active alert and a possible number of Priority alerts which have been viewed |
 
 Table 10: States of the Indicator Icon
 
@@ -1014,17 +1090,19 @@ HSCIC Controlled Document
 
 - **Alerts Container Area**
 
- This area should contain all the active system-generated alerts in context for this patient (as illustrated in Figure 20)
 
- The alerts should be stacked in reverse chronological order
-
- If the number of alerts increases beyond the designated screen space of the alert container, a vertical scroll bar should be introduced
-
- The resizing control should be available here. On resizing the container area, all the alerts in the container should also get resized
-
- The minimum dimensions of the alert container and information window should be fixed.
-
-The alert header area should capture the status, date and time of the alert
+|  | If the alert summary refers to any record item of the patient, this reference should be linked to that record item. For example if the alert summary says “The potassium level is 7.7 mmol”. “Potassium level” should be a hyperlink which, when clicked, should display the patient’s potassium level details along with the other U&E results. |
+| --- | --- |
+|  | The resizing control should not be present for an individual alert box. |
+| s Cont | ainer Area |
+| Th | is area should contain all the active system-generated alerts in context for this patient |
+| (a | s illustrated in Figure 20) |
+| Th | e alerts should be stacked in reverse chronological order |
+| If | the number of alerts increases beyond the designated screen space of the alert |
+| co | ntainer, a vertical scroll bar should be introduced |
+| Th | e resizing control should be available here. On resizing the container area, all the |
+| al | erts in the container should also get resized |
+| Th | e minimum dimensions of the alert container and information window should be fixed. The alert header area should capture the status, date and time of the alert |
 
 Figure 19: Anatomy of a System-Generated Alert
 
@@ -1052,7 +1130,13 @@ Copyright ©2013 Health and Social Care Information Centre
 ![](decsupport_assets/decsupport.pdf-25-2.png)
 HSCIC Controlled Document
 
-and stacked in reverse chronological order. The group of ‘High Priority’ alerts should be placed above the group of ‘Priority’ alerts
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|         Display of High Priority and Priority |  | All ‘High Priority’ alerts should be |
+| alerts |  | displayed in an expanded state by default, where the alert details are visible. All ‘Priority’ alerts should be displayed in a collapsed state by default, where only the alert header details are visible |
+| Usage Format | Example            C | omments |
+|         Stacking High Priority and Priority aler | ts                      T a o s ‘ | he alerts should be grouped by status nd stacked in reverse chronological rder. The group of ‘High Priority’ alerts hould be placed above the group of Priority’ alerts |
 
 Table 11: How to Use the Design Guide Entry
 
@@ -1066,6 +1150,13 @@ Copyright ©2013 Health and Social Care Information Centre
 
 ![](decsupport_assets/decsupport.pdf-26-3.png)
 HSCIC Controlled Document
+
+
+| Usage Format | Example | Comments |
+| --- | --- | --- |
+|        Display of High Priority and Priority |  | Do not display ‘High Priority’ alerts in a |
+| alerts |  | collapsed state by default |
+|        Stacking High Priority and Priority alerts |  | Do not mix the status of alerts |
 
 Table 12: How Not to Use the Design Guide Entry
 
@@ -1126,27 +1217,26 @@ HSCIC Controlled Document
 
 #### 3.1 Terms and Abbreviations
 
-CUI Common User Interface
 
-EPR Electronic Patient Record
-
-NHS National Health Service
-
-NHS CFH NHS Connecting for Health
-
-PSA Patient Safety Assessment
+| Abbreviation | Definition |
+| --- | --- |
+| CUI | Common User Interface |
+| EPR | Electronic Patient Record |
+| NHS | National Health Service |
+| NHS CFH | NHS Connecting for Health |
+| PSA | Patient Safety Assessment |
 
 Table 13: Terms and Abbreviations
 
 #### 3.2 Definitions
 
-NHS Entity Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators.
 
-The Authority The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health).
-
-Current best practice Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time.
-
-Pop-up Within this document, a pop-up is a feature that behaves like a small window, and fades in and out of the current clinical application over a period of time.
+| Term | Definition |
+| --- | --- |
+| NHS Entity | Within this document, defined as a single NHS organisation or group that is operated within a single technical infrastructure environment by a defined group of IT administrators. |
+| The Authority | The organisation implementing the NHS National Programme for IT (currently NHS Connecting for Health). |
+| Current best practice | Current best practice is used rather than best practice, as over time best practice guidance may change or be revised due to changes to products, changes in technology, or simply the additional field deployment experience that comes over time. |
+| Pop-up | Within this document, a pop-up is a feature that behaves like a small window, and fades in and out of the current clinical application over a period of time. |
 
 Table 14: Definitions
 
@@ -1182,13 +1272,15 @@ At the time of writing this document, Web sites are referenced using active hype
 
 #### 3.4 References
 
-**R1.** NHS CUI Design Guide Workstream - Table of Contents 2.0.0.0 30-Oct-2006
 
-**R2.** NHS CUI Design Guide Workstream – Design Guide Entry - Time Display 2.0.0.0 01-Feb-2007
-
-**R3.** NHS CUI Design Guide Workstream – Design Guide Entry – Date Display, Quick Wins
-
-**R4.** NHS CUI Design Guide Workstream – Design Guide Entry – Medications Management – Search and Prescribe
+| Reference Document | Version | Date |
+| --- | --- | --- |
+| R1.              NHS CUI Design Guide Workstream - Table of Contents | 2.0.0.0 | 30-Oct-2006 |
+| R2.              NHS CUI Design Guide Workstream – Design Guide Entry - Time Display | 2.0.0.0 | 01-Feb-2007 |
+| R3.              NHS CUI Design Guide Workstream – Design Guide Entry – Date Display, | 1.0.0.0 | 01-Jun-2006 |
+| Quick Wins |  |  |
+| R4.              NHS CUI Design Guide Workstream – Design Guide Entry – Medications | 1.0.0.0 | 18-Aug-2006 |
+| Management – Search and Prescribe |  |  |
 
 Table 15: References
 
