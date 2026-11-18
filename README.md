@@ -27,6 +27,7 @@ The original guidance made it possible to build a UI framework and controls that
 | Folder | What it holds |
 | --- | --- |
 | `nhs-cui-documents/` | The original NHS CUI guidance documents, as retrieved from the UK National Archives, with `links.json` and `manifest.json` recording where each came from. |
+| `docs/` | Illustrated source-reference site: 45 restored transcriptions with retained images, provenance and links to the canonical PDFs. Built with Zensical; separate from the library documentation below. |
 | `nhs-cui-react/` | The control library: source, tests, design tokens, documentation and worked examples. Start with its own `README.md`. |
 
 Inside `nhs-cui-react/`:
@@ -37,6 +38,18 @@ Inside `nhs-cui-react/`:
 - **Worked examples**: ten screens built only from the library, from a ward drug round to a nurse's medication round on a phone. Open `docs/site/index.html` in a browser to explore them with region and theme switches, or read the TSX in `examples/`.
 
 ## Getting started
+
+To read or preview the restored source guidance independently of the React library:
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+s/docs
+```
+
+Build with `s/build-docs` and check with `s/test-docs`. See [the site introduction](docs/index.md), [preservation and terms](docs/preservation.md) and [script reference](s/README.md). Source transcriptions and retained illustrations were contributed from [Marcus Baw's NHS CUI restoration](https://github.com/pacharanero/nhs-cui). The site does not enable or replace a Pages deployment automatically.
+
+For the React library:
 
 ```bash
 cd nhs-cui-react

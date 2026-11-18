@@ -1,0 +1,107 @@
+site_name: NHS CUI source guidance
+site_description: Restored NHS Common User Interface guidance with original illustrations and source PDFs.
+# Proposed Pages URL only; this PR does not enable deployment or change settings.
+site_url: https://giussepe198.github.io/common-user-interface/
+repo_url: https://github.com/giussepe198/common-user-interface
+repo_name: giussepe198/common-user-interface
+edit_uri: edit/main/docs/
+docs_dir: docs
+site_dir: site
+theme:
+  variant: modern
+  language: en
+  font: false
+  logo: assets/cui-logo.svg
+  favicon: assets/cui-favicon.svg
+  palette:
+    - media: "(prefers-color-scheme)"
+      primary: custom
+      accent: custom
+      toggle:
+        icon: lucide/sun-moon
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: lucide/sun
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: lucide/moon
+        name: Switch to system preference
+extra_css:
+  - stylesheets/extra.css
+# Preserve literal clinical notation: do not enable smart-symbol substitution.
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+nav:
+  - About the archive: index.md
+  - Reading the originals: guidance/index.md
+  - Patient identification and data entry:
+      - Patient banner: guidance/patient-identification-and-information-entry-and-display/patben.md
+      - Micro patient banner: guidance/patient-identification-and-information-entry-and-display/micropatban.md
+      - Patient list view: guidance/patient-identification-and-information-entry-and-display/patlistview.md
+      - Patient name: guidance/patient-identification-and-information-entry-and-display/patnamedisp.md
+      - NHS number: guidance/patient-identification-and-information-entry-and-display/inputdisplay.md
+      - Sex and current gender: guidance/patient-identification-and-information-entry-and-display/sex.md
+      - Address: guidance/patient-identification-and-information-entry-and-display/address.md
+      - Telephone number: guidance/patient-identification-and-information-entry-and-display/tele.md
+      - Date and time input: guidance/patient-identification-and-information-entry-and-display/datetime.md
+      - Date display: guidance/patient-identification-and-information-entry-and-display/datedisplay.md
+      - Time display: guidance/patient-identification-and-information-entry-and-display/timedisplay.md
+      - Quick implementation guides:
+          - Patient name: guidance/patient-identification-and-information-entry-and-display/patnamedispqig.md
+          - NHS number: guidance/patient-identification-and-information-entry-and-display/inputdisplayqig.md
+          - Sex and current gender: guidance/patient-identification-and-information-entry-and-display/sexqig.md
+          - Address: guidance/patient-identification-and-information-entry-and-display/addressqig.md
+          - Telephone number: guidance/patient-identification-and-information-entry-and-display/teleqig.md
+          - Date and time input: guidance/patient-identification-and-information-entry-and-display/datetimeqig.md
+          - Date and time display: guidance/patient-identification-and-information-entry-and-display/datetimedispqig.md
+  - Medicines:
+      - Medication line: guidance/medications-management/medline.md
+      - Medication line quick guide: guidance/medications-management/medlineqig.md
+      - Medications list: guidance/medications-management/medlist.md
+      - Medications list quick guide: guidance/medications-management/medlistqig.md
+      - Search and prescribe: guidance/medications-management/searchpres.md
+      - Drug administration: guidance/medications-management/drugadmin.md
+      - Timeline view: guidance/medications-management/timelineview.md
+  - Clinical noting and terminology:
+      - Clinical noting in forms: guidance/clinical-noting-and-terminology/clinicalnoting.md
+      - Noting with graphics: guidance/clinical-noting-and-terminology/notinggraphics.md
+      - Displaying graphs and tables: guidance/clinical-noting-and-terminology/dispgraphs.md
+      - Recording adverse drug reaction risks: guidance/clinical-noting-and-terminology/recdrugrisk.md
+      - Coded information display standards: guidance/clinical-noting-and-terminology/displaystandards.md
+      - Terminology elaboration: guidance/clinical-noting-and-terminology/termelab.md
+      - Terminology matching: guidance/clinical-noting-and-terminology/termmatching.md
+      - Terminology post-coordination: guidance/clinical-noting-and-terminology/termpostcoord.md
+      - Clinical statements (consultation): guidance/clinical-noting-and-terminology/clinicalstatements.md
+      - Using templates (consultation): guidance/clinical-noting-and-terminology/usingtemplates.md
+      - Clinical term truncation (consultation): guidance/clinical-noting-and-terminology/truncation.md
+  - Handover:
+      - Introduction to handover: guidance/handover/handoverintro.md
+      - Presentation introduction: guidance/handover/handpresintro.md
+  - Navigation and alerts:
+      - Filtering, sorting and grouping: guidance/consistent-navigation/filtering.md
+      - Icons and symbology: guidance/consistent-navigation/iconssymb.md
+      - Keyboard shortcuts: guidance/consistent-navigation/keyshorts.md
+      - Alert symbol design: guidance/consistent-navigation/alertsymbdes.md
+  - Abbreviations:
+      - Abbreviations and acronyms: guidance/abbreviations-and-acronyms/abbracs.md
+      - Abbreviations in free text: guidance/abbreviations-and-acronyms/abbracsfree.md
+  - Decision support:
+      - Decision support: guidance/decision-support/decsupport.md
+  - Preservation and terms: preservation.md

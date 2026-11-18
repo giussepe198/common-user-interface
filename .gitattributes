@@ -1,2 +1,12 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Checksummed transcriptions must have identical bytes on every checkout.
+/docs/guidance/**/*.md text eol=lf
+/s/* text eol=lf
+
+# Seven-pipe empty Markdown table rows in these preserved transcripts are not
+# merge-conflict markers. Git generates/checks longer markers for these files.
+docs/guidance/clinical-noting-and-terminology/truncation.md conflict-marker-size=32
+docs/guidance/medications-management/drugadmin.md conflict-marker-size=32
+docs/guidance/medications-management/searchpres.md conflict-marker-size=32

@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2026 Marcus Baw
+# SPDX-License-Identifier: MIT
+# Adapted from house-style/examples/s/docs-zensical.
+# Serve on the first free port in 8000-8030. Install requirements.txt first.
+# Forward Zensical flags; DOCS_OPEN=0 disables automatic browser opening.
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+if [[ -x .venv/bin/zensical ]]; then
+  ZENSICAL=.venv/bin/zensical
+elif command -v zensical >/dev/null 2>&1; then
+  ZENSICAL=zensical
+else
+  echo >&2 'Install the site tools: python3 -m venv .venv && .venv/bin/pip install -r requirements.txt'
+  exit 1
+fi
+python3 s/prepare-docs.py
+addr_given=0
+open_given=0
+for arg in "$@"; do
+  case "$arg" in
+    -a|--dev-addr|--dev-addr=*|-a?*) addr_given=1 ;;
+    --open) open_given=1 ;;
+  esac
+done
+port_in_use() {
+  if command -v ss >/dev/null 2>&1; then
+    ss -ltnH | awk '{print $4}' | awk -F: '{print $NF}' | grep -qx "$1"
+  elif command -v lsof >/dev/null 2>&1; then
+    lsof -nP -iTCP:"$1" -sTCP:LISTEN >/dev/null 2>&1
+  else
+    (exec 3<>"/dev/tcp/127.0.0.1/$1") 2>/dev/null
+  fi
+}
+if [[ "$addr_given" -eq 0 ]]; then
+  chosen=''
+  for port in $(seq 8000 8030); do
+    if ! port_in_use "$port"; then chosen="$port"; break; fi
+  done
+  if [[ -z "$chosen" ]]; then
+    echo >&2 'No free docs port in 8000-8030; pass --dev-addr localhost:PORT.'
+    exit 1
+  fi
+  echo >&2 "Serving docs on http://localhost:$chosen"
+  set -- --dev-addr "localhost:$chosen" "$@"
+fi
+if [[ "${DOCS_OPEN:-1}" == 1 && "$open_given" -eq 0 ]]; then
+  set -- --open "$@"
+fi
+exec "$ZENSICAL" serve "$@"
